@@ -4,7 +4,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import ProjectDialog from "./ProjectDialog";
 import { motion } from "framer-motion";
 
-const projects = [
+// Define the type for project details
+type ProjectDetails = {
+  title: string;
+  description: string;
+  details: string;
+  url: string;
+};
+
+const projects: ProjectDetails[] = [
   {
     title: "Post Lecture (WIP)",
     description: "A notes-taking React Native app.",
@@ -44,9 +52,11 @@ const projects = [
 
 const Projects = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectDetails | null>(
+    null,
+  );
 
-  const openDialog = (project) => {
+  const openDialog = (project: ProjectDetails) => {
     setSelectedProject(project);
     setIsDialogOpen(true);
   };
@@ -67,8 +77,9 @@ const Projects = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3 }}
+              className="overflow-hidden"
             >
-              <Card className="overflow-hidden">
+              <Card>
                 <CardHeader>
                   <CardTitle className="text-xl">{project.title}</CardTitle>
                 </CardHeader>
@@ -76,7 +87,7 @@ const Projects = () => {
                   <p className="text-gray-700">{project.description}</p>
                   <button
                     onClick={() => openDialog(project)}
-                    className="mt-4 block text-red-500 hover:underline"
+                    className="mt-4 block text-blue-500 hover:underline"
                   >
                     View More
                   </button>

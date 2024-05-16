@@ -1,8 +1,9 @@
 import React from "react";
-import { Dialog, DialogContent, DialogOverlay } from "./ui/dialog";
+import * as Dialog from "@radix-ui/react-dialog";
 import { motion } from "framer-motion";
 
-interface ProjectDialogProps {
+// Define the props type for ProjectDialog
+type ProjectDialogProps = {
   isOpen: boolean;
   onClose: () => void;
   project: {
@@ -11,43 +12,45 @@ interface ProjectDialogProps {
     details: string;
     url: string;
   };
-}
+};
 
-const ProjectDialog: React.FC<ProjectDialogProps> = ({
-  isOpen,
-  onClose,
-  project,
-}) => {
+const ProjectDialog = ({ isOpen, onClose, project }: ProjectDialogProps) => {
   return (
-    <Dialog open={isOpen} onClose={onClose}>
-      <DialogOverlay className="fixed inset-0 bg-black opacity-30" />
-      <DialogContent
-        as={motion.div}
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.95, opacity: 0 }}
-        transition={{ duration: 0.2 }}
-        className="fixed left-1/2 top-1/2 w-full max-w-md -translate-x-1/2 -translate-y-1/2 transform rounded-lg bg-white p-8 shadow-lg"
-      >
-        <h2 className="mb-4 text-2xl font-bold">{project.title}</h2>
-        <p className="mb-4">{project.description}</p>
-        <p className="mb-4">{project.details}</p>
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 hover:underline"
+    <Dialog.Root open={isOpen} onOpenChange={onClose}>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          className="fixed inset-0 m-auto max-w-lg p-8"
         >
-          View Project
-        </a>
-        <button
-          onClick={onClose}
-          className="mt-4 rounded bg-gray-800 px-4 py-2 text-white"
-        >
-          Close
-        </button>
-      </DialogContent>
-    </Dialog>
+          <Dialog.Content className="rounded-lg bg-white p-8">
+            <Dialog.Title className="text-xl font-bold">
+              {project.title}
+            </Dialog.Title>
+            <Dialog.Description className="mt-2 text-gray-700">
+              {project.description}
+            </Dialog.Description>
+            <div className="mt-4">{project.details}</div>
+            <a
+              href={project.url}
+              className="mt-4 block text-blue-500 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Project
+            </a>
+            <button
+              onClick={onClose}
+              className="mt-4 block text-red-500 hover:underline"
+            >
+              Close
+            </button>
+          </Dialog.Content>
+        </motion.div>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 };
 
