@@ -26,7 +26,7 @@ const Testimonials = () => {
                 <CardTitle>{testimonial.name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>"{testimonial.feedback}"</p>
+                <p>&quot;{testimonial.feedback}&quot;</p>
               </CardContent>
             </Card>
           ))}
