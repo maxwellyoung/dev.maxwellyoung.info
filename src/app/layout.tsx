@@ -24,7 +24,9 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.png" />
       </head>
-      <body className={`${inter.className} ${robotoMono.variable}`}>
+      <body
+        className={`${inter.className} ${robotoMono.variable} bg-neutral-900`}
+      >
         {children}
         <Analytics />
       </body>

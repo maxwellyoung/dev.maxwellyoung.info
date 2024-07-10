@@ -5,7 +5,7 @@ import Resume from "./resume/page"; // Adjust the path based on your project str
 
 export default function Home() {
   return (
-    <div className="min-h-screen text-white p-4 md:p-8 flex flex-col justify-between bg-neutral-900">
+    <div className="min-h-screen text-white p-4 md:p-8 flex flex-col justify-between ">
       <main className="max-w-2xl mx-auto text-zinc-300 space-y-8 overflow-y-auto">
         <section className="flex flex-col justify-center items-left min-h-screen space-y-8 p-4 md:p-8">
           <header className="mb-12">
