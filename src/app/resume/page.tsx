@@ -13,7 +13,7 @@ export default function Resume() {
               Maxwell Young
             </span>
             <span className="block text-xl font-normal text-zinc-400 font-robotoMono">
-              Software Engineer
+              Design Engineer
             </span>
           </div>
           <div className="flex items-center space-x-4">
