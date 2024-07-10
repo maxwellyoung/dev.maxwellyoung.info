@@ -167,8 +167,6 @@ export default function Resume() {
               <span className="block text-sm font-normal text-zinc-400 font-inter mt-2">
                 maxtheyoung@gmail.com
                 <br />
-                +64 020 4134 9603
-                <br />
                 Auckland
               </span>
             </div>
