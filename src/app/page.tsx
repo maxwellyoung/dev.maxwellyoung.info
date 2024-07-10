@@ -54,7 +54,7 @@ export default function Home() {
               You can see my work here soon, my resume below, & more of my code
               on{" "}
               <Link
-                href="https://github.com"
+                href="https://github.com/maxwellyoung"
                 target="_blank"
                 className="underline hover:text-zinc-300"
               >
