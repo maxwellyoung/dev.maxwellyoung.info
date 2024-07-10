@@ -235,11 +235,17 @@ export default function Resume() {
                 </span>
               </div>
               <span className="block text-sm font-normal text-zinc-400 font-inter underline mt-2">
-                maxwellyoung.info
+                <a href="https://dev.maxwellyoung.info/">
+                  dev.maxwellyoung.info
+                </a>
                 <br />
-                github.com/maxwellyoung
+                <a href="https://github.com/maxwellyoung">
+                  github.com/maxwellyoung
+                </a>
                 <br />
-                linkedin.com/in/maxwellyoung
+                <a href="https://www.linkedin.com/in/maxwell-young-a55032125/">
+                  linkedin.com/in/maxwellyoung
+                </a>
               </span>
             </div>
           </div>
