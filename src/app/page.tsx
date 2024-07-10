@@ -51,15 +51,8 @@ export default function Home() {
           <div className="leading-relaxed">
             <h2 className="font-medium mb-6">More</h2>
             <p className="text-gray-400">
-              You can see my work soon, my resume{" "}
-              <Link
-                href="#resume"
-                target="_blank"
-                className="underline hover:text-zinc-300"
-              >
-                here
-              </Link>
-              , & more of my code on{" "}
+              You can see my work here soon, my resume below, & more of my code
+              on{" "}
               <Link
                 href="https://github.com"
                 target="_blank"
