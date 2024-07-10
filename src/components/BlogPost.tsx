@@ -1,25 +1,32 @@
-// components/resume.tsx
-
+// components/BlogPost.tsx
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Resume() {
+type BlogPostProps = {
+  meta: {
+    title: string;
+    author: string;
+    category: string;
+  };
+};
+
+const BlogPost: React.FC<BlogPostProps> = ({ meta }) => {
   return (
-    <div className="relative w-full p-6 flex flex-col items-center fade-in">
+    <div className="relative w-full bg-zinc-950 p-6 flex flex-col items-center fade-in">
       <div className="max-w-4xl w-full">
         <div className="flex justify-between items-center mb-6">
           <div>
             <span className="block text-3xl font-bold text-white font-robotoMono">
-              Maxwell Young
+              {meta.title}
             </span>
             <span className="block text-xl font-normal text-zinc-400 font-robotoMono">
-              Software Engineer
+              {meta.author}
             </span>
           </div>
           <div className="flex items-center space-x-4">
             <Link href="/MaxwellYoung_CV.pdf" legacyBehavior>
               <a
-                className="flex items-center px-2 md:px-4 py-2 text-sm font-medium text-white bg-opacity-15 bg-[#EA2D42] border border-[#EA2D42] rounded-md hover:bg-transparent hover:text-[#EA2D42] transition duration-300 ease-in-out transform hover:scale-105"
+                className="flex items-center px-4 py-2 text-sm font-medium text-white bg-opacity-15 bg-[#EA2D42] border border-[#EA2D42] rounded-md hover:bg-transparent hover:text-[#EA2D42] transition duration-300 ease-in-out transform hover:scale-105"
                 download
               >
                 <svg
@@ -28,7 +35,7 @@ export default function Resume() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="w-6 h-6 mr-2"
                 >
                   <path
                     strokeLinecap="round"
@@ -36,9 +43,7 @@ export default function Resume() {
                     d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
                   />
                 </svg>
-                <span className="hidden md:inline ml-2 text-zinc-300">
-                  Download Resume
-                </span>
+                Download Resume
               </a>
             </Link>
             <Image
@@ -55,7 +60,7 @@ export default function Resume() {
           <div className="lg:col-span-2">
             <div className="relative">
               <span className="block text-xs font-normal text-zinc-400 font-inter uppercase tracking-wide mb-2">
-                Experience
+                {meta.category}
               </span>
             </div>
             <div className="mb-4">
@@ -72,9 +77,9 @@ export default function Resume() {
               </span>
               <ul className="list-disc pl-5 mt-2 text-sm font-normal text-zinc-400 font-inter">
                 <li>
-                  Developed a number of portfolio sites for designers &
-                  musicians, enhancing user experience with responsive designs
-                  and dynamic animations using Tailwind and Framer Motion.
+                  Developed a portfolio site for motion designer Tom Crampin,
+                  enhancing user experience with responsive designs and dynamic
+                  animations using Tailwind and Framer Motion.
                 </li>
                 <li>
                   Utilised Next.js to ensure high performance across devices,
@@ -247,4 +252,6 @@ export default function Resume() {
       </div>
     </div>
   );
-}
+};
+
+export default BlogPost;

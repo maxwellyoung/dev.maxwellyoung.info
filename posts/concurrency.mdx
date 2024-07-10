@@ -1,0 +1,59 @@
+---
+title: Understanding React Terminology
+
+description: An article about React concurrency
+
+published: 22 May 2023
+---
+
+# Concurrency and Render Phase
+
+## Introduction
+
+React, a popular library for rendering user interfaces, operates by breaking down its work into two distinct phases. The first phase is known as the render phase, where React executes components and returns a JSX tree. This article delves into the concepts of the render phase and introduces related terms such as concurrency, diffing, commit phase, state, side effects, purity, idempotence, heuristics, and React 18's concurrent features.
+
+## Render Phase
+
+The render phase in React involves executing components and generating a JSX tree. It occurs during the initial render or when a component updates. During this phase, React compares the new JSX tree to the previous one, a process known as diffing or reconciliation. The render phase primarily focuses on computing this difference rather than rendering pixels on the screen.
+
+## Commit Phase
+
+The commit phase is the second phase in React's process. After finding the JSX diff in the render phase, React proceeds to update the Document Object Model (DOM). It compares the new and old DOM elements, creating or modifying elements as necessary to ensure consistency. The diffing mechanism allows React to efficiently update the DOM while developers can write declarative code without worrying about the specifics of what changes.
+
+## State
+
+State represents the runtime data that React relies upon to render an application. It enables dynamic updates and is commonly used in React components. While React state is a crucial part of managing component rendering, it's worth noting that other data, such as mouse position or scroll position, resides outside React's purview and is not considered React state.
+
+## Side Effects
+
+Side effects encompass actions performed by components that are unrelated to creating or manipulating JSX. Examples include fetching data from an API, updating the document's title, or logging to the console. To separate side effects from the render calculation, React provides the useEffect hook, allowing developers to define and manage such effects in a controlled manner.
+
+## Purity
+
+In React, render functions are ideally expected to be pure. A pure function has no side effects and produces the same output for the same set of inputs. While side effects exist in applications, the render function should primarily focus on producing JSX. By utilizing the useEffect hook, impurities can be removed from the render function, allowing React to queue and execute side effects independently.
+
+## Idempotence
+
+Idempotence refers to the quality of functions whose side effects produce the same effect on the system state, regardless of how many times they are called. In React, idempotent side effects can be desirable. For instance, when running a seed function in a database, the function can be designed to create a row only if it doesn't already exist. By making side effects idempotent, React components can be well-behaved and avoid unintended side effects.
+
+## Heuristics
+
+Heuristics in React are guidelines or principles that developers should follow to ensure successful application development. Adhering to heuristics, such as keeping render functions pure and idempotent, contributes to a predictable and efficient React process. While there may be instances where bending these rules is acceptable, it is an assumption made by the React team that developers will strive to follow these best practices.
+
+## Concurrency
+
+Concurrency refers to a set of features introduced in React 18 that enable more intelligent handling of rendering processes. Unlike React 17, where rendering is synchronous and uninterrupted, concurrent React allows rendering to be interrupted and prioritized based on specific updates. This enables React to be more responsive and resilient under heavy rendering scenarios. Concurrent React leverages the assumption of pure render functions and employs scheduling mechanisms to optimize rendering and improve the overall user experience.
+
+## Conclusion
+
+Understanding the key concepts in React terminology, such as the render phase, concurrency, state, side effects, purity, idempotence, heuristics, and React 18's concurrent features, is crucial for developing efficient and robust React applications.
+
+The render phase plays a vital role in generating the JSX tree and performing diffing to update the DOM efficiently. Separating side effects from the render calculation using the useEffect hook ensures that impurities are isolated and executed appropriately.
+
+Maintaining purity in render functions, where they produce the same output for the same inputs, allows React to render different versions of the app concurrently without committing them to the browser. This concurrency feature in React 18 brings improved responsiveness and resiliency to heavy rendering scenarios.
+
+Idempotence and heuristics serve as guidelines to ensure well-behaved components and predictable system behavior. By following these principles and leveraging React's concurrent features, developers can create highly performant and optimized React applications.
+
+In conclusion, by gaining a deep understanding of React terminology and employing the recommended practices, developers can harness the full power of React to build responsive, efficient, and scalable user interfaces.
+
+[Dan Abramov: Beyond React 16 | JSConf Iceland](https://www.youtube.com/watch?v=nLF0n9SACd4)

@@ -8,8 +8,6 @@ const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
 });
 
-export const fonts = { inter, robotoMono };
-
 export const metadata: Metadata = {
   title: "Maxwell Young Portfolio",
   description: "Portfolio of Maxwell Young",
