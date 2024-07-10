@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -9,7 +10,7 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Maxwell Young Portfolio",
+  title: "Maxwell Young",
   description: "Development portfolio of Maxwell Young",
 };
 
