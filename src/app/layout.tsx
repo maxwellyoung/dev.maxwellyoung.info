@@ -26,6 +26,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} ${robotoMono.variable}`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
