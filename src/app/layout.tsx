@@ -10,7 +10,7 @@ const robotoMono = Roboto_Mono({
 
 export const metadata: Metadata = {
   title: "Maxwell Young Portfolio",
-  description: "Portfolio of Maxwell Young",
+  description: "Development portfolio of Maxwell Young",
 };
 
 export default function RootLayout({
@@ -20,6 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.png" />
+      </head>
       <body className={`${inter.className} ${robotoMono.variable}`}>
         {children}
       </body>
