@@ -15,19 +15,20 @@ export default function Home() {
             <p className="text-xl font-light text-gray-400">Design Engineer</p>
           </header>
 
-          <div className="leading-loose">
+          <div className="leading-relaxed">
             <h2 className="text-2xl font-medium">Today</h2>
-            <p>
+            <div></div>
+            <p className="text-gray-400">
               Currently studying a Bachelor of Computer Science at Auckland
               University of Technology, majoring in Software Development and
               Data Science.
             </p>
-            <p>
+            <p className="text-gray-400">
               I&apos;m passionate about making software simple with intention
               and principles to elevate user experiences and solve everyday
               issues.
             </p>
-            <p>
+            <p className="text-gray-400">
               I&apos;ve also been releasing{" "}
               <a
                 href="https://music.maxwellyoung.info/"
@@ -39,17 +40,17 @@ export default function Home() {
             </p>
           </div>
 
-          <div>
+          <div className="leading-relaxed">
             <h2 className="text-2xl font-medium">Previously</h2>
-            <p>
+            <p className="text-gray-400">
               I&apos;ve previously been a UI Developer at Spark New Zealand and
               graduated from the web development bootcamp Dev Academy Aotearoa.
             </p>
           </div>
 
-          <div>
+          <div className="leading-relaxed">
             <h2 className="text-2xl font-medium">More</h2>
-            <p>
+            <p className="text-gray-400">
               You can see my work soon, my resume{" "}
               <Link
                 href="#resume"
