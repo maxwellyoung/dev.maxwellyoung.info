@@ -5,18 +5,18 @@ import Resume from "./resume/page"; // Adjust the path based on your project str
 
 export default function Home() {
   return (
-    <div className="min-h-screen text-white p-4 md:p-8 flex flex-col justify-between bg-zinc-900">
+    <div className="min-h-screen text-white p-4 md:p-8 flex flex-col justify-between bg-neutral-900">
       <main className="max-w-2xl mx-auto text-zinc-300 space-y-8 overflow-y-auto">
         <section className="flex flex-col justify-center items-left min-h-screen space-y-8 p-4 md:p-8">
           <header className="mb-12">
-            <h1 className="text-2xl text-zinc-200 font-semibold">
+            <a href="/" className="text-xl text-zinc-200 font-medium">
               Maxwell Young
-            </h1>
+            </a>
             <p className="text-xl font-light text-gray-400">Design Engineer</p>
           </header>
 
           <div className="leading-relaxed">
-            <h2 className="text-2xl font-medium">Today</h2>
+            <h2 className="font-medium mb-6">Today</h2>
             <div></div>
             <p className="text-gray-400">
               Currently studying a Bachelor of Computer Science at Auckland
@@ -41,7 +41,7 @@ export default function Home() {
           </div>
 
           <div className="leading-relaxed">
-            <h2 className="text-2xl font-medium">Previously</h2>
+            <h2 className="font-medium mb-6">Previously</h2>
             <p className="text-gray-400">
               I&apos;ve previously been a UI Developer at Spark New Zealand and
               graduated from the web development bootcamp Dev Academy Aotearoa.
@@ -49,7 +49,7 @@ export default function Home() {
           </div>
 
           <div className="leading-relaxed">
-            <h2 className="text-2xl font-medium">More</h2>
+            <h2 className="font-medium mb-6">More</h2>
             <p className="text-gray-400">
               You can see my work soon, my resume{" "}
               <Link
@@ -72,7 +72,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="resume" className="min-h-screen p-4 md:p-8">
+        <section id="resume">
           <Resume />
         </section>
       </main>
