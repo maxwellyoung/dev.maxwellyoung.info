@@ -15,7 +15,7 @@ export default function Home() {
             <p className="text-xl font-light text-gray-400">Design Engineer</p>
           </header>
 
-          <div>
+          <div className="leading-loose">
             <h2 className="text-2xl font-medium">Today</h2>
             <p>
               Currently studying a Bachelor of Computer Science at Auckland
