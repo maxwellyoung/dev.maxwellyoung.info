@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Resume from "./resume/page"; // Adjust the path based on your project structure
+import Projects from "./list/page";
 
 export default function Home() {
   return (
@@ -64,7 +65,9 @@ export default function Home() {
             </p>
           </div>
         </section>
-
+        <section id="resume">
+          <Projects />
+        </section>
         <section id="resume">
           <Resume />
         </section>
