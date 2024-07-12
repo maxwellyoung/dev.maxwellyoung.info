@@ -39,6 +39,7 @@ const projects: Project[] = [
       "A real-time messaging app built with React, Redux, Firebase, and Planetscale.",
     longDescription:
       "Noid is a Twitter clone that enables real-time messaging using a modern tech stack including React, Redux, Firebase, and Planetscale. The project aims to replicate key functionalities of Twitter, providing a platform for users to post updates, follow others, and engage in real-time conversations. Note: Currently unusable due to Planetscale removing the free plan.",
+    link: "https://noid.maxwellyoung.info",
     codeLink: "https://github.com/maxwellyoung/noid",
   },
   {
