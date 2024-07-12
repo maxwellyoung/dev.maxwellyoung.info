@@ -63,7 +63,7 @@ const projects: Project[] = [
     description:
       "A personal portfolio website to showcase my skills, projects, and experience.",
     longDescription:
-      "My portfolio website is designed to provide an engaging and informative platform to showcase my skills, projects, and professional experience. Built with Next.js and Tailwind, the site features an interactive design, project showcases, and a blog section. The website also includes a contact form and links to my social media profiles, providing multiple ways for potential employers and collaborators to reach out.",
+      "My portfolio website is designed to provide an engaging and informative platform to showcase my skills, projects, and professional experience. Built with Next.js and Tailwind, the site features an interactive design, project showcases, and an upcoming blog section. The website also includes  links to my social media profiles, providing multiple ways for potential employers and collaborators to reach out.",
     screenshots: [],
     link: "https://dev.maxwellyoung.info/",
     codeLink: "https://github.com/maxwellyoung/dev.maxwellyoung.info",
