@@ -1,121 +1,208 @@
 "use client";
 import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   Dialog,
   DialogTrigger,
   DialogContent,
   DialogTitle,
   DialogDescription,
-  DialogClose,
-} from "../../components/ui/dialog";
+} from "@/components/ui/dialog";
+import { Carousel } from "@/components/ui/carousel";
+import { Separator } from "@/components/ui/separator";
 
 interface Project {
-  title: string;
+  name: string;
+  status: string;
   description: string;
-  details: string;
-  screenshots: string[];
+  longDescription?: string;
+  screenshots?: string[];
+  link?: string;
+  codeLink?: string;
 }
 
-const projectsData: Project[] = [
+const projects: Project[] = [
   {
-    title: "Finance Tracker App",
+    name: "Rolodex",
+    status: "Idea",
     description:
-      "Developed using React Native and Expo to track expenses and monitor weekly balance, improving personal financial management for users.",
-    details:
-      "The Finance Tracker App allows users to input their daily expenses and categorize them. Users can view their weekly spending and balance, set budget goals, and get notifications for overspending. The app uses React Native for the frontend, Expo for ease of development and deployment, and integrates with a backend service to store user data securely.",
-    screenshots: [
-      "/path/to/finance-tracker1.png",
-      "/path/to/finance-tracker2.png",
-    ],
+      "A React component for showcasing a portfolio of projects as a three.js rolodex.",
+    longDescription:
+      "Rolodex is a React component designed to present a portfolio of projects in an engaging three.js rolodex format. The top card provides a description of the project, while the bottom card features a screenshot. Hover effects add visual interest, and clicking on a card navigates to a detailed page about the project or the project application itself.",
   },
   {
-    title: "Noid (Twitter Clone)",
+    name: "Noid (Twitter Clone)",
+    status: "Completed",
     description:
-      "A real-time messaging app built with React, Redux, and Firebase, featuring authentication and pagination.",
-    details:
-      "Noid is a Twitter clone designed to provide real-time messaging and social interaction. It features user authentication using Firebase Auth, state management with Redux, and real-time data updates using Firebase Firestore. The app supports pagination for efficient data handling and includes features like tweet creation, liking, and commenting.",
-    screenshots: ["/path/to/noid1.png", "/path/to/noid2.png"],
+      "A real-time messaging app built with React, Redux, Firebase, and Planetscale.",
+    longDescription:
+      "Noid is a Twitter clone that enables real-time messaging using a modern tech stack including React, Redux, Firebase, and Planetscale. The project aims to replicate key functionalities of Twitter, providing a platform for users to post updates, follow others, and engage in real-time conversations. Note: Currently unusable due to Planetscale removing the free plan.",
+    codeLink: "https://github.com/maxwellyoung/noid",
   },
   {
-    title: "Calendar React Native App",
+    name: "Internal Dashboard for Spark New Zealand",
+    status: "Completed",
     description:
-      "Built with React Native and Expo for seamless schedule management.",
-    details:
-      "The Calendar React Native App helps users manage their schedules efficiently. Users can create, edit, and delete events, set reminders, and view their schedules in daily, weekly, or monthly views. The app uses React Native for the frontend and integrates with various calendar APIs for syncing events across different platforms.",
-    screenshots: ["/path/to/calendar1.png", "/path/to/calendar2.png"],
+      "A responsive UI for B2B Sales, built with React and Next.js to enhance team efficiency.",
+    longDescription:
+      "- Designed and developed the front end of an internal dashboard for Spark's marketing team.\n- Translated an existing PowerBI dashboard into a Figma design, incorporating machine learning data.\n- Implemented with React and Next.js, boosting productivity by 20%.\n- Collaborated with product team and stakeholders for alignment and usability.\n- Conducted user testing and refined UI based on feedback.\n- Note: Unable to show images or a link as this project is internal to the company.",
   },
   {
-    title: "Internal Dashboard for Spark New Zealand",
+    name: "Post Lecture",
+    status: "WIP",
     description:
-      "Enhanced B2B Sales team's efficiency with a responsive UI built in React and Next.js.",
-    details:
-      "The Internal Dashboard for Spark New Zealand was designed to streamline the workflow of the B2B sales team. Built with React and Next.js, the dashboard provides real-time analytics, sales performance tracking, and customer management tools. It integrates with internal APIs and databases to fetch and display data dynamically, significantly improving the team's productivity and decision-making process.",
-    screenshots: ["/path/to/dashboard1.png", "/path/to/dashboard2.png"],
+      "A web application for capturing, organizing, and reviewing lecture notes.",
+    longDescription:
+      "Post Lecture is an innovative tool for students and educators to enhance the academic experience. It supports real-time note-taking, organization by subject and topic, and integration of multimedia resources. Features include collaborative note-taking, personalized study schedules, and intelligent search, making all learning materials easily accessible and reviewable, fostering an interactive and engaging learning environment.",
   },
   {
-    title: "Portfolio Site for Thom Haha",
+    name: "Portfolio Website",
+    status: "Completed",
     description:
-      "A portfolio site for musician Thom Haha, showcasing his work and music.",
-    details:
-      "The Portfolio Site for Thom Haha is a visually appealing and interactive platform designed to showcase Thom Haha's music and artistic projects. Built with React, the site features a clean, modern design with sections for bio, music, videos, and upcoming events. It also includes an integrated music player and links to streaming platforms.",
-    screenshots: ["/path/to/thom-haha1.png", "/path/to/thom-haha2.png"],
+      "A personal portfolio website to showcase my skills, projects, and experience.",
+    longDescription:
+      "My portfolio website is designed to provide an engaging and informative platform to showcase my skills, projects, and professional experience. Built with Next.js and Tailwind, the site features an interactive design, project showcases, and a blog section. The website also includes a contact form and links to my social media profiles, providing multiple ways for potential employers and collaborators to reach out.",
+    screenshots: [],
+    link: "https://dev.maxwellyoung.info/",
+    codeLink: "https://github.com/maxwellyoung/dev.maxwellyoung.info",
   },
   {
-    title: "PostLecture Understanding Review App",
+    name: "Music Website",
+    status: "Completed",
     description:
-      "An app to help students review and understand lecture content, built with React Native and Expo.",
-    details:
-      "The PostLecture Understanding Review App is designed to aid students in reviewing and understanding lecture content. The app allows students to take notes, create flashcards, and set reminders for revision. Built with React Native and Expo, it features a user-friendly interface and integrates with educational APIs to fetch supplementary materials and resources.",
-    screenshots: ["/path/to/postlecture1.png", "/path/to/postlecture2.png"],
+      "A personal website showcasing my music portfolio, projects, and achievements.",
+    longDescription:
+      "This is a personal site dedicated to showcasing my music portfolio, projects, and achievements. It features a comprehensive collection of my work, including albums, singles, and collaborations. Built with a focus on aesthetics and functionality, the site provides visitors with an immersive experience, including lyrics, album art, and music videos.",
+    screenshots: [],
+    link: "https://music.maxwellyoung.info",
+    codeLink: "https://github.com/maxwellyoung/music_maxwell",
   },
 ];
 
-export default function Projects() {
+export default function Page() {
+  const [selectedStatus, setSelectedStatus] = useState<string>("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
+  const getStatusStyles = (status: string) => {
+    switch (status) {
+      case "Completed":
+        return "border-green-500 text-green-500";
+      case "WIP":
+        return "border-yellow-500 text-yellow-500";
+      case "Idea":
+        return "border-blue-500 text-blue-500";
+      default:
+        return "border-gray-500 text-gray-500";
+    }
+  };
+
+  const filteredProjects =
+    selectedStatus === "All"
+      ? projects
+      : projects.filter((project) => project.status === selectedStatus);
+
   return (
-    <div
-      id="projects"
-      className="min-h-screen bg-[#111110] text-white p-6 flex flex-col items-center"
-    >
-      <h2 className="text-4xl font-bold font-robotoMono mb-8">Projects</h2>
-      <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-        {projectsData.map((project, index) => (
-          <div key={index} className="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h3 className="text-2xl font-bold">{project.title}</h3>
-            <p className="mt-2 text-gray-400">{project.description}</p>
-            <Dialog>
-              <DialogTrigger asChild>
-                <button
-                  className="mt-4 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition duration-300 ease-in-out transform hover:scale-105"
-                  onClick={() => setSelectedProject(project)}
-                >
-                  More Info
-                </button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogTitle>{selectedProject?.title}</DialogTitle>
-                <DialogDescription>
-                  {selectedProject?.details}
-                </DialogDescription>
-                {selectedProject?.screenshots.map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt={`Screenshot ${i + 1}`}
-                    className="mt-4 rounded-lg"
-                  />
-                ))}
-                <DialogClose asChild>
-                  <button className="mt-4 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition duration-300 ease-in-out transform hover:scale-105">
-                    Close
-                  </button>
-                </DialogClose>
-              </DialogContent>
-            </Dialog>
-          </div>
-        ))}
-      </div>
+    <div className="min-h-screen fade-in dark:text-zinc-100 text-zinc-800 p-4 md:p-8 flex flex-col justify-between ">
+      <main className="max-w-2xl  mx-auto space-y-8 overflow-y-auto">
+        <ToggleGroup
+          type="single"
+          value={selectedStatus}
+          onValueChange={(value) => setSelectedStatus(value || "All")}
+          className="flex justify-center space-x-4 mb-4"
+        >
+          <ToggleGroupItem value="All">All</ToggleGroupItem>
+          <ToggleGroupItem value="Completed">Completed</ToggleGroupItem>
+          <ToggleGroupItem value="WIP">WIP</ToggleGroupItem>
+          <ToggleGroupItem value="Idea">Idea</ToggleGroupItem>
+        </ToggleGroup>
+
+        <ScrollArea className="p-6 space-y-6 ">
+          {filteredProjects.map((project, index) => (
+            <div key={index} className="w-full space-y-4 mb-4">
+              <Dialog
+                open={selectedProject === project}
+                onOpenChange={() =>
+                  setSelectedProject(
+                    selectedProject === project ? null : project
+                  )
+                }
+              >
+                <DialogTrigger asChild>
+                  <div className="p-6 rounded-lg shadow-md dark:bg-zinc-800 bg-zinc-100 dark:hover:bg-zinc-700 hover:bg-zinc-200 transition-all duration-200 w-full cursor-pointer">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h2>{project.name}</h2>
+                        <p className="text-base leading-relaxed text-zinc-400 mb-4">
+                          {project.description}
+                        </p>
+                      </div>
+                      <Badge
+                        variant="outline"
+                        className={`${getStatusStyles(
+                          project.status
+                        )} font-medium ml-4`}
+                      >
+                        {project.status}
+                      </Badge>
+                    </div>
+                  </div>
+                </DialogTrigger>
+                {selectedProject && (
+                  <DialogContent className="space-y-4 p-12 dark:bg-zinc-800 bg-zinc-100 rounded-lg dark:text-zinc-100 text-zinc-800 border-none w-full">
+                    <DialogTitle className="font-medium">
+                      {selectedProject.name}
+                    </DialogTitle>
+                    <Separator className="my-4" />
+                    {selectedProject.longDescription && (
+                      <ScrollArea className="space-y-6">
+                        <DialogDescription className="dark:text-zinc-100 text-zinc-800 leading-relaxed whitespace-pre-line">
+                          {selectedProject.longDescription}
+                        </DialogDescription>
+                      </ScrollArea>
+                    )}
+                    {selectedProject.screenshots &&
+                      selectedProject.screenshots.length > 0 && (
+                        <Carousel className="mt-6">
+                          {selectedProject.screenshots.map((src, idx) => (
+                            <img
+                              key={idx}
+                              src={src}
+                              alt={`Screenshot ${idx + 1}`}
+                            />
+                          ))}
+                        </Carousel>
+                      )}
+                    <div className="flex space-x-4 mt-6">
+                      {selectedProject.link && (
+                        <a
+                          href={selectedProject.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-500 underline"
+                        >
+                          Visit project
+                        </a>
+                      )}
+                      {selectedProject.codeLink && (
+                        <a
+                          href={selectedProject.codeLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-500 underline"
+                        >
+                          View code
+                        </a>
+                      )}
+                    </div>
+                  </DialogContent>
+                )}
+              </Dialog>
+            </div>
+          ))}
+        </ScrollArea>
+      </main>
     </div>
   );
 }

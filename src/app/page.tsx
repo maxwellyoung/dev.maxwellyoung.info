@@ -1,35 +1,40 @@
-// pages/index.tsx
-
 import Link from "next/link";
-import Resume from "./resume/page"; // Adjust the path based on your project structure
-import Projects from "./list/page";
+import Resume from "./resume/page";
+import Projects from "./projects/page";
 
 export default function Home() {
   return (
-    <div className="min-h-screen text-white p-4 md:p-8 flex flex-col justify-between ">
+    <div className="min-h-screen dark:text-white text-zinc-800p-4 md:p-8 flex flex-col justify-between ">
       <main className="max-w-2xl mx-auto text-zinc-300 space-y-8 overflow-y-auto">
         <section className="flex flex-col justify-center items-left min-h-screen space-y-8 p-4 md:p-8">
           <header className="mb-12">
-            <a href="/" className="text-xl text-zinc-200 font-medium">
+            <a
+              href="/"
+              className="text-xl dark:text-zinc-200 text-zinc-800 font-medium"
+            >
               Maxwell Young
             </a>
-            <p className="text-xl font-light text-gray-400">Design Engineer</p>
+            <p className="text-xl font-light dark:text-zinc-400 text-zinc-600">
+              Design Engineer
+            </p>
           </header>
 
           <div className="leading-relaxed">
-            <h2 className="font-medium mb-6">Today</h2>
+            <h2 className="font-medium mb-6 dark:text-zinc-300 text-zinc-800">
+              Today
+            </h2>
             <div></div>
-            <p className="text-gray-400">
+            <p className="dark:text-zinc-400 text-zinc-500">
               Currently studying a Bachelor of Computer Science at Auckland
               University of Technology, majoring in Software Development and
               Data Science.
             </p>
-            <p className="text-gray-400">
+            <p className="dark:text-zinc-400 text-zinc-500">
               I&apos;m passionate about making software simple with intention
               and principles to elevate user experiences and solve everyday
               issues.
             </p>
-            <p className="text-gray-400">
+            <p className="dark:text-zinc-400 text-zinc-500">
               I&apos;ve also been releasing{" "}
               <a
                 href="https://music.maxwellyoung.info/"
@@ -42,22 +47,41 @@ export default function Home() {
           </div>
 
           <div className="leading-relaxed">
-            <h2 className="font-medium mb-6">Previously</h2>
-            <p className="text-gray-400">
+            <h2 className="font-medium mb-6 dark:text-zinc-300 text-zinc-800">
+              Previously
+            </h2>
+            <p className="dark:text-zinc-400 text-zinc-500">
               I&apos;ve previously been a UI Developer at Spark New Zealand and
               graduated from the web development bootcamp Dev Academy Aotearoa.
             </p>
           </div>
 
           <div className="leading-relaxed">
-            <h2 className="font-medium mb-6">More</h2>
-            <p className="text-gray-400">
-              You can see my work here soon, my resume below, & more of my code
-              on{" "}
+            <h2 className="font-medium mb-6 dark:text-zinc-300 text-zinc-800">
+              More
+            </h2>
+            <p className="dark:text-zinc-400 text-zinc-500">
+              You can see my work{" "}
+              <Link
+                href="#projects"
+                target="_blank"
+                className="underline hover:dark:text-zinc-300"
+              >
+                here,
+              </Link>{" "}
+              my resume{" "}
+              <Link
+                href="#resume"
+                target="_blank"
+                className="underline hover:dark:text-zinc-300"
+              >
+                here
+              </Link>
+              , & more of my code on{" "}
               <Link
                 href="https://github.com/maxwellyoung"
                 target="_blank"
-                className="underline hover:text-zinc-300"
+                className="underline hover:dark:text-zinc-300"
               >
                 GitHub
               </Link>
@@ -65,7 +89,7 @@ export default function Home() {
             </p>
           </div>
         </section>
-        <section id="resume">
+        <section id="projects">
           <Projects />
         </section>
         <section id="resume">
