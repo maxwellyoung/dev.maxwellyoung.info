@@ -90,13 +90,13 @@ export default function Page() {
   const getStatusStyles = (status: string) => {
     switch (status) {
       case "Completed":
-        return "border-green-500 text-green-500";
+        return "border-green-500 text-green-500 bg-zinc-50 dark:bg-zinc-800";
       case "WIP":
-        return "border-yellow-500 text-yellow-500";
+        return "border-yellow-500 text-yellow-500 bg-zinc-50 dark:bg-zinc-800";
       case "Idea":
-        return "border-blue-500 text-blue-500";
+        return "border-blue-500 text-blue-500 bg-zinc-50 dark:bg-zinc-800";
       default:
-        return "border-gray-500 text-gray-500";
+        return "border-gray-500 text-gray-500 bg-zinc-50 dark:bg-zinc-800";
     }
   };
 
