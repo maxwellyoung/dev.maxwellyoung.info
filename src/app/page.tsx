@@ -14,7 +14,7 @@ export default function Home() {
             >
               Maxwell Young
             </a>
-            <p className="text-xl font-light dark:text-zinc-400 text-zinc-400">
+            <p className="text-xl font-light dark:text-zinc-400 text-zinc-600">
               Design Engineer
             </p>
           </header>
