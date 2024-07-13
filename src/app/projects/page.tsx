@@ -152,17 +152,62 @@ export default function Page() {
                   </div>
                 </DialogTrigger>
                 {selectedProject && (
-                  <DialogContent className="space-y-4 p-8 dark:bg-zinc-800 bg-zinc-100 rounded-lg dark:text-zinc-100 text-zinc-800 border-none w-full">
-                    <DialogTitle className="font-medium">
-                      {selectedProject.name}
-                    </DialogTitle>
-                    <Separator className="my-4" />
+                  <DialogContent className="p-8 dark:bg-zinc-800 bg-zinc-100 rounded-lg dark:text-zinc-100 text-zinc-800 border-none w-full">
+                    <DialogTitle>{selectedProject.name}</DialogTitle>
+                    <Separator />
                     {selectedProject.longDescription && (
-                      <ScrollArea>
-                        <DialogDescription className="dark:text-zinc-100 text-md text-zinc-800 leading-relaxed whitespace-pre-line">
-                          {selectedProject.longDescription}
-                        </DialogDescription>
-                      </ScrollArea>
+                      <div className="space-y-4">
+                        <div className="grid grid-cols-1 md:grid-cols-[4fr,1fr] gap-4">
+                          <ScrollArea className="col-span-2 md:col-span-1">
+                            <DialogDescription className="dark:text-zinc-100 text-zinc-800 leading-relaxed whitespace-pre-line">
+                              {selectedProject.longDescription}
+                            </DialogDescription>
+                          </ScrollArea>
+                          <div className="col-span-2 md:col-span-1 flex flex-col justify-start">
+                            <div className="flex justify-end items-start">
+                              <Badge
+                                variant="outline"
+                                className={`${getStatusStyles(
+                                  selectedProject.status
+                                )} font-medium`}
+                              >
+                                {selectedProject.status}
+                              </Badge>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex space-x-4 mt-6">
+                          {selectedProject.link && (
+                            <Button
+                              variant="ghost"
+                              className="dark:text-zinc-100 dark:bg-zinc-600 text-zinc-100 hover:bg-zinc-500 dark:hover:bg-zinc-500 hover:text-zinc-100 bg-zinc-600"
+                              onClick={() =>
+                                window.open(
+                                  selectedProject.link,
+                                  "_blank",
+                                  "noopener noreferrer"
+                                )
+                              }
+                            >
+                              Visit project
+                            </Button>
+                          )}
+                          {selectedProject.codeLink && (
+                            <Button
+                              variant="ghost"
+                              onClick={() =>
+                                window.open(
+                                  selectedProject.codeLink,
+                                  "_blank",
+                                  "noopener noreferrer"
+                                )
+                              }
+                            >
+                              View code
+                            </Button>
+                          )}
+                        </div>
+                      </div>
                     )}
                     {selectedProject.screenshots &&
                       selectedProject.screenshots.length > 0 && (
@@ -176,37 +221,6 @@ export default function Page() {
                           ))}
                         </Carousel>
                       )}
-                    <div className="flex space-x-4 mt-6">
-                      {selectedProject.link && (
-                        <Button
-                          variant="ghost"
-                          className="dark:text-zinc-100  dark:bg-zinc-600 text-zinc-100 hover:bg-zinc-400 dark:hover:bg-zinc-500 hover:text-zinc-100 bg-zinc-500"
-                          onClick={() =>
-                            window.open(
-                              selectedProject.link,
-                              "_blank",
-                              "noopener noreferrer"
-                            )
-                          }
-                        >
-                          Visit project
-                        </Button>
-                      )}
-                      {selectedProject.codeLink && (
-                        <Button
-                          variant="ghost"
-                          onClick={() =>
-                            window.open(
-                              selectedProject.codeLink,
-                              "_blank",
-                              "noopener noreferrer"
-                            )
-                          }
-                        >
-                          View code
-                        </Button>
-                      )}
-                    </div>
                   </DialogContent>
                 )}
               </Dialog>
