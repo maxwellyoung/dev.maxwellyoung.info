@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Carousel } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
 
 interface Project {
   name: string;
@@ -151,14 +152,14 @@ export default function Page() {
                   </div>
                 </DialogTrigger>
                 {selectedProject && (
-                  <DialogContent className="space-y-4 p-12 dark:bg-zinc-800 bg-zinc-100 rounded-lg dark:text-zinc-100 text-zinc-800 border-none w-full">
+                  <DialogContent className="space-y-4 p-8 dark:bg-zinc-800 bg-zinc-100 rounded-lg dark:text-zinc-100 text-zinc-800 border-none w-full">
                     <DialogTitle className="font-medium">
                       {selectedProject.name}
                     </DialogTitle>
                     <Separator className="my-4" />
                     {selectedProject.longDescription && (
-                      <ScrollArea className="space-y-6">
-                        <DialogDescription className="dark:text-zinc-100 text-zinc-800 leading-relaxed whitespace-pre-line">
+                      <ScrollArea>
+                        <DialogDescription className="dark:text-zinc-100 text-md text-zinc-800 leading-relaxed whitespace-pre-line">
                           {selectedProject.longDescription}
                         </DialogDescription>
                       </ScrollArea>
@@ -177,24 +178,33 @@ export default function Page() {
                       )}
                     <div className="flex space-x-4 mt-6">
                       {selectedProject.link && (
-                        <a
-                          href={selectedProject.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-500 underline"
+                        <Button
+                          variant="ghost"
+                          className="dark:text-zinc-100  dark:bg-zinc-600 text-zinc-100 hover:bg-zinc-400 dark:hover:bg-zinc-500 hover:text-zinc-100 bg-zinc-500"
+                          onClick={() =>
+                            window.open(
+                              selectedProject.link,
+                              "_blank",
+                              "noopener noreferrer"
+                            )
+                          }
                         >
                           Visit project
-                        </a>
+                        </Button>
                       )}
                       {selectedProject.codeLink && (
-                        <a
-                          href={selectedProject.codeLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-500 underline"
+                        <Button
+                          variant="ghost"
+                          onClick={() =>
+                            window.open(
+                              selectedProject.codeLink,
+                              "_blank",
+                              "noopener noreferrer"
+                            )
+                          }
                         >
                           View code
-                        </a>
+                        </Button>
                       )}
                     </div>
                   </DialogContent>
