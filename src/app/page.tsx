@@ -10,11 +10,11 @@ export default function Home() {
           <header className="mb-12">
             <a
               href="/"
-              className="text-xl dark:text-zinc-200 text-zinc-800 font-medium"
+              className="text-xl glint dark:text-zinc-200 text-zinc-800 font-medium"
             >
               Maxwell Young
             </a>
-            <p className="text-xl font-light dark:text-zinc-400 text-zinc-600">
+            <p className="text-xl font-light dark:text-zinc-400 text-zinc-500">
               Design Engineer
             </p>
           </header>

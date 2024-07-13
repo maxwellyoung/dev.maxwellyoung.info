@@ -99,3 +99,39 @@
   transform: scale(1.1);
   filter: brightness(1.2);
 }
+
+@keyframes glint {
+  0% {
+    background-position: -200%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+.glint {
+  position: relative;
+}
+
+.glint::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  background-size: 200%;
+  z-index: 1;
+  transition: background-position 0.5s ease-in-out;
+  background-position: -200%;
+}
+
+.glint:hover::after {
+  animation: glint 2.2s forwards;
+}
