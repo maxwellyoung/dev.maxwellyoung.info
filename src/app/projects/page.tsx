@@ -106,8 +106,8 @@ export default function Page() {
       : projects.filter((project) => project.status === selectedStatus);
 
   return (
-    <div className="min-h-screen fade-in dark:text-zinc-100 text-zinc-800 p-4 md:p-8 flex flex-col justify-between ">
-      <main className="max-w-2xl  mx-auto space-y-8 overflow-y-auto">
+    <div className="min-h-screen fade-in dark:text-zinc-100 text-zinc-800 p-4 md:p-8 flex flex-col justify-between">
+      <main className="max-w-2xl mx-auto space-y-8 overflow-y-auto">
         <ToggleGroup
           type="single"
           value={selectedStatus}
@@ -154,7 +154,7 @@ export default function Page() {
                 {selectedProject && (
                   <DialogContent className="p-8 dark:bg-zinc-800 bg-zinc-100 rounded-lg dark:text-zinc-100 text-zinc-800 border-none w-full max-h-[80vh]">
                     <DialogTitle>{selectedProject.name}</DialogTitle>
-                    <Separator />
+                    <Separator className="dark:bg-zinc-700 bg-zinc-200" />
                     {selectedProject.longDescription && (
                       <div className="space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-[4fr,1fr] gap-4">
