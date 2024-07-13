@@ -55,9 +55,9 @@ const projects: Project[] = [
     name: "Post Lecture",
     status: "WIP",
     description:
-      "A web application for capturing, organizing, and reviewing lecture notes.",
+      "An innovative React Native Expo app designed to enhance post-lecture understanding through reflection and AI-powered quizzes.",
     longDescription:
-      "Post Lecture is an innovative tool for students and educators to enhance the academic experience. It supports real-time note-taking, organization by subject and topic, and integration of multimedia resources. Features include collaborative note-taking, personalized study schedules, and intelligent search, making all learning materials easily accessible and reviewable, fostering an interactive and engaging learning environment.",
+      "Post Lecture is a comprehensive tool for students and educators to enhance the academic experience through post-lecture review. The app is designed with modern OSX/IOS UI/UX principles, featuring a sleek, minimalistic design and subtle, friendly animations. It operates primarily on mobile but is responsive enough for web use as well. Inspired by Dan Abramov’s blog Overreacted, Post Lecture allows users to insert classes and schedule lectures, receive reminders to log post-lecture thoughts, and reflect on one key thing learned and one area of confusion.\n\nThe app leverages OAuth for secure login and uses AI to generate personalized multiple-choice quizzes based on areas where the user struggled. These quizzes, reminiscent of Udemy course quizzes, focus on salient points of recent study topics, helping users reinforce their understanding in an engaging way. Post Lecture also includes a quick note feature for spontaneous thoughts and an organizational tool for managing lecture notes.\n\nThe development of Post Lecture is driven by the vision of creating a learning companion that feels rewarding rather than intrusive. Unlike apps that bombard users with notifications, Post Lecture aims to provide meaningful insights and encouragement, similar to how a gym tracks workout frequency. The app’s user-friendly design ensures that pop-ups and reminders are always relevant and valuable.\n\nBuilt on a versatile tech stack, including React Native and UIKit for a native iOS feel, and backed by Firebase for robust data management and user authentication, Post Lecture combines modern technology with educational theory to offer a seamless and effective learning experience. Future plans for the app include expanding features and refining user experiences based on continuous feedback.\n\nPost Lecture exemplifies the power of combining technology with education, transforming how students interact with and understand their lecture material. It’s not just an app; it’s a catalyst for personal and academic growth, offering a new era of learning where reflection and active engagement take center stage. Join us on this journey to redefine the boundaries of learning with Post Lecture.",
   },
   {
     name: "Portfolio Website",
@@ -152,13 +152,13 @@ export default function Page() {
                   </div>
                 </DialogTrigger>
                 {selectedProject && (
-                  <DialogContent className="p-8 dark:bg-zinc-800 bg-zinc-100 rounded-lg dark:text-zinc-100 text-zinc-800 border-none w-full">
+                  <DialogContent className="p-8 dark:bg-zinc-800 bg-zinc-100 rounded-lg dark:text-zinc-100 text-zinc-800 border-none w-full max-h-[80vh]">
                     <DialogTitle>{selectedProject.name}</DialogTitle>
                     <Separator />
                     {selectedProject.longDescription && (
                       <div className="space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-[4fr,1fr] gap-4">
-                          <ScrollArea className="col-span-2 md:col-span-1">
+                          <ScrollArea className="col-span-2 md:col-span-1 max-h-60">
                             <DialogDescription className="dark:text-zinc-100 text-zinc-800 leading-relaxed whitespace-pre-line">
                               {selectedProject.longDescription}
                             </DialogDescription>
