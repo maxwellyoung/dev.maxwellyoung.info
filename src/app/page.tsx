@@ -4,7 +4,7 @@ import Projects from "./projects/page";
 
 export default function Home() {
   return (
-    <div className="min-h-screen dark:text-white text-zinc-800p-4 md:p-8 flex flex-col justify-between ">
+    <div className="min-h-screen dark:text-white text-zinc-800 p-4 md:p-8 flex flex-col justify-between">
       <main className="max-w-2xl mx-auto text-zinc-300 space-y-8 overflow-y-auto">
         <section className="flex flex-col justify-center items-left min-h-screen space-y-8 p-4 md:p-8">
           <header className="mb-12">
@@ -15,7 +15,7 @@ export default function Home() {
               Maxwell Young
             </a>
             <p className="text-xl font-light dark:text-zinc-400 text-zinc-500">
-              Design Engineer
+              Design Engineer & Founder of ninetynine digital
             </p>
           </header>
 
@@ -23,11 +23,10 @@ export default function Home() {
             <h2 className="font-medium mb-6 dark:text-zinc-300 text-zinc-800">
               Today
             </h2>
-            <div></div>
             <p className="dark:text-zinc-400 text-zinc-500">
-              Currently studying a Bachelor of Computer Science at Auckland
-              University of Technology, majoring in Software Development and
-              Data Science.
+              I am currently studying for a Bachelor of Computer Science at
+              Auckland University of Technology, majoring in Software
+              Development and Data Science.
             </p>
             <p className="dark:text-zinc-400 text-zinc-500">
               I&apos;m passionate about making software simple with intention
@@ -35,14 +34,15 @@ export default function Home() {
               issues.
             </p>
             <p className="dark:text-zinc-400 text-zinc-500">
-              I&apos;ve also been releasing{" "}
-              <a
-                href="https://music.maxwellyoung.info/"
+              As the founder of ninetynine digital, I am developing{" "}
+              <Link
+                href="https://studentview.maxwellyoung.info"
+                target="_blank"
                 className="underline hover:text-zinc-300"
               >
-                music
-              </a>{" "}
-              under my own name since 2015.
+                StudentView
+              </Link>
+              , a companion app designed to enhance the lives of students.
             </p>
           </div>
 
