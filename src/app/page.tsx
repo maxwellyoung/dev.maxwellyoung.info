@@ -34,15 +34,8 @@ export default function Home() {
               issues.
             </p>
             <p className="dark:text-zinc-400 text-zinc-500">
-              As the founder of ninetynine digital, I am developing{" "}
-              <Link
-                href="https://studentview.maxwellyoung.info"
-                target="_blank"
-                className="underline hover:text-zinc-300"
-              >
-                StudentView
-              </Link>
-              , a companion app designed to enhance the lives of students.
+              As the founder of ninetynine digital, I am developing StudentView,
+              a companion app designed to enhance the lives of students.
             </p>
           </div>
 
