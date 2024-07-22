@@ -36,7 +36,7 @@ export default function Home() {
             <p className="dark:text-zinc-400 text-zinc-500">
               As the founder of{" "}
               <Link
-                href={"https://ninetynine-digital.vercel.app/"}
+                href={"https://ninetynine.digital/"}
                 target="_blank"
                 className="underline hover:dark:text-zinc-300"
               >
