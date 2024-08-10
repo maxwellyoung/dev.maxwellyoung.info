@@ -41,7 +41,7 @@ export default function Resume() {
             </Link>
             <Image
               className="w-18 h-18 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105"
-              src="/avatar.webp"
+              src="/profile_work.webp"
               alt="Profile"
               width={72}
               height={72}
