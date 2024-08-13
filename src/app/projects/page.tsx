@@ -34,6 +34,17 @@ const projects: Project[] = [
       "StudentView is designed to be a focused version of Notion for students, encompassing budgeting, study reflections, and mental well-being tools. The app features a modular layout with both dark and light themes based on system preferences. It includes sections for tracking budgeting, study reflections, and a meditation section. Future plans involve integrating daily inspirational quotes and more user customization options.",
     link: "https://dashboard.studentview.app/",
   },
+
+  {
+    name: "CodeMaster",
+    status: "WIP",
+    description:
+      "An AI-powered coding practice tool to help users improve their programming skills.",
+    longDescription:
+      "CodeMaster is an AI-powered coding practice tool designed to help users enhance their programming skills through practice. Users can input coding questions, receive similar questions to practice on, and explore a library of example coding questions. The project leverages modern UI components for a polished user experience and supports multiple difficulty levels. The platform is built with React, Next.js, Tailwind, and OpenAI.",
+    link: "https://code-master-kappa.vercel.app/",
+    codeLink: "https://github.com/maxwellyoung/codemaster",
+  },
   {
     name: "Rolodex",
     status: "Idea",
