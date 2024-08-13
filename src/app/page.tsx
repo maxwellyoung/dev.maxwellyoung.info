@@ -72,7 +72,6 @@ export default function Home() {
               You can see my work{" "}
               <Link
                 href="#projects"
-                target="_blank"
                 className="underline hover:dark:text-zinc-300"
               >
                 here,
