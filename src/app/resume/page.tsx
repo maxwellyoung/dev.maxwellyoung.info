@@ -222,6 +222,9 @@ export default function Resume() {
                 Figma
                 <br />
                 Adobe Creative Suite
+                <br />
+                OpenAI Integration
+                <br />
               </span>
             </div>
             <div className="mt-8">

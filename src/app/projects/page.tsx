@@ -41,7 +41,7 @@ const projects: Project[] = [
     description:
       "An AI-powered coding practice tool to help users improve their programming skills.",
     longDescription:
-      "CodeMaster is an AI-powered coding practice tool designed to help users enhance their programming skills through practice. Users can input coding questions, receive similar questions to practice on, and explore a library of example coding questions. The project leverages modern UI components for a polished user experience and supports multiple difficulty levels. The platform is built with React, Next.js, Tailwind, and OpenAI.",
+      "CodeMaster is an AI-powered coding practice tool designed to help users enhance their programming skills through practice. Users can input coding questions, receive similar questions to practice on, and explore a library of example coding questions. The project leverages modern UI components for a polished user experience and supports multiple difficulty levels. The platform is built with React, Next.js, Tailwind, Supabase and OpenAI.",
     link: "https://code-master-kappa.vercel.app/",
     codeLink: "https://github.com/maxwellyoung/codemaster",
   },
