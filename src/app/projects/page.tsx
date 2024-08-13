@@ -37,7 +37,7 @@ const projects: Project[] = [
 
   {
     name: "CodeMaster",
-    status: "WIP",
+    status: "Completed",
     description:
       "An AI-powered coding practice tool to help users improve their programming skills.",
     longDescription:
