@@ -92,6 +92,14 @@ export default function Home() {
               >
                 GitHub
               </Link>
+              . You can also follow{" "}
+              <Link
+                href="https://x.com/ninetyninedigi"
+                target="_blank"
+                className="underline hover:dark:text-zinc-300"
+              >
+                ninetynine digital on X
+              </Link>
               .
             </p>
           </div>

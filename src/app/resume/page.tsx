@@ -225,6 +225,7 @@ export default function Resume() {
                 <br />
                 OpenAI Integration
                 <br />
+                WebGL, Three.js
               </span>
             </div>
             <div className="mt-8">
