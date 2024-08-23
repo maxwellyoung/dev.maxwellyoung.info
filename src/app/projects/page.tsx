@@ -13,6 +13,7 @@ import {
 import { Carousel } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 interface Project {
   name: string;
@@ -34,16 +35,15 @@ const projects: Project[] = [
       "StudentView is designed to be a focused version of Notion for students, encompassing budgeting, study reflections, and mental well-being tools. The app features a modular layout with both dark and light themes based on system preferences. It includes sections for tracking budgeting, study reflections, and a meditation section. Future plans involve integrating daily inspirational quotes and more user customization options.",
     link: "https://dashboard.studentview.app/",
   },
-
   {
-    name: "CodeMaster",
-    status: "WIP",
+    name: "ResumeForge",
+    status: "Completed",
     description:
-      "An AI-powered coding practice tool to help users improve their programming skills.",
+      "An interactive resume builder showcasing user-centric design with dynamic features.",
     longDescription:
-      "CodeMaster is an AI-powered coding practice tool designed to help users enhance their programming skills through practice. Users can input coding questions, receive similar questions to practice on, and explore a library of example coding questions. The project leverages modern UI components for a polished user experience and supports multiple difficulty levels. The platform is built with React, Next.js, Tailwind, Supabase and OpenAI.",
-    link: "https://code-master-kappa.vercel.app/",
-    codeLink: "https://github.com/maxwellyoung/codemaster",
+      "ResumeForge is an interactive resume builder designed to demonstrate the power of user-centric design with dynamic features. The platform allows users to create professional, eye-catching resumes through a simple, intuitive interface. Built with modern web technologies, it offers a seamless user experience. The project is a testament to my ability to create responsive and accessible web applications that cater to the needs of a diverse user base.",
+    link: "https://resume-forge-ecru.vercel.app/",
+    codeLink: "https://github.com/maxwellyoung/resume-forge",
   },
 
   {
@@ -56,7 +56,6 @@ const projects: Project[] = [
     link: "https://aesop-omega.vercel.app/",
     codeLink: "https://github.com/maxwellyoung/aesop",
   },
-
   {
     name: "Rolodex",
     status: "Idea",
@@ -104,6 +103,16 @@ const projects: Project[] = [
     screenshots: [],
     link: "https://music.maxwellyoung.info",
     codeLink: "https://github.com/maxwellyoung/music_maxwell",
+  },
+  {
+    name: "CodeMaster",
+    status: "WIP",
+    description:
+      "An AI-powered coding practice tool to help users improve their programming skills.",
+    longDescription:
+      "CodeMaster is an AI-powered coding practice tool designed to help users enhance their programming skills through practice. Users can input coding questions, receive similar questions to practice on, and explore a library of example coding questions. The project leverages modern UI components for a polished user experience and supports multiple difficulty levels. The platform is built with React, Next.js, Tailwind, Supabase and OpenAI.",
+    link: "https://code-master-kappa.vercel.app/",
+    codeLink: "https://github.com/maxwellyoung/codemaster",
   },
 ];
 
@@ -237,7 +246,7 @@ export default function Page() {
                       selectedProject.screenshots.length > 0 && (
                         <Carousel className="mt-6">
                           {selectedProject.screenshots.map((src, idx) => (
-                            <img
+                            <Image
                               key={idx}
                               src={src}
                               alt={`Screenshot ${idx + 1}`}
