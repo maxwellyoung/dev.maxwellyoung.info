@@ -45,6 +45,18 @@ const projects: Project[] = [
     link: "https://code-master-kappa.vercel.app/",
     codeLink: "https://github.com/maxwellyoung/codemaster",
   },
+
+  {
+    name: "Aesop E-commerce Marketing Site",
+    status: "Completed",
+    description:
+      "A marketing site example for Aesop, focusing on clean design and user experience.",
+    longDescription:
+      "This project is a marketing site for Aesop, showcasing products with a clean and modern design that reflects the brand's aesthetics. The site features a large hero image, a section for featured products, and a responsive layout. It's built with Next.js and styled using Tailwind CSS, ensuring a seamless user experience across devices.",
+    link: "https://aesop-omega.vercel.app/",
+    codeLink: "https://github.com/maxwellyoung/aesop",
+  },
+
   {
     name: "Rolodex",
     status: "Idea",
