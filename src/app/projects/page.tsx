@@ -27,6 +27,16 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Tanya Bardell-Young Portfolio",
+    status: "WIP",
+    description:
+      "A portfolio website for interior designer and color consultant Tanya Bardell-Young.",
+    longDescription:
+      "This project is a portfolio website for Tanya Bardell-Young, showcasing her work in interior design and color consulting. The site features a clean, minimalist design with interactive elements and a focus on showcasing Tanya's projects. Built with Next.js and styled using Tailwind CSS, it offers a responsive and engaging user experience.",
+    link: "https://tanya-zeta.vercel.app/",
+    codeLink: "https://github.com/maxwellyoung/tanya",
+  },
+  {
     name: "StudentView",
     status: "WIP",
     description:
@@ -45,7 +55,6 @@ const projects: Project[] = [
     link: "https://resume-forge-ecru.vercel.app/",
     codeLink: "https://github.com/maxwellyoung/resume-forge",
   },
-
   {
     name: "Aesop E-commerce Marketing Site",
     status: "Completed",
