@@ -7,10 +7,10 @@ export default function Resume() {
       <div className="max-w-4xl w-full">
         <div className="flex justify-between items-center mb-6">
           <div>
-            <span className="block text-3xl font-medium dark:text-zinc-100 text-zinc-800 font-robotoMono">
+            <span className="block text-3xl font-medium dark:text-zinc-100 text-zinc-800 font-roboto-mono">
               Maxwell Young
             </span>
-            <span className="block text-xl font-light dark:text-zinc-400 text-zinc-600 font-robotoMono">
+            <span className="block text-xl font-light dark:text-zinc-400 text-zinc-600 font-roboto-mono">
               Design Engineer
             </span>
           </div>

@@ -117,3 +117,13 @@
     background-position: 200%;
   }
 }
+
+@layer base {
+  :root {
+    --font-roboto-mono: "Roboto Mono", monospace;
+  }
+}
+
+.font-roboto-mono {
+  font-family: var(--font-roboto-mono);
+}

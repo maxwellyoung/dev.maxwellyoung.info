@@ -1,19 +1,22 @@
 "use client";
-import { useState } from "react";
-import { Badge } from "@/components/ui/badge";
+
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
   DialogTitle,
   DialogDescription,
+  DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
-import { Carousel } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { X } from "lucide-react";
 
 interface Project {
   name: string;
@@ -47,7 +50,7 @@ const projects: Project[] = [
   },
   {
     name: "ResumeForge",
-    status: "Completed",
+    status: "WIP",
     description:
       "An interactive resume builder showcasing user-centric design with dynamic features.",
     longDescription:
@@ -98,7 +101,6 @@ const projects: Project[] = [
       "A personal portfolio website to showcase my skills, projects, and experience.",
     longDescription:
       "My portfolio website is designed to provide an engaging and informative platform to showcase my skills, projects, and professional experience. Built with Next.js and Tailwind, the site features an interactive design, project showcases, and an upcoming blog section. The website also includes links to my social media profiles, providing multiple ways for potential employers and collaborators to reach out.",
-    screenshots: [],
     link: "https://dev.maxwellyoung.info/",
     codeLink: "https://github.com/maxwellyoung/dev.maxwellyoung.info",
   },
@@ -109,7 +111,6 @@ const projects: Project[] = [
       "A personal website showcasing my music portfolio, projects, and achievements.",
     longDescription:
       "This is a personal site dedicated to showcasing my music portfolio, projects, and achievements. It features a comprehensive collection of my work, including albums, singles, and collaborations. Built with a focus on aesthetics and functionality, the site provides visitors with an immersive experience, including lyrics, album art, and music videos.",
-    screenshots: [],
     link: "https://music.maxwellyoung.info",
     codeLink: "https://github.com/maxwellyoung/music_maxwell",
   },
@@ -125,151 +126,171 @@ const projects: Project[] = [
   },
 ];
 
-export default function Page() {
+export default function ProjectsShowcase() {
   const [selectedStatus, setSelectedStatus] = useState<string>("All");
+  const [searchQuery, setSearchQuery] = useState("");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [filteredProjects, setFilteredProjects] = useState(projects);
+
+  useEffect(() => {
+    const filtered = projects.filter((project) => {
+      const statusMatch =
+        selectedStatus === "All" || project.status === selectedStatus;
+      const searchMatch =
+        project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.description.toLowerCase().includes(searchQuery.toLowerCase());
+      return statusMatch && searchMatch;
+    });
+    setFilteredProjects(filtered);
+  }, [selectedStatus, searchQuery]);
 
   const getStatusStyles = (status: string) => {
     switch (status) {
       case "Completed":
-        return "border-green-500 text-green-500 bg-zinc-50 dark:bg-zinc-800";
+        return "bg-green-500 text-white";
       case "WIP":
-        return "border-yellow-500 text-yellow-500 bg-zinc-50 dark:bg-zinc-800";
+        return "bg-orange-500 text-white";
       case "Idea":
-        return "border-blue-500 text-blue-500 bg-zinc-50 dark:bg-zinc-800";
+        return "bg-blue-500 text-white";
       default:
-        return "border-gray-500 text-gray-500 bg-zinc-50 dark:bg-zinc-800";
+        return "bg-gray-500 text-white";
     }
   };
 
-  const filteredProjects =
-    selectedStatus === "All"
-      ? projects
-      : projects.filter((project) => project.status === selectedStatus);
-
   return (
-    <div className="min-h-screen fade-in dark:text-zinc-100 text-zinc-800 p-4 md:p-8 flex flex-col justify-between">
-      <main className="max-w-2xl mx-auto space-y-8 overflow-y-auto">
-        <ToggleGroup
-          type="single"
-          value={selectedStatus}
-          onValueChange={(value) => setSelectedStatus(value || "All")}
-          className="flex justify-center space-x-4 mb-4"
-        >
-          <ToggleGroupItem value="All">All</ToggleGroupItem>
-          <ToggleGroupItem value="Completed">Completed</ToggleGroupItem>
-          <ToggleGroupItem value="WIP">WIP</ToggleGroupItem>
-          <ToggleGroupItem value="Idea">Idea</ToggleGroupItem>
-        </ToggleGroup>
+    <div className="relative w-full p-6 flex flex-col items-center fade-in">
+      <div className="max-w-4xl w-full">
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h1 className="text-3xl font-medium dark:text-zinc-100 text-zinc-800 font-roboto-mono">
+              My Projects
+            </h1>
+            <p className="text-xl font-light dark:text-zinc-400 text-zinc-600">
+              A showcase of my work
+            </p>
+          </div>
+        </div>
 
-        <ScrollArea className="p-6 space-y-6 ">
-          {filteredProjects.map((project, index) => (
-            <div key={index} className="w-full space-y-4 mb-4">
-              <Dialog
-                open={selectedProject === project}
-                onOpenChange={() =>
-                  setSelectedProject(
-                    selectedProject === project ? null : project
-                  )
-                }
-              >
-                <DialogTrigger asChild>
-                  <div className="p-6 rounded-lg shadow-md dark:bg-zinc-800 bg-zinc-100 dark:hover:bg-zinc-700 hover:bg-zinc-200 transition-all duration-200 w-full cursor-pointer">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h2>{project.name}</h2>
-                        <p className="text-base leading-relaxed text-zinc-400 mb-4">
-                          {project.description}
-                        </p>
+        <div className="mb-6 space-y-4">
+          <Input
+            type="text"
+            placeholder="Search projects..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full"
+          />
+          <ToggleGroup
+            type="single"
+            value={selectedStatus}
+            onValueChange={(value) => setSelectedStatus(value || "All")}
+            className="flex justify-start space-x-4"
+          >
+            <ToggleGroupItem value="All">All</ToggleGroupItem>
+            <ToggleGroupItem value="Completed">Completed</ToggleGroupItem>
+            <ToggleGroupItem value="WIP">WIP</ToggleGroupItem>
+            <ToggleGroupItem value="Idea">Idea</ToggleGroupItem>
+          </ToggleGroup>
+        </div>
+
+        <ScrollArea className="h-[calc(100vh-300px)]">
+          <motion.div layout className="space-y-6">
+            <AnimatePresence>
+              {filteredProjects.map((project, index) => (
+                <motion.div
+                  key={index}
+                  layout
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="w-full mb-4"
+                >
+                  <Dialog
+                    open={selectedProject === project}
+                    onOpenChange={() =>
+                      setSelectedProject(
+                        selectedProject === project ? null : project
+                      )
+                    }
+                  >
+                    <DialogTrigger asChild>
+                      <div className="p-6 rounded-lg shadow-md bg-white dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all duration-300 w-full cursor-pointer">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h2 className="text-lg font-bold text-neutral-800 dark:text-neutral-100 mb-2 font-roboto-mono">
+                              {project.name}
+                            </h2>
+                            <p className="text-sm font-normal text-neutral-600 dark:text-neutral-400">
+                              {project.description}
+                            </p>
+                          </div>
+                          <Badge
+                            className={`${getStatusStyles(
+                              project.status
+                            )} text-xs px-2 py-1 rounded-full`}
+                          >
+                            {project.status}
+                          </Badge>
+                        </div>
                       </div>
-                      <Badge
-                        variant="outline"
-                        className={`${getStatusStyles(
-                          project.status
-                        )} font-medium ml-4`}
-                      >
-                        {project.status}
-                      </Badge>
-                    </div>
-                  </div>
-                </DialogTrigger>
-                {selectedProject && (
-                  <DialogContent className="p-8 dark:bg-zinc-800 bg-zinc-100 rounded-lg dark:text-zinc-100 text-zinc-800 border-none w-full max-h-[80vh]">
-                    <DialogTitle>{selectedProject.name}</DialogTitle>
-                    <Separator className="dark:bg-zinc-700 bg-zinc-200" />
-                    {selectedProject.longDescription && (
-                      <div className="space-y-4">
-                        <div className="grid grid-cols-1 md:grid-cols-[4fr,1fr] gap-4">
-                          <ScrollArea className="col-span-2 md:col-span-1 max-h-60">
-                            <DialogDescription className="dark:text-zinc-100 text-zinc-800 leading-relaxed whitespace-pre-line">
+                    </DialogTrigger>
+                    {selectedProject && (
+                      <DialogContent className="p-0 bg-white dark:bg-neutral-800 rounded-lg text-neutral-800 dark:text-neutral-100 border-none w-full max-w-3xl max-h-[90vh] overflow-hidden">
+                        <div className="flex flex-col h-full">
+                          <div className="flex justify-between items-center p-6 border-b border-neutral-200 dark:border-neutral-700">
+                            <DialogTitle className="text-2xl font-bold font-roboto-mono">
+                              {selectedProject.name}
+                            </DialogTitle>
+                            <DialogClose className="rounded-full p-1 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
+                              <X className="h-6 w-6" />
+                            </DialogClose>
+                          </div>
+                          <ScrollArea className="flex-grow p-6">
+                            <DialogDescription className="text-base font-normal text-neutral-600 dark:text-neutral-400 mb-6">
                               {selectedProject.longDescription}
                             </DialogDescription>
-                          </ScrollArea>
-                          <div className="col-span-2 md:col-span-1 flex flex-col justify-start">
-                            <div className="flex justify-end items-start">
-                              <Badge
-                                variant="outline"
-                                className={`${getStatusStyles(
-                                  selectedProject.status
-                                )} font-medium`}
-                              >
-                                {selectedProject.status}
-                              </Badge>
+                            <div className="flex flex-wrap gap-4">
+                              {selectedProject.link && (
+                                <Button
+                                  variant="outline"
+                                  className="text-neutral-800 dark:text-neutral-100 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600"
+                                  onClick={() =>
+                                    window.open(
+                                      selectedProject.link,
+                                      "_blank",
+                                      "noopener noreferrer"
+                                    )
+                                  }
+                                >
+                                  Visit project
+                                </Button>
+                              )}
+                              {selectedProject.codeLink && (
+                                <Button
+                                  variant="outline"
+                                  className="text-neutral-800 dark:text-neutral-100 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600"
+                                  onClick={() =>
+                                    window.open(
+                                      selectedProject.codeLink,
+                                      "_blank",
+                                      "noopener noreferrer"
+                                    )
+                                  }
+                                >
+                                  View code
+                                </Button>
+                              )}
                             </div>
-                          </div>
+                          </ScrollArea>
                         </div>
-                        <div className="flex space-x-4 mt-6">
-                          {selectedProject.link && (
-                            <Button
-                              variant="ghost"
-                              className="dark:text-zinc-100 dark:bg-zinc-600 text-zinc-100 hover:bg-zinc-500 dark:hover:bg-zinc-500 hover:text-zinc-100 bg-zinc-600"
-                              onClick={() =>
-                                window.open(
-                                  selectedProject.link,
-                                  "_blank",
-                                  "noopener noreferrer"
-                                )
-                              }
-                            >
-                              Visit project
-                            </Button>
-                          )}
-                          {selectedProject.codeLink && (
-                            <Button
-                              variant="ghost"
-                              onClick={() =>
-                                window.open(
-                                  selectedProject.codeLink,
-                                  "_blank",
-                                  "noopener noreferrer"
-                                )
-                              }
-                            >
-                              View code
-                            </Button>
-                          )}
-                        </div>
-                      </div>
+                      </DialogContent>
                     )}
-                    {selectedProject.screenshots &&
-                      selectedProject.screenshots.length > 0 && (
-                        <Carousel className="mt-6">
-                          {selectedProject.screenshots.map((src, idx) => (
-                            <Image
-                              key={idx}
-                              src={src}
-                              alt={`Screenshot ${idx + 1}`}
-                            />
-                          ))}
-                        </Carousel>
-                      )}
-                  </DialogContent>
-                )}
-              </Dialog>
-            </div>
-          ))}
+                  </Dialog>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </ScrollArea>
-      </main>
+      </div>
     </div>
   );
 }
