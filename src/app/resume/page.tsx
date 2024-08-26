@@ -163,7 +163,12 @@ export default function Resume() {
                 </span>
               </div>
               <span className="block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter mt-2">
-                maxtheyoung@gmail.com
+                <a
+                  href="mailto:maxtheyoung@gmail.com"
+                  className="hover:underline transition-all duration-200 ease-in-out"
+                >
+                  maxtheyoung@gmail.com
+                </a>
                 <br />
                 Auckland
               </span>
