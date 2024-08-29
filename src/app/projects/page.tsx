@@ -46,7 +46,7 @@ const projects: Project[] = [
       "A companion app for students with budgeting, note-taking, and mental well-being tools.",
     longDescription:
       "StudentView is designed to be a focused version of Notion for students, encompassing budgeting, study reflections, and mental well-being tools. The app features a modular layout with both dark and light themes based on system preferences. It includes sections for tracking budgeting, study reflections, and a meditation section. Future plans involve integrating daily inspirational quotes and more user customization options.",
-    link: "https://dashboard.studentview.app/",
+    link: "https://www.studentview.app/",
   },
   {
     name: "ResumeForge",
