@@ -59,15 +59,16 @@ const projects: Project[] = [
     codeLink: "https://github.com/maxwellyoung/resume-forge",
   },
   {
-    name: "Aesop E-commerce Marketing Site",
+    name: "Aesop E-commerce Marketing Site (Unofficial)",
     status: "Completed",
     description:
-      "A marketing site example for Aesop, focusing on clean design and user experience.",
+      "An unofficial example of a marketing site for Aesop, designed with a focus on clean aesthetics and user experience.",
     longDescription:
-      "This project is a marketing site for Aesop, showcasing products with a clean and modern design that reflects the brand's aesthetics. The site features a large hero image, a section for featured products, and a responsive layout. It's built with Next.js and styled using Tailwind CSS, ensuring a seamless user experience across devices.",
+      "This project is an unofficial marketing site concept for Aesop. It showcases products with a clean, modern design that aligns with the brand's visual identity. The site includes a prominent hero image, a section highlighting featured products, and a fully responsive layout. It was developed using Next.js and styled with Tailwind CSS to ensure a smooth user experience on all devices.",
     link: "https://aesop-omega.vercel.app/",
     codeLink: "https://github.com/maxwellyoung/aesop",
   },
+
   {
     name: "Rolodex",
     status: "Idea",
