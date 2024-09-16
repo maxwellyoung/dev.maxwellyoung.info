@@ -42,15 +42,8 @@ export default function Home() {
               >
                 ninetynine digital
               </Link>
-              , I am developing{" "}
-              <Link
-                href={"https://studentview.app/"}
-                target="_blank"
-                className="underline hover:dark:text-zinc-300"
-              >
-                StudentView
-              </Link>
-              , a companion app designed to enhance the lives of students.
+              , I am developing a number of applications with intention and
+              principles to elevate user experiences and solve everyday issues.
             </p>
           </div>
 
