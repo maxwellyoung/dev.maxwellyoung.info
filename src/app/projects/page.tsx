@@ -30,6 +30,23 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Jeremy Blake Interactive Art Experience",
+    status: "Completed",
+    description:
+      "An interactive digital art experience inspired by Jeremy Blake's works.",
+    longDescription:
+      "This project is an interactive digital art experience inspired by the works of Jeremy Blake, an American digital artist known for his dynamic, abstract color field animations. Users can navigate through abstract, color-rich landscapes, interact with dynamic elements responding to mouse movements or touch, and experience fluid transitions blending and morphing colors in Blake's signature style.",
+    link: "https://jeremy-blake.vercel.app/",
+    codeLink: "https://github.com/maxwellyoung/jeremy-blake",
+  },
+  {
+    name: "CineSync",
+    status: "WIP",
+    description: "An AI-powered movie discovery and recommendation platform.",
+    longDescription:
+      "CineSync is an AI-powered movie discovery and recommendation platform built with Next.js, React, and TypeScript. It helps users find their next favorite movie based on their preferences and mood. Features include personalized movie recommendations, watchlist management, friend connections for sharing recommendations, responsive design with dark mode, and more.",
+  },
+  {
     name: "Tanya Bardell-Young Portfolio",
     status: "WIP",
     description:

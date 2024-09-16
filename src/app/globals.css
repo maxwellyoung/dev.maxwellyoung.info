@@ -127,3 +127,38 @@
 .font-roboto-mono {
   font-family: var(--font-roboto-mono);
 }
+
+@keyframes colorShift {
+  0% {
+    background-color: var(--chart-1);
+  }
+  25% {
+    background-color: var(--chart-2);
+  }
+  50% {
+    background-color: var(--chart-3);
+  }
+  75% {
+    background-color: var(--chart-4);
+  }
+  100% {
+    background-color: var(--chart-5);
+  }
+}
+
+.color-shift {
+  animation: colorShift 10s infinite;
+}
+
+.interactive-element {
+  transition: all 0.3s ease;
+}
+
+.interactive-element:hover {
+  transform: scale(1.1);
+  filter: hue-rotate(45deg);
+}
+
+.blake-transition {
+  transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
