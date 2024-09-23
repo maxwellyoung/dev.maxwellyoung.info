@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
@@ -144,23 +144,29 @@ const projects: Project[] = [
   },
 ];
 
-export default function ProjectsShowcase() {
+interface ProjectsProps {
+  initialFavourites?: string[]; // Make it optional
+}
+
+export default function ProjectsShowcase({
+  initialFavourites = ["Jeremy Blake Interactive Art Experience"], // Set default favorite
+}: ProjectsProps) {
   const [selectedStatus, setSelectedStatus] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [filteredProjects, setFilteredProjects] = useState(projects);
+  const [favourites, setFavourites] = useState<string[]>(initialFavourites);
 
-  useEffect(() => {
-    const filtered = projects.filter((project) => {
-      const statusMatch =
-        selectedStatus === "All" || project.status === selectedStatus;
-      const searchMatch =
-        project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.description.toLowerCase().includes(searchQuery.toLowerCase());
-      return statusMatch && searchMatch;
-    });
-    setFilteredProjects(filtered);
-  }, [selectedStatus, searchQuery]);
+  const filteredProjects = projects.filter((project) => {
+    const statusMatch =
+      selectedStatus === "All" ||
+      (selectedStatus === "Favourites"
+        ? favourites.includes(project.name)
+        : project.status === selectedStatus);
+    const searchMatch =
+      project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return statusMatch && searchMatch;
+  });
 
   const getStatusStyles = (status: string) => {
     switch (status) {
@@ -168,8 +174,8 @@ export default function ProjectsShowcase() {
         return "bg-green-500 text-white";
       case "WIP":
         return "bg-orange-500 text-white";
-      case "Idea":
-        return "bg-blue-500 text-white";
+      case "Favourites":
+        return "bg-yellow-600 text-white"; // Brighter yellow with white text for better contrast
       default:
         return "bg-gray-500 text-white";
     }
@@ -206,7 +212,7 @@ export default function ProjectsShowcase() {
             <ToggleGroupItem value="All">All</ToggleGroupItem>
             <ToggleGroupItem value="Completed">Completed</ToggleGroupItem>
             <ToggleGroupItem value="WIP">WIP</ToggleGroupItem>
-            <ToggleGroupItem value="Idea">Idea</ToggleGroupItem>
+            <ToggleGroupItem value="Favourites">Favourites</ToggleGroupItem>
           </ToggleGroup>
         </div>
 
@@ -243,10 +249,14 @@ export default function ProjectsShowcase() {
                           </div>
                           <Badge
                             className={`${getStatusStyles(
-                              project.status
+                              favourites.includes(project.name)
+                                ? "Favourites"
+                                : project.status
                             )} text-xs px-2 py-1 rounded-full`}
                           >
-                            {project.status}
+                            {favourites.includes(project.name)
+                              ? "Favourite"
+                              : project.status}
                           </Badge>
                         </div>
                       </div>

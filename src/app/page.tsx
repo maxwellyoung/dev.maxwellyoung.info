@@ -15,7 +15,7 @@ export default function Home() {
               Maxwell Young
             </a>
             <p className="text-xl font-light dark:text-zinc-400 text-zinc-500">
-              Design Engineer & Founder of ninetynine digital
+              Design Engineer
             </p>
           </header>
 
@@ -98,7 +98,12 @@ export default function Home() {
           </div>
         </section>
         <section id="projects">
-          <Projects />
+          <Projects
+            initialFavourites={[
+              "Jeremy Blake Interactive Art Experience",
+              "Aesop E-commerce Marketing Site (Unofficial)",
+            ]}
+          />
         </section>
         <section id="resume">
           <Resume />
