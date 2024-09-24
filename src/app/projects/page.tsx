@@ -57,9 +57,10 @@ const projects: Project[] = [
     status: "WIP",
     description: "An AI-powered movie discovery and recommendation platform.",
     longDescription:
-      "CineSync is an AI-powered movie discovery and recommendation platform built with Next.js, React, and TypeScript. It helps users find their next favorite movie based on their preferences and mood. Features include personalized movie recommendations, watchlist management, friend connections for sharing recommendations, responsive design with dark mode, and more.",
+      "CineSync is an AI-powered movie discovery and recommendation platform built with Next.js, React, Supabase, OpenAI, Clerk and TypeScript. It helps users find their next favorite movie based on their preferences and mood. Features include personalized movie recommendations, watchlist management, friend connections for sharing recommendations, responsive design with dark mode, and more.",
     startDate: "2023-04-01",
     tags: ["Next.js", "React", "AI", "TypeScript"],
+    link: "https://cinesync-peach.vercel.app/",
   },
   {
     name: "Tanya Bardell-Young Portfolio",
