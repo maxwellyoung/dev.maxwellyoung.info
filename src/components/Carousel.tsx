@@ -48,64 +48,69 @@ export default function Carousel({ images }: CarouselProps) {
 
   return (
     <MotionConfig transition={{ type: "spring", bounce: 0 }}>
-      <div className="flex h-full flex-col justify-between relative">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={images[index]}
-            alt="Background"
-            layout="fill"
-            objectFit="cover"
-            className="blur-xl opacity-50"
-          />
-        </div>
-        <div className="relative z-10 flex-grow flex items-center justify-center">
-          <motion.div style={{ x: xPercentage }} className="flex w-full h-full">
-            {images.map((image, i) => (
-              <motion.div
-                key={image}
-                animate={{ opacity: i === index ? 1 : 0.4 }}
-                className="w-full h-full flex-shrink-0 relative"
+      <div className="flex flex-col h-screen">
+        <div className="relative flex-grow">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={images[index]}
+              alt="Background"
+              layout="fill"
+              objectFit="cover"
+              className="blur-xl opacity-50"
+            />
+          </div>
+          <div className="relative z-10 h-full flex items-center justify-center">
+            <motion.div
+              style={{ x: xPercentage }}
+              className="flex w-full h-full"
+            >
+              {images.map((image, i) => (
+                <motion.div
+                  key={image}
+                  animate={{ opacity: i === index ? 1 : 0.4 }}
+                  className="w-full h-full flex-shrink-0 relative"
+                >
+                  <Image
+                    src={image}
+                    alt={`Screenshot ${i + 1}`}
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+          <AnimatePresence initial={false}>
+            {index > 0 && (
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.7 }}
+                exit={{ opacity: 0, pointerEvents: "none" }}
+                whileHover={{ opacity: 1 }}
+                className="absolute left-4 top-1/2 -mt-4 flex h-8 w-8 items-center justify-center rounded-full bg-white z-20"
+                onClick={() => setIndex(index - 1)}
               >
-                <Image
-                  src={image}
-                  alt={`Screenshot ${i + 1}`}
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+                <ChevronLeft className="h-6 w-6 text-black" />
+              </motion.button>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence initial={false}>
+            {index + 1 < images.length && (
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.7 }}
+                exit={{ opacity: 0, pointerEvents: "none" }}
+                whileHover={{ opacity: 1 }}
+                className="absolute right-4 top-1/2 -mt-4 flex h-8 w-8 items-center justify-center rounded-full bg-white z-20"
+                onClick={() => setIndex(index + 1)}
+              >
+                <ChevronRight className="h-6 w-6 text-black" />
+              </motion.button>
+            )}
+          </AnimatePresence>
         </div>
-
-        <AnimatePresence initial={false}>
-          {index > 0 && (
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.7 }}
-              exit={{ opacity: 0, pointerEvents: "none" }}
-              whileHover={{ opacity: 1 }}
-              className="absolute left-4 top-1/2 -mt-4 flex h-8 w-8 items-center justify-center rounded-full bg-white z-20"
-              onClick={() => setIndex(index - 1)}
-            >
-              <ChevronLeft className="h-6 w-6 text-black" />
-            </motion.button>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence initial={false}>
-          {index + 1 < images.length && (
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.7 }}
-              exit={{ opacity: 0, pointerEvents: "none" }}
-              whileHover={{ opacity: 1 }}
-              className="absolute right-4 top-1/2 -mt-4 flex h-8 w-8 items-center justify-center rounded-full bg-white z-20"
-              onClick={() => setIndex(index + 1)}
-            >
-              <ChevronRight className="h-6 w-6 text-black" />
-            </motion.button>
-          )}
-        </AnimatePresence>
 
         <div className="relative z-10">
           <Thumbnails images={images} index={index} setIndex={setIndex} />
@@ -117,8 +122,8 @@ export default function Carousel({ images }: CarouselProps) {
 
 const COLLAPSED_ASPECT_RATIO = 9 / 16;
 const FULL_ASPECT_RATIO = 16 / 9;
-const MARGIN = 16;
-const GAP = 2;
+const MARGIN = 4;
+const GAP = 4;
 
 function Thumbnails({
   images,
@@ -141,10 +146,10 @@ function Thumbnails({
   }, [x, xSpring]);
 
   return (
-    <div className="mb-6 flex h-16 justify-center overflow-hidden">
+    <div className="flex justify-center overflow-hidden bg-black bg-opacity-50">
       <motion.div
         style={{
-          gap: `${GAP}%`,
+          gap: `${GAP}px`,
           x: xPercentage,
         }}
         className="flex min-w-0"
@@ -166,7 +171,7 @@ function Thumbnails({
                 marginRight: 0,
               },
             }}
-            className="h-full shrink-0 relative"
+            className="h-16 shrink-0 relative"
             key={image}
           >
             <Image

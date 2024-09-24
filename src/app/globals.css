@@ -162,3 +162,18 @@
 .blake-transition {
   transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+
+.shadow-glow-green,
+.shadow-glow-orange {
+  transition: all 0.3s ease-in-out;
+}
+
+.shadow-glow-green:hover {
+  box-shadow: 0 0 10px #4ade80, 0 0 20px #4ade80, 0 0 30px #4ade80;
+  transform: scale(1.1);
+}
+
+.shadow-glow-orange:hover {
+  box-shadow: 0 0 10px #fb923c, 0 0 20px #fb923c, 0 0 30px #fb923c;
+  transform: scale(1.1);
+}

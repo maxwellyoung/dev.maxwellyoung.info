@@ -91,7 +91,10 @@ const projects: Project[] = [
     link: "https://www.studentview.app/",
     startDate: "2023-03-01",
     tags: ["React", "Next.js", "Tailwind CSS"],
-    screenshots: ["/projectImages/StudentView.jpeg"],
+    screenshots: [
+      "/projectImages/StudentView.jpeg",
+      "/projectImages/StudentView2.webp",
+    ],
   },
   {
     name: "ResumeForge",
@@ -271,7 +274,7 @@ export default function ProjectsShowcase({
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-gray-50 dark:bg-neutral-900 text-gray-800 dark:text-gray-200 font-sans relative overflow-hidden"
+      className="min-h-screen  text-gray-800 dark:text-gray-200 font-sans relative overflow-hidden"
     >
       <motion.div
         className="absolute inset-0 opacity-5"
@@ -384,31 +387,24 @@ export default function ProjectsShowcase({
         onOpenChange={() => setIsCarouselOpen(false)}
       >
         <DialogContent className="max-w-none w-screen h-screen p-0">
-          <div className="w-full h-full">
+          <div className="w-full h-full relative">
             {selectedProject && selectedProject.screenshots && (
               <Carousel images={selectedProject.screenshots} />
             )}
+            <DialogClose asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute top-4 right-4 z-50 bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-200"
+                onClick={() => setIsCarouselOpen(false)}
+              >
+                <X className="h-4 w-4" />
+                <span className="sr-only">Close</span>
+              </Button>
+            </DialogClose>
           </div>
-          <DialogClose className="absolute top-4 right-4 z-30">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="bg-white bg-opacity-50 hover:bg-opacity-100"
-            >
-              <X className="h-4 w-4" />
-            </Button>
-          </DialogClose>
         </DialogContent>
       </Dialog>
     </div>
   );
 }
-
-const globalStyles = `
-  .shadow-glow-green {
-    box-shadow: 0 0 5px #4ade80, 0 0 10px #4ade80;
-  }
-  .shadow-glow-orange {
-    box-shadow: 0 0 5px #fb923c, 0 0 10px #fb923c;
-  }
-`;
