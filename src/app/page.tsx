@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Resume from "./resume/page";
-import Projects from "./projects/page";
+import ProjectsShowcase from "./projects/page";
 
 export default function Home() {
   return (
@@ -98,7 +98,7 @@ export default function Home() {
           </div>
         </section>
         <section id="projects">
-          <Projects
+          <ProjectsShowcase
             initialFavourites={[
               "Jeremy Blake Interactive Art Experience",
               "Aesop E-commerce Marketing Site (Unofficial)",

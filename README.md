@@ -62,3 +62,19 @@ For any inquiries, please reach out to me at [your-email@example.com](mailto:you
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
+
+## Contributing
+
+Contributions are welcome! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
+
+## Acknowledgements
+
+- Thanks to the creators of Next.js, React, Tailwind CSS, Shadcn UI, and Framer Motion for their amazing tools and libraries.
+- Special thanks to my friends and family for their support and feedback.
+
+## Future Plans
+
+- Add more projects to the showcase.
+- Implement user authentication for personalized experiences.
+- Integrate a blog section to share my thoughts and tutorials.
+- Enhance accessibility features for a more inclusive experience.
