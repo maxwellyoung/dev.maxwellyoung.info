@@ -12,6 +12,7 @@ import {
   AnimatePresence,
   useSpring,
   useTransform,
+  MotionProps,
 } from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
@@ -202,7 +203,13 @@ interface ProjectCardProps {
   onClick: () => void;
 }
 
-function ProjectCard({ project, isSelected, onClick }: ProjectCardProps) {
+function ProjectCard({
+  project,
+  isSelected,
+  onClick,
+  ...props
+}: ProjectCardProps &
+  Omit<React.HTMLAttributes<HTMLDivElement>, keyof MotionProps>) {
   const springConfig = { stiffness: 300, damping: 30 };
   const scale = useSpring(1, springConfig);
   const x = useSpring(0, springConfig);
@@ -217,6 +224,8 @@ function ProjectCard({ project, isSelected, onClick }: ProjectCardProps) {
       style={{ scale, x }}
       className="relative overflow-hidden rounded-lg cursor-pointer group w-full mb-4 p-4 bg-white dark:bg-neutral-800 shadow-sm"
       onClick={onClick}
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.2 }}
     >
       <div
         className="absolute inset-0 opacity-10 transition-opacity duration-300 group-hover:opacity-20"
@@ -262,9 +271,9 @@ export default function ProjectsShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
   const [lastScrollTime, setLastScrollTime] = useState(0);
-  const scrollDelay = 500; // Adjust this value to increase or decrease sensitivity
+  const scrollDelay = 800; // Reduced from 1500 to 800 ms
 
   const nextProject = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
@@ -287,12 +296,15 @@ export default function ProjectsShowcase() {
 
         if (currentTime - lastScrollTime > scrollDelay) {
           const delta = event.deltaY;
-          if (delta > 0) {
-            nextProject();
-          } else {
-            prevProject();
+          if (Math.abs(delta) > 10) {
+            // Reduced threshold from 100 to 50
+            if (delta > 0) {
+              nextProject();
+            } else {
+              prevProject();
+            }
+            setLastScrollTime(currentTime);
           }
-          setLastScrollTime(currentTime);
         }
       }
     },
@@ -313,6 +325,29 @@ export default function ProjectsShowcase() {
 
   useEffect(() => {
     setSelectedProject(projects[currentIndex]);
+
+    // Scroll to the selected project in the list
+    const scrollArea = scrollAreaRef.current;
+    const selectedProjectElement = scrollArea?.querySelector(
+      `[data-project-index="${currentIndex}"]`
+    );
+
+    if (scrollArea && selectedProjectElement) {
+      const scrollAreaRect = scrollArea.getBoundingClientRect();
+      const selectedProjectRect =
+        selectedProjectElement.getBoundingClientRect();
+
+      if (
+        selectedProjectRect.top < scrollAreaRect.top ||
+        selectedProjectRect.bottom > scrollAreaRect.bottom
+      ) {
+        selectedProjectElement.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "nearest",
+        });
+      }
+    }
   }, [currentIndex]);
 
   const backgroundSpring = useSpring(0, { stiffness: 100, damping: 30 });
@@ -382,7 +417,7 @@ export default function ProjectsShowcase() {
               <div
                 className={`w-2 h-2 rounded-full mr-2 bg-green-500 ${
                   selectedProject?.status === "Completed"
-                    ? "shadow-glow-green"
+                    ? "shadow-glow-green-enhanced"
                     : ""
                 }`}
               ></div>
@@ -392,7 +427,7 @@ export default function ProjectsShowcase() {
               <div
                 className={`w-2 h-2 rounded-full mr-2 bg-orange-500 ${
                   selectedProject?.status !== "Completed"
-                    ? "shadow-glow-orange"
+                    ? "shadow-glow-orange-enhanced"
                     : ""
                 }`}
               ></div>
@@ -477,7 +512,10 @@ export default function ProjectsShowcase() {
             </AnimatePresence>
           </div>
           <div className="w-full">
-            <ScrollArea className="h-[calc(100vh-200px)] lg:h-[700px] w-full pr-4">
+            <ScrollArea
+              className="h-[calc(100vh-200px)] lg:h-[700px] w-full pr-4"
+              ref={scrollAreaRef}
+            >
               <div className="space-y-4 py-2">
                 {projects.map((project, index) => (
                   <ProjectCard
@@ -488,6 +526,7 @@ export default function ProjectsShowcase() {
                       setSelectedProject(project);
                       setCurrentIndex(index);
                     }}
+                    data-project-index={index}
                   />
                 ))}
               </div>
