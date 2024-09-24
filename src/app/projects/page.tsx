@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+} from "react";
 import {
   motion,
   AnimatePresence,
@@ -23,6 +29,7 @@ import {
   Loader,
   ArrowUpRight,
   ChevronRight,
+  ChevronLeft,
 } from "lucide-react";
 import Image from "next/image";
 import Carousel from "@/components/Carousel";
@@ -195,11 +202,7 @@ interface ProjectCardProps {
   onClick: () => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({
-  project,
-  isSelected,
-  onClick,
-}) => {
+function ProjectCard({ project, isSelected, onClick }: ProjectCardProps) {
   const springConfig = { stiffness: 300, damping: 30 };
   const scale = useSpring(1, springConfig);
   const x = useSpring(0, springConfig);
@@ -250,16 +253,67 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       />
     </motion.div>
   );
-};
+}
 
-export default function ProjectsShowcase({
-  initialFavourites = ["Jeremy Blake Interactive Art Experience"],
-}: ProjectsProps) {
+export default function ProjectsShowcase() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(
     projects[0]
   );
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [lastScrollTime, setLastScrollTime] = useState(0);
+  const scrollDelay = 500; // Adjust this value to increase or decrease sensitivity
+
+  const nextProject = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
+  }, []);
+
+  const prevProject = useCallback(() => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + projects.length) % projects.length
+    );
+  }, []);
+
+  const handleWheel = useCallback(
+    (event: WheelEvent) => {
+      if (
+        containerRef.current &&
+        containerRef.current.contains(event.target as Node)
+      ) {
+        event.preventDefault();
+        const currentTime = Date.now();
+
+        if (currentTime - lastScrollTime > scrollDelay) {
+          const delta = event.deltaY;
+          if (delta > 0) {
+            nextProject();
+          } else {
+            prevProject();
+          }
+          setLastScrollTime(currentTime);
+        }
+      }
+    },
+    [nextProject, prevProject, lastScrollTime, scrollDelay]
+  );
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener("wheel", handleWheel, { passive: false });
+    }
+    return () => {
+      if (container) {
+        container.removeEventListener("wheel", handleWheel);
+      }
+    };
+  }, [handleWheel]);
+
+  useEffect(() => {
+    setSelectedProject(projects[currentIndex]);
+  }, [currentIndex]);
 
   const backgroundSpring = useSpring(0, { stiffness: 100, damping: 30 });
   const backgroundRotation = useTransform(backgroundSpring, [0, 1], [0, 360]);
@@ -271,11 +325,28 @@ export default function ProjectsShowcase({
     return () => clearInterval(interval);
   }, [backgroundSpring]);
 
+  const [isHovered, setIsHovered] = useState(false);
+
+  const titleVariants = {
+    initial: { opacity: 1, y: 0 },
+    hover: {
+      opacity: 0,
+      y: -10,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    },
+  };
+
+  const subtitleVariants = {
+    initial: { opacity: 0, y: 10 },
+    hover: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeInOut", delay: 0.1 },
+    },
+  };
+
   return (
-    <div
-      ref={containerRef}
-      className="min-h-screen  text-gray-800 dark:text-gray-200 font-sans relative overflow-hidden"
-    >
+    <div className="min-h-screen text-gray-800 dark:text-gray-200 font-sans relative overflow-hidden">
       <motion.div
         className="absolute inset-0 opacity-5"
         style={{
@@ -283,29 +354,68 @@ export default function ProjectsShowcase({
         }}
       />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-4xl font-extralight mb-4 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-400 dark:from-gray-300 dark:to-gray-500">
-          Projects
-        </h1>
+        <div
+          className="relative mb-8 overflow-hidden"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <motion.h1
+            className="text-4xl font-extralight tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-400 dark:from-gray-300 dark:to-gray-500"
+            variants={titleVariants}
+            initial="initial"
+            animate={isHovered ? "hover" : "initial"}
+          >
+            Projects
+          </motion.h1>
+          <motion.span
+            className="absolute top-0 left-0 text-4xl font-extralight tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-400 dark:from-gray-300 dark:to-gray-500 whitespace-nowrap"
+            variants={subtitleVariants}
+            initial="initial"
+            animate={isHovered ? "hover" : "initial"}
+          >
+            Crafting Digital Experiences
+          </motion.span>
+        </div>
         <div className="flex items-center space-x-4 mb-8">
-          <div className="flex items-center">
-            <div className="w-2 h-2 rounded-full bg-green-500 shadow-glow-green mr-2"></div>
-            <span className="text-xs">Completed</span>
-          </div>
-          <div className="flex items-center">
-            <div className="w-2 h-2 rounded-full bg-orange-500 shadow-glow-orange mr-2"></div>
-            <span className="text-xs">Work in Progress</span>
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center">
+              <div
+                className={`w-2 h-2 rounded-full mr-2 bg-green-500 ${
+                  selectedProject?.status === "Completed"
+                    ? "shadow-glow-green"
+                    : ""
+                }`}
+              ></div>
+              <span className="text-xs">Completed</span>
+            </div>
+            <div className="flex items-center">
+              <div
+                className={`w-2 h-2 rounded-full mr-2 bg-orange-500 ${
+                  selectedProject?.status !== "Completed"
+                    ? "shadow-glow-orange"
+                    : ""
+                }`}
+              ></div>
+              <span className="text-xs">Work in Progress</span>
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2" ref={containerRef}>
             <AnimatePresence mode="wait">
               {selectedProject && (
                 <motion.div
                   key={selectedProject.name}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
+                  exit={{ opacity: 0, y: -50 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 30,
+                    mass: 0.8,
+                    bounce: 0.25,
+                  }}
                   className="bg-white dark:bg-neutral-800 bg-opacity-70 backdrop-blur-sm rounded-xl p-6 shadow-lg"
                 >
                   <h2 className="text-2xl font-light mb-3 text-gray-700 dark:text-gray-300">
@@ -369,12 +479,15 @@ export default function ProjectsShowcase({
           <div className="w-full">
             <ScrollArea className="h-[calc(100vh-200px)] lg:h-[700px] w-full pr-4">
               <div className="space-y-4 py-2">
-                {projects.map((project) => (
+                {projects.map((project, index) => (
                   <ProjectCard
                     key={project.name}
                     project={project}
                     isSelected={selectedProject?.name === project.name}
-                    onClick={() => setSelectedProject(project)}
+                    onClick={() => {
+                      setSelectedProject(project);
+                      setCurrentIndex(index);
+                    }}
                   />
                 ))}
               </div>

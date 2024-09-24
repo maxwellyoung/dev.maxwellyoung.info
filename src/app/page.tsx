@@ -1,8 +1,24 @@
+"use client";
+
 import Link from "next/link";
 import Resume from "./resume/page";
 import ProjectsShowcase from "./projects/page";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function Home() {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const titleVariants = {
+    initial: { opacity: 1, y: 0 },
+    hover: { opacity: 0, y: -20 },
+  };
+
+  const subtitleVariants = {
+    initial: { opacity: 0, y: 20 },
+    hover: { opacity: 1, y: 0 },
+  };
+
   return (
     <div className="min-h-screen dark:text-white text-zinc-800 p-4 md:p-8 flex flex-col justify-between">
       <main className="max-w-2xl mx-auto text-zinc-300 space-y-8 overflow-y-auto">
@@ -14,9 +30,30 @@ export default function Home() {
             >
               Maxwell Young
             </a>
-            <p className="text-xl font-light dark:text-zinc-400 text-zinc-500">
-              Design Engineer
-            </p>
+            <div
+              className="relative h-8"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <motion.p
+                className="text-xl font-light dark:text-zinc-400 text-zinc-500 absolute"
+                variants={titleVariants}
+                initial="initial"
+                animate={isHovered ? "hover" : "initial"}
+                transition={{ duration: 0.3 }}
+              >
+                Design Engineer
+              </motion.p>
+              <motion.p
+                className="text-xl font-light dark:text-zinc-400 text-zinc-500 absolute"
+                variants={subtitleVariants}
+                initial="initial"
+                animate={isHovered ? "hover" : "initial"}
+                transition={{ duration: 0.3 }}
+              >
+                Ideation to Implementation
+              </motion.p>
+            </div>
           </header>
 
           <div className="leading-relaxed">
@@ -90,12 +127,7 @@ export default function Home() {
           </div>
         </section>
         <section id="projects">
-          <ProjectsShowcase
-            initialFavourites={[
-              "Jeremy Blake Interactive Art Experience",
-              "Aesop E-commerce Marketing Site (Unofficial)",
-            ]}
-          />
+          <ProjectsShowcase />
         </section>
         <section id="resume">
           <Resume />

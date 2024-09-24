@@ -7,6 +7,17 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Resume() {
   const [isImageEnlarged, setIsImageEnlarged] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const titleVariants = {
+    initial: { opacity: 1 },
+    hover: { opacity: 0 },
+  };
+
+  const subtitleVariants = {
+    initial: { opacity: 0, y: 20 },
+    hover: { opacity: 1, y: 0 },
+  };
 
   return (
     <div className="relative w-full p-6 flex flex-col items-center fade-in">
@@ -16,9 +27,20 @@ export default function Resume() {
             <span className="block text-3xl font-medium dark:text-zinc-100 text-zinc-800 font-roboto-mono">
               Maxwell Young
             </span>
-            <span className="block text-xl font-light dark:text-zinc-400 text-zinc-600 font-roboto-mono">
-              Design Engineer
-            </span>
+            <div
+              className="relative"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <motion.span
+                className="block text-xl font-light dark:text-zinc-400 text-zinc-600 font-roboto-mono"
+                variants={titleVariants}
+                initial="initial"
+                transition={{ duration: 0.3 }}
+              >
+                Design Engineer
+              </motion.span>
+            </div>
           </div>
           <div className="flex items-center space-x-4">
             <Link href="/MaxwellYoung_CV.pdf" legacyBehavior>
