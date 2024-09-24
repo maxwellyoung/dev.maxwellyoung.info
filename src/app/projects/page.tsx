@@ -1,19 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
-  DialogTrigger,
-  DialogClose,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   X,
@@ -23,8 +21,11 @@ import {
   Calendar,
   Tag,
   Loader,
+  ArrowUpRight,
+  ChevronRight,
 } from "lucide-react";
 import Image from "next/image";
+import Carousel from "@/components/Carousel";
 
 interface Project {
   name: string;
@@ -43,7 +44,7 @@ const projects: Project[] = [
     name: "Jeremy Blake Interactive Art Experience",
     status: "Completed",
     description:
-      "An interactive digital art experience inspired by Jeremy Blake's works.",
+      "An interactive digital art experience inspired by the captivating works of Jeremy Blake, a trailblazing artist known for blending vibrant visuals with abstract storytelling. ",
     longDescription:
       "This project is an interactive digital art experience inspired by the works of Jeremy Blake, an American digital artist known for his dynamic, abstract color field animations. Users can navigate through abstract, color-rich landscapes, interact with dynamic elements responding to mouse movements or touch, and experience fluid transitions blending and morphing colors in Blake's signature style.",
     link: "https://jeremy-blake.vercel.app/",
@@ -61,18 +62,24 @@ const projects: Project[] = [
     startDate: "2023-04-01",
     tags: ["Next.js", "React", "AI", "TypeScript"],
     link: "https://cinesync-peach.vercel.app/",
+    screenshots: [
+      "/projectImages/cinesync1.webp",
+      "/projectImages/cinesync2.webp",
+      "/projectImages/cinesync3.webp",
+    ],
   },
   {
     name: "Tanya Bardell-Young Portfolio",
     status: "WIP",
     description:
-      "A portfolio website for interior designer and color consultant Tanya Bardell-Young.",
+      "A portfolio website for my mother, interior designer and color consultant Tanya Bardell-Young.",
     longDescription:
       "This project is a portfolio website for Tanya Bardell-Young, showcasing her work in interior design and color consulting. The site features a clean, minimalist design with interactive elements and a focus on showcasing Tanya's projects. Built with Next.js and styled using Tailwind CSS, it offers a responsive and engaging user experience.",
     link: "https://tanya-zeta.vercel.app/",
     codeLink: "https://github.com/maxwellyoung/tanya",
     startDate: "2023-02-10",
     tags: ["Next.js", "Tailwind CSS", "React"],
+    screenshots: ["/projectImages/tanya.webp"],
   },
   {
     name: "StudentView",
@@ -97,6 +104,7 @@ const projects: Project[] = [
     codeLink: "https://github.com/maxwellyoung/resume-forge",
     startDate: "2023-05-01",
     tags: ["React", "Next.js", "Tailwind CSS"],
+    screenshots: ["/projectImages/ResumeForge.webp"],
   },
   {
     name: "Aesop E-commerce Marketing Site (Unofficial)",
@@ -109,16 +117,6 @@ const projects: Project[] = [
     codeLink: "https://github.com/maxwellyoung/aesop",
     startDate: "2023-01-01",
     tags: ["Next.js", "Tailwind CSS", "React"],
-  },
-  {
-    name: "Rolodex",
-    status: "Idea",
-    description:
-      "A React component for showcasing a portfolio of projects as a three.js rolodex.",
-    longDescription:
-      "Rolodex is a React component designed to present a portfolio of projects in an engaging three.js rolodex format. The top card provides a description of the project, while the bottom card features a screenshot. Hover effects add visual interest, and clicking on a card navigates to a detailed page about the project or the project application itself.",
-    startDate: "2023-06-01",
-    tags: ["React", "Three.js"],
   },
   {
     name: "Noid (Twitter Clone)",
@@ -137,10 +135,14 @@ const projects: Project[] = [
     status: "Completed",
     description:
       "A responsive UI for B2B Sales, built with React and Next.js to enhance team efficiency.",
-    longDescription:
-      "- Designed and developed the front end of an internal dashboard for Spark's marketing team.\n- Translated an existing PowerBI dashboard into a Figma design, incorporating machine learning data.\n- Implemented with React and Next.js, boosting productivity by 20%.\n- Collaborated with the product team and stakeholders for alignment and usability.\n- Conducted user testing and refined UI based on feedback.\n- Note: Unable to show images or a link as this project is internal to the company.",
-    startDate: "2022-09-01",
-    tags: ["React", "Next.js", "Figma", "PowerBI"],
+    longDescription: `As a Data Intelligence UI Developer at Spark New Zealand from Nov 2022 to Apr 2023:
+    • Designed and developed the front end of an internal dashboard application.
+    • Translated PowerBI dashboard into Figma design, integrating machine learning algorithms.
+    • Implemented front-end using React and Next.js, increasing productivity by 20%.
+    • Collaborated with product team and stakeholders to ensure usability.
+    • Conducted user testing to refine the UI.`,
+    startDate: "2022-11-01",
+    tags: ["React", "Next.js", "Figma", "UI/UX"],
   },
   {
     name: "Portfolio Website",
@@ -184,303 +186,229 @@ interface ProjectsProps {
   initialFavourites?: string[];
 }
 
+interface ProjectCardProps {
+  project: Project;
+  isSelected: boolean;
+  onClick: () => void;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  project,
+  isSelected,
+  onClick,
+}) => {
+  const springConfig = { stiffness: 300, damping: 30 };
+  const scale = useSpring(1, springConfig);
+  const x = useSpring(0, springConfig);
+
+  useEffect(() => {
+    scale.set(isSelected ? 1.05 : 1);
+    x.set(isSelected ? 5 : 0);
+  }, [isSelected, scale, x]);
+
+  return (
+    <motion.div
+      style={{ scale, x }}
+      className="relative overflow-hidden rounded-lg cursor-pointer group w-full mb-4 p-4 bg-white dark:bg-neutral-800 shadow-sm"
+      onClick={onClick}
+    >
+      <div
+        className="absolute inset-0 opacity-10 transition-opacity duration-300 group-hover:opacity-20"
+        style={{
+          backgroundColor:
+            project.status === "Completed" ? "#4ECDC4" : "#FF6B6B",
+        }}
+      />
+      <div className="relative z-10">
+        <h3 className="text-sm font-medium mb-2 text-gray-800 dark:text-gray-200">
+          {project.name}
+        </h3>
+        <p className="text-xs text-gray-600 dark:text-gray-400 font-light mb-2 line-clamp-3">
+          {project.description}
+        </p>
+        <div className="flex items-center text-xs text-gray-500 dark:text-gray-400">
+          <span
+            className={`mr-2 w-2 h-2 rounded-full ${
+              project.status === "Completed" ? "bg-green-500" : "bg-orange-500"
+            }`}
+          ></span>
+          {project.status}
+        </div>
+      </div>
+      <motion.div
+        className="absolute bottom-0 left-0 w-full h-0.5"
+        style={{
+          backgroundColor:
+            project.status === "Completed" ? "#4ECDC4" : "#FF6B6B",
+        }}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: isSelected ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+      />
+    </motion.div>
+  );
+};
+
 export default function ProjectsShowcase({
   initialFavourites = ["Jeremy Blake Interactive Art Experience"],
 }: ProjectsProps) {
-  const [selectedStatus, setSelectedStatus] = useState<string>("All");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [favourites, setFavourites] = useState<string[]>(initialFavourites);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(
+    projects[0]
+  );
+  const [isCarouselOpen, setIsCarouselOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const filteredProjects = projects.filter((project) => {
-    const statusMatch =
-      selectedStatus === "All" ||
-      (selectedStatus === "Favourites"
-        ? favourites.includes(project.name)
-        : project.status === selectedStatus);
-    const searchMatch =
-      project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return statusMatch && searchMatch;
-  });
+  const backgroundSpring = useSpring(0, { stiffness: 100, damping: 30 });
+  const backgroundRotation = useTransform(backgroundSpring, [0, 1], [0, 360]);
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "Completed":
-        return "bg-green-500";
-      case "WIP":
-        return "bg-orange-500";
-      case "Favourites":
-        return "bg-yellow-600";
-      default:
-        return "bg-gray-500";
-    }
-  };
-
-  const toggleFavourite = async (projectName: string) => {
-    setLoading(true);
-    setError(null);
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setFavourites((prev) =>
-        prev.includes(projectName)
-          ? prev.filter((name) => name !== projectName)
-          : [...prev, projectName]
-      );
-    } catch (error) {
-      setError(
-        "Failed to add project to favourites. It might already be in the list."
-      );
-      console.error("Error adding to watchlist:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      backgroundSpring.set(Math.random());
+    }, 15000);
+    return () => clearInterval(interval);
+  }, [backgroundSpring]);
 
   return (
-    <div className="relative w-full p-6 flex flex-col items-center fade-in">
-      <div className="max-w-3xl w-full">
-        <div className="flex justify-between items-center mb-6">
-          <div>
-            <h1 className="text-3xl font-medium dark:text-zinc-100 text-zinc-800 font-roboto-mono">
-              My Projects
-            </h1>
-            <p className="text-xl font-light dark:text-zinc-400 text-zinc-600">
-              A showcase of my work
-            </p>
+    <div
+      ref={containerRef}
+      className="min-h-screen bg-gray-50 dark:bg-neutral-900 text-gray-800 dark:text-gray-200 font-sans relative overflow-hidden"
+    >
+      <motion.div
+        className="absolute inset-0 opacity-5"
+        style={{
+          background: `conic-gradient(from ${backgroundRotation}deg at 50% 50%, #FF6B6B, #4ECDC4, #45B7D1, #98CA32, #FB8B24, #FF6B6B)`,
+        }}
+      />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h1 className="text-4xl font-extralight mb-4 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-400 dark:from-gray-300 dark:to-gray-500">
+          Projects
+        </h1>
+        <div className="flex items-center space-x-4 mb-8">
+          <div className="flex items-center">
+            <div className="w-2 h-2 rounded-full bg-green-500 shadow-glow-green mr-2"></div>
+            <span className="text-xs">Completed</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-2 h-2 rounded-full bg-orange-500 shadow-glow-orange mr-2"></div>
+            <span className="text-xs">Work in Progress</span>
           </div>
         </div>
-
-        <div className="mb-6 space-y-4">
-          <Input
-            type="text"
-            placeholder="Search projects..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full"
-          />
-          <ToggleGroup
-            type="single"
-            value={selectedStatus}
-            onValueChange={(value) => setSelectedStatus(value || "All")}
-            className="flex justify-start space-x-4"
-          >
-            <ToggleGroupItem value="All">All</ToggleGroupItem>
-            <ToggleGroupItem value="Completed">Completed</ToggleGroupItem>
-            <ToggleGroupItem value="WIP">WIP</ToggleGroupItem>
-            <ToggleGroupItem value="Favourites">Favourites</ToggleGroupItem>
-          </ToggleGroup>
-        </div>
-
-        <ScrollArea className="h-[calc(100vh-300px)]">
-          <motion.div layout className="space-y-4">
-            <AnimatePresence>
-              {filteredProjects.map((project, index) => (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            <AnimatePresence mode="wait">
+              {selectedProject && (
                 <motion.div
-                  key={index}
-                  layout
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="w-full mb-3"
+                  key={selectedProject.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-white dark:bg-neutral-800 bg-opacity-70 backdrop-blur-sm rounded-xl p-6 shadow-lg"
                 >
-                  <Dialog
-                    open={selectedProject === project}
-                    onOpenChange={() =>
-                      setSelectedProject(
-                        selectedProject === project ? null : project
-                      )
-                    }
-                  >
-                    <DialogTrigger asChild>
-                      <div className="p-5 rounded-lg shadow-md bg-white dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all duration-300 w-full cursor-pointer">
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <h2 className="text-lg font-bold text-neutral-800 dark:text-neutral-100 mb-2 font-roboto-mono">
-                              {project.name}
-                            </h2>
-                            <p className="text-sm font-normal text-neutral-600 dark:text-neutral-400">
-                              {project.description}
-                            </p>
+                  <h2 className="text-2xl font-light mb-3 text-gray-700 dark:text-gray-300">
+                    {selectedProject.name}
+                  </h2>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 font-light">
+                    {selectedProject.longDescription ||
+                      selectedProject.description}
+                  </p>
+                  {selectedProject.screenshots &&
+                    selectedProject.screenshots.length > 0 && (
+                      <div
+                        className="relative cursor-pointer mb-4"
+                        onClick={() => setIsCarouselOpen(true)}
+                      >
+                        <Image
+                          src={selectedProject.screenshots[0]}
+                          alt={`${selectedProject.name} screenshot`}
+                          width={800}
+                          height={450}
+                          objectFit="cover"
+                          className="rounded-lg"
+                        />
+                        {selectedProject.screenshots.length > 1 && (
+                          <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded-full text-sm">
+                            +{selectedProject.screenshots.length - 1}
                           </div>
-                          <Badge
-                            className={`${getStatusColor(
-                              favourites.includes(project.name)
-                                ? "Favourites"
-                                : project.status
-                            )} text-xs px-2 py-1 rounded-full`}
-                          >
-                            {favourites.includes(project.name)
-                              ? "Favourite"
-                              : project.status}
-                          </Badge>
-                        </div>
+                        )}
                       </div>
-                    </DialogTrigger>
-                    {selectedProject && (
-                      <DialogContent className="p-0 bg-white dark:bg-neutral-800 rounded-lg text-neutral-800 dark:text-neutral-100 border-none w-full max-w-2xl max-h-[90vh] overflow-hidden">
-                        <div className="flex flex-col h-full">
-                          <div className="flex justify-between items-center p-5 border-b border-neutral-200 dark:border-neutral-700">
-                            <DialogTitle className="text-xl font-bold font-roboto-mono">
-                              {selectedProject.name}
-                            </DialogTitle>
-                          </div>
-                          <ScrollArea className="flex-grow p-6">
-                            {" "}
-                            {/* Changed padding from p-5 to p-6 */}
-                            <div className="space-y-5">
-                              {" "}
-                              {/* Changed space-y-4 to space-y-5 for more spacing */}
-                              <div className="flex flex-wrap gap-4 justify-between items-center">
-                                <div className="flex flex-wrap gap-4">
-                                  {selectedProject.link && (
-                                    <Button
-                                      variant="outline"
-                                      className="flex items-center gap-2 text-neutral-800 dark:text-neutral-100 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600"
-                                      onClick={() =>
-                                        window.open(
-                                          selectedProject.link,
-                                          "_blank",
-                                          "noopener noreferrer"
-                                        )
-                                      }
-                                    >
-                                      <ExternalLink className="w-4 h-4" />
-                                      Visit project
-                                    </Button>
-                                  )}
-                                  {selectedProject.codeLink && (
-                                    <Button
-                                      variant="outline"
-                                      className="flex items-center gap-2 text-neutral-800 dark:text-neutral-100 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600"
-                                      onClick={() =>
-                                        window.open(
-                                          selectedProject.codeLink,
-                                          "_blank",
-                                          "noopener noreferrer"
-                                        )
-                                      }
-                                    >
-                                      <Github className="w-4 h-4" />
-                                      View code
-                                    </Button>
-                                  )}
-                                </div>
-                                <div className="flex items-center gap-4 text-sm text-neutral-600 dark:text-neutral-400">
-                                  <div className="flex items-center gap-1">
-                                    <Calendar className="w-4 h-4" />
-                                    <span>
-                                      {selectedProject.startDate ||
-                                        "Start date not specified"}
-                                    </span>
-                                  </div>
-                                  <div className="flex items-center gap-1">
-                                    <Tag className="w-4 h-4" />
-                                    <span>{selectedProject.status}</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <DialogDescription className="text-base font-normal text-neutral-600 dark:text-neutral-400">
-                                {selectedProject.longDescription}
-                              </DialogDescription>
-                              {selectedProject.tags && (
-                                <div>
-                                  <h3 className="text-lg font-semibold mb-3">
-                                    {" "}
-                                    {/* Changed mb-2 to mb-3 */}
-                                    Technologies
-                                  </h3>
-                                  <div className="flex flex-wrap gap-2">
-                                    {selectedProject.tags.map((tag, index) => (
-                                      <Badge
-                                        key={index}
-                                        variant="secondary"
-                                        className="flex items-center gap-1"
-                                      >
-                                        {tag}
-                                      </Badge>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
-                              {selectedProject.screenshots &&
-                                selectedProject.screenshots.length > 0 && (
-                                  <div>
-                                    <h3 className="text-lg font-semibold mb-3">
-                                      {" "}
-                                      {/* Changed mb-2 to mb-3 */}
-                                      Screenshots
-                                    </h3>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                      {selectedProject.screenshots.map(
-                                        (screenshot, index) => (
-                                          <div
-                                            key={index}
-                                            className="cursor-pointer"
-                                            onClick={() =>
-                                              setZoomedImage(screenshot)
-                                            }
-                                          >
-                                            <Image
-                                              src={screenshot}
-                                              alt={`${
-                                                selectedProject.name
-                                              } screenshot ${index + 1}`}
-                                              width={400}
-                                              height={300}
-                                              className="w-full h-auto rounded-lg shadow-md"
-                                            />
-                                          </div>
-                                        )
-                                      )}
-                                    </div>
-                                  </div>
-                                )}
-                            </div>
-                          </ScrollArea>
-                        </div>
-                      </DialogContent>
                     )}
-                  </Dialog>
+                  <div className="flex space-x-4">
+                    {selectedProject.link && (
+                      <motion.a
+                        href={selectedProject.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-sm font-light text-gray-600 hover:text-gray-800 transition-colors duration-200"
+                        whileHover={{ x: 5 }}
+                      >
+                        Explore Project
+                        <ArrowUpRight className="ml-1 h-3 w-3" />
+                      </motion.a>
+                    )}
+                    {selectedProject.codeLink && (
+                      <motion.a
+                        href={selectedProject.codeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-sm font-light text-gray-600 hover:text-gray-800 transition-colors duration-200"
+                        whileHover={{ x: 5 }}
+                      >
+                        View Code
+                        <Github className="ml-1 h-3 w-3" />
+                      </motion.a>
+                    )}
+                  </div>
                 </motion.div>
-              ))}
+              )}
             </AnimatePresence>
-          </motion.div>
-        </ScrollArea>
+          </div>
+          <div className="w-full">
+            <ScrollArea className="h-[calc(100vh-200px)] lg:h-[700px] w-full pr-4">
+              <div className="space-y-4 py-2">
+                {projects.map((project) => (
+                  <ProjectCard
+                    key={project.name}
+                    project={project}
+                    isSelected={selectedProject?.name === project.name}
+                    onClick={() => setSelectedProject(project)}
+                  />
+                ))}
+              </div>
+            </ScrollArea>
+          </div>
+        </div>
       </div>
-      {loading && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <Loader className="w-12 h-12 text-white animate-spin" />
-        </div>
-      )}
-      {error && (
-        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-2 rounded">
-          {error}
-        </div>
-      )}
-      {zoomedImage && (
-        <Dialog open={!!zoomedImage} onOpenChange={() => setZoomedImage(null)}>
-          <DialogContent className="p-0 bg-transparent border-none max-w-5xl max-h-[90vh]">
-            <div className="relative w-full h-full">
-              <Image
-                src={zoomedImage}
-                alt="Zoomed screenshot"
-                layout="responsive"
-                width={1920}
-                height={1080}
-                objectFit="contain"
-                className="rounded-lg"
-              />
-              <DialogClose className="absolute top-2 right-2 rounded-full p-1 bg-white dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
-                <X className="h-6 w-6" />
-              </DialogClose>
-            </div>
-          </DialogContent>
-        </Dialog>
-      )}
+      <Dialog
+        open={isCarouselOpen}
+        onOpenChange={() => setIsCarouselOpen(false)}
+      >
+        <DialogContent className="max-w-none w-screen h-screen p-0">
+          <div className="w-full h-full">
+            {selectedProject && selectedProject.screenshots && (
+              <Carousel images={selectedProject.screenshots} />
+            )}
+          </div>
+          <DialogClose className="absolute top-4 right-4 z-30">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="bg-white bg-opacity-50 hover:bg-opacity-100"
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </DialogClose>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
+
+const globalStyles = `
+  .shadow-glow-green {
+    box-shadow: 0 0 5px #4ade80, 0 0 10px #4ade80;
+  }
+  .shadow-glow-orange {
+    box-shadow: 0 0 5px #fb923c, 0 0 10px #fb923c;
+  }
+`;

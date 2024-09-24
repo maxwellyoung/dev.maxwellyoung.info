@@ -1,7 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Resume() {
+  const [isImageEnlarged, setIsImageEnlarged] = useState(false);
+
   return (
     <div className="relative w-full p-6 flex flex-col items-center fade-in">
       <div className="max-w-4xl w-full">
@@ -39,13 +45,18 @@ export default function Resume() {
                 </span>
               </a>
             </Link>
-            <Image
-              className="w-18 h-18 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105"
-              src="/profile_work.webp"
-              alt="Profile"
-              width={72}
-              height={72}
-            />
+            <div
+              className="cursor-pointer transition duration-300 ease-in-out transform hover:scale-105"
+              onClick={() => setIsImageEnlarged(true)}
+            >
+              <Image
+                className="w-18 h-18 rounded-full shadow-md"
+                src="/profile_work.webp"
+                alt="Profile"
+                width={72}
+                height={72}
+              />
+            </div>
           </div>
         </div>
 
@@ -256,6 +267,36 @@ export default function Resume() {
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {isImageEnlarged && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md"
+            onClick={() => setIsImageEnlarged(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src="/profile_work.webp"
+                alt="Profile"
+                width={300}
+                height={300}
+                className="rounded-full shadow-2xl"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

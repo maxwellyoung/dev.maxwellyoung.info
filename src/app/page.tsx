@@ -42,8 +42,8 @@ export default function Home() {
               >
                 ninetynine digital
               </Link>
-              , I am developing a number of applications with intention and
-              principles to elevate user experiences and solve everyday issues.
+              , I am developing a number of applications for people and for my
+              own education.
             </p>
           </div>
 
@@ -84,14 +84,6 @@ export default function Home() {
                 className="underline hover:dark:text-zinc-300"
               >
                 GitHub
-              </Link>
-              . You can also follow{" "}
-              <Link
-                href="https://x.com/ninetyninedigi"
-                target="_blank"
-                className="underline hover:dark:text-zinc-300"
-              >
-                ninetynine digital on X
               </Link>
               .
             </p>
