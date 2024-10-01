@@ -49,6 +49,24 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Metrosexual Awareness Night",
+    status: "Completed",
+    description:
+      "Developed a flashy and engaging site for Metrosexual Awareness Night, incorporating unique stylistic and functional elements.",
+    longDescription:
+      "Implemented a countdown timer for the event, adding a sense of anticipation. The design features a hipster runoff pink gradient background with shooting star effects, contributing to a playful and energetic aesthetic. The site includes responsive side navigation for easy project selection, and the overall styling was updated to be more vibrant, flashy, and pink-themed.",
+    link: "https://metrosexualawareness.com",
+    startDate: "2024-10-11",
+    tags: [
+      "Web Development",
+      "Responsive Design",
+      "Countdown Timer",
+      "CSS Animations",
+      "Event Website",
+    ],
+    screenshots: ["/projectImages/man1.webp", "/projectImages/man2.webp"],
+  },
+  {
     name: "Jeremy Blake Interactive Art Experience",
     status: "Completed",
     description:
