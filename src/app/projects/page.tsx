@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useMemo,
-  useCallback,
-} from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   motion,
   AnimatePresence,
@@ -49,6 +43,21 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Rep Tracker",
+    status: "Completed",
+    description:
+      "A minimalistic workout tracker that uses a webcam to count reps for exercises like bicep curls.",
+    longDescription:
+      "Rep Tracker is a fun and minimalistic workout tracking app that uses AI to track repetitions for exercises like bicep curls. The app utilizes a webcam feed to detect arm movements and count reps, with playful Nintendo and Apple-inspired design elements. Built with Next.js, TailwindCSS, Framer Motion, MediaPipe, and Cursor.ai, the app focuses on delivering a fluid and engaging user experience. Future plans include adding streaks, workout logs, and integrations with Uploadthing for sharing workout progress.",
+    link: "https://rep-tracker-theta.vercel.app/",
+    startDate: "2024-10-09",
+    tags: ["Next.js", "Tailwind CSS", "Framer Motion", "MediaPipe", "AI"],
+    screenshots: [
+      "/projectImages/reptracker1.webp",
+      "/projectImages/reptracker2.webp",
+    ],
+  },
+  {
     name: "Metrosexual Awareness Night",
     status: "Completed",
     description:
@@ -65,6 +74,7 @@ const projects: Project[] = [
       "Event Website",
     ],
     screenshots: ["/projectImages/man1.webp", "/projectImages/man2.webp"],
+    codeLink: "https://github.com/maxwellyoung/man",
   },
   {
     name: "Jeremy Blake Interactive Art Experience",
@@ -505,7 +515,7 @@ export default function ProjectsShowcase() {
                         href={selectedProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm font-light text-gray-600 hover:text-gray-800 transition-colors duration-200"
+                        className="inline-flex items-center text-sm font-light text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 transition-colors duration-200"
                         whileHover={{ x: 5 }}
                       >
                         Explore Project
@@ -517,7 +527,7 @@ export default function ProjectsShowcase() {
                         href={selectedProject.codeLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm font-light text-gray-600 hover:text-gray-800 transition-colors duration-200"
+                        className="inline-flex items-center text-sm font-light text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 transition-colors duration-200"
                         whileHover={{ x: 5 }}
                       >
                         View Code

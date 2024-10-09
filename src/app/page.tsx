@@ -1,13 +1,15 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Resume from "./resume/page";
 import ProjectsShowcase from "./projects/page";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import FallingStars from "@/components/FallingStars";
 
 export default function Home() {
   const [isHovered, setIsHovered] = useState(false);
+  const [showStars, setShowStars] = useState(false);
 
   const titleVariants = {
     initial: { opacity: 1, y: 0 },
@@ -26,7 +28,8 @@ export default function Home() {
           <header className="mb-12">
             <a
               href="/"
-              className="text-xl glint dark:text-zinc-200 text-zinc-800 font-medium"
+              className="text-xl glint dark:text-zinc-200 text-zinc-800 font-medium cursor-pointer"
+              onClick={() => setShowStars(true)}
             >
               Maxwell Young
             </a>
@@ -133,6 +136,9 @@ export default function Home() {
           <Resume />
         </section>
       </main>
+      <AnimatePresence>
+        {showStars && <FallingStars onComplete={() => setShowStars(false)} />}
+      </AnimatePresence>
     </div>
   );
 }
