@@ -43,6 +43,16 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Social Chaos",
+    status: "Completed",
+    description: "Picolo clone. A personalized party game for your friends",
+    link: "https://chaos-9jvs5t7pd-maxwellyoungs-projects.vercel.app/",
+    screenshots: [
+      "/projectImages/socialchaos1.webp",
+      "/projectImages/socialchaos2.webp",
+    ],
+  },
+  {
     name: "Rep Tracker",
     status: "Completed",
     description:
