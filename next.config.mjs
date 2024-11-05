@@ -1,8 +1,16 @@
-import mdx from "@next/mdx";
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ["js", "jsx", "mdx"],
-  // Other configurations as needed
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+    ],
+  },
 };
 
-export default mdx(nextConfig);
+import withMDX from "@next/mdx";
+const withMDXConfig = withMDX();
+export default withMDXConfig(nextConfig);
