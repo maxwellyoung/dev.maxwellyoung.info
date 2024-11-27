@@ -50,7 +50,10 @@ const projects: Project[] = [
     longDescription:
       "Portfolio site for fashion stylist and designer Ch’lita, featuring work for Rosalia, The Dare and more. Built with React, Next.js, Tailwind, Framer Motion and a Sanity CMS for a user friendly way for client to upload projects. Designed with a focus on minimalism to display the work clearly and mobile first as suspected majority would be viewing on phone. Dynamic layout for expanded project imagery view.",
     link: "https://chlita.com",
-    screenshots: ["/projectImages/chlita.webp"],
+    screenshots: [
+      "/projectImages/chlita-1.webp",
+      "/projectImages/chlita-2.webp",
+    ],
   },
   {
     name: "Social Chaos",
