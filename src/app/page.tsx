@@ -149,9 +149,9 @@ export default function Home() {
         <section id="projects">
           <ProjectsShowcase />
         </section>
-        <section id="blog">
+        {/* <section id="blog">
           <BlogLayoutComponent />
-        </section>
+        </section> */}
         <section id="resume">
           <Resume />
         </section>
