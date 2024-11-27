@@ -184,7 +184,7 @@ export default function BlogPost() {
       <div className="flex gap-4 mb-8 text-gray-600">
         <time dateTime={post.publishedAt}>
           <Calendar className="w-4 h-4 inline mr-2" />
-          {formatDate(post.publishedAt, "long")}
+          {formatDate(post.publishedAt)}
         </time>
         {post.tags && (
           <div className="flex gap-2">

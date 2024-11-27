@@ -11,13 +11,14 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Calendar, Tag, Search, ArrowUpRight } from "lucide-react";
+import { Calendar, Tag, Search, ArrowUpRight, X } from "lucide-react";
 import Image from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import sanityClient from "@sanity/client";
 import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
+import { formatDate } from "@/lib/utils";
 
 const client = sanityClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -172,7 +173,7 @@ function BlogPostCard({ post, isSelected, onClick }: BlogPostCardProps) {
         </p>
         <div className="flex items-center text-xs text-gray-500 dark:text-gray-400">
           <Calendar className="w-3 h-3 mr-1" />
-          {post.publishedAt}
+          {formatDate(post.publishedAt)}
         </div>
       </div>
       <motion.div
@@ -433,7 +434,7 @@ export function BlogLayoutComponent() {
                     </h2>
                     <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
                       <Calendar className="w-4 h-4 mr-2" />
-                      {selectedPost.publishedAt}
+                      {formatDate(selectedPost.publishedAt)}
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-300 mb-6 font-light line-clamp-4">
                       <PortableText
