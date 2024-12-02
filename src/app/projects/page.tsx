@@ -54,6 +54,9 @@ const projects: Project[] = [
     screenshots: [
       "/projectImages/chlita-1.webp",
       "/projectImages/chlita-2.webp",
+      "/projectImages/chlita-3.webp",
+      "/projectImages/chlita-4.webp",
+      "/projectImages/chlita-5.webp",
     ],
   },
   {
