@@ -90,7 +90,7 @@ export default function Home() {
               and principles to elevate user experiences and solve everyday
               issues.
             </p>
-            <p className="text-zinc-500 dark:text-zinc-400">
+            {/* <p className="text-zinc-500 dark:text-zinc-400">
               As the founder of{" "}
               <Link
                 href={"https://ninetynine.digital/"}
@@ -101,6 +101,11 @@ export default function Home() {
               </Link>
               , I am developing a number of applications for people and for my
               own education.
+            </p> */}
+            <p className="text-zinc-500 dark:text-zinc-400">
+              I&apos;m currently working on a number of projects, including a
+              portfolio sites for designers/authors/artists, a party game for
+              friends, and a iOS application to be announced soon.
             </p>
           </div>
 
