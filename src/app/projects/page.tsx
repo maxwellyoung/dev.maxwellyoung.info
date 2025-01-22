@@ -45,9 +45,10 @@ const projects: Project[] = [
   {
     name: "Ivan Guzman | Writer & Cultural Strategist",
     status: "Completed",
-    description: "A portfolio website for Ivan Guzman, a writer.",
+    description:
+      "A portfolio website for Ivan Guzman, a writer & cultural strategist.",
     longDescription:
-      "A portfolio website for Ivan Guzman, a writer. Built with Next.js, Tailwind CSS, and Framer Motion.",
+      "A portfolio website for Ivan Guzman, a writer. Built with Next.js, Tailwind CSS, and Framer Motion. Managed by a Sanity CMS for a user friendly way for client to upload articles.",
     link: "https://ivan-guzman.com/",
     screenshots: ["/projectImages/ivan-1.webp"],
   },
