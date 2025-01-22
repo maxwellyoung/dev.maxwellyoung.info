@@ -43,6 +43,15 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Ivan Guzman | Writer",
+    status: "Completed",
+    description: "A portfolio website for Ivan Guzman, a writer.",
+    longDescription:
+      "A portfolio website for Ivan Guzman, a writer. Built with Next.js, Tailwind CSS, and Framer Motion.",
+    link: "https://ivan-guzman.com/",
+    screenshots: ["/projectImages/ivan-1.webp"],
+  },
+  {
     name: "Ch'lita | Fashion Designer & Stylist Portfolio",
     status: "Completed",
     description:
