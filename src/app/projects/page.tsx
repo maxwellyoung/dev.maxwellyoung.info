@@ -43,7 +43,7 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: "Ivan Guzman | Writer",
+    name: "Ivan Guzman | Writer & Cultural Strategist",
     status: "Completed",
     description: "A portfolio website for Ivan Guzman, a writer.",
     longDescription:
