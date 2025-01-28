@@ -90,22 +90,18 @@ export default function Home() {
               and principles to elevate user experiences and solve everyday
               issues.
             </p>
-            {/* <p className="text-zinc-500 dark:text-zinc-400">
-              As the founder of{" "}
+            <p className="text-zinc-500 dark:text-zinc-400">
+              I&apos;m currently working on a number of projects, including
+              portfolio sites for designers/authors/artists at{" "}
               <Link
-                href={"https://ninetynine.digital/"}
+                href="https://www.ninetynine.digital/"
                 target="_blank"
                 className="underline hover:text-zinc-800 hover:dark:text-zinc-300"
               >
                 ninetynine digital
               </Link>
-              , I am developing a number of applications for people and for my
-              own education.
-            </p> */}
-            <p className="text-zinc-500 dark:text-zinc-400">
-              I&apos;m currently working on a number of projects, including a
-              portfolio sites for designers/authors/artists, a party game for
-              friends, and a iOS application to be announced soon.
+              , a party game for friends, and a iOS application to be announced
+              soon.
             </p>
           </div>
 
