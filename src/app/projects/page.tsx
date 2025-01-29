@@ -48,7 +48,7 @@ const projects: Project[] = [
     description:
       "A portfolio website for Ivan Guzman, a writer & cultural strategist.",
     longDescription:
-      "A portfolio website for Ivan Guzman, a writer. Built with Next.js, Tailwind CSS, and Framer Motion. Managed by a Sanity CMS for a user friendly way for client to upload articles.",
+      "A portfolio website for Ivan Guzman, a writer. Built with Next.js, Tailwind CSS, and Framer Motion. Managed by a Sanity CMS for a user-friendly way for the client to upload articles.",
     link: "https://ivan-guzman.com/",
     screenshots: ["/projectImages/ivan-1.webp"],
   },
@@ -58,7 +58,7 @@ const projects: Project[] = [
     description:
       "A portfolio website for Ch'lita, a fashion designer and stylist.",
     longDescription:
-      "Portfolio site for fashion stylist and designer Ch’lita, featuring work for Rosalia, The Dare and more. Built with React, Next.js, Tailwind, Framer Motion and a Sanity CMS for a user friendly way for client to upload projects. Designed with a focus on minimalism to display the work clearly and mobile first as suspected majority would be viewing on phone. Dynamic layout for expanded project imagery view.",
+      "Portfolio site for fashion stylist and designer Ch’lita, featuring work for Rosalia, The Dare, and more. Built with React, Next.js, Tailwind, Framer Motion, and a Sanity CMS for a user-friendly way for the client to upload projects. Designed with a focus on minimalism to display the work clearly and mobile-first as the majority would be viewing on their phone. Dynamic layout for expanded project imagery view.",
     link: "https://chlita.com",
     codeLink: "https://github.com/maxwellyoung/chlita",
     screenshots: [
@@ -67,28 +67,6 @@ const projects: Project[] = [
       "/projectImages/chlita-3.webp",
       "/projectImages/chlita-4.webp",
       "/projectImages/chlita-5.webp",
-    ],
-  },
-  {
-    name: "Social Chaos",
-    status: "Completed",
-    description: "Picolo clone. A personalized party game for your friends",
-    link: "https://chaos-phi.vercel.app",
-    screenshots: ["/projectImages/chaos1.webp", "/projectImages/chaos2.webp"],
-  },
-  {
-    name: "Rep Tracker",
-    status: "Completed",
-    description:
-      "A minimalistic workout tracker that uses a webcam to count reps for exercises like bicep curls.",
-    longDescription:
-      "Rep Tracker is a fun and minimalistic workout tracking app that uses AI to track repetitions for exercises like bicep curls. The app utilizes a webcam feed to detect arm movements and count reps, with playful Nintendo and Apple-inspired design elements. Built with Next.js, TailwindCSS, Framer Motion and MediaPipe, the app focuses on delivering a fluid and engaging user experience. Future plans include adding streaks, workout logs, and integrations with Uploadthing for sharing workout progress.",
-    link: "https://rep-tracker-theta.vercel.app/",
-    startDate: "2024-10-09",
-    tags: ["Next.js", "Tailwind CSS", "Framer Motion", "MediaPipe", "AI"],
-    screenshots: [
-      "/projectImages/reptracker1.webp",
-      "/projectImages/reptracker2.webp",
     ],
   },
   {
@@ -114,7 +92,7 @@ const projects: Project[] = [
     name: "Jeremy Blake Interactive Art Experience",
     status: "Completed",
     description:
-      "An interactive digital art experience inspired by the captivating works of Jeremy Blake, a trailblazing artist known for blending vibrant visuals with abstract storytelling. ",
+      "An interactive digital art experience inspired by the captivating works of Jeremy Blake, a trailblazing artist known for blending vibrant visuals with abstract storytelling.",
     longDescription:
       "This project is an interactive digital art experience inspired by the works of Jeremy Blake, an American digital artist known for his dynamic, abstract color field animations. Users can navigate through abstract, color-rich landscapes, interact with dynamic elements responding to mouse movements or touch, and experience fluid transitions blending and morphing colors in Blake's signature style.",
     link: "https://jeremy-blake.vercel.app/",
@@ -128,7 +106,7 @@ const projects: Project[] = [
     status: "WIP",
     description: "An AI-powered movie discovery and recommendation platform.",
     longDescription:
-      "CineSync is an AI-powered movie discovery and recommendation platform built with Next.js, React, Supabase, OpenAI, Clerk and TypeScript. It helps users find their next favorite movie based on their preferences and mood. Features include personalized movie recommendations, watchlist management, friend connections for sharing recommendations, responsive design with dark mode, and more.",
+      "CineSync is an AI-powered movie discovery and recommendation platform built with Next.js, React, Supabase, OpenAI, Clerk, and TypeScript. It helps users find their next favorite movie based on their preferences and mood. Features include personalized movie recommendations, watchlist management, friend connections for sharing recommendations, responsive design with dark mode, and more.",
     startDate: "2023-04-01",
     tags: ["Next.js", "React", "AI", "TypeScript"],
     link: "https://cinesync-peach.vercel.app/",
@@ -137,85 +115,6 @@ const projects: Project[] = [
       "/projectImages/cinesync2.webp",
       "/projectImages/cinesync3.webp",
     ],
-  },
-  {
-    name: "Tanya Bardell-Young Portfolio",
-    status: "WIP",
-    description:
-      "A portfolio website for my mother, interior designer and color consultant Tanya Bardell-Young.",
-    longDescription:
-      "This project is a portfolio website for Tanya Bardell-Young, showcasing her work in interior design and color consulting. The site features a clean, minimalist design with interactive elements and a focus on showcasing Tanya's projects. Built with Next.js and styled using Tailwind CSS, it offers a responsive and engaging user experience.",
-    link: "https://tanya-zeta.vercel.app/",
-    codeLink: "https://github.com/maxwellyoung/tanya",
-    startDate: "2023-02-10",
-    tags: ["Next.js", "Tailwind CSS", "React"],
-    screenshots: ["/projectImages/tanya.webp"],
-  },
-  {
-    name: "StudentView",
-    status: "WIP",
-    description:
-      "A companion app for students with budgeting, note-taking, and mental well-being tools.",
-    longDescription:
-      "StudentView is designed to be a focused version of Notion for students, encompassing budgeting, study reflections, and mental well-being tools. The app features a modular layout with both dark and light themes based on system preferences. It includes sections for tracking budgeting, study reflections, and a meditation section. Future plans involve integrating daily inspirational quotes and more user customization options.",
-    link: "https://www.studentview.app/",
-    startDate: "2023-03-01",
-    tags: ["React", "Next.js", "Tailwind CSS"],
-    screenshots: [
-      "/projectImages/StudentView.jpeg",
-      "/projectImages/StudentView2.webp",
-    ],
-  },
-  {
-    name: "ResumeForge",
-    status: "WIP",
-    description:
-      "An interactive resume builder showcasing user-centric design with dynamic features.",
-    longDescription:
-      "ResumeForge is an interactive resume builder designed to demonstrate the power of user-centric design with dynamic features. The platform allows users to create professional, eye-catching resumes through a simple, intuitive interface. Built with modern web technologies, it offers a seamless user experience. The project is a testament to my ability to create responsive and accessible web applications that cater to the needs of a diverse user base.",
-    link: "https://resume-forge-ecru.vercel.app/",
-    codeLink: "https://github.com/maxwellyoung/resume-forge",
-    startDate: "2023-05-01",
-    tags: ["React", "Next.js", "Tailwind CSS"],
-    screenshots: ["/projectImages/ResumeForge.webp"],
-  },
-  {
-    name: "Aesop E-commerce Marketing Site (Unofficial)",
-    status: "Completed",
-    description:
-      "An unofficial example of a marketing site for Aesop, designed with a focus on clean aesthetics and user experience.",
-    longDescription:
-      "This project is an unofficial marketing site concept for Aesop. It showcases products with a clean, modern design that aligns with the brand's visual identity. The site includes a prominent hero image, a section highlighting featured products, and a fully responsive layout. It was developed using Next.js and styled with Tailwind CSS to ensure a smooth user experience on all devices.",
-    link: "https://aesop-omega.vercel.app/",
-    codeLink: "https://github.com/maxwellyoung/aesop",
-    startDate: "2023-01-01",
-    tags: ["Next.js", "Tailwind CSS", "React"],
-  },
-  {
-    name: "Internal Dashboard for Spark New Zealand",
-    status: "Completed",
-    description:
-      "A responsive UI for B2B Sales, built with React and Next.js to enhance team efficiency.",
-    longDescription: `As a Data Intelligence UI Developer at Spark New Zealand from Nov 2022 to Apr 2023:
-    • Designed and developed the front end of an internal dashboard application.
-    • Translated PowerBI dashboard into Figma design, integrating machine learning algorithms.
-    • Implemented front-end using React and Next.js, increasing productivity by 20%.
-    • Collaborated with product team and stakeholders to ensure usability.
-    • Conducted user testing to refine the UI.`,
-    startDate: "2022-11-01",
-    tags: ["React", "Next.js", "Figma", "UI/UX"],
-  },
-  {
-    name: "Portfolio Website",
-    status: "Completed",
-    description:
-      "A personal portfolio website to showcase my skills, projects, and experience.",
-    longDescription:
-      "My portfolio website is designed to provide an engaging and informative platform to showcase my skills, projects, and professional experience. Built with Next.js and Tailwind, the site features an interactive design, project showcases, and an upcoming blog section. The website also includes links to my social media profiles, providing multiple ways for potential employers and collaborators to reach out.",
-    link: "https://dev.maxwellyoung.info/",
-    codeLink: "https://github.com/maxwellyoung/dev.maxwellyoung.info",
-    startDate: "2023-01-01",
-    tags: ["Next.js", "Tailwind CSS", "React"],
   },
   {
     name: "Music Website",
