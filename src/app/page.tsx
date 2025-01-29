@@ -100,7 +100,7 @@ export default function Home() {
               >
                 ninetynine digital
               </Link>
-              , a party game for friends, and a iOS application to be announced
+              , a party game for friends, and an iOS application to be announced
               soon.
             </p>
           </div>
