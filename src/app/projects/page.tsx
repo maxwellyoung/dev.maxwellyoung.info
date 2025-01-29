@@ -82,7 +82,7 @@ const projects: Project[] = [
     description:
       "A minimalistic workout tracker that uses a webcam to count reps for exercises like bicep curls.",
     longDescription:
-      "Rep Tracker is a fun and minimalistic workout tracking app that uses AI to track repetitions for exercises like bicep curls. The app utilizes a webcam feed to detect arm movements and count reps, with playful Nintendo and Apple-inspired design elements. Built with Next.js, TailwindCSS, Framer Motion, MediaPipe, and Cursor.ai, the app focuses on delivering a fluid and engaging user experience. Future plans include adding streaks, workout logs, and integrations with Uploadthing for sharing workout progress.",
+      "Rep Tracker is a fun and minimalistic workout tracking app that uses AI to track repetitions for exercises like bicep curls. The app utilizes a webcam feed to detect arm movements and count reps, with playful Nintendo and Apple-inspired design elements. Built with Next.js, TailwindCSS, Framer Motion and MediaPipe, the app focuses on delivering a fluid and engaging user experience. Future plans include adding streaks, workout logs, and integrations with Uploadthing for sharing workout progress.",
     link: "https://rep-tracker-theta.vercel.app/",
     startDate: "2024-10-09",
     tags: ["Next.js", "Tailwind CSS", "Framer Motion", "MediaPipe", "AI"],
