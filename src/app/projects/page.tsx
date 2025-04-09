@@ -45,22 +45,25 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: "Where Have You Been | Interactive Release Site",
+    name: "Where Have You Been | Interactive Release Microsite",
     status: "Completed",
     description:
-      "A digital liner note for my single 'Turn It Up'—part lo-fi press kit, part interactive game.",
+      "A cinematic, interactive microsite for my single 'Turn It Up'—blending performance-optimised web dev with lo-fi storytelling.",
     longDescription:
-      "An experimental microsite blending music, web dev, and design. Features lyrics, metadata, photography, and an embedded game inspired by the track’s themes. Built with vanilla JS and custom HTML/CSS, the site explores non-linear narrative and interactive digital storytelling in a lo-fi Y2K aesthetic.",
+      "A digital liner note built with a modern, performance-focused stack: Next.js 14, TypeScript, Tailwind CSS, Framer Motion, and Matter.js. Combines custom UI components (Radix, lucide-react), responsive visuals, and a lightweight physics-based game to echo the track’s emotional arc. Focused on accessibility, fast loading, and Y2K-inspired aesthetics. Features include metadata, lyrics, dynamic visual design, and a custom mini-game wired to the song’s narrative. Built with a heavy emphasis on component reuse, type safety, and render performance.",
     link: "https://wherehaveyoubeen.blog",
     startDate: "2025-04-04",
     tags: [
-      "Music",
-      "JavaScript",
-      "Creative Coding",
-      "Game Dev",
-      "Design Engineering",
+      "Next.js 14",
+      "TypeScript",
+      "Framer Motion",
+      "Tailwind CSS",
+      "Radix UI",
+      "Matter.js",
+      "Creative Dev",
+      "Microsite",
     ],
-    screenshots: ["/projectImages/whybb.webp", "/projectImages/whybb2.webp"],
+    screenshots: ["/projectImages/whybb1.webp", "/projectImages/whybb2.webp"],
   },
   {
     name: "Ivan Guzman | Writer & Cultural Strategist",
