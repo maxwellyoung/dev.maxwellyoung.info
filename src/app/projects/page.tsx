@@ -28,6 +28,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Carousel from "@/components/Carousel";
+import PortfolioMatrix from "@/components/portfolio-matrix";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface Project {
   name: string;
@@ -42,6 +44,24 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    name: "Where Have You Been | Interactive Release Site",
+    status: "Completed",
+    description:
+      "A digital liner note for my single 'Turn It Up'—part lo-fi press kit, part interactive game.",
+    longDescription:
+      "An experimental microsite blending music, web dev, and design. Features lyrics, metadata, photography, and an embedded game inspired by the track’s themes. Built with vanilla JS and custom HTML/CSS, the site explores non-linear narrative and interactive digital storytelling in a lo-fi Y2K aesthetic.",
+    link: "https://wherehaveyoubeen.blog",
+    startDate: "2025-04-04",
+    tags: [
+      "Music",
+      "JavaScript",
+      "Creative Coding",
+      "Game Dev",
+      "Design Engineering",
+    ],
+    screenshots: ["/projectImages/whybb.webp", "/projectImages/whybb2.webp"],
+  },
   {
     name: "Ivan Guzman | Writer & Cultural Strategist",
     status: "Completed",
@@ -58,7 +78,7 @@ const projects: Project[] = [
     description:
       "A portfolio website for Ch'lita, a fashion designer and stylist.",
     longDescription:
-      "Portfolio site for fashion stylist and designer Ch’lita, featuring work for Rosalia, The Dare, and more. Built with React, Next.js, Tailwind, Framer Motion, and a Sanity CMS for a user-friendly way for the client to upload projects. Designed with a focus on minimalism to display the work clearly and mobile-first as the majority would be viewing on their phone. Dynamic layout for expanded project imagery view.",
+      "Portfolio site for fashion stylist and designer Ch'lita, featuring work for Rosalia, The Dare, and more. Built with React, Next.js, Tailwind, Framer Motion, and a Sanity CMS for a user-friendly way for the client to upload projects. Designed with a focus on minimalism to display the work clearly and mobile-first as the majority would be viewing on their phone. Dynamic layout for expanded project imagery view.",
     link: "https://chlita.com",
     codeLink: "https://github.com/maxwellyoung/chlita",
     screenshots: [
@@ -207,97 +227,12 @@ export default function ProjectsShowcase() {
   );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
+  const [showMatrix, setShowMatrix] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const [lastScrollTime, setLastScrollTime] = useState(0);
-  const scrollDelay = 800; // Reduced from 1500 to 800 ms
-
-  const nextProject = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
-  }, []);
-
-  const prevProject = useCallback(() => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + projects.length) % projects.length
-    );
-  }, []);
-
-  const handleWheel = useCallback(
-    (event: WheelEvent) => {
-      if (
-        containerRef.current &&
-        containerRef.current.contains(event.target as Node)
-      ) {
-        event.preventDefault();
-        const currentTime = Date.now();
-
-        if (currentTime - lastScrollTime > scrollDelay) {
-          const delta = event.deltaY;
-          if (Math.abs(delta) > 10) {
-            // Reduced threshold from 100 to 50
-            if (delta > 0) {
-              nextProject();
-            } else {
-              prevProject();
-            }
-            setLastScrollTime(currentTime);
-          }
-        }
-      }
-    },
-    [nextProject, prevProject, lastScrollTime, scrollDelay]
-  );
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener("wheel", handleWheel, { passive: false });
-    }
-    return () => {
-      if (container) {
-        container.removeEventListener("wheel", handleWheel);
-      }
-    };
-  }, [handleWheel]);
-
-  useEffect(() => {
-    setSelectedProject(projects[currentIndex]);
-
-    // Scroll to the selected project in the list
-    const scrollArea = scrollAreaRef.current;
-    const selectedProjectElement = scrollArea?.querySelector(
-      `[data-project-index="${currentIndex}"]`
-    );
-
-    if (scrollArea && selectedProjectElement) {
-      const scrollAreaRect = scrollArea.getBoundingClientRect();
-      const selectedProjectRect =
-        selectedProjectElement.getBoundingClientRect();
-
-      if (
-        selectedProjectRect.top < scrollAreaRect.top ||
-        selectedProjectRect.bottom > scrollAreaRect.bottom
-      ) {
-        selectedProjectElement.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-          inline: "nearest",
-        });
-      }
-    }
-  }, [currentIndex]);
-
-  const backgroundSpring = useSpring(0, { stiffness: 100, damping: 30 });
-  const backgroundRotation = useTransform(backgroundSpring, [0, 1], [0, 360]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      backgroundSpring.set(Math.random());
-    }, 15000);
-    return () => clearInterval(interval);
-  }, [backgroundSpring]);
-
-  const [isHovered, setIsHovered] = useState(false);
+  const scrollDelay = 800;
 
   const titleVariants = {
     initial: { opacity: 1, y: 0 },
@@ -318,159 +253,185 @@ export default function ProjectsShowcase() {
   };
 
   return (
-    <div className="min-h-screen text-gray-800 dark:text-gray-200 font-sans relative overflow-hidden">
-      <motion.div
-        className="absolute inset-0 opacity-5"
-        style={{
-          background: `conic-gradient(from ${backgroundRotation}deg at 50% 50%, #FF6B6B, #4ECDC4, #45B7D1, #98CA32, #FB8B24, #FF6B6B)`,
-        }}
-      />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="w-full max-w-4xl mx-auto">
+      {showMatrix ? (
+        <div className="relative">
+          <PortfolioMatrix
+            onNodeSelect={(node) => {
+              const project = projects.find((p) => p.name === node.name);
+              if (project) {
+                setSelectedProject(project);
+                setCurrentIndex(projects.indexOf(project));
+                setShowMatrix(false);
+              }
+            }}
+          />
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute top-4 right-4 z-50 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-200"
+            onClick={() => setShowMatrix(false)}
+          >
+            <X className="h-4 w-4" />
+            <span className="sr-only">Close Matrix View</span>
+          </Button>
+        </div>
+      ) : (
         <div
-          className="relative mb-8 overflow-hidden"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          ref={containerRef}
+          className="relative h-[calc(100vh-200px)] overflow-hidden"
         >
-          <motion.h1
-            className="text-4xl font-extralight tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-400 dark:from-gray-300 dark:to-gray-500"
-            variants={titleVariants}
-            initial="initial"
-            animate={isHovered ? "hover" : "initial"}
-          >
-            Projects
-          </motion.h1>
-          <motion.span
-            className="absolute top-0 left-0 text-4xl font-extralight tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-400 dark:from-gray-300 dark:to-gray-500 whitespace-nowrap"
-            variants={subtitleVariants}
-            initial="initial"
-            animate={isHovered ? "hover" : "initial"}
-          >
-            Crafting Digital Experiences
-          </motion.span>
-        </div>
-        <div className="flex items-center space-x-4 mb-8">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center">
-              <div
-                className={`w-2 h-2 rounded-full mr-2 bg-green-500 ${
-                  selectedProject?.status === "Completed"
-                    ? "shadow-glow-green-enhanced"
-                    : ""
-                }`}
-              ></div>
-              <span className="text-xs">Completed</span>
-            </div>
-            <div className="flex items-center">
-              <div
-                className={`w-2 h-2 rounded-full mr-2 bg-orange-500 ${
-                  selectedProject?.status !== "Completed"
-                    ? "shadow-glow-orange-enhanced"
-                    : ""
-                }`}
-              ></div>
-              <span className="text-xs">Work in Progress</span>
-            </div>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2" ref={containerRef}>
-            <AnimatePresence mode="wait">
-              {selectedProject && (
-                <motion.div
-                  key={selectedProject.name}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -50 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30,
-                    mass: 0.8,
-                    bounce: 0.25,
-                  }}
-                  className="bg-white dark:bg-neutral-800 bg-opacity-70 backdrop-blur-sm rounded-xl p-6 shadow-lg"
-                >
-                  <h2 className="text-2xl font-light mb-3 text-gray-700 dark:text-gray-300">
-                    {selectedProject.name}
-                  </h2>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 font-light">
-                    {selectedProject.longDescription ||
-                      selectedProject.description}
-                  </p>
-                  {selectedProject.screenshots &&
-                    selectedProject.screenshots.length > 0 && (
-                      <div
-                        className="relative cursor-pointer mb-4"
-                        onClick={() => setIsCarouselOpen(true)}
-                      >
-                        <Image
-                          src={selectedProject.screenshots[0]}
-                          alt={`${selectedProject.name} screenshot`}
-                          width={800}
-                          height={450}
-                          objectFit="cover"
-                          className="rounded-lg"
-                        />
-                        {selectedProject.screenshots.length > 1 && (
-                          <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded-full text-sm">
-                            +{selectedProject.screenshots.length - 1}
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  <div className="flex space-x-4">
-                    {selectedProject.link && (
-                      <motion.a
-                        href={selectedProject.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm font-light text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 transition-colors duration-200"
-                        whileHover={{ x: 5 }}
-                      >
-                        Explore Project
-                        <ArrowUpRight className="ml-1 h-3 w-3" />
-                      </motion.a>
-                    )}
-                    {selectedProject.codeLink && (
-                      <motion.a
-                        href={selectedProject.codeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm font-light text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 transition-colors duration-200"
-                        whileHover={{ x: 5 }}
-                      >
-                        View Code
-                        <Github className="ml-1 h-3 w-3" />
-                      </motion.a>
-                    )}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-          <div className="w-full">
-            <ScrollArea
-              className="h-[calc(100vh-200px)] lg:h-[700px] w-full pr-4"
-              ref={scrollAreaRef}
+          <div className="relative z-10">
+            <motion.h1
+              className="text-4xl font-extralight tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-400 dark:from-gray-300 dark:to-gray-500"
+              variants={titleVariants}
+              initial="initial"
+              animate={isHovered ? "hover" : "initial"}
             >
-              <div className="space-y-4 py-2">
-                {projects.map((project, index) => (
-                  <ProjectCard
-                    key={project.name}
-                    project={project}
-                    isSelected={selectedProject?.name === project.name}
-                    onClick={() => {
-                      setSelectedProject(project);
-                      setCurrentIndex(index);
-                    }}
-                    data-project-index={index}
-                  />
-                ))}
+              Projects
+            </motion.h1>
+            <motion.span
+              className="absolute top-0 left-0 text-4xl font-extralight tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-400 dark:from-gray-300 dark:to-gray-500 whitespace-nowrap"
+              variants={subtitleVariants}
+              initial="initial"
+              animate={isHovered ? "hover" : "initial"}
+            >
+              Crafting Digital Experiences
+            </motion.span>
+          </div>
+          <div className="flex items-center space-x-4 mb-8">
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center">
+                <div
+                  className={`w-2 h-2 rounded-full mr-2 bg-green-500 ${
+                    selectedProject?.status === "Completed"
+                      ? "shadow-glow-green-enhanced"
+                      : ""
+                  }`}
+                ></div>
+                <span className="text-xs">Completed</span>
               </div>
-            </ScrollArea>
+              <div className="flex items-center">
+                <div
+                  className={`w-2 h-2 rounded-full mr-2 bg-orange-500 ${
+                    selectedProject?.status !== "Completed"
+                      ? "shadow-glow-orange-enhanced"
+                      : ""
+                  }`}
+                ></div>
+                <span className="text-xs">Work in Progress</span>
+              </div>
+              <button
+                onClick={() => setShowMatrix(true)}
+                className="w-2 h-2 rounded-full bg-indigo-500 hover:shadow-[0_0_10px_2px_rgba(99,102,241,0.5)] transition-shadow duration-300 relative group"
+                aria-label="Matrix View"
+              >
+                <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 text-xs text-white bg-gray-800 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  Matrix View
+                </span>
+              </button>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2" ref={containerRef}>
+              <AnimatePresence mode="wait">
+                {selectedProject && (
+                  <motion.div
+                    key={selectedProject.name}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -50 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 30,
+                      mass: 0.8,
+                      bounce: 0.25,
+                    }}
+                    className="bg-white dark:bg-neutral-800 bg-opacity-70 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+                  >
+                    <h2 className="text-2xl font-light mb-3 text-gray-700 dark:text-gray-300">
+                      {selectedProject.name}
+                    </h2>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 font-light">
+                      {selectedProject.longDescription ||
+                        selectedProject.description}
+                    </p>
+                    {selectedProject.screenshots &&
+                      selectedProject.screenshots.length > 0 && (
+                        <div
+                          className="relative cursor-pointer mb-4"
+                          onClick={() => setIsCarouselOpen(true)}
+                        >
+                          <Image
+                            src={selectedProject.screenshots[0]}
+                            alt={`${selectedProject.name} screenshot`}
+                            width={800}
+                            height={450}
+                            objectFit="cover"
+                            className="rounded-lg"
+                          />
+                          {selectedProject.screenshots.length > 1 && (
+                            <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded-full text-sm">
+                              +{selectedProject.screenshots.length - 1}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    <div className="flex space-x-4">
+                      {selectedProject.link && (
+                        <motion.a
+                          href={selectedProject.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-sm font-light text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 transition-colors duration-200"
+                          whileHover={{ x: 5 }}
+                        >
+                          Explore Project
+                          <ArrowUpRight className="ml-1 h-3 w-3" />
+                        </motion.a>
+                      )}
+                      {selectedProject.codeLink && (
+                        <motion.a
+                          href={selectedProject.codeLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-sm font-light text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 transition-colors duration-200"
+                          whileHover={{ x: 5 }}
+                        >
+                          View Code
+                          <Github className="ml-1 h-3 w-3" />
+                        </motion.a>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+            <div className="w-full">
+              <ScrollArea
+                className="h-[calc(100vh-200px)] lg:h-[700px] w-full pr-4"
+                ref={scrollAreaRef}
+              >
+                <div className="space-y-4 py-2">
+                  {projects.map((project, index) => (
+                    <ProjectCard
+                      key={project.name}
+                      project={project}
+                      isSelected={selectedProject?.name === project.name}
+                      onClick={() => {
+                        setSelectedProject(project);
+                        setCurrentIndex(index);
+                      }}
+                      data-project-index={index}
+                    />
+                  ))}
+                </div>
+              </ScrollArea>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <Dialog
         open={isCarouselOpen}
         onOpenChange={() => setIsCarouselOpen(false)}
