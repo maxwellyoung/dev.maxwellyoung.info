@@ -168,22 +168,24 @@ export default function ProjectsShowcase() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2" ref={containerRef}>
+        <div className="flex flex-col lg:flex-row lg:space-x-6 lg:h-[75vh]">
+          <div className="lg:w-2/3" ref={containerRef}>
             <ProjectDetails
               project={selectedProject}
               onCarouselOpen={() => setIsCarouselOpen(true)}
             />
           </div>
-          <ProjectList
-            projects={projects}
-            selectedProject={selectedProject}
-            onSelectProject={(project, index) => {
-              setSelectedProject(project);
-              setCurrentIndex(index);
-            }}
-            scrollAreaRef={scrollAreaRef}
-          />
+          <div className="lg:w-1/3 mt-6 lg:mt-0 flex-grow pb-16">
+            <ProjectList
+              projects={projects}
+              selectedProject={selectedProject}
+              onSelectProject={(project, index) => {
+                setSelectedProject(project);
+                setCurrentIndex(index);
+              }}
+              scrollAreaRef={scrollAreaRef}
+            />
+          </div>
         </div>
       </div>
       <Dialog open={isCarouselOpen} onOpenChange={setIsCarouselOpen}>
