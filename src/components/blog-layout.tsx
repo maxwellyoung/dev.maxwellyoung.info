@@ -11,183 +11,18 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Calendar, Tag, Search, ArrowUpRight, X } from "lucide-react";
-import Image from "next/image";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
-import sanityClient from "@sanity/client";
+import { Calendar, Tag, Search, ArrowUpRight } from "lucide-react";
 import { PortableText } from "@portabletext/react";
-import imageUrlBuilder from "@sanity/image-url";
+
+import { useBlogPosts } from "@/hooks/useBlogPosts";
+import { BlogPost } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
-
-const client = sanityClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
-  useCdn: true,
-});
-
-// Initialize the image builder
-const builder = imageUrlBuilder(client);
-
-function urlFor(source: any) {
-  return builder.image(source);
-}
-
-// Define the components for PortableText
-const PortableTextComponents = {
-  types: {
-    image: ({ value }: any) => {
-      if (!value?.asset?._ref) {
-        return null;
-      }
-      return (
-        <div className="relative w-full h-96 my-6">
-          <Image
-            src={urlFor(value).url()}
-            alt={value.alt || " "}
-            fill
-            className="object-cover rounded-lg"
-          />
-        </div>
-      );
-    },
-    code: ({ value }: any) => {
-      return (
-        <div className="my-6">
-          {value.filename && (
-            <div className="bg-gray-800 text-gray-200 px-4 py-2 text-sm rounded-t-lg">
-              {value.filename}
-            </div>
-          )}
-          <SyntaxHighlighter
-            language={value.language || "typescript"}
-            style={tomorrow}
-            className="rounded-b-lg"
-          >
-            {value.code}
-          </SyntaxHighlighter>
-        </div>
-      );
-    },
-  },
-  block: {
-    h1: ({ children }: any) => (
-      <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>
-    ),
-    h2: ({ children }: any) => (
-      <h2 className="text-2xl font-bold mt-8 mb-4">{children}</h2>
-    ),
-    h3: ({ children }: any) => (
-      <h3 className="text-xl font-bold mt-6 mb-3">{children}</h3>
-    ),
-    normal: ({ children }: any) => (
-      <p className="mb-4 leading-relaxed">{children}</p>
-    ),
-    blockquote: ({ children }: any) => (
-      <blockquote className="border-l-4 border-gray-300 pl-4 my-4 italic">
-        {children}
-      </blockquote>
-    ),
-  },
-  marks: {
-    link: ({ children, value }: any) => {
-      const rel = !value.href.startsWith("/")
-        ? "noreferrer noopener"
-        : undefined;
-      return (
-        <a
-          href={value.href}
-          rel={rel}
-          className="text-blue-500 hover:underline"
-        >
-          {children}
-        </a>
-      );
-    },
-    code: ({ children }: any) => (
-      <code className="bg-gray-100 dark:bg-gray-800 rounded px-1 py-0.5">
-        {children}
-      </code>
-    ),
-  },
-  list: {
-    bullet: ({ children }: any) => (
-      <ul className="list-disc ml-4 mb-4">{children}</ul>
-    ),
-    number: ({ children }: any) => (
-      <ol className="list-decimal ml-4 mb-4">{children}</ol>
-    ),
-  },
-};
-
-interface BlogPost {
-  _id: string;
-  title: string;
-  slug: {
-    current: string;
-  };
-  publishedAt: string;
-  excerpt: string;
-  content: any[];
-  tags: string[];
-  mainImage?: {
-    asset: {
-      _id: string;
-      url: string;
-    };
-    alt: string;
-  };
-}
-
-interface BlogPostCardProps {
-  post: BlogPost;
-  isSelected: boolean;
-  onClick: () => void;
-}
-
-function BlogPostCard({ post, isSelected, onClick }: BlogPostCardProps) {
-  const springConfig = { stiffness: 300, damping: 30 };
-  const scale = useSpring(1, springConfig);
-  const x = useSpring(0, springConfig);
-
-  useEffect(() => {
-    scale.set(isSelected ? 1.05 : 1);
-    x.set(isSelected ? 5 : 0);
-  }, [isSelected, scale, x]);
-
-  return (
-    <motion.div
-      style={{ scale, x }}
-      className="relative overflow-hidden rounded-lg cursor-pointer group w-full mb-4 p-4 bg-white dark:bg-neutral-800 shadow-sm"
-      onClick={onClick}
-      whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.2 }}
-    >
-      <div className="relative z-10">
-        <h3 className="text-sm font-medium mb-2 text-gray-800 dark:text-gray-200">
-          {post.title}
-        </h3>
-        <p className="text-xs text-gray-600 dark:text-gray-400 font-light mb-2 line-clamp-3">
-          {post.excerpt}
-        </p>
-        <div className="flex items-center text-xs text-gray-500 dark:text-gray-400">
-          <Calendar className="w-3 h-3 mr-1" />
-          {formatDate(post.publishedAt)}
-        </div>
-      </div>
-      <motion.div
-        className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: isSelected ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-      />
-    </motion.div>
-  );
-}
+import { PortableTextComponents } from "./PortableTextComponents";
+import { BlogPostCard } from "./BlogPostCard";
+import { FullBlogPost } from "./FullBlogPost";
 
 export function BlogLayoutComponent() {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const { blogPosts, loading } = useBlogPosts();
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
@@ -198,46 +33,16 @@ export function BlogLayoutComponent() {
   const [lastScrollTime, setLastScrollTime] = useState(0);
   const scrollDelay = 800;
 
-  useEffect(() => {
-    async function fetchBlogPosts() {
-      const query = `*[_type == "blogPost"] {
-        _id,
-        title,
-        slug,
-        publishedAt,
-        excerpt,
-        content[] {
-          ...,
-          _type == "image" => {
-            "asset": asset->
-          },
-          _type == "code" => {
-            ...,
-            language,
-            filename,
-            code
-          }
-        },
-        tags,
-        mainImage {
-          asset->{
-            _id,
-            url
-          },
-          alt
-        }
-      }`;
-
-      const posts = await client.fetch(query);
-      setBlogPosts(posts);
-    }
-
-    fetchBlogPosts();
-  }, []);
-
   const filteredPosts = blogPosts.filter((post) =>
     post.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  useEffect(() => {
+    if (filteredPosts.length > 0 && !selectedPost) {
+      setSelectedPost(filteredPosts[0]);
+      setCurrentIndex(0);
+    }
+  }, [filteredPosts, selectedPost]);
 
   const nextPost = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % filteredPosts.length);
@@ -392,25 +197,28 @@ export function BlogLayoutComponent() {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2" ref={containerRef}>
-            {blogPosts.length === 0 ? (
+            {loading ? (
               <div className="bg-white dark:bg-neutral-800 bg-opacity-70 backdrop-blur-sm rounded-xl p-6 shadow-lg flex flex-col items-center justify-center min-h-[400px]">
                 <svg
+                  className="animate-spin h-8 w-8 text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-12 w-12 text-gray-400 mb-4"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
                 >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
                 </svg>
-                <p className="text-gray-600 dark:text-gray-400">
-                  No blog posts available.
-                </p>
               </div>
             ) : (
               <AnimatePresence mode="wait">
@@ -478,6 +286,7 @@ export function BlogLayoutComponent() {
                     isSelected={selectedPost?._id === post._id}
                     onClick={() => {
                       setSelectedPost(post);
+
                       setCurrentIndex(index);
                     }}
                     data-post-index={index}
@@ -493,96 +302,6 @@ export function BlogLayoutComponent() {
           <FullBlogPost post={selectedPost} />
         </DialogContent>
       </Dialog>
-    </div>
-  );
-}
-
-interface FullBlogPostProps {
-  post: BlogPost | null;
-}
-
-function FullBlogPost({ post }: FullBlogPostProps) {
-  if (!post) return null;
-
-  const renderContent = (content: string) => {
-    const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
-    const parts = [];
-    let lastIndex = 0;
-    let match;
-
-    while ((match = codeBlockRegex.exec(content)) !== null) {
-      if (match.index > lastIndex) {
-        parts.push(content.slice(lastIndex, match.index));
-      }
-      const language = match[1] || "text";
-      const code = match[2].trim();
-      parts.push(
-        <SyntaxHighlighter
-          key={match.index}
-          language={language}
-          style={tomorrow}
-        >
-          {code}
-        </SyntaxHighlighter>
-      );
-      lastIndex = match.index + match[0].length;
-    }
-
-    if (lastIndex < content.length) {
-      parts.push(content.slice(lastIndex));
-    }
-
-    return parts.map((part, index) =>
-      typeof part === "string" ? (
-        <p key={index} className="mb-4">
-          {part}
-        </p>
-      ) : (
-        part
-      )
-    );
-  };
-
-  return (
-    <div className="bg-white dark:bg-neutral-900 p-6 rounded-lg">
-      <div className="mb-6">
-        <h2 className="text-3xl font-light text-gray-800 dark:text-gray-200">
-          {post.title}
-        </h2>
-        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mt-2">
-          <Calendar className="w-4 h-4 mr-2" />
-          {post.publishedAt}
-        </div>
-      </div>
-      {post.mainImage && (
-        <div className="mb-6">
-          <Image
-            src={post.mainImage.asset.url}
-            alt={post.mainImage.alt}
-            width={800}
-            height={400}
-            objectFit="cover"
-            className="rounded-lg"
-          />
-        </div>
-      )}
-      <div className="prose dark:prose-invert max-w-none mb-6">
-        <PortableText
-          value={post.content}
-          components={PortableTextComponents}
-        />
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {post.tags.map((tag) => (
-          <span
-            key={tag}
-            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
-          >
-            <Tag className="w-3 h-3 mr-1" />
-            {tag}
-          </span>
-        ))}
-      </div>
     </div>
   );
 }
