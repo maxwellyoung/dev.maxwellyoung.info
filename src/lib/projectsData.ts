@@ -15,14 +15,14 @@ export const projects: Project[] = [
     name: "Goodness Gracious | Bakery, Cafe & Catering",
     status: "Completed",
     description:
-      "Marketing site for artisanal bakery Goodness Gracious, built with New Territory Studio.",
+      "Developed a marketing site for artisanal bakery Goodness Gracious in collaboration with New Territory Studio, focusing on a clean, responsive layout.",
     longDescription:
-      "Marketing site for artisanal bakery Goodness Gracious. Contracted by New Territory Studio to implement the frontend build. Focused on responsive layout, styling consistency, and integrating client feedback throughout.  Built with Shopify Liquid and pure CSS. Improved my workflow speed and confidence in studio environments.",
+      "Led the frontend development for the Goodness Gracious marketing site, a project contracted by New Territory Studio. My role focused on translating design mockups into a fully responsive and pixel-perfect website, ensuring styling consistency and integrating client feedback. This project was built using Shopify Liquid and pure CSS, enhancing my skills in studio collaboration and rapid development workflows.",
     screenshots: [
       "/projectImages/goodness-1.webp",
       "/projectImages/goodness-2.webp",
     ],
-    startDate: "2025-03-01",
+    startDate: "2024-05-01",
     link: "https://www.goodnessgracious.co.nz/",
     tags: [
       "Frontend Development",
@@ -35,9 +35,9 @@ export const projects: Project[] = [
     name: "Ivan Guzman | Writer & Cultural Strategist",
     status: "Completed",
     description:
-      "A portfolio website for Ivan Guzman, a writer & cultural strategist.",
+      "Designed and developed a sleek portfolio for writer and cultural strategist Ivan Guzman, featuring a modern UI and a headless CMS.",
     longDescription:
-      "A portfolio website for Ivan Guzman, a writer. Built with Next.js, Tailwind CSS, and Framer Motion. Managed by a Sanity CMS for a user-friendly way for the client to upload articles.",
+      "Built a dynamic portfolio website for writer Ivan Guzman using Next.js, Tailwind CSS, and Framer Motion. To empower the client with content management capabilities, I integrated a Sanity CMS, allowing for easy article uploads and updates. The result is a user-friendly and visually engaging platform for showcasing his work.",
     link: "https://ivan-guzman.com/",
     screenshots: ["/projectImages/ivan-1.webp"],
   },
@@ -45,9 +45,9 @@ export const projects: Project[] = [
     name: "Ch'lita | Fashion Designer & Stylist Portfolio",
     status: "Completed",
     description:
-      "A portfolio website for Ch'lita, a fashion designer and stylist.",
+      "Developed a minimalist portfolio for fashion designer Ch'lita, showcasing her work with high-profile clients like Rosalia and The Dare.",
     longDescription:
-      "Portfolio site for fashion stylist and designer Ch'lita, featuring work for Rosalia, The Dare, and more. Built with React, Next.js, Tailwind, Framer Motion, and a Sanity CMS for a user-friendly way for the client to upload projects. Designed with a focus on minimalism to display the work clearly and mobile-first as the majority would be viewing on their phone. Dynamic layout for expanded project imagery view.",
+      "Created a portfolio for fashion stylist and designer Ch'lita, featuring her work with prominent artists like Rosalia and The Dare. The site was built with React, Next.js, and Framer Motion, and includes a Sanity CMS for easy project management. The design prioritizes minimalism and a mobile-first approach, with a dynamic layout that adapts to showcase high-resolution imagery.",
     link: "https://chlita.com",
     codeLink: "https://github.com/maxwellyoung/chlita",
     screenshots: [
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     name: "Metrosexual Awareness Night",
     status: "Completed",
     description:
-      "Developed a flashy and engaging site for Metrosexual Awareness Night, incorporating unique stylistic and functional elements.",
+      "Developed a flashy and engaging event site for Metrosexual Awareness Night, featuring a live countdown and vibrant, animated design.",
     longDescription:
       "Implemented a countdown timer for the event, adding a sense of anticipation. The design features a hipster runoff pink gradient background with shooting star effects, contributing to a playful and energetic aesthetic. The site includes responsive side navigation for easy project selection, and the overall styling was updated to be more vibrant, flashy, and pink-themed.",
     link: "https://metrosexualawareness.com",
@@ -81,9 +81,9 @@ export const projects: Project[] = [
     name: "Jeremy Blake Interactive Art Experience",
     status: "Completed",
     description:
-      "An interactive digital art experience inspired by the captivating works of Jeremy Blake, a trailblazing artist known for blending vibrant visuals with abstract storytelling.",
+      "Created an interactive art experience inspired by digital artist Jeremy Blake, using Three.js to generate dynamic, abstract animations.",
     longDescription:
-      "This project is an interactive digital art experience inspired by the works of Jeremy Blake, an American digital artist known for his dynamic, abstract color field animations. Users can navigate through abstract, color-rich landscapes, interact with dynamic elements responding to mouse movements or touch, and experience fluid transitions blending and morphing colors in Blake's signature style.",
+      "Developed an interactive digital art experience inspired by Jeremy Blake, an American digital artist known for his dynamic, abstract color field animations. Using React and Three.js, I built a WebGL-powered world where users can navigate through abstract landscapes and interact with elements that respond to mouse movements and touch. The experience features fluid, morphing color transitions that capture Blake's signature style.",
     link: "https://jeremy-blake.vercel.app/",
     codeLink: "https://github.com/maxwellyoung/jeremy-blake",
     startDate: "2023-01-15",
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     status: "WIP",
     description: "An AI-powered movie discovery and recommendation platform.",
     longDescription:
-      "CineSync is an AI-powered movie discovery and recommendation platform built with Next.js, React, Supabase, OpenAI, Clerk, and TypeScript. It helps users find their next favorite movie based on their preferences and mood. Features include personalized movie recommendations, watchlist management, friend connections for sharing recommendations, responsive design with dark mode, and more.",
+      "CineSync is an AI-powered movie discovery platform designed to help users find their next favorite film. Built with a modern stack including Next.js, Supabase, and OpenAI, it offers personalized recommendations based on user preferences and mood. Key features include watchlist management, social sharing of recommendations, and a responsive design with dark mode.",
     startDate: "2023-04-01",
     tags: ["Next.js", "React", "AI", "TypeScript"],
     link: "https://cinesync-peach.vercel.app/",
@@ -109,9 +109,9 @@ export const projects: Project[] = [
     name: "Music Website",
     status: "Completed",
     description:
-      "A personal website showcasing my music portfolio, projects, and achievements.",
+      "Created a personal portfolio site to showcase my musical projects, including albums, singles, and collaborations.",
     longDescription:
-      "This is a personal site dedicated to showcasing my music portfolio, projects, and achievements. It features a comprehensive collection of my work, including albums, singles, and collaborations. Built with a focus on aesthetics and functionality, the site provides visitors with an immersive experience, including lyrics, album art, and music videos.",
+      "Designed and built a personal website to showcase my music portfolio. The site features a comprehensive collection of my work, including albums, singles, and collaborations. With a focus on aesthetics and functionality, it provides an immersive experience with lyrics, album art, and music videos, all built with React and Next.js.",
     link: "https://music.maxwellyoung.info",
     codeLink: "https://github.com/maxwellyoung/music_maxwell",
     startDate: "2022-01-01",
