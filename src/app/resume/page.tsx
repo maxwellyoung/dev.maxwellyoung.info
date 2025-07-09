@@ -4,6 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { resumeData } from "@/lib/resumeData";
+import { ExperienceItem } from "@/components/ExperienceItem";
+import { EducationItem } from "@/components/EducationItem";
+import { SkillCategory } from "@/components/SkillCategory";
 
 export default function Resume() {
   const [isImageEnlarged, setIsImageEnlarged] = useState(false);
@@ -25,7 +29,7 @@ export default function Resume() {
         <div className="flex justify-between items-center mb-6">
           <div>
             <span className="block text-3xl font-medium dark:text-zinc-100 text-zinc-800 font-roboto-mono">
-              Maxwell Young
+              {resumeData.name}
             </span>
             <div
               className="relative"
@@ -38,7 +42,7 @@ export default function Resume() {
                 initial="initial"
                 transition={{ duration: 0.3 }}
               >
-                Design Engineer
+                {resumeData.title}
               </motion.span>
             </div>
           </div>
@@ -89,105 +93,31 @@ export default function Resume() {
                 Experience
               </span>
             </div>
-            <div className="mb-4">
-              <div>
-                <span className="block text-sm font-bold dark:text-zinc-100 text-zinc-800 font-inter">
-                  Full Stack Web Developer
-                </span>
-              </div>
-              <span className="block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter">
-                Freelance
-              </span>
-              <span className="block text-xs font-normal dark:text-zinc-500 text-zinc-400 font-inter">
-                Apr 2023 - Present, Auckland
-              </span>
-              <ul className="list-disc pl-5 mt-2 text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter">
-                <li>
-                  Developed a number of portfolio sites for designers &
-                  musicians, enhancing user experience with responsive designs
-                  and dynamic animations using Tailwind and Framer Motion.
-                </li>
-                <li>
-                  Utilised Next.js to ensure high performance across devices,
-                  constantly exploring new front-end technologies to stay ahead
-                  of industry trends.
-                </li>
-                <li>
-                  Developing personal finance tracker and study assistant mobile
-                  apps using React Native and Expo, focusing on improving
-                  personal productivity and financial management.
-                </li>
-                <li>
-                  Committed to continuous learning through online courses,
-                  workshops, and collaboration with other developers to upskill
-                  in various fields.
-                </li>
-              </ul>
-            </div>
-            <div className="mb-8">
-              <div>
-                <span className="block text-sm font-bold dark:text-zinc-100 text-zinc-800 font-inter mt-4">
-                  Data Intelligence UI Developer
-                </span>
-              </div>
-              <span className="block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter">
-                Spark New Zealand
-              </span>
-              <span className="block text-xs font-normal dark:text-zinc-500 text-zinc-400 font-inter">
-                Nov 2022 - Apr 2023, Auckland
-              </span>
-              <ul className="list-disc pl-5 mt-2 text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter">
-                <li>
-                  Designed and developed the front end of an internal dashboard
-                  application.
-                </li>
-                <li>
-                  Translated PowerBI dashboard into Figma design, integrating
-                  machine learning algorithms.
-                </li>
-                <li>
-                  Implemented front-end using React and Next.js, increasing
-                  productivity by 20%.
-                </li>
-                <li>
-                  Collaborated with product team and stakeholders for usability.
-                </li>
-                <li>Conducted user testing to refine the UI.</li>
-              </ul>
-            </div>
-            <div className="relative">
+            {resumeData.experience.map((item, index) => (
+              <ExperienceItem
+                key={index}
+                title={item.title}
+                company={item.company}
+                date={item.date}
+                responsibilities={item.responsibilities}
+              />
+            ))}
+
+            <div className="relative mt-8">
               <span className="block text-xs font-normal  text-zinc-800 dark:text-zinc-400 font-inter uppercase tracking-wide mb-2">
                 Education
               </span>
             </div>
-            <div className="mb-4">
-              <div>
-                <span className="block text-sm font-bold  text-zinc-800 dark:text-zinc-100 font-inter">
-                  B.Sc. Computer and Information Sciences (Software Development
-                  and Data Science)
-                </span>
-              </div>
-              <span className="block text-sm font-normal  text-zinc-600 dark:text-zinc-400 font-inter">
-                Auckland University of Technology
-              </span>
-              <span className="block text-xs font-normal  text-zinc-400 dark:text-zinc-500 font-inter">
-                2024 - 2026 (Expected), Auckland
-              </span>
-            </div>
-            <div>
-              <div>
-                <span className="block text-sm font-bold dark:text-zinc-100 text-zinc-800 font text-zinc-800-inter mt-4">
-                  Certificate - Level 6 Web Development Training Scheme
-                </span>
-              </div>
-              <span className="block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter">
-                Dev Academy Aotearoa
-              </span>
-              <span className="block text-xs font-normal dark:text-zinc-500 text-zinc-400 font-inter">
-                2022, Wellington
-              </span>
-            </div>
+            {resumeData.education.map((item, index) => (
+              <EducationItem
+                key={index}
+                degree={item.degree}
+                institution={item.institution}
+                date={item.date}
+              />
+            ))}
           </div>
+
           <div className="lg:col-span-1">
             <div className="mt-8 lg:mt-0">
               <div>
@@ -197,75 +127,22 @@ export default function Resume() {
               </div>
               <span className="block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter mt-2">
                 <a
-                  href="mailto:maxtheyoung@gmail.com"
+                  href={`mailto:${resumeData.contact.email}`}
                   className="hover:underline transition-all duration-200 ease-in-out"
                 >
-                  maxtheyoung@gmail.com
+                  {resumeData.contact.email}
                 </a>
                 <br />
-                Auckland
+                {resumeData.contact.location}
               </span>
             </div>
-            <div className="mt-8">
-              <div>
-                <span className="block text-sm font-bold dark:text-zinc-400 text-zinc-600 font-inter">
-                  Web Development
-                </span>
-              </div>
-              <span className="block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter mt-2">
-                Full Stack Web Development
-                <br />
-                UI/UX Design
-                <br />
-                Responsive Web Design
-              </span>
-            </div>
-            <div className="mt-8">
-              <div>
-                <span className="block text-sm font-bold dark:text-zinc-400 text-zinc-600 font-inter">
-                  Collaboration & Methodologies
-                </span>
-              </div>
-              <span className="block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter mt-2">
-                Agile and Scrum Methodologies
-                <br />
-                Cross-functional Team Collaboration
-              </span>
-            </div>
-            <div className="mt-8">
-              <div>
-                <span className="block text-sm font-bold dark:text-zinc-400 text-zinc-600 font-inter">
-                  Tools & Technologies
-                </span>
-              </div>
-              <span className="block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter mt-2">
-                Database Management
-                <br />
-                Cloud Services (AWS, Azure)
-                <br />
-                Automated Testing (Jest)
-                <br />
-                Git & Version Control
-                <br />
-                TypeScript & JavaScript
-                <br />
-                React, React Native, Next.js
-                <br />
-                PHP
-                <br />
-                C, C++, Go
-                <br />
-                CSS, Tailwind
-                <br />
-                Figma
-                <br />
-                Adobe Creative Suite
-                <br />
-                OpenAI Integration
-                <br />
-                WebGL, Three.js
-              </span>
-            </div>
+            {resumeData.skills.map((skill, index) => (
+              <SkillCategory
+                key={index}
+                category={skill.category}
+                items={skill.items}
+              />
+            ))}
             <div className="mt-8">
               <div>
                 <span className="block text-sm font-bold dark:text-zinc-400 text-zinc-600 font-inter">
@@ -273,17 +150,17 @@ export default function Resume() {
                 </span>
               </div>
               <span className="block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter underline mt-2">
-                <a href="https://dev.maxwellyoung.info/">
-                  dev.maxwellyoung.info
-                </a>
-                <br />
-                <a href="https://github.com/maxwellyoung">
-                  github.com/maxwellyoung
-                </a>
-                <br />
-                <a href="https://www.linkedin.com/in/maxwell-young-a55032125/">
-                  linkedin.com/in/maxwellyoung
-                </a>
+                {resumeData.socials.map((social, index) => (
+                  <a
+                    href={social.url}
+                    key={index}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {social.name}
+                    <br />
+                  </a>
+                ))}
               </span>
             </div>
           </div>

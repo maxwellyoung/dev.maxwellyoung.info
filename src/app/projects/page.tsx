@@ -31,15 +31,15 @@ import Carousel from "@/components/Carousel";
 import { Project, projects } from "@/lib/projectsData";
 import { ProjectCard } from "@/components/ProjectCard";
 import { useProjectScroll } from "@/hooks/useProjectScroll";
+import { ProjectDetails } from "@/components/ProjectDetails";
+import { ProjectList } from "@/components/ProjectList";
 
 interface ProjectsProps {
   initialFavourites?: string[];
 }
 
 export default function ProjectsShowcase() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(
-    projects[0]
-  );
+  const [selectedProject, setSelectedProject] = useState(projects[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -60,7 +60,6 @@ export default function ProjectsShowcase() {
   useEffect(() => {
     setSelectedProject(projects[currentIndex]);
 
-    // Scroll to the selected project in the list
     const scrollArea = scrollAreaRef.current;
     const selectedProjectElement = scrollArea?.querySelector(
       `[data-project-index="${currentIndex}"]`
@@ -171,101 +170,20 @@ export default function ProjectsShowcase() {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2" ref={containerRef}>
-            <AnimatePresence mode="wait">
-              {selectedProject && (
-                <motion.div
-                  key={selectedProject.name}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -50 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30,
-                    mass: 0.8,
-                    bounce: 0.25,
-                  }}
-                  className="bg-white dark:bg-neutral-800 bg-opacity-70 backdrop-blur-sm rounded-xl p-6 shadow-lg"
-                >
-                  <h2 className="text-2xl font-light mb-3 text-gray-700 dark:text-gray-300">
-                    {selectedProject.name}
-                  </h2>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 font-light">
-                    {selectedProject.longDescription ||
-                      selectedProject.description}
-                  </p>
-                  {selectedProject.screenshots &&
-                    selectedProject.screenshots.length > 0 && (
-                      <div
-                        className="relative cursor-pointer mb-4"
-                        onClick={() => setIsCarouselOpen(true)}
-                      >
-                        <Image
-                          src={selectedProject.screenshots[0]}
-                          alt={`${selectedProject.name} screenshot`}
-                          width={800}
-                          height={450}
-                          objectFit="cover"
-                          className="rounded-lg"
-                        />
-                        {selectedProject.screenshots.length > 1 && (
-                          <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded-full text-sm">
-                            +{selectedProject.screenshots.length - 1}
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  <div className="flex space-x-4">
-                    {selectedProject.link && (
-                      <motion.a
-                        href={selectedProject.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm font-light text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 transition-colors duration-200"
-                        whileHover={{ x: 5 }}
-                      >
-                        Explore Project
-                        <ArrowUpRight className="ml-1 h-3 w-3" />
-                      </motion.a>
-                    )}
-                    {selectedProject.codeLink && (
-                      <motion.a
-                        href={selectedProject.codeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm font-light text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 transition-colors duration-200"
-                        whileHover={{ x: 5 }}
-                      >
-                        View Code
-                        <Github className="ml-1 h-3 w-3" />
-                      </motion.a>
-                    )}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <ProjectDetails
+              project={selectedProject}
+              onCarouselOpen={() => setIsCarouselOpen(true)}
+            />
           </div>
-          <div className="w-full">
-            <ScrollArea
-              className="h-[calc(100vh-200px)] lg:h-[700px] w-full pr-4"
-              ref={scrollAreaRef}
-            >
-              <div className="space-y-4 py-2">
-                {projects.map((project, index) => (
-                  <ProjectCard
-                    key={project.name}
-                    project={project}
-                    isSelected={selectedProject?.name === project.name}
-                    onClick={() => {
-                      setSelectedProject(project);
-                      setCurrentIndex(index);
-                    }}
-                    data-project-index={index}
-                  />
-                ))}
-              </div>
-            </ScrollArea>
-          </div>
+          <ProjectList
+            projects={projects}
+            selectedProject={selectedProject}
+            onSelectProject={(project, index) => {
+              setSelectedProject(project);
+              setCurrentIndex(index);
+            }}
+            scrollAreaRef={scrollAreaRef}
+          />
         </div>
       </div>
       <Dialog
