@@ -29,7 +29,7 @@ export function ProjectCard({
   return (
     <motion.div
       style={{ scale, x }}
-      className="relative overflow-hidden rounded-lg cursor-pointer group w-full mb-4 p-4 bg-white dark:bg-neutral-800 shadow-sm"
+      className="relative overflow-hidden rounded-lg cursor-pointer group w-full p-4 bg-white dark:bg-neutral-800 shadow-sm"
       onClick={onClick}
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.2 }}
