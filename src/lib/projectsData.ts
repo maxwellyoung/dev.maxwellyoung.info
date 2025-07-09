@@ -17,7 +17,7 @@ export const projects: Project[] = [
     description:
       "Marketing site for artisanal bakery Goodness Gracious, built with New Territory Studio.",
     longDescription:
-      "Marketing site for artisanal bakery Goodness Gracious. Contracted by New Territory Studio to implement the frontend build. Focused on responsive layout, styling consistency, and integrating client feedback throughout. Improved my workflow speed and confidence in studio environments.",
+      "Marketing site for artisanal bakery Goodness Gracious. Contracted by New Territory Studio to implement the frontend build. Focused on responsive layout, styling consistency, and integrating client feedback throughout. Focused on responsive layout, styling consistency, and integrating client feedback throughout. Built with Liquid templates and pure CSS. Improved my workflow speed and confidence in studio environments.",
     screenshots: [
       "/projectImages/goodness-1.webp",
       "/projectImages/goodness-2.webp",
