@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-900 text-zinc-800 dark:text-white p-4 md:p-8 flex flex-col justify-between">
-      <main className="max-w-2xl mx-auto space-y-8 overflow-y-auto">
+      <main className="max-w-2xl mx-auto space-y-8 overflow-y-auto scroll-smooth">
         <section className="flex flex-col justify-center items-left min-h-screen space-y-8 p-4 md:p-8">
           <header className="mb-12">
             <a
@@ -150,9 +150,9 @@ export default function Home() {
         <section id="projects">
           <ProjectsShowcase />
         </section>
-        {/* <section id="blog">
+        <section id="blog">
           <BlogLayoutComponent />
-        </section> */}
+        </section>
         <section id="resume">
           <Resume />
         </section>

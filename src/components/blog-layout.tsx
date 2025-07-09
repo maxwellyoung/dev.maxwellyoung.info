@@ -273,12 +273,9 @@ export function BlogLayoutComponent() {
               </AnimatePresence>
             )}
           </div>
-          <div className="w-full">
-            <ScrollArea
-              className="h-[calc(100vh-200px)] lg:h-[700px] w-full pr-4"
-              ref={scrollAreaRef}
-            >
-              <div className="space-y-4 py-2">
+          <div className="h-full">
+            <ScrollArea className="w-full h-full" ref={scrollAreaRef}>
+              <div className="space-y-4 p-4">
                 {filteredPosts.map((post, index) => (
                   <BlogPostCard
                     key={post._id}
