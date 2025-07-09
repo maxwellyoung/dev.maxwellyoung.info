@@ -186,27 +186,17 @@ export default function ProjectsShowcase() {
           />
         </div>
       </div>
-      <Dialog
-        open={isCarouselOpen}
-        onOpenChange={() => setIsCarouselOpen(false)}
-      >
-        <DialogContent className="max-w-none w-screen h-screen p-0">
-          <div className="w-full h-full relative">
-            {selectedProject && selectedProject.screenshots && (
-              <Carousel images={selectedProject.screenshots} />
-            )}
-            <DialogClose asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute top-4 right-4 z-50 bg-white bg-opacity-50 hover:bg-opacity-100 transition-all duration-200"
-                onClick={() => setIsCarouselOpen(false)}
-              >
-                <X className="h-4 w-4" />
-                <span className="sr-only">Close</span>
-              </Button>
-            </DialogClose>
-          </div>
+      <Dialog open={isCarouselOpen} onOpenChange={setIsCarouselOpen}>
+        <DialogContent
+          className="max-w-none w-screen h-screen p-0"
+          hideCloseButton
+        >
+          {selectedProject && selectedProject.screenshots && (
+            <Carousel
+              images={selectedProject.screenshots}
+              onClose={() => setIsCarouselOpen(false)}
+            />
+          )}
         </DialogContent>
       </Dialog>
     </div>

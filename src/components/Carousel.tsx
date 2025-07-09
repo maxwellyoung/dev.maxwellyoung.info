@@ -1,188 +1,214 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Loader2 } from "lucide-react";
 import {
   AnimatePresence,
-  MotionConfig,
   motion,
-  useMotionTemplate,
-  useSpring,
+  useMotionValue,
+  useTransform,
 } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
+import { FastAverageColor } from "fast-average-color";
 
 interface CarouselProps {
   images: string[];
+  onClose: () => void;
 }
 
-export default function Carousel({ images }: CarouselProps) {
-  let [index, setIndex] = useState(0);
+const DRAG_THRESHOLD = 150;
 
-  let x = index * 100;
-  let xSpring = useSpring(x, { bounce: 0 });
-  let xPercentage = useMotionTemplate`-${xSpring}%`;
-
-  useEffect(() => {
-    xSpring.set(x);
-  }, [x, xSpring]);
+export default function Carousel({ images, onClose }: CarouselProps) {
+  const [index, setIndex] = useState(0);
+  const [isDark, setIsDark] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const x = useMotionValue(0);
 
   useEffect(() => {
-    function handleKeyPress(e: KeyboardEvent) {
-      if (e.key === "ArrowLeft") {
-        if (index > 0) {
-          setIndex(index - 1);
-        }
-      } else if (e.key === "ArrowRight") {
-        if (index < images.length - 1) {
-          setIndex(index + 1);
-        }
-      }
+    setIsLoading(true);
+    const img = new window.Image();
+    img.src = images[index];
+    const fac = new FastAverageColor();
+
+    const processImage = () => {
+      fac
+        .getColorAsync(img)
+        .then((color) => {
+          setIsDark(color.isDark);
+        })
+        .catch((e) => {
+          console.error(e);
+        })
+        .finally(() => {
+          setIsLoading(false);
+          fac.destroy();
+        });
+    };
+
+    if (img.complete) {
+      processImage();
+    } else {
+      img.onload = processImage;
     }
 
-    document.addEventListener("keydown", handleKeyPress);
-
     return () => {
-      document.removeEventListener("keydown", handleKeyPress);
+      img.onload = null;
+      fac.destroy();
     };
-  }, [index, images.length]);
+  }, [index, images]);
 
-  return (
-    <MotionConfig transition={{ type: "spring", bounce: 0 }}>
-      <div className="flex flex-col h-screen">
-        <div className="relative flex-grow">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src={images[index]}
-              alt="Background"
-              layout="fill"
-              objectFit="cover"
-              className="blur-xl opacity-50"
-            />
-          </div>
-          <div className="relative z-10 h-full flex items-center justify-center">
-            <motion.div
-              style={{ x: xPercentage }}
-              className="flex w-full h-full"
-            >
-              {images.map((image, i) => (
-                <motion.div
-                  key={image}
-                  animate={{ opacity: i === index ? 1 : 0.4 }}
-                  className="w-full h-full flex-shrink-0 relative"
-                >
-                  <Image
-                    src={image}
-                    alt={`Screenshot ${i + 1}`}
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-
-          <AnimatePresence initial={false}>
-            {index > 0 && (
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.7 }}
-                exit={{ opacity: 0, pointerEvents: "none" }}
-                whileHover={{ opacity: 1 }}
-                className="absolute left-4 top-1/2 -mt-4 flex h-8 w-8 items-center justify-center rounded-full bg-white z-20"
-                onClick={() => setIndex(index - 1)}
-              >
-                <ChevronLeft className="h-6 w-6 text-black" />
-              </motion.button>
-            )}
-          </AnimatePresence>
-
-          <AnimatePresence initial={false}>
-            {index + 1 < images.length && (
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.7 }}
-                exit={{ opacity: 0, pointerEvents: "none" }}
-                whileHover={{ opacity: 1 }}
-                className="absolute right-4 top-1/2 -mt-4 flex h-8 w-8 items-center justify-center rounded-full bg-white z-20"
-                onClick={() => setIndex(index + 1)}
-              >
-                <ChevronRight className="h-6 w-6 text-black" />
-              </motion.button>
-            )}
-          </AnimatePresence>
-        </div>
-
-        <div className="relative z-10">
-          <Thumbnails images={images} index={index} setIndex={setIndex} />
-        </div>
-      </div>
-    </MotionConfig>
-  );
-}
-
-const COLLAPSED_ASPECT_RATIO = 9 / 16;
-const FULL_ASPECT_RATIO = 16 / 9;
-const MARGIN = 4;
-const GAP = 4;
-
-function Thumbnails({
-  images,
-  index,
-  setIndex,
-}: {
-  images: string[];
-  index: number;
-  setIndex: (value: number) => void;
-}) {
-  let x =
-    index * 100 * (COLLAPSED_ASPECT_RATIO / FULL_ASPECT_RATIO) +
-    MARGIN +
-    index * GAP;
-  let xSpring = useSpring(x, { bounce: 0 });
-  let xPercentage = useMotionTemplate`-${xSpring}%`;
+  const onDragEnd = (info: any) => {
+    if (info.offset.x > DRAG_THRESHOLD && index > 0) {
+      setIndex(index - 1);
+    } else if (info.offset.x < -DRAG_THRESHOLD && index < images.length - 1) {
+      setIndex(index + 1);
+    }
+  };
 
   useEffect(() => {
-    xSpring.set(x);
-  }, [x, xSpring]);
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft" && index > 0) setIndex(index - 1);
+      else if (e.key === "ArrowRight" && index < images.length - 1)
+        setIndex(index + 1);
+      else if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleKeyPress);
+    return () => document.removeEventListener("keydown", handleKeyPress);
+  }, [index, images.length, onClose]);
+
+  const buttonClasses = `absolute top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full transition-colors ${
+    isDark ? "bg-white/10 hover:bg-white/20" : "bg-black/10 hover:bg-black/20"
+  }`;
+  const iconClasses = `h-6 w-6 ${isDark ? "text-white" : "text-black"}`;
+
+  // Preload next and previous images
+  useEffect(() => {
+    if (index > 0) {
+      const prevImage = new window.Image();
+      prevImage.src = images[index - 1];
+    }
+    if (index < images.length - 1) {
+      const nextImage = new window.Image();
+      nextImage.src = images[index + 1];
+    }
+  }, [index, images]);
 
   return (
-    <div className="flex justify-center overflow-hidden bg-black bg-opacity-50">
+    <div className="relative h-screen w-screen bg-black/50">
+      <AnimatePresence>
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className={`absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full transition-colors ${
+            isDark
+              ? "bg-white/10 hover:bg-white/20"
+              : "bg-black/10 hover:bg-black/20"
+          }`}
+          onClick={onClose}
+          aria-label="Close image gallery"
+        >
+          <X className={iconClasses} />
+        </motion.button>
+      </AnimatePresence>
+
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={images[index]}
+          alt="Background"
+          fill
+          objectFit="cover"
+          className="blur-xl scale-110"
+        />
+      </div>
+
       <motion.div
-        style={{
-          gap: `${GAP}px`,
-          x: xPercentage,
-        }}
-        className="flex min-w-0"
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        style={{ x }}
+        onDragEnd={(_, info) => onDragEnd(info)}
+        className="relative z-10 h-full w-full flex items-center justify-center"
       >
-        {images.map((image, i) => (
-          <motion.button
-            onClick={() => setIndex(i)}
-            initial={false}
-            animate={i === index ? "active" : "inactive"}
-            variants={{
-              active: {
-                aspectRatio: FULL_ASPECT_RATIO,
-                marginLeft: `${MARGIN}px`,
-                marginRight: `${MARGIN}px`,
-              },
-              inactive: {
-                aspectRatio: COLLAPSED_ASPECT_RATIO,
-                marginLeft: 0,
-                marginRight: 0,
-              },
-            }}
-            className="h-16 shrink-0 relative"
-            key={image}
+        <AnimatePresence>
+          {isLoading && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute z-10"
+            >
+              <Loader2 className={`animate-spin h-12 w-12 ${iconClasses}`} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence initial={false}>
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: index > 0 ? 100 : -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: index > 0 ? -100 : 100 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="absolute flex items-center justify-center h-full w-full"
           >
             <Image
-              src={image}
-              alt={`Thumbnail ${i + 1}`}
-              layout="fill"
-              objectFit="cover"
+              src={images[index]}
+              alt={`Screenshot ${index + 1}`}
+              fill
+              objectFit="contain"
+              className="pointer-events-none"
             />
-          </motion.button>
-        ))}
+          </motion.div>
+        </AnimatePresence>
       </motion.div>
+
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            aria-label={`Go to image ${i + 1}`}
+            className={`h-2 w-2 rounded-full transition-colors ${
+              i === index
+                ? isDark
+                  ? "bg-white"
+                  : "bg-black"
+                : isDark
+                ? "bg-white/30"
+                : "bg-black/30"
+            }`}
+          />
+        ))}
+      </div>
+
+      <AnimatePresence>
+        {index > 0 && (
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={`${buttonClasses} left-4`}
+            onClick={() => setIndex(index - 1)}
+            aria-label="Previous image"
+          >
+            <ChevronLeft className={iconClasses} />
+          </motion.button>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {index < images.length - 1 && (
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={`${buttonClasses} right-4`}
+            onClick={() => setIndex(index + 1)}
+            aria-label="Next image"
+          >
+            <ChevronRight className={iconClasses} />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
