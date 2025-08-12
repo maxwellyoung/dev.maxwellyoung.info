@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { CSPostHogProvider } from "./providers";
 import Link from "next/link";
+import DotMatrix from "@/components/DotMatrix";
 
 // fonts are loaded via globals.css
 
@@ -62,8 +63,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <DotMatrix />
             {/* header removed per design request */}
-            {children}
+            <div className="relative z-10">{children}</div>
             <Analytics />
           </ThemeProvider>
         </CSPostHogProvider>

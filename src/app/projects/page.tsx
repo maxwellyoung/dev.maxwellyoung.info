@@ -7,26 +7,16 @@ import React, {
   useMemo,
   useDeferredValue,
 } from "react";
-import {
-  motion,
-  useSpring,
-  useTransform,
-  useMotionTemplate,
-} from "framer-motion";
+// removed background motion imports to reduce visual noise
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { AnimatePresence, motion } from "framer-motion";
 import Carousel from "@/components/Carousel";
 import { Project, projects } from "@/lib/projectsData";
 import { ProjectDetails } from "@/components/ProjectDetails";
-import { ProjectList } from "@/components/ProjectList";
+import { ProjectCard } from "@/components/ProjectCard";
 
 type SortKey = "newest" | "oldest" | "az";
-const PILL_FILTERS = [
-  "Completed",
-  "WIP",
-  "AI/Data",
-  "Fashion",
-  "Creative",
-] as const;
+const PILL_FILTERS = ["AI/Data", "Fashion", "Creative"] as const;
 type Pill = (typeof PILL_FILTERS)[number];
 
 export default function ProjectsShowcase() {
@@ -34,10 +24,16 @@ export default function ProjectsShowcase() {
   const deferredQuery = useDeferredValue(query);
   const [activeFilters, setActiveFilters] = useState<Pill[]>([]);
   const [sortBy, setSortBy] = useState<SortKey>("newest");
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // featured view removed per request; list is the only mode now
+  // -1 means no row expanded (all closed)
+  const [currentIndex, setCurrentIndex] = useState<number>(-1);
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scrollAreaRef = useRef<HTMLDivElement>(null);
+  // Preserve the original order from projectsData.ts (append = newer)
+  const orderIndex = useMemo(() => {
+    const map = new Map<string, number>();
+    projects.forEach((p, i) => map.set(p.name, i));
+    return map;
+  }, []);
 
   const filtered: Project[] = useMemo(() => {
     const q = deferredQuery.trim().toLowerCase();
@@ -58,15 +54,10 @@ export default function ProjectsShowcase() {
     if (activeFilters.length) {
       list = list.filter((p) =>
         activeFilters.every((f) => {
-          const status = (p.status || "").toLowerCase();
           const tags = (p.tags || []).map((t) => t.toLowerCase());
           const name = (p.name || "").toLowerCase();
           const desc = (p.description || "").toLowerCase();
           switch (f) {
-            case "Completed":
-              return status === "completed";
-            case "WIP":
-              return status !== "completed";
             case "AI/Data":
               return tags.some((t) =>
                 /\b(ai|ml|data|scrap|crawl|nlp)\b/.test(t)
@@ -88,44 +79,44 @@ export default function ProjectsShowcase() {
     }
     list.sort((a, b) => {
       if (sortBy === "az") return a.name.localeCompare(b.name);
-      const at = a.startDate ? new Date(a.startDate).getTime() : 0;
-      const bt = b.startDate ? new Date(b.startDate).getTime() : 0;
-      return sortBy === "newest" ? bt - at : at - bt;
+      const ai = orderIndex.get(a.name) ?? 0;
+      const bi = orderIndex.get(b.name) ?? 0;
+      return sortBy === "newest" ? bi - ai : ai - bi;
     });
     return list;
-  }, [deferredQuery, activeFilters, sortBy]);
+  }, [deferredQuery, activeFilters, sortBy, orderIndex]);
 
   useEffect(() => {
     if (!filtered.length) {
-      setCurrentIndex(0);
+      setCurrentIndex(-1);
       return;
     }
-    if (currentIndex >= filtered.length) setCurrentIndex(0);
+    if (currentIndex >= filtered.length) setCurrentIndex(-1);
   }, [filtered, currentIndex]);
 
-  const selectedProject: Project | null = filtered[currentIndex] ?? null;
+  const selectedProject: Project | null =
+    currentIndex >= 0 ? filtered[currentIndex] : null;
+  const featured = useMemo(
+    () => filtered.slice(0, Math.min(3, filtered.length)),
+    [filtered]
+  );
+  const isEmpty = filtered.length === 0;
 
-  const spinner = useSpring(0, { stiffness: 100, damping: 30 });
-  const rotation = useTransform(spinner, [0, 1], [0, 360]);
-  const conic = useMotionTemplate`conic-gradient(from ${rotation}deg at 50% 50%, transparent, transparent)`;
+  const resetFilters = () => {
+    setQuery("");
+    setActiveFilters([]);
+    setSortBy("newest");
+    setCurrentIndex(0);
+  };
 
-  useEffect(() => {
-    let raf: number;
-    const tick = () => {
-      spinner.set(Math.random());
-      raf = window.setTimeout(tick, 15000) as unknown as number;
-    };
-    tick();
-    return () => window.clearTimeout(raf);
-  }, [spinner]);
+  // removed featured sync logic
 
   return (
     <div
-      className="min-h-screen text-gray-800 dark:text-gray-200 font-sans relative overflow-hidden"
+      className="min-h-screen text-gray-800 dark:text-gray-200 font-sans"
       tabIndex={0}
     >
-      <motion.div className="absolute inset-0" style={{ background: conic }} />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-wrap items-center gap-3 mb-6">
           <input
             value={query}
@@ -133,7 +124,7 @@ export default function ProjectsShowcase() {
             placeholder="search projects"
             className="h-9 rounded-xl bg-transparent px-3 text-sm outline-none ring-1 ring-[hsl(var(--border))] focus:ring-[hsl(var(--accent))] w-[min(420px,100%)] placeholder-gray-400"
           />
-          <div className="ml-auto flex items-center gap-2 text-sm">
+          <div className="ml-auto flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">
             <label className="text-gray-600 dark:text-gray-300">sort</label>
             <select
               value={sortBy}
@@ -145,6 +136,7 @@ export default function ProjectsShowcase() {
               <option value="az">a–z</option>
             </select>
           </div>
+          {/* removed featured/list toggle */}
           <div className="w-full flex flex-wrap gap-2">
             {PILL_FILTERS.map((p) => {
               const active = activeFilters.includes(p);
@@ -161,8 +153,8 @@ export default function ProjectsShowcase() {
                   className={
                     "h-8 px-3 rounded-full text-xs tracking-[0.08em] transition-colors duration-150 ease-[var(--ease-brand)] ring-1 " +
                     (active
-                      ? "bg-[hsl(var(--accent))] text-white ring-[hsl(var(--accent))]"
-                      : "text-[hsl(var(--foreground)/0.6)] ring-[hsl(var(--border))] hover:ring-[hsl(var(--accent))]/60")
+                      ? "bg-[hsl(var(--accent))]/10 text-[hsl(var(--foreground))] ring-[hsl(var(--accent))]/60"
+                      : "text-[hsl(var(--foreground)/0.75)] ring-[hsl(var(--border))] hover:bg-[hsl(var(--muted))]/40 hover:ring-[hsl(var(--accent))]/40")
                   }
                   aria-pressed={active}
                 >
@@ -172,26 +164,89 @@ export default function ProjectsShowcase() {
             })}
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row lg:space-x-6 lg:h-[75vh]">
-          <div className="lg:w-2/3" ref={containerRef}>
-            {selectedProject && (
-              <ProjectDetails
-                project={selectedProject}
-                onCarouselOpen={() => setIsCarouselOpen(true)}
-              />
-            )}
-          </div>
-          <div className="lg:w-1/3 mt-6 lg:mt-0 flex-grow pb-16">
-            <ProjectList
-              projects={filtered}
-              selectedProject={selectedProject || undefined}
-              onSelectProject={(project, _index) => {
-                const idx = filtered.findIndex((p) => p.name === project.name);
-                setCurrentIndex(idx >= 0 ? idx : 0);
-              }}
-              scrollAreaRef={scrollAreaRef}
-            />
-          </div>
+        <div className="space-y-8">
+          {isEmpty ? (
+            <section className="mt-10 grid place-items-center">
+              <div className="text-center">
+                <p className="text-sm text-muted">
+                  No projects match your filters.
+                </p>
+                <div className="mt-3 flex items-center justify-center gap-2">
+                  <button
+                    onClick={resetFilters}
+                    className="h-8 rounded-full px-3 ring-1 ring-[hsl(var(--border))] hover:ring-[hsl(var(--accent))]/60 transition"
+                  >
+                    reset
+                  </button>
+                </div>
+              </div>
+            </section>
+          ) : (
+            <section aria-label="all projects" className="mt-2">
+              <h3 className="text-sm text-muted mb-3">all projects</h3>
+              <div className="-mx-1">
+                <motion.ul
+                  layout
+                  className="divide-y divide-[hsl(var(--border))]"
+                >
+                  {filtered.map((p, idx) => (
+                    <motion.li layout key={p.name}>
+                      <button
+                        onClick={(e) => {
+                          setCurrentIndex((prev) => (prev === idx ? -1 : idx));
+                          e.currentTarget.parentElement?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center",
+                          });
+                        }}
+                        className="w-full text-left px-1 py-3 hover:bg-[hsl(var(--muted))]/50 transition"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="relative h-16 w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))]">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={
+                                p.screenshots?.[0] ||
+                                "/projectImages/StudentView.jpeg"
+                              }
+                              alt={p.name}
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-2">
+                              <h4 className="truncate text-sm font-medium leading-tight">
+                                {p.name}
+                              </h4>
+                            </div>
+                            <p className="mt-1 truncate text-xs text-zinc-600 dark:text-zinc-400">
+                              {p.description}
+                            </p>
+                          </div>
+                        </div>
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {currentIndex === idx && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.2, ease: "easeOut" }}
+                            className="px-1 pb-4"
+                          >
+                            <ProjectDetails
+                              project={p}
+                              onCarouselOpen={() => setIsCarouselOpen(true)}
+                            />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </section>
+          )}
         </div>
       </div>
       <Dialog open={isCarouselOpen} onOpenChange={setIsCarouselOpen}>

@@ -29,33 +29,35 @@ export function ProjectDetails({
           }}
           className="bg-white dark:bg-neutral-800 bg-opacity-70 backdrop-blur-sm rounded-xl p-6 shadow-lg"
         >
-          <h2 className="text-2xl font-light mb-3 text-gray-700 dark:text-gray-300">
-            {project.name}
-          </h2>
-          <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 font-light">
-            {project.longDescription || project.description}
-          </p>
           {project.screenshots && project.screenshots.length > 0 && (
             <div
-              className="relative cursor-pointer mb-4"
+              className="relative cursor-pointer mb-5"
               onClick={onCarouselOpen}
             >
-              <Image
-                src={project.screenshots[0]}
-                alt={`${project.name} screenshot`}
-                width={800}
-                height={450}
-                objectFit="cover"
-                className="rounded-lg"
-              />
+              <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-black/5 dark:ring-white/10">
+                <Image
+                  src={project.screenshots[0]}
+                  alt={`${project.name} screenshot`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
               {project.screenshots.length > 1 && (
-                <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded-full text-sm">
+                <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded-full text-xs">
                   +{project.screenshots.length - 1}
                 </div>
               )}
             </div>
           )}
-          <div className="flex space-x-4">
+          <h2 className="text-[22px] md:text-[24px] font-medium leading-tight text-gray-800 dark:text-gray-100">
+            {project.name}
+          </h2>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 font-light">
+            {project.longDescription || project.description}
+          </p>
+          <div className="mt-4 flex space-x-4">
             {project.link && (
               <motion.a
                 href={project.link}

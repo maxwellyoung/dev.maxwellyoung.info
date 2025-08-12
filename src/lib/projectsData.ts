@@ -12,12 +12,12 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    name: "Goodness Gracious | Bakery, Cafe & Catering",
+    name: "Goodness Gracious — Bakery, Cafe & Catering",
     status: "Completed",
     description:
-      "Developed a marketing site for artisanal bakery Goodness Gracious in collaboration with New Territory Studio, focusing on a clean, responsive layout.",
+      "Full redesign and development of a responsive, high-performance Shopify site. Improved ordering flow, modernised the visual identity, and streamlined content management.",
     longDescription:
-      "Led the frontend development for the Goodness Gracious marketing site, a project contracted by New Territory Studio. My role focused on translating design mockups into a fully responsive and pixel-perfect website, ensuring styling consistency and integrating client feedback. This project was built using Shopify Liquid and pure CSS, enhancing my skills in studio collaboration and rapid development workflows.",
+      "A full redesign and build of the Goodness Gracious site and ecommerce experience. Delivered a responsive, high‑performance Shopify implementation with a clearer ordering flow, updated visual system, and simplified content management. Worked closely with the client’s marketing team to align physical and digital touchpoints.",
     screenshots: [
       "/projectImages/goodness-1.webp",
       "/projectImages/goodness-2.webp",
@@ -81,9 +81,9 @@ export const projects: Project[] = [
     name: "Jeremy Blake Interactive Art Experience",
     status: "Completed",
     description:
-      "Created an interactive art experience inspired by digital artist Jeremy Blake, using Three.js to generate dynamic, abstract animations.",
+      "Interactive WebGL installation responsive to user input. Custom shaders create layered, animated compositions that run smoothly across devices.",
     longDescription:
-      "Developed an interactive digital art experience inspired by Jeremy Blake, an American digital artist known for his dynamic, abstract color field animations. Using React and Three.js, I built a WebGL-powered world where users can navigate through abstract landscapes and interact with elements that respond to mouse movements and touch. The experience features fluid, morphing color transitions that capture Blake's signature style.",
+      "An interactive web installation inspired by Jeremy Blake. Built with React and Three.js, using custom GLSL shaders to layer animation and color. Tuned for performance and input‑responsive behavior so it feels fluid while preserving artistic fidelity across devices.",
     link: "https://jeremy-blake.vercel.app/",
     codeLink: "https://github.com/maxwellyoung/jeremy-blake",
     startDate: "2023-01-15",
@@ -93,9 +93,10 @@ export const projects: Project[] = [
   {
     name: "CineSync",
     status: "WIP",
-    description: "An AI-powered movie discovery and recommendation platform.",
+    description:
+      "Web app for collaborative film scheduling with a distraction‑free interface. Developed core scheduling logic and early prototypes to test with production teams.",
     longDescription:
-      "CineSync is an AI-powered movie discovery platform designed to help users find their next favorite film. Built with a modern stack including Next.js, Supabase, and OpenAI, it offers personalized recommendations based on user preferences and mood. Key features include watchlist management, social sharing of recommendations, and a responsive design with dark mode.",
+      "Designing and building a minimalist, production‑ready scheduling tool for film teams. Focused on a distraction‑free interface, adaptable to varied workflows. Implemented the core scheduling logic, interactive prototypes, and user validation loops to shape the roadmap.",
     startDate: "2023-04-01",
     tags: ["Next.js", "React", "AI", "TypeScript"],
     link: "https://cinesync-peach.vercel.app/",
