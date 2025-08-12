@@ -122,7 +122,9 @@ a {
 }
 
 /* ensure buttons with accent bg render readable text */
-.bg-\[var\(--accent\)\]\/12 { color: hsl(var(--foreground)); }
+.bg-\[var\(--accent\)\]\/12 {
+  color: hsl(var(--foreground));
+}
 
 /* Subtle hairlines */
 hr {
