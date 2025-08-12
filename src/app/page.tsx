@@ -7,7 +7,7 @@ import Resume from "./resume/page";
 import ProjectsShowcase from "./projects/page";
 import { motion, AnimatePresence } from "framer-motion";
 import FallingStars from "@/components/FallingStars";
-import { BlogLayoutComponent } from "@/components/blog-layout";
+// import { BlogLayoutComponent } from "@/components/blog-layout";
 
 export default function Home() {
   const [isHovered, setIsHovered] = useState(false);
@@ -119,9 +119,7 @@ export default function Home() {
         <section id="projects">
           <ProjectsShowcase />
         </section>
-        <section id="blog">
-          <BlogLayoutComponent />
-        </section>
+        {/** Blog temporarily hidden */}
         <section id="resume">
           <Resume />
         </section>
