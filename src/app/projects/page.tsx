@@ -81,7 +81,8 @@ export default function ProjectsShowcase() {
       if (sortBy === "az") return a.name.localeCompare(b.name);
       const ai = orderIndex.get(a.name) ?? 0;
       const bi = orderIndex.get(b.name) ?? 0;
-      return sortBy === "newest" ? bi - ai : ai - bi;
+      // reversed per request: newest = lower index first; oldest = higher index first
+      return sortBy === "newest" ? ai - bi : bi - ai;
     });
     return list;
   }, [deferredQuery, activeFilters, sortBy, orderIndex]);
