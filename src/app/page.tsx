@@ -39,7 +39,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-900 text-zinc-800 dark:text-white p-4 md:p-8 flex flex-col justify-between">
+    <div className="min-h-screen bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white p-4 md:p-8 flex flex-col justify-between">
       <main className="max-w-2xl mx-auto space-y-8 overflow-y-auto scroll-smooth">
         <section className="flex flex-col justify-center items-left min-h-screen space-y-8 p-4 md:p-8">
           <header className="mb-12">
@@ -79,11 +79,10 @@ export default function Home() {
           <div className="leading-relaxed space-y-4">
             <p className="text-zinc-500 dark:text-zinc-400">
               Maxwell Young is a product-focused design engineer based in
-              Auckland, New Zealand. He creates digital products from concept to
-              release, combining design sensitivity with technical depth. His
-              work ranges from platforms for creative professionals to consumer
-              applications used in everyday life — all shaped to be clear,
-              intentional, and built to last.
+              Auckland, New Zealand. He creates digital products for creative
+              professionals, ecommerce, and everyday use, combining design
+              sensitivity with technical depth. Each is shaped to feel
+              purposeful, unobtrusive, and built to endure.
             </p>
             <p className="text-zinc-500 dark:text-zinc-400">
               Educated in Computer Science at Auckland University of Technology,

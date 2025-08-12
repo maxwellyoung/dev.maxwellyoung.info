@@ -29,41 +29,23 @@ export function ProjectCard({
   return (
     <motion.div
       style={{ scale, x }}
-      className="relative overflow-hidden rounded-lg cursor-pointer group w-full p-4 bg-white dark:bg-neutral-800 shadow-sm"
+      className="relative overflow-hidden rounded-lg cursor-pointer group w-full p-4 bg-white dark:bg-neutral-800 shadow-sm ring-1 ring-gray-200/60 dark:ring-neutral-700/60"
       onClick={onClick}
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.2 }}
       {...props}
     >
-      <div
-        className="absolute inset-0 opacity-10 transition-opacity duration-300 group-hover:opacity-20"
-        style={{
-          backgroundColor:
-            project.status === "Completed" ? "#4ECDC4" : "#FF6B6B",
-        }}
-      />
       <div className="relative z-10">
-        <h3 className="text-sm font-medium mb-2 text-gray-800 dark:text-gray-200">
+        <h3 className="text-sm font-medium mb-1 text-gray-800 dark:text-gray-200">
           {project.name}
         </h3>
-        <p className="text-xs text-gray-600 dark:text-gray-400 font-light mb-2 line-clamp-3">
+        <p className="text-xs text-gray-600 dark:text-gray-400 font-light mb-2 line-clamp-2 min-h-[36px]">
           {project.description}
         </p>
-        <div className="flex items-center text-xs text-gray-500 dark:text-gray-400">
-          <span
-            className={`mr-2 w-2 h-2 rounded-full ${
-              project.status === "Completed" ? "bg-green-500" : "bg-orange-500"
-            }`}
-          ></span>
-          {project.status}
-        </div>
+        <div className="flex items-center gap-2 text-[11px]"></div>
       </div>
       <motion.div
-        className="absolute bottom-0 left-0 w-full h-0.5"
-        style={{
-          backgroundColor:
-            project.status === "Completed" ? "#4ECDC4" : "#FF6B6B",
-        }}
+        className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-300/60 dark:bg-neutral-600/60"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: isSelected ? 1 : 0 }}
         transition={{ duration: 0.3 }}
