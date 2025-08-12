@@ -161,8 +161,8 @@ export default function ShowcaseClient({ source }: ShowcaseClientProps) {
   const openGallery = () => setGalleryOpen(true);
 
   return (
-    <main className="min-h-screen py-16 md:py-24">
-      <div className="mx-auto w-full max-w-[1160px] px-6 md:px-8">
+    <main className="min-h-screen py-12 md:py-16">
+      <div className="mx-auto w-full max-w-[1100px] px-4 md:px-6">
         <Header
           query={query}
           onQuery={setQuery}
@@ -392,7 +392,7 @@ function FilterChip({
     <button
       onClick={onClick}
       className={
-        "h-7 px-3 rounded-full text-xs tracking-[0.08em] transition shadow-[inset_0_0_0_1px_var(--surface)] " +
+        "h-7 px-3 rounded-full text-xs tracking-[0.08em] transition shadow-[inset_0_0_0_1px_var(--surface)] text-text " +
         (active
           ? "bg-[var(--accent)]/12 shadow-[inset_0_0_0_1px_var(--accent)]"
           : "hover:shadow-[inset_0_0_0_1px_var(--accent)]")

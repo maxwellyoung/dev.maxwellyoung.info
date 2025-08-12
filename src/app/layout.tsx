@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { CSPostHogProvider } from "./providers";
@@ -18,14 +19,42 @@ export const viewport = {
   maximumScale: 1,
 };
 
+const generalSans = localFont({
+  src: [
+    { path: "../../public/fonts/GeneralSans-Variable.woff2", style: "normal" },
+    {
+      path: "../../public/fonts/GeneralSans-VariableItalic.woff2",
+      style: "italic",
+    },
+  ],
+  variable: "--font-general-sans",
+  display: "swap",
+});
+
+const sentient = localFont({
+  src: [
+    { path: "../../public/fonts/Sentient-Variable.woff2", style: "normal" },
+    {
+      path: "../../public/fonts/Sentient-VariableItalic.woff2",
+      style: "italic",
+    },
+  ],
+  variable: "--font-sentient",
+  display: "swap",
+});
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${generalSans.variable} ${sentient.variable}`}
+    >
+      <body className="font-sans">
         <CSPostHogProvider>
           <ThemeProvider
             attribute="class"
@@ -33,27 +62,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <header className="w-full sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-black/30">
-              <div className="mx-auto w-full max-w-[960px] px-4 py-4 flex items-center justify-between">
-                <Link
-                  href="/"
-                  className="text-sm tracking-[0.08em] text-muted hover:text-text"
-                >
-                  Maxwell Young
-                </Link>
-                <nav className="flex items-center gap-4 text-xs tracking-[0.08em] text-muted">
-                  <Link href="/projects" className="hover:text-text underline">
-                    Projects
-                  </Link>
-                  <Link href="/showcase" className="hover:text-text underline">
-                    Showcase
-                  </Link>
-                  <Link href="/resume" className="hover:text-text underline">
-                    Resume
-                  </Link>
-                </nav>
-              </div>
-            </header>
+            {/* header removed per design request */}
             {children}
             <Analytics />
           </ThemeProvider>

@@ -44,7 +44,7 @@ function Shelf({ label, items, onSelect }: ShelfProps) {
       </div>
       <div
         ref={scrollerRef}
-        className="-mx-4 px-4 flex gap-8 overflow-x-auto snap-x scroll-px-4"
+        className="px-2 sm:px-0 flex gap-6 overflow-x-auto snap-x scroll-px-4"
       >
         {items.map((p) =>
           onSelect ? (
