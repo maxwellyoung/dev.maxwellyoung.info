@@ -261,8 +261,8 @@ export default function ShowcaseClient({ source }: ShowcaseClientProps) {
                           className={
                             "w-full text-left rounded-lg ring-1 px-3 py-[6px] text-[13px] transition ease-[var(--ease-brand)] duration-150 " +
                             (selected?.slug === p.slug
-                              ? "ring-[var(--accent)]/60 bg-[var(--accent)]/10"
-                              : "ring-[var(--surface)]/60 hover:bg-[var(--surface)]/20 focus-visible:ring-[var(--accent)]")
+                              ? "ring-[hsl(var(--accent))]/60 bg-[hsl(var(--accent))]/10"
+                              : "ring-[hsl(var(--border))] hover:bg-[hsl(var(--muted))]/40 focus-visible:ring-[hsl(var(--accent))]")
                           }
                         >
                           <div className="font-medium leading-tight truncate">
@@ -341,12 +341,12 @@ function Header({
         <label className="sr-only" htmlFor="search">
           search projects
         </label>
-        <input
+          <input
           id="search"
           value={query}
           onChange={(e) => onQuery(e.target.value)}
           placeholder="search projects"
-          className="h-9 rounded-xl bg-transparent px-3 text-sm outline-none ring-1 ring-[var(--surface)] focus:ring-[var(--accent)] w-[min(420px,100%)]"
+            className="h-9 rounded-xl bg-transparent px-3 text-sm outline-none ring-1 ring-[hsl(var(--border))] focus:ring-[hsl(var(--accent))] w-[min(420px,100%)]"
         />
         <div className="ml-auto flex items-center gap-2 text-sm">
           <label className="text-muted" htmlFor="sort">
@@ -356,7 +356,7 @@ function Header({
             id="sort"
             value={sortBy}
             onChange={(e) => onSort(e.target.value as SortKey)}
-            className="h-9 rounded-xl bg-transparent px-2 text-sm outline-none ring-1 ring-[var(--surface)] focus:ring-[var(--accent)]"
+            className="h-9 rounded-xl bg-transparent px-2 text-sm outline-none ring-1 ring-[hsl(var(--border))] focus:ring-[hsl(var(--accent))]"
           >
             <option value="newest">newest</option>
             <option value="oldest">oldest</option>
