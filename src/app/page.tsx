@@ -76,66 +76,36 @@ export default function Home() {
             </div>
           </header>
 
-          <div className="leading-relaxed">
-            <h2 className="font-medium mb-6 text-zinc-800 dark:text-zinc-300">
-              Today
-            </h2>
+          <div className="leading-relaxed space-y-4">
             <p className="text-zinc-500 dark:text-zinc-400">
-              I am currently studying for a Bachelor of Computer Science at
-              Auckland University of Technology, majoring in Software
-              Development and Data Science.
+              Maxwell Young is a product-focused design engineer based in
+              Auckland, New Zealand. He creates digital products from concept to
+              release, combining design sensitivity with technical depth. His
+              work ranges from platforms for creative professionals to consumer
+              applications used in everyday life — all shaped to be clear,
+              intentional, and built to last.
             </p>
             <p className="text-zinc-500 dark:text-zinc-400">
-              I&apos;m passionate about making software simple with intention
-              and principles to elevate user experiences and solve everyday
-              issues.
+              Educated in Computer Science at Auckland University of Technology,
+              majoring in Software Development and Data Science, he has worked
+              as a UI Developer at Spark New Zealand and is a graduate of the
+              Web Development Bootcamp at Dev Academy Aotearoa.
             </p>
             <p className="text-zinc-500 dark:text-zinc-400">
-              I&apos;m currently working on a number of projects, including
-              portfolio sites for designers/authors/artists at{" "}
-              <Link
-                href="https://www.ninetynine.digital/"
-                target="_blank"
-                className="underline hover:text-zinc-800 hover:dark:text-zinc-300"
-              >
-                ninetynine digital
-              </Link>
-              , a party game for friends, and an iOS application to be announced
-              soon.
-            </p>
-          </div>
-
-          <div className="leading-relaxed">
-            <h2 className="font-medium mb-6 text-zinc-800 dark:text-zinc-300">
-              Previously
-            </h2>
-            <p className="text-zinc-500 dark:text-zinc-400">
-              I&apos;ve previously been a UI Developer at Spark New Zealand and
-              graduated from the web development bootcamp Dev Academy Aotearoa.
-            </p>
-          </div>
-
-          <div className="leading-relaxed">
-            <h2 className="font-medium mb-6 text-zinc-800 dark:text-zinc-300">
-              More
-            </h2>
-            <p className="text-zinc-500 dark:text-zinc-400">
-              You can see my work{" "}
               <Link
                 href="#projects"
                 className="underline hover:text-zinc-800 hover:dark:text-zinc-300"
               >
-                here,
+                Work
               </Link>{" "}
-              my resume{" "}
+              ·{" "}
               <Link
                 href="#resume"
-                target="_blank"
                 className="underline hover:text-zinc-800 hover:dark:text-zinc-300"
               >
-                here
-              </Link>
-              , & more of my code on{" "}
+                Resume
+              </Link>{" "}
+              ·{" "}
               <Link
                 href="https://github.com/maxwellyoung"
                 target="_blank"
@@ -143,7 +113,6 @@ export default function Home() {
               >
                 GitHub
               </Link>
-              .
             </p>
           </div>
         </section>

@@ -392,10 +392,10 @@ function FilterChip({
     <button
       onClick={onClick}
       className={
-        "h-8 px-3 rounded-full text-xs tracking-[0.08em] transition-colors duration-150 ease-[var(--ease-brand)] ring-1 ring-[var(--surface)] " +
+        "h-8 px-3 rounded-full text-xs tracking-[0.08em] transition-colors duration-150 ease-[var(--ease-brand)] ring-1 ring-[hsl(var(--border))] " +
         (active
-          ? "bg-[var(--accent)] text-white ring-[var(--accent)]"
-          : "text-muted hover:ring-[var(--accent)]/60")
+          ? "bg-[hsl(var(--accent))] text-white ring-[hsl(var(--accent))]"
+          : "text-[hsl(var(--foreground)/0.6)] hover:ring-[hsl(var(--accent))]/60")
       }
       aria-pressed={active}
     >

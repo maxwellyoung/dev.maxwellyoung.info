@@ -159,10 +159,10 @@ export default function ProjectsShowcase() {
                     )
                   }
                   className={
-                    "h-8 px-3 rounded-full text-xs tracking-[0.08em] transition-colors duration-150 ease-[var(--ease-brand)] " +
+                    "h-8 px-3 rounded-full text-xs tracking-[0.08em] transition-colors duration-150 ease-[var(--ease-brand)] ring-1 " +
                     (active
-                      ? "bg-[hsl(var(--accent))] text-white ring-1 ring-[hsl(var(--accent))]"
-                      : "text-muted ring-1 ring-[hsl(var(--border))] hover:ring-[hsl(var(--accent))]/60")
+                      ? "bg-[hsl(var(--accent))] text-white ring-[hsl(var(--accent))]"
+                      : "text-[hsl(var(--foreground)/0.6)] ring-[hsl(var(--border))] hover:ring-[hsl(var(--accent))]/60")
                   }
                   aria-pressed={active}
                 >
