@@ -75,8 +75,9 @@ export const projects: Project[] = [
       // repo: '', // add when public
       video: "/projectVideos/receiptradar-demo.webm",
     },
-    screenshots: ["/projectImages/rr1.webp", "/projectImages/rr2.webp"],
-    thumb: "/projectImages/rr1.webp",
+    // images not yet in repo; keep gallery hidden until added
+    screenshots: [],
+    // thumb intentionally omitted
     impact: [
       "Prototype OCR to line-item parsing",
       "Price scraper for Countdown with health checks",
@@ -147,8 +148,8 @@ export const projects: Project[] = [
       // live: '',
       // repo: '',
     },
-    screenshots: ["/projectImages/tytm8-1.webp"],
-    thumb: "/projectImages/tytm8-1.webp",
+    screenshots: [],
+    // thumb intentionally omitted
     impact: [
       "Consistent lookbook grid",
       "Responsive art direction for imagery",
@@ -243,8 +244,8 @@ export const projects: Project[] = [
     links: {
       // live: '',
     },
-    screenshots: ["/projectImages/dayle-1.webp"],
-    thumb: "/projectImages/dayle-1.webp",
+    screenshots: [],
+    // thumb intentionally omitted
   },
   {
     slug: "strawhouse",
@@ -262,8 +263,8 @@ export const projects: Project[] = [
     links: {
       // live: '',
     },
-    screenshots: ["/projectImages/strawhouse-1.webp"],
-    thumb: "/projectImages/strawhouse-1.webp",
+    screenshots: [],
+    // thumb intentionally omitted
   },
   {
     slug: "american-style",
@@ -276,8 +277,8 @@ export const projects: Project[] = [
     description: "Brand site with image-led lookbooks and lean motion.",
     tags: ["Frontend", "CMS", "Brand"],
     stack: ["Next.js", "Sanity", "Framer Motion"],
-    screenshots: ["/projectImages/americanstyle-1.webp"],
-    thumb: "/projectImages/americanstyle-1.webp",
+    screenshots: [],
+    // thumb intentionally omitted
   },
 
   // ===== MORE WORK =====
