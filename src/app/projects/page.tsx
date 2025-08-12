@@ -131,14 +131,14 @@ export default function ProjectsShowcase() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="search projects"
-            className="h-9 rounded-xl bg-transparent px-3 text-sm outline-none ring-1 ring-[var(--surface)] focus:ring-[var(--accent)] w-[min(420px,100%)] placeholder-gray-400"
+            className="h-9 rounded-xl bg-transparent px-3 text-sm outline-none ring-1 ring-[hsl(var(--border))] focus:ring-[hsl(var(--accent))] w-[min(420px,100%)] placeholder-gray-400"
           />
           <div className="ml-auto flex items-center gap-2 text-sm">
             <label className="text-gray-600 dark:text-gray-300">sort</label>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortKey)}
-              className="h-9 rounded-xl bg-transparent px-2 text-sm outline-none ring-1 ring-[var(--surface)] focus:ring-[var(--accent)] text-gray-700 dark:text-gray-200"
+              className="h-9 rounded-xl bg-transparent px-2 text-sm outline-none ring-1 ring-[hsl(var(--border))] focus:ring-[hsl(var(--accent))] text-gray-700 dark:text-gray-200"
             >
               <option value="newest">newest</option>
               <option value="oldest">oldest</option>
@@ -159,10 +159,10 @@ export default function ProjectsShowcase() {
                     )
                   }
                   className={
-                    "h-7 px-3 rounded-full text-xs tracking-[0.08em] transition " +
+                    "h-8 px-3 rounded-full text-xs tracking-[0.08em] transition-colors duration-150 ease-[var(--ease-brand)] " +
                     (active
-                      ? "bg-[var(--accent)] text-white ring-2 ring-[var(--accent)]"
-                      : "ring-1 ring-[var(--surface)] hover:ring-[var(--accent)]")
+                      ? "bg-[hsl(var(--accent))] text-white ring-1 ring-[hsl(var(--accent))]"
+                      : "text-muted ring-1 ring-[hsl(var(--border))] hover:ring-[hsl(var(--accent))]/60")
                   }
                   aria-pressed={active}
                 >
