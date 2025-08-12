@@ -44,7 +44,7 @@ function Shelf({ label, items, onSelect }: ShelfProps) {
       </div>
       <div
         ref={scrollerRef}
-        className="-mx-4 px-4 flex gap-4 md:gap-6 overflow-x-auto snap-x scroll-px-4"
+        className="-mx-4 px-4 flex gap-8 overflow-x-auto snap-x scroll-px-4"
       >
         {items.map((p) =>
           onSelect ? (
@@ -52,22 +52,22 @@ function Shelf({ label, items, onSelect }: ShelfProps) {
               type="button"
               key={p.slug}
               onClick={() => onSelect(p)}
-              className="min-w-[320px] snap-start group text-left"
+              className="min-w-[420px] snap-start group text-left"
             >
-              <figure className="relative aspect-[4/3] overflow-hidden rounded-md border border-[var(--surface)]">
+              <figure className="relative aspect-[4/3] overflow-hidden rounded-sm border border-[var(--surface)] transition-transform duration-150 ease-[var(--ease-brand)] group-hover:-translate-y-[2px] group-hover:scale-[1.01]">
                 <ImageWithFallback
                   src={(p.thumb || p.screenshots?.[0]) as string | undefined}
                   alt={p.name}
                 />
               </figure>
               <figcaption className="mt-3">
-                <div className="font-medium leading-tight">
+                <div className="font-medium leading-tight text-text">
                   <span className="project-link">{p.name}</span>
                 </div>
-                <div className="text-sm text-muted line-clamp-2">
+                <div className="mt-1 text-[13px] text-muted line-clamp-2">
                   {p.description}
                 </div>
-                <div className="mt-2 flex gap-3 text-xs text-muted">
+                <div className="mt-2 flex gap-3 text-[11px] text-muted">
                   {p.role && <span>{p.role}</span>}
                   {p.startDate && (
                     <span>· {new Date(p.startDate).getFullYear()}</span>
@@ -79,22 +79,22 @@ function Shelf({ label, items, onSelect }: ShelfProps) {
             <a
               key={p.slug}
               href={`/projects/${p.slug}`}
-              className="min-w-[320px] snap-start group"
+              className="min-w-[420px] snap-start group"
             >
-              <figure className="relative aspect-[4/3] overflow-hidden rounded-md border border-[var(--surface)]">
+              <figure className="relative aspect-[4/3] overflow-hidden rounded-sm border border-[var(--surface)] transition-transform duration-150 ease-[var(--ease-brand)] group-hover:-translate-y-[2px] group-hover:scale-[1.01]">
                 <ImageWithFallback
                   src={(p.thumb || p.screenshots?.[0]) as string | undefined}
                   alt={p.name}
                 />
               </figure>
               <figcaption className="mt-3">
-                <div className="font-medium leading-tight">
+                <div className="font-medium leading-tight text-text">
                   <span className="project-link">{p.name}</span>
                 </div>
-                <div className="text-sm text-muted line-clamp-2">
+                <div className="mt-1 text-[13px] text-muted line-clamp-2">
                   {p.description}
                 </div>
-                <div className="mt-2 flex gap-3 text-xs text-muted">
+                <div className="mt-2 flex gap-3 text-[11px] text-muted">
                   {p.role && <span>{p.role}</span>}
                   {p.startDate && (
                     <span>· {new Date(p.startDate).getFullYear()}</span>
@@ -197,7 +197,7 @@ function ImageWithFallback({ src, alt }: { src?: string; alt: string }) {
       fill
       sizes="(max-width: 768px) 80vw, 33vw"
       onError={() => setCurrentSrc(fallback)}
-      className="object-cover transition-transform duration-150 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:scale-[1.02]"
+      className="object-cover"
     />
   );
 }
