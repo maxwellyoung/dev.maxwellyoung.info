@@ -212,8 +212,13 @@ export function ShowcaseClient({ source }: ShowcaseClientProps) {
                           ? [selected.thumb]
                           : [];
                       const chosen = images[previewIndex] || images[0];
-                      return (chosen ||
-                        "/projectImages/placeholder.webp") as string;
+                      const placeholder =
+                        "data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'>\
+  <rect width='100%' height='100%' fill='%230f0f0f'/>\
+  <rect x='0.5' y='0.5' width='15' height='8' fill='none' stroke='%23222222' stroke-width='0.5'/>\
+</svg>";
+                      return (chosen || placeholder) as string;
                     })()}
                     alt={selected.name}
                     fill
