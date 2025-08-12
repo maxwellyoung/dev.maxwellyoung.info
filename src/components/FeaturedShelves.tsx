@@ -31,16 +31,26 @@ function Shelf({ label, items }: ShelfProps) {
     <section className="py-8">
       <div className="mb-2 text-xs tracking-[0.12em] text-muted">{label}</div>
       <div className="relative">
-        <div className="absolute left-0 right-0 -top-2 h-px bg-[var(--surface)]" aria-hidden />
+        <div
+          className="absolute left-0 right-0 -top-2 h-px bg-[var(--surface)]"
+          aria-hidden
+        />
         <div
           className="absolute left-0 -top-2 h-px bg-[var(--accent)] transition-[width] duration-150"
           style={{ width: `${progress * 100}%` }}
           aria-hidden
         />
       </div>
-      <div ref={scrollerRef} className="-mx-4 px-4 flex gap-6 overflow-x-auto snap-x scroll-px-4">
+      <div
+        ref={scrollerRef}
+        className="-mx-4 px-4 flex gap-6 overflow-x-auto snap-x scroll-px-4"
+      >
         {items.map((p) => (
-          <a key={p.slug} href={`/projects/${p.slug}`} className="min-w-[320px] snap-start group">
+          <a
+            key={p.slug}
+            href={`/projects/${p.slug}`}
+            className="min-w-[320px] snap-start group"
+          >
             <figure className="relative aspect-[4/3] overflow-hidden rounded-md border border-[var(--surface)]">
               {(p.thumb || p.screenshots?.[0]) && (
                 <Image
@@ -56,10 +66,14 @@ function Shelf({ label, items }: ShelfProps) {
               <div className="font-medium leading-tight">
                 <span className="project-link">{p.name}</span>
               </div>
-              <div className="text-sm text-muted line-clamp-2">{p.description}</div>
+              <div className="text-sm text-muted line-clamp-2">
+                {p.description}
+              </div>
               <div className="mt-2 flex gap-3 text-xs text-muted">
                 {p.role && <span>{p.role}</span>}
-                {p.startDate && <span>· {new Date(p.startDate).getFullYear()}</span>}
+                {p.startDate && (
+                  <span>· {new Date(p.startDate).getFullYear()}</span>
+                )}
               </div>
             </figcaption>
           </a>
