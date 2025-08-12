@@ -7,6 +7,8 @@ type PastelHazeBackgroundProps = {
   speed?: number; // motion multiplier
   blobCount?: number; // number of gradient blobs
   maxDPR?: number; // cap device pixel ratio for perf
+  grainIntensity?: number; // 0-1 overlay noise
+  grainFPS?: number; // how often to refresh noise
   className?: string;
 };
 
@@ -20,10 +22,13 @@ export default function PastelHazeBackground({
   speed = 0.35,
   blobCount = 9,
   maxDPR = 1.6,
+  grainIntensity = 0.12,
+  grainFPS = 12,
   className = "",
 }: PastelHazeBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const rafRef = useRef<number | null>(null);
+  const noiseCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -117,6 +122,8 @@ export default function PastelHazeBackground({
       ctx.fill();
     };
 
+    let lastGrainTime = performance.now();
+
     const renderFrame = (t: number) => {
       const { innerWidth: w, innerHeight: h } = window;
       ctx.clearRect(0, 0, w, h);
@@ -149,6 +156,46 @@ export default function PastelHazeBackground({
           cy + Math.sin(seconds * b.freqY + b.phase + i * 0.24) * b.ampY;
         drawBlob(x, y, b.radius, b.hue, b.sat, b.light, b.alpha);
       });
+
+      // film grain overlay (screen-space)
+      if (grainIntensity > 0) {
+        const nc =
+          noiseCanvasRef.current ||
+          (() => {
+            const c = document.createElement("canvas");
+            c.width = 96;
+            c.height = 96;
+            noiseCanvasRef.current = c;
+            return c;
+          })();
+        const nctx = nc.getContext("2d");
+        if (nctx) {
+          const now = performance.now();
+          if (now - lastGrainTime > 1000 / grainFPS) {
+            const img = nctx.createImageData(nc.width, nc.height);
+            const data = img.data;
+            for (let i = 0; i < data.length; i += 4) {
+              const v = Math.random() * 255;
+              data[i] = v;
+              data[i + 1] = v;
+              data[i + 2] = v;
+              data[i + 3] = 255;
+            }
+            nctx.putImageData(img, 0, 0);
+            lastGrainTime = now;
+          }
+          ctx.globalCompositeOperation = "source-over";
+          ctx.globalAlpha = prefersReducedMotion
+            ? grainIntensity * 0.5
+            : grainIntensity;
+          const pattern = ctx.createPattern(nc, "repeat");
+          if (pattern) {
+            ctx.fillStyle = pattern as unknown as string;
+            ctx.fillRect(0, 0, w, h);
+          }
+          ctx.globalAlpha = 1;
+        }
+      }
     };
 
     const loop = (now: number) => {
