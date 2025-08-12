@@ -341,12 +341,12 @@ function Header({
         <label className="sr-only" htmlFor="search">
           search projects
         </label>
-          <input
+        <input
           id="search"
           value={query}
           onChange={(e) => onQuery(e.target.value)}
           placeholder="search projects"
-            className="h-9 rounded-xl bg-transparent px-3 text-sm outline-none ring-1 ring-[hsl(var(--border))] focus:ring-[hsl(var(--accent))] w-[min(420px,100%)]"
+          className="h-9 rounded-xl bg-transparent px-3 text-sm outline-none ring-1 ring-[hsl(var(--border))] focus:ring-[hsl(var(--accent))] w-[min(420px,100%)]"
         />
         <div className="ml-auto flex items-center gap-2 text-sm">
           <label className="text-muted" htmlFor="sort">
