@@ -1,187 +1,193 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useDeferredValue,
+} from "react";
 import {
   motion,
-  AnimatePresence,
   useSpring,
   useTransform,
-  MotionProps,
+  useMotionTemplate,
 } from "framer-motion";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import {
-  X,
-  Star,
-  ExternalLink,
-  Github,
-  Calendar,
-  Tag,
-  Loader,
-  ArrowUpRight,
-  ChevronRight,
-  ChevronLeft,
-} from "lucide-react";
-import Image from "next/image";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Carousel from "@/components/Carousel";
 import { Project, projects } from "@/lib/projectsData";
-import { ProjectCard } from "@/components/ProjectCard";
-import { useProjectScroll } from "@/hooks/useProjectScroll";
 import { ProjectDetails } from "@/components/ProjectDetails";
 import { ProjectList } from "@/components/ProjectList";
 
-interface ProjectsProps {
-  initialFavourites?: string[];
-}
+type SortKey = "newest" | "oldest" | "az";
+const PILL_FILTERS = [
+  "Completed",
+  "WIP",
+  "AI/Data",
+  "Fashion",
+  "Creative",
+] as const;
+type Pill = (typeof PILL_FILTERS)[number];
 
 export default function ProjectsShowcase() {
-  const [selectedProject, setSelectedProject] = useState(projects[0]);
+  const [query, setQuery] = useState("");
+  const deferredQuery = useDeferredValue(query);
+  const [activeFilters, setActiveFilters] = useState<Pill[]>([]);
+  const [sortBy, setSortBy] = useState<SortKey>("newest");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
-  const nextProject = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
-  }, []);
-
-  const prevProject = useCallback(() => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + projects.length) % projects.length
-    );
-  }, []);
-
-  useProjectScroll(containerRef, nextProject, prevProject);
-
-  useEffect(() => {
-    setSelectedProject(projects[currentIndex]);
-
-    const scrollArea = scrollAreaRef.current;
-    const selectedProjectElement = scrollArea?.querySelector(
-      `[data-project-index="${currentIndex}"]`
-    );
-
-    if (scrollArea && selectedProjectElement) {
-      const scrollAreaRect = scrollArea.getBoundingClientRect();
-      const selectedProjectRect =
-        selectedProjectElement.getBoundingClientRect();
-
-      if (
-        selectedProjectRect.top < scrollAreaRect.top ||
-        selectedProjectRect.bottom > scrollAreaRect.bottom
-      ) {
-        selectedProjectElement.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-          inline: "nearest",
-        });
-      }
+  const filtered: Project[] = useMemo(() => {
+    const q = deferredQuery.trim().toLowerCase();
+    let list = projects.slice();
+    if (q) {
+      list = list.filter((p) => {
+        const haystack = [
+          p.name,
+          p.description || "",
+          p.longDescription || "",
+          ...(p.tags || []),
+        ]
+          .join("\n")
+          .toLowerCase();
+        return haystack.includes(q);
+      });
     }
-  }, [currentIndex]);
-
-  const backgroundSpring = useSpring(0, { stiffness: 100, damping: 30 });
-  const backgroundRotation = useTransform(backgroundSpring, [0, 1], [0, 360]);
+    if (activeFilters.length) {
+      list = list.filter((p) =>
+        activeFilters.every((f) => {
+          const status = (p.status || "").toLowerCase();
+          const tags = (p.tags || []).map((t) => t.toLowerCase());
+          const name = (p.name || "").toLowerCase();
+          const desc = (p.description || "").toLowerCase();
+          switch (f) {
+            case "Completed":
+              return status === "completed";
+            case "WIP":
+              return status !== "completed";
+            case "AI/Data":
+              return tags.some((t) =>
+                /\b(ai|ml|data|scrap|crawl|nlp)\b/.test(t)
+              );
+            case "Fashion":
+              return (
+                /fashion|brand|stylist/.test(name) || /fashion|brand/.test(desc)
+              );
+            case "Creative":
+              return (
+                tags.some((t) => /webgl|three|creative|shader/.test(t)) ||
+                /metrosexual|jeremy/.test(name)
+              );
+            default:
+              return true;
+          }
+        })
+      );
+    }
+    list.sort((a, b) => {
+      if (sortBy === "az") return a.name.localeCompare(b.name);
+      const at = a.startDate ? new Date(a.startDate).getTime() : 0;
+      const bt = b.startDate ? new Date(b.startDate).getTime() : 0;
+      return sortBy === "newest" ? bt - at : at - bt;
+    });
+    return list;
+  }, [deferredQuery, activeFilters, sortBy]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      backgroundSpring.set(Math.random());
-    }, 15000);
-    return () => clearInterval(interval);
-  }, [backgroundSpring]);
+    if (!filtered.length) {
+      setCurrentIndex(0);
+      return;
+    }
+    if (currentIndex >= filtered.length) setCurrentIndex(0);
+  }, [filtered, currentIndex]);
 
-  const [isHovered, setIsHovered] = useState(false);
+  const selectedProject: Project | null = filtered[currentIndex] ?? null;
 
-  const titleVariants = {
-    initial: { opacity: 1, y: 0 },
-    hover: {
-      opacity: 0,
-      y: -10,
-      transition: { duration: 0.5, ease: "easeInOut" },
-    },
-  };
+  const spinner = useSpring(0, { stiffness: 100, damping: 30 });
+  const rotation = useTransform(spinner, [0, 1], [0, 360]);
+  const conic = useMotionTemplate`conic-gradient(from ${rotation}deg at 50% 50%, transparent, transparent)`;
 
-  const subtitleVariants = {
-    initial: { opacity: 0, y: 10 },
-    hover: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeInOut", delay: 0.1 },
-    },
-  };
+  useEffect(() => {
+    let raf: number;
+    const tick = () => {
+      spinner.set(Math.random());
+      raf = window.setTimeout(tick, 15000) as unknown as number;
+    };
+    tick();
+    return () => window.clearTimeout(raf);
+  }, [spinner]);
 
   return (
-    <div className="min-h-screen text-gray-800 dark:text-gray-200 font-sans relative overflow-hidden">
-      <motion.div
-        className="absolute inset-0 opacity-5"
-        style={{
-          background: `conic-gradient(from ${backgroundRotation}deg at 50% 50%, #FF6B6B, #4ECDC4, #45B7D1, #98CA32, #FB8B24, #FF6B6B)`,
-        }}
-      />
+    <div
+      className="min-h-screen text-gray-800 dark:text-gray-200 font-sans relative overflow-hidden"
+      tabIndex={0}
+    >
+      <motion.div className="absolute inset-0" style={{ background: conic }} />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div
-          className="relative mb-8 overflow-hidden"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <motion.h1
-            className="text-4xl font-extralight tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-400 dark:from-gray-300 dark:to-gray-500"
-            variants={titleVariants}
-            initial="initial"
-            animate={isHovered ? "hover" : "initial"}
-          >
-            Projects
-          </motion.h1>
-          <motion.span
-            className="absolute top-0 left-0 text-4xl font-extralight tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-400 dark:from-gray-300 dark:to-gray-500 whitespace-nowrap"
-            variants={subtitleVariants}
-            initial="initial"
-            animate={isHovered ? "hover" : "initial"}
-          >
-            Crafting Digital Experiences
-          </motion.span>
-        </div>
-        <div className="flex items-center space-x-4 mb-8">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center">
-              <div
-                className={`w-2 h-2 rounded-full mr-2 bg-green-500 ${
-                  selectedProject?.status === "Completed"
-                    ? "shadow-glow-green-enhanced"
-                    : ""
-                }`}
-              ></div>
-              <span className="text-xs">Completed</span>
-            </div>
-            <div className="flex items-center">
-              <div
-                className={`w-2 h-2 rounded-full mr-2 bg-orange-500 ${
-                  selectedProject?.status !== "Completed"
-                    ? "shadow-glow-orange-enhanced"
-                    : ""
-                }`}
-              ></div>
-              <span className="text-xs">Work in Progress</span>
-            </div>
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="search projects"
+            className="h-9 rounded-xl bg-transparent px-3 text-sm outline-none ring-1 ring-[var(--surface)] focus:ring-[var(--accent)] w-[min(420px,100%)] placeholder-gray-400"
+          />
+          <div className="ml-auto flex items-center gap-2 text-sm">
+            <label className="text-gray-600 dark:text-gray-300">sort</label>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as SortKey)}
+              className="h-9 rounded-xl bg-transparent px-2 text-sm outline-none ring-1 ring-[var(--surface)] focus:ring-[var(--accent)] text-gray-700 dark:text-gray-200"
+            >
+              <option value="newest">newest</option>
+              <option value="oldest">oldest</option>
+              <option value="az">a–z</option>
+            </select>
+          </div>
+          <div className="w-full flex flex-wrap gap-2">
+            {PILL_FILTERS.map((p) => {
+              const active = activeFilters.includes(p);
+              return (
+                <button
+                  key={p}
+                  onClick={() =>
+                    setActiveFilters((prev) =>
+                      prev.includes(p)
+                        ? prev.filter((f) => f !== p)
+                        : [...prev, p]
+                    )
+                  }
+                  className={
+                    "h-7 px-3 rounded-full text-xs tracking-[0.08em] transition " +
+                    (active
+                      ? "bg-[var(--accent)] text-white ring-2 ring-[var(--accent)]"
+                      : "ring-1 ring-[var(--surface)] hover:ring-[var(--accent)]")
+                  }
+                  aria-pressed={active}
+                >
+                  {p}
+                </button>
+              );
+            })}
           </div>
         </div>
         <div className="flex flex-col lg:flex-row lg:space-x-6 lg:h-[75vh]">
           <div className="lg:w-2/3" ref={containerRef}>
-            <ProjectDetails
-              project={selectedProject}
-              onCarouselOpen={() => setIsCarouselOpen(true)}
-            />
+            {selectedProject && (
+              <ProjectDetails
+                project={selectedProject}
+                onCarouselOpen={() => setIsCarouselOpen(true)}
+              />
+            )}
           </div>
           <div className="lg:w-1/3 mt-6 lg:mt-0 flex-grow pb-16">
             <ProjectList
-              projects={projects}
-              selectedProject={selectedProject}
-              onSelectProject={(project, index) => {
-                setSelectedProject(project);
-                setCurrentIndex(index);
+              projects={filtered}
+              selectedProject={selectedProject || undefined}
+              onSelectProject={(project, _index) => {
+                const idx = filtered.findIndex((p) => p.name === project.name);
+                setCurrentIndex(idx >= 0 ? idx : 0);
               }}
               scrollAreaRef={scrollAreaRef}
             />
@@ -189,11 +195,8 @@ export default function ProjectsShowcase() {
         </div>
       </div>
       <Dialog open={isCarouselOpen} onOpenChange={setIsCarouselOpen}>
-        <DialogContent
-          className="max-w-none w-screen h-screen p-0"
-          hideCloseButton
-        >
-          {selectedProject && selectedProject.screenshots && (
+        <DialogContent className="max-w-none w-screen h-screen p-0">
+          {selectedProject?.screenshots && (
             <Carousel
               images={selectedProject.screenshots}
               onClose={() => setIsCarouselOpen(false)}
