@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0c0c0c;
+  --surface: #151615;
+  --text: #e7e7e5;
+  --muted: #8a8f84;
+  --accent: #6e8a6b;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group:hover .project-link::after {
+  width: 100%;
+}
+
+.thumb {
+  filter: grayscale(1);
+  transform: scale(0.94);
+  transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group:hover .thumb {
+  filter: grayscale(0);
+  transform: scale(1);
+}

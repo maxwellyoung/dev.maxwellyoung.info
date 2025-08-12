@@ -1,165 +1,78 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import Resume from "./resume/page";
-import ProjectsShowcase from "./projects/page";
-import { motion, AnimatePresence } from "framer-motion";
-import FallingStars from "@/components/FallingStars";
-import { BlogLayoutComponent } from "@/components/blog-layout";
+import React, { useRef } from "react";
+import { projects } from "@/lib/projects";
+import { resume } from "@/data/resume";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { ProjectItem } from "@/components/ProjectItem";
+import type { Project } from "@/lib/types";
+// import { FeaturedListMinimal } from "@/components/FeaturedListMinimal";
 
-export default function Home() {
-  const [isHovered, setIsHovered] = useState(false);
-  const [showStars, setShowStars] = useState(false);
-  const { theme, setTheme } = useTheme();
+const featuredProjects = projects
+  .filter((p) => p.featured)
+  .sort((a, b) => (a.priority ?? 999) - (b.priority ?? 999));
 
-  useEffect(() => {
-    // Set theme based on system preference
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    setTheme(mediaQuery.matches ? "dark" : "light");
-
-    // Listen for changes in system preference
-    const listener = (e: MediaQueryListEvent) => {
-      setTheme(e.matches ? "dark" : "light");
-    };
-    mediaQuery.addListener(listener);
-
-    return () => mediaQuery.removeListener(listener);
-  }, [setTheme]);
-
-  const titleVariants = {
-    initial: { opacity: 1, y: 0 },
-    hover: { opacity: 0, y: -20 },
-  };
-
-  const subtitleVariants = {
-    initial: { opacity: 0, y: 20 },
-    hover: { opacity: 1, y: 0 },
-  };
+const AnimatedSection = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isVisible = useIntersectionObserver(ref, {
+    threshold: 0.1,
+  });
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-900 text-zinc-800 dark:text-white p-4 md:p-8 flex flex-col justify-between">
-      <main className="max-w-2xl mx-auto space-y-8 overflow-y-auto scroll-smooth">
-        <section className="flex flex-col justify-center items-left min-h-screen space-y-8 p-4 md:p-8">
-          <header className="mb-12">
-            <a
-              href="/"
-              className="text-xl glint text-zinc-800 dark:text-zinc-200 font-medium cursor-pointer"
-              onClick={() => setShowStars(true)}
-            >
-              Maxwell Young
-            </a>
-            <div
-              className="relative h-8"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              <motion.p
-                className="text-xl font-light text-zinc-500 dark:text-zinc-400 absolute"
-                variants={titleVariants}
-                initial="initial"
-                animate={isHovered ? "hover" : "initial"}
-                transition={{ duration: 0.3 }}
-              >
-                Design Engineer
-              </motion.p>
-              <motion.p
-                className="text-xl font-light text-zinc-500 dark:text-zinc-400 absolute"
-                variants={subtitleVariants}
-                initial="initial"
-                animate={isHovered ? "hover" : "initial"}
-                transition={{ duration: 0.3 }}
-              >
-                Ideation to Implementation
-              </motion.p>
-            </div>
-          </header>
-
-          <div className="leading-relaxed">
-            <h2 className="font-medium mb-6 text-zinc-800 dark:text-zinc-300">
-              Today
-            </h2>
-            <p className="text-zinc-500 dark:text-zinc-400">
-              I am currently studying for a Bachelor of Computer Science at
-              Auckland University of Technology, majoring in Software
-              Development and Data Science.
-            </p>
-            <p className="text-zinc-500 dark:text-zinc-400">
-              I&apos;m passionate about making software simple with intention
-              and principles to elevate user experiences and solve everyday
-              issues.
-            </p>
-            <p className="text-zinc-500 dark:text-zinc-400">
-              I&apos;m currently working on a number of projects, including
-              portfolio sites for designers/authors/artists at{" "}
-              <Link
-                href="https://www.ninetynine.digital/"
-                target="_blank"
-                className="underline hover:text-zinc-800 hover:dark:text-zinc-300"
-              >
-                ninetynine digital
-              </Link>
-              , a party game for friends, and an iOS application to be announced
-              soon.
-            </p>
-          </div>
-
-          <div className="leading-relaxed">
-            <h2 className="font-medium mb-6 text-zinc-800 dark:text-zinc-300">
-              Previously
-            </h2>
-            <p className="text-zinc-500 dark:text-zinc-400">
-              I&apos;ve previously been a UI Developer at Spark New Zealand and
-              graduated from the web development bootcamp Dev Academy Aotearoa.
-            </p>
-          </div>
-
-          <div className="leading-relaxed">
-            <h2 className="font-medium mb-6 text-zinc-800 dark:text-zinc-300">
-              More
-            </h2>
-            <p className="text-zinc-500 dark:text-zinc-400">
-              You can see my work{" "}
-              <Link
-                href="#projects"
-                className="underline hover:text-zinc-800 hover:dark:text-zinc-300"
-              >
-                here,
-              </Link>{" "}
-              my resume{" "}
-              <Link
-                href="#resume"
-                target="_blank"
-                className="underline hover:text-zinc-800 hover:dark:text-zinc-300"
-              >
-                here
-              </Link>
-              , & more of my code on{" "}
-              <Link
-                href="https://github.com/maxwellyoung"
-                target="_blank"
-                className="underline hover:text-zinc-800 hover:dark:text-zinc-300"
-              >
-                GitHub
-              </Link>
-              .
-            </p>
-          </div>
-        </section>
-        <section id="projects">
-          <ProjectsShowcase />
-        </section>
-        <section id="blog">
-          <BlogLayoutComponent />
-        </section>
-        <section id="resume">
-          <Resume />
-        </section>
-      </main>
-      <AnimatePresence>
-        {showStars && <FallingStars onComplete={() => setShowStars(false)} />}
-      </AnimatePresence>
+    <div
+      ref={ref}
+      className={`section-fade-in ${isVisible ? "is-visible" : ""}`}
+    >
+      {children}
     </div>
+  );
+};
+
+export default function Home() {
+  return (
+    <main className="page grid grid-cols-1 md:grid-cols-[96px_40ch_160px_1fr] md:gap-x-16 min-h-screen items-start py-16 md:py-24 px-4 md:px-0">
+      <div className="left-column md:col-start-2 space-y-12">
+        <section className="space-y-4 section-fade-in is-visible">
+          <h1 className="text-3xl font-semibold leading-tight tracking-tight">
+            Rigorous interfaces. Built to outlast their stack.
+            <br />
+            <span className="text-muted">
+              Based in Tāmaki Makaurau (Auckland), working with teams globally.
+            </span>
+          </h1>
+        </section>
+
+        <section
+          id="previously"
+          className="section-fade-in is-visible"
+          style={{ transitionDelay: "100ms" }}
+        >
+          <h2 className="text-sm font-semibold uppercase tracking-widest text-muted">
+            Previously
+          </h2>
+          <ul className="mt-2 list-none space-y-1 text-sm">
+            {resume.experience.map((role) => (
+              <li key={role.company}>
+                {role.title}, {role.company}
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+
+      <div className="art-column md:col-start-3 mt-12 md:mt-0">
+        <ul className="space-y-4">
+          {featuredProjects.map((project: Project, index: number) => (
+            <ProjectItem key={project.name} project={project} index={index} />
+          ))}
+        </ul>
+        <div className="mt-4">
+          <Link href="/projects" className="underline">
+            See all projects
+          </Link>
+        </div>
+      </div>
+    </main>
   );
 }

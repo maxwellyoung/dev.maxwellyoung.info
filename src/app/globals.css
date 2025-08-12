@@ -2,210 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
-    --card: 0 0% 100%;
-    --card-foreground: 20 14.3% 4.1%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 14.3% 4.1%;
-    --primary: 24 9.8% 10%;
-    --primary-foreground: 60 9.1% 97.8%;
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
-    --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
-    --accent: 60 4.8% 95.9%;
-    --accent-foreground: 24 9.8% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
-    --ring: 20 14.3% 4.1%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-  }
-
-  .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 60 9.1% 97.8%;
-    --card: 20 14.3% 4.1%;
-    --card-foreground: 60 9.1% 97.8%;
-    --popover: 20 14.3% 4.1%;
-    --popover-foreground: 60 9.1% 97.8%;
-    --primary: 60 9.1% 97.8%;
-    --primary-foreground: 24 9.8% 10%;
-    --secondary: 12 6.5% 15.1%;
-    --secondary-foreground: 60 9.1% 97.8%;
-    --muted: 12 6.5% 15.1%;
-    --muted-foreground: 24 5.4% 63.9%;
-    --accent: 12 6.5% 15.1%;
-    --accent-foreground: 60 9.1% 97.8%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 12 6.5% 15.1%;
-    --input: 12 6.5% 15.1%;
-    --ring: 24 5.7% 82.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-  }
+:root {
+  /* Fonts */
+  --font-sans: "GeneralSansVariable", ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-display: "SentientVariable", ui-serif, Georgia, Cambria, Times,
+    "Times New Roman", serif;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+/* Variable fonts served from /public/fonts */
+@font-face {
+  font-family: "GeneralSansVariable";
+  src: url("/fonts/GeneralSans-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GeneralSansVariable";
+  src: url("/fonts/GeneralSans-VariableItalic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SentientVariable";
+  src: url("/fonts/Sentient-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SentientVariable";
+  src: url("/fonts/Sentient-VariableItalic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+:root {
+  --bg: #0e0e0e;
+  --surface: #151515;
+  --surface-2: #1a1a1a;
+  --text: #eaeaea;
+  --muted: #9aa0a6;
+  --accent: #991b1b; /* deep red */
+  --content-width: 640px;
 }
 
-.fade-in {
-  animation: fadeIn 1s ease-in-out;
+body {
+  background-color: var(--bg);
+  /* cleaner surface, remove decorative noise */
+  background-image: none;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+  font-family: var(--font-sans);
 }
 
-.content {
-  text-align: center;
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 200ms ease, transform 200ms ease;
 }
 
-.content img {
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s;
+.section-fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.mesh:hover .content img {
-  transform: scale(1.1);
-  filter: brightness(1.2);
+/* Minimal link styling */
+.project-link {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
 }
 
-@keyframes glint {
-  0% {
-    background-position: -200%;
-  }
-  100% {
-    background-position: 200%;
-  }
+.thumb {
+  opacity: 0.95;
+  transition: opacity 200ms ease;
 }
 
-@keyframes glint {
-  0% {
-    background-position: -200%;
-  }
-  100% {
-    background-position: 200%;
-  }
-}
-
-@layer base {
-  :root {
-    --font-roboto-mono: "Roboto Mono", monospace;
-  }
-}
-
-.font-roboto-mono {
-  font-family: var(--font-roboto-mono);
-}
-
-@keyframes colorShift {
-  0% {
-    background-color: var(--chart-1);
-  }
-  25% {
-    background-color: var(--chart-2);
-  }
-  50% {
-    background-color: var(--chart-3);
-  }
-  75% {
-    background-color: var(--chart-4);
-  }
-  100% {
-    background-color: var(--chart-5);
-  }
-}
-
-.color-shift {
-  animation: colorShift 10s infinite;
-}
-
-.interactive-element {
-  transition: all 0.3s ease;
-}
-
-.interactive-element:hover {
-  transform: scale(1.1);
-  filter: hue-rotate(45deg);
-}
-
-.blake-transition {
-  transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.shadow-glow-green,
-.shadow-glow-orange {
-  transition: all 0.3s ease-in-out;
-}
-
-.shadow-glow-green:hover,
-.shadow-glow-orange:hover {
-  transform: none;
-}
-
-.shadow-glow-green {
-  filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.7));
-}
-
-.shadow-glow-orange {
-  filter: drop-shadow(0 0 5px rgba(249, 115, 22, 0.7));
-}
-
-.shadow-glow-green-enhanced,
-.shadow-glow-orange-enhanced {
-  transition: all 0.3s ease-in-out;
-}
-
-.shadow-glow-green-enhanced:hover,
-.shadow-glow-orange-enhanced:hover {
-  transform: none;
-}
-
-.shadow-glow-green-enhanced {
-  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.9))
-    drop-shadow(0 0 16px rgba(16, 185, 129, 0.7));
-}
-
-.shadow-glow-orange-enhanced {
-  filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.9))
-    drop-shadow(0 0 16px rgba(249, 115, 22, 0.7));
-}
-
-/* Add this to the end of the file */
-.dark .falling-star {
-  background-color: white;
-}
-
-.falling-star {
-  background-color: black;
+.group:hover .thumb {
+  opacity: 1;
 }
