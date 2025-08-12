@@ -1,6 +1,6 @@
 import { type Metadata } from "next";
 import { projects } from "@/lib/projects";
-import { ShowcaseClient } from "@/components/ShowcaseClient";
+import ShowcaseClient from "@/components/ShowcaseClient";
 
 export const metadata: Metadata = {
   title: "Showcase",
