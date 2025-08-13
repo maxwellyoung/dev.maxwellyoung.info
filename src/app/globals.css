@@ -16,9 +16,8 @@
     --secondary: 60 4.8% 95.9%;
     --secondary-foreground: 24 9.8% 10%;
     --muted: 0 0% 96%;
-    /* increase muted-foreground contrast slightly */
-    /* Darken muted text in light mode for better contrast on near-white bg */
-    --muted-foreground: 0 0% 42%;
+    /* increase muted-foreground contrast for readability on near-white bg */
+    --muted-foreground: 0 0% 36%;
     --accent: 0 63% 33%; /* deep red */
     --accent-foreground: 0 0% 96%;
     --destructive: 0 70% 48%;
