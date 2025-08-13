@@ -11,6 +11,12 @@ import PastelHazeBackground from "@/components/PastelHazeBackground";
 import DotMatrix from "@/components/DotMatrix";
 import BrakhageOverlay from "@/components/BrakhageOverlay";
 import GeoCitiesBackground from "@/components/GeoCitiesBackground";
+import VhsScanlines from "@/components/VhsScanlines";
+import AuroraBackground from "@/components/AuroraBackground";
+import ParticleField from "@/components/ParticleField";
+import MeshWarpBackground from "@/components/MeshWarpBackground";
+import AsciiRain from "@/components/AsciiRain";
+import FlowFieldBackground from "@/components/FlowFieldBackground";
 
 export type ArtStyle =
   | "default"
@@ -18,7 +24,12 @@ export type ArtStyle =
   | "dots"
   | "film"
   | "geocities"
-  | "plain";
+  | "vhs"
+  | "aurora"
+  | "particles"
+  | "mesh"
+  | "ascii"
+  | "flow";
 
 type Ctx = {
   style: ArtStyle;
@@ -40,7 +51,7 @@ export default function ArtStyleProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [style, setStyle] = useState<ArtStyle>("plain");
+  const [style, setStyle] = useState<ArtStyle>("default");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // hydrate from localStorage
@@ -52,13 +63,12 @@ export default function ArtStyleProvider({
         saved === "dots" ||
         saved === "default" ||
         saved === "film" ||
-        saved === "geocities" ||
-        saved === "plain"
+        saved === "geocities"
       ) {
         setStyle(saved);
       } else if (typeof window !== "undefined" && window.innerWidth < 768) {
-        // prefer a plain background by default on small screens
-        setStyle("plain");
+        // prefer no background by default on small screens
+        setStyle("default");
       }
     } catch {}
   }, []);
@@ -119,11 +129,11 @@ export default function ArtStyleProvider({
       {style === "haze" && (
         <PastelHazeBackground
           className="fixed inset-0 z-0"
-          opacity={0.35}
-          speed={0.28}
-          blobCount={8}
-          grainIntensity={0.02}
-          grainFPS={8}
+          opacity={0.5}
+          speed={0.32}
+          blobCount={10}
+          grainIntensity={0.04}
+          grainFPS={10}
           // @ts-expect-error custom attribute for debugging
           data-art-bg
         />
@@ -157,7 +167,34 @@ export default function ArtStyleProvider({
       {style === "geocities" && (
         <GeoCitiesBackground className="fixed inset-0 z-0" />
       )}
-      {/* plain = no background */}
+      {style === "vhs" && <VhsScanlines className="z-0" opacity={0.12} />}
+      {style === "aurora" && (
+        <AuroraBackground className="z-0" opacity={0.5} speed={0.16} />
+      )}
+      {style === "particles" && (
+        <ParticleField
+          className="z-0"
+          count={90}
+          color="rgba(255,255,255,0.6)"
+          size={1.2}
+          trail={0.08}
+        />
+      )}
+      {style === "mesh" && <MeshWarpBackground className="z-0" opacity={0.5} />}
+      {style === "ascii" && (
+        <AsciiRain className="z-0" density={0.92} color="#7CFFB2" />
+      )}
+      {style === "flow" && (
+        <FlowFieldBackground
+          className="z-0"
+          lineCount={1300}
+          color="rgba(255,255,255,0.12)"
+          lineWidth={1.2}
+          glow={3}
+          blendMode="screen"
+        />
+      )}
+      {/* default = no background */}
       {children}
     </ArtStyleContext.Provider>
   );

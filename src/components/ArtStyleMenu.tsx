@@ -4,11 +4,17 @@ import React from "react";
 import { useArtStyle, ArtStyle } from "@/components/providers/ArtStyleProvider";
 
 const styles: { key: ArtStyle; label: string }[] = [
-  { key: "default", label: "Default" },
+  { key: "default", label: "Default (no bg)" },
   { key: "haze", label: "Pastel Haze" },
+  { key: "aurora", label: "Aurora" },
   { key: "dots", label: "Dot Matrix" },
+  { key: "mesh", label: "Mesh Warp" },
+  { key: "particles", label: "Particle Field" },
+  { key: "flow", label: "Flow Field" },
   { key: "film", label: "Brakhage Film" },
-  { key: "plain", label: "Plain (no bg)" },
+  { key: "vhs", label: "VHS Scanlines" },
+  { key: "ascii", label: "ASCII Rain" },
+  { key: "geocities", label: "GeoCities" },
 ];
 
 export default function ArtStyleMenu() {
