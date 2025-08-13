@@ -25,7 +25,8 @@ export default function PastelHazeBackground({
   grainIntensity = 0.12,
   grainFPS = 12,
   className = "",
-}: PastelHazeBackgroundProps) {
+  ...rest
+}: PastelHazeBackgroundProps & React.CanvasHTMLAttributes<HTMLCanvasElement>) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const rafRef = useRef<number | null>(null);
   const noiseCanvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -204,14 +205,26 @@ export default function PastelHazeBackground({
     };
 
     if (prefersReducedMotion) {
+      // eslint-disable-next-line no-console
+      try {
+        console.log("[Haze] mounted (static)");
+      } catch {}
       renderFrame(performance.now());
     } else {
+      // eslint-disable-next-line no-console
+      try {
+        console.log("[Haze] mounted (animated)");
+      } catch {}
       rafRef.current = requestAnimationFrame(loop);
     }
 
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       window.removeEventListener("resize", resize);
+      // eslint-disable-next-line no-console
+      try {
+        console.log("[Haze] unmounted");
+      } catch {}
     };
   }, [blobCount, maxDPR, opacity, speed]);
 
@@ -220,6 +233,7 @@ export default function PastelHazeBackground({
       ref={canvasRef}
       aria-hidden
       className={["pointer-events-none fixed inset-0 z-0", className].join(" ")}
+      {...rest}
     />
   );
 }

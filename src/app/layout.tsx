@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { CSPostHogProvider } from "./providers";
 import Link from "next/link";
+import ArtStyleProvider from "@/components/providers/ArtStyleProvider";
+import ArtStyleMenu from "@/components/ArtStyleMenu";
 // DotMatrix removed for cleaner backdrop
 
 // fonts are loaded via globals.css
@@ -59,13 +61,14 @@ export default function RootLayout({
         <CSPostHogProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="dark"
+            enableSystem={false}
             disableTransitionOnChange
           >
-            {/* global backdrop disabled */}
-            {/* header removed per design request */}
-            <div className="relative z-10">{children}</div>
+            <ArtStyleProvider>
+              <div className="relative z-10">{children}</div>
+              <ArtStyleMenu />
+            </ArtStyleProvider>
             <Analytics />
           </ThemeProvider>
         </CSPostHogProvider>

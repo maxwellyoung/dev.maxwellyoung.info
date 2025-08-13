@@ -39,9 +39,9 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white p-4 md:p-8 flex flex-col justify-between">
+    <div className="min-h-screen text-zinc-900 dark:text-white p-4 md:p-8 flex flex-col justify-between">
       <main className="max-w-2xl mx-auto space-y-8 overflow-y-auto scroll-smooth">
-        <section className="flex flex-col justify-center items-left min-h-screen space-y-8 p-4 md:p-8">
+        <section className="flex flex-col justify-center items-start min-h-screen space-y-8 p-4 md:p-8">
           <header className="mb-12">
             <a
               href="/"
@@ -56,7 +56,7 @@ export default function Home() {
               onMouseLeave={() => setIsHovered(false)}
             >
               <motion.p
-                className="text-xl font-light text-zinc-500 dark:text-zinc-400 absolute"
+                className="text-xl font-light text-zinc-500 dark:text-zinc-400 absolute whitespace-nowrap"
                 variants={titleVariants}
                 initial="initial"
                 animate={isHovered ? "hover" : "initial"}
@@ -65,7 +65,7 @@ export default function Home() {
                 Design Engineer
               </motion.p>
               <motion.p
-                className="text-xl font-light text-zinc-500 dark:text-zinc-400 absolute"
+                className="text-xl font-light text-zinc-500 dark:text-zinc-400 absolute whitespace-nowrap"
                 variants={subtitleVariants}
                 initial="initial"
                 animate={isHovered ? "hover" : "initial"}

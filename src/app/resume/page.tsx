@@ -26,7 +26,7 @@ export default function Resume() {
   return (
     <div className="relative w-full p-6 flex flex-col items-center fade-in">
       <div className="max-w-4xl w-full">
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
           <div>
             <span className="block text-3xl font-medium dark:text-zinc-100 text-zinc-800 font-roboto-mono">
               {resumeData.name}
@@ -46,7 +46,7 @@ export default function Resume() {
               </motion.span>
             </div>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-4">
             <Link href="/MaxwellYoung_CV.pdf" legacyBehavior>
               <a
                 className="flex items-center px-2 md:px-4 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-100 bg-opacity-15 bg-[#EA2D42] border border-[#EA2D42] rounded-md hover:bg-transparent hover:text-[#EA2D42] transition duration-300 ease-in-out transform hover:scale-105"
@@ -87,7 +87,7 @@ export default function Resume() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 order-2 lg:order-1">
             <div className="relative">
               <span className="block text-xs font-normal dark:text-zinc-400 text-zinc-800 font-inter uppercase tracking-wide mb-2">
                 Experience
@@ -118,7 +118,7 @@ export default function Resume() {
             ))}
           </div>
 
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 order-1 lg:order-2">
             <div className="mt-8 lg:mt-0">
               <div>
                 <span className="block text-sm font-bold dark:text-zinc-400 text-zinc-600 font-inter">

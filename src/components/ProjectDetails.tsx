@@ -57,7 +57,7 @@ export function ProjectDetails({
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 font-light">
             {project.longDescription || project.description}
           </p>
-          <div className="mt-4 flex space-x-4">
+          <div className="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-4">
             {project.link && (
               <motion.a
                 href={project.link}

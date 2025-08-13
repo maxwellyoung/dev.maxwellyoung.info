@@ -118,14 +118,14 @@ export default function ProjectsShowcase() {
       tabIndex={0}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-wrap items-center gap-3 mb-6">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-3 mb-6">
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="search projects"
             className="h-9 rounded-xl bg-transparent px-3 text-sm outline-none ring-1 ring-[hsl(var(--border))] focus:ring-[hsl(var(--accent))] w-[min(420px,100%)] placeholder-gray-400"
           />
-          <div className="ml-auto flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">
+          <div className="w-full sm:w-auto sm:ml-auto flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">
             <label className="text-gray-600 dark:text-gray-300">sort</label>
             <select
               value={sortBy}
@@ -184,8 +184,7 @@ export default function ProjectsShowcase() {
             </section>
           ) : (
             <section aria-label="all projects" className="mt-2">
-              <h3 className="text-sm text-muted mb-3">all projects</h3>
-              <div className="-mx-1">
+              <div className="sm:-mx-1">
                 <motion.ul
                   layout
                   className="divide-y divide-[hsl(var(--border))]"
@@ -202,8 +201,8 @@ export default function ProjectsShowcase() {
                         }}
                         className="w-full text-left px-1 py-3 hover:bg-[hsl(var(--muted))]/50 transition"
                       >
-                        <div className="flex items-center gap-4">
-                          <div className="relative h-16 w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))]">
+                        <div className="flex items-center gap-3 sm:gap-4">
+                          <div className="relative h-16 w-24 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))]">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                               src={
