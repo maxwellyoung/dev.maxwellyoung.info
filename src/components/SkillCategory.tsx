@@ -7,9 +7,7 @@ export function SkillCategory({ category, items }: SkillCategoryProps) {
   return (
     <div className="mt-8">
       <div>
-        <span className="block text-sm font-bold dark:text-zinc-400 text-zinc-600 font-inter">
-          {category}
-        </span>
+        <span className="resume-label">{category}</span>
       </div>
       <span className="block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter mt-2">
         {items.map((item, index) => (

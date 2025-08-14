@@ -10,6 +10,7 @@ import React, {
 import PastelHazeBackground from "@/components/PastelHazeBackground";
 import DotMatrix from "@/components/DotMatrix";
 import BrakhageOverlay from "@/components/BrakhageOverlay";
+import GlassFlareOverlay from "@/components/GlassFlareOverlay";
 import GeoCitiesBackground from "@/components/GeoCitiesBackground";
 import VhsScanlines from "@/components/VhsScanlines";
 import AuroraBackground from "@/components/AuroraBackground";
@@ -19,7 +20,7 @@ import AsciiRain from "@/components/AsciiRain";
 import MatrixRain from "@/components/MatrixRain";
 import FlowFieldBackground from "@/components/FlowFieldBackground";
 import FluidInkBackground from "@/components/FluidInkBackground";
-import IsometricCity from "@/components/IsometricCity";
+import CityScene from "@/components/CityScene";
 
 export type ArtStyle =
   | "default"
@@ -33,9 +34,7 @@ export type ArtStyle =
   | "mesh"
   | "ascii"
   | "matrix"
-  | "flow"
-  | "fluid"
-  | "city";
+  | "flow";
 // additional flex modes
 // "fluid" and "city" added below
 
@@ -67,20 +66,11 @@ export default function ArtStyleProvider({
     try {
       const saved = localStorage.getItem("art-style");
       if (
-        saved === "default" ||
         saved === "haze" ||
         saved === "dots" ||
+        saved === "default" ||
         saved === "film" ||
-        saved === "geocities" ||
-        saved === "vhs" ||
-        saved === "aurora" ||
-        saved === "particles" ||
-        saved === "mesh" ||
-        saved === "ascii" ||
-        saved === "matrix" ||
-        saved === "flow" ||
-        saved === "fluid" ||
-        saved === "city"
+        saved === "geocities"
       ) {
         setStyle(saved);
       } else if (typeof window !== "undefined" && window.innerWidth < 768) {
@@ -144,15 +134,20 @@ export default function ArtStyleProvider({
     <ArtStyleContext.Provider value={value}>
       {/* global background renderer */}
       {style === "haze" && (
-        <PastelHazeBackground
-          className="fixed inset-0 z-0"
-          opacity={0.5}
-          speed={0.32}
-          blobCount={10}
-          grainIntensity={0.04}
-          grainFPS={10}
-          data-art-bg
-        />
+        <>
+          <PastelHazeBackground
+            className="fixed inset-0 z-0"
+            opacity={0.32}
+            speed={0.24}
+            blobCount={8}
+            grainIntensity={0.018}
+            grainFPS={8}
+            // @ts-expect-error custom attribute for debugging
+            data-art-bg
+          />
+          {/* subtle flare on desktop for premium glass feel */}
+          <GlassFlareOverlay className="hidden md:block" strength={0.06} />
+        </>
       )}
       {style === "dots" && (
         <DotMatrix className="fixed inset-0 z-0 opacity-60" />
@@ -161,19 +156,21 @@ export default function ArtStyleProvider({
         <>
           <PastelHazeBackground
             className="fixed inset-0 z-0"
-            opacity={0.3}
-            speed={0.25}
+            opacity={0.28}
+            speed={0.22}
             blobCount={7}
-            grainIntensity={0.04}
-            grainFPS={10}
+            grainIntensity={0.03}
+            grainFPS={9}
+            // @ts-expect-error custom attribute for debugging
             data-art-bg
           />
           <BrakhageOverlay
             className="z-[2]"
-            flickerIntensity={0.1}
-            grainIntensity={0.08}
-            grainFPS={10}
-            scratchDensity={0.8}
+            flickerIntensity={0.08}
+            grainIntensity={0.06}
+            grainFPS={8}
+            scratchDensity={0.6}
+            // @ts-expect-error custom attribute for debugging
             data-art-bg
           />
         </>
@@ -181,7 +178,17 @@ export default function ArtStyleProvider({
       {style === "geocities" && (
         <GeoCitiesBackground className="fixed inset-0 z-0" />
       )}
-      {style === "vhs" && <VhsScanlines className="z-0" opacity={0.12} />}
+      {style === "vhs" && (
+        <VhsScanlines
+          className="z-0"
+          opacity={0.22}
+          lineOpacity={0.22}
+          gap={2}
+          wobble={1.2}
+          speed={0.9}
+          chroma
+        />
+      )}
       {style === "aurora" && (
         <AuroraBackground className="z-0" opacity={0.5} speed={0.16} />
       )}
@@ -231,7 +238,9 @@ export default function ArtStyleProvider({
           hueShift={0.12}
         />
       )}
-      {style === "city" && <IsometricCity className="z-0" scale={1} />}
+      {style === "city" && (
+        <CityScene className="fixed inset-0 z-0" snow crowd lights speed={1} />
+      )}
       {/* default = no background */}
       {children}
     </ArtStyleContext.Provider>
