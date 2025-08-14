@@ -65,6 +65,10 @@ type Ctx = {
     id: string,
     updater: (prev: GeneratedStyle) => GeneratedStyle
   ) => void;
+  // pinned shaders
+  pinnedStyles: GeneratedStyle[];
+  pinGeneratedStyle: (id: string) => void;
+  unpinGeneratedStyle: (id: string) => void;
 };
 
 const ArtStyleContext = createContext<Ctx | null>(null);
@@ -87,6 +91,7 @@ export default function ArtStyleProvider({
   const [activeGeneratedId, setActiveGeneratedId] = useState<string | null>(
     null
   );
+  const [pinnedStyles, setPinnedStyles] = useState<GeneratedStyle[]>([]);
   // removed defaultGeneratedId concept
 
   // hydrate from localStorage
@@ -120,6 +125,13 @@ export default function ArtStyleProvider({
           try {
             const parsed = JSON.parse(gen) as GeneratedStyle[];
             setGeneratedStyles(parsed);
+          } catch {}
+        }
+        const pinned = localStorage.getItem("art-style-pinned");
+        if (pinned) {
+          try {
+            const parsed = JSON.parse(pinned) as GeneratedStyle[];
+            setPinnedStyles(parsed);
           } catch {}
         }
         const activeId = localStorage.getItem("art-style-active-generated");
@@ -158,6 +170,7 @@ export default function ArtStyleProvider({
         "art-style-generated",
         JSON.stringify(generatedStyles)
       );
+      localStorage.setItem("art-style-pinned", JSON.stringify(pinnedStyles));
       if (activeGeneratedId) {
         localStorage.setItem("art-style-active-generated", activeGeneratedId);
       } else {
@@ -186,7 +199,7 @@ export default function ArtStyleProvider({
         document.querySelectorAll(".dot-matrix")?.length
       );
     } catch {}
-  }, [style, customPrompt, generatedStyles, activeGeneratedId]);
+  }, [style, customPrompt, generatedStyles, pinnedStyles, activeGeneratedId]);
 
   // keyboard toggle: Cmd/Ctrl + Shift + A
   useEffect(() => {
@@ -237,8 +250,25 @@ export default function ArtStyleProvider({
         setGeneratedStyles((prev) =>
           prev.map((x) => (x.id === id ? updater(x) : x))
         ),
+      pinnedStyles,
+      pinGeneratedStyle: (id: string) =>
+        setPinnedStyles((prev) => {
+          const found = generatedStyles.find((x) => x.id === id);
+          if (!found) return prev;
+          if (prev.some((p) => p.id === id)) return prev;
+          return [found, ...prev];
+        }),
+      unpinGeneratedStyle: (id: string) =>
+        setPinnedStyles((prev) => prev.filter((x) => x.id !== id)),
     }),
-    [style, isMenuOpen, customPrompt, generatedStyles, activeGeneratedId]
+    [
+      style,
+      isMenuOpen,
+      customPrompt,
+      generatedStyles,
+      pinnedStyles,
+      activeGeneratedId,
+    ]
   );
 
   return (

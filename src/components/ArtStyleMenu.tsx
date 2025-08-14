@@ -27,6 +27,9 @@ export default function ArtStyleMenu() {
     customPrompt,
     setCustomPrompt,
     generatedStyles,
+    pinnedStyles,
+    pinGeneratedStyle,
+    unpinGeneratedStyle,
     addGeneratedStyle,
     removeGeneratedStyle,
     setActiveGeneratedId,
@@ -282,6 +285,44 @@ export default function ArtStyleMenu() {
               </button>
             </div>
           </div>
+          {pinnedStyles.length > 0 && (
+            <div className="mt-4 border-t border-white/10 pt-3">
+              <div className="text-xs text-white/60 mb-2">Pinned</div>
+              <div className="space-y-2">
+                {pinnedStyles.map((g) => (
+                  <div key={g.id} className="flex items-center gap-2">
+                    <button
+                      onClick={() => {
+                        setStyle("ai");
+                        setActiveGeneratedId(g.id);
+                      }}
+                      className={
+                        "flex-1 text-left rounded-lg px-3 py-2 ring-1 transition " +
+                        (style === "ai" && g.id === activeGeneratedId
+                          ? "bg-white/10 ring-white/30"
+                          : "bg-transparent ring-white/10 hover:bg-white/5")
+                      }
+                    >
+                      <div className="text-sm flex items-center gap-2">
+                        <span>{g.name}</span>
+                      </div>
+                      <div className="text-[11px] text-white/50 line-clamp-1">
+                        {g.prompt}
+                      </div>
+                    </button>
+                    <button
+                      onClick={() => unpinGeneratedStyle(g.id)}
+                      className="text-[11px] text-white/50 hover:text-white px-2"
+                      title="Unpin"
+                    >
+                      📌
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {generatedStyles.length > 0 && (
             <div className="mt-4 border-t border-white/10 pt-3">
               <div className="text-xs text-white/60 mb-2">Generated</div>
@@ -306,6 +347,13 @@ export default function ArtStyleMenu() {
                       <div className="text-[11px] text-white/50 line-clamp-1">
                         {g.prompt}
                       </div>
+                    </button>
+                    <button
+                      onClick={() => pinGeneratedStyle(g.id)}
+                      className="text-[11px] text-white/50 hover:text-white px-2"
+                      title="Pin"
+                    >
+                      📌
                     </button>
                     <button
                       onClick={() => removeGeneratedStyle(g.id)}
