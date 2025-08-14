@@ -30,25 +30,24 @@ export function ProjectDetails({
           className="bg-white dark:bg-neutral-800 bg-opacity-70 backdrop-blur-sm rounded-xl p-6 shadow-lg"
         >
           {project.screenshots && project.screenshots.length > 0 && (
-            <div
-              className="relative cursor-pointer mb-5"
-              onClick={onCarouselOpen}
-            >
-              <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-black/5 dark:ring-white/10">
-                <Image
-                  src={project.screenshots[0]}
-                  alt={`${project.name} screenshot`}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 66vw"
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              {project.screenshots.length > 1 && (
-                <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded-full text-xs">
-                  +{project.screenshots.length - 1}
+            <div className="grid-12 gap-4 mb-5">
+              <div className="col-span-12" onClick={onCarouselOpen}>
+                <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-black/5 dark:ring-white/10 cursor-pointer">
+                  <Image
+                    src={project.screenshots[0]}
+                    alt={`${project.name} screenshot`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 66vw"
+                    className="object-cover"
+                    priority
+                  />
+                  {project.screenshots.length > 1 && (
+                    <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded-full text-xs">
+                      +{project.screenshots.length - 1}
+                    </div>
+                  )}
                 </div>
-              )}
+              </div>
             </div>
           )}
           <h2 className="text-[22px] md:text-[24px] font-medium leading-tight text-gray-800 dark:text-gray-100">
