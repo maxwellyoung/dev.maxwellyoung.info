@@ -1,4 +1,6 @@
 import { NextRequest } from "next/server";
+import { ensureFragmentSafety } from "@/lib/shaderValidation";
+import { parsePromptToSpec } from "@/lib/promptToSpec";
 
 function genId(len = 10): string {
   const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -16,11 +18,13 @@ export async function POST(req: NextRequest) {
     };
     const id = genId(10);
     if (!process.env.OPENAI_SECRET) {
-      // fallback recipe: ensure at least one shader template
+      // fallback recipe: ensure strong shader baseline + a secondary layer
       const recipe = [
         {
           type: "shaderTemplate",
-          template: "noisy-blobs",
+          template: /(flame|fire|ember|lava)/i.test(String(prompt || ""))
+            ? "flow-curl"
+            : "noisy-blobs",
           uniforms: { colorA: "#a3c3ff", colorB: "#0a1830", scale: 1.2 },
         },
         { type: "haze", opacity: 0.22, speed: 0.18, hueBias: 200 },
@@ -28,20 +32,26 @@ export async function POST(req: NextRequest) {
       return Response.json({ id, name: "Generated", prompt, recipe });
     }
 
-    const sys = `You are a JSON-only generator that outputs a layered background "recipe".
-Return strictly a JSON object with fields: id, name, prompt, recipe.
-recipe is an array of layers. Each layer is one of (include at least one shader or shaderTemplate layer):
-- {"type":"haze","opacity":0.3,"speed":0.2,"hueBias":240}
-- {"type":"particles","count":70,"color":"rgba(255,255,255,0.35)","size":1,"trail":0.06}
-- {"type":"aurora","opacity":0.5,"speed":0.14}
-- {"type":"flow","lineCount":1200,"color":"rgba(255,255,255,0.14)","lineWidth":1.2,"glow":4}
-- {"type":"mesh","opacity":0.5}
-- {"type":"vhs","opacity":0.22,"lineOpacity":0.24,"gap":2,"wobble":1.1,"speed":0.8,"chroma":true}
-- {"type":"matrix","fontSize":14,"headColor":"#A8FFB6","tailColor":"#00FF7F","tailLength":24,"speedMin":0.9,"speedMax":1.9}
- - {"type":"shader","frag":"/* GLSL fragment shader body using u_time, u_resolution, u_colorA, u_colorB */","uniforms":{"seed":123,"colorA":"#92b2ff","colorB":"#0a1930"}}
- - {"type":"shaderTemplate","template":"noisy-blobs","uniforms":{"seed":123,"colorA":"#92b2ff","colorB":"#0a1930","scale":1.2}}
-Pick 1–3 layers that fit the user's vibe. Use tasteful parameters. No extra text.`;
+    const sys = `You are a JSON-only background compositor. Output STRICT JSON with fields: id, name, prompt, recipe.
+recipe is an array of 1–4 layers (ordered back-to-front). Include AT LEAST ONE shader or shaderTemplate layer.
+Allowed layers and example params:
+- {"type":"haze","opacity":0.18,"speed":0.16,"hueBias":220}
+- {"type":"particles","count":50,"color":"rgba(255,255,255,0.28)","size":1,"trail":0.05}
+- {"type":"aurora","opacity":0.4,"speed":0.12}
+- {"type":"flow","lineCount":1000,"color":"rgba(255,255,255,0.12)","lineWidth":1.1,"glow":3}
+- {"type":"mesh","opacity":0.45}
+- {"type":"vhs","opacity":0.16,"lineOpacity":0.22,"gap":2,"wobble":1.0,"speed":0.8,"chroma":true}
+- {"type":"matrix","fontSize":14,"headColor":"#A8FFB6","tailColor":"#00FF7F","tailLength":22,"speedMin":0.9,"speedMax":1.8}
+- {"type":"shader","frag":"/* GLSL ES 1.00, uses u_resolution,u_time,u_mouse,u_seed,u_colorA,u_colorB, gl_FragColor */","uniforms":{"seed":123,"colorA":"#92b2ff","colorB":"#0a1930"}}
+- {"type":"shaderTemplate","template":"noisy-blobs","uniforms":{"seed":123,"colorA":"#92b2ff","colorB":"#0a1930","scale":1.2}}
 
+Guidelines:
+- Favor domain-warped noise or flow for the shader; tasteful, cinematic palettes.
+- Subtle interactivity via u_mouse if shader is used (no jittery effects).
+- Keep parameters balanced; avoid extreme counts and sizes.
+- No extra text. JSON only.`;
+
+    const spec = parsePromptToSpec(prompt);
     const body = {
       model: "gpt-4o-mini",
       messages: [
@@ -51,10 +61,16 @@ Pick 1–3 layers that fit the user's vibe. Use tasteful parameters. No extra te
           content:
             (shaderOnly
               ? "Return only shader or shaderTemplate layers. "
-              : "") + String(prompt || ""),
+              : "") +
+            `${String(prompt || "")}\n\nConstraints: theme=${
+              spec.theme
+            }, motion=${spec.motion}, complexity=${spec.complexity}.` +
+            (spec.palette
+              ? ` Preferred palette: colorA=${spec.palette.colorA}, colorB=${spec.palette.colorB}.`
+              : ""),
         },
       ],
-      temperature: 0.5,
+      temperature: 0.65,
       response_format: { type: "json_object" },
     };
 
@@ -104,6 +120,14 @@ Pick 1–3 layers that fit the user's vibe. Use tasteful parameters. No extra te
       ];
       return Response.json({ id, name: "Generated", prompt, recipe });
     }
+    // Validate shader fragments if present
+    parsed.recipe = parsed.recipe.filter((layer: any) => {
+      if (layer?.type === "shader") {
+        const s = ensureFragmentSafety(layer.frag);
+        return !!s.ok;
+      }
+      return true;
+    });
     // allow models to reference shader templates for guaranteed-valid GLSL
     parsed.recipe = parsed.recipe.map((layer: any) => {
       if (
@@ -133,8 +157,18 @@ Pick 1–3 layers that fit the user's vibe. Use tasteful parameters. No extra te
       ];
       hasShader = true;
     }
-    // if prompt indicates zebra or water, bias to those templates
-    if (/(zebra|stripe)/i.test(prompt || "")) {
+    // if prompt indicates flames/zebra/water, bias to those templates
+    if (/(flame|fire|ember|lava)/i.test(prompt || "")) {
+      parsed.recipe.unshift({
+        type: "shaderTemplate",
+        template: "flame-plumes",
+        uniforms: {
+          colorA: "#ffd56a",
+          colorB: "#1a0a00",
+          intensity: 1.0,
+        },
+      });
+    } else if (/(zebra|stripe)/i.test(prompt || "")) {
       parsed.recipe.unshift({
         type: "shaderTemplate",
         template: "zebra-stripes",
@@ -157,16 +191,23 @@ Pick 1–3 layers that fit the user's vibe. Use tasteful parameters. No extra te
         },
       });
     }
-    // ensure at least one shader and apply prompt-driven palette if missing
+    // ensure at least one shader and apply default/prompt palette if missing
     const ensurePalette = (u: any) => {
       if (!u) u = {};
-      if (!u.colorA) u.colorA = "#a3c3ff";
-      if (!u.colorB) u.colorB = "#0a1830";
+      if (!u.colorA) u.colorA = spec.palette?.colorA || "#a3c3ff";
+      if (!u.colorB) u.colorB = spec.palette?.colorB || "#0a1830";
       return u;
     };
     parsed.recipe = parsed.recipe.map((layer: any) => {
       if (layer?.type === "shader" || layer?.type === "shaderTemplate") {
         layer.uniforms = ensurePalette(layer.uniforms);
+        if (
+          spec.theme === "flames" &&
+          layer.type === "shaderTemplate" &&
+          !layer.uniforms.intensity
+        ) {
+          layer.uniforms.intensity = spec.complexity === 0.8 ? 1.2 : 1.0;
+        }
       }
       return layer;
     });

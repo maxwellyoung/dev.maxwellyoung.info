@@ -7,6 +7,8 @@ export function buildShaderFromTemplate(
   switch (template) {
     case "noisy-blobs":
       return noisyBlobs(params);
+    case "flame-plumes":
+      return flamePlumes(params);
     case "voronoi-fade":
       return voronoiFade(params);
     case "flow-curl":
@@ -180,5 +182,29 @@ void main(){
   c = smoothstep(0.5, 0.95, c);
   vec3 base = mix(u_colorB, u_colorA, c);
   gl_FragColor = vec4(base, 1.0);
+}`;
+}
+
+function flamePlumes(params: Record<string, unknown>): string {
+  const intensity = Number(params["intensity"]) || 1.0;
+  return `
+// expects: u_time, u_resolution, u_colorA (hot), u_colorB (dark)
+float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453123); }
+float noise(vec2 p){ vec2 i=floor(p), f=fract(p); vec2 u=f*f*(3.0-2.0*f); float a=hash(i+vec2(0.0)); float b=hash(i+vec2(1.0,0.0)); float c=hash(i+vec2(0.0,1.0)); float d=hash(i+vec2(1.0,1.0)); return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);} 
+float fbm(vec2 p){ float v=0.0, a=0.5; for(int i=0;i<6;i++){ v+=a*noise(p); p=p*2.0+vec2(37.0,17.0); a*=0.5; } return v; }
+vec3 pal(float t, vec3 A, vec3 B, vec3 C, vec3 D){ return A + B*cos(6.28318*(C*t + D)); }
+void main(){
+  vec2 R=u_resolution; vec2 uv=gl_FragCoord.xy/R; vec2 p=uv-0.5; p.x*=R.x/R.y;
+  float t=u_time*0.9; float k=${intensity.toFixed(2)};
+  vec2 q=vec2(fbm(p*2.0+vec2(0.0,t)), fbm(p*2.0-vec2(0.0,t)));
+  vec2 r=vec2(fbm(p*3.0+2.0*q+vec2(1.7,9.2)), fbm(p*3.0+2.0*q+vec2(8.3,2.8)));
+  float n=fbm(p*2.4+3.0*r+vec2(0.0,t*1.6));
+  float profile = smoothstep(0.55, 0.0, abs(p.x));
+  float heat = clamp(n*1.3 + uv.y*1.2 - 0.25, 0.0, 1.0) * profile * k;
+  vec3 fire = pal(heat, vec3(0.5), vec3(0.5), vec3(1.0,0.5,0.2), vec3(0.0,0.15,0.0));
+  vec3 col = mix(u_colorB, u_colorA, heat);
+  col = mix(col, col*fire, 0.35);
+  float d=length(p); col *= 1.0 - smoothstep(0.75, 1.1, d);
+  gl_FragColor = vec4(col,1.0);
 }`;
 }

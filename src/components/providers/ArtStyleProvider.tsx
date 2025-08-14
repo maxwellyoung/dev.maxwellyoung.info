@@ -61,6 +61,10 @@ type Ctx = {
   setActiveGeneratedId: (id: string | null) => void;
   renameGeneratedStyle: (id: string, name: string) => void;
   duplicateGeneratedStyle: (id: string) => void;
+  updateGeneratedStyle: (
+    id: string,
+    updater: (prev: GeneratedStyle) => GeneratedStyle
+  ) => void;
 };
 
 const ArtStyleContext = createContext<Ctx | null>(null);
@@ -226,6 +230,13 @@ export default function ArtStyleProvider({
           const copy = { ...g, id: `${g.id}-copy`, name: `${g.name} (copy)` };
           return [copy, ...prev];
         }),
+      updateGeneratedStyle: (
+        id: string,
+        updater: (prev: GeneratedStyle) => GeneratedStyle
+      ) =>
+        setGeneratedStyles((prev) =>
+          prev.map((x) => (x.id === id ? updater(x) : x))
+        ),
     }),
     [style, isMenuOpen, customPrompt, generatedStyles, activeGeneratedId]
   );

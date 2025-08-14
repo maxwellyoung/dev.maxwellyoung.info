@@ -92,7 +92,7 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      category: "æckend & Cloud",
+      category: "Backend & Cloud",
       items: [
         "REST APIs (Node.js)",
         "PostgreSQL",

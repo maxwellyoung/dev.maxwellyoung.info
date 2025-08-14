@@ -41,6 +41,8 @@ export default function ShaderBackground({
 }: Props) {
   const ref = useRef<HTMLCanvasElement | null>(null);
   const rafRef = useRef<number | null>(null);
+  const fpsSamples = useRef<number[]>([]);
+  const detailRef = useRef<number>(1);
 
   useEffect(() => {
     const canvas = ref.current;
@@ -154,6 +156,7 @@ export default function ShaderBackground({
     const uSeed = gl.getUniformLocation(program, "u_seed");
     const uColorA = gl.getUniformLocation(program, "u_colorA");
     const uColorB = gl.getUniformLocation(program, "u_colorB");
+    const uDetail = gl.getUniformLocation(program, "u_detail");
 
     const seed = uniforms.seed ?? Math.random() * 1000;
     const colorA = parseColorToVec3(uniforms.colorA, [0.8, 0.9, 1.0]);
@@ -168,6 +171,7 @@ export default function ShaderBackground({
     window.addEventListener("mousemove", onMouse);
 
     const start = performance.now();
+    let last = performance.now();
     const loop = (now: number) => {
       const t = (now - start) / 1000;
       gl.uniform2f(uResolution, canvas.width, canvas.height);
@@ -176,8 +180,22 @@ export default function ShaderBackground({
       gl.uniform1f(uSeed, seed);
       gl.uniform3f(uColorA, colorA[0], colorA[1], colorA[2]);
       gl.uniform3f(uColorB, colorB[0], colorB[1], colorB[2]);
+      if (uDetail) gl.uniform1f(uDetail, detailRef.current);
 
       gl.drawArrays(gl.TRIANGLES, 0, 6);
+      // FPS monitoring and dynamic detail if shader supports it
+      const dt = now - last;
+      last = now;
+      const fps = 1000 / Math.max(1, dt);
+      const arr = fpsSamples.current;
+      arr.push(fps);
+      if (arr.length > 30) arr.shift();
+      const avg = arr.reduce((a, b) => a + b, 0) / arr.length;
+      if (uDetail) {
+        if (avg < 26 && detailRef.current > 0.5) detailRef.current = 0.5;
+        else if (avg < 20 && detailRef.current > 0.35) detailRef.current = 0.35;
+        else if (avg > 45 && detailRef.current < 1.0) detailRef.current = 1.0;
+      }
       rafRef.current = requestAnimationFrame(loop);
     };
     rafRef.current = requestAnimationFrame(loop);
