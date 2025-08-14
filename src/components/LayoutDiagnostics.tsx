@@ -1,12 +1,20 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 
 export default function LayoutDiagnostics() {
+  const params = useMemo(
+    () =>
+      new URLSearchParams(
+        typeof window !== "undefined" ? window.location.search : ""
+      ),
+    []
+  );
+  const showLayoutScan = params.get("debug") === "layout";
+  const showGrid = params.get("debug") === "grid";
+
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const enabled = params.get("debug") === "layout";
-    if (!enabled) return;
+    if (!showLayoutScan) return;
 
     const highlight = (els: Element[]) => {
       els.forEach((el) => {
@@ -44,7 +52,14 @@ export default function LayoutDiagnostics() {
       window.removeEventListener("resize", onResize);
       window.removeEventListener("orientationchange", onResize);
     };
-  }, []);
+  }, [showLayoutScan]);
 
-  return null;
+  if (!showGrid) return null;
+
+  return (
+    <div
+      className="fixed inset-0 pointer-events-none z-[9999] grid-overlay"
+      aria-hidden
+    />
+  );
 }

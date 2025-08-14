@@ -52,20 +52,17 @@ export default function Home() {
             </a>
             {/* Mobile: stacked role/subtitle; Desktop: hover crossfade */}
             <div
-              className="relative md:h-8"
+              className="relative h-8"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
+              onClick={() => setIsHovered((prev) => !prev)}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                setIsHovered((prev) => !prev);
+              }}
             >
-              {/* Mobile stacked */}
-              <p className="block md:hidden text-xl font-light text-zinc-500 dark:text-zinc-400">
-                Design Engineer
-              </p>
-              <p className="block md:hidden text-xl font-light text-zinc-500 dark:text-zinc-400">
-                Ideation to Implementation
-              </p>
-              {/* Desktop crossfade */}
               <motion.p
-                className="hidden md:block text-xl font-light text-zinc-500 dark:text-zinc-400 md:absolute md:inset-0 md:whitespace-nowrap"
+                className="block text-xl font-light text-zinc-500 dark:text-zinc-400 absolute inset-0 whitespace-nowrap"
                 variants={titleVariants}
                 initial="initial"
                 animate={isHovered ? "hover" : "initial"}
@@ -74,7 +71,7 @@ export default function Home() {
                 Design Engineer
               </motion.p>
               <motion.p
-                className="hidden md:block text-xl font-light text-zinc-500 dark:text-zinc-400 md:absolute md:inset-0 md:whitespace-nowrap"
+                className="block text-xl font-light text-zinc-500 dark:text-zinc-400 absolute inset-0 whitespace-nowrap"
                 variants={subtitleVariants}
                 initial="initial"
                 animate={isHovered ? "hover" : "initial"}
