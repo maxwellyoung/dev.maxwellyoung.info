@@ -10,6 +10,7 @@ type PastelHazeBackgroundProps = {
   grainIntensity?: number; // 0-1 overlay noise
   grainFPS?: number; // how often to refresh noise
   className?: string;
+  hueBias?: number; // optional hue rotation (degrees)
 };
 
 /**
@@ -25,6 +26,7 @@ export default function PastelHazeBackground({
   grainIntensity = 0.12,
   grainFPS = 12,
   className = "",
+  hueBias = 0,
   ...rest
 }: PastelHazeBackgroundProps & React.CanvasHTMLAttributes<HTMLCanvasElement>) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -55,6 +57,7 @@ export default function PastelHazeBackground({
     ).matches;
 
     // Pastel palette (hue, sat, light)
+    const bias = typeof hueBias === "number" ? hueBias : 0;
     const base = [
       { h: 320, s: 55, l: 72 }, // pink lavender
       { h: 210, s: 60, l: 72 }, // baby blue
@@ -81,7 +84,7 @@ export default function PastelHazeBackground({
       const p = base[i % base.length];
       const jitter = () => Math.random() * 10 - 5;
       return {
-        hue: p.h + jitter(),
+        hue: (((p.h + bias + jitter()) % 360) + 360) % 360,
         sat: p.s + Math.random() * 8 - 4,
         light: p.l + Math.random() * 6 - 3,
         radius: 180 + Math.random() * 260,
@@ -226,7 +229,7 @@ export default function PastelHazeBackground({
         console.log("[Haze] unmounted");
       } catch {}
     };
-  }, [blobCount, maxDPR, opacity, speed]);
+  }, [blobCount, maxDPR, opacity, speed, hueBias, grainFPS, grainIntensity]);
 
   return (
     <canvas

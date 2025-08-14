@@ -34,9 +34,9 @@
 
     /* Brockmann-style grid tokens */
     --grid-columns: 12;
-    --grid-gutter: 32px;
+    --grid-gutter: 24px;
     --grid-margin: 24px;
-    --grid-max-width: 720px; /* Swiss-influenced wider column set */
+    --grid-max-width: 640px; /* align with site max width */
     --baseline: 8px;
   }
 
@@ -116,51 +116,28 @@
     line-height: 1.3;
     font-size: 16px;
   }
-  /* Brockmann containers */
-  .container-grid {
-    max-width: var(--grid-max-width);
-    padding-left: var(--grid-margin);
-    padding-right: var(--grid-margin);
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .grid-12 {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--grid-gutter);
-  }
-
-  /* Reading measure and vertical rhythm utilities */
-  .measure {
-    max-width: 64ch;
-  }
-  .stack {
-    --stack-space: calc(var(--baseline) * 4);
-  }
-  .stack > * + * {
-    margin-top: var(--stack-space);
-  }
-  .stack-3 {
-    --stack-space: calc(var(--baseline) * 3);
-  }
-  .stack-4 {
-    --stack-space: calc(var(--baseline) * 4);
-  }
-  .stack-6 {
-    --stack-space: calc(var(--baseline) * 6);
-  }
-}
-
-/* Responsive grid tuning */
-@media (min-width: 1280px) {
-  :root {
-    --grid-max-width: 960px;
-  }
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Grid container and 12-col system using tokens */
+.container-grid {
+  width: 100%;
+  max-width: var(--grid-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--grid-margin);
+  padding-right: var(--grid-margin);
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--grid-gutter);
+  row-gap: calc(var(--baseline) * 2);
+}
 
 /* Minimal link style */
 a {
@@ -275,12 +252,29 @@ hr {
   color: #73808d;
   font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, -apple-system,
     Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 7px;
+  font-size: 9px;
   font-style: normal;
   font-weight: 400;
-  line-height: 18px; /* 257.143% */
-  letter-spacing: 2px;
+  line-height: 16px;
+  letter-spacing: 1.6px;
   text-transform: uppercase;
+}
+
+/* responsive tuning for micro-labels */
+@media (max-width: 640px) {
+  .resume-label {
+    font-size: 8px;
+    letter-spacing: 1.4px;
+    line-height: 14px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .resume-label {
+    font-size: 10px;
+    letter-spacing: 1.8px;
+    line-height: 18px;
+  }
 }
 
 @media print {
