@@ -101,16 +101,34 @@ export default function ShaderBackground({
     window.addEventListener("resize", resize);
 
     // Ensure fragment shader has precision and uniforms
-    const header = `
-precision mediump float;
-uniform vec2 u_resolution;
-uniform float u_time;
-uniform vec2 u_mouse;
-uniform float u_seed;
-uniform vec3 u_colorA;
-uniform vec3 u_colorB;
-`;
-    const finalFrag = header + "\n" + frag;
+    // Build header with only missing declarations to avoid redefinition
+    const hasPrecision = /precision\s+mediump\s+float\s*;/.test(frag);
+    const hasRes = /uniform\s+vec2\s+u_resolution\s*;/.test(frag);
+    const hasTime = /uniform\s+float\s+u_time\s*;/.test(frag);
+    const hasMouse = /uniform\s+vec2\s+u_mouse\s*;/.test(frag);
+    const hasSeed = /uniform\s+float\s+u_seed\s*;/.test(frag);
+    const hasColorA = /uniform\s+vec3\s+u_colorA\s*;/.test(frag);
+    const hasColorB = /uniform\s+vec3\s+u_colorB\s*;/.test(frag);
+    try {
+      console.log("[ShaderBG] frag uniforms present:", {
+        hasRes,
+        hasTime,
+        hasMouse,
+        hasSeed,
+        hasColorA,
+        hasColorB,
+      });
+      console.log("[ShaderBG] frag preview:", frag.slice(0, 180));
+    } catch {}
+    const headerParts: string[] = [];
+    if (!hasPrecision) headerParts.push("precision mediump float;");
+    if (!hasRes) headerParts.push("uniform vec2 u_resolution;");
+    if (!hasTime) headerParts.push("uniform float u_time;");
+    if (!hasMouse) headerParts.push("uniform vec2 u_mouse;");
+    if (!hasSeed) headerParts.push("uniform float u_seed;");
+    if (!hasColorA) headerParts.push("uniform vec3 u_colorA;");
+    if (!hasColorB) headerParts.push("uniform vec3 u_colorB;");
+    const finalFrag = (headerParts.join("\n") + "\n" + frag).trim();
 
     const program = createProgram(vsrc, finalFrag);
     if (!program) {
