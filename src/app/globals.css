@@ -129,6 +129,33 @@
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: var(--grid-gutter);
   }
+
+  /* Reading measure and vertical rhythm utilities */
+  .measure {
+    max-width: 64ch;
+  }
+  .stack {
+    --stack-space: calc(var(--baseline) * 4);
+  }
+  .stack > * + * {
+    margin-top: var(--stack-space);
+  }
+  .stack-3 {
+    --stack-space: calc(var(--baseline) * 3);
+  }
+  .stack-4 {
+    --stack-space: calc(var(--baseline) * 4);
+  }
+  .stack-6 {
+    --stack-space: calc(var(--baseline) * 6);
+  }
+}
+
+/* Responsive grid tuning */
+@media (min-width: 1280px) {
+  :root {
+    --grid-max-width: 960px;
+  }
 }
 
 @tailwind base;
