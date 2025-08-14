@@ -12,9 +12,7 @@ export function EducationItem({
   return (
     <div className="mb-4">
       <div>
-        <span className="block text-sm font-bold  text-zinc-800 dark:text-zinc-100 font-inter">
-          {degree}
-        </span>
+        <span className="resume-label">{degree}</span>
       </div>
       <span className="block text-sm font-normal  text-zinc-600 dark:text-zinc-400 font-inter">
         {institution}

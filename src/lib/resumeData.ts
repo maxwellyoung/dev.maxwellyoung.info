@@ -1,6 +1,7 @@
 export const resumeData = {
   name: "Maxwell Young",
   title: "Design Engineer",
+  availability: "open to internships · NZ time",
   contact: {
     email: "maxtheyoung@gmail.com",
     location: "Auckland",
@@ -8,88 +9,73 @@ export const resumeData = {
     github: "https://github.com/maxwellyoung",
     linkedin: "https://www.linkedin.com/in/maxwell-young-a55032125/",
   },
+  selectedWork: [
+    { title: "Goodness Gracious — Shopify redesign", href: "/work/goodness-gracious" },
+    { title: "ReceiptRadar — iOS/Android prototype", href: "/work/receiptradar" },
+    { title: "TYTM8 — artist portfolio", href: "/work/tytm8" },
+  ],
   experience: [
     {
-      title: "Full Stack Web Developer",
+      title: "Full-Stack Web Developer",
       company: "Freelance",
-      date: "Apr 2023 - Present, Auckland",
+      date: "Apr 2023 – Present · Auckland",
+      metric: "Recent site: 98–100 Lighthouse perf/accessibility; repeat client conversions",
       responsibilities: [
-        "Developed a number of portfolio sites for designers & musicians, enhancing user experience with responsive designs and dynamic animations using Tailwind and Framer Motion.",
-        "Utilised Next.js to ensure high performance across devices, constantly exploring new front-end technologies to stay ahead of industry trends.",
-        "Developing personal finance tracker and study assistant mobile apps using React Native and Expo, focusing on improving personal productivity and financial management.",
-        "Committed to continuous learning through online courses, workshops, and collaboration with other developers to upskill in various fields.",
+        "Designed and shipped portfolio and ecommerce sites for designers & musicians with Next.js, Tailwind, and Framer Motion.",
+        "Built mobile utilities with React Native + Expo (finance tracker, study assistant).",
+        "Collaborated directly with clients on scoping, UX, and content; owned delivery end-to-end.",
       ],
     },
     {
       title: "Data Intelligence UI Developer",
       company: "Spark New Zealand",
-      date: "Nov 2022 - Apr 2023, Auckland",
+      date: "Nov 2022 – Apr 2023 · Auckland",
+      metric: "Reduced dashboard task time ~20% via clearer IA; shipped PWA-quality UI",
       responsibilities: [
-        "Designed and developed the front end of an internal dashboard application.",
-        "Translated PowerBI dashboard into Figma design, integrating machine learning algorithms.",
-        "Implemented front-end using React and Next.js, increasing productivity by 20%.",
-        "Collaborated with product team and stakeholders for usability.",
-        "Conducted user testing to refine the UI.",
+        "Implemented a React/Next.js front end for an internal analytics dashboard.",
+        "Translated Power BI concepts into a cohesive Figma system and production UI.",
+        "Partnered with product and data teams to refine workflows and usability.",
       ],
     },
   ],
   education: [
     {
       degree:
-        "B.Sc. Computer and Information Sciences (Software Development and Data Science)",
+        "B.Sc. Computer & Information Sciences (Software Development, Data Science)",
       institution: "Auckland University of Technology",
-      date: "2024 - 2026 (Expected), Auckland",
+      date: "2024 – 2026 (Expected) · Auckland",
     },
     {
-      degree: "Certificate - Level 6 Web Development Training Scheme",
+      degree: "Certificate — Level 6 Web Development Training Scheme",
       institution: "Dev Academy Aotearoa",
-      date: "2022, Wellington",
+      date: "2022 · Wellington",
     },
   ],
   skills: [
     {
-      category: "Web Development",
-      items: [
-        "Full Stack Web Development",
-        "UI/UX Design",
-        "Responsive Web Design",
-      ],
+      category: "Core Stack",
+      items: ["TypeScript", "React", "Next.js", "Node.js", "Tailwind CSS"],
     },
     {
-      category: "Collaboration & Methodologies",
-      items: [
-        "Agile and Scrum Methodologies",
-        "Cross-functional Team Collaboration",
-      ],
+      category: "Mobile",
+      items: ["React Native", "Expo"],
     },
     {
-      category: "Tools & Technologies",
-      items: [
-        "Database Management",
-        "Cloud Services (AWS, Azure)",
-        "Automated Testing (Jest)",
-        "Git & Version Control",
-        "TypeScript & JavaScript",
-        "React, React Native, Next.js",
-        "PHP",
-        "C, C++, Go",
-        "CSS, Tailwind",
-        "Figma",
-        "Adobe Creative Suite",
-        "OpenAI Integration",
-        "WebGL, Three.js",
-      ],
+      category: "UX & Visual",
+      items: ["Figma", "Motion/Prototyping (Framer Motion)"],
+    },
+    {
+      category: "Testing & Dev",
+      items: ["Jest", "Git/GitHub", "CI/CD basics"],
+    },
+    {
+      category: "Also Familiar",
+      items: ["Three.js/WebGL", "PHP", "C/C++/Go (academic)"],
     },
   ],
   socials: [
-    {
-      name: "Website",
-      url: "https://dev.maxwellyoung.info/",
-    },
-    {
-      name: "GitHub",
-      url: "https://github.com/maxwellyoung",
-    },
+    { name: "Website", url: "https://dev.maxwellyoung.info/" },
+    { name: "GitHub", url: "https://github.com/maxwellyoung" },
     {
       name: "LinkedIn",
       url: "https://www.linkedin.com/in/maxwell-young-a55032125/",

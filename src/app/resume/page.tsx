@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import Head from "next/head";
+import { useCallback, useEffect, useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { resumeData } from "@/lib/resumeData";
 import { ExperienceItem } from "@/components/ExperienceItem";
 import { EducationItem } from "@/components/EducationItem";
@@ -12,186 +13,256 @@ import { SkillCategory } from "@/components/SkillCategory";
 export default function Resume() {
   const [isImageEnlarged, setIsImageEnlarged] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   const titleVariants = {
     initial: { opacity: 1 },
     hover: { opacity: 0 },
   };
 
-  const subtitleVariants = {
-    initial: { opacity: 0, y: 20 },
-    hover: { opacity: 1, y: 0 },
-  };
+  const closeModal = useCallback(() => setIsImageEnlarged(false), []);
+
+  useEffect(() => {
+    if (!isImageEnlarged) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeModal();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isImageEnlarged, closeModal]);
 
   return (
-    <div className="relative w-full p-6 flex flex-col items-center fade-in">
+    <div className="relative w-full p-6 flex flex-col items-center">
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Maxwell Young",
+              jobTitle: "Design Engineer",
+              url: "https://dev.maxwellyoung.info/",
+              email: "mailto:maxtheyoung@gmail.com",
+              sameAs: [
+                "https://github.com/maxwellyoung",
+                "https://www.linkedin.com/in/maxwell-young-a55032125/",
+              ],
+            }),
+          }}
+        />
+      </Head>
       <div className="max-w-4xl w-full">
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
+        {/* header */}
+        <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
           <div>
-            <span className="block text-3xl font-medium dark:text-zinc-100 text-zinc-800 font-roboto-mono">
+            <h1 className="text-3xl font-medium dark:text-zinc-100 text-zinc-800 font-roboto-mono">
               {resumeData.name}
-            </span>
+            </h1>
+
             <div
               className="relative"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <motion.span
-                className="block text-xl font-light dark:text-zinc-400 text-zinc-600 font-roboto-mono"
+              <motion.p
+                className="text-xl font-light dark:text-zinc-400 text-zinc-600 font-roboto-mono"
                 variants={titleVariants}
                 initial="initial"
-                transition={{ duration: 0.3 }}
+                animate={
+                  isHovered && !prefersReducedMotion ? "hover" : "initial"
+                }
+                transition={{ duration: 0.2 }}
               >
                 {resumeData.title}
-              </motion.span>
+              </motion.p>
+              {/* availability chip */}
+              {resumeData?.availability && (
+                <span className="inline-flex items-center px-2 py-1 mt-2 text-xs rounded-full border border-[#EA2D42] text-[#EA2D42] bg-[#EA2D42]/10">
+                  {resumeData.availability}
+                </span>
+              )}
             </div>
           </div>
+
           <div className="flex items-center gap-4">
-            <Link href="/MaxwellYoung_CV.pdf" legacyBehavior>
-              <a
-                className="flex items-center px-2 md:px-4 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-100 bg-opacity-15 bg-[#EA2D42] border border-[#EA2D42] rounded-md hover:bg-transparent hover:text-[#EA2D42] transition duration-300 ease-in-out transform hover:scale-105"
-                download
+            {/* use a plain anchor for download */}
+            <a
+              href="/MaxwellYoung_CV.pdf"
+              download
+              aria-label="Download resume PDF"
+              className="flex items-center px-2 md:px-4 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-100 border border-[#EA2D42] rounded-md bg-[#EA2D42]/15 hover:bg-transparent hover:text-[#EA2D42] transition duration-200"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.5}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
-                  />
-                </svg>
-                <span className="hidden md:inline ml-2 dark:text-zinc-300">
-                  Download Resume
-                </span>
-              </a>
-            </Link>
-            <div
-              className="cursor-pointer transition duration-300 ease-in-out transform hover:scale-105"
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+              <span className="hidden md:inline ml-2">download resume</span>
+            </a>
+
+            <button
+              type="button"
               onClick={() => setIsImageEnlarged(true)}
+              className="cursor-pointer transition duration-200 hover:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-400 rounded-full"
+              aria-label="Enlarge profile image"
             >
               <Image
-                className="w-18 h-18 rounded-full shadow-md"
+                className="rounded-full shadow-md w-[72px] h-[72px]"
                 src="/profile_work.webp"
-                alt="Profile"
+                alt="Portrait of Maxwell Young"
                 width={72}
                 height={72}
+                priority
               />
-            </div>
+            </button>
           </div>
-        </div>
+        </header>
 
+        {/* body */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 order-2 lg:order-1">
+          {/* left / main */}
+          <main className="lg:col-span-2 order-2 lg:order-1 max-w-prose">
+            {/* Selected work strip */}
+            {resumeData?.selectedWork && resumeData.selectedWork.length > 0 && (
+              <ul className="mt-2 mb-6 text-sm underline">
+                {resumeData.selectedWork.map((work, idx) => (
+                  <li key={`${work.title}-${idx}`}>
+                    <Link href={work.href}>{work.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            )}
             <div className="relative">
-              <span className="block text-xs font-normal dark:text-zinc-400 text-zinc-800 font-inter uppercase tracking-wide mb-2">
-                Experience
-              </span>
+              <span className="resume-label">Experience</span>
             </div>
             {resumeData.experience.map((item, index) => (
               <ExperienceItem
-                key={index}
+                key={`${item.title}-${index}`}
                 title={item.title}
                 company={item.company}
                 date={item.date}
                 responsibilities={item.responsibilities}
+                metric={item.metric}
               />
             ))}
 
             <div className="relative mt-8">
-              <span className="block text-xs font-normal  text-zinc-800 dark:text-zinc-400 font-inter uppercase tracking-wide mb-2">
-                Education
-              </span>
+              <span className="resume-label">Education</span>
             </div>
             {resumeData.education.map((item, index) => (
               <EducationItem
-                key={index}
+                key={`${item.degree}-${index}`}
                 degree={item.degree}
                 institution={item.institution}
                 date={item.date}
               />
             ))}
-          </div>
+          </main>
 
-          <div className="lg:col-span-1 order-1 lg:order-2">
+          {/* right / sidebar */}
+          <aside className="lg:col-span-1 order-1 lg:order-2">
             <div className="mt-8 lg:mt-0">
               <div>
-                <span className="block text-sm font-bold dark:text-zinc-400 text-zinc-600 font-inter">
-                  Contact Information
-                </span>
+                <span className="resume-label">Contact</span>
               </div>
-              <span className="block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter mt-2">
+              <address className="not-italic block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter mt-2">
                 <a
                   href={`mailto:${resumeData.contact.email}`}
-                  className="hover:underline transition-all duration-200 ease-in-out"
+                  className="hover:underline"
                 >
                   {resumeData.contact.email}
                 </a>
                 <br />
                 {resumeData.contact.location}
-              </span>
+                <br />
+                <Link href={resumeData.contact.website} className="underline">
+                  {resumeData.contact.website.replace(/^https?:\/\//, "")}
+                </Link>
+              </address>
             </div>
-            {resumeData.skills.map((skill, index) => (
-              <SkillCategory
-                key={index}
-                category={skill.category}
-                items={skill.items}
-              />
-            ))}
+
+            {resumeData.skills
+              .sort((a, b) =>
+                a.category === "Also Familiar" ? 1 : b.category === "Also Familiar" ? -1 : 0
+              )
+              .map((skill, index) => (
+                <SkillCategory
+                  key={`${skill.category}-${index}`}
+                  category={skill.category}
+                  items={skill.items}
+                />
+              ))}
+
             <div className="mt-8">
               <div>
-                <span className="block text-sm font-bold dark:text-zinc-400 text-zinc-600 font-inter">
-                  Social
-                </span>
+                <span className="resume-label">Social</span>
               </div>
-              <span className="block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter underline mt-2">
+              <ul className="mt-2 space-y-1 text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter underline">
                 {resumeData.socials.map((social, index) => (
-                  <a
-                    href={social.url}
-                    key={index}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {social.name}
-                    <br />
-                  </a>
+                  <li key={`${social.name}-${index}`}>
+                    <a
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.name}
+                    >
+                      {social.name}
+                    </a>
+                  </li>
                 ))}
-              </span>
+              </ul>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
 
+      {/* modal */}
       <AnimatePresence>
         {isImageEnlarged && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md"
-            onClick={() => setIsImageEnlarged(false)}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+            onClick={closeModal}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Profile image dialog"
           >
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: prefersReducedMotion ? 1 : 0.96, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              exit={{ scale: prefersReducedMotion ? 1 : 0.96, opacity: 0 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
               className="relative"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
                 src="/profile_work.webp"
-                alt="Profile"
+                alt="Portrait of Maxwell Young"
                 width={300}
                 height={300}
                 className="rounded-full shadow-2xl"
               />
+              <button
+                onClick={closeModal}
+                className="absolute -top-2 -right-2 bg-zinc-900 text-white rounded-full w-8 h-8 grid place-items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-200"
+                aria-label="Close dialog"
+              >
+                ×
+              </button>
             </motion.div>
           </motion.div>
         )}

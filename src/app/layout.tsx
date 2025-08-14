@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { CSPostHogProvider } from "./providers";
@@ -47,6 +48,12 @@ const sentient = localFont({
   display: "swap",
 });
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -56,7 +63,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${generalSans.variable} ${sentient.variable}`}
+      className={`${generalSans.variable} ${sentient.variable} ${inter.variable}`}
     >
       <body className="font-sans overflow-x-hidden min-h-screen">
         <CSPostHogProvider>
