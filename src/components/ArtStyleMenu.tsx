@@ -3,8 +3,7 @@
 import React from "react";
 import { useArtStyle, ArtStyle } from "@/components/providers/ArtStyleProvider";
 
-// @ts-expect-error include extended keys present in provider
-const styles: { key: ArtStyle | "fluid" | "city"; label: string }[] = [
+const styles: { key: ArtStyle; label: string }[] = [
   { key: "default", label: "Default (no bg)" },
   { key: "aurora", label: "Aurora" },
   { key: "dots", label: "Dot Matrix" },

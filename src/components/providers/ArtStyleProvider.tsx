@@ -33,7 +33,9 @@ export type ArtStyle =
   | "mesh"
   | "ascii"
   | "matrix"
-  | "flow";
+  | "flow"
+  | "fluid"
+  | "city";
 // additional flex modes
 // "fluid" and "city" added below
 
@@ -65,11 +67,20 @@ export default function ArtStyleProvider({
     try {
       const saved = localStorage.getItem("art-style");
       if (
+        saved === "default" ||
         saved === "haze" ||
         saved === "dots" ||
-        saved === "default" ||
         saved === "film" ||
-        saved === "geocities"
+        saved === "geocities" ||
+        saved === "vhs" ||
+        saved === "aurora" ||
+        saved === "particles" ||
+        saved === "mesh" ||
+        saved === "ascii" ||
+        saved === "matrix" ||
+        saved === "flow" ||
+        saved === "fluid" ||
+        saved === "city"
       ) {
         setStyle(saved);
       } else if (typeof window !== "undefined" && window.innerWidth < 768) {
@@ -140,7 +151,6 @@ export default function ArtStyleProvider({
           blobCount={10}
           grainIntensity={0.04}
           grainFPS={10}
-          // @ts-expect-error custom attribute for debugging
           data-art-bg
         />
       )}
@@ -156,7 +166,6 @@ export default function ArtStyleProvider({
             blobCount={7}
             grainIntensity={0.04}
             grainFPS={10}
-            // @ts-expect-error custom attribute for debugging
             data-art-bg
           />
           <BrakhageOverlay
@@ -165,7 +174,6 @@ export default function ArtStyleProvider({
             grainIntensity={0.08}
             grainFPS={10}
             scratchDensity={0.8}
-            // @ts-expect-error custom attribute for debugging
             data-art-bg
           />
         </>
