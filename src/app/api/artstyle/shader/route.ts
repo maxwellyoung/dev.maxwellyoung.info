@@ -164,6 +164,23 @@ Requirements for frag:
     If the user's prompt suggests flames/fire/embers/lava, create an upward-flowing turbulent flame: vertically advected noise, warm palette from deep red to bright yellow-white, optional sparks, subtle horizontal wind from mouse.x, and avoid geometric repeats.
     Respond with JSON only. No markdown, no comments, no extra text.`;
 
+    // Optional palette derivation to bias uniforms
+    const palette = (() => {
+      const pl = p.toLowerCase();
+      if (/water|ocean|aqua|caustic/.test(pl))
+        return { a: "#9ad1ff", b: "#0a1930" };
+      if (/sunset|dawn|dusk|gold/.test(pl))
+        return { a: "#ffc08a", b: "#2a0f2a" };
+      if (/forest|moss|emerald|verdant/.test(pl))
+        return { a: "#9cffb0", b: "#0d1f12" };
+      if (/neon|cyber|glitch/.test(pl)) return { a: "#7cfdfd", b: "#181535" };
+      return null;
+    })();
+    if (palette) {
+      (baseUniforms as any).colorA = palette.a;
+      (baseUniforms as any).colorB = palette.b;
+    }
+
     const body = {
       model: "gpt-4o-mini",
       messages: [
@@ -222,6 +239,68 @@ float d=length(uv-0.5); col*=1.0 - smoothstep(0.6,0.92,d); gl_FragColor=vec4(col
       parsed = JSON.parse(content || "{}");
     } catch {}
     let frag: string | undefined = parsed?.recipe?.[0]?.frag || parsed?.frag;
+    // Two-stage (optional): if frag missing or trivial, request a brief plan then a shader
+    const needPlan = !frag || frag.length < 140;
+    if (needPlan) {
+      const planner = {
+        model: "gpt-4o-mini",
+        messages: [
+          {
+            role: "system",
+            content:
+              "Design a 2-3 sentence high-level plan for a novel WebGL1 fragment shader: mention coordinate mapping, procedural basis (fbm/flow/voronoi), palette mood, and subtle mouse interactivity.",
+          },
+          { role: "user", content: p },
+        ],
+        temperature: 0.6,
+      } as const;
+      const planRes = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.OPENAI_SECRET}`,
+          },
+          body: JSON.stringify(planner),
+        }
+      );
+      const planData = planRes.ok ? await planRes.json() : null;
+      const plan =
+        planData?.choices?.[0]?.message?.content?.slice(0, 600) || "";
+
+      const guided = {
+        model: "gpt-4o-mini",
+        messages: [
+          { role: "system", content: sys },
+          {
+            role: "user",
+            content: `${p}\n\nPlan: ${plan}\nFollow the plan and produce the JSON with one shader layer.`,
+          },
+        ],
+        temperature: 0.6,
+        response_format: { type: "json_object" },
+      } as const;
+      const guidedRes = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.OPENAI_SECRET}`,
+          },
+          body: JSON.stringify(guided),
+        }
+      );
+      if (guidedRes.ok) {
+        const guidedData = await guidedRes.json();
+        const guidedContent = guidedData?.choices?.[0]?.message?.content;
+        try {
+          const gp = JSON.parse(guidedContent || "{}");
+          frag = gp?.recipe?.[0]?.frag || gp?.frag || frag;
+        } catch {}
+      }
+    }
 
     // Validate and quality-check; retry once with stricter prompt if poor
     let safety = ensureFragmentSafety(frag);
