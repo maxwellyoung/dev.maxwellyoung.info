@@ -16,7 +16,10 @@ import AuroraBackground from "@/components/AuroraBackground";
 import ParticleField from "@/components/ParticleField";
 import MeshWarpBackground from "@/components/MeshWarpBackground";
 import AsciiRain from "@/components/AsciiRain";
+import MatrixRain from "@/components/MatrixRain";
 import FlowFieldBackground from "@/components/FlowFieldBackground";
+import FluidInkBackground from "@/components/FluidInkBackground";
+import IsometricCity from "@/components/IsometricCity";
 
 export type ArtStyle =
   | "default"
@@ -29,7 +32,10 @@ export type ArtStyle =
   | "particles"
   | "mesh"
   | "ascii"
+  | "matrix"
   | "flow";
+// additional flex modes
+// "fluid" and "city" added below
 
 type Ctx = {
   style: ArtStyle;
@@ -175,25 +181,49 @@ export default function ArtStyleProvider({
         <ParticleField
           className="z-0"
           count={90}
-          color="rgba(255,255,255,0.6)"
+          color="rgba(255,255,255,0.62)"
           size={1.2}
           trail={0.08}
+          linkDistance={120}
+          linkColor="255,255,255"
+          linkOpacity={0.18}
         />
       )}
       {style === "mesh" && <MeshWarpBackground className="z-0" opacity={0.5} />}
       {style === "ascii" && (
         <AsciiRain className="z-0" density={0.92} color="#7CFFB2" />
       )}
+      {style === "matrix" && (
+        <MatrixRain
+          className="z-0"
+          fontSize={14}
+          headColor="#C9FFD3"
+          tailColor="#00FF7F"
+          tailLength={22}
+          speedMin={0.9}
+          speedMax={1.8}
+        />
+      )}
       {style === "flow" && (
         <FlowFieldBackground
           className="z-0"
-          lineCount={1300}
-          color="rgba(255,255,255,0.12)"
-          lineWidth={1.2}
-          glow={3}
+          lineCount={1400}
+          color="rgba(255,255,255,0.16)"
+          lineWidth={1.25}
+          glow={4}
           blendMode="screen"
         />
       )}
+      {style === "fluid" && (
+        <FluidInkBackground
+          className="z-0"
+          quality={1}
+          viscosity={0.06}
+          swirl={0.28}
+          hueShift={0.12}
+        />
+      )}
+      {style === "city" && <IsometricCity className="z-0" scale={1} />}
       {/* default = no background */}
       {children}
     </ArtStyleContext.Provider>

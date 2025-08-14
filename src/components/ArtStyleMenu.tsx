@@ -3,18 +3,18 @@
 import React from "react";
 import { useArtStyle, ArtStyle } from "@/components/providers/ArtStyleProvider";
 
-const styles: { key: ArtStyle; label: string }[] = [
+// @ts-expect-error include extended keys present in provider
+const styles: { key: ArtStyle | "fluid" | "city"; label: string }[] = [
   { key: "default", label: "Default (no bg)" },
-  { key: "haze", label: "Pastel Haze" },
   { key: "aurora", label: "Aurora" },
   { key: "dots", label: "Dot Matrix" },
-  { key: "mesh", label: "Mesh Warp" },
   { key: "particles", label: "Particle Field" },
-  { key: "flow", label: "Flow Field" },
   { key: "film", label: "Brakhage Film" },
+  { key: "matrix", label: "Matrix" },
   { key: "vhs", label: "VHS Scanlines" },
-  { key: "ascii", label: "ASCII Rain" },
-  { key: "geocities", label: "GeoCities" },
+  { key: "flow", label: "Flow Field" },
+  { key: "fluid", label: "Fluid Ink (interactive)" },
+  { key: "city", label: "Isometric City" },
 ];
 
 export default function ArtStyleMenu() {
@@ -49,6 +49,9 @@ export default function ArtStyleMenu() {
             <button
               key={s.key}
               onClick={() => {
+                try {
+                  console.log("[ArtStyleMenu] click", s.key);
+                } catch {}
                 setStyle(s.key);
                 toggleMenu();
               }}

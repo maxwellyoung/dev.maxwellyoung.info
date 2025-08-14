@@ -7,6 +7,7 @@ import { CSPostHogProvider } from "./providers";
 import Link from "next/link";
 import ArtStyleProvider from "@/components/providers/ArtStyleProvider";
 import ArtStyleMenu from "@/components/ArtStyleMenu";
+import LayoutDiagnostics from "@/components/LayoutDiagnostics";
 // DotMatrix removed for cleaner backdrop
 
 // fonts are loaded via globals.css
@@ -57,7 +58,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${generalSans.variable} ${sentient.variable}`}
     >
-      <body className="font-sans">
+      <body className="font-sans overflow-x-hidden min-h-screen">
         <CSPostHogProvider>
           <ThemeProvider
             attribute="class"
@@ -68,6 +69,7 @@ export default function RootLayout({
             <ArtStyleProvider>
               <div className="relative z-10">{children}</div>
               <ArtStyleMenu />
+              <LayoutDiagnostics />
             </ArtStyleProvider>
             <Analytics />
           </ThemeProvider>
