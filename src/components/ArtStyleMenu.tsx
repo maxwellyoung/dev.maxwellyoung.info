@@ -34,20 +34,10 @@ export default function ArtStyleMenu() {
     duplicateGeneratedStyle,
     activeGeneratedId,
   } = useArtStyle();
-  const [copied, setCopied] = React.useState(false);
-  const [ripple, setRipple] = React.useState(false);
+  // removed copy interactions
   const [localPrompt, setLocalPrompt] = React.useState(customPrompt || "");
   const [loading, setLoading] = React.useState(false);
   // removed shaderOnly toggle; always generating shaders by default via the button below
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText("maxtheyoung@gmail.com");
-      setCopied(true);
-      setRipple(true);
-      setTimeout(() => setCopied(false), 1200);
-      setTimeout(() => setRipple(false), 500);
-    } catch {}
-  };
   if (!isMenuOpen)
     return (
       <button
