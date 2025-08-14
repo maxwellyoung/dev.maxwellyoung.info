@@ -8,6 +8,9 @@ type Props = {
   color?: string;
   size?: number; // base radius multiplier
   trail?: number; // 0..1 trail strength
+  linkDistance?: number; // px distance within which to draw lines
+  linkColor?: string;
+  linkOpacity?: number; // 0..1
 };
 
 export default function ParticleField({
@@ -16,6 +19,9 @@ export default function ParticleField({
   color = "rgba(255,255,255,0.55)",
   size = 1,
   trail = 0.08,
+  linkDistance = 110,
+  linkColor = "255,255,255",
+  linkOpacity = 0.16,
 }: Props) {
   const ref = useRef<HTMLCanvasElement | null>(null);
   const rafRef = useRef<number | null>(null);
@@ -65,6 +71,24 @@ export default function ParticleField({
         ctx.arc(p.x, p.y, p.r * size, 0, Math.PI * 2);
         ctx.fill();
       });
+      // linking lines
+      ctx.lineWidth = 1;
+      for (let i = 0; i < ps.length; i++) {
+        for (let j = i + 1; j < ps.length; j++) {
+          const dx = ps[i].x - ps[j].x;
+          const dy = ps[i].y - ps[j].y;
+          const d2 = dx * dx + dy * dy;
+          const maxD2 = linkDistance * linkDistance;
+          if (d2 < maxD2) {
+            const a = (1 - d2 / maxD2) * linkOpacity; // fade with distance
+            ctx.strokeStyle = `rgba(${linkColor},${a})`;
+            ctx.beginPath();
+            ctx.moveTo(ps[i].x, ps[i].y);
+            ctx.lineTo(ps[j].x, ps[j].y);
+            ctx.stroke();
+          }
+        }
+      }
       rafRef.current = requestAnimationFrame(step);
     };
 

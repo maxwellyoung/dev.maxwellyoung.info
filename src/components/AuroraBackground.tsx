@@ -63,9 +63,9 @@ export default function AuroraBackground({
         if (b.y > h + b.r) b.y = -b.r;
         const g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
         const hue = b.hue + Math.sin(t + i) * 10;
-        g.addColorStop(0, `hsla(${hue}, 90%, 70%, 1)`);
-        g.addColorStop(0.5, `hsla(${hue}, 80%, 60%, 0.5)`);
-        g.addColorStop(1, `hsla(${hue}, 70%, 55%, 0)`);
+        g.addColorStop(0, `hsla(${hue}, 92%, 72%, 1)`);
+        g.addColorStop(0.55, `hsla(${hue}, 84%, 60%, 0.5)`);
+        g.addColorStop(1, `hsla(${hue}, 70%, 52%, 0)`);
         ctx.fillStyle = g;
         ctx.beginPath();
         ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);

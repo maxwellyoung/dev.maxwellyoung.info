@@ -57,7 +57,9 @@ export default function FlowFieldBackground({
     const step = () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
-      ctx.clearRect(0, 0, w, h);
+      // add subtle trail to make paths visible
+      ctx.fillStyle = "rgba(0,0,0,0.06)";
+      ctx.fillRect(0, 0, w, h);
       ctx.globalCompositeOperation = blendMode;
       ctx.strokeStyle = color;
       ctx.lineWidth = lineWidth;
@@ -66,13 +68,13 @@ export default function FlowFieldBackground({
       ctx.beginPath();
       ps.forEach((p) => {
         const a = noise(p.x * 0.002, p.y * 0.002 + p.t) * Math.PI * 2;
-        const nx = p.x + Math.cos(a) * 12;
-        const ny = p.y + Math.sin(a) * 12;
+        const nx = p.x + Math.cos(a) * 16;
+        const ny = p.y + Math.sin(a) * 16;
         ctx.moveTo(p.x, p.y);
         ctx.lineTo(nx, ny);
         p.x = (nx + w) % w;
         p.y = (ny + h) % h;
-        p.t += 0.0025;
+        p.t += 0.0035;
       });
       ctx.stroke();
       ctx.shadowBlur = 0;

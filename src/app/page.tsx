@@ -39,8 +39,8 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen text-zinc-900 dark:text-white p-4 md:p-8 flex flex-col justify-between">
-      <main className="max-w-2xl mx-auto space-y-8 overflow-y-auto scroll-smooth">
+    <div className="min-h-screen text-zinc-900 dark:text-white p-4 md:p-8 flex flex-col justify-between overflow-x-hidden">
+      <main className="w-full max-w-full md:max-w-2xl mx-auto space-y-8 overflow-y-auto scroll-smooth overflow-x-hidden">
         <section className="flex flex-col justify-center items-start min-h-screen space-y-8 p-4 md:p-8">
           <header className="mb-12">
             <a
@@ -50,13 +50,22 @@ export default function Home() {
             >
               Maxwell Young
             </a>
+            {/* Mobile: stacked role/subtitle; Desktop: hover crossfade */}
             <div
-              className="relative h-8"
+              className="relative md:h-8"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
+              {/* Mobile stacked */}
+              <p className="block md:hidden text-xl font-light text-zinc-500 dark:text-zinc-400">
+                Design Engineer
+              </p>
+              <p className="block md:hidden text-xl font-light text-zinc-500 dark:text-zinc-400">
+                Ideation to Implementation
+              </p>
+              {/* Desktop crossfade */}
               <motion.p
-                className="text-xl font-light text-zinc-500 dark:text-zinc-400 absolute whitespace-nowrap"
+                className="hidden md:block text-xl font-light text-zinc-500 dark:text-zinc-400 md:absolute md:inset-0 md:whitespace-nowrap"
                 variants={titleVariants}
                 initial="initial"
                 animate={isHovered ? "hover" : "initial"}
@@ -65,7 +74,7 @@ export default function Home() {
                 Design Engineer
               </motion.p>
               <motion.p
-                className="text-xl font-light text-zinc-500 dark:text-zinc-400 absolute whitespace-nowrap"
+                className="hidden md:block text-xl font-light text-zinc-500 dark:text-zinc-400 md:absolute md:inset-0 md:whitespace-nowrap"
                 variants={subtitleVariants}
                 initial="initial"
                 animate={isHovered ? "hover" : "initial"}
