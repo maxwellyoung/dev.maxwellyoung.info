@@ -88,7 +88,7 @@ export function assessFragmentQuality(source: string | undefined): {
     reasons.push("colorsAB");
   }
   const mixesColors =
-    /mix\s*\(\s*u_colorA|mix\s*\(\s*u_colorB|mix\s*\([^)]*u_colorA[^)]*u_colorB/.test(
+    /mix\s*\(\s*u_colorA\s*,\s*u_colorB\s*,|mix\s*\(\s*u_colorB\s*,\s*u_colorA\s*,/.test(
       s
     );
   if (mixesColors) {
@@ -126,6 +126,17 @@ export function assessFragmentQuality(source: string | undefined): {
   const noProcedural = !hasNoise && !hasLoop && !hasPalette && !hasSmoothstep;
   if (setsFlatColor && noProcedural) {
     reasons.push("flat-color");
+    return { ok: false, score: Math.max(0, score - 3), reasons };
+  }
+
+  // Trivial gradient check: just uv axis mix without time/noise/mouse
+  const hasTimeUse = /u_time[^;\n]*[+\-*]/.test(s) || /[+\-*]\s*u_time/.test(s);
+  const trivialAxisMix =
+    /gl_FragColor\s*=\s*vec4\s*\(\s*mix\s*\(\s*u_colorA\s*,\s*u_colorB\s*,\s*uv\.(x|y)\s*\)\s*,\s*1\.0\s*\)\s*;/.test(
+      s
+    );
+  if (trivialAxisMix && !hasNoise && !hasTimeUse && !usesMouse) {
+    reasons.push("trivial-gradient");
     return { ok: false, score: Math.max(0, score - 3), reasons };
   }
 
