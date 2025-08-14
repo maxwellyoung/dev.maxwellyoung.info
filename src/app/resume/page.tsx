@@ -44,7 +44,7 @@ export default function Resume() {
       {/* head content moved to /resume/head.tsx */}
       <div className="container-grid w-full">
         {/* header */}
-        <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-8 mb-8">
+        <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-8 mb-8 measure">
           <div>
             <h1 className="text-3xl font-medium dark:text-zinc-100 text-zinc-800 font-roboto-mono">
               {resumeData.name}
@@ -122,7 +122,7 @@ export default function Resume() {
         {/* body */}
         <div className="grid-12 gap-y-8">
           {/* left / main */}
-          <main className="col-span-12 lg:col-span-9 order-2 lg:order-1 max-w-prose">
+          <main className="col-span-12 lg:col-span-9 order-2 lg:order-1 max-w-prose measure stack-6">
             {/* Selected work strip (auto from projectsData) */}
             {selectedWork.length > 0 && (
               <ul className="mt-4 mb-8 text-sm underline">
@@ -167,7 +167,7 @@ export default function Resume() {
           </main>
 
           {/* right / sidebar */}
-          <aside className="col-span-12 lg:col-span-3 order-1 lg:order-2">
+          <aside className="col-span-12 lg:col-span-3 order-1 lg:order-2 stack-4">
             <div className="mt-8 lg:mt-0">
               <div>
                 <span className="resume-label">Contact</span>

@@ -42,7 +42,7 @@ export default function Home() {
     <div className="min-h-screen text-zinc-900 dark:text-white py-6 md:py-8 flex flex-col justify-between overflow-x-hidden">
       <main className="container-grid space-y-16 overflow-y-auto scroll-smooth overflow-x-hidden">
         <section className="min-h-screen grid-12 py-4 md:py-8">
-          <div className="col-span-12 lg:col-span-9 flex flex-col justify-center items-start space-y-8">
+          <div className="col-span-12 lg:col-span-9 flex flex-col justify-center items-start stack-4 measure">
             <header className="mb-12">
               <a
                 href="/"
@@ -83,7 +83,7 @@ export default function Home() {
               </div>
             </header>
 
-            <div className="leading-relaxed space-y-4">
+            <div className="leading-relaxed stack-3">
               <p className="text-zinc-500 dark:text-zinc-400">
                 Maxwell Young is a product-focused design engineer based in
                 Auckland, New Zealand. He creates digital products for creative
