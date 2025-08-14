@@ -1,4 +1,28 @@
-export const resumeData = {
+type ResumeData = {
+  name: string;
+  title: string;
+  availability?: string;
+  contact: {
+    email: string;
+    location: string;
+    website: string;
+    github: string;
+    linkedin: string;
+  };
+  selectedWork: { title: string; href: string }[];
+  experience: {
+    title: string;
+    company: string;
+    date: string;
+    responsibilities: string[];
+    metric?: string;
+  }[];
+  education: { degree: string; institution: string; date: string }[];
+  skills: { category: string; items: string[] }[];
+  socials: { name: string; url: string }[];
+};
+
+export const resumeData: ResumeData = {
   name: "Maxwell Young",
   title: "Design Engineer",
   availability: "open to internships · NZ time",
@@ -10,8 +34,14 @@ export const resumeData = {
     linkedin: "https://www.linkedin.com/in/maxwell-young-a55032125/",
   },
   selectedWork: [
-    { title: "Goodness Gracious — Shopify redesign", href: "/work/goodness-gracious" },
-    { title: "ReceiptRadar — iOS/Android prototype", href: "/work/receiptradar" },
+    {
+      title: "Goodness Gracious — Shopify redesign",
+      href: "/work/goodness-gracious",
+    },
+    {
+      title: "ReceiptRadar — iOS/Android prototype",
+      href: "/work/receiptradar",
+    },
     { title: "TYTM8 — artist portfolio", href: "/work/tytm8" },
   ],
   experience: [
@@ -19,7 +49,6 @@ export const resumeData = {
       title: "Full-Stack Web Developer",
       company: "Freelance",
       date: "Apr 2023 – Present · Auckland",
-      metric: "Recent site: 98–100 Lighthouse perf/accessibility; repeat client conversions",
       responsibilities: [
         "Designed and shipped portfolio and ecommerce sites for designers & musicians with Next.js, Tailwind, and Framer Motion.",
         "Built mobile utilities with React Native + Expo (finance tracker, study assistant).",
@@ -30,7 +59,6 @@ export const resumeData = {
       title: "Data Intelligence UI Developer",
       company: "Spark New Zealand",
       date: "Nov 2022 – Apr 2023 · Auckland",
-      metric: "Reduced dashboard task time ~20% via clearer IA; shipped PWA-quality UI",
       responsibilities: [
         "Implemented a React/Next.js front end for an internal analytics dashboard.",
         "Translated Power BI concepts into a cohesive Figma system and production UI.",

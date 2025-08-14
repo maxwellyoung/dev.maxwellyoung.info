@@ -32,7 +32,7 @@ export default function Resume() {
   }, [isImageEnlarged, closeModal]);
 
   return (
-    <div className="relative w-full p-6 flex flex-col items-center">
+    <div className="relative w-full py-6">
       <Head>
         <script
           type="application/ld+json"
@@ -52,7 +52,7 @@ export default function Resume() {
           }}
         />
       </Head>
-      <div className="max-w-4xl w-full">
+      <div className="container-grid w-full">
         {/* header */}
         <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
           <div>
@@ -91,7 +91,7 @@ export default function Resume() {
               href="/MaxwellYoung_CV.pdf"
               download
               aria-label="Download resume PDF"
-              className="flex items-center px-2 md:px-4 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-100 border border-[#EA2D42] rounded-md bg-[#EA2D42]/15 hover:bg-transparent hover:text-[#EA2D42] transition duration-200"
+              className="flex items-center px-2 md:px-4 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-100 border border-[#EA2D42] rounded-md bg-[#EA2D42]/15 hover:bg-transparent hover:text-[#EA2D42] transition duration-200 focus:outline-none focus:ring-2 focus:ring-[#EA2D42] focus:ring-offset-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +114,7 @@ export default function Resume() {
             <button
               type="button"
               onClick={() => setIsImageEnlarged(true)}
-              className="cursor-pointer transition duration-200 hover:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-400 rounded-full"
+              className="cursor-pointer transition duration-200 hover:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-400 rounded-full hide-print"
               aria-label="Enlarge profile image"
             >
               <Image
@@ -130,9 +130,9 @@ export default function Resume() {
         </header>
 
         {/* body */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid-12 gap-y-8">
           {/* left / main */}
-          <main className="lg:col-span-2 order-2 lg:order-1 max-w-prose">
+          <main className="col-span-12 lg:col-span-8 order-2 lg:order-1 max-w-prose">
             {/* Selected work strip */}
             {resumeData?.selectedWork && resumeData.selectedWork.length > 0 && (
               <ul className="mt-2 mb-6 text-sm underline">
@@ -171,7 +171,7 @@ export default function Resume() {
           </main>
 
           {/* right / sidebar */}
-          <aside className="lg:col-span-1 order-1 lg:order-2">
+          <aside className="col-span-12 lg:col-span-4 order-1 lg:order-2">
             <div className="mt-8 lg:mt-0">
               <div>
                 <span className="resume-label">Contact</span>
@@ -192,9 +192,13 @@ export default function Resume() {
               </address>
             </div>
 
-            {resumeData.skills
+            {[...resumeData.skills]
               .sort((a, b) =>
-                a.category === "Also Familiar" ? 1 : b.category === "Also Familiar" ? -1 : 0
+                a.category === "Also Familiar"
+                  ? 1
+                  : b.category === "Also Familiar"
+                  ? -1
+                  : 0
               )
               .map((skill, index) => (
                 <SkillCategory

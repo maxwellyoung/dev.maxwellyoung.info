@@ -117,7 +117,7 @@ export default function ProjectsShowcase() {
       className="min-h-screen text-gray-800 dark:text-gray-200 font-sans"
       tabIndex={0}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 overflow-x-hidden">
+      <div className="container-grid py-8 overflow-x-hidden">
         <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-3 mb-6">
           <input
             value={query}
@@ -206,26 +206,26 @@ export default function ProjectsShowcase() {
                             block: "center",
                           });
                         }}
-                        className="w-full max-w-full text-left px-2 sm:px-3 py-3 hover:bg-[hsl(var(--muted))]/50 transition"
+                        className="w-full max-w-full text-left px-0 py-3 hover:bg-[hsl(var(--muted))]/50 transition"
                       >
-                        <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
-                          <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))]">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={
-                                p.screenshots?.[0] ||
-                                "/projectImages/StudentView.jpeg"
-                              }
-                              alt={p.name}
-                              className="h-full w-full object-cover"
-                            />
-                          </div>
-                          <div className="min-w-0 flex-1 overflow-hidden">
-                            <div className="flex items-center gap-2">
-                              <h4 className="truncate break-words text-sm font-medium leading-tight">
-                                {p.name}
-                              </h4>
+                        <div className="grid-12 items-center w-full overflow-hidden gap-4">
+                          <div className="col-span-3 sm:col-span-3 md:col-span-3 lg:col-span-3 xl:col-span-2">
+                            <div className="relative h-16 w-full overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))]">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={
+                                  p.screenshots?.[0] ||
+                                  "/projectImages/StudentView.jpeg"
+                                }
+                                alt={p.name}
+                                className="h-full w-full object-cover"
+                              />
                             </div>
+                          </div>
+                          <div className="col-span-9 sm:col-span-9 md:col-span-9 lg:col-span-9 xl:col-span-10 min-w-0 overflow-hidden">
+                            <h4 className="truncate break-words text-sm font-medium leading-tight">
+                              {p.name}
+                            </h4>
                             <p className="mt-1 truncate break-words text-xs text-zinc-600 dark:text-zinc-400">
                               {p.description}
                             </p>
