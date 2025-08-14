@@ -38,18 +38,71 @@ export default function ArtStyleMenu() {
   // removed copy interactions
   const [localPrompt, setLocalPrompt] = React.useState(customPrompt || "");
   const [loading, setLoading] = React.useState(false);
+  const [pulse, setPulse] = React.useState(false);
+
+  // derive adaptive accent color from current style/prompt
+  const activeGenerated = React.useMemo(
+    () => generatedStyles.find((g) => g.id === activeGeneratedId),
+    [generatedStyles, activeGeneratedId]
+  );
+  function cssColorToRgbString(input?: string): string | null {
+    if (!input) return null;
+    try {
+      const c = document.createElement("canvas");
+      c.width = c.height = 1;
+      const ctx = c.getContext("2d");
+      if (!ctx) return null;
+      ctx.fillStyle = input;
+      ctx.fillRect(0, 0, 1, 1);
+      const d = ctx.getImageData(0, 0, 1, 1).data;
+      return `${d[0]},${d[1]},${d[2]}`;
+    } catch {
+      return null;
+    }
+  }
+  const accentRgb = React.useMemo(() => {
+    // prioritize AI shader palette if available
+    if (style === "ai" && activeGenerated?.recipe?.length) {
+      const shaderLayer = activeGenerated.recipe.find(
+        (l) => l.type === "shader" || l.type === "shaderTemplate"
+      ) as any;
+      const u = shaderLayer?.uniforms || {};
+      const pick = (u.colorA as string) || (u.colorB as string);
+      const rgb = cssColorToRgbString(pick);
+      if (rgb) return rgb;
+    }
+    // fallbacks based on style
+    const byStyle: Record<string, string> = {
+      aurora: "99,196,255",
+      fireflies: "255,235,130",
+      matrix: "0,255,127",
+      vhs: "255,153,204",
+      flow: "124,255,178",
+    };
+    return byStyle[style] || "58,131,255"; // default blue
+  }, [style, activeGenerated]);
   // removed shaderOnly toggle; always generating shaders by default via the button below
   if (!isMenuOpen)
     return (
       <button
         onClick={toggleMenu}
-        className="group fixed bottom-6 right-6 z-[60] h-10 px-4 rounded-2xl text-xs font-medium text-white/90 bg-white/10 backdrop-blur-md ring-1 ring-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:bg-white/15 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        className="group fixed bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] right-[calc(env(safe-area-inset-right)+1.25rem)] md:bottom-[calc(env(safe-area-inset-bottom)+2rem)] md:right-[calc(env(safe-area-inset-right)+2rem)] z-[60] h-10 md:h-11 px-4 md:px-5 rounded-2xl text-xs font-medium text-white/90 bg-white/10 backdrop-blur-md backdrop-saturate-150 ring-1 ring-inset ring-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.2)] hover:bg-white/15 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
         title="Art styles (Ctrl/Cmd+Shift+A)"
         aria-label="Open art styles"
+        style={{ ["--accent-rgb" as any]: accentRgb }}
       >
         <span className="relative z-10">styles</span>
         <span className="pointer-events-none absolute inset-px rounded-[14px] bg-[linear-gradient(180deg,rgba(255,255,255,0.35),rgba(255,255,255,0.08)_38%,rgba(255,255,255,0.02)_100%)] opacity-70 group-hover:opacity-90 transition-opacity" />
+        {/* conic rim-light with adaptive accent */}
+        <span className="pointer-events-none absolute inset-0 rounded-2xl opacity-60 mix-blend-screen bg-[conic-gradient(from_160deg_at_50%_50%,rgba(255,255,255,0.08)_0deg,rgba(var(--accent-rgb),0.20)_60deg,transparent_140deg,rgba(255,255,255,0.06)_220deg,transparent_360deg)]" />
+        {/* sheen sweep */}
+        <span className="pointer-events-none absolute -inset-1">
+          <span className="absolute top-[-60%] left-[-40%] h-[220%] w-[45%] rotate-[-20deg] bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.55)_50%,rgba(255,255,255,0)_100%)] opacity-0 group-hover:opacity-60 group-hover:left-[85%] transition-all duration-500 ease-out" />
+        </span>
         <span className="pointer-events-none absolute -top-3 -left-3 w-16 h-16 rounded-full bg-white/10 blur-xl" />
+        {pulse && (
+          <span className="pointer-events-none absolute -inset-2 rounded-[22px] border-2 border-[rgba(var(--accent-rgb),0.45)] opacity-70 animate-ping" />
+        )}
       </button>
     );
 
@@ -109,6 +162,7 @@ export default function ArtStyleMenu() {
                   setStyle("ai");
                   try {
                     setLoading(true);
+                    setPulse(true);
                     const res = await fetch("/api/artstyle/shader", {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -128,6 +182,7 @@ export default function ArtStyleMenu() {
                   } catch {
                   } finally {
                     setLoading(false);
+                    setTimeout(() => setPulse(false), 300);
                   }
                 }}
                 className="rounded-md ring-1 ring-white/20 px-3 py-1.5 text-xs text-white/80 hover:bg-white/5"
@@ -188,6 +243,7 @@ export default function ArtStyleMenu() {
                       onClick={async () => {
                         try {
                           // Regenerate shader using same prompt; keep same id and overwrite recipe
+                          setPulse(true);
                           const res = await fetch("/api/artstyle/shader", {
                             method: "POST",
                             headers: { "Content-Type": "application/json" },
