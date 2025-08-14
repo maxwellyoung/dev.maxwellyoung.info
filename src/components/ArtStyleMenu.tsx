@@ -32,6 +32,7 @@ export default function ArtStyleMenu() {
     setActiveGeneratedId,
     renameGeneratedStyle,
     duplicateGeneratedStyle,
+    updateGeneratedStyle,
     activeGeneratedId,
   } = useArtStyle();
   // removed copy interactions
@@ -42,11 +43,13 @@ export default function ArtStyleMenu() {
     return (
       <button
         onClick={toggleMenu}
-        className="fixed bottom-4 right-4 z-[60] h-9 rounded-full px-3 text-xs bg-white/80 text-neutral-900 backdrop-blur ring-1 ring-black/10 hover:bg-white"
+        className="group fixed bottom-6 right-6 z-[60] h-10 px-4 rounded-2xl text-xs font-medium text-white/90 bg-white/10 backdrop-blur-md ring-1 ring-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:bg-white/15 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
         title="Art styles (Ctrl/Cmd+Shift+A)"
         aria-label="Open art styles"
       >
-        styles
+        <span className="relative z-10">styles</span>
+        <span className="pointer-events-none absolute inset-px rounded-[14px] bg-[linear-gradient(180deg,rgba(255,255,255,0.35),rgba(255,255,255,0.08)_38%,rgba(255,255,255,0.02)_100%)] opacity-70 group-hover:opacity-90 transition-opacity" />
+        <span className="pointer-events-none absolute -top-3 -left-3 w-16 h-16 rounded-full bg-white/10 blur-xl" />
       </button>
     );
 
@@ -115,7 +118,7 @@ export default function ArtStyleMenu() {
                     if (data?.id && Array.isArray(data?.recipe)) {
                       addGeneratedStyle({
                         id: data.id,
-                        name: data.name || "Shader",
+                        name: data.name || "Generated",
                         prompt: data.prompt || localPrompt,
                         recipe: data.recipe,
                       });
@@ -181,6 +184,63 @@ export default function ArtStyleMenu() {
                     >
                       ⧉
                     </button>
+                    <button
+                      onClick={async () => {
+                        try {
+                          // Regenerate shader using same prompt; keep same id and overwrite recipe
+                          const res = await fetch("/api/artstyle/shader", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ prompt: g.prompt }),
+                          });
+                          const data = await res.json();
+                          if (data?.recipe) {
+                            updateGeneratedStyle(g.id, (prev) => ({
+                              ...prev,
+                              recipe: data.recipe,
+                            }));
+                            setActiveGeneratedId(g.id);
+                            setStyle("ai");
+                          }
+                        } catch {}
+                      }}
+                      className="text-[11px] text-white/50 hover:text-white px-2"
+                      title="Regenerate"
+                    >
+                      ↻
+                    </button>
+                    <button
+                      onClick={() => {
+                        const newName = prompt("Rename style", g.name);
+                        if (newName && newName.trim().length > 0) {
+                          renameGeneratedStyle(g.id, newName.trim());
+                        }
+                      }}
+                      className="text-[11px] text-white/50 hover:text-white px-2"
+                      title="Rename"
+                    >
+                      ✎
+                    </button>
+                    <button
+                      onClick={() => {
+                        try {
+                          const json = JSON.stringify(g);
+                          const blob = new Blob([json], {
+                            type: "application/json",
+                          });
+                          const url = URL.createObjectURL(blob);
+                          const a = document.createElement("a");
+                          a.href = url;
+                          a.download = `${g.name || "shader"}.json`;
+                          a.click();
+                          URL.revokeObjectURL(url);
+                        } catch {}
+                      }}
+                      className="text-[11px] text-white/50 hover:text-white px-2"
+                      title="Export JSON"
+                    >
+                      ⭳
+                    </button>
                   </div>
                 ))}
               </div>
@@ -188,7 +248,47 @@ export default function ArtStyleMenu() {
           )}
         </div>
         <div className="px-4 py-3 flex items-center justify-start gap-2 border-t border-white/10 text-xs text-white/60">
-          Tip: Ctrl/Cmd+Shift+A
+          <button
+            onClick={() => {
+              const input = document.createElement("input");
+              input.type = "file";
+              input.accept = "application/json";
+              input.onchange = async () => {
+                const file = input.files?.[0];
+                if (!file) return;
+                try {
+                  const text = await file.text();
+                  const obj = JSON.parse(text);
+                  if (obj?.id && obj?.recipe) {
+                    addGeneratedStyle(obj);
+                    setActiveGeneratedId(obj.id);
+                    setStyle("ai");
+                  }
+                } catch {}
+              };
+              input.click();
+            }}
+            className="rounded-md ring-1 ring-white/20 px-3 py-1.5 text-xs text-white/80 hover:bg-white/5"
+          >
+            import
+          </button>
+          <button
+            onClick={() => {
+              try {
+                const g = generatedStyles.find(
+                  (x) => x.id === activeGeneratedId
+                );
+                if (!g) return;
+                const base64 = btoa(JSON.stringify(g));
+                const url = `${location.origin}${location.pathname}#bg=${base64}`;
+                window.open(url, "_blank");
+              } catch {}
+            }}
+            className="rounded-md ring-1 ring-white/20 px-3 py-1.5 text-xs text-white/80 hover:bg-white/5"
+          >
+            share
+          </button>
+          <span className="ml-auto">Tip: Ctrl/Cmd+Shift+A</span>
         </div>
       </div>
     </div>
