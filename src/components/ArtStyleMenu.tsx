@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useArtStyle, ArtStyle } from "@/components/providers/ArtStyleProvider";
+import LiquidGlassLoader from "@/components/LiquidGlassLoader";
 
 const styles: { key: ArtStyle; label: string; hint?: string }[] = [
   { key: "default", label: "Default (no bg)" },
@@ -15,7 +16,6 @@ const styles: { key: ArtStyle; label: string; hint?: string }[] = [
   { key: "flow", label: "Flow Field" },
   { key: "fluid", label: "Fluid Ink (interactive)" },
   { key: "city", label: "Isometric City" },
-  { key: "ai", label: "Prompt (AI)" },
 ];
 
 export default function ArtStyleMenu() {
@@ -32,14 +32,13 @@ export default function ArtStyleMenu() {
     setActiveGeneratedId,
     renameGeneratedStyle,
     duplicateGeneratedStyle,
-    defaultGeneratedId,
-    setDefaultGeneratedId,
+    activeGeneratedId,
   } = useArtStyle();
   const [copied, setCopied] = React.useState(false);
   const [ripple, setRipple] = React.useState(false);
   const [localPrompt, setLocalPrompt] = React.useState(customPrompt || "");
   const [loading, setLoading] = React.useState(false);
-  const [shaderOnly, setShaderOnly] = React.useState(false);
+  // removed shaderOnly toggle; always generating shaders by default via the button below
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText("maxtheyoung@gmail.com");
@@ -63,6 +62,7 @@ export default function ArtStyleMenu() {
 
   return (
     <div className="fixed inset-0 z-[70] flex items-end sm:items-center justify-center p-4">
+      <LiquidGlassLoader visible={loading} text={"Generating shader…"} />
       <div className="absolute inset-0 bg-black/40" onClick={toggleMenu} />
       <div className="relative w-full max-w-sm rounded-2xl bg-neutral-900/80 backdrop-blur ring-1 ring-white/10 p-0 text-sm text-white overflow-hidden">
         <div className="sticky top-0 z-10 flex items-center justify-between px-4 py-3 bg-neutral-900/80 backdrop-blur border-b border-white/10">
@@ -116,29 +116,30 @@ export default function ArtStyleMenu() {
                   setStyle("ai");
                   try {
                     setLoading(true);
-                    const res = await fetch("/api/artstyle/generate", {
+                    const res = await fetch("/api/artstyle/shader", {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ prompt: localPrompt, shaderOnly }),
+                      body: JSON.stringify({ prompt: localPrompt }),
                     });
                     const data = await res.json();
                     if (data?.id && Array.isArray(data?.recipe)) {
                       addGeneratedStyle({
                         id: data.id,
-                        name: data.name || "Generated",
+                        name: data.name || "Shader",
                         prompt: data.prompt || localPrompt,
                         recipe: data.recipe,
                       });
                       setActiveGeneratedId(data.id);
+                      toggleMenu();
                     }
                   } catch {
                   } finally {
                     setLoading(false);
                   }
                 }}
-                className="rounded-md bg-white text-neutral-900 px-3 py-1.5 text-xs"
+                className="rounded-md ring-1 ring-white/20 px-3 py-1.5 text-xs text-white/80 hover:bg-white/5"
               >
-                {loading ? "generating…" : "Generate background"}
+                {loading ? "thinking…" : "Generate shader"}
               </button>
               <button
                 onClick={() => {
@@ -150,14 +151,6 @@ export default function ArtStyleMenu() {
                 clear
               </button>
             </div>
-            <label className="mt-2 flex items-center gap-2 text-xs text-white/70">
-              <input
-                type="checkbox"
-                checked={shaderOnly}
-                onChange={(e) => setShaderOnly(e.target.checked)}
-              />
-              Shader only
-            </label>
           </div>
           {generatedStyles.length > 0 && (
             <div className="mt-4 border-t border-white/10 pt-3">
@@ -170,15 +163,15 @@ export default function ArtStyleMenu() {
                         setStyle("ai");
                         setActiveGeneratedId(g.id);
                       }}
-                      className="flex-1 text-left rounded-lg px-3 py-2 ring-1 transition bg-transparent ring-white/10 hover:bg-white/5"
+                      className={
+                        "flex-1 text-left rounded-lg px-3 py-2 ring-1 transition " +
+                        (style === "ai" && g.id === activeGeneratedId
+                          ? "bg-white/10 ring-white/30"
+                          : "bg-transparent ring-white/10 hover:bg-white/5")
+                      }
                     >
                       <div className="text-sm flex items-center gap-2">
                         <span>{g.name}</span>
-                        {defaultGeneratedId === g.id && (
-                          <span className="text-[10px] px-1 rounded bg-white/10">
-                            default
-                          </span>
-                        )}
                       </div>
                       <div className="text-[11px] text-white/50 line-clamp-1">
                         {g.prompt}
@@ -198,35 +191,14 @@ export default function ArtStyleMenu() {
                     >
                       ⧉
                     </button>
-                    <button
-                      onClick={() => setDefaultGeneratedId(g.id)}
-                      className="text-[11px] text-white/50 hover:text-white px-2"
-                      title="Set default"
-                    >
-                      ★
-                    </button>
                   </div>
                 ))}
               </div>
             </div>
           )}
         </div>
-        <div className="px-4 py-3 flex items-center justify-between gap-2 border-t border-white/10">
-          <p className="text-xs text-white/60">Tip: Ctrl/Cmd+Shift+A</p>
-          <button
-            onClick={copyEmail}
-            className="relative overflow-hidden text-[11px] underline text-white/80 hover:text-white"
-            aria-label="Copy email address"
-            title="Copy email"
-          >
-            {ripple && (
-              <span
-                className="pointer-events-none absolute inset-0 rounded-full bg-white/20 animate-ping"
-                aria-hidden="true"
-              />
-            )}
-            {copied ? "copied" : "copy email"}
-          </button>
+        <div className="px-4 py-3 flex items-center justify-start gap-2 border-t border-white/10 text-xs text-white/60">
+          Tip: Ctrl/Cmd+Shift+A
         </div>
       </div>
     </div>

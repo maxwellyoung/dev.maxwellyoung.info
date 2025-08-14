@@ -61,8 +61,6 @@ type Ctx = {
   setActiveGeneratedId: (id: string | null) => void;
   renameGeneratedStyle: (id: string, name: string) => void;
   duplicateGeneratedStyle: (id: string) => void;
-  defaultGeneratedId: string | null;
-  setDefaultGeneratedId: (id: string | null) => void;
 };
 
 const ArtStyleContext = createContext<Ctx | null>(null);
@@ -85,9 +83,7 @@ export default function ArtStyleProvider({
   const [activeGeneratedId, setActiveGeneratedId] = useState<string | null>(
     null
   );
-  const [defaultGeneratedId, setDefaultGeneratedId] = useState<string | null>(
-    null
-  );
+  // removed defaultGeneratedId concept
 
   // hydrate from localStorage
   useEffect(() => {
@@ -124,8 +120,7 @@ export default function ArtStyleProvider({
         }
         const activeId = localStorage.getItem("art-style-active-generated");
         if (activeId) setActiveGeneratedId(activeId);
-        const defId = localStorage.getItem("art-style-default-generated");
-        if (defId) setDefaultGeneratedId(defId);
+        // no default selection persisted
         // import via URL hash: #bg=<base64>
         try {
           const hash = window.location.hash;
@@ -164,11 +159,7 @@ export default function ArtStyleProvider({
       } else {
         localStorage.removeItem("art-style-active-generated");
       }
-      if (defaultGeneratedId) {
-        localStorage.setItem("art-style-default-generated", defaultGeneratedId);
-      } else {
-        localStorage.removeItem("art-style-default-generated");
-      }
+      // no default selection persisted
     } catch {}
     // DEBUG LOGS: style changes + background counts
     try {
@@ -191,13 +182,7 @@ export default function ArtStyleProvider({
         document.querySelectorAll(".dot-matrix")?.length
       );
     } catch {}
-  }, [
-    style,
-    customPrompt,
-    generatedStyles,
-    activeGeneratedId,
-    defaultGeneratedId,
-  ]);
+  }, [style, customPrompt, generatedStyles, activeGeneratedId]);
 
   // keyboard toggle: Cmd/Ctrl + Shift + A
   useEffect(() => {
@@ -241,17 +226,8 @@ export default function ArtStyleProvider({
           const copy = { ...g, id: `${g.id}-copy`, name: `${g.name} (copy)` };
           return [copy, ...prev];
         }),
-      defaultGeneratedId,
-      setDefaultGeneratedId,
     }),
-    [
-      style,
-      isMenuOpen,
-      customPrompt,
-      generatedStyles,
-      activeGeneratedId,
-      defaultGeneratedId,
-    ]
+    [style, isMenuOpen, customPrompt, generatedStyles, activeGeneratedId]
   );
 
   return (
@@ -372,18 +348,29 @@ export default function ArtStyleProvider({
         <CityScene className="fixed inset-0 z-0" snow crowd lights speed={1} />
       )}
       {style === "ai" &&
-        (activeGeneratedId || defaultGeneratedId ? (
-          <GeneratedBackground
-            className="z-0"
-            recipe={
-              generatedStyles.find(
-                (g) => g.id === (activeGeneratedId || defaultGeneratedId)
-              )?.recipe
-            }
-          />
-        ) : (
-          <PromptBackground className="z-0" prompt={customPrompt} />
-        ))}
+        (activeGeneratedId
+          ? (() => {
+              const recipe = generatedStyles.find(
+                (g) => g.id === activeGeneratedId
+              )?.recipe;
+              try {
+                console.log("[AI BG] render GeneratedBackground", {
+                  activeGeneratedId,
+                  layers: recipe?.length,
+                  firstType: recipe?.[0]?.type,
+                });
+              } catch {}
+              return <GeneratedBackground className="z-0" recipe={recipe} />;
+            })()
+          : (() => {
+              try {
+                console.log(
+                  "[AI BG] no activeGeneratedId; show PromptBackground",
+                  { customPrompt }
+                );
+              } catch {}
+              return <PromptBackground className="z-0" prompt={customPrompt} />;
+            })())}
       {/* default = no background */}
       {children}
     </ArtStyleContext.Provider>

@@ -92,7 +92,15 @@ Pick 1–3 layers that fit the user's vibe. Use tasteful parameters. No extra te
     } catch {}
     if (!parsed || !Array.isArray(parsed.recipe)) {
       const recipe = [
-        { type: "shaderTemplate", template: (/(zebra|stripe)/i.test(prompt || "")) ? "zebra-stripes" : (/(water|ocean|sea)/i.test(prompt || "")) ? "water-caustics" : "noisy-blobs", uniforms: { colorA: "#a3c3ff", colorB: "#0a1830" } },
+        {
+          type: "shaderTemplate",
+          template: /(zebra|stripe)/i.test(prompt || "")
+            ? "zebra-stripes"
+            : /(water|ocean|sea)/i.test(prompt || "")
+            ? "water-caustics"
+            : "noisy-blobs",
+          uniforms: { colorA: "#a3c3ff", colorB: "#0a1830" },
+        },
       ];
       return Response.json({ id, name: "Generated", prompt, recipe });
     }
@@ -127,9 +135,27 @@ Pick 1–3 layers that fit the user's vibe. Use tasteful parameters. No extra te
     }
     // if prompt indicates zebra or water, bias to those templates
     if (/(zebra|stripe)/i.test(prompt || "")) {
-      parsed.recipe.unshift({ type: "shaderTemplate", template: "zebra-stripes", uniforms: { colorA: "#111111", colorB: "#eeeeee", bend: 0.9, freq: 10.0 } });
+      parsed.recipe.unshift({
+        type: "shaderTemplate",
+        template: "zebra-stripes",
+        uniforms: {
+          colorA: "#111111",
+          colorB: "#eeeeee",
+          bend: 0.9,
+          freq: 10.0,
+        },
+      });
     } else if (/(water|ocean|sea)/i.test(prompt || "")) {
-      parsed.recipe.unshift({ type: "shaderTemplate", template: "water-caustics", uniforms: { colorA: "#a0e7ff", colorB: "#002a3d", scale: 2.8, speed: 0.6 } });
+      parsed.recipe.unshift({
+        type: "shaderTemplate",
+        template: "water-caustics",
+        uniforms: {
+          colorA: "#a0e7ff",
+          colorB: "#002a3d",
+          scale: 2.8,
+          speed: 0.6,
+        },
+      });
     }
     // ensure at least one shader and apply prompt-driven palette if missing
     const ensurePalette = (u: any) => {

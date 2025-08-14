@@ -133,6 +133,15 @@ vec3 sample(vec2 uv){
   float t = 0.5 + 0.5*sin(u_time + uv.x*4.0 + uv.y*3.0);
   return mix(u_colorA, u_colorB, t);
 }
+void main(){
+  vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+  vec3 c;
+  c.r = sample(uv + vec2(${shift}, 0.0)).r;
+  c.g = sample(uv).g;
+  c.b = sample(uv - vec2(${shift}, 0.0)).b;
+  gl_FragColor = vec4(c, 1.0);
+}`;
+}
 
 function zebraStripes(params: Record<string, unknown>): string {
   const bend = Number(params["bend"]) || 0.8;
@@ -146,7 +155,9 @@ void main(){
   uv -= 0.5; uv.x *= u_resolution.x / u_resolution.y; uv += 0.5;
   float t = u_time * 0.3;
   float n = noise(uv*3.0 + t);
-  float stripe = sin(uv.x * ${freq.toFixed(2)} + n*${bend.toFixed(2)} + t*${wobble.toFixed(2)});
+  float stripe = sin(uv.x * ${freq.toFixed(2)} + n*${bend.toFixed(
+    2
+  )} + t*${wobble.toFixed(2)});
   float m = smoothstep(-0.1, 0.1, stripe);
   vec3 col = mix(u_colorA, u_colorB, m);
   gl_FragColor = vec4(col, 1.0);
@@ -169,14 +180,5 @@ void main(){
   c = smoothstep(0.5, 0.95, c);
   vec3 base = mix(u_colorB, u_colorA, c);
   gl_FragColor = vec4(base, 1.0);
-}`;
-}
-void main(){
-  vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-  vec3 c;
-  c.r = sample(uv + vec2(${shift}, 0.0)).r;
-  c.g = sample(uv).g;
-  c.b = sample(uv - vec2(${shift}, 0.0)).b;
-  gl_FragColor = vec4(c, 1.0);
 }`;
 }
