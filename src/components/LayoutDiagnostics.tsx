@@ -54,36 +54,6 @@ export default function LayoutDiagnostics() {
     };
   }, [showLayoutScan]);
 
-  useEffect(() => {
-    // lightweight grid tuner via query params
-    const setVar = (name: string, value?: string | null) => {
-      if (!value) return;
-      const root = document.documentElement;
-      const num = Number(value);
-      if (!Number.isNaN(num)) {
-        root.style.setProperty(name, `${num}px`);
-      } else {
-        // allow presets: narrow, default, wide
-        if (name === "--grid-max-width") {
-          const preset = value.toLowerCase();
-          if (preset === "narrow") root.style.setProperty(name, "640px");
-          if (preset === "wide") root.style.setProperty(name, "960px");
-          if (preset === "xl") root.style.setProperty(name, "1120px");
-        }
-      }
-    };
-    setVar("--grid-max-width", params.get("grid"));
-    setVar("--grid-gutter", params.get("gutter"));
-    setVar("--baseline", params.get("baseline"));
-    const cols = params.get("cols");
-    if (cols && !Number.isNaN(Number(cols))) {
-      document.documentElement.style.setProperty(
-        "--grid-columns",
-        String(Number(cols))
-      );
-    }
-  }, [params]);
-
   if (!showGrid) return null;
 
   return (

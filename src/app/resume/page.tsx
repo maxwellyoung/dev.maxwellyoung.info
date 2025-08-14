@@ -2,18 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-// head tags for this route are handled in src/app/resume/head.tsx
-import { useCallback, useEffect, useMemo, useState } from "react";
+import Head from "next/head";
+import { useCallback, useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { resumeData } from "@/lib/resumeData";
 import { ExperienceItem } from "@/components/ExperienceItem";
 import { EducationItem } from "@/components/EducationItem";
 import { SkillCategory } from "@/components/SkillCategory";
-import { projects } from "@/lib/projectsData";
 
 export default function Resume() {
   const [isImageEnlarged, setIsImageEnlarged] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [openSkillIndex, setOpenSkillIndex] = useState<number | null>(0);
   const prefersReducedMotion = useReducedMotion();
 
   const titleVariants = {
@@ -32,19 +32,32 @@ export default function Resume() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isImageEnlarged, closeModal]);
 
-  const selectedWork = useMemo(() => {
-    return projects
-      .filter((p) => Boolean(p.link))
-      .slice(0, 3)
-      .map((p) => ({ title: p.name, href: p.link as string }));
-  }, []);
+  // no-op
 
   return (
-    <div className="relative w-full py-8">
-      {/* head content moved to /resume/head.tsx */}
+    <div className="relative w-full p-6 flex flex-col items-center">
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Maxwell Young",
+              jobTitle: "Design Engineer",
+              url: "https://dev.maxwellyoung.info/",
+              email: "mailto:maxtheyoung@gmail.com",
+              sameAs: [
+                "https://github.com/maxwellyoung",
+                "https://www.linkedin.com/in/maxwell-young-a55032125/",
+              ],
+            }),
+          }}
+        />
+      </Head>
       <div className="container-grid w-full">
         {/* header */}
-        <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-8 mb-8 measure">
+        <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
           <div>
             <h1 className="text-3xl font-medium dark:text-zinc-100 text-zinc-800 font-roboto-mono">
               {resumeData.name}
@@ -120,27 +133,14 @@ export default function Resume() {
         </header>
 
         {/* body */}
-        <div className="grid-12 gap-y-8">
+        <div className="grid-12">
           {/* left / main */}
-          <main className="col-span-12 lg:col-span-9 order-2 lg:order-1 max-w-prose measure stack-6">
-            {/* Selected work strip (auto from projectsData) */}
-            {selectedWork.length > 0 && (
-              <ul className="mt-4 mb-8 text-sm underline">
-                {selectedWork.map((work, idx) => (
-                  <li key={`${work.title}-${idx}`}>
-                    <a
-                      href={work.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {work.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
+          <main className="col-span-12 lg:col-span-8 order-2 lg:order-1 max-w-prose">
+            {/* Selected work strip removed to reduce redundancy with Projects page */}
             <div className="relative">
-              <span className="resume-label">Experience</span>
+              <h2 className="resume-label" aria-label="Experience">
+                Experience
+              </h2>
             </div>
             {resumeData.experience.map((item, index) => (
               <ExperienceItem
@@ -150,11 +150,14 @@ export default function Resume() {
                 date={item.date}
                 responsibilities={item.responsibilities}
                 metric={item.metric}
+                summary={(item as any).summary}
               />
             ))}
 
             <div className="relative mt-8">
-              <span className="resume-label">Education</span>
+              <h2 className="resume-label" aria-label="Education">
+                Education
+              </h2>
             </div>
             {resumeData.education.map((item, index) => (
               <EducationItem
@@ -167,25 +170,31 @@ export default function Resume() {
           </main>
 
           {/* right / sidebar */}
-          <aside className="col-span-12 lg:col-span-3 order-1 lg:order-2 stack-4">
+          <aside className="col-span-12 lg:col-span-4 order-1 lg:order-2 lg:border-l lg:border-[hsl(var(--border))] lg:pl-6">
             <div className="mt-8 lg:mt-0">
               <div>
-                <span className="resume-label">Contact</span>
+                <h2 className="resume-label" aria-label="Contact">
+                  Contact
+                </h2>
               </div>
-              <address className="not-italic block text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter mt-2">
-                <a
-                  href={`mailto:${resumeData.contact.email}`}
-                  className="hover:underline"
-                >
-                  {resumeData.contact.email}
-                </a>
-                <br />
-                {resumeData.contact.location}
-                <br />
-                <Link href={resumeData.contact.website} className="underline">
-                  {resumeData.contact.website.replace(/^https?:\/\//, "")}
-                </Link>
-              </address>
+              <dl className="mt-2 text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter">
+                <div className="flex items-center gap-2">
+                  <dt className="sr-only">Email</dt>
+                  <dd>
+                    <a
+                      href={`mailto:${resumeData.contact.email}`}
+                      className="underline"
+                    >
+                      {resumeData.contact.email}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="sr-only">Location</dt>
+                  <dd>{resumeData.contact.location}</dd>
+                </div>
+                {/* Website removed to avoid redundancy */}
+              </dl>
             </div>
 
             {[...resumeData.skills]
@@ -201,14 +210,22 @@ export default function Resume() {
                   key={`${skill.category}-${index}`}
                   category={skill.category}
                   items={skill.items}
+                  compact
+                  collapsible
+                  expanded={openSkillIndex === index}
+                  onToggle={() =>
+                    setOpenSkillIndex((prev) => (prev === index ? null : index))
+                  }
                 />
               ))}
 
             <div className="mt-8">
               <div>
-                <span className="resume-label">Social</span>
+                <h2 className="resume-label" aria-label="Social">
+                  Social
+                </h2>
               </div>
-              <ul className="mt-2 space-y-1 text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter underline">
+              <ul className="mt-2 space-y-0.5 text-[13px] leading-6 font-normal dark:text-zinc-400 text-zinc-600 font-inter underline">
                 {resumeData.socials.map((social, index) => (
                   <li key={`${social.name}-${index}`}>
                     <a

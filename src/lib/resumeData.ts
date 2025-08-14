@@ -16,6 +16,7 @@ type ResumeData = {
     date: string;
     responsibilities: string[];
     metric?: string;
+    summary?: string;
   }[];
   education: { degree: string; institution: string; date: string }[];
   skills: { category: string; items: string[] }[];
@@ -43,21 +44,26 @@ export const resumeData: ResumeData = {
     {
       title: "Full-Stack Web Developer",
       company: "Freelance",
-      date: "Apr 2023 – Present · Auckland",
+      date: "Apr 2023–Present, Auckland",
+      summary:
+        "Freelance design engineering across web and mobile; ship end‑to‑end.",
       responsibilities: [
-        "Designed and shipped portfolio and ecommerce sites for designers & musicians with Next.js, Tailwind, and Framer Motion.",
+        "Shipped portfolio and ecommerce sites (Next.js, Tailwind, Framer Motion).",
         "Built mobile utilities with React Native + Expo (finance tracker, study assistant).",
-        "Collaborated directly with clients on scoping, UX, and content; owned delivery end-to-end.",
+        "Scoped, designed, and delivered end‑to‑end with clients.",
       ],
     },
     {
       title: "Data Intelligence UI Developer",
       company: "Spark New Zealand",
-      date: "Nov 2022 – Apr 2023 · Auckland",
+      date: "Nov 2022–Apr 2023, Auckland",
+      summary:
+        "Product UI for internal analytics; systems thinking from Figma to code.",
       responsibilities: [
-        "Implemented a React/Next.js front end for an internal analytics dashboard.",
-        "Translated Power BI concepts into a cohesive Figma system and production UI.",
-        "Partnered with product and data teams to refine workflows and usability.",
+        "Implemented a React/Next.js UI for an internal analytics dashboard.",
+        "Translated Power BI into a cohesive Figma system and production UI.",
+        "Partnered with product and data to refine workflows and usability.",
+        "Participated in sprint ceremonies, PR reviews, and pair sessions.",
       ],
     },
   ],
@@ -66,34 +72,87 @@ export const resumeData: ResumeData = {
       degree:
         "B.Sc. Computer & Information Sciences (Software Development, Data Science)",
       institution: "Auckland University of Technology",
-      date: "2024 – 2026 (Expected) · Auckland",
+      date: "2024–2026 (Expected), Auckland",
     },
     {
       degree: "Certificate — Level 6 Web Development Training Scheme",
       institution: "Dev Academy Aotearoa",
-      date: "2022 · Wellington",
+      date: "2022, Wellington",
     },
   ],
   skills: [
     {
       category: "Core Stack",
-      items: ["TypeScript", "React", "Next.js", "Node.js", "Tailwind CSS"],
+      items: [
+        "TypeScript",
+        "React (hooks, concurrent UI)",
+        "Next.js",
+        "Node.js",
+        "Tailwind CSS",
+      ],
+    },
+    {
+      category: "æckend & Cloud",
+      items: [
+        "REST APIs (Node.js)",
+        "PostgreSQL",
+        "Prisma/Drizzle",
+        "Auth (JWT/NextAuth)",
+        "Vercel",
+        "AWS S3",
+        "Azure",
+      ],
+    },
+    {
+      category: "Data & ML",
+      items: [
+        "Python",
+        "Pandas, NumPy",
+        "scikit-learn",
+        "Jupyter/Notebooks",
+        "R (tidyverse, ggplot2)",
+        "SQL (analytics)",
+      ],
     },
     {
       category: "Mobile",
-      items: ["React Native", "Expo"],
+      items: ["React Native", "Expo", "Swift, SwiftUI"],
     },
     {
       category: "UX & Visual",
-      items: ["Figma", "Motion/Prototyping (Framer Motion)"],
+      items: [
+        "Figma",
+        "Design systems",
+        "Prototyping",
+        "Interaction design",
+        "Typography & layout",
+        "Framer Motion (production)",
+      ],
     },
     {
       category: "Testing & Dev",
-      items: ["Jest", "Git/GitHub", "CI/CD basics"],
+      items: [
+        "Jest",
+        "React Testing Library",
+        "Playwright",
+        "Git/GitHub",
+        "GitHub Actions",
+        "Docker",
+        "CI/CD",
+      ],
     },
     {
       category: "Also Familiar",
-      items: ["Three.js/WebGL", "PHP", "C/C++/Go (academic)"],
+      items: [
+        "Three.js/WebGL",
+        "Accessibility (WCAG)",
+        "Performance (CWV/Lighthouse)",
+        "C#/.NET (learning)",
+        "Patterns: MVC/layered, REST, SOLID",
+        "PHP",
+        "Shopify Liquid",
+        "C/C++/Go (academic)",
+      ],
     },
   ],
   socials: [
