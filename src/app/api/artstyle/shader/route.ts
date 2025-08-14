@@ -1,5 +1,8 @@
 import { NextRequest } from "next/server";
-import { ensureFragmentSafety } from "@/lib/shaderValidation";
+import {
+  ensureFragmentSafety,
+  assessFragmentQuality,
+} from "@/lib/shaderValidation";
 
 function genId(len = 10): string {
   const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -156,10 +159,10 @@ Requirements for frag:
 - Use a cosine palette or similar, but ensure final color is grounded by mixing u_colorA/u_colorB.
 - Interactive: subtly influence the pattern with u_mouse (position, bias, or parallax) without being distracting.
 - Performance: fixed-size loops with <= 8 iterations; avoid dynamic branching and heavy trig in tight loops; keep ALU reasonable for WebGL1.
-- Coordinates: aspect-correct uv with centered framing.
-- Stability: avoid NaNs/infs; do not use pow with large exponents; clamp where appropriate.
-If the user's prompt suggests flames/fire/embers/lava, create an upward-flowing turbulent flame: vertically advected noise, warm palette from deep red to bright yellow-white, optional sparks, subtle horizontal wind from mouse.x, and avoid geometric repeats.
-Respond with JSON only. No markdown, no comments, no extra text.`;
+    - Coordinates: aspect-correct uv with centered framing.
+    - Stability: avoid NaNs/infs; do not use pow with large exponents; clamp where appropriate.
+    If the user's prompt suggests flames/fire/embers/lava, create an upward-flowing turbulent flame: vertically advected noise, warm palette from deep red to bright yellow-white, optional sparks, subtle horizontal wind from mouse.x, and avoid geometric repeats.
+    Respond with JSON only. No markdown, no comments, no extra text.`;
 
     const body = {
       model: "gpt-4o-mini",
@@ -219,12 +222,54 @@ float d=length(uv-0.5); col*=1.0 - smoothstep(0.6,0.92,d); gl_FragColor=vec4(col
       parsed = JSON.parse(content || "{}");
     } catch {}
     let frag: string | undefined = parsed?.recipe?.[0]?.frag || parsed?.frag;
-    const safety = ensureFragmentSafety(frag);
-    if (!safety.ok) {
-      // stronger fallback: domain-warped fbm as above
-      frag = isFlames
-        ? flameFallback
-        : `
+
+    // Validate and quality-check; retry once with stricter prompt if poor
+    let safety = ensureFragmentSafety(frag);
+    let quality = assessFragmentQuality(frag);
+    if (!safety.ok || !quality.ok) {
+      const stricter = `You produced an unsatisfactory or unsafe shader previously. Regenerate a higher-quality fragment shader.
+Keep the same JSON schema. Ensure:
+- Rich procedural detail (fbm, domain warp, or layered noise)
+- Clear use of u_colorA/u_colorB in the final color mix (not a flat color)
+- Subtle interactivity from u_mouse
+- Aspect-corrected coordinates and cinematic palette
+Respond with JSON only.`;
+      const retryBody = {
+        model: "gpt-4o-mini",
+        messages: [
+          { role: "system", content: sys },
+          { role: "user", content: p },
+          { role: "system", content: stricter },
+        ],
+        temperature: 0.55,
+        response_format: { type: "json_object" },
+      } as const;
+      const retryRes = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.OPENAI_SECRET}`,
+          },
+          body: JSON.stringify(retryBody),
+        }
+      );
+      if (retryRes.ok) {
+        const retryData = await retryRes.json();
+        const retryContent = retryData?.choices?.[0]?.message?.content;
+        try {
+          const retryParsed = JSON.parse(retryContent || "{}");
+          frag = retryParsed?.recipe?.[0]?.frag || retryParsed?.frag || frag;
+        } catch {}
+      }
+      safety = ensureFragmentSafety(frag);
+      quality = assessFragmentQuality(frag);
+      if (!safety.ok || !quality.ok) {
+        // Strong curated fallback
+        frag = isFlames
+          ? flameFallback
+          : `
 precision mediump float; 
 uniform vec2 u_resolution; 
 uniform float u_time; 
@@ -240,6 +285,7 @@ void main(){ vec2 R=u_resolution; vec2 uv=gl_FragCoord.xy/R; uv-=0.5; uv.x*=R.x/
 float t=u_time*0.16; vec2 p=uv*(1.7+s*0.5); vec2 q=vec2(fbm(p+vec2(0.0,t)), fbm(p+vec2(5.2,-t))); vec2 r=vec2(fbm(p+3.5*q+vec2(1.7,9.2)), fbm(p+3.5*q+vec2(8.3,2.8))); float v=fbm(p+2.0*r+m*0.8);
 vec3 brand=mix(u_colorA,u_colorB,smoothstep(0.2,0.8,v)); vec3 tint=pal(v, vec3(0.55), vec3(0.45), vec3(1.0,0.7,0.4), vec3(0.0,0.2+0.3*s,0.2)); vec3 col=mix(brand, brand*tint, 0.25+0.15*s);
 float d=length(uv-0.5); col*=1.0 - smoothstep(0.6,0.92,d); gl_FragColor=vec4(col,1.0);} `;
+      }
     }
     return Response.json({
       id,
