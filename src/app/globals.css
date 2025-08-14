@@ -34,9 +34,9 @@
 
     /* Brockmann-style grid tokens */
     --grid-columns: 12;
-    --grid-gutter: 24px;
+    --grid-gutter: 32px;
     --grid-margin: 24px;
-    --grid-max-width: 640px; /* align with site max width */
+    --grid-max-width: 720px; /* Swiss-influenced wider column set */
     --baseline: 8px;
   }
 

@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Head from "next/head";
-import { useCallback, useEffect, useState } from "react";
+// head tags for this route are handled in src/app/resume/head.tsx
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { resumeData } from "@/lib/resumeData";
 import { ExperienceItem } from "@/components/ExperienceItem";
 import { EducationItem } from "@/components/EducationItem";
 import { SkillCategory } from "@/components/SkillCategory";
+import { projects } from "@/lib/projectsData";
 
 export default function Resume() {
   const [isImageEnlarged, setIsImageEnlarged] = useState(false);
@@ -31,30 +32,19 @@ export default function Resume() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isImageEnlarged, closeModal]);
 
+  const selectedWork = useMemo(() => {
+    return projects
+      .filter((p) => Boolean(p.link))
+      .slice(0, 3)
+      .map((p) => ({ title: p.name, href: p.link as string }));
+  }, []);
+
   return (
-    <div className="relative w-full py-6">
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Maxwell Young",
-              jobTitle: "Design Engineer",
-              url: "https://dev.maxwellyoung.info/",
-              email: "mailto:maxtheyoung@gmail.com",
-              sameAs: [
-                "https://github.com/maxwellyoung",
-                "https://www.linkedin.com/in/maxwell-young-a55032125/",
-              ],
-            }),
-          }}
-        />
-      </Head>
+    <div className="relative w-full py-8">
+      {/* head content moved to /resume/head.tsx */}
       <div className="container-grid w-full">
         {/* header */}
-        <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
+        <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-8 mb-8">
           <div>
             <h1 className="text-3xl font-medium dark:text-zinc-100 text-zinc-800 font-roboto-mono">
               {resumeData.name}
@@ -132,13 +122,19 @@ export default function Resume() {
         {/* body */}
         <div className="grid-12 gap-y-8">
           {/* left / main */}
-          <main className="col-span-12 lg:col-span-8 order-2 lg:order-1 max-w-prose">
-            {/* Selected work strip */}
-            {resumeData?.selectedWork && resumeData.selectedWork.length > 0 && (
-              <ul className="mt-2 mb-6 text-sm underline">
-                {resumeData.selectedWork.map((work, idx) => (
+          <main className="col-span-12 lg:col-span-9 order-2 lg:order-1 max-w-prose">
+            {/* Selected work strip (auto from projectsData) */}
+            {selectedWork.length > 0 && (
+              <ul className="mt-4 mb-8 text-sm underline">
+                {selectedWork.map((work, idx) => (
                   <li key={`${work.title}-${idx}`}>
-                    <Link href={work.href}>{work.title}</Link>
+                    <a
+                      href={work.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {work.title}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -171,7 +167,7 @@ export default function Resume() {
           </main>
 
           {/* right / sidebar */}
-          <aside className="col-span-12 lg:col-span-4 order-1 lg:order-2">
+          <aside className="col-span-12 lg:col-span-3 order-1 lg:order-2">
             <div className="mt-8 lg:mt-0">
               <div>
                 <span className="resume-label">Contact</span>

@@ -28,21 +28,16 @@ export const resumeData: ResumeData = {
   availability: "open to internships · NZ time",
   contact: {
     email: "maxtheyoung@gmail.com",
-    location: "Auckland",
+    location: "Auckland, NZ",
     website: "https://dev.maxwellyoung.info/",
     github: "https://github.com/maxwellyoung",
     linkedin: "https://www.linkedin.com/in/maxwell-young-a55032125/",
   },
   selectedWork: [
     {
-      title: "Goodness Gracious — Shopify redesign",
-      href: "/work/goodness-gracious",
+      title: "Goodness Gracious — site",
+      href: "https://goodnessgracious.co.nz/",
     },
-    {
-      title: "ReceiptRadar — iOS/Android prototype",
-      href: "/work/receiptradar",
-    },
-    { title: "TYTM8 — artist portfolio", href: "/work/tytm8" },
   ],
   experience: [
     {
