@@ -147,7 +147,7 @@ export default function ArtStyleMenu() {
           } catch {}
           toggleMenu();
         }}
-        className="group fixed bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] right-[calc(env(safe-area-inset-right)+1.25rem)] md:bottom-[calc(env(safe-area-inset-bottom)+2rem)] md:right-[calc(env(safe-area-inset-right)+2rem)] z-[60] h-10 md:h-11 px-4 md:px-5 rounded-2xl text-xs font-medium text-white/90 bg-white/10 backdrop-blur-md backdrop-saturate-150 ring-1 ring-inset ring-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.2)] hover:bg-white/15 transition-all duration-200 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        className="group fixed bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] right-[calc(env(safe-area-inset-right)+1.25rem)] md:bottom-[calc(env(safe-area-inset-bottom)+2rem)] md:right-[calc(env(safe-area-inset-right)+2rem)] z-[60] h-10 md:h-11 px-4 md:px-5 rounded-2xl text-xs font-medium text-foreground/90 bg-foreground/10 backdrop-blur-md backdrop-saturate-150 ring-1 ring-inset ring-[hsl(var(--border))] shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.2)] hover:bg-foreground/15 transition-all duration-200 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         title="Art styles (Ctrl/Cmd+Shift+A)"
         aria-label="Open art styles"
         style={{
