@@ -16,7 +16,10 @@ function genId(len = 10): string {
 
 export async function POST(req: NextRequest) {
   try {
-    const { prompt } = (await req.json()) as { prompt?: string };
+    const { prompt, seed: seedInput } = (await req.json()) as {
+      prompt?: string;
+      seed?: number;
+    };
     const id = genId(10);
     const p = String(prompt || "");
     const isFlames =
@@ -24,7 +27,10 @@ export async function POST(req: NextRequest) {
         p
       );
     const baseUniforms = {
-      seed: Math.floor(Math.random() * 1000000),
+      seed:
+        typeof seedInput === "number" && isFinite(seedInput)
+          ? Math.floor(seedInput)
+          : Math.floor(Math.random() * 1000000),
       colorA: isFlames ? "#ffd56a" : "#a3c3ff",
       colorB: isFlames ? "#1a0a00" : "#0a1830",
     } as const;
@@ -161,12 +167,29 @@ void main(){
           ? flameFallback // occasionally pick the hand-curated fallback for extra variety
           : buildShaderFromTemplate(template, params);
 
-      return Response.json({
-        id,
-        name: "Shader",
-        prompt,
-        recipe: [{ type: "shader", frag, uniforms }],
-      });
+      // Compose optional subtle overlays for extra richness
+      const recipe: any[] = [{ type: "shader", frag, uniforms }];
+      // light haze overlay
+      if (rand() < 0.5) {
+        recipe.push({
+          type: "haze",
+          opacity: 0.18 + rand() * 0.12,
+          speed: 0.12 + rand() * 0.12,
+          hueBias: 0,
+        });
+      }
+      // sparse particles for prompts referencing stars/spark/embers
+      if (/(star|spark|ember|snow|dust)/i.test(p) && rand() < 0.7) {
+        recipe.push({
+          type: "particles",
+          count: 30 + Math.floor(rand() * 40),
+          color: "rgba(255,255,255,0.28)",
+          size: 1,
+          trail: 0.04,
+        });
+      }
+
+      return Response.json({ id, name: "Shader", prompt, recipe });
     }
 
     const sys = `You are a senior GLSL/WebGL shader artist. Output ONLY a JSON object with fields: id, name, prompt, recipe.
