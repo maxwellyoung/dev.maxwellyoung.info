@@ -3,6 +3,8 @@ import {
   ensureFragmentSafety,
   assessFragmentQuality,
 } from "@/lib/shaderValidation";
+import { parsePromptToSpec } from "@/lib/promptToSpec";
+import { buildShaderFromTemplate } from "@/lib/shaderTemplates";
 
 function genId(len = 10): string {
   const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -22,7 +24,7 @@ export async function POST(req: NextRequest) {
         p
       );
     const baseUniforms = {
-      seed: Math.floor(Math.random() * 1000),
+      seed: Math.floor(Math.random() * 1000000),
       colorA: isFlames ? "#ffd56a" : "#a3c3ff",
       colorB: isFlames ? "#1a0a00" : "#0a1830",
     } as const;
@@ -75,74 +77,95 @@ void main(){
 }`;
 
     if (!process.env.OPENAI_SECRET) {
-      // local fallback: high-quality, domain-warped FBM with palette, interactive mouse bias
-      const frag = isFlames
-        ? flameFallback
-        : `
-precision mediump float;
-uniform vec2 u_resolution; 
-uniform float u_time; 
-uniform vec2 u_mouse;
-uniform float u_seed; 
-uniform vec3 u_colorA; 
-uniform vec3 u_colorB;
+      // Local diversified fallback: choose a template based on prompt/theme and randomize params
+      const spec = parsePromptToSpec(p);
+      // Palette bias from prompt keywords (mirror remote path)
+      const pl = p.toLowerCase();
+      const paletteBias = (() => {
+        if (/water|ocean|aqua|caustic/.test(pl))
+          return { a: "#9ad1ff", b: "#0a1930" };
+        if (/sunset|dawn|dusk|gold/.test(pl))
+          return { a: "#ffc08a", b: "#2a0f2a" };
+        if (/forest|moss|emerald|verdant/.test(pl))
+          return { a: "#9cffb0", b: "#0d1f12" };
+        if (/neon|cyber|glitch/.test(pl)) return { a: "#7cfdfd", b: "#181535" };
+        return null;
+      })();
+      const seed = baseUniforms.seed;
+      // cheap deterministic RNG from seed
+      const rand = (() => {
+        let s = seed + 1;
+        return () => {
+          s ^= s << 13;
+          s ^= s >>> 17;
+          s ^= s << 5; // xorshift32
+          return (s >>> 0) / 0xffffffff;
+        };
+      })();
+      const pick = <T>(arr: T[]): T =>
+        arr[Math.floor(rand() * arr.length) % arr.length];
 
-float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453123); }
-float noise(vec2 p){
-  vec2 i = floor(p), f = fract(p);
-  vec2 u = f*f*(3.0-2.0*f);
-  float a = hash(i + vec2(0.0,0.0));
-  float b = hash(i + vec2(1.0,0.0));
-  float c = hash(i + vec2(0.0,1.0));
-  float d = hash(i + vec2(1.0,1.0));
-  return mix(mix(a,b,u.x), mix(c,d,u.x), u.y);
-}
-float fbm(vec2 p){
-  float v = 0.0;
-  float a = 0.5;
-  for(int i=0;i<6;i++){
-    v += a * noise(p);
-    p = p * 2.0 + vec2(37.0, 17.0);
-    a *= 0.5;
-  }
-  return v;
-}
-vec3 pal(float t, vec3 a, vec3 b, vec3 c, vec3 d){
-  return a + b * cos(6.28318 * (c * t + d));
-}
+      // derive uniforms with prompt palette bias if present
+      const uniforms = {
+        seed,
+        colorA: (spec.palette?.colorA ||
+          paletteBias?.a ||
+          baseUniforms.colorA) as string,
+        colorB: (spec.palette?.colorB ||
+          paletteBias?.b ||
+          baseUniforms.colorB) as string,
+      } as const;
 
-void main(){
-  vec2 R = u_resolution;
-  vec2 uv = gl_FragCoord.xy / R;
-  uv -= 0.5; uv.x *= R.x / R.y; uv += 0.5;
-  float s = fract(sin(u_seed)*43758.5453);
+      // choose a template and params
+      let template = "noisy-blobs";
+      let params: Record<string, number | string> = {};
+      if (isFlames || spec.theme === "flames") {
+        template = "flame-plumes";
+        params = { intensity: 0.9 + rand() * 0.5 };
+      } else if (spec.theme === "water") {
+        template = "water-caustics";
+        params = { scale: 2.2 + rand() * 1.0, speed: 0.4 + rand() * 0.5 };
+      } else if (spec.theme === "zebra") {
+        template = "zebra-stripes";
+        params = {
+          bend: 0.6 + rand() * 0.6,
+          freq: 6 + Math.floor(rand() * 8),
+          wobble: 0.2 + rand() * 0.6,
+        };
+      } else if (spec.theme === "aurora" || spec.theme === "flow") {
+        template = pick(["flow-curl", "watercolor-paper"]);
+        params =
+          template === "flow-curl"
+            ? { density: 0.9 + rand() * 0.8 }
+            : { bleed: 0.4 + rand() * 0.5 };
+      } else {
+        template = pick([
+          "noisy-blobs",
+          "voronoi-fade",
+          "halftone-dots",
+          "chroma-shift",
+          "flow-curl",
+        ]);
+        if (template === "noisy-blobs") params = { scale: 0.9 + rand() * 1.6 };
+        if (template === "voronoi-fade")
+          params = { cells: 6 + Math.floor(rand() * 10) };
+        if (template === "halftone-dots")
+          params = { scale: 110 + Math.floor(rand() * 80) };
+        if (template === "chroma-shift")
+          params = { shift: 0.002 + rand() * 0.004 };
+        if (template === "flow-curl") params = { density: 0.8 + rand() * 1.2 };
+      }
 
-  // mouse influence (center bias)
-  vec2 m = (u_mouse / R) - 0.5; m.x *= R.x/R.y;
+      const frag =
+        template === "flame-plumes" && rand() < 0.2
+          ? flameFallback // occasionally pick the hand-curated fallback for extra variety
+          : buildShaderFromTemplate(template, params);
 
-  float t = u_time * 0.15;
-  vec2 p = uv * (1.6 + s*0.6);
-  // domain warp
-  vec2 q = vec2(fbm(p + vec2(0.0, t)), fbm(p + vec2(5.2, -t)));
-  vec2 r = vec2(fbm(p + 4.0*q + vec2(1.7, 9.2)), fbm(p + 4.0*q + vec2(8.3, 2.8)));
-  float v = fbm(p + 2.0*r + m*0.8);
-
-  // palette + brand colors
-  vec3 brand = mix(u_colorA, u_colorB, smoothstep(0.2, 0.8, v));
-  vec3 tint = pal(v, vec3(0.52), vec3(0.48), vec3(1.0, 0.7, 0.4), vec3(0.0, 0.25 + 0.3*s, 0.2));
-  vec3 col = mix(brand, brand * tint, 0.28 + 0.12 * s);
-
-  // subtle vignette
-  float d = length(uv - 0.5);
-  col *= 1.0 - smoothstep(0.58, 0.9, d);
-
-  gl_FragColor = vec4(col, 1.0);
-}`;
       return Response.json({
         id,
         name: "Shader",
         prompt,
-        recipe: [{ type: "shader", frag, uniforms: baseUniforms }],
+        recipe: [{ type: "shader", frag, uniforms }],
       });
     }
 
