@@ -44,6 +44,7 @@ export default function ArtStyleMenu() {
   const [pulse, setPulse] = React.useState(false);
   const [isHover, setIsHover] = React.useState(false);
   const [isPressed, setIsPressed] = React.useState(false);
+  const [showAdvanced, setShowAdvanced] = React.useState(false);
   const [tilt, setTilt] = React.useState<{ rx: number; ry: number }>({
     rx: 0,
     ry: 0,
@@ -240,7 +241,7 @@ export default function ArtStyleMenu() {
               placeholder="e.g. candlelit cabin, soft fireflies, midnight blue"
               className="w-full rounded-md bg-white/5 ring-1 ring-white/10 px-3 py-2 text-sm outline-none focus:ring-white/30 placeholder:text-white/30"
             />
-            <div className="mt-2 flex gap-2">
+            <div className="mt-2 flex items-center gap-2">
               <button
                 onClick={async () => {
                   setCustomPrompt(localPrompt);
@@ -251,7 +252,10 @@ export default function ArtStyleMenu() {
                     const res = await fetch("/api/artstyle/shader", {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ prompt: localPrompt }),
+                      body: JSON.stringify({
+                        prompt: localPrompt,
+                        seed: Math.floor(Math.random() * 1_000_000),
+                      }),
                     });
                     const data = await res.json();
                     if (data?.id && Array.isArray(data?.recipe)) {
@@ -283,9 +287,16 @@ export default function ArtStyleMenu() {
               >
                 clear
               </button>
+              <button
+                onClick={() => setShowAdvanced((v) => !v)}
+                className="ml-auto text-xs text-white/60 hover:text-white/90"
+                aria-expanded={showAdvanced}
+              >
+                {showAdvanced ? "Hide advanced" : "Advanced"}
+              </button>
             </div>
           </div>
-          {pinnedStyles.length > 0 && (
+          {showAdvanced && pinnedStyles.length > 0 && (
             <div className="mt-4 border-t border-white/10 pt-3">
               <div className="text-xs text-white/60 mb-2">Pinned</div>
               <div className="space-y-2">
@@ -323,7 +334,7 @@ export default function ArtStyleMenu() {
             </div>
           )}
 
-          {generatedStyles.length > 0 && (
+          {showAdvanced && generatedStyles.length > 0 && (
             <div className="mt-4 border-t border-white/10 pt-3">
               <div className="text-xs text-white/60 mb-2">Generated</div>
               <div className="space-y-2">
@@ -433,49 +444,51 @@ export default function ArtStyleMenu() {
             </div>
           )}
         </div>
-        <div className="px-4 py-3 flex items-center justify-start gap-2 border-t border-white/10 text-xs text-white/60">
-          <button
-            onClick={() => {
-              const input = document.createElement("input");
-              input.type = "file";
-              input.accept = "application/json";
-              input.onchange = async () => {
-                const file = input.files?.[0];
-                if (!file) return;
+        {showAdvanced && (
+          <div className="px-4 py-3 flex items-center justify-start gap-2 border-t border-white/10 text-xs text-white/60">
+            <button
+              onClick={() => {
+                const input = document.createElement("input");
+                input.type = "file";
+                input.accept = "application/json";
+                input.onchange = async () => {
+                  const file = input.files?.[0];
+                  if (!file) return;
+                  try {
+                    const text = await file.text();
+                    const obj = JSON.parse(text);
+                    if (obj?.id && obj?.recipe) {
+                      addGeneratedStyle(obj);
+                      setActiveGeneratedId(obj.id);
+                      setStyle("ai");
+                    }
+                  } catch {}
+                };
+                input.click();
+              }}
+              className="rounded-md ring-1 ring-white/20 px-3 py-1.5 text-xs text-white/80 hover:bg-white/5"
+            >
+              import
+            </button>
+            <button
+              onClick={() => {
                 try {
-                  const text = await file.text();
-                  const obj = JSON.parse(text);
-                  if (obj?.id && obj?.recipe) {
-                    addGeneratedStyle(obj);
-                    setActiveGeneratedId(obj.id);
-                    setStyle("ai");
-                  }
+                  const g = generatedStyles.find(
+                    (x) => x.id === activeGeneratedId
+                  );
+                  if (!g) return;
+                  const base64 = btoa(JSON.stringify(g));
+                  const url = `${location.origin}${location.pathname}#bg=${base64}`;
+                  window.open(url, "_blank");
                 } catch {}
-              };
-              input.click();
-            }}
-            className="rounded-md ring-1 ring-white/20 px-3 py-1.5 text-xs text-white/80 hover:bg-white/5"
-          >
-            import
-          </button>
-          <button
-            onClick={() => {
-              try {
-                const g = generatedStyles.find(
-                  (x) => x.id === activeGeneratedId
-                );
-                if (!g) return;
-                const base64 = btoa(JSON.stringify(g));
-                const url = `${location.origin}${location.pathname}#bg=${base64}`;
-                window.open(url, "_blank");
-              } catch {}
-            }}
-            className="rounded-md ring-1 ring-white/20 px-3 py-1.5 text-xs text-white/80 hover:bg-white/5"
-          >
-            share
-          </button>
-          <span className="ml-auto">Tip: Ctrl/Cmd+Shift+A</span>
-        </div>
+              }}
+              className="rounded-md ring-1 ring-white/20 px-3 py-1.5 text-xs text-white/80 hover:bg-white/5"
+            >
+              share
+            </button>
+            <span className="ml-auto">Tip: Ctrl/Cmd+Shift+A</span>
+          </div>
+        )}
       </div>
     </div>
   );
