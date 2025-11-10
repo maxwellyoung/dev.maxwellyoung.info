@@ -42,6 +42,17 @@ export const resumeData: ResumeData = {
   ],
   experience: [
     {
+      title: "Research Assistant",
+      company: "Auckland University of Technology",
+      date: "2025 – Present, Auckland",
+      summary:
+        "Prototyping a mobile application for AI-driven sleep stage analysis.",
+      responsibilities: [
+        "Integrating deep learning models and behavioural inputs into a cohesive UX.",
+        "Designing visualisations and explainability tools to improve user insight.",
+      ],
+    },
+    {
       title: "Full-Stack Web Developer",
       company: "Freelance",
       date: "Apr 2023–Present, Auckland",

@@ -8,6 +8,7 @@ export interface Project {
   codeLink?: string;
   startDate?: string;
   tags?: string[];
+  category?: "studio" | "personal";
 }
 
 export const projects: Project[] = [
@@ -17,13 +18,14 @@ export const projects: Project[] = [
     description:
       "Full redesign and development of a responsive, high-performance Shopify site. Improved ordering flow, modernised the visual identity, and streamlined content management.",
     longDescription:
-      "A full redesign and build of the Goodness Gracious site and ecommerce experience. Delivered a responsive, high‑performance Shopify implementation with a clearer ordering flow, updated visual system, and simplified content management. Worked closely with the client’s marketing team to align physical and digital touchpoints.",
+      "A full redesign and build of the Goodness Gracious site and ecommerce experience. Delivered a responsive, high‑performance Shopify implementation with a clearer ordering flow, updated visual system, and simplified content management. Worked closely with the client's marketing team to align physical and digital touchpoints.",
     screenshots: [
       "/projectImages/goodness-1.webp",
       "/projectImages/goodness-2.webp",
     ],
     startDate: "2024-05-01",
     link: "https://www.goodnessgracious.co.nz/",
+    category: "studio",
     tags: [
       "Frontend Development",
       "Freelance",
@@ -40,6 +42,7 @@ export const projects: Project[] = [
       "Built a dynamic portfolio website for writer Ivan Guzman using Next.js, Tailwind CSS, and Framer Motion. To empower the client with content management capabilities, I integrated a Sanity CMS, allowing for easy article uploads and updates. The result is a user-friendly and visually engaging platform for showcasing his work.",
     link: "https://ivan-guzman.com/",
     screenshots: ["/projectImages/ivan-1.webp"],
+    category: "studio",
   },
   {
     name: "Ch'lita | Fashion Designer & Stylist Portfolio",
@@ -57,6 +60,7 @@ export const projects: Project[] = [
       "/projectImages/chlita-4.webp",
       "/projectImages/chlita-5.webp",
     ],
+    category: "studio",
   },
   {
     name: "Metrosexual Awareness Night",
@@ -67,6 +71,7 @@ export const projects: Project[] = [
       "Implemented a countdown timer for the event, adding a sense of anticipation. The design features a hipster runoff pink gradient background with shooting star effects, contributing to a playful and energetic aesthetic. The site includes responsive side navigation for easy project selection, and the overall styling was updated to be more vibrant, flashy, and pink-themed.",
     link: "https://metrosexualawareness.com",
     startDate: "2024-10-11",
+    category: "personal",
     tags: [
       "Web Development",
       "Responsive Design",
@@ -87,6 +92,7 @@ export const projects: Project[] = [
     link: "https://jeremy-blake.vercel.app/",
     codeLink: "https://github.com/maxwellyoung/jeremy-blake",
     startDate: "2023-01-15",
+    category: "personal",
     tags: ["React", "Three.js", "WebGL"],
     screenshots: ["/projectImages/blake.webp", "/projectImages/blake2.webp"],
   },
@@ -98,6 +104,7 @@ export const projects: Project[] = [
     longDescription:
       "Designing and building a minimalist, production‑ready scheduling tool for film teams. Focused on a distraction‑free interface, adaptable to varied workflows. Implemented the core scheduling logic, interactive prototypes, and user validation loops to shape the roadmap.",
     startDate: "2023-04-01",
+    category: "personal",
     tags: ["Next.js", "React", "AI", "TypeScript"],
     link: "https://cinesync-peach.vercel.app/",
     screenshots: [
@@ -116,6 +123,7 @@ export const projects: Project[] = [
     link: "https://music.maxwellyoung.info",
     codeLink: "https://github.com/maxwellyoung/music_maxwell",
     startDate: "2022-01-01",
+    category: "personal",
     tags: ["React", "Next.js", "Tailwind CSS"],
   },
 ];
