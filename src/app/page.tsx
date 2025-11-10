@@ -67,13 +67,22 @@ export default function Home() {
               }}
             >
               <motion.p
-                className="block text-xl font-light text-zinc-500 dark:text-zinc-400 absolute inset-0 whitespace-nowrap"
+                className="block text-xl font-light text-zinc-500 dark:text-zinc-400 tracking-tight leading-tight absolute inset-0 whitespace-nowrap"
                 variants={titleVariants}
                 initial="initial"
                 animate={isHovered ? "hover" : "initial"}
                 transition={{ duration: 0.3 }}
               >
-                Design Engineer
+                Design Engineer · Founder,{" "}
+                <a
+                  href="https://www.ninetynine.digital"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  ninetynine.digital
+                </a>
               </motion.p>
               <motion.p
                 className="block text-xl font-light text-zinc-500 dark:text-zinc-400 absolute inset-0 whitespace-nowrap"
@@ -89,16 +98,20 @@ export default function Home() {
 
           <div className="leading-relaxed space-y-4">
             <p className="text-zinc-500 dark:text-zinc-400">
-            Maxwell Young is a product-focused design engineer based in Auckland, New Zealand. He creates digital products for creative professionals, ecommerce, and everyday use, combining design sensitivity with technical depth. Each is shaped to feel purposeful, unobtrusive, and built to endure.
+            Maxwell Young is a product-focused design engineer based in Auckland, New Zealand. He creates digital products for creative professionals, ecommerce, and everyday use, combining design sensitivity with technical depth.
             </p>
 
             <p className="text-zinc-500 dark:text-zinc-400">
-              He is a Design Engineer at{" "}
+              He also contributes to applied research at AUT, developing an AI-driven sleep monitoring app that merges deep learning, behavioural data, and intuitive mobile design, each designed to feel purposeful, unobtrusive, and built to endure.
+            </p>
+
+            <p className="text-zinc-500 dark:text-zinc-400">
+              He is currently a Design Engineer at{" "}
               <a
                 href="https://www.silk.cx"
                 target="_blank"
                 rel="noreferrer"
-                className="underline hover:text-zinc-800 hover:dark:text-zinc-300"
+                className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
               >
                 Silk
               </a>
@@ -116,32 +129,32 @@ export default function Home() {
             <p className="text-zinc-500 dark:text-zinc-400">
               <Link
                 href="#projects"
-                className="underline hover:text-zinc-800 hover:dark:text-zinc-300"
+                className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
               >
                 Work
               </Link>{" "}
               ·{" "}
               <Link
                 href="#resume"
-                className="underline hover:text-zinc-800 hover:dark:text-zinc-300"
+                className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
               >
                 Resume
               </Link>{" "}
-              {/* ·{" "}
+              ·{" "}
               <a
-                href="https://www.silk.cx"
+                href="https://www.ninetynine.digital"
                 target="_blank"
                 rel="noreferrer"
-                className="underline hover:text-zinc-800 hover:dark:text-zinc-300"
+                className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
               >
-                Silk
-              </a>{" "} */}
+                ninetynine.digital
+              </a>{" "}
               ·{" "}
               <a
                 href="https://github.com/maxwellyoung"
                 target="_blank"
                 rel="noreferrer"
-                className="underline hover:text-zinc-800 hover:dark:text-zinc-300"
+                className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
               >
                 GitHub
               </a>
@@ -157,6 +170,20 @@ export default function Home() {
         <section id="resume">
           <Resume />
         </section>
+
+        <footer className="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+            <a
+              href="https://www.ninetynine.digital"
+              target="_blank"
+              rel="noreferrer"
+              className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
+            >
+              ninetynine.digital
+            </a>{" "}
+            — independent studio crafting enduring digital products.
+          </p>
+        </footer>
       </main>
 
       <AnimatePresence>

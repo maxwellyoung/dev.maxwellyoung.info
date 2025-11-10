@@ -26,7 +26,7 @@ export default function ProjectsShowcase() {
   const [sortBy, setSortBy] = useState<SortKey>("newest");
   // featured view removed per request; list is the only mode now
   // -1 means no row expanded (all closed)
-  const [currentIndex, setCurrentIndex] = useState<number>(-1);
+  const [expandedProject, setExpandedProject] = useState<string | null>(null);
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
   // Preserve the original order from projectsData.ts (append = newer)
   const orderIndex = useMemo(() => {
@@ -89,16 +89,27 @@ export default function ProjectsShowcase() {
 
   useEffect(() => {
     if (!filtered.length) {
-      setCurrentIndex(-1);
+      setExpandedProject(null);
       return;
     }
-    if (currentIndex >= filtered.length) setCurrentIndex(-1);
-  }, [filtered, currentIndex]);
+    // If expanded project is no longer in filtered list, close it
+    if (expandedProject && !filtered.find((p) => p.name === expandedProject)) {
+      setExpandedProject(null);
+    }
+  }, [filtered, expandedProject]);
 
   const selectedProject: Project | null =
-    currentIndex >= 0 ? filtered[currentIndex] : null;
-  const featured = useMemo(
-    () => filtered.slice(0, Math.min(3, filtered.length)),
+    expandedProject
+      ? filtered.find((p) => p.name === expandedProject) || null
+      : null;
+
+  const studioProjects = useMemo(
+    () => filtered.filter((p) => p.category === "studio"),
+    [filtered]
+  );
+
+  const personalProjects = useMemo(
+    () => filtered.filter((p) => p.category === "personal"),
     [filtered]
   );
   const isEmpty = filtered.length === 0;
@@ -107,7 +118,7 @@ export default function ProjectsShowcase() {
     setQuery("");
     setActiveFilters([]);
     setSortBy("newest");
-    setCurrentIndex(0);
+    setExpandedProject(null);
   };
 
   // removed featured sync logic
@@ -165,7 +176,7 @@ export default function ProjectsShowcase() {
             })}
           </div>
         </div>
-        <div className="space-y-8">
+        <div className="space-y-12">
           {isEmpty ? (
             <section className="mt-10 grid place-items-center">
               <div className="text-center">
@@ -183,76 +194,171 @@ export default function ProjectsShowcase() {
               </div>
             </section>
           ) : (
-            <section
-              aria-label="all projects"
-              className="mt-2 overflow-x-hidden w-full max-w-full"
-            >
-              <div className="overflow-x-hidden w-full max-w-full">
-                <motion.ul
-                  layout
-                  className="divide-y divide-[hsl(var(--border))] overflow-x-hidden w-full max-w-full"
+            <>
+              {studioProjects.length > 0 && (
+                <section
+                  aria-label="studio work"
+                  className="mt-2 overflow-x-hidden w-full max-w-full"
                 >
-                  {filtered.map((p, idx) => (
-                    <motion.li
-                      layout
-                      key={p.name}
-                      className="w-full max-w-full"
+                  <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400 mb-4">
+                    <a
+                      href="https://www.ninetynine.digital"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
                     >
-                      <button
-                        onClick={(e) => {
-                          setCurrentIndex((prev) => (prev === idx ? -1 : idx));
-                          e.currentTarget.parentElement?.scrollIntoView({
-                            behavior: "smooth",
-                            block: "center",
-                          });
-                        }}
-                        className="w-full max-w-full text-left px-2 sm:px-3 py-3 hover:bg-[hsl(var(--muted))]/50 transition"
-                      >
-                        <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
-                          <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))]">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={
-                                p.screenshots?.[0] ||
-                                "/projectImages/StudentView.jpeg"
-                              }
-                              alt={p.name}
-                              className="h-full w-full object-cover"
-                            />
-                          </div>
-                          <div className="min-w-0 flex-1 overflow-hidden">
-                            <div className="flex items-center gap-2">
-                              <h4 className="truncate break-words text-sm font-medium leading-tight">
-                                {p.name}
-                              </h4>
-                            </div>
-                            <p className="mt-1 truncate break-words text-xs text-zinc-600 dark:text-zinc-400">
-                              {p.description}
-                            </p>
-                          </div>
-                        </div>
-                      </button>
-                      <AnimatePresence initial={false}>
-                        {currentIndex === idx && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.2, ease: "easeOut" }}
-                            className="px-1 pb-4"
+                      ninetynine.digital
+                    </a>{" "}
+                    — client work
+                  </h2>
+                  <div className="overflow-x-hidden w-full max-w-full">
+                    <motion.ul
+                      layout
+                      className="divide-y divide-[hsl(var(--border))] overflow-x-hidden w-full max-w-full"
+                    >
+                      {studioProjects.map((p) => (
+                        <motion.li
+                          layout
+                          key={p.name}
+                          className="w-full max-w-full"
+                        >
+                          <button
+                            onClick={(e) => {
+                              setExpandedProject(
+                                expandedProject === p.name ? null : p.name
+                              );
+                              e.currentTarget.parentElement?.scrollIntoView({
+                                behavior: "smooth",
+                                block: "center",
+                              });
+                            }}
+                            className="w-full max-w-full text-left px-2 sm:px-3 py-3 hover:bg-[hsl(var(--muted))]/50 transition"
                           >
-                            <ProjectDetails
-                              project={p}
-                              onCarouselOpen={() => setIsCarouselOpen(true)}
-                            />
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              </div>
-            </section>
+                            <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
+                              <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))]">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={
+                                    p.screenshots?.[0] ||
+                                    "/projectImages/StudentView.jpeg"
+                                  }
+                                  alt={p.name}
+                                  className="h-full w-full object-cover"
+                                />
+                              </div>
+                              <div className="min-w-0 flex-1 overflow-hidden">
+                                <div className="flex items-center gap-2">
+                                  <h4 className="truncate break-words text-sm font-medium leading-tight">
+                                    {p.name}
+                                  </h4>
+                                </div>
+                                <p className="mt-1 truncate break-words text-xs text-zinc-600 dark:text-zinc-400">
+                                  {p.description}
+                                </p>
+                              </div>
+                            </div>
+                          </button>
+                          <AnimatePresence initial={false}>
+                            {expandedProject === p.name && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.2, ease: "easeOut" }}
+                                className="px-1 pb-4"
+                              >
+                                <ProjectDetails
+                                  project={p}
+                                  onCarouselOpen={() => setIsCarouselOpen(true)}
+                                />
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  </div>
+                </section>
+              )}
+
+              {personalProjects.length > 0 && (
+                <section
+                  aria-label="personal projects"
+                  className="mt-2 overflow-x-hidden w-full max-w-full"
+                >
+                  <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400 mb-4">
+                    Personal projects
+                  </h2>
+                  <div className="overflow-x-hidden w-full max-w-full">
+                    <motion.ul
+                      layout
+                      className="divide-y divide-[hsl(var(--border))] overflow-x-hidden w-full max-w-full"
+                    >
+                      {personalProjects.map((p) => (
+                        <motion.li
+                          layout
+                          key={p.name}
+                          className="w-full max-w-full"
+                        >
+                          <button
+                            onClick={(e) => {
+                              setExpandedProject(
+                                expandedProject === p.name ? null : p.name
+                              );
+                              e.currentTarget.parentElement?.scrollIntoView({
+                                behavior: "smooth",
+                                block: "center",
+                              });
+                            }}
+                            className="w-full max-w-full text-left px-2 sm:px-3 py-3 hover:bg-[hsl(var(--muted))]/50 transition"
+                          >
+                            <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
+                              <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))]">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={
+                                    p.screenshots?.[0] ||
+                                    "/projectImages/StudentView.jpeg"
+                                  }
+                                  alt={p.name}
+                                  className="h-full w-full object-cover"
+                                />
+                              </div>
+                              <div className="min-w-0 flex-1 overflow-hidden">
+                                <div className="flex items-center gap-2">
+                                  <h4 className="truncate break-words text-sm font-medium leading-tight">
+                                    {p.name}
+                                  </h4>
+                                </div>
+                                <p className="mt-1 truncate break-words text-xs text-zinc-600 dark:text-zinc-400">
+                                  {p.description}
+                                </p>
+                              </div>
+                            </div>
+                          </button>
+                          <AnimatePresence initial={false}>
+                            {expandedProject === p.name && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.2, ease: "easeOut" }}
+                                className="px-1 pb-4"
+                              >
+                                <ProjectDetails
+                                  project={p}
+                                  onCarouselOpen={() => setIsCarouselOpen(true)}
+                                />
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  </div>
+                </section>
+              )}
+            </>
           )}
         </div>
       </div>
