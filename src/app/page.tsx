@@ -78,7 +78,7 @@ export default function Home() {
                   href="https://www.ninetynine.digital"
                   target="_blank"
                   rel="noreferrer"
-                  className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
+                  className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300 relative z-10 pointer-events-auto"
                   onClick={(e) => e.stopPropagation()}
                 >
                   ninetynine.digital
