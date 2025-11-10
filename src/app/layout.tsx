@@ -59,12 +59,70 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://dev.maxwellyoung.info/#person",
+        name: "Maxwell Young",
+        jobTitle: "Design Engineer",
+        url: "https://dev.maxwellyoung.info/",
+        email: "maxtheyoung@gmail.com",
+        sameAs: [
+          "https://github.com/maxwellyoung",
+          "https://www.linkedin.com/in/maxwell-young-a55032125/",
+          "https://www.ninetynine.digital",
+        ],
+        alumniOf: {
+          "@type": "EducationalOrganization",
+          name: "Auckland University of Technology",
+        },
+        worksFor: [
+          {
+            "@type": "Organization",
+            name: "Silk",
+            url: "https://www.silk.cx",
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://www.ninetynine.digital/#organization",
+            name: "ninetynine.digital",
+            url: "https://www.ninetynine.digital",
+            founder: {
+              "@id": "https://dev.maxwellyoung.info/#person",
+            },
+          },
+        ],
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.ninetynine.digital/#organization",
+        name: "ninetynine.digital",
+        url: "https://www.ninetynine.digital",
+        description:
+          "Independent studio crafting enduring digital products. Custom portfolios for artists and writers, consumer applications, and creative web experiences.",
+        founder: {
+          "@id": "https://dev.maxwellyoung.info/#person",
+        },
+      },
+    ],
+  };
+
   return (
     <html
       lang="en"
       suppressHydrationWarning
       className={`${generalSans.variable} ${sentient.variable} ${inter.variable}`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
+      </head>
       <body className="font-sans overflow-x-hidden min-h-screen">
         <CSPostHogProvider>
           <ThemeProvider
