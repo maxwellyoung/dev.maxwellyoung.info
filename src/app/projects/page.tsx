@@ -10,6 +10,7 @@ import React, {
 // removed background motion imports to reduce visual noise
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Carousel from "@/components/Carousel";
 import { Project, projects } from "@/lib/projectsData";
 import { ProjectDetails } from "@/components/ProjectDetails";
@@ -235,15 +236,17 @@ export default function ProjectsShowcase() {
                             className="w-full max-w-full text-left px-2 sm:px-3 py-3 hover:bg-[hsl(var(--muted))]/50 transition"
                           >
                             <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
-                              <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))]">
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
+                              <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))] bg-zinc-200 dark:bg-zinc-800">
+                                <Image
                                   src={
                                     p.screenshots?.[0] ||
                                     "/projectImages/StudentView.jpeg"
                                   }
                                   alt={p.name}
-                                  className="h-full w-full object-cover"
+                                  fill
+                                  className="object-cover"
+                                  loading="lazy"
+                                  sizes="(max-width: 640px) 80px, 112px"
                                 />
                               </div>
                               <div className="min-w-0 flex-1 overflow-hidden">
@@ -313,15 +316,17 @@ export default function ProjectsShowcase() {
                             className="w-full max-w-full text-left px-2 sm:px-3 py-3 hover:bg-[hsl(var(--muted))]/50 transition"
                           >
                             <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
-                              <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))]">
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
+                              <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))] bg-zinc-200 dark:bg-zinc-800">
+                                <Image
                                   src={
                                     p.screenshots?.[0] ||
                                     "/projectImages/StudentView.jpeg"
                                   }
                                   alt={p.name}
-                                  className="h-full w-full object-cover"
+                                  fill
+                                  className="object-cover"
+                                  loading="lazy"
+                                  sizes="(max-width: 640px) 80px, 112px"
                                 />
                               </div>
                               <div className="min-w-0 flex-1 overflow-hidden">
