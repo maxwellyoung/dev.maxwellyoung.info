@@ -16,6 +16,25 @@ import LayoutDiagnostics from "@/components/LayoutDiagnostics";
 export const metadata: Metadata = {
   title: "Maxwell Young | Design Engineer",
   description: "Portfolio of Maxwell Young, a Design Engineer",
+  openGraph: {
+    title: "Maxwell Young | Design Engineer",
+    description: "Portfolio of Maxwell Young, a Design Engineer",
+    images: [
+      {
+        url: "/meta.png",
+        width: 1200,
+        height: 630,
+        alt: "Maxwell Young - Design Engineer",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Maxwell Young | Design Engineer",
+    description: "Portfolio of Maxwell Young, a Design Engineer",
+    images: ["/meta.png"],
+  },
 };
 
 export const viewport = {
