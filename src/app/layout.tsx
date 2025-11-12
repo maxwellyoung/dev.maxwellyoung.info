@@ -15,13 +15,46 @@ import LayoutDiagnostics from "@/components/LayoutDiagnostics";
 
 export const metadata: Metadata = {
   title: "Maxwell Young | Design Engineer",
-  description: "Portfolio of Maxwell Young, a Design Engineer",
+  description:
+    "Product-focused design engineer based in Auckland, New Zealand. Creates digital products for creative professionals, ecommerce, and everyday use, combining design sensitivity with technical depth. Currently at Silk, designing and building products that archive and reimagine culture online.",
   metadataBase: new URL("https://dev.maxwellyoung.info"),
+  keywords: [
+    "design engineer",
+    "product design",
+    "web development",
+    "UI/UX",
+    "frontend development",
+    "Auckland",
+    "New Zealand",
+    "Silk",
+    "ninetynine.digital",
+  ],
+  authors: [{ name: "Maxwell Young" }],
+  creator: "Maxwell Young",
+  publisher: "Maxwell Young",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "Maxwell Young | Design Engineer",
-    description: "Portfolio of Maxwell Young, a Design Engineer",
+    description:
+      "Product-focused design engineer based in Auckland, New Zealand. Creates digital products for creative professionals, ecommerce, and everyday use, combining design sensitivity with technical depth.",
     url: "https://dev.maxwellyoung.info",
     siteName: "Maxwell Young",
+    locale: "en_NZ",
+    type: "website",
     images: [
       {
         url: "/meta.png",
@@ -30,13 +63,17 @@ export const metadata: Metadata = {
         alt: "Maxwell Young - Design Engineer",
       },
     ],
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Maxwell Young | Design Engineer",
-    description: "Portfolio of Maxwell Young, a Design Engineer",
+    description:
+      "Product-focused design engineer based in Auckland, New Zealand. Creates digital products for creative professionals, ecommerce, and everyday use.",
     images: ["/meta.png"],
+    creator: "@maxwellyoung",
+  },
+  alternates: {
+    canonical: "https://dev.maxwellyoung.info",
   },
 };
 
@@ -44,6 +81,7 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
+  themeColor: "#0E0E0E",
 };
 
 const generalSans = localFont({
