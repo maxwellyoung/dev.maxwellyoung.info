@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     description:
       "Product-focused design engineer based in Auckland, New Zealand. Creates digital products for creative professionals, ecommerce, and everyday use.",
     images: ["/meta.png"],
-    creator: "@maxwellyoung",
+    creator: "@internetmaxwell",
   },
   alternates: {
     canonical: "https://dev.maxwellyoung.info",
