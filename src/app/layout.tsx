@@ -16,9 +16,12 @@ import LayoutDiagnostics from "@/components/LayoutDiagnostics";
 export const metadata: Metadata = {
   title: "Maxwell Young | Design Engineer",
   description: "Portfolio of Maxwell Young, a Design Engineer",
+  metadataBase: new URL("https://dev.maxwellyoung.info"),
   openGraph: {
     title: "Maxwell Young | Design Engineer",
     description: "Portfolio of Maxwell Young, a Design Engineer",
+    url: "https://dev.maxwellyoung.info",
+    siteName: "Maxwell Young",
     images: [
       {
         url: "/meta.png",
