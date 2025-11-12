@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dev.maxwellyoung.info/sitemap.xml
+
