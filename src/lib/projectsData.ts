@@ -13,6 +13,28 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: "Vape Quit Coach",
+    status: "Active",
+    description:
+      "A calm, ritual‑based quit‑vaping app built around behaviour design, soft visuals, and a clean daily rhythm model.",
+    longDescription:
+      "Vape Quit Coach is an iOS app that reframes quitting as architecture, not willpower. It blends cinematic, quiet UI with data on cravings, triggers, and rituals. I designed and built the full product: onboarding flows, liminal mode for early quitting, clean mode for long‑term maintenance, subscription funnels, and internal UGC tooling for marketing experiments.",
+    screenshots: ["/projectImages/vqc-1.webp", "/projectImages/vqc-2.webp", "/projectImages/vqc-3.webp", "/projectImages/vqc-4.webp", "/projectImages/vqc-5.webp"],
+    startDate: "2024-01-01",
+    link: "https://vqc.app",
+    codeLink: "https://github.com/maxwellyoung/vqc", 
+    category: "personal",
+    tags: [
+      "React Native",
+      "Expo",
+      "RevenueCat",
+      "Superwall",
+      "PostHog",
+      "Design Engineering",
+      "Mobile App"
+    ],
+  },
+  {
     name: "Goodness Gracious — Bakery, Cafe & Catering",
     status: "Completed",
     description:
