@@ -12,6 +12,14 @@ import { AnimatedLink, AccentLink } from "@/components/ui/animated-link";
 import { ChevronUp } from "lucide-react";
 import { GitHubActivity } from "@/components/GitHubActivity";
 import { NowPlaying } from "@/components/NowPlaying";
+import { ContactForm } from "@/components/ContactForm";
+import dynamic from "next/dynamic";
+import { ThemeToggle } from "@/components/ThemeToggle";
+
+const Hero3D = dynamic(() => import("@/components/Hero3D").then(mod => ({ default: mod.Hero3D })), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function Home() {
   const [isHovered, setIsHovered] = useState(false);
@@ -94,6 +102,9 @@ export default function Home() {
           initial="hidden"
           animate="visible"
         >
+          {/* 3D floating element */}
+          <Hero3D />
+
           {/* Subtle scanlines - Saville's technical aesthetic */}
           <div className="scanlines opacity-30" />
 
@@ -107,14 +118,17 @@ export default function Home() {
             <div className="w-1 h-6 bg-foreground/20" />
           </motion.div>
 
-          <motion.header className="mb-12" variants={heroItemVariants}>
-            <Link
-              href="/"
-              className="text-xl glint text-foreground font-medium cursor-pointer hover:text-accent transition-colors duration-200"
-              onClick={() => setShowStars(true)}
-            >
-              Maxwell Young
-            </Link>
+          <motion.header className="mb-12 w-full" variants={heroItemVariants}>
+            <div className="flex items-center justify-between">
+              <Link
+                href="/"
+                className="text-xl glint text-foreground font-medium cursor-pointer hover:text-accent transition-colors duration-200"
+                onClick={() => setShowStars(true)}
+              >
+                Maxwell Young
+              </Link>
+              <ThemeToggle />
+            </div>
 
             {/* Mobile: stacked role/subtitle; Desktop: hover crossfade */}
             <div
@@ -239,6 +253,15 @@ export default function Home() {
         </section>
 
         <footer className="mt-16 pt-8 border-t border-[hsl(var(--border))]">
+          {/* Contact Form */}
+          <div className="mb-12">
+            <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              Get in touch
+            </h2>
+            <ContactForm />
+          </div>
+
           {/* Activity widgets */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
             <GitHubActivity />
