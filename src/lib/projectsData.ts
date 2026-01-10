@@ -6,6 +6,7 @@ export interface Project {
   screenshots?: string[];
   link?: string;
   codeLink?: string;
+  caseStudySlug?: string;
   startDate?: string;
   tags?: string[];
   category?: "studio" | "personal" | "research";
@@ -24,6 +25,7 @@ export const projects: Project[] = [
     longDescription:
       "Silk is a blogging and curation platform that rejects the engagement-metrics playbook. No targeted ads, no algorithmic feeds, no extraction. Just tools for collecting and sharing things you find interesting. I work on the frontend—building interfaces for blogs, private archives, and multimedia moodboards. The philosophy matters as much as the code: we're building for critical thought and organic connection, not infinite scroll.",
     link: "https://www.silk.cx",
+    caseStudySlug: "silk",
     startDate: "2024-06-01",
     category: "research",
     featured: true,
@@ -67,6 +69,7 @@ export const projects: Project[] = [
     screenshots: ["/projectImages/vqc-1.webp", "/projectImages/vqc-2.webp", "/projectImages/vqc-3.webp", "/projectImages/vqc-4.webp", "/projectImages/vqc-5.webp"],
     startDate: "2024-01-01",
     link: "https://vapequitcoach.com",
+    caseStudySlug: "vape-quit-coach",
     category: "personal",
     featured: true,
     tags: ["React Native", "Expo", "Behavior Design", "Mobile App"],
@@ -84,6 +87,7 @@ export const projects: Project[] = [
       "Portfolio for fashion stylist Ch'lita, whose clients include Rosalia and The Dare. I killed every feature I wanted to add. Fancy transitions? Cut. Scroll effects? Cut. The client's work is better than any animation I could write. What I shipped: image-first layouts, zero layout shift, responsive art direction that doesn't butcher crops. The site disappears behind the content. That's not failure—that's the job.",
     link: "https://chlita.com",
     codeLink: "https://github.com/maxwellyoung/chlita",
+    caseStudySlug: "chlita",
     screenshots: [
       "/projectImages/chlita-1.webp",
       "/projectImages/chlita-2.webp",

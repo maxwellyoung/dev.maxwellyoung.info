@@ -13,16 +13,54 @@ interface Testimonial {
   image?: string;
 }
 
+// ========================================
+// TESTIMONIAL ACTION PLAN
+// ========================================
+// Priority contacts to ask for testimonials:
+//
+// 1. SILK TEAM - Ask your lead/manager for a LinkedIn recommendation
+//    Focus: collaboration, frontend skills, product thinking
+//
+// 2. CH'LITA - Fashion stylist client
+//    Focus: communication, delivery, understanding their craft
+//
+// 3. IVAN GUZMAN - Writer client
+//    Focus: CMS setup, independence, ongoing relationship
+//
+// 4. GOODNESS GRACIOUS - Bakery client
+//    Focus: performance results (40% faster), client autonomy
+//
+// 5. SPARK NZ - Former colleagues
+//    Focus: dashboard work, design systems, collaboration
+//
+// 6. DEV ACADEMY - Instructors/cohort leads
+//    Focus: learning speed, community contribution
+//
+// Template message:
+// "Hey [name], I'm updating my portfolio and collecting testimonials.
+// Would you be willing to write 2-3 sentences about working with me?
+// Specifically about [relevant project/skill]. No pressure if not!"
+//
+// When you have real testimonials, replace the placeholder below:
+// ========================================
+
 const testimonials: Testimonial[] = [
+  // Example format - replace with real testimonials:
+  // {
+  //   id: "1",
+  //   quote: "Maxwell delivered exactly what we needed...",
+  //   author: "Client Name",
+  //   role: "Creative Director",
+  //   company: "Company Name",
+  //   image: "/testimonials/client.jpg", // optional
+  // },
   {
-    id: "1",
-    quote:
-      "Maxwell brings a rare combination of design sensibility and engineering rigor. He doesn't just build features—he crafts experiences that feel intentional and complete.",
+    id: "placeholder",
+    quote: "Placeholder - component hidden until real testimonials added",
     author: "Add testimonials",
-    role: "via LinkedIn recommendations",
+    role: "See comments above for action plan",
     company: "",
   },
-  // Add more testimonials as you collect them
 ];
 
 export function Testimonials() {
