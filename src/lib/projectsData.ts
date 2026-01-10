@@ -17,18 +17,17 @@ export const projects: Project[] = [
   // The work that says something about where I'm going
 
   {
-    name: "Silk — Cultural Archiving",
+    name: "Silk",
     status: "Active",
     description:
-      "Building tools for memory at Silk. How do you design interfaces for things that need to last longer than the current JavaScript framework?",
+      "Frontend engineer on the team building a platform for organic internet culture. Blogs, archives, moodboards—tools for people who miss when the web felt handmade.",
     longDescription:
-      "Cultural archiving software for communities preserving their histories. Most software optimizes for engagement—more clicks, more time-on-app, more notification triggers. I'm building the opposite. Offline-first because not everyone has reliable internet. Cross-generational accessibility because the users include grandparents. Preservation over engagement. It's the most philosophically interesting work I've done.",
+      "Silk is a blogging and curation platform that rejects the engagement-metrics playbook. No targeted ads, no algorithmic feeds, no extraction. Just tools for collecting and sharing things you find interesting. I work on the frontend—building interfaces for blogs, private archives, and multimedia moodboards. The philosophy matters as much as the code: we're building for critical thought and organic connection, not infinite scroll.",
     link: "https://www.silk.cx",
     startDate: "2024-06-01",
     category: "research",
     featured: true,
-    tags: ["Next.js", "TypeScript", "Offline-first", "Accessibility"],
-    // No screenshots - client work under NDA / not public yet
+    tags: ["Next.js", "TypeScript", "React"],
   },
   {
     name: "Sleep Architecture Research",

@@ -179,9 +179,9 @@ export default function Home() {
             {/* What I&apos;m doing now */}
             <motion.p className="text-muted-foreground" variants={heroItemVariants}>
               <span className="text-foreground font-medium">Now:</span>{" "}
-              Cultural archiving at{" "}
+              Frontend at{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-              {" "}(preservation over engagement). Behavioral design for{" "}
+              {" "}(blogs, archives, moodboards for people who miss the handmade web). Solo building{" "}
               <AnimatedLink href="https://vapequitcoach.com" external>Vape Quit Coach</AnimatedLink>
               {" "}(quitting through architecture, not willpower).
             </motion.p>

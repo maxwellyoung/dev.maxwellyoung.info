@@ -33,56 +33,47 @@ interface CaseStudy {
 
 // Case study data - add more as needed
 const caseStudies: Record<string, CaseStudy> = {
-  "silk-cultural-archiving": {
-    slug: "silk-cultural-archiving",
-    title: "Silk — Cultural Archiving",
-    subtitle: "Designing infrastructure for preserving cultural memory",
-    heroImage: "/projects/silk/hero.jpg",
+  "vape-quit-coach": {
+    slug: "vape-quit-coach",
+    title: "Vape Quit Coach",
+    subtitle: "Behavior change through architecture, not willpower",
+    heroImage: "/projectImages/vqc-1.webp",
     timeline: "2024 — Present",
-    role: "Design Engineer",
-    team: "Solo (Research Assistant role)",
-    tools: ["React Native", "Expo", "TypeScript", "Python", "TensorFlow"],
-    liveUrl: "https://silk.cx",
+    role: "Solo Designer & Developer",
+    tools: ["React Native", "Expo", "TypeScript"],
+    liveUrl: "https://vapequitcoach.com",
     overview:
-      "Silk is a platform for cultural archiving—preserving stories, traditions, and knowledge that might otherwise be lost. My role focuses on making complex archival tools feel intuitive and respectful of the content they hold.",
+      "An iOS app for quitting vaping that treats addiction as a design problem rather than a moral failure. Most health apps use motivation and guilt—I built the opposite.",
     challenge:
-      "Cultural archiving requires balancing accessibility with reverence. The interface needed to handle diverse media types (audio, video, documents, photos) while respecting cultural protocols around what can be shared and with whom. Traditional archival software feels clinical; we needed something that felt like opening a family album.",
+      "Quitting apps typically rely on shame, streaks, and willpower. But willpower is a finite resource, and shame drives people away from the tools meant to help them. The challenge: design an experience that makes not vaping feel easier than vaping, without moralizing.",
     approach: [
       {
-        title: "Research & Understanding",
+        title: "Behavioral Architecture",
         description:
-          "Spent weeks interviewing community members, archivists, and cultural advisors. The insight: people don't think in 'files'—they think in stories and relationships. A photo isn't just an image; it's connected to people, places, events.",
-        image: "/projects/silk/research.jpg",
+          "Instead of counting days sober (which creates anxiety), the app focuses on understanding triggers and building replacement habits. The interface makes logging feel like self-discovery, not confession.",
       },
       {
-        title: "Relational Data Model",
+        title: "Progress as Identity",
         description:
-          "Designed a graph-based content model where everything connects. A recording of a song links to the singer, the occasion, the location, the people present. This mirrors how cultural memory actually works.",
-        image: "/projects/silk/model.jpg",
+          "Traditional apps celebrate streaks—but one slip resets everything, creating shame spirals. I designed a system where progress accumulates even through setbacks. You're building a new identity, not maintaining a perfect record.",
       },
       {
-        title: "Permission-Aware UI",
+        title: "Liminal Design",
         description:
-          "Created a nuanced permission system with cultural context. Some content is public, some family-only, some ceremonial. The UI surfaces these distinctions without making the experience feel restrictive.",
-        image: "/projects/silk/permissions.jpg",
+          "The moments when cravings hit are liminal—between states. The UI for these moments is deliberately calm, almost meditative. No bright colors, no urgency. Just presence.",
       },
     ],
     outcome:
-      "The platform is now used by several community organizations for active archiving projects. Feedback consistently mentions that it 'feels different' from other archival tools—more personal, more respectful.",
+      "4.8 star rating on the App Store. Users consistently mention that it 'feels different' from other quit apps—less judgmental, more like a tool than a taskmaster.",
     metrics: [
-      { label: "Archives Created", value: "12+" },
-      { label: "Items Preserved", value: "5,000+" },
-      { label: "Community Orgs", value: "4" },
+      { label: "App Store Rating", value: "4.8★" },
+      { label: "Solo Built", value: "100%" },
     ],
     learnings: [
-      "Design is always political. Choices about metadata, categorization, and access control encode values.",
-      "Slow, careful research prevents building the wrong thing quickly.",
-      "The best interfaces disappear. For sensitive content, invisibility is a feature.",
+      "Shame-based design is lazy design. The interface should make the right choice feel obvious, not heroic.",
+      "Health apps need a different vocabulary than productivity software. You can't 'optimize' addiction recovery.",
+      "Every pixel was a decision I owned. Solo projects teach you what you actually believe.",
     ],
-    nextProject: {
-      slug: "vape-quit-coach",
-      title: "Vape Quit Coach",
-    },
   },
   // Add more case studies here
 };
