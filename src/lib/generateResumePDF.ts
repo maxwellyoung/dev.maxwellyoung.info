@@ -4,257 +4,219 @@ import jsPDF from "jspdf";
 import { resumeData } from "./resumeData";
 
 /**
- * Generates a PDF resume from the resumeData
- * Uses jsPDF for direct PDF generation with proper text rendering
+ * Generates a professionally formatted PDF resume from resumeData
  */
 export async function generateResumePDF(): Promise<Blob> {
   const pdf = new jsPDF({
     orientation: "portrait",
-    unit: "mm",
+    unit: "pt", // Use points for precise typography
     format: "a4",
   });
 
   const pageWidth = pdf.internal.pageSize.getWidth();
   const pageHeight = pdf.internal.pageSize.getHeight();
-  const margin = 20;
-  const contentWidth = pageWidth - margin * 2;
-  let y = margin;
+  const marginLeft = 50;
+  const marginRight = 50;
+  const marginTop = 50;
+  const marginBottom = 50;
+  const contentWidth = pageWidth - marginLeft - marginRight;
+
+  let y = marginTop;
 
   // Colors
-  const accentColor: [number, number, number] = [255, 90, 95]; // #FF5A5F
-  const textColor: [number, number, number] = [30, 30, 30];
-  const mutedColor: [number, number, number] = [100, 100, 100];
+  const black: [number, number, number] = [20, 20, 20];
+  const gray: [number, number, number] = [100, 100, 100];
+  const lightGray: [number, number, number] = [150, 150, 150];
+  const accent: [number, number, number] = [220, 60, 60];
 
-  // Helper to add text with word wrap
-  const addText = (
-    text: string,
-    x: number,
-    yPos: number,
-    options: {
-      fontSize?: number;
-      fontStyle?: "normal" | "bold" | "italic";
-      color?: [number, number, number];
-      maxWidth?: number;
-      lineHeight?: number;
-    } = {}
-  ): number => {
-    const {
-      fontSize = 10,
-      fontStyle = "normal",
-      color = textColor,
-      maxWidth = contentWidth,
-      lineHeight = 1.4,
-    } = options;
-
-    pdf.setFontSize(fontSize);
-    pdf.setFont("helvetica", fontStyle);
+  // Typography helpers
+  const setFont = (size: number, weight: "normal" | "bold" = "normal", color = black) => {
+    pdf.setFontSize(size);
+    pdf.setFont("helvetica", weight);
     pdf.setTextColor(...color);
-
-    const lines = pdf.splitTextToSize(text, maxWidth);
-    const lineHeightMm = (fontSize * lineHeight) / 2.83465; // Convert pt to mm
-
-    lines.forEach((line: string, i: number) => {
-      if (yPos + lineHeightMm > pageHeight - margin) {
-        pdf.addPage();
-        yPos = margin;
-      }
-      pdf.text(line, x, yPos + i * lineHeightMm);
-    });
-
-    return yPos + lines.length * lineHeightMm;
   };
 
-  // Helper to add a section header
-  const addSectionHeader = (title: string, yPos: number): number => {
-    // Add accent bar
-    pdf.setFillColor(...accentColor);
-    pdf.rect(margin, yPos, 2, 4, "F");
+  // Check if we need a new page
+  const checkPageBreak = (neededSpace: number): void => {
+    if (y + neededSpace > pageHeight - marginBottom) {
+      pdf.addPage();
+      y = marginTop;
+    }
+  };
 
-    // Add title
-    pdf.setFontSize(9);
-    pdf.setFont("helvetica", "bold");
-    pdf.setTextColor(...mutedColor);
-    pdf.text(title.toUpperCase(), margin + 5, yPos + 3);
-
-    // Add line
-    const textWidth = pdf.getTextWidth(title.toUpperCase());
-    pdf.setDrawColor(200, 200, 200);
-    pdf.setLineWidth(0.2);
-    pdf.line(margin + 5 + textWidth + 3, yPos + 1.5, pageWidth - margin, yPos + 1.5);
-
-    return yPos + 10;
+  // Add wrapped text and return new Y position
+  const addWrappedText = (
+    text: string,
+    x: number,
+    maxWidth: number,
+    lineHeight: number
+  ): number => {
+    const lines = pdf.splitTextToSize(text, maxWidth);
+    lines.forEach((line: string) => {
+      checkPageBreak(lineHeight);
+      pdf.text(line, x, y);
+      y += lineHeight;
+    });
+    return y;
   };
 
   // === HEADER ===
-  // Name
-  y = addText(resumeData.name, margin, y, {
-    fontSize: 24,
-    fontStyle: "bold",
-    color: textColor,
-  });
+  setFont(28, "bold", black);
+  pdf.text(resumeData.name, marginLeft, y);
+  y += 28;
 
-  // Title
-  y = addText(resumeData.title, margin, y + 2, {
-    fontSize: 14,
-    color: mutedColor,
-  });
+  setFont(12, "normal", gray);
+  pdf.text(resumeData.title, marginLeft, y);
+  y += 20;
 
-  // Availability badge
+  // Contact line
+  setFont(9, "normal", gray);
+  const contactLine = `${resumeData.contact.email}  |  ${resumeData.contact.location}  |  ${resumeData.contact.website.replace("https://", "")}`;
+  pdf.text(contactLine, marginLeft, y);
+  y += 14;
+
+  // Availability
   if (resumeData.availability) {
-    y += 4;
-    pdf.setFillColor(255, 90, 95, 0.1);
-    pdf.setDrawColor(...accentColor);
-    pdf.setLineWidth(0.3);
-    const badgeText = resumeData.availability;
-    pdf.setFontSize(8);
-    const badgeWidth = pdf.getTextWidth(badgeText) + 6;
-    pdf.roundedRect(margin, y - 3, badgeWidth, 5, 1, 1, "FD");
-    pdf.setTextColor(...accentColor);
-    pdf.text(badgeText, margin + 3, y);
-    y += 6;
+    setFont(9, "normal", accent);
+    pdf.text(resumeData.availability, marginLeft, y);
+    y += 10;
   }
 
-  // Contact info
-  y += 4;
-  pdf.setFontSize(9);
-  pdf.setTextColor(...mutedColor);
-  pdf.text(
-    `${resumeData.contact.email} · ${resumeData.contact.location}`,
-    margin,
-    y
-  );
-  y += 12;
+  // Divider
+  y += 8;
+  pdf.setDrawColor(220, 220, 220);
+  pdf.setLineWidth(0.5);
+  pdf.line(marginLeft, y, pageWidth - marginRight, y);
+  y += 20;
 
   // === EXPERIENCE ===
-  y = addSectionHeader("Experience", y);
+  setFont(11, "bold", black);
+  pdf.text("EXPERIENCE", marginLeft, y);
+  y += 18;
 
   for (const exp of resumeData.experience) {
-    if (y > pageHeight - 50) {
-      pdf.addPage();
-      y = margin;
-    }
+    checkPageBreak(80);
 
-    // Title and company
-    y = addText(exp.title, margin, y, {
-      fontSize: 11,
-      fontStyle: "bold",
-    });
+    // Role title
+    setFont(11, "bold", black);
+    pdf.text(exp.title, marginLeft, y);
 
-    y = addText(`${exp.company} · ${exp.date}`, margin, y + 1, {
-      fontSize: 9,
-      color: mutedColor,
-    });
+    // Date on the right
+    setFont(9, "normal", lightGray);
+    const dateWidth = pdf.getTextWidth(exp.date);
+    pdf.text(exp.date, pageWidth - marginRight - dateWidth, y);
+    y += 14;
 
-    // Summary if available
+    // Company
+    setFont(10, "normal", gray);
+    pdf.text(exp.company, marginLeft, y);
+    y += 14;
+
+    // Summary if exists
     if (exp.summary) {
-      y = addText(exp.summary, margin, y + 3, {
-        fontSize: 9,
-        fontStyle: "italic",
-        color: mutedColor,
-      });
+      setFont(9, "normal", gray);
+      y = addWrappedText(exp.summary, marginLeft, contentWidth, 12);
+      y += 2;
     }
 
     // Responsibilities
-    y += 2;
+    setFont(9, "normal", black);
     for (const resp of exp.responsibilities) {
-      y = addText(`• ${resp}`, margin + 2, y + 1, {
-        fontSize: 9,
-        maxWidth: contentWidth - 4,
+      checkPageBreak(14);
+      const bulletText = `  •  ${resp}`;
+      const lines = pdf.splitTextToSize(bulletText, contentWidth - 10);
+      lines.forEach((line: string, i: number) => {
+        pdf.text(i === 0 ? line : `      ${line.trim()}`, marginLeft, y);
+        y += 12;
       });
     }
 
-    y += 6;
+    y += 12; // Space between jobs
   }
+
+  y += 6;
 
   // === EDUCATION ===
-  y = addSectionHeader("Education", y);
+  checkPageBreak(60);
+  setFont(11, "bold", black);
+  pdf.text("EDUCATION", marginLeft, y);
+  y += 18;
 
   for (const edu of resumeData.education) {
-    if (y > pageHeight - 30) {
-      pdf.addPage();
-      y = margin;
-    }
+    checkPageBreak(40);
 
-    y = addText(edu.degree, margin, y, {
-      fontSize: 10,
-      fontStyle: "bold",
-    });
+    setFont(10, "bold", black);
+    pdf.text(edu.degree, marginLeft, y);
+    y += 13;
 
-    y = addText(`${edu.institution} · ${edu.date}`, margin, y + 1, {
-      fontSize: 9,
-      color: mutedColor,
-    });
-
-    y += 5;
+    setFont(9, "normal", gray);
+    pdf.text(`${edu.institution}  |  ${edu.date}`, marginLeft, y);
+    y += 16;
   }
 
-  // === SKILLS (compact) ===
-  y += 4;
-  y = addSectionHeader("Skills", y);
+  y += 10;
 
-  // Group skills into a more compact format
-  const skillGroups = resumeData.skills.filter(
-    (s) => s.category !== "Also Familiar"
-  );
-  const alsoFamiliar = resumeData.skills.find(
-    (s) => s.category === "Also Familiar"
-  );
+  // === SKILLS ===
+  checkPageBreak(80);
+  setFont(11, "bold", black);
+  pdf.text("SKILLS", marginLeft, y);
+  y += 18;
 
-  for (const group of skillGroups) {
-    if (y > pageHeight - 20) {
-      pdf.addPage();
-      y = margin;
-    }
+  // Main skills (not "Also Familiar")
+  const mainSkills = resumeData.skills.filter(s => s.category !== "Also Familiar");
+  const alsoFamiliar = resumeData.skills.find(s => s.category === "Also Familiar");
 
-    pdf.setFontSize(9);
-    pdf.setFont("helvetica", "bold");
-    pdf.setTextColor(...textColor);
-    pdf.text(`${group.category}:`, margin, y);
+  for (const skillGroup of mainSkills) {
+    checkPageBreak(20);
 
-    pdf.setFont("helvetica", "normal");
-    pdf.setTextColor(...mutedColor);
-    const skillsText = group.items.join(", ");
-    const categoryWidth = pdf.getTextWidth(`${group.category}: `);
-    const skillLines = pdf.splitTextToSize(
-      skillsText,
-      contentWidth - categoryWidth - 2
-    );
+    setFont(9, "bold", black);
+    const categoryText = `${skillGroup.category}: `;
+    pdf.text(categoryText, marginLeft, y);
 
-    if (skillLines.length === 1) {
-      pdf.text(skillsText, margin + categoryWidth, y);
-      y += 5;
-    } else {
-      y += 4;
-      y = addText(skillsText, margin + 4, y, {
-        fontSize: 9,
-        color: mutedColor,
-        maxWidth: contentWidth - 6,
-      });
-      y += 2;
-    }
+    setFont(9, "normal", gray);
+    const categoryWidth = pdf.getTextWidth(categoryText);
+    const skillsText = skillGroup.items.join(", ");
+    const availableWidth = contentWidth - categoryWidth;
+
+    const skillLines = pdf.splitTextToSize(skillsText, availableWidth);
+    skillLines.forEach((line: string, i: number) => {
+      if (i === 0) {
+        pdf.text(line, marginLeft + categoryWidth, y);
+      } else {
+        y += 12;
+        checkPageBreak(12);
+        pdf.text(line, marginLeft + categoryWidth, y);
+      }
+    });
+    y += 14;
   }
 
-  // Also familiar (smaller)
+  // Also familiar (smaller, at bottom)
   if (alsoFamiliar) {
-    y += 2;
-    pdf.setFontSize(8);
-    pdf.setFont("helvetica", "italic");
-    pdf.setTextColor(...mutedColor);
-    pdf.text("Also familiar with:", margin, y);
-    y = addText(alsoFamiliar.items.join(", "), margin, y + 3, {
-      fontSize: 8,
-      color: mutedColor,
+    y += 4;
+    checkPageBreak(30);
+    setFont(8, "normal", lightGray);
+    pdf.text("Also familiar with: ", marginLeft, y);
+    const prefixWidth = pdf.getTextWidth("Also familiar with: ");
+    const alsoText = alsoFamiliar.items.join(", ");
+    const alsoLines = pdf.splitTextToSize(alsoText, contentWidth - prefixWidth);
+    alsoLines.forEach((line: string, i: number) => {
+      if (i === 0) {
+        pdf.text(line, marginLeft + prefixWidth, y);
+      } else {
+        y += 10;
+        pdf.text(line, marginLeft, y);
+      }
     });
   }
 
   // === FOOTER ===
-  y = pageHeight - 10;
   pdf.setFontSize(7);
   pdf.setTextColor(180, 180, 180);
   pdf.text(
-    `${resumeData.contact.website} · Generated ${new Date().toLocaleDateString()}`,
-    margin,
-    y
+    `github.com/maxwellyoung  |  linkedin.com/in/maxwell-young-a55032125`,
+    marginLeft,
+    pageHeight - 30
   );
 
   return pdf.output("blob");
