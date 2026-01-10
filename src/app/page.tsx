@@ -105,19 +105,6 @@ export default function Home() {
           {/* 3D floating element */}
           <Hero3D />
 
-          {/* Subtle scanlines - Saville's technical aesthetic */}
-          <div className="scanlines opacity-30" />
-
-          {/* FAC-style color bar - Saville's Movement encoding */}
-          <motion.div
-            className="absolute left-0 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-1"
-            variants={heroItemVariants}
-          >
-            <div className="w-1 h-12 bg-accent" />
-            <div className="w-1 h-8 bg-[hsl(210_80%_55%)]" />
-            <div className="w-1 h-6 bg-foreground/20" />
-          </motion.div>
-
           <motion.header className="mb-12 w-full" variants={heroItemVariants}>
             <div className="flex items-center justify-between">
               <Link
@@ -148,7 +135,7 @@ export default function Home() {
                 animate={isHovered ? "hover" : "initial"}
                 transition={{ duration: 0.3 }}
               >
-                Design Engineer · Founder,{" "}
+                Design Engineer ·{" "}
                 <AnimatedLink
                   href="https://www.ninetynine.digital"
                   external
@@ -268,29 +255,16 @@ export default function Home() {
             <NowPlaying />
           </div>
 
-          {/* FAC-style catalog footer */}
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-3">
-              <div className="flex gap-0.5">
-                <div className="w-1 h-4 bg-accent" />
-                <div className="w-1 h-4 bg-[hsl(210_80%_55%)]" />
-                <div className="w-1 h-4 bg-foreground/30" />
-              </div>
-              <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/60 uppercase">
-                MY·25
-              </span>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <p className="text-sm text-muted-foreground">
-                <AnimatedLink href="https://www.ninetynine.digital" external>
-                  ninetynine.digital
-                </AnimatedLink>
-                {" "}— software that earns its place on your screen.
-              </p>
-              <p className="text-xs text-muted-foreground/40 hidden sm:block font-mono">
-                ↑↑↓↓←→←→BA
-              </p>
-            </div>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <p className="text-sm text-muted-foreground">
+              <AnimatedLink href="https://www.ninetynine.digital" external>
+                ninetynine.digital
+              </AnimatedLink>
+              {" "}— software that earns its place on your screen.
+            </p>
+            <p className="text-xs text-muted-foreground/40 hidden sm:block font-mono">
+              ↑↑↓↓←→←→BA
+            </p>
           </div>
         </footer>
       </main>
