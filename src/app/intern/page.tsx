@@ -1,21 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import InternInfo from "@/components/InternInfo";
 import PastelHazeBackground from "@/components/PastelHazeBackground";
 import { useArtStyle } from "@/components/providers/ArtStyleProvider";
-// Ambient physics removed per request
 
 export default function InternPage() {
-  const [ambientOn, setAmbientOn] = useState(false);
   const { style } = useArtStyle();
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (prefersReduced) setAmbientOn(false);
-  }, []);
 
   return (
     <div className="relative min-h-screen">
@@ -30,17 +21,15 @@ export default function InternPage() {
           data-art-bg
         />
       )}
-      {/* ambient scene disabled */}
       <div className="relative z-10 mx-auto max-w-2xl p-4 md:p-8">
         <InternInfo />
       </div>
       <a
         href="/"
-        className="absolute top-4 left-4 z-10 text-xs text-white/85 underline"
+        className="absolute top-4 left-4 z-10 text-xs text-muted-foreground hover:text-foreground underline transition-colors"
       >
         back
       </a>
-      {/* ambient toggle removed to reduce UI noise */}
     </div>
   );
 }
