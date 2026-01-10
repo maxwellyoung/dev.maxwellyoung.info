@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { ArrowUpRight, Github } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Github, FileText } from "lucide-react";
 import { Project } from "@/lib/projectsData";
 
 interface ProjectDetailsProps {
@@ -101,13 +102,22 @@ export function ProjectDetails({
           )}
 
           <div className="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-4">
+            {project.caseStudySlug && (
+              <Link
+                href={`/case-study/${project.caseStudySlug}`}
+                className="inline-flex items-center text-sm font-medium text-accent hover:text-accent/80 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
+              >
+                <FileText className="mr-1.5 h-3.5 w-3.5" />
+                Read Case Study
+              </Link>
+            )}
             {project.link && (
               <motion.a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
-                whileHover={{ x: 5 }}
+                whileHover={{ x: 3 }}
               >
                 View Live
                 <ArrowUpRight className="ml-1 h-3 w-3" />
@@ -119,7 +129,7 @@ export function ProjectDetails({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
-                whileHover={{ x: 5 }}
+                whileHover={{ x: 3 }}
               >
                 Source
                 <Github className="ml-1 h-3 w-3" />
