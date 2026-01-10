@@ -13,31 +13,12 @@ import Carousel from "@/components/Carousel";
 import { Project, projects } from "@/lib/projectsData";
 import { ProjectDetails } from "@/components/ProjectDetails";
 import { ChevronDown, Star } from "lucide-react";
-import { spring, stagger, variants } from "@/lib/motion";
+import { container, item, spring } from "@/lib/motion";
 import { ProjectHoverPreview } from "@/components/ProjectHoverPreview";
 
 type SortKey = "newest" | "oldest" | "az";
 const PILL_FILTERS = ["Research", "AI/Data", "Fashion", "Creative"] as const;
 type Pill = (typeof PILL_FILTERS)[number];
-
-// Stagger animation for list items
-const listVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -8 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.3, ease: [0.2, 0.8, 0.2, 1] },
-  },
-};
 
 const STORAGE_KEY = "projects-filter-state";
 
@@ -197,7 +178,7 @@ export default function ProjectsShowcase() {
     return (
       <motion.li
         layout
-        variants={itemVariants}
+        variants={item.slide}
         className="w-full max-w-full group"
       >
         <button
@@ -271,7 +252,7 @@ export default function ProjectsShowcase() {
             {/* Expand indicator - rotates on expand */}
             <motion.div
               animate={{ rotate: isExpanded ? 180 : 0 }}
-              transition={{ duration: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
+              transition={spring.snappy}
               className="flex-shrink-0 text-muted-foreground/50 group-hover:text-muted-foreground transition-colors"
             >
               <ChevronDown className="h-4 w-4" />
@@ -286,13 +267,13 @@ export default function ProjectsShowcase() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
+              transition={spring.gentle}
               className="px-1 pb-4 overflow-hidden"
             >
               <motion.div
-                initial={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2, delay: 0.1 }}
+                transition={{ ...spring.gentle, delay: 0.05 }}
               >
                 <ProjectDetails
                   project={p}
@@ -386,7 +367,9 @@ export default function ProjectsShowcase() {
           {isEmpty ? (
             <motion.section
               className="mt-10 grid place-items-center"
-              {...variants.fade}
+              variants={item.fade}
+              initial="hidden"
+              animate="visible"
             >
               <div className="text-center">
                 <p className="text-sm text-muted-foreground">
@@ -423,7 +406,7 @@ export default function ProjectsShowcase() {
                     <span className="h-px flex-1 bg-border/50" />
                   </h2>
                   <motion.ul
-                    variants={listVariants}
+                    variants={container.list}
                     initial="hidden"
                     animate="visible"
                     className="divide-y divide-[hsl(var(--border))] overflow-x-hidden w-full max-w-full"
@@ -454,7 +437,7 @@ export default function ProjectsShowcase() {
                     <span className="h-px flex-1 bg-border/50" />
                   </h2>
                   <motion.ul
-                    variants={listVariants}
+                    variants={container.list}
                     initial="hidden"
                     animate="visible"
                     className="divide-y divide-[hsl(var(--border))] overflow-x-hidden w-full max-w-full"
@@ -478,7 +461,7 @@ export default function ProjectsShowcase() {
                     <span className="h-px flex-1 bg-border/50" />
                   </h2>
                   <motion.ul
-                    variants={listVariants}
+                    variants={container.list}
                     initial="hidden"
                     animate="visible"
                     className="divide-y divide-[hsl(var(--border))] overflow-x-hidden w-full max-w-full"

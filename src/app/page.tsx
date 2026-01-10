@@ -15,6 +15,7 @@ import { NowPlaying } from "@/components/NowPlaying";
 import { ContactForm } from "@/components/ContactForm";
 import dynamic from "next/dynamic";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { container, item, spring, duration, ease } from "@/lib/motion";
 
 const Hero3D = dynamic(() => import("@/components/Hero3D").then(mod => ({ default: mod.Hero3D })), {
   ssr: false,
@@ -27,7 +28,7 @@ export default function Home() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const { setTheme } = useTheme();
 
-  // Easter egg: Konami code triggers falling stars (Evan Bacon delight)
+  // Easter egg: Konami code triggers falling stars
   useKonamiCode(() => setShowStars(true));
 
   // Back to top button visibility
@@ -48,7 +49,6 @@ export default function Home() {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     setTheme(mediaQuery.matches ? "dark" : "light");
 
-    // Listen for changes in system preference
     const onChange = (e: MediaQueryListEvent) => setTheme(e.matches ? "dark" : "light");
     try {
       mediaQuery.addEventListener("change", onChange);
@@ -62,35 +62,10 @@ export default function Home() {
     }
   }, [setTheme]);
 
-  const titleVariants = {
-    initial: { opacity: 1, y: 0 },
-    hover: { opacity: 0, y: -20 },
-  };
-
-  const subtitleVariants = {
-    initial: { opacity: 0, y: 20 },
-    hover: { opacity: 1, y: 0 },
-  };
-
-  // Hero entrance animation
-  const heroVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const heroItemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: [0.2, 0.8, 0.2, 1] },
-    },
+  // Subtitle crossfade variants with spring physics
+  const crossfadeVariants = {
+    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 12 },
   };
 
   return (
@@ -98,14 +73,14 @@ export default function Home() {
       <main className="w-full max-w-full md:max-w-2xl mx-auto space-y-8 overflow-y-auto scroll-smooth overflow-x-hidden">
         <motion.section
           className="relative flex flex-col justify-center items-start min-h-screen space-y-8 p-4 md:p-8"
-          variants={heroVariants}
+          variants={container.hero}
           initial="hidden"
           animate="visible"
         >
           {/* 3D floating element */}
           <Hero3D />
 
-          <motion.header className="mb-12 w-full" variants={heroItemVariants}>
+          <motion.header className="mb-12 w-full" variants={item.fadeUp}>
             <div className="flex items-center justify-between">
               <Link
                 href="/"
@@ -117,23 +92,19 @@ export default function Home() {
               <ThemeToggle />
             </div>
 
-            {/* Mobile: stacked role/subtitle; Desktop: hover crossfade */}
+            {/* Crossfading subtitle */}
             <div
-              className="relative h-8"
+              className="relative h-8 cursor-pointer"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               onClick={() => setIsHovered((prev) => !prev)}
-              onTouchStart={(e) => {
-                e.preventDefault();
-                setIsHovered((prev) => !prev);
-              }}
             >
               <motion.p
                 className="block text-xl font-light text-muted-foreground tracking-tight leading-tight absolute inset-0 whitespace-nowrap"
-                variants={titleVariants}
-                initial="initial"
-                animate={isHovered ? "hover" : "initial"}
-                transition={{ duration: 0.3 }}
+                variants={crossfadeVariants}
+                initial="visible"
+                animate={isHovered ? "hidden" : "visible"}
+                transition={spring.gentle}
               >
                 Design Engineer ·{" "}
                 <AnimatedLink
@@ -147,10 +118,10 @@ export default function Home() {
               </motion.p>
               <motion.p
                 className="block text-xl font-light text-muted-foreground absolute inset-0 whitespace-nowrap"
-                variants={subtitleVariants}
-                initial="initial"
-                animate={isHovered ? "hover" : "initial"}
-                transition={{ duration: 0.3 }}
+                variants={crossfadeVariants}
+                initial="hidden"
+                animate={isHovered ? "visible" : "hidden"}
+                transition={spring.gentle}
               >
                 Software that knows when to shut up
               </motion.p>
@@ -158,13 +129,13 @@ export default function Home() {
           </motion.header>
 
           <div className="leading-relaxed space-y-4">
-            {/* Thesis - a stake in the ground */}
-            <motion.p className="text-foreground text-lg" variants={heroItemVariants}>
+            {/* Thesis */}
+            <motion.p className="text-foreground text-lg" variants={item.fadeUp}>
               Most software is noise. I build the other kind—tools that reduce psychic load, interfaces that disappear into use, things that feel inevitable in hindsight. If you think dashboards should have more features, we probably shouldn&apos;t work together.
             </motion.p>
 
             {/* What I&apos;m doing now */}
-            <motion.p className="text-muted-foreground" variants={heroItemVariants}>
+            <motion.p className="text-muted-foreground" variants={item.fadeUp}>
               <span className="text-foreground font-medium">Now:</span>{" "}
               Frontend at{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
@@ -173,8 +144,8 @@ export default function Home() {
               {" "}(quitting through architecture, not willpower).
             </motion.p>
 
-            {/* The weird stuff - foregrounded */}
-            <motion.p className="text-muted-foreground" variants={heroItemVariants}>
+            {/* The weird stuff */}
+            <motion.p className="text-muted-foreground" variants={item.fadeUp}>
               I also make{" "}
               <AnimatedLink href="https://music.maxwellyoung.info" external>music</AnimatedLink>
               {" "}and{" "}
@@ -182,14 +153,14 @@ export default function Home() {
               . Code is a medium. Performance is a creative constraint. The smoothness of an interaction is inseparable from its emotional effect.
             </motion.p>
 
-            {/* Trajectory - where I&apos;m going */}
-            <motion.p className="text-muted-foreground text-sm border-l-2 border-accent/30 pl-3" variants={heroItemVariants}>
+            {/* Trajectory */}
+            <motion.p className="text-muted-foreground text-sm border-l-2 border-accent/30 pl-3" variants={item.fadeUp}>
               <span className="text-foreground/70">Drawn to:</span> research contexts, health interfaces, tools for memory.{" "}
               <span className="text-foreground/70">Less interested in:</span> dashboards that mistake features for value.
             </motion.p>
 
-            {/* CTA with edge */}
-            <motion.div className="pt-4 pb-2" variants={heroItemVariants}>
+            {/* CTA */}
+            <motion.div className="pt-4 pb-2" variants={item.fadeUp}>
               <AccentLink
                 href="mailto:maxwell@ninetynine.digital"
                 external
@@ -201,7 +172,7 @@ export default function Home() {
 
             <motion.p
               className="text-muted-foreground text-sm flex flex-wrap items-center gap-x-2 gap-y-1"
-              variants={heroItemVariants}
+              variants={item.fadeUp}
             >
               <AnimatedLink href="#projects">Work</AnimatedLink>
               <span className="text-border">·</span>
@@ -218,14 +189,14 @@ export default function Home() {
             className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-muted-foreground/40"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.5 }}
+            transition={{ delay: 1.2, ...spring.soft }}
           >
             <span className="text-xs tracking-widest uppercase">Scroll</span>
             <motion.div
               className="w-px h-8 bg-current"
               initial={{ scaleY: 0, originY: 0 }}
               animate={{ scaleY: 1 }}
-              transition={{ delay: 1.8, duration: 0.6, ease: "easeOut" }}
+              transition={{ delay: 1.4, duration: duration.slow, ease: ease.out }}
             />
           </motion.div>
         </motion.section>
@@ -234,7 +205,6 @@ export default function Home() {
           <ProjectsShowcase />
         </section>
 
-        {/* Blog temporarily hidden */}
         <section id="resume">
           <Resume />
         </section>
@@ -277,12 +247,14 @@ export default function Home() {
       <AnimatePresence>
         {showBackToTop && (
           <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.2 }}
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={spring.default}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={scrollToTop}
-            className="fixed bottom-20 md:bottom-24 right-6 z-50 p-3 rounded-full bg-[hsl(var(--card))] border border-[hsl(var(--border))] text-muted-foreground hover:text-foreground hover:border-accent/50 shadow-lg transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            className="fixed bottom-20 md:bottom-24 right-6 z-50 p-3 rounded-full bg-[hsl(var(--card))] border border-[hsl(var(--border))] text-muted-foreground hover:text-foreground hover:border-accent/50 shadow-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             aria-label="Back to top"
           >
             <ChevronUp className="h-5 w-5" />

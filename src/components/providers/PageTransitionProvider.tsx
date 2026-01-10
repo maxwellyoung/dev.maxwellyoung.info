@@ -3,26 +3,30 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { spring, duration, ease } from "@/lib/motion";
 
 const pageVariants = {
   initial: {
     opacity: 0,
-    y: 8,
+    y: 20,
+    scale: 0.99,
   },
   enter: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      duration: 0.4,
-      ease: [0.25, 0.1, 0.25, 1],
+      ...spring.gentle,
+      opacity: { duration: duration.normal, ease: ease.out },
     },
   },
   exit: {
     opacity: 0,
-    y: -8,
+    y: -10,
+    scale: 0.995,
     transition: {
-      duration: 0.3,
-      ease: [0.25, 0.1, 0.25, 1],
+      duration: duration.quick,
+      ease: ease.out,
     },
   },
 };
