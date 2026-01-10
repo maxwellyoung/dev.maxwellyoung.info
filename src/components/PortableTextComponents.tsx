@@ -1,7 +1,10 @@
 import Image from "next/image";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { Prism as SyntaxHighlighterBase } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { urlFor } from "@/lib/sanity";
+
+// Type assertion to fix React 19 compatibility
+const SyntaxHighlighter = SyntaxHighlighterBase as typeof SyntaxHighlighterBase & React.FC<any>;
 
 export const PortableTextComponents = {
   types: {

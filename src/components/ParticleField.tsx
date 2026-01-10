@@ -102,7 +102,7 @@ export default function ParticleField({
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       window.removeEventListener("resize", resize);
     };
-  }, [count, color]);
+  }, [count, color, size, trail, linkDistance, linkColor, linkOpacity]);
 
   return (
     <canvas

@@ -66,9 +66,9 @@ export const projects: Project[] = [
     featured: true,
     priority: 1,
     description:
-      "Minimalist grocery intelligence: receipts → OCR → normalised line items + live prices.",
+      "Turns crumpled receipts into grocery intelligence. Snap, understand, save.",
     longDescription:
-      "React Native/Expo app with an OCR pipeline and supermarket price scraping. Keeping a fixed test set, tracking accuracy/freshness, and shipping a visible build log.",
+      "A mobile app that reads receipts so you don't have to. OCR pipeline, supermarket price scraping, and a build log I actually keep updated. Built because I wanted to know where my money goes without spreadsheets.",
     tags: ["Mobile", "AI/ML", "Scraping"],
     stack: ["React Native", "Expo", "TypeScript", "Node", "Playwright"],
     links: {
@@ -97,16 +97,16 @@ export const projects: Project[] = [
   },
   {
     slug: "chlita",
-    name: "Ch’lita — Fashion Stylist Portfolio",
+    name: "Ch'lita — Fashion Stylist Portfolio",
     status: "Completed",
     category: "Client",
     role: "Lead",
     featured: true,
     priority: 2,
     description:
-      "Editorial Next.js + Sanity CMS with quiet motion and stable layout.",
+      "A portfolio for a stylist who works with Rosalia and The Dare. The site needed to disappear behind the work.",
     longDescription:
-      "Author-friendly schema, responsive art direction (`srcset`/`sizes`/aspect-ratio), and a tight motion budget with Framer Motion for polish without jank.",
+      "Built for Ch'lita, whose clients include some of music's most visually striking artists. The brief was simple: let the imagery lead. Sanity CMS for her to update, responsive art direction that doesn't crop poorly, and just enough motion to feel alive.",
     tags: ["Frontend", "CMS"],
     stack: ["Next.js", "TypeScript", "Sanity", "Framer Motion", "Vercel"],
     client: "Ch’lita",
@@ -171,9 +171,9 @@ export const projects: Project[] = [
     featured: true,
     priority: 4,
     description:
-      "Shopify Liquid build with an editorial feel, shipped via New Territory Studio.",
+      "A bakery's Shopify site that needed to feel as warm as fresh bread. Built with New Territory Studio.",
     longDescription:
-      "Translated comps faithfully, componentised sections, stabilised layout (aspect-ratio + font loading), and tuned spacing for a modern editorial tone.",
+      "Goodness Gracious is a beloved Auckland bakery. The site needed to match the feeling of walking in — warm, unhurried, inviting. Shopify Liquid, careful typography, and layouts that don't jump around as images load.",
     tags: ["Shopify", "Frontend", "Studio Collaboration"],
     stack: ["Shopify Liquid", "CSS"],
     client: "Goodness Gracious (via New Territory Studio)",
@@ -310,7 +310,7 @@ export const projects: Project[] = [
     featured: false,
     priority: 10,
     description:
-      "Flashy event site with countdown + pink-gradient poster vibe.",
+      "An event site that refuses to take itself seriously. Pink gradients, shooting stars, countdown timer.",
     tags: ["Web", "Event", "CSS Animations"],
     stack: ["Next.js", "TypeScript", "CSS"],
     links: {
@@ -328,9 +328,9 @@ export const projects: Project[] = [
     role: "Solo",
     featured: false,
     priority: 11,
-    description: "Three.js color-field world; input-driven shader transitions.",
+    description: "An interactive tribute to the color-field artist. Move your cursor; the colors respond.",
     longDescription:
-      "GPU-friendly passes and input-modulated parameters tuned for 60fps on modest laptops. Design as mood, code as instrument.",
+      "Jeremy Blake made digital paintings that breathed. This is my attempt to capture that feeling — shaders that respond to your presence, tuned to run smoothly even on modest hardware. Art as code, code as instrument.",
     tags: ["Creative Coding", "WebGL"],
     stack: ["React", "Three.js", "WebGL"],
     links: {
@@ -349,9 +349,9 @@ export const projects: Project[] = [
     featured: false,
     priority: 12,
     description:
-      "AI-assisted film discovery with watchlists and shareable recs.",
+      "Film discovery that learns your taste. Tell it a mood; it finds the movie.",
     longDescription:
-      "Next.js + Supabase prototype exploring preference capture and mood-based recommendations with lightweight embeddings.",
+      "A quiet experiment in recommendation. You describe what you're feeling, it suggests films. Built with Supabase and lightweight embeddings — trying to make AI feel less like a feature and more like a knowledgeable friend.",
     tags: ["AI", "Web App"],
     stack: ["Next.js", "TypeScript", "Supabase", "OpenAI"],
     links: {

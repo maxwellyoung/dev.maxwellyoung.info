@@ -26,7 +26,7 @@ type ResumeData = {
 export const resumeData: ResumeData = {
   name: "Maxwell Young",
   title: "Design Engineer",
-  availability: "open to internships · NZ time",
+  availability: "open to opportunities · NZ / remote",
   contact: {
     email: "maxtheyoung@gmail.com",
     location: "Auckland, NZ",
@@ -44,9 +44,9 @@ export const resumeData: ResumeData = {
     {
       title: "Research Assistant",
       company: "Auckland University of Technology",
-      date: "2025 – Present, Auckland",
+      date: "2025, Auckland",
       summary:
-        "Prototyping a mobile application for AI-driven sleep stage analysis.",
+        "Prototyped a mobile application for AI-driven sleep stage analysis.",
       responsibilities: [
         "Integrating deep learning models and behavioural inputs into a cohesive UX.",
         "Designing visualisations and explainability tools to improve user insight.",

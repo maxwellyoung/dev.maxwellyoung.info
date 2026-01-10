@@ -444,8 +444,13 @@ function ThumbStrip({
           }
           aria-current={previewIndex === i}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt="thumb" className="h-full w-full object-cover" />
+          <Image
+            src={src}
+            alt="thumb"
+            fill
+            sizes="96px"
+            className="object-cover"
+          />
         </button>
       ))}
     </div>
@@ -550,8 +555,8 @@ function GalleryDialog({
 function Gallery({ images }: { images: string[] }) {
   const [i, setI] = useState(0);
   const len = images.length;
-  const next = () => setI((v) => (v + 1) % len);
-  const prev = () => setI((v) => (v - 1 + len) % len);
+  const next = useCallback(() => setI((v) => (v + 1) % len), [len]);
+  const prev = useCallback(() => setI((v) => (v - 1 + len) % len), [len]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -580,11 +585,12 @@ function Gallery({ images }: { images: string[] }) {
           exit={{ opacity: 0.001, scale: 1.02 }}
           transition={{ duration: 0.18 }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={images[i]}
             alt="slide"
-            className="h-full w-full object-contain"
+            fill
+            sizes="(max-width: 1280px) 100vw, 1024px"
+            className="object-contain"
           />
         </motion.div>
       </AnimatePresence>

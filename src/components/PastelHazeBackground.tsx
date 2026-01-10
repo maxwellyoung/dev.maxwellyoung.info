@@ -208,26 +208,14 @@ export default function PastelHazeBackground({
     };
 
     if (prefersReducedMotion) {
-      // eslint-disable-next-line no-console
-      try {
-        console.log("[Haze] mounted (static)");
-      } catch {}
       renderFrame(performance.now());
     } else {
-      // eslint-disable-next-line no-console
-      try {
-        console.log("[Haze] mounted (animated)");
-      } catch {}
       rafRef.current = requestAnimationFrame(loop);
     }
 
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       window.removeEventListener("resize", resize);
-      // eslint-disable-next-line no-console
-      try {
-        console.log("[Haze] unmounted");
-      } catch {}
     };
   }, [blobCount, maxDPR, opacity, speed, hueBias, grainFPS, grainIntensity]);
 

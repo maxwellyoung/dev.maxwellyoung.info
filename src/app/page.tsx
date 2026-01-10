@@ -1,17 +1,39 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import Resume from "./resume/page";
 import ProjectsShowcase from "./projects/page";
 import { motion, AnimatePresence } from "framer-motion";
 import FallingStars from "@/components/FallingStars";
+import { useKonamiCode } from "@/hooks/useKonamiCode";
+import { AnimatedLink, AccentLink } from "@/components/ui/animated-link";
+import { ChevronUp } from "lucide-react";
+import { GitHubActivity } from "@/components/GitHubActivity";
+import { NowPlaying } from "@/components/NowPlaying";
 
 export default function Home() {
   const [isHovered, setIsHovered] = useState(false);
   const [showStars, setShowStars] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const { setTheme } = useTheme();
+
+  // Easter egg: Konami code triggers falling stars (Evan Bacon delight)
+  useKonamiCode(() => setShowStars(true));
+
+  // Back to top button visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 500);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
     // Set theme based on system preference
@@ -42,14 +64,53 @@ export default function Home() {
     hover: { opacity: 1, y: 0 },
   };
 
+  // Hero entrance animation
+  const heroVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const heroItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: [0.2, 0.8, 0.2, 1] },
+    },
+  };
+
   return (
-    <div className="min-h-screen text-zinc-900 dark:text-white p-4 md:p-8 flex flex-col justify-between overflow-x-hidden">
+    <div className="min-h-screen text-foreground p-4 md:p-8 flex flex-col justify-between overflow-x-hidden">
       <main className="w-full max-w-full md:max-w-2xl mx-auto space-y-8 overflow-y-auto scroll-smooth overflow-x-hidden">
-        <section className="flex flex-col justify-center items-start min-h-screen space-y-8 p-4 md:p-8">
-          <header className="mb-12">
+        <motion.section
+          className="relative flex flex-col justify-center items-start min-h-screen space-y-8 p-4 md:p-8"
+          variants={heroVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Subtle scanlines - Saville's technical aesthetic */}
+          <div className="scanlines opacity-30" />
+
+          {/* FAC-style color bar - Saville's Movement encoding */}
+          <motion.div
+            className="absolute left-0 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-1"
+            variants={heroItemVariants}
+          >
+            <div className="w-1 h-12 bg-accent" />
+            <div className="w-1 h-8 bg-[hsl(210_80%_55%)]" />
+            <div className="w-1 h-6 bg-foreground/20" />
+          </motion.div>
+
+          <motion.header className="mb-12" variants={heroItemVariants}>
             <Link
               href="/"
-              className="text-xl glint text-zinc-800 dark:text-zinc-200 font-medium cursor-pointer"
+              className="text-xl glint text-foreground font-medium cursor-pointer hover:text-accent transition-colors duration-200"
               onClick={() => setShowStars(true)}
             >
               Maxwell Young
@@ -67,100 +128,106 @@ export default function Home() {
               }}
             >
               <motion.p
-                className="block text-xl font-light text-zinc-500 dark:text-zinc-400 tracking-tight leading-tight absolute inset-0 whitespace-nowrap"
+                className="block text-xl font-light text-muted-foreground tracking-tight leading-tight absolute inset-0 whitespace-nowrap"
                 variants={titleVariants}
                 initial="initial"
                 animate={isHovered ? "hover" : "initial"}
                 transition={{ duration: 0.3 }}
               >
                 Design Engineer · Founder,{" "}
-                <a
+                <AnimatedLink
                   href="https://www.ninetynine.digital"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300 relative z-10 pointer-events-auto"
-                  onClick={(e) => e.stopPropagation()}
+                  external
+                  className="relative z-10 pointer-events-auto text-muted-foreground"
+                  onClick={(e: React.MouseEvent) => e.stopPropagation()}
                 >
                   ninetynine.digital
-                </a>
+                </AnimatedLink>
               </motion.p>
               <motion.p
-                className="block text-xl font-light text-zinc-500 dark:text-zinc-400 absolute inset-0 whitespace-nowrap"
+                className="block text-xl font-light text-muted-foreground absolute inset-0 whitespace-nowrap"
                 variants={subtitleVariants}
                 initial="initial"
                 animate={isHovered ? "hover" : "initial"}
                 transition={{ duration: 0.3 }}
               >
-                Designing and building digital tools
+                Software that knows when to shut up
               </motion.p>
             </div>
-          </header>
+          </motion.header>
 
           <div className="leading-relaxed space-y-4">
-            <p className="text-zinc-500 dark:text-zinc-400">
-            Maxwell Young is a product-focused design engineer based in Auckland, New Zealand. He creates digital products for creative professionals, ecommerce, and everyday use, combining design sensitivity with technical depth.
-            </p>
+            {/* Thesis - a stake in the ground */}
+            <motion.p className="text-foreground text-lg" variants={heroItemVariants}>
+              Most software is noise. I build the other kind—tools that reduce psychic load, interfaces that disappear into use, things that feel inevitable in hindsight. If you think dashboards should have more features, we probably shouldn&apos;t work together.
+            </motion.p>
 
-            <p className="text-zinc-500 dark:text-zinc-400">
-              He also contributes to applied research at AUT, developing an AI-driven sleep monitoring app that merges deep learning, behavioural data, and intuitive mobile design, each designed to feel purposeful, unobtrusive, and built to endure.
-            </p>
+            {/* What I&apos;m doing now */}
+            <motion.p className="text-muted-foreground" variants={heroItemVariants}>
+              <span className="text-foreground font-medium">Now:</span>{" "}
+              Cultural archiving at{" "}
+              <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
+              {" "}(preservation over engagement). Behavioral design for{" "}
+              <AnimatedLink href="https://vapequitcoach.com" external>Vape Quit Coach</AnimatedLink>
+              {" "}(quitting through architecture, not willpower).
+            </motion.p>
 
-            <p className="text-zinc-500 dark:text-zinc-400">
-              He is currently a Design Engineer at{" "}
-              <a
-                href="https://www.silk.cx"
-                target="_blank"
-                rel="noreferrer"
-                className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
-              >
-                Silk
-              </a>
-              , where he designs and builds the core product across web and mobile for a
-              platform that archives and reimagines culture online.
-            </p>
+            {/* The weird stuff - foregrounded */}
+            <motion.p className="text-muted-foreground" variants={heroItemVariants}>
+              I also make{" "}
+              <AnimatedLink href="https://music.maxwellyoung.info" external>music</AnimatedLink>
+              {" "}and{" "}
+              <AnimatedLink href="https://jeremy-blake.vercel.app/" external>WebGL art</AnimatedLink>
+              . Code is a medium. Performance is a creative constraint. The smoothness of an interaction is inseparable from its emotional effect.
+            </motion.p>
 
-            <p className="text-zinc-500 dark:text-zinc-400">
-              Educated in Computer Science at Auckland University of Technology
-              (Software Development &amp; Data Science), he has worked as a UI Developer at
-              Spark New Zealand and is a graduate of the Web Development Bootcamp at
-              Dev Academy Aotearoa.
-            </p>
+            {/* Trajectory - where I&apos;m going */}
+            <motion.p className="text-muted-foreground text-sm border-l-2 border-accent/30 pl-3" variants={heroItemVariants}>
+              <span className="text-foreground/70">Drawn to:</span> research contexts, health interfaces, tools for memory.{" "}
+              <span className="text-foreground/70">Less interested in:</span> dashboards that mistake features for value.
+            </motion.p>
 
-            <p className="text-zinc-500 dark:text-zinc-400">
-              <Link
-                href="#projects"
-                className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
+            {/* CTA with edge */}
+            <motion.div className="pt-4 pb-2" variants={heroItemVariants}>
+              <AccentLink
+                href="mailto:maxwell@ninetynine.digital"
+                external
+                className="text-lg"
               >
-                Work
-              </Link>{" "}
-              ·{" "}
-              <Link
-                href="#resume"
-                className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
-              >
-                Resume
-              </Link>{" "}
-              ·{" "}
-              <a
-                href="https://www.ninetynine.digital"
-                target="_blank"
-                rel="noreferrer"
-                className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
-              >
-                ninetynine.digital
-              </a>{" "}
-              ·{" "}
-              <a
-                href="https://github.com/maxwellyoung"
-                target="_blank"
-                rel="noreferrer"
-                className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
-              >
-                GitHub
-              </a>
-            </p>
+                If any of this resonates, let&apos;s talk
+              </AccentLink>
+            </motion.div>
+
+            <motion.p
+              className="text-muted-foreground text-sm flex flex-wrap items-center gap-x-2 gap-y-1"
+              variants={heroItemVariants}
+            >
+              <AnimatedLink href="#projects">Work</AnimatedLink>
+              <span className="text-border">·</span>
+              <AnimatedLink href="#resume">Resume</AnimatedLink>
+              <span className="text-border">·</span>
+              <AnimatedLink href="https://github.com/maxwellyoung" external>GitHub</AnimatedLink>
+              <span className="text-border">·</span>
+              <AnimatedLink href="https://linkedin.com/in/maxwell-young-a55032125" external>LinkedIn</AnimatedLink>
+            </motion.p>
           </div>
-        </section>
+
+          {/* Scroll indicator */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-muted-foreground/40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.5 }}
+          >
+            <span className="text-xs tracking-widest uppercase">Scroll</span>
+            <motion.div
+              className="w-px h-8 bg-current"
+              initial={{ scaleY: 0, originY: 0 }}
+              animate={{ scaleY: 1 }}
+              transition={{ delay: 1.8, duration: 0.6, ease: "easeOut" }}
+            />
+          </motion.div>
+        </motion.section>
 
         <section id="projects">
           <ProjectsShowcase />
@@ -171,23 +238,59 @@ export default function Home() {
           <Resume />
         </section>
 
-        <footer className="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-800">
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
-            <a
-              href="https://www.ninetynine.digital"
-              target="_blank"
-              rel="noreferrer"
-              className="underline text-zinc-400 dark:text-zinc-500 hover:text-zinc-800 hover:dark:text-zinc-300"
-            >
-              ninetynine.digital
-            </a>{" "}
-            — independent studio crafting enduring digital products.
-          </p>
+        <footer className="mt-16 pt-8 border-t border-[hsl(var(--border))]">
+          {/* Activity widgets */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <GitHubActivity />
+            <NowPlaying />
+          </div>
+
+          {/* FAC-style catalog footer */}
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="flex gap-0.5">
+                <div className="w-1 h-4 bg-accent" />
+                <div className="w-1 h-4 bg-[hsl(210_80%_55%)]" />
+                <div className="w-1 h-4 bg-foreground/30" />
+              </div>
+              <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/60 uppercase">
+                MY·25
+              </span>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <p className="text-sm text-muted-foreground">
+                <AnimatedLink href="https://www.ninetynine.digital" external>
+                  ninetynine.digital
+                </AnimatedLink>
+                {" "}— software that earns its place on your screen.
+              </p>
+              <p className="text-xs text-muted-foreground/40 hidden sm:block font-mono">
+                ↑↑↓↓←→←→BA
+              </p>
+            </div>
+          </div>
         </footer>
       </main>
 
       <AnimatePresence>
         {showStars && <FallingStars onComplete={() => setShowStars(false)} />}
+      </AnimatePresence>
+
+      {/* Back to top button */}
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.2 }}
+            onClick={scrollToTop}
+            className="fixed bottom-20 md:bottom-24 right-6 z-50 p-3 rounded-full bg-[hsl(var(--card))] border border-[hsl(var(--border))] text-muted-foreground hover:text-foreground hover:border-accent/50 shadow-lg transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            aria-label="Back to top"
+          >
+            <ChevronUp className="h-5 w-5" />
+          </motion.button>
+        )}
       </AnimatePresence>
     </div>
   );

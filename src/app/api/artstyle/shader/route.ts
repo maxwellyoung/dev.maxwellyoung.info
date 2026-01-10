@@ -1,10 +1,16 @@
 import { NextRequest } from "next/server";
+import { z } from "zod";
 import {
   ensureFragmentSafety,
   assessFragmentQuality,
 } from "@/lib/shaderValidation";
 import { parsePromptToSpec } from "@/lib/promptToSpec";
 import { buildShaderFromTemplate } from "@/lib/shaderTemplates";
+
+const RequestSchema = z.object({
+  prompt: z.string().max(500).optional(),
+  seed: z.number().int().finite().optional(),
+});
 
 function genId(len = 10): string {
   const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -16,10 +22,15 @@ function genId(len = 10): string {
 
 export async function POST(req: NextRequest) {
   try {
-    const { prompt, seed: seedInput } = (await req.json()) as {
-      prompt?: string;
-      seed?: number;
-    };
+    const requestBody = await req.json();
+    const validation = RequestSchema.safeParse(requestBody);
+    if (!validation.success) {
+      return Response.json(
+        { error: "Invalid request", details: validation.error.flatten() },
+        { status: 400 }
+      );
+    }
+    const { prompt, seed: seedInput } = validation.data;
     const id = genId(10);
     const p = String(prompt || "");
     const isFlames =
@@ -227,7 +238,7 @@ Requirements for frag:
       (baseUniforms as any).colorB = palette.b;
     }
 
-    const body = {
+    const apiBody = {
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: sys },
@@ -248,7 +259,7 @@ Requirements for frag:
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.OPENAI_SECRET}`,
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(apiBody),
     });
 
     if (!res.ok) {
@@ -280,11 +291,11 @@ float d=length(uv-0.5); col*=1.0 - smoothstep(0.6,0.92,d); gl_FragColor=vec4(col
 
     const data = await res.json();
     const content = data?.choices?.[0]?.message?.content;
-    let parsed: any = null;
+    let aiResult: { recipe?: { frag?: string }[]; frag?: string; name?: string } | null = null;
     try {
-      parsed = JSON.parse(content || "{}");
+      aiResult = JSON.parse(content || "{}");
     } catch {}
-    let frag: string | undefined = parsed?.recipe?.[0]?.frag || parsed?.frag;
+    let frag: string | undefined = aiResult?.recipe?.[0]?.frag || aiResult?.frag;
     // Two-stage (optional): if frag missing or trivial, request a brief plan then a shader
     const needPlan = !frag || frag.length < 140;
     if (needPlan) {
@@ -414,7 +425,7 @@ float d=length(uv-0.5); col*=1.0 - smoothstep(0.6,0.92,d); gl_FragColor=vec4(col
     }
     return Response.json({
       id,
-      name: parsed?.name || "Shader",
+      name: aiResult?.name || "Shader",
       prompt,
       recipe: [{ type: "shader", frag, uniforms: baseUniforms }],
     });

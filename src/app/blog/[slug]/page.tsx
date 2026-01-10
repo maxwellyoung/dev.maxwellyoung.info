@@ -1,15 +1,22 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, ReactNode } from "react";
 import { useParams } from "next/navigation";
-import { PortableText } from "@portabletext/react";
+import {
+  PortableText,
+  PortableTextComponents,
+  PortableTextBlock,
+} from "@portabletext/react";
 import Image from "next/image";
 import { Calendar, Tag } from "lucide-react";
 import sanityClient from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import { formatDate } from "@/lib/utils";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { Prism as SyntaxHighlighterBase } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+// Type assertion to fix React 19 compatibility
+const SyntaxHighlighter = SyntaxHighlighterBase as typeof SyntaxHighlighterBase & React.FC<any>;
 
 const client = sanityClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -20,13 +27,29 @@ const client = sanityClient({
 
 const builder = imageUrlBuilder(client);
 
-function urlFor(source: any) {
+interface SanityImageSource {
+  asset?: { _ref?: string };
+  alt?: string;
+}
+
+function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
 
-const PortableTextComponents = {
+interface BlogPost {
+  title: string;
+  publishedAt: string;
+  content: PortableTextBlock[];
+  tags?: string[];
+  mainImage?: {
+    asset: { _id: string; url: string };
+    alt?: string;
+  };
+}
+
+const portableTextComponents: PortableTextComponents = {
   types: {
-    image: ({ value }: any) => {
+    image: ({ value }: { value: SanityImageSource }) => {
       if (!value?.asset?._ref) {
         return null;
       }
@@ -42,7 +65,11 @@ const PortableTextComponents = {
         </div>
       );
     },
-    code: ({ value }: any) => {
+    code: ({
+      value,
+    }: {
+      value: { code?: string; language?: string; filename?: string };
+    }) => {
       if (!value?.code) {
         return null;
       }
@@ -65,32 +92,37 @@ const PortableTextComponents = {
     },
   },
   block: {
-    h1: ({ children }: any) => (
+    h1: ({ children }: { children?: ReactNode }) => (
       <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>
     ),
-    h2: ({ children }: any) => (
+    h2: ({ children }: { children?: ReactNode }) => (
       <h2 className="text-2xl font-bold mt-8 mb-4">{children}</h2>
     ),
-    h3: ({ children }: any) => (
+    h3: ({ children }: { children?: ReactNode }) => (
       <h3 className="text-xl font-bold mt-6 mb-3">{children}</h3>
     ),
-    normal: ({ children }: any) => (
+    normal: ({ children }: { children?: ReactNode }) => (
       <p className="mb-4 leading-relaxed">{children}</p>
     ),
-    blockquote: ({ children }: any) => (
+    blockquote: ({ children }: { children?: ReactNode }) => (
       <blockquote className="border-l-4 border-gray-300 pl-4 my-4 italic">
         {children}
       </blockquote>
     ),
   },
   marks: {
-    link: ({ value, children }: any) => {
-      const rel = !value.href.startsWith("/")
-        ? "noreferrer noopener"
-        : undefined;
+    link: ({
+      value,
+      children,
+    }: {
+      value?: { href?: string };
+      children?: ReactNode;
+    }) => {
+      const href = value?.href || "#";
+      const rel = !href.startsWith("/") ? "noreferrer noopener" : undefined;
       return (
         <a
-          href={value.href}
+          href={href}
           rel={rel}
           className="text-blue-500 hover:underline"
           target="_blank"
@@ -99,25 +131,25 @@ const PortableTextComponents = {
         </a>
       );
     },
-    code: ({ children }: any) => (
+    code: ({ children }: { children?: ReactNode }) => (
       <code className="bg-gray-100 dark:bg-gray-800 rounded px-1 py-0.5">
         {children}
       </code>
     ),
   },
   list: {
-    bullet: ({ children }: any) => (
+    bullet: ({ children }: { children?: ReactNode }) => (
       <ul className="list-disc ml-4 mb-4">{children}</ul>
     ),
-    number: ({ children }: any) => (
+    number: ({ children }: { children?: ReactNode }) => (
       <ol className="list-decimal ml-4 mb-4">{children}</ol>
     ),
   },
 };
 
-export default function BlogPost() {
+export default function BlogPostPage() {
   const params = useParams();
-  const [post, setPost] = useState<any>(null);
+  const [post, setPost] = useState<BlogPost | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -138,8 +170,8 @@ export default function BlogPost() {
         }`;
         const fetchedPost = await client.fetch(query, { slug: params.slug });
         setPost(fetchedPost);
-      } catch (error) {
-        console.error("Error fetching post:", error);
+      } catch {
+        // Error fetching post - silently fail
       } finally {
         setIsLoading(false);
       }
@@ -204,7 +236,7 @@ export default function BlogPost() {
       <div className="prose dark:prose-invert max-w-none">
         <PortableText
           value={post.content}
-          components={PortableTextComponents}
+          components={portableTextComponents}
         />
       </div>
     </article>

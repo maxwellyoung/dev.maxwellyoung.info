@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* light theme - near white, ink foreground */
+    /* Light theme */
     --background: 0 0% 99%;
     --foreground: 0 0% 7%;
     --card: 0 0% 100%;
@@ -16,56 +16,67 @@
     --secondary: 60 4.8% 95.9%;
     --secondary-foreground: 24 9.8% 10%;
     --muted: 0 0% 96%;
-    /* increase muted-foreground contrast for readability on near-white bg */
     --muted-foreground: 0 0% 36%;
-    --accent: 0 63% 33%; /* deep red */
-    --accent-foreground: 0 0% 96%;
+    /* Peter Saville red - Factory Records / New Order palette */
+    --accent: 355 72% 48%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 70% 48%;
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 89%;
     --input: 0 0% 89%;
-    --ring: 20 14.3% 4.1%;
+    --ring: 355 72% 48%;
     --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
 
-    /* Brockmann-style grid tokens */
+    /* Grid tokens (Christopher Alexander pattern language) */
     --grid-columns: 12;
     --grid-gutter: 24px;
     --grid-margin: 24px;
-    --grid-max-width: 640px; /* align with site max width */
+    --grid-max-width: 640px;
     --baseline: 8px;
+
+    /* Semantic spacing scale (not just numbers) */
+    --space-xs: 4px;   /* breathing room */
+    --space-sm: 8px;   /* tight grouping */
+    --space-md: 16px;  /* comfortable separation */
+    --space-lg: 24px;  /* section rhythm */
+    --space-xl: 32px;  /* major divisions */
+    --space-2xl: 48px; /* page sections */
+    --space-3xl: 64px; /* hero breathing */
+
+    /* Motion tokens (Emil Kowalski motion grammar) */
+    --ease-brand: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+    --ease-in: cubic-bezier(0.4, 0.0, 1, 1);
+    --duration-instant: 100ms;
+    --duration-quick: 200ms;
+    --duration-normal: 300ms;
+    --duration-slow: 500ms;
   }
 
   .dark {
-    /* dark theme - near black, soft white */
-    --background: 0 0% 6%;
-    --foreground: 0 0% 92%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 92%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 92%;
-    --primary: 0 0% 92%;
-    --primary-foreground: 0 0% 6%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 92%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 68%;
-    --accent: 0 63% 33%; /* deep red (unchanged across modes) */
+    /* New Order / Power Corruption & Lies - deep midnight */
+    --background: 220 15% 4%;
+    --foreground: 0 0% 90%;
+    --card: 220 12% 6%;
+    --card-foreground: 0 0% 90%;
+    --popover: 220 12% 6%;
+    --popover-foreground: 0 0% 90%;
+    --primary: 0 0% 90%;
+    --primary-foreground: 220 15% 4%;
+    --secondary: 220 10% 10%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 220 10% 12%;
+    --muted-foreground: 220 5% 55%;
+    /* Peter Saville red - brighter for dark mode */
+    --accent: 355 78% 58%;
     --accent-foreground: 0 0% 100%;
+    /* Blue Monday accent */
+    --accent-secondary: 210 80% 55%;
     --destructive: 0 63% 34%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 0 0% 82%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --border: 220 10% 15%;
+    --input: 220 10% 15%;
+    --ring: 355 78% 58%;
   }
 }
 
@@ -78,9 +89,7 @@
     font-size: 15px;
     line-height: 1.5;
     font-feature-settings: "ss01" 1, "ss02" 1, "liga" 1, "kern" 1;
-    background-size: 100% calc(var(--baseline) * 2);
   }
-  /* convenience text tokens used in components */
   .text-muted {
     color: hsl(var(--muted-foreground));
   }
@@ -90,7 +99,7 @@
   h1 {
     font-weight: 500;
     letter-spacing: 0.02em;
-    line-height: 1.2; /* was 1.15; increased to prevent descender clipping */
+    line-height: 1.2;
     font-size: 40px;
   }
   @media (min-width: 768px) {
@@ -101,13 +110,13 @@
   h2 {
     font-weight: 500;
     letter-spacing: 0.015em;
-    line-height: 1.25; /* prevent clipping */
+    line-height: 1.25;
     font-size: 28px;
   }
   h3 {
     font-weight: 500;
     letter-spacing: 0.01em;
-    line-height: 1.3; /* prevent clipping */
+    line-height: 1.3;
     font-size: 20px;
   }
   h4 {
@@ -118,11 +127,7 @@
   }
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Grid container and 12-col system using tokens */
+/* Grid system (Brockmann-inspired) */
 .container-grid {
   width: 100%;
   max-width: var(--grid-max-width);
@@ -139,29 +144,19 @@
   row-gap: calc(var(--baseline) * 2);
 }
 
-/* Minimal link style */
+/* Links - understated, functional */
 a {
   text-decoration: underline;
   text-underline-offset: 2px;
   text-decoration-thickness: 1px;
 }
 
-/* ensure buttons with accent bg render readable text */
-.bg-\[var\(--accent\)\]\/12 {
-  color: hsl(var(--foreground));
-}
-
-/* Subtle hairlines */
 hr {
   border-color: hsl(var(--border));
   opacity: 1;
 }
 
-/* Reduce motion by default; keep durations short */
-:root {
-  --ease-brand: cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
+/* Reduced motion - accessibility first */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.001ms !important;
@@ -171,52 +166,7 @@ hr {
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.fade-in {
-  animation: fadeIn 1s ease-in-out;
-}
-
-.content {
-  text-align: center;
-}
-
-.content img {
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s;
-}
-
-.mesh:hover .content img {
-  transform: scale(1.1);
-  filter: brightness(1.2);
-}
-
-@keyframes glint {
-  0% {
-    background-position: -200%;
-  }
-  100% {
-    background-position: 200%;
-  }
-}
-
-@keyframes glint {
-  0% {
-    background-position: -200%;
-  }
-  100% {
-    background-position: 200%;
-  }
-}
-
+/* Font stack */
 @layer base {
   :root {
     --font-roboto-mono: "Roboto Mono", monospace;
@@ -232,35 +182,29 @@ hr {
 .font-roboto-mono {
   font-family: var(--font-roboto-mono);
 }
-
 .font-sans {
   font-family: var(--font-sans);
 }
-
 .font-display {
   font-family: var(--font-display);
 }
-
-/* Inter utility */
 .font-inter {
   font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, -apple-system,
     Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Resume label style (Figma spec) */
+/* Resume typography */
 .resume-label {
   color: #73808d;
   font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, -apple-system,
     Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 9px;
-  font-style: normal;
   font-weight: 400;
   line-height: 16px;
   letter-spacing: 1.6px;
   text-transform: uppercase;
 }
 
-/* responsive tuning for micro-labels */
 @media (max-width: 640px) {
   .resume-label {
     font-size: 8px;
@@ -268,7 +212,6 @@ hr {
     line-height: 14px;
   }
 }
-
 @media (min-width: 1280px) {
   .resume-label {
     font-size: 10px;
@@ -277,8 +220,8 @@ hr {
   }
 }
 
+/* Print styles */
 @media print {
-  /* collapse to 1 column, remove background grid, show links inline */
   .grid {
     display: block !important;
   }
@@ -297,84 +240,87 @@ hr {
   }
 }
 
-@keyframes colorShift {
-  0% {
-    background-color: var(--chart-1);
-  }
-  25% {
-    background-color: var(--chart-2);
-  }
-  50% {
-    background-color: var(--chart-3);
-  }
-  75% {
-    background-color: var(--chart-4);
-  }
-  100% {
-    background-color: var(--chart-5);
-  }
+/* Keyframes */
+@keyframes glint {
+  0% { background-position: -200%; }
+  100% { background-position: 200%; }
 }
 
-.color-shift {
-  animation: colorShift 10s infinite;
+/* Factory Records / Peter Saville inspired elements */
+.fac-catalog {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+  opacity: 0.6;
 }
 
-.interactive-element {
-  transition: all 0.3s ease;
+.fac-bar {
+  width: 3px;
+  height: 100%;
+  background: hsl(var(--accent));
 }
 
-.interactive-element:hover {
-  transform: scale(1.1);
-  filter: hue-rotate(45deg);
+.fac-stripe {
+  background: repeating-linear-gradient(
+    90deg,
+    hsl(var(--accent)) 0px,
+    hsl(var(--accent)) 2px,
+    transparent 2px,
+    transparent 8px
+  );
 }
 
-.blake-transition {
-  transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+/* Industrial heading treatment */
+.heading-industrial {
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
-.shadow-glow-green,
-.shadow-glow-orange {
-  transition: all 0.3s ease-in-out;
+/* Saville scanlines overlay */
+.scanlines {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
 }
 
-.shadow-glow-green:hover,
-.shadow-glow-orange:hover {
-  transform: none;
+.dark .scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(255, 255, 255, 0.02) 2px,
+    rgba(255, 255, 255, 0.02) 4px
+  );
 }
 
-.shadow-glow-green {
-  filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.7));
+/* New Order blue glow */
+.glow-blue {
+  text-shadow: 0 0 20px hsl(210 80% 55% / 0.5);
 }
 
-.shadow-glow-orange {
-  filter: drop-shadow(0 0 5px rgba(249, 115, 22, 0.7));
+/* FAC accent underline */
+.fac-underline {
+  text-decoration: none;
+  background-image: linear-gradient(hsl(var(--accent)), hsl(var(--accent)));
+  background-size: 100% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
 }
 
-.shadow-glow-green-enhanced,
-.shadow-glow-orange-enhanced {
-  transition: all 0.3s ease-in-out;
-}
-
-.shadow-glow-green-enhanced:hover,
-.shadow-glow-orange-enhanced:hover {
-  transform: none;
-}
-
-.shadow-glow-green-enhanced {
-  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.9))
-    drop-shadow(0 0 16px rgba(16, 185, 129, 0.7));
-}
-
-.shadow-glow-orange-enhanced {
-  filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.9))
-    drop-shadow(0 0 16px rgba(249, 115, 22, 0.7));
-}
-
-/* Add this to the end of the file */
+/* Falling stars (Easter egg) */
 .dark .falling-star {
   background-color: white;
 }
-
 .falling-star {
   background-color: black;
 }
@@ -384,8 +330,7 @@ hr {
   pointer-events: none;
   position: fixed;
   inset: 0;
-  z-index: 0; /* beneath app content */
-  /* Tunables via CSS variables */
+  z-index: 0;
   --dot-size: 16px;
   --drift-x: 16px;
   --drift-y: 8px;
@@ -437,15 +382,10 @@ hr {
 }
 
 @keyframes dotDrift {
-  0% {
-    background-position: 0 0, 0 0;
-  }
-  100% {
-    background-position: 0 0, var(--drift-x) var(--drift-y);
-  }
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 0 0, var(--drift-x) var(--drift-y); }
 }
 
-/* Optional specular sweep overlay for extra polish */
 .dot-matrix::after {
   content: "";
   position: absolute;
@@ -459,16 +399,16 @@ hr {
   mix-blend-mode: screen;
 }
 
-/* hide horizontal scrollbar where desired */
+/* Scrollbar hiding */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Grid overlay element, enabled by LayoutDiagnostics when ?debug=grid */
+/* Debug grid overlay */
 .grid-overlay {
   background-image: linear-gradient(
       to bottom,
@@ -503,5 +443,67 @@ hr {
   background-size: 100% var(--baseline), var(--grid-max-width) 100%;
   background-position: center top, center top;
   background-repeat: repeat, repeat;
-  outline: 0px solid transparent; /* keep compositing cheap */
+}
+
+/* Print styles for resume */
+@media print {
+  /* Reset colors for print */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --muted-foreground: 0 0% 30%;
+    --border: 0 0% 80%;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  /* Hide non-essential elements */
+  .hide-print,
+  nav,
+  footer,
+  button,
+  [role="dialog"],
+  .art-style-menu {
+    display: none !important;
+  }
+
+  /* Clean up resume section */
+  #resume {
+    page-break-before: always;
+  }
+
+  /* Remove shadows and backgrounds */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure links show URLs */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #666;
+  }
+
+  /* Keep headings with content */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Prevent orphans */
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 1.5cm;
+  }
 }

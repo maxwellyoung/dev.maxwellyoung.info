@@ -9,12 +9,27 @@ import { resumeData } from "@/lib/resumeData";
 import { ExperienceItem } from "@/components/ExperienceItem";
 import { EducationItem } from "@/components/EducationItem";
 import { SkillCategory } from "@/components/SkillCategory";
+import { AnimatedLink } from "@/components/ui/animated-link";
+import { downloadResumePDF } from "@/lib/generateResumePDF";
+import { CopyEmail } from "@/components/CopyEmail";
 
 export default function Resume() {
   const [isImageEnlarged, setIsImageEnlarged] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [openSkillIndex, setOpenSkillIndex] = useState<number | null>(0);
+  const [isDownloading, setIsDownloading] = useState(false);
   const prefersReducedMotion = useReducedMotion();
+
+  const handleDownload = async () => {
+    setIsDownloading(true);
+    try {
+      await downloadResumePDF();
+    } catch (error) {
+      console.error("Failed to generate PDF:", error);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
 
   const titleVariants = {
     initial: { opacity: 1 },
@@ -59,7 +74,7 @@ export default function Resume() {
         {/* header */}
         <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
           <div>
-            <h1 className="text-3xl font-medium dark:text-zinc-100 text-zinc-800 font-roboto-mono">
+            <h1 className="text-3xl font-medium text-foreground font-roboto-mono">
               {resumeData.name}
             </h1>
 
@@ -69,7 +84,7 @@ export default function Resume() {
               onMouseLeave={() => setIsHovered(false)}
             >
               <motion.p
-                className="text-xl font-light dark:text-zinc-400 text-zinc-600 font-roboto-mono"
+                className="text-xl font-light text-muted-foreground font-roboto-mono"
                 variants={titleVariants}
                 initial="initial"
                 animate={
@@ -81,7 +96,7 @@ export default function Resume() {
               </motion.p>
               {/* availability chip */}
               {resumeData?.availability && (
-                <span className="inline-flex items-center px-2 py-1 mt-2 text-xs rounded-full border border-[#EA2D42] text-[#EA2D42] bg-[#EA2D42]/10">
+                <span className="inline-flex items-center px-2 py-1 mt-2 text-xs rounded-full border border-accent text-accent bg-accent/10">
                   {resumeData.availability}
                 </span>
               )}
@@ -89,35 +104,61 @@ export default function Resume() {
           </div>
 
           <div className="flex items-center gap-4">
-            {/* use a plain anchor for download */}
-            <a
-              href="/MaxwellYoung_CV.pdf"
-              download
+            {/* Dynamic PDF download button */}
+            <button
+              onClick={handleDownload}
+              disabled={isDownloading}
               aria-label="Download resume PDF"
-              className="flex items-center px-2 md:px-4 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-100 border border-[#EA2D42] rounded-md bg-[#EA2D42]/15 hover:bg-transparent hover:text-[#EA2D42] transition duration-200 focus:outline-none focus:ring-2 focus:ring-[#EA2D42] focus:ring-offset-2"
+              className="flex items-center px-2 md:px-4 py-2 text-sm font-medium text-foreground border border-accent rounded-md bg-accent/15 hover:bg-transparent hover:text-accent active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
-                />
-              </svg>
-              <span className="hidden md:inline ml-2">download resume</span>
-            </a>
+              {isDownloading ? (
+                <svg
+                  className="w-5 h-5 animate-spin"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+                  />
+                </svg>
+              )}
+              <span className="hidden md:inline ml-2">
+                {isDownloading ? "generating..." : "download resume"}
+              </span>
+            </button>
 
             <button
               type="button"
               onClick={() => setIsImageEnlarged(true)}
-              className="cursor-pointer transition duration-200 hover:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-400 rounded-full hide-print"
+              className="cursor-pointer transition-all duration-200 hover:scale-[1.03] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-full hide-print"
               aria-label="Enlarge profile image"
             >
               <Image
@@ -177,23 +218,23 @@ export default function Resume() {
                   Contact
                 </h2>
               </div>
-              <dl className="mt-2 text-sm font-normal dark:text-zinc-400 text-zinc-600 font-inter">
+              <dl className="mt-2 text-sm font-normal text-muted-foreground font-inter">
                 <div className="flex items-center gap-2">
                   <dt className="sr-only">Email</dt>
-                  <dd>
-                    <a
+                  <dd className="flex items-center gap-2">
+                    <AnimatedLink
                       href={`mailto:${resumeData.contact.email}`}
-                      className="underline"
+                      external
                     >
                       {resumeData.contact.email}
-                    </a>
+                    </AnimatedLink>
+                    <CopyEmail email={resumeData.contact.email} showEmail={false} />
                   </dd>
                 </div>
                 <div>
                   <dt className="sr-only">Location</dt>
                   <dd>{resumeData.contact.location}</dd>
                 </div>
-                {/* Website removed to avoid redundancy */}
               </dl>
             </div>
 
@@ -225,17 +266,16 @@ export default function Resume() {
                   Social
                 </h2>
               </div>
-              <ul className="mt-2 space-y-0.5 text-[13px] leading-6 font-normal dark:text-zinc-400 text-zinc-600 font-inter underline">
+              <ul className="mt-2 space-y-0.5 text-[13px] leading-6 font-normal text-muted-foreground font-inter">
                 {resumeData.socials.map((social, index) => (
                   <li key={`${social.name}-${index}`}>
-                    <a
+                    <AnimatedLink
                       href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      external
                       aria-label={social.name}
                     >
                       {social.name}
-                    </a>
+                    </AnimatedLink>
                   </li>
                 ))}
               </ul>
@@ -275,7 +315,7 @@ export default function Resume() {
               />
               <button
                 onClick={closeModal}
-                className="absolute -top-2 -right-2 bg-zinc-900 text-white rounded-full w-8 h-8 grid place-items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-200"
+                className="absolute -top-2 -right-2 bg-background text-foreground border border-[hsl(var(--border))] rounded-full w-8 h-8 grid place-items-center hover:bg-[hsl(var(--muted))] active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
                 aria-label="Close dialog"
               >
                 ×

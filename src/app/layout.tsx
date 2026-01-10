@@ -9,6 +9,11 @@ import Link from "next/link";
 import ArtStyleProvider from "@/components/providers/ArtStyleProvider";
 import ArtStyleMenu from "@/components/ArtStyleMenu";
 import LayoutDiagnostics from "@/components/LayoutDiagnostics";
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { PageTransitionProvider } from "@/components/providers/PageTransitionProvider";
+import { CustomCursor } from "@/components/CustomCursor";
+import { CommandPalette, CommandPaletteHint } from "@/components/CommandPalette";
+import { EasterEggs } from "@/components/EasterEggs";
 // DotMatrix removed for cleaner backdrop
 
 // fonts are loaded via globals.css
@@ -16,13 +21,15 @@ import LayoutDiagnostics from "@/components/LayoutDiagnostics";
 export const metadata: Metadata = {
   title: "Maxwell Young | Design Engineer",
   description:
-    "Product-focused design engineer based in Auckland, New Zealand. Creates digital products for creative professionals, ecommerce, and everyday use, combining design sensitivity with technical depth. Currently at Silk, designing and building products that archive and reimagine culture online.",
+    "Design engineer building software that outlasts its stack. Tools for memory, behavior change, and quiet interactions. React, TypeScript, React Native. Currently at Silk. Open to opportunities.",
   metadataBase: new URL("https://dev.maxwellyoung.info"),
   keywords: [
     "design engineer",
     "product design",
-    "web development",
-    "UI/UX",
+    "React",
+    "TypeScript",
+    "Next.js",
+    "React Native",
     "frontend development",
     "Auckland",
     "New Zealand",
@@ -50,7 +57,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Maxwell Young | Design Engineer",
     description:
-      "Product-focused design engineer based in Auckland, New Zealand. Creates digital products for creative professionals, ecommerce, and everyday use, combining design sensitivity with technical depth.",
+      "Design engineer building software that outlasts its stack. React, TypeScript, React Native. Open to opportunities.",
     url: "https://dev.maxwellyoung.info",
     siteName: "Maxwell Young",
     locale: "en_NZ",
@@ -68,7 +75,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Maxwell Young | Design Engineer",
     description:
-      "Product-focused design engineer based in Auckland, New Zealand. Creates digital products for creative professionals, ecommerce, and everyday use.",
+      "Design engineer building software that outlasts its stack. React, TypeScript, React Native. Open to opportunities.",
     images: ["/meta.png"],
     creator: "@internetmaxwell",
   },
@@ -176,6 +183,9 @@ export default function RootLayout({
       className={`${generalSans.variable} ${sentient.variable} ${inter.variable}`}
     >
       <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -192,7 +202,15 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <ArtStyleProvider>
-              <div className="relative z-10">{children}</div>
+              <SmoothScrollProvider>
+                <PageTransitionProvider>
+                  <div className="relative z-10">{children}</div>
+                </PageTransitionProvider>
+              </SmoothScrollProvider>
+              <CustomCursor />
+              <CommandPalette />
+              <CommandPaletteHint />
+              <EasterEggs />
               <ArtStyleMenu />
               <LayoutDiagnostics />
             </ArtStyleProvider>

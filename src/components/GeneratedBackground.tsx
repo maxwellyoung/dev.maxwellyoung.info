@@ -76,9 +76,6 @@ export default function GeneratedBackground({
   recipe?: BackgroundLayer[] | undefined;
 }) {
   if (!recipe || recipe.length === 0) {
-    try {
-      console.log("[GeneratedBackground] empty recipe");
-    } catch {}
     return null;
   }
   return (
@@ -86,9 +83,6 @@ export default function GeneratedBackground({
       className={["pointer-events-none fixed inset-0 z-0", className].join(" ")}
     >
       {recipe.map((layer, i) => {
-        try {
-          if (i === 0) console.log("[GeneratedBackground] layer0", layer?.type);
-        } catch {}
         switch (layer.type) {
           case "haze":
             return (

@@ -1,4 +1,9 @@
 import { NextRequest } from "next/server";
+import { z } from "zod";
+
+const RequestSchema = z.object({
+  prompt: z.string().max(500).optional(),
+});
 
 type ArtStyle =
   | "default"
@@ -80,7 +85,15 @@ function cheapLocalMap(prompt: string): ArtStyle | null {
 
 export async function POST(req: NextRequest) {
   try {
-    const { prompt } = (await req.json()) as { prompt?: string };
+    const requestBody = await req.json();
+    const validation = RequestSchema.safeParse(requestBody);
+    if (!validation.success) {
+      return Response.json(
+        { error: "Invalid request", details: validation.error.flatten() },
+        { status: 400 }
+      );
+    }
+    const { prompt } = validation.data;
     const local = cheapLocalMap(prompt || "");
     if (!process.env.OPENAI_SECRET) {
       // If no key, fall back to local mapping or ai style
@@ -95,7 +108,7 @@ Rules:
 - Prefer the closest stylistic match. If unsure, choose "ai".
 - No extra text.`;
 
-    const body = {
+    const apiBody = {
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: sys },
@@ -111,7 +124,7 @@ Rules:
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.OPENAI_SECRET}`,
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(apiBody),
     });
 
     if (!res.ok) {
@@ -123,8 +136,8 @@ Rules:
     const content = data?.choices?.[0]?.message?.content;
     let style: string | undefined;
     try {
-      const parsed = JSON.parse(content || "{}");
-      style = parsed?.style;
+      const aiResult = JSON.parse(content || "{}");
+      style = aiResult?.style;
     } catch {}
     let chosen: ArtStyle = "ai";
     if (style && ALLOWED.includes(style as ArtStyle)) {
