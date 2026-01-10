@@ -104,7 +104,7 @@ export default function CaseStudyPage() {
         <div className="text-center py-24">
           <h1 className="text-2xl font-medium mb-4">Case Study Coming Soon</h1>
           <p className="text-muted-foreground mb-8">
-            This project's detailed case study is being written.
+            This project&apos;s detailed case study is being written.
           </p>
           <AnimatedLink href="/projects">View all projects</AnimatedLink>
         </div>
