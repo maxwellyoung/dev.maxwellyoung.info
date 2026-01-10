@@ -14,10 +14,10 @@ export function EducationItem({
       <div>
         <span className="resume-label">{degree}</span>
       </div>
-      <span className="block text-sm font-normal  text-zinc-600 dark:text-zinc-400 font-inter">
+      <span className="block text-sm font-normal text-muted-foreground font-inter">
         {institution}
       </span>
-      <span className="block text-xs font-normal  text-zinc-400 dark:text-zinc-500 font-inter">
+      <span className="block text-xs font-normal text-muted-foreground/70 font-inter">
         {date}
       </span>
     </div>

@@ -6,25 +6,31 @@ import React, {
   useEffect,
   useMemo,
   useState,
+  Suspense,
+  lazy,
 } from "react";
-import PastelHazeBackground from "@/components/PastelHazeBackground";
-import DotMatrix from "@/components/DotMatrix";
-import BrakhageOverlay from "@/components/BrakhageOverlay";
-import GlassFlareOverlay from "@/components/GlassFlareOverlay";
-import GeoCitiesBackground from "@/components/GeoCitiesBackground";
-import VhsScanlines from "@/components/VhsScanlines";
-import AuroraBackground from "@/components/AuroraBackground";
-import ParticleField from "@/components/ParticleField";
-import MeshWarpBackground from "@/components/MeshWarpBackground";
-import AsciiRain from "@/components/AsciiRain";
-import MatrixRain from "@/components/MatrixRain";
-import FlowFieldBackground from "@/components/FlowFieldBackground";
-import FluidInkBackground from "@/components/FluidInkBackground";
-import CityScene from "@/components/CityScene";
-import PromptBackground from "@/components/PromptBackground";
-import GeneratedBackground, {
-  GeneratedStyle,
-} from "@/components/GeneratedBackground";
+
+// Lazy load all background components (Georgi Gerganov efficiency)
+// Only loads when the user selects that style
+const PastelHazeBackground = lazy(() => import("@/components/PastelHazeBackground"));
+const DotMatrix = lazy(() => import("@/components/DotMatrix"));
+const BrakhageOverlay = lazy(() => import("@/components/BrakhageOverlay"));
+const GlassFlareOverlay = lazy(() => import("@/components/GlassFlareOverlay"));
+const GeoCitiesBackground = lazy(() => import("@/components/GeoCitiesBackground"));
+const VhsScanlines = lazy(() => import("@/components/VhsScanlines"));
+const AuroraBackground = lazy(() => import("@/components/AuroraBackground"));
+const ParticleField = lazy(() => import("@/components/ParticleField"));
+const MeshWarpBackground = lazy(() => import("@/components/MeshWarpBackground"));
+const AsciiRain = lazy(() => import("@/components/AsciiRain"));
+const MatrixRain = lazy(() => import("@/components/MatrixRain"));
+const FlowFieldBackground = lazy(() => import("@/components/FlowFieldBackground"));
+const FluidInkBackground = lazy(() => import("@/components/FluidInkBackground"));
+const CityScene = lazy(() => import("@/components/CityScene"));
+const PromptBackground = lazy(() => import("@/components/PromptBackground"));
+const GeneratedBackground = lazy(() => import("@/components/GeneratedBackground"));
+
+// Type-only import for GeneratedStyle
+import type { GeneratedStyle } from "@/components/GeneratedBackground";
 
 export type ArtStyle =
   | "default"
@@ -178,27 +184,6 @@ export default function ArtStyleProvider({
       }
       // no default selection persisted
     } catch {}
-    // DEBUG LOGS: style changes + background counts
-    try {
-      // eslint-disable-next-line no-console
-      console.log("[ArtStyle] style=", style);
-      // eslint-disable-next-line no-console
-      console.log(
-        "[ArtStyle] provider backgrounds present:",
-        document.querySelectorAll("[data-art-bg]")?.length
-      );
-      // eslint-disable-next-line no-console
-      console.log(
-        "[ArtStyle] page canvases (fixed inset-0):",
-        document.querySelectorAll("canvas.pointer-events-none.fixed.inset-0")
-          ?.length
-      );
-      // eslint-disable-next-line no-console
-      console.log(
-        "[ArtStyle] dot-matrix nodes:",
-        document.querySelectorAll(".dot-matrix")?.length
-      );
-    } catch {}
   }, [style, customPrompt, generatedStyles, pinnedStyles, activeGeneratedId]);
 
   // keyboard toggle: Cmd/Ctrl + Shift + A
@@ -273,7 +258,8 @@ export default function ArtStyleProvider({
 
   return (
     <ArtStyleContext.Provider value={value}>
-      {/* global background renderer */}
+      {/* Lazy-loaded backgrounds with Suspense (Georgi Gerganov efficiency) */}
+      <Suspense fallback={null}>
       {style === "haze" && (
         <>
           <PastelHazeBackground
@@ -389,29 +375,17 @@ export default function ArtStyleProvider({
         <CityScene className="fixed inset-0 z-0" snow crowd lights speed={1} />
       )}
       {style === "ai" &&
-        (activeGeneratedId
-          ? (() => {
-              const recipe = generatedStyles.find(
-                (g) => g.id === activeGeneratedId
-              )?.recipe;
-              try {
-                console.log("[AI BG] render GeneratedBackground", {
-                  activeGeneratedId,
-                  layers: recipe?.length,
-                  firstType: recipe?.[0]?.type,
-                });
-              } catch {}
-              return <GeneratedBackground className="z-0" recipe={recipe} />;
-            })()
-          : (() => {
-              try {
-                console.log(
-                  "[AI BG] no activeGeneratedId; show PromptBackground",
-                  { customPrompt }
-                );
-              } catch {}
-              return <PromptBackground className="z-0" prompt={customPrompt} />;
-            })())}
+        (activeGeneratedId ? (
+          <GeneratedBackground
+            className="z-0"
+            recipe={
+              generatedStyles.find((g) => g.id === activeGeneratedId)?.recipe
+            }
+          />
+        ) : (
+          <PromptBackground className="z-0" prompt={customPrompt} />
+        ))}
+      </Suspense>
       {/* default = no background */}
       {children}
     </ArtStyleContext.Provider>

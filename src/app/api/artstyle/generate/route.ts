@@ -1,6 +1,12 @@
 import { NextRequest } from "next/server";
+import { z } from "zod";
 import { ensureFragmentSafety } from "@/lib/shaderValidation";
 import { parsePromptToSpec } from "@/lib/promptToSpec";
+
+const RequestSchema = z.object({
+  prompt: z.string().max(500).optional(),
+  shaderOnly: z.boolean().optional(),
+});
 
 function genId(len = 10): string {
   const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -12,10 +18,15 @@ function genId(len = 10): string {
 
 export async function POST(req: NextRequest) {
   try {
-    const { prompt, shaderOnly } = (await req.json()) as {
-      prompt?: string;
-      shaderOnly?: boolean;
-    };
+    const requestBody = await req.json();
+    const validation = RequestSchema.safeParse(requestBody);
+    if (!validation.success) {
+      return Response.json(
+        { error: "Invalid request", details: validation.error.flatten() },
+        { status: 400 }
+      );
+    }
+    const { prompt, shaderOnly } = validation.data;
     const id = genId(10);
     if (!process.env.OPENAI_SECRET) {
       // fallback recipe: ensure strong shader baseline + a secondary layer
@@ -52,7 +63,7 @@ Guidelines:
 - No extra text. JSON only.`;
 
     const spec = parsePromptToSpec(prompt);
-    const body = {
+    const apiBody = {
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: sys },
@@ -80,7 +91,7 @@ Guidelines:
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.OPENAI_SECRET}`,
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(apiBody),
     });
 
     if (!res.ok) {

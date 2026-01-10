@@ -129,68 +129,8 @@ export default function ArtStyleMenu() {
     setIsPressed(false);
     setTilt({ rx: 0, ry: 0 });
   };
-  // removed shaderOnly toggle; always generating shaders by default via the button below
-  if (!isMenuOpen)
-    return (
-      <button
-        ref={btnRef}
-        onPointerMove={onPointerMove}
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={onPointerLeave}
-        onPointerDown={() => setIsPressed(true)}
-        onPointerUp={() => setIsPressed(false)}
-        onClick={() => {
-          try {
-            // gentle haptic on supported devices
-            // Narrow type guard without ts-expect-error
-            const n = navigator as any;
-            if (n && typeof n.vibrate === "function") n.vibrate(10);
-          } catch {}
-          toggleMenu();
-        }}
-        className="group fixed bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] right-[calc(env(safe-area-inset-right)+1.25rem)] md:bottom-[calc(env(safe-area-inset-bottom)+2rem)] md:right-[calc(env(safe-area-inset-right)+2rem)] z-[60] h-10 md:h-11 px-4 md:px-5 rounded-2xl text-xs font-medium text-foreground/90 bg-foreground/10 backdrop-blur-md backdrop-saturate-150 ring-1 ring-inset ring-[hsl(var(--border))] shadow-[0_8px_30px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.2)] hover:bg-foreground/15 transition-all duration-200 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-        title="Art styles (Ctrl/Cmd+Shift+A)"
-        aria-label="Open art styles"
-        style={{
-          ["--accent-rgb" as any]: accentRgb,
-          transform: reducedMotion
-            ? undefined
-            : `translateZ(0) rotateX(${tilt.ry.toFixed(
-                2
-              )}deg) rotateY(${tilt.rx.toFixed(2)}deg) scale(${(isPressed
-                ? 0.98
-                : isHover
-                ? 1.02
-                : 1
-              ).toFixed(2)})`,
-        }}
-      >
-        <span className="relative z-10">styles</span>
-        <span className="pointer-events-none absolute inset-px rounded-[14px] bg-[linear-gradient(180deg,rgba(255,255,255,0.35),rgba(255,255,255,0.08)_38%,rgba(255,255,255,0.02)_100%)] opacity-70 group-hover:opacity-90 transition-opacity" />
-        {/* conic rim-light with adaptive accent */}
-        <span className="pointer-events-none absolute inset-0 rounded-2xl opacity-60 mix-blend-screen bg-[conic-gradient(from_160deg_at_50%_50%,rgba(255,255,255,0.08)_0deg,rgba(var(--accent-rgb),0.20)_60deg,transparent_140deg,rgba(255,255,255,0.06)_220deg,transparent_360deg)]" />
-        {/* sheen sweep */}
-        <span className="pointer-events-none absolute -inset-1">
-          <span className="absolute top-[-60%] left-[-40%] h-[220%] w-[45%] rotate-[-20deg] bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.55)_50%,rgba(255,255,255,0)_100%)] opacity-0 group-hover:opacity-60 group-hover:left-[85%] transition-all duration-500 ease-out" />
-        </span>
-        {/* micro-grain texture */}
-        <span className="pointer-events-none absolute inset-0 rounded-2xl opacity-[0.10] mix-blend-overlay bg-[radial-gradient(rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:6px_6px]" />
-        {/* caustic hotspot following pointer */}
-        <span
-          className="pointer-events-none absolute inset-0 rounded-2xl"
-          style={{
-            background:
-              "radial-gradient(240px 140px at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.18), rgba(255,255,255,0.0) 70%)",
-            opacity: isHover ? 1 : 0,
-            transition: "opacity 180ms ease-out",
-          }}
-        />
-        <span className="pointer-events-none absolute -top-3 -left-3 w-16 h-16 rounded-full bg-white/10 blur-xl" />
-        {pulse && (
-          <span className="pointer-events-none absolute -inset-2 rounded-[22px] border-2 border-[rgba(var(--accent-rgb),0.45)] opacity-70 animate-ping" />
-        )}
-      </button>
-    );
+  // No floating button - accessed via command palette only
+  if (!isMenuOpen) return null;
 
   return (
     <div className="fixed inset-0 z-[70] flex items-end sm:items-center justify-center p-4">
@@ -198,7 +138,7 @@ export default function ArtStyleMenu() {
       <div className="absolute inset-0 bg-black/40" onClick={toggleMenu} />
       <div className="relative w-full max-w-sm rounded-2xl bg-neutral-900/80 backdrop-blur ring-1 ring-white/10 p-0 text-sm text-white overflow-hidden">
         <div className="sticky top-0 z-10 flex items-center justify-between px-4 py-3 bg-neutral-900/80 backdrop-blur border-b border-white/10">
-          <h3 className="text-white/90">Art styles</h3>
+          <h3 className="text-white/90">Background Shaders</h3>
           <button
             onClick={toggleMenu}
             className="text-white/70 hover:text-white"
@@ -210,12 +150,7 @@ export default function ArtStyleMenu() {
           {styles.map((s) => (
             <button
               key={s.key}
-              onClick={() => {
-                try {
-                  console.log("[ArtStyleMenu] click", s.key);
-                } catch {}
-                setStyle(s.key);
-              }}
+              onClick={() => setStyle(s.key)}
               className={
                 "w-full text-left rounded-lg px-3 py-2 ring-1 transition " +
                 (style === s.key

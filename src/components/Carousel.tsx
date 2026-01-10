@@ -36,8 +36,8 @@ export default function Carousel({ images, onClose }: CarouselProps) {
         .then((color) => {
           setIsDark(color.isDark);
         })
-        .catch((e) => {
-          console.error(e);
+        .catch(() => {
+          // Color extraction failed - use default
         })
         .finally(() => {
           setIsLoading(false);
@@ -57,7 +57,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
     };
   }, [index, images]);
 
-  const onDragEnd = (info: any) => {
+  const onDragEnd = (info: { offset: { x: number } }) => {
     if (info.offset.x > DRAG_THRESHOLD && index > 0) {
       setIndex(index - 1);
     } else if (info.offset.x < -DRAG_THRESHOLD && index < images.length - 1) {
@@ -76,7 +76,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
     return () => document.removeEventListener("keydown", handleKeyPress);
   }, [index, images.length, onClose]);
 
-  const buttonClasses = `absolute top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full transition-colors ${
+  const buttonClasses = `absolute top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
     isDark ? "bg-white/10 hover:bg-white/20" : "bg-black/10 hover:bg-black/20"
   }`;
   const iconClasses = `h-6 w-6 ${isDark ? "text-white" : "text-black"}`;
@@ -100,7 +100,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className={`absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full transition-colors ${
+          className={`absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
             isDark
               ? "bg-white/10 hover:bg-white/20"
               : "bg-black/10 hover:bg-black/20"
@@ -167,14 +167,14 @@ export default function Carousel({ images, onClose }: CarouselProps) {
             key={i}
             onClick={() => setIndex(i)}
             aria-label={`Go to image ${i + 1}`}
-            className={`h-2 w-2 rounded-full transition-colors ${
+            className={`h-2 w-2 rounded-full transition-all duration-200 hover:scale-125 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
               i === index
                 ? isDark
                   ? "bg-white"
                   : "bg-black"
                 : isDark
-                ? "bg-white/30"
-                : "bg-black/30"
+                ? "bg-white/30 hover:bg-white/50"
+                : "bg-black/30 hover:bg-black/50"
             }`}
           />
         ))}

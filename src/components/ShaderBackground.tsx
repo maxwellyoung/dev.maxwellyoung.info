@@ -111,17 +111,6 @@ export default function ShaderBackground({
     const hasSeed = /uniform\s+float\s+u_seed\s*;/.test(frag);
     const hasColorA = /uniform\s+vec3\s+u_colorA\s*;/.test(frag);
     const hasColorB = /uniform\s+vec3\s+u_colorB\s*;/.test(frag);
-    try {
-      console.log("[ShaderBG] frag uniforms present:", {
-        hasRes,
-        hasTime,
-        hasMouse,
-        hasSeed,
-        hasColorA,
-        hasColorB,
-      });
-      console.log("[ShaderBG] frag preview:", frag.slice(0, 180));
-    } catch {}
     const headerParts: string[] = [];
     if (!hasPrecision) headerParts.push("precision mediump float;");
     if (!hasRes) headerParts.push("uniform vec2 u_resolution;");

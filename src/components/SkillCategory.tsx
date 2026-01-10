@@ -31,7 +31,7 @@ export function SkillCategory({
             aria-expanded={expanded}
             aria-controls={contentId}
             onClick={onToggle}
-            className="resume-label inline-flex items-center gap-2 select-none"
+            className="resume-label inline-flex items-center gap-2 select-none hover:text-foreground transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
           >
             <span>{category}</span>
             <motion.svg
@@ -78,7 +78,7 @@ export function SkillCategory({
         <div
           className={
             (compact ? "block text-[13px] leading-6" : "block text-sm") +
-            " font-normal dark:text-zinc-400 text-zinc-600 font-inter"
+            " font-normal text-muted-foreground font-inter"
           }
         >
           {items.map((item, index) => (
