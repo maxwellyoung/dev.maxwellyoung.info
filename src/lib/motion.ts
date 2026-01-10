@@ -2,126 +2,290 @@
  * Unified Motion System
  *
  * A single source of truth for all animation timing, springs, and easings.
- * Inspired by Emil Kowalski's motion grammar approach.
+ * Influenced by Emil Kowalski's motion grammar and Dieter Rams' restraint.
+ *
+ * Principles:
+ * - Springs feel alive, easings feel mechanical
+ * - Exit animations are as important as entrances
+ * - Stagger creates rhythm, not chaos
+ * - Reduced motion is respected, not ignored
  */
 
 // Duration tokens (in seconds for Framer Motion)
 export const duration = {
   instant: 0.1,
-  quick: 0.2,
-  normal: 0.3,
-  slow: 0.5,
-  glacial: 0.8,
-} as const;
-
-// Duration tokens (in ms for CSS)
-export const durationMs = {
-  instant: 100,
-  quick: 200,
-  normal: 300,
-  slow: 500,
-  glacial: 800,
+  quick: 0.15,
+  normal: 0.25,
+  slow: 0.4,
+  glacial: 0.6,
 } as const;
 
 // Spring presets - named for their feel, not their math
+// Tuned for organic, alive-feeling motion
 export const spring = {
-  // Snappy: quick, precise, no overshoot - for UI feedback
-  snappy: { type: "spring" as const, stiffness: 400, damping: 30, mass: 1 },
+  // Snappy: immediate response, minimal overshoot - for buttons, toggles
+  snappy: { type: "spring" as const, stiffness: 500, damping: 35, mass: 1 },
 
-  // Smooth: gentle, refined - for content reveals
-  smooth: { type: "spring" as const, stiffness: 200, damping: 25, mass: 1 },
+  // Default: the workhorse - for most UI transitions
+  default: { type: "spring" as const, stiffness: 300, damping: 30, mass: 1 },
 
-  // Bouncy: playful, energetic - for delightful moments
-  bouncy: { type: "spring" as const, stiffness: 300, damping: 15, mass: 1 },
+  // Gentle: smooth, refined - for content reveals, page transitions
+  gentle: { type: "spring" as const, stiffness: 170, damping: 26, mass: 1 },
 
-  // Soft: slow, elegant - for large movements
+  // Soft: slow, elegant - for large movements, modals
   soft: { type: "spring" as const, stiffness: 120, damping: 20, mass: 1 },
+
+  // Bouncy: playful overshoot - use sparingly
+  bouncy: { type: "spring" as const, stiffness: 400, damping: 17, mass: 1 },
+
+  // Molasses: very slow, heavy - for dramatic reveals
+  molasses: { type: "spring" as const, stiffness: 80, damping: 20, mass: 1.5 },
 } as const;
 
-// Easing curves
+// Easing curves (for when springs aren't appropriate)
 export const ease = {
-  // Brand easing - used for signature transitions
-  brand: [0.2, 0.8, 0.2, 1] as const,
+  // Brand easing - signature feel
+  brand: [0.22, 0.68, 0.0, 1.0] as const,
 
-  // Standard easings
+  // Smooth out - content appearing
   out: [0.0, 0.0, 0.2, 1] as const,
-  in: [0.4, 0.0, 1, 1] as const,
+
+  // Quick out - UI feedback
+  outQuick: [0.0, 0.0, 0.4, 1] as const,
+
+  // Smooth in-out - for looping, continuous
   inOut: [0.4, 0.0, 0.2, 1] as const,
 } as const;
 
-// Common transition presets
+// Transition presets
 export const transition = {
-  // For hover states, button presses
-  micro: { duration: duration.instant, ease: ease.out },
+  // Micro interactions: button presses, toggles
+  micro: { ...spring.snappy },
 
-  // For content fades, reveals
+  // Default: most UI transitions
+  default: { ...spring.default },
+
+  // Fade: opacity-only changes
   fade: { duration: duration.quick, ease: ease.out },
 
-  // For expanding/collapsing content
-  expand: { ...spring.smooth },
+  // Reveal: content appearing
+  reveal: { ...spring.gentle },
 
-  // For page transitions
-  page: { duration: duration.slow, ease: ease.brand },
+  // Page: route transitions
+  page: { ...spring.gentle },
 
-  // For playful interactions
-  playful: { ...spring.bouncy },
+  // Layout: for layout animations
+  layout: { ...spring.default },
+
+  // Slow: dramatic moments
+  slow: { ...spring.soft },
 } as const;
 
-// Animation variants for common patterns
-export const variants = {
-  // Fade in from below
-  fadeUp: {
-    initial: { opacity: 0, y: 12 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -8 },
-  },
-
-  // Fade in from above
-  fadeDown: {
-    initial: { opacity: 0, y: -12 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 8 },
-  },
-
-  // Simple fade
-  fade: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-  },
-
-  // Scale in
-  scale: {
-    initial: { opacity: 0, scale: 0.95 },
-    animate: { opacity: 1, scale: 1 },
-    exit: { opacity: 0, scale: 0.98 },
-  },
-
-  // Slide from right (for cards, list items)
-  slideRight: {
-    initial: { opacity: 0, x: -20 },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: 20 },
-  },
-} as const;
-
-// Stagger children helper
+// Stagger configurations
 export const stagger = {
-  fast: { staggerChildren: 0.03 },
-  normal: { staggerChildren: 0.05 },
-  slow: { staggerChildren: 0.08 },
+  // Fast: for many small items (icons, dots)
+  fast: 0.025,
+
+  // Default: for list items, cards
+  default: 0.05,
+
+  // Slow: for hero content, important sequences
+  slow: 0.1,
+
+  // Dramatic: for page-level reveals
+  dramatic: 0.15,
 } as const;
 
-// Reduced motion check
+// Container variants for orchestrated animations
+export const container = {
+  // Standard staggered reveal
+  stagger: (delayChildren = 0, staggerAmount = stagger.default) => ({
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren,
+        staggerChildren: staggerAmount,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        staggerChildren: staggerAmount / 2,
+        staggerDirection: -1,
+      },
+    },
+  }),
+
+  // For hero sections - slower, more dramatic
+  hero: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.1,
+        staggerChildren: stagger.slow,
+      },
+    },
+  },
+
+  // For lists - quick succession
+  list: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0,
+        staggerChildren: stagger.default,
+      },
+    },
+  },
+} as const;
+
+// Item variants (children of containers)
+export const item = {
+  // Fade up - the default reveal
+  fadeUp: {
+    hidden: { opacity: 0, y: 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: spring.gentle,
+    },
+    exit: {
+      opacity: 0,
+      y: -8,
+      transition: { duration: duration.quick, ease: ease.out },
+    },
+  },
+
+  // Fade in - for text, subtle elements
+  fade: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: duration.normal, ease: ease.out },
+    },
+    exit: {
+      opacity: 0,
+      transition: { duration: duration.quick },
+    },
+  },
+
+  // Scale - for cards, images
+  scale: {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: spring.default,
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.98,
+      transition: { duration: duration.quick },
+    },
+  },
+
+  // Slide - for list items
+  slide: {
+    hidden: { opacity: 0, x: -12 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: spring.default,
+    },
+    exit: {
+      opacity: 0,
+      x: 12,
+      transition: { duration: duration.quick },
+    },
+  },
+} as const;
+
+// Hover/tap animations
+export const hover = {
+  // Subtle lift - for cards
+  lift: {
+    scale: 1.02,
+    y: -2,
+    transition: spring.snappy,
+  },
+
+  // Subtle scale - for buttons
+  scale: {
+    scale: 1.02,
+    transition: spring.snappy,
+  },
+
+  // Glow - opacity boost
+  glow: {
+    opacity: 1,
+    transition: { duration: duration.instant },
+  },
+} as const;
+
+export const tap = {
+  // Press down - for buttons
+  press: {
+    scale: 0.98,
+    transition: spring.snappy,
+  },
+
+  // Deep press - for important actions
+  deep: {
+    scale: 0.95,
+    transition: spring.snappy,
+  },
+} as const;
+
+// Reduced motion utilities
 export const prefersReducedMotion =
   typeof window !== "undefined"
     ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
     : false;
 
-// Helper to disable animations for reduced motion
-export function withReducedMotion<T extends object>(config: T): T | { duration: 0 } {
+export function withReducedMotion<T extends object>(
+  config: T
+): T | { duration: 0 } {
   if (prefersReducedMotion) {
     return { duration: 0 };
   }
   return config;
 }
+
+// Reduced motion variants - instant transitions
+export const reducedMotion = {
+  fadeUp: {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+    exit: { opacity: 0 },
+  },
+  fade: {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+    exit: { opacity: 0 },
+  },
+} as const;
+
+// Helper to get appropriate variants
+export function getVariants(variant: keyof typeof item) {
+  return prefersReducedMotion ? reducedMotion.fade : item[variant];
+}
+
+// Layout animation helpers
+export const layoutTransition = {
+  // For shared element transitions
+  shared: {
+    type: "spring" as const,
+    stiffness: 350,
+    damping: 30,
+  },
+
+  // For container resizing
+  resize: {
+    type: "spring" as const,
+    stiffness: 200,
+    damping: 25,
+  },
+} as const;

@@ -22,11 +22,12 @@ interface AnimatedLinkProps extends LinkProps {
 export const AnimatedLink = forwardRef<HTMLAnchorElement, AnimatedLinkProps>(
   ({ children, className, external, ...props }, ref) => {
     const baseClasses = cn(
-      "relative inline-block text-muted-foreground transition-colors duration-200",
+      "relative inline-block text-muted-foreground transition-colors duration-150",
       "hover:text-foreground",
-      "after:absolute after:bottom-0 after:left-0 after:h-[1px]",
+      "after:absolute after:bottom-0 after:left-0 after:h-px",
       "after:w-full after:origin-left after:scale-x-0",
-      "after:bg-current after:transition-transform after:duration-300 after:ease-out",
+      "after:bg-accent/60 after:transition-transform after:duration-200",
+      "after:[transition-timing-function:cubic-bezier(0.22,0.68,0,1)]",
       "hover:after:scale-x-100",
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2",
       className
@@ -68,8 +69,8 @@ interface AccentLinkProps extends AnimatedLinkProps {
 export const AccentLink = forwardRef<HTMLAnchorElement, AccentLinkProps>(
   ({ children, className, arrow = true, external, ...props }, ref) => {
     const baseClasses = cn(
-      "group inline-flex items-center gap-2",
-      "text-foreground transition-colors duration-200",
+      "group inline-flex items-center gap-1.5",
+      "text-foreground transition-colors duration-150",
       "hover:text-accent",
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2",
       className
@@ -79,7 +80,10 @@ export const AccentLink = forwardRef<HTMLAnchorElement, AccentLinkProps>(
       <>
         <span>{children}</span>
         {arrow && (
-          <span className="text-accent transition-transform duration-200 group-hover:translate-x-1">
+          <span
+            className="text-accent transition-transform duration-200 group-hover:translate-x-0.5"
+            style={{ transitionTimingFunction: "cubic-bezier(0.22, 0.68, 0, 1)" }}
+          >
             →
           </span>
         )}
