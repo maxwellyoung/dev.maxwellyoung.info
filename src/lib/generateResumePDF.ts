@@ -4,6 +4,24 @@ import jsPDF from "jspdf";
 import { resumeData } from "./resumeData";
 
 /**
+ * Sanitize text for jsPDF (Helvetica doesn't support Unicode well)
+ */
+function sanitizeForPDF(text: string): string {
+  return text
+    .replace(/→/g, "->")
+    .replace(/←/g, "<-")
+    .replace(/★/g, "*")
+    .replace(/–/g, "-")
+    .replace(/—/g, " - ")
+    .replace(/'/g, "'")
+    .replace(/'/g, "'")
+    .replace(/"/g, '"')
+    .replace(/"/g, '"')
+    .replace(/•/g, "-")
+    .replace(/…/g, "...");
+}
+
+/**
  * Generates a professionally formatted PDF resume from resumeData
  */
 export async function generateResumePDF(): Promise<Blob> {
@@ -37,7 +55,7 @@ export async function generateResumePDF(): Promise<Blob> {
 
   // Calculate height needed for wrapped text
   const getTextHeight = (text: string, maxWidth: number, lineHeight: number): number => {
-    const lines = pdf.splitTextToSize(text, maxWidth);
+    const lines = pdf.splitTextToSize(sanitizeForPDF(text), maxWidth);
     return lines.length * lineHeight;
   };
 
@@ -58,7 +76,7 @@ export async function generateResumePDF(): Promise<Blob> {
     maxWidth: number,
     lineHeight: number
   ): number => {
-    const lines = pdf.splitTextToSize(text, maxWidth);
+    const lines = pdf.splitTextToSize(sanitizeForPDF(text), maxWidth);
     for (const line of lines) {
       checkPageBreak(lineHeight);
       pdf.text(line, x, y);
@@ -69,23 +87,23 @@ export async function generateResumePDF(): Promise<Blob> {
 
   // === HEADER ===
   setFont(28, "bold", black);
-  pdf.text(resumeData.name, marginLeft, y);
+  pdf.text(sanitizeForPDF(resumeData.name), marginLeft, y);
   y += 28;
 
   setFont(12, "normal", gray);
-  pdf.text(resumeData.title, marginLeft, y);
+  pdf.text(sanitizeForPDF(resumeData.title), marginLeft, y);
   y += 20;
 
   // Contact line
   setFont(9, "normal", gray);
   const contactLine = `${resumeData.contact.email}  |  ${resumeData.contact.location}  |  ${resumeData.contact.website.replace("https://", "")}`;
-  pdf.text(contactLine, marginLeft, y);
+  pdf.text(sanitizeForPDF(contactLine), marginLeft, y);
   y += 14;
 
   // Availability
   if (resumeData.availability) {
     setFont(9, "normal", gray);
-    pdf.text(resumeData.availability, marginLeft, y);
+    pdf.text(sanitizeForPDF(resumeData.availability), marginLeft, y);
     y += 10;
   }
 
@@ -118,15 +136,16 @@ export async function generateResumePDF(): Promise<Blob> {
 
     // Role title and date on same line
     setFont(10, "bold", black);
-    pdf.text(exp.title, marginLeft, y);
+    pdf.text(sanitizeForPDF(exp.title), marginLeft, y);
     setFont(9, "normal", lightGray);
-    const dateWidth = pdf.getTextWidth(exp.date);
-    pdf.text(exp.date, pageWidth - marginRight - dateWidth, y);
+    const sanitizedDate = sanitizeForPDF(exp.date);
+    const dateWidth = pdf.getTextWidth(sanitizedDate);
+    pdf.text(sanitizedDate, pageWidth - marginRight - dateWidth, y);
     y += 13;
 
     // Company
     setFont(9, "normal", gray);
-    pdf.text(exp.company, marginLeft, y);
+    pdf.text(sanitizeForPDF(exp.company), marginLeft, y);
     y += 12;
 
     // Summary if exists
@@ -141,8 +160,8 @@ export async function generateResumePDF(): Promise<Blob> {
     y += 4;
     setFont(9, "normal", black);
     for (const resp of exp.responsibilities) {
-      const bulletText = `• ${resp}`;
-      const lines = pdf.splitTextToSize(bulletText, contentWidth - 16);
+      const bulletText = `- ${sanitizeForPDF(resp)}`;
+      const lines = pdf.splitTextToSize(bulletText, contentWidth - 8);
 
       // Check if we can fit at least the first line
       checkPageBreak(12);
@@ -150,7 +169,7 @@ export async function generateResumePDF(): Promise<Blob> {
       for (let i = 0; i < lines.length; i++) {
         const line = lines[i] as string;
         if (i > 0) checkPageBreak(11);
-        pdf.text(i === 0 ? line : `  ${line.trim()}`, marginLeft + 8, y);
+        pdf.text(i === 0 ? line : `  ${line.trim()}`, marginLeft + 4, y);
         y += 11;
       }
       y += 2;
@@ -171,11 +190,11 @@ export async function generateResumePDF(): Promise<Blob> {
     checkPageBreak(40);
 
     setFont(10, "bold", black);
-    pdf.text(edu.degree, marginLeft, y);
+    pdf.text(sanitizeForPDF(edu.degree), marginLeft, y);
     y += 13;
 
     setFont(9, "normal", gray);
-    pdf.text(`${edu.institution}  |  ${edu.date}`, marginLeft, y);
+    pdf.text(sanitizeForPDF(`${edu.institution}  |  ${edu.date}`), marginLeft, y);
     y += 16;
   }
 
@@ -200,7 +219,7 @@ export async function generateResumePDF(): Promise<Blob> {
     pdf.text(categoryText, marginLeft, y);
 
     setFont(9, "normal", gray);
-    const skillsText = skillGroup.items.join(", ");
+    const skillsText = sanitizeForPDF(skillGroup.items.join(", "));
     const availableWidth = contentWidth - categoryWidth;
 
     const skillLines = pdf.splitTextToSize(skillsText, availableWidth);
@@ -226,7 +245,7 @@ export async function generateResumePDF(): Promise<Blob> {
     const prefixWidth = pdf.getTextWidth(prefix);
     pdf.text(prefix, marginLeft, y);
 
-    const alsoText = alsoSkills.items.join(", ");
+    const alsoText = sanitizeForPDF(alsoSkills.items.join(", "));
     const alsoLines = pdf.splitTextToSize(alsoText, contentWidth - prefixWidth);
     for (let i = 0; i < alsoLines.length; i++) {
       const line = alsoLines[i] as string;

@@ -30,9 +30,9 @@ export const caseStudies: Record<string, CaseStudy> = {
     title: "Silk",
     subtitle: "Interfaces for a slower, more intentional web",
     timeline: "Jun 2024 — Present",
-    role: "Frontend Engineer",
+    role: "Mobile Design Engineer",
     team: "Small team (< 10)",
-    tools: ["Next.js", "TypeScript", "React", "Tailwind CSS"],
+    tools: ["React Native", "TypeScript", "Expo", "Tailwind CSS"],
     liveUrl: "https://silk.cx",
     overview:
       "Silk is a blogging and curation platform that rejects the engagement-metrics playbook. No algorithmic feeds, no targeted ads, no extraction. Just tools for collecting and sharing things you find interesting. I work on the frontend, building interfaces for blogs, private archives, and multimedia moodboards.",

@@ -74,15 +74,15 @@ export const projects: Project[] = [
     name: "Silk",
     status: "Active",
     category: "research",
-    role: "Frontend",
+    role: "Lead",
     featured: true,
     priority: 0,
     description:
       "Cross-platform blogging system that rejects engagement metrics. No feeds, no ranking, no infinite scroll. Designing usefulness without addiction mechanics is harder than optimizing CTR.",
     longDescription:
       "Silk is a blogging and curation platform where I build the React Native frontend. The product philosophy is the constraint: no algorithmic feeds, no engagement optimization, no extraction. That means every feature has to justify itself on usefulness alone—not stickiness. I ship interfaces for blogs, private archives, and multimedia moodboards. When you can't rely on dark patterns, the UX has to actually work.",
-    tags: ["Next.js", "TypeScript", "React"],
-    stack: ["Next.js", "TypeScript", "React"],
+    tags: ["React Native", "TypeScript", "Expo"],
+    stack: ["React Native", "TypeScript", "Expo"],
     startDate: "2024-06-01",
     caseStudySlug: "silk",
     links: {

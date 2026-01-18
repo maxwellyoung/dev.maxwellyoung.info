@@ -128,7 +128,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
       </section>
 
       {/* Content */}
-      <section className="px-6 max-w-3xl mx-auto space-y-16 pb-24">
+      <section className="px-6 max-w-3xl mx-auto space-y-16 pb-32">
         {/* Overview */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
