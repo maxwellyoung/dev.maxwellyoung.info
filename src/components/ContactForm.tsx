@@ -29,14 +29,18 @@ export function ContactForm() {
       });
 
       if (res.ok) {
+        const data = await res.json();
         setFormState("success");
         playSound("success");
         setFormData({ name: "", email: "", message: "" });
         setTimeout(() => setFormState("idle"), 3000);
       } else {
-        throw new Error("Failed to send");
+        const errorData = await res.json().catch(() => ({ error: "Failed to send message" }));
+        console.error("Contact form error:", errorData);
+        throw new Error(errorData.error || "Failed to send");
       }
-    } catch {
+    } catch (error) {
+      console.error("Contact form submission error:", error);
       setFormState("error");
       setTimeout(() => setFormState("idle"), 3000);
     }
@@ -51,7 +55,7 @@ export function ContactForm() {
   return (
     <motion.form
       onSubmit={handleSubmit}
-      className="space-y-4"
+      className="space-y-4 px-1"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1 }}

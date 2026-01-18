@@ -46,11 +46,23 @@ export async function POST(request: Request) {
       });
 
       if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        console.error("Resend API error:", errorData);
         throw new Error("Failed to send email");
       }
-    } else if (process.env.NODE_ENV === "development") {
-      // Log to console in development if no email service configured
-      console.log("Contact form submission:", { name, email, message });
+    } else {
+      // Return error if email service is not configured
+      if (process.env.NODE_ENV === "development") {
+        console.log("Contact form submission (no email service):", { name, email, message });
+        // In development, still return success for testing
+        return NextResponse.json({ success: true });
+      } else {
+        // In production, return error if email service is not configured
+        return NextResponse.json(
+          { error: "Email service is not configured" },
+          { status: 503 }
+        );
+      }
     }
 
     return NextResponse.json({ success: true });
