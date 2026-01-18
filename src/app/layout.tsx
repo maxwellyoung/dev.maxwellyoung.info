@@ -10,7 +10,6 @@ import ArtStyleMenu from "@/components/ArtStyleMenu";
 import LayoutDiagnostics from "@/components/LayoutDiagnostics";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { PageTransitionProvider } from "@/components/providers/PageTransitionProvider";
-import { CustomCursor } from "@/components/CustomCursor";
 import { CommandPalette, CommandPaletteHint } from "@/components/CommandPalette";
 import { EasterEggs } from "@/components/EasterEggs";
 // DotMatrix removed for cleaner backdrop
@@ -200,7 +199,6 @@ export default function RootLayout({
                   <div className="relative z-10">{children}</div>
                 </PageTransitionProvider>
               </SmoothScrollProvider>
-              <CustomCursor />
               <CommandPalette />
               <CommandPaletteHint />
               <EasterEggs />
