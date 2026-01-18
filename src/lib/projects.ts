@@ -89,6 +89,8 @@ export const projects: Project[] = [
       live: "https://www.silk.cx",
     },
     link: "https://www.silk.cx",
+    screenshots: ["/projectImages/silk-1.webp"],
+    thumb: "/projectImages/silk-1.webp",
   },
   {
     slug: "vape-quit-coach",
@@ -190,6 +192,28 @@ export const projects: Project[] = [
   },
 
   // ===== MORE WORK =====
+  {
+    slug: "dayle",
+    name: "Dayle Palfreyman — Artist Portfolio",
+    status: "Completed",
+    category: "studio",
+    role: "Lead",
+    featured: false,
+    priority: 4,
+    description:
+      "Portfolio for a video/projection artist. Sanity CMS with works, writing, and about sections.",
+    longDescription:
+      "Built for Dayle Palfreyman, a video and projection artist. Clean gallery aesthetic that lets the artwork lead. Sanity CMS for self-management, responsive media handling for video installations.",
+    tags: ["Next.js", "Sanity CMS", "Art", "Portfolio"],
+    stack: ["Next.js", "TypeScript", "Sanity", "Tailwind CSS"],
+    client: "Dayle Palfreyman",
+    links: {
+      live: "https://dayle.vercel.app",
+    },
+    link: "https://dayle.vercel.app",
+    screenshots: ["/projectImages/dayle-1.webp"],
+    thumb: "/projectImages/dayle-1.webp",
+  },
   {
     slug: "ivan-guzman",
     name: "Ivan Guzman — Writer & Cultural Strategist",
