@@ -53,8 +53,10 @@ export function GitHubStatus({ username = "maxwellyoung" }: { username?: string 
   }, [username]);
 
   return (
-    <AnimatedLink href={`https://github.com/${username}`} external>
-      GitHub{commitCount && commitCount > 20 ? ` · ${commitCount}` : ""}
-    </AnimatedLink>
+    <span title={commitCount ? `${commitCount} commits in the last 90 days` : undefined}>
+      <AnimatedLink href={`https://github.com/${username}`} external>
+        GitHub{commitCount && commitCount > 20 ? ` · ${commitCount}` : ""}
+      </AnimatedLink>
+    </span>
   );
 }
