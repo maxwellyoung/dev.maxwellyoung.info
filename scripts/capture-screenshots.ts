@@ -48,20 +48,20 @@ const screenshots: ScreenshotConfig[] = [
     viewport: { width: 390, height: 844 }, // iPhone 14 Pro
     delay: 1500,
   },
-  // Silk (public pages only)
+  // Silk app (birds.silk.cx is the actual app)
   {
-    name: "Silk - Landing",
-    url: "https://silk.cx",
+    name: "Silk App - Desktop",
+    url: "https://birds.silk.cx",
     filename: "silk-1.webp",
     viewport: { width: 1280, height: 800 },
-    delay: 2000,
+    delay: 2500,
   },
   {
-    name: "Silk - Mobile",
-    url: "https://silk.cx",
+    name: "Silk App - Mobile",
+    url: "https://birds.silk.cx",
     filename: "silk-2.webp",
     viewport: { width: 390, height: 844 },
-    delay: 1500,
+    delay: 2000,
   },
 ];
 
