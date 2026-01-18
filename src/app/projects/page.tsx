@@ -312,7 +312,7 @@ export default function ProjectsShowcase() {
         >
           <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
             {/* Thumbnail with hover glow */}
-            <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))] bg-muted transition-all duration-200 group-hover:ring-[hsl(var(--accent))]/40 group-hover:shadow-md">
+            <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-200 group-hover:ring-[hsl(var(--accent))]/40 group-hover:shadow-md">
               {p.screenshots?.[0] ? (
                 <Image
                   src={p.screenshots[0]}
