@@ -13,14 +13,9 @@ import { ChevronUp } from "lucide-react";
 import { GitHubActivity } from "@/components/GitHubActivity";
 import { NowPlaying } from "@/components/NowPlaying";
 import { ContactForm } from "@/components/ContactForm";
-import dynamic from "next/dynamic";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { container, item, spring, duration, ease } from "@/lib/motion";
 
-const Hero3D = dynamic(() => import("@/components/Hero3D").then(mod => ({ default: mod.Hero3D })), {
-  ssr: false,
-  loading: () => null,
-});
 
 export default function Home() {
   const [isHovered, setIsHovered] = useState(false);
@@ -46,8 +41,13 @@ export default function Home() {
 
   useEffect(() => {
     // Set theme based on system preference
+    // Use requestAnimationFrame to ensure component is mounted
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    setTheme(mediaQuery.matches ? "dark" : "light");
+
+    // Defer initial theme set to avoid state update before mount
+    requestAnimationFrame(() => {
+      setTheme(mediaQuery.matches ? "dark" : "light");
+    });
 
     const onChange = (e: MediaQueryListEvent) => setTheme(e.matches ? "dark" : "light");
     try {
@@ -77,9 +77,6 @@ export default function Home() {
           initial="hidden"
           animate="visible"
         >
-          {/* 3D floating element */}
-          <Hero3D />
-
           <motion.header className="mb-12 w-full" variants={item.fadeUp}>
             <div className="flex items-center justify-between">
               <Link
@@ -123,50 +120,35 @@ export default function Home() {
                 animate={isHovered ? "visible" : "hidden"}
                 transition={spring.gentle}
               >
-                Software that knows when to shut up
+                Software that knows when to shut up.
               </motion.p>
             </div>
           </motion.header>
 
           <div className="leading-relaxed space-y-4">
-            {/* Thesis */}
-            <motion.p className="text-foreground text-lg" variants={item.fadeUp}>
-              Most software is noise. I build the other kind—tools that reduce psychic load, interfaces that disappear into use, things that feel inevitable in hindsight. If you think dashboards should have more features, we probably shouldn&apos;t work together.
-            </motion.p>
-
-            {/* What I&apos;m doing now */}
-            <motion.p className="text-muted-foreground" variants={item.fadeUp}>
-              <span className="text-foreground font-medium">Now:</span>{" "}
-              Frontend at{" "}
+            {/* What I do + Now */}
+            <motion.p className="text-foreground" variants={item.fadeUp}>
+              Design Engineer at{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-              {" "}(blogs, archives, moodboards for people who miss the handmade web). Solo building{" "}
+              . Also shipping{" "}
               <AnimatedLink href="https://vapequitcoach.com" external>Vape Quit Coach</AnimatedLink>
-              {" "}(quitting through architecture, not willpower).
+              {" "}solo (iOS, 4.8★).
             </motion.p>
 
-            {/* The weird stuff */}
-            <motion.p className="text-muted-foreground" variants={item.fadeUp}>
-              I also make{" "}
-              <AnimatedLink href="https://music.maxwellyoung.info" external>music</AnimatedLink>
-              {" "}and{" "}
-              <AnimatedLink href="https://jeremy-blake.vercel.app/" external>WebGL art</AnimatedLink>
-              . Code is a medium. Performance is a creative constraint. The smoothness of an interaction is inseparable from its emotional effect.
-            </motion.p>
-
-            {/* Trajectory */}
-            <motion.p className="text-muted-foreground text-sm border-l-2 border-accent/30 pl-3" variants={item.fadeUp}>
-              <span className="text-foreground/70">Drawn to:</span> research contexts, health interfaces, tools for memory.{" "}
-              <span className="text-foreground/70">Less interested in:</span> dashboards that mistake features for value.
-            </motion.p>
+            {/* Principles - filters in/out */}
+            <motion.ul className="text-muted-foreground text-sm space-y-1 border-l border-border pl-3" variants={item.fadeUp}>
+              <li>No infinite scroll. No dark patterns. No engagement tricks.</li>
+              <li>Fewer features, sharper tools.</li>
+              <li>If the UI needs guilt to work, the design failed.</li>
+            </motion.ul>
 
             {/* CTA */}
-            <motion.div className="pt-4 pb-2" variants={item.fadeUp}>
+            <motion.div className="pt-2" variants={item.fadeUp}>
               <AccentLink
                 href="mailto:maxwell@ninetynine.digital"
                 external
-                className="text-lg"
               >
-                If any of this resonates, let&apos;s talk
+                Available for work
               </AccentLink>
             </motion.div>
 

@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { motion, useSpring, MotionProps } from "framer-motion";
-import { Project } from "@/lib/projectsData";
+import { Project } from "@/lib/projects";
 
 interface ProjectCardProps {
   project: Project;

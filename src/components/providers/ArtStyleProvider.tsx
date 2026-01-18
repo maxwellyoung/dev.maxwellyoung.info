@@ -131,14 +131,22 @@ export default function ArtStyleProvider({
           try {
             const parsed = JSON.parse(gen) as GeneratedStyle[];
             setGeneratedStyles(parsed);
-          } catch {}
+          } catch (e) {
+            if (process.env.NODE_ENV === "development") {
+              console.warn("ArtStyleProvider: Failed to parse generated styles", e);
+            }
+          }
         }
         const pinned = localStorage.getItem("art-style-pinned");
         if (pinned) {
           try {
             const parsed = JSON.parse(pinned) as GeneratedStyle[];
             setPinnedStyles(parsed);
-          } catch {}
+          } catch (e) {
+            if (process.env.NODE_ENV === "development") {
+              console.warn("ArtStyleProvider: Failed to parse pinned styles", e);
+            }
+          }
         }
         const activeId = localStorage.getItem("art-style-active-generated");
         if (activeId) setActiveGeneratedId(activeId);
@@ -158,12 +166,20 @@ export default function ArtStyleProvider({
               setStyle("ai");
             }
           }
-        } catch {}
+        } catch (e) {
+          if (process.env.NODE_ENV === "development") {
+            console.warn("ArtStyleProvider: Failed to parse URL hash", e);
+          }
+        }
       } else if (typeof window !== "undefined" && window.innerWidth < 768) {
         // prefer no background by default on small screens
         setStyle("default");
       }
-    } catch {}
+    } catch (e) {
+      if (process.env.NODE_ENV === "development") {
+        console.warn("ArtStyleProvider: Failed to hydrate from localStorage", e);
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -183,7 +199,11 @@ export default function ArtStyleProvider({
         localStorage.removeItem("art-style-active-generated");
       }
       // no default selection persisted
-    } catch {}
+    } catch (e) {
+      if (process.env.NODE_ENV === "development") {
+        console.warn("ArtStyleProvider: Failed to persist to localStorage", e);
+      }
+    }
   }, [style, customPrompt, generatedStyles, pinnedStyles, activeGeneratedId]);
 
   // keyboard toggle: Cmd/Ctrl + Shift + A

@@ -54,7 +54,7 @@ function Shelf({ label, items, onSelect }: ShelfProps) {
               onClick={() => onSelect(p)}
               className="min-w-[420px] snap-start group text-left"
             >
-              <figure className="relative aspect-[4/3] overflow-hidden rounded-sm border border-[var(--surface)] transition-transform duration-150 ease-[var(--ease-brand)] group-hover:-translate-y-[2px] group-hover:scale-[1.01]">
+              <figure className="relative aspect-[4/3] overflow-hidden rounded-sm border border-[var(--surface)] transition-transform duration-150 ease-brand group-hover:-translate-y-[2px] group-hover:scale-[1.01]">
                 <ImageWithFallback
                   src={(p.thumb || p.screenshots?.[0]) as string | undefined}
                   alt={p.name}
@@ -81,7 +81,7 @@ function Shelf({ label, items, onSelect }: ShelfProps) {
               href={`/projects/${p.slug}`}
               className="min-w-[420px] snap-start group"
             >
-              <figure className="relative aspect-[4/3] overflow-hidden rounded-sm border border-[var(--surface)] transition-transform duration-150 ease-[var(--ease-brand)] group-hover:-translate-y-[2px] group-hover:scale-[1.01]">
+              <figure className="relative aspect-[4/3] overflow-hidden rounded-sm border border-[var(--surface)] transition-transform duration-150 ease-brand group-hover:-translate-y-[2px] group-hover:scale-[1.01]">
                 <ImageWithFallback
                   src={(p.thumb || p.screenshots?.[0]) as string | undefined}
                   alt={p.name}

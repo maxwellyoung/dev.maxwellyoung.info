@@ -22,7 +22,8 @@ interface AnimatedLinkProps extends LinkProps {
 export const AnimatedLink = forwardRef<HTMLAnchorElement, AnimatedLinkProps>(
   ({ children, className, external, ...props }, ref) => {
     const baseClasses = cn(
-      "relative inline-block text-muted-foreground transition-colors duration-150",
+      "relative inline-block text-muted-foreground no-underline transition-colors duration-150",
+      "hover:no-underline",
       "hover:text-foreground",
       "after:absolute after:bottom-0 after:left-0 after:h-px",
       "after:w-full after:origin-left after:scale-x-0",
@@ -70,7 +71,8 @@ export const AccentLink = forwardRef<HTMLAnchorElement, AccentLinkProps>(
   ({ children, className, arrow = true, external, ...props }, ref) => {
     const baseClasses = cn(
       "group inline-flex items-center gap-1.5",
-      "text-foreground transition-colors duration-150",
+      "text-foreground no-underline transition-colors duration-150",
+      "hover:no-underline",
       "hover:text-accent",
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2",
       className

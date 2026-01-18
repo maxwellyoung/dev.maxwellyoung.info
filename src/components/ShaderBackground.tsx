@@ -65,8 +65,9 @@ export default function ShaderBackground({
       gl.shaderSource(shader, source);
       gl.compileShader(shader);
       if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        const info = gl.getShaderInfoLog(shader) || "";
-        console.warn("Shader compile error:", info);
+        if (process.env.NODE_ENV === "development") {
+          console.warn("Shader compile error:", gl.getShaderInfoLog(shader));
+        }
         gl.deleteShader(shader);
         return null;
       }
@@ -83,7 +84,9 @@ export default function ShaderBackground({
       gl.attachShader(program, fs);
       gl.linkProgram(program);
       if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        console.warn("Program link error:", gl.getProgramInfoLog(program));
+        if (process.env.NODE_ENV === "development") {
+          console.warn("Program link error:", gl.getProgramInfoLog(program));
+        }
         return null;
       }
       return program;

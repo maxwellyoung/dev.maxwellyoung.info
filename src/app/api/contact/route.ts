@@ -48,8 +48,8 @@ export async function POST(request: Request) {
       if (!res.ok) {
         throw new Error("Failed to send email");
       }
-    } else {
-      // Log to console if no email service configured
+    } else if (process.env.NODE_ENV === "development") {
+      // Log to console in development if no email service configured
       console.log("Contact form submission:", { name, email, message });
     }
 

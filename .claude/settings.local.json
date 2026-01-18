@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(npm run build:*)",
+      "Bash(ls:*)",
+      "Bash(npm install:*)",
+      "Bash(npm cache clean:*)",
+      "Bash(yarn --version)",
+      "Bash(yarn add:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "WebFetch(domain:silk.cx)",
+      "Bash(npm run lint:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npx tsc:*)",
+      "Bash(pnpm install:*)",
+      "Bash(npx next lint:*)",
+      "Bash(pnpm exec next lint:*)",
+      "Bash(timeout 10 npm run dev:*)",
+      "Bash(pnpm build:*)",
+      "Bash(grep:*)",
+      "Bash(timeout 15 pnpm dev:*)",
+      "Bash(curl:*)",
+      "WebFetch(domain:music.maxwellyoung.info)",
+      "Bash(pnpm lint:*)"
+    ]
+  }
+}

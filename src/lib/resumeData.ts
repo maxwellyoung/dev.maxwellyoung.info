@@ -58,11 +58,10 @@ export const resumeData: ResumeData = {
       company: "Silk",
       date: "Jun 2024 – Present",
       summary:
-        "Building interfaces for a blogging and curation platform focused on organic internet culture.",
+        "React Native frontend for a blogging platform that rejects engagement metrics.",
       responsibilities: [
-        "Developing React/Next.js interfaces for blogs, archives, and multimedia moodboards.",
-        "Collaborating on product decisions that prioritize user agency over engagement metrics.",
-        "Shipping features that help users collect and share content without algorithmic interference.",
+        "Built interfaces for blogs, archives, and moodboards—no infinite scroll, no algorithmic feed.",
+        "Shipped multimedia upload and private archive features across iOS/Android/web.",
       ],
     },
     {
@@ -70,11 +69,10 @@ export const resumeData: ResumeData = {
       company: "Auckland University of Technology",
       date: "Jan – Mar 2025",
       summary:
-        "Prototyped mobile interfaces for AI-driven sleep stage classification research.",
+        "Prototyped mobile UI for AI-driven sleep research. Problem: ML outputs uncertainty that scares users.",
       responsibilities: [
-        "Designed React Native UI that communicates ML uncertainty without causing user anxiety.",
-        "Created data visualizations that make complex sleep metrics understandable to non-experts.",
-        "Contributed to research on explainable AI in personal health contexts.",
+        "Designed visualizations that communicate prediction confidence without triggering health anxiety.",
+        "Contributed to explainable AI research—how to show 'the model isn't sure' without eroding trust.",
       ],
     },
     {
@@ -82,12 +80,11 @@ export const resumeData: ResumeData = {
       company: "Freelance (ninetynine.digital)",
       date: "Apr 2023 – Present",
       summary:
-        "End-to-end design and development for clients across fashion, food, and tech.",
+        "Solo design + dev for clients in fashion, food, and tech. 6+ sites shipped.",
       responsibilities: [
-        "Shipped 6+ client sites including ecommerce (Shopify) and portfolios (Next.js, Sanity).",
-        "Built Vape Quit Coach iOS app solo — 4.8★ rating, behavioral design approach.",
-        "Reduced Goodness Gracious bakery site load time by 40% through performance optimization.",
-        "Established ongoing relationships through clear communication and reliable delivery.",
+        "Vape Quit Coach (iOS): solo-built, 4.8★. Refused guilt mechanics—used behavioral architecture instead.",
+        "Goodness Gracious (Shopify): 40% faster load time via image optimization and CLS fixes.",
+        "Ch'lita (Next.js/Sanity): zero-layout-shift portfolio for a stylist with major-label clients.",
       ],
     },
     {
@@ -95,12 +92,10 @@ export const resumeData: ResumeData = {
       company: "Spark New Zealand",
       date: "Nov 2022 – Apr 2023",
       summary:
-        "Designed and built internal analytics dashboard used by 50+ data analysts.",
+        "Internal analytics dashboard for 50+ data analysts. Consolidated 4 tools → 1.",
       responsibilities: [
-        "Rebuilt Power BI workflows as a React/Next.js application with improved UX.",
-        "Created Figma design system that reduced design-to-dev handoff friction.",
-        "Reduced analyst time-to-insight by consolidating 4 tools into one unified interface.",
-        "Collaborated with product and data teams in agile ceremonies and pair programming.",
+        "Replaced Power BI workflows with React/Next.js app—faster iteration, better UX.",
+        "Built Figma design system that cut design-to-dev handoff time.",
       ],
     },
   ],

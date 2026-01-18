@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import GlassCard from "@/components/GlassCard";
 import { resumeData } from "@/lib/resumeData";
-import { projects as allProjects } from "@/lib/projectsData";
+import { projects as allProjects } from "@/lib/projects";
 
 export default function InternInfo() {
   const contacts = [

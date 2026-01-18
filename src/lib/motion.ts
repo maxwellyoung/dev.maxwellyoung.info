@@ -240,15 +240,44 @@ export const tap = {
 } as const;
 
 // Reduced motion utilities
+// Note: For reactive reduced motion detection in React components,
+// use Framer Motion's useReducedMotion() hook instead of this static check.
+// This static check is only for non-React contexts or SSR.
 export const prefersReducedMotion =
   typeof window !== "undefined"
     ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
     : false;
 
+/**
+ * Creates a reactive reduced motion check.
+ * For React components, prefer Framer Motion's useReducedMotion() hook.
+ * This is for vanilla JS contexts that need reactive updates.
+ */
+export function createReducedMotionListener(
+  callback: (prefersReduced: boolean) => void
+): () => void {
+  if (typeof window === "undefined") {
+    return () => {};
+  }
+
+  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const handler = (event: MediaQueryListEvent) => callback(event.matches);
+
+  // Initial call
+  callback(mediaQuery.matches);
+
+  // Listen for changes
+  mediaQuery.addEventListener("change", handler);
+
+  // Return cleanup function
+  return () => mediaQuery.removeEventListener("change", handler);
+}
+
 export function withReducedMotion<T extends object>(
-  config: T
+  config: T,
+  reduced = prefersReducedMotion
 ): T | { duration: 0 } {
-  if (prefersReducedMotion) {
+  if (reduced) {
     return { duration: 0 };
   }
   return config;
@@ -268,9 +297,18 @@ export const reducedMotion = {
   },
 } as const;
 
-// Helper to get appropriate variants
-export function getVariants(variant: keyof typeof item) {
-  return prefersReducedMotion ? reducedMotion.fade : item[variant];
+/**
+ * Helper to get appropriate variants based on reduced motion preference.
+ * For React components, pass the result of useReducedMotion() as the second arg.
+ * @example
+ * const shouldReduceMotion = useReducedMotion();
+ * const variants = getVariants('fadeUp', shouldReduceMotion);
+ */
+export function getVariants(
+  variant: keyof typeof item,
+  reduced = prefersReducedMotion
+) {
+  return reduced ? reducedMotion.fade : item[variant];
 }
 
 // Layout animation helpers
