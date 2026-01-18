@@ -17,22 +17,32 @@ import { EasterEggs } from "@/components/EasterEggs";
 // fonts are loaded via globals.css
 
 export const metadata: Metadata = {
-  title: "Maxwell Young | Design Engineer",
+  title: "Maxwell Young | Design Engineer | Auckland, NZ",
   description:
-    "Design engineer building software that outlasts its stack. Tools for memory, behavior change, and quiet interactions. React, TypeScript, React Native. Currently at Silk. Open to opportunities.",
+    "Design engineer specializing in React, React Native, and TypeScript. 3+ years shipping production apps. Currently at Silk, previously Spark NZ. Available for frontend, mobile, and full-stack roles in Auckland or remote.",
   metadataBase: new URL("https://dev.maxwellyoung.info"),
   keywords: [
-    "design engineer",
-    "product design",
+    // Job-hunting keywords
+    "design engineer Auckland",
+    "frontend developer New Zealand",
+    "React Native developer NZ",
+    "mobile developer Auckland",
+    "TypeScript developer",
+    "frontend engineer hire",
+    // Technical skills
     "React",
+    "React Native",
     "TypeScript",
     "Next.js",
-    "React Native",
-    "frontend development",
-    "Auckland",
-    "New Zealand",
+    "Expo",
+    "Node.js",
+    "Tailwind CSS",
+    // Context
     "Silk",
+    "Spark New Zealand",
     "ninetynine.digital",
+    "portfolio",
+    "software engineer",
   ],
   authors: [{ name: "Maxwell Young" }],
   creator: "Maxwell Young",
@@ -53,11 +63,11 @@ export const metadata: Metadata = {
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "Maxwell Young | Design Engineer",
+    title: "Maxwell Young | Design Engineer | Auckland, NZ",
     description:
-      "Design engineer building software that outlasts its stack. React, TypeScript, React Native. Open to opportunities.",
+      "Frontend & mobile engineer. React, React Native, TypeScript. 4.8★ solo iOS app. Currently at Silk. Available for roles in Auckland or remote.",
     url: "https://dev.maxwellyoung.info",
-    siteName: "Maxwell Young",
+    siteName: "Maxwell Young - Portfolio",
     locale: "en_NZ",
     type: "website",
     images: [
@@ -65,15 +75,15 @@ export const metadata: Metadata = {
         url: "/meta.png",
         width: 1200,
         height: 630,
-        alt: "Maxwell Young - Design Engineer",
+        alt: "Maxwell Young - Design Engineer based in Auckland, New Zealand",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Maxwell Young | Design Engineer",
+    title: "Maxwell Young | Design Engineer | Auckland",
     description:
-      "Design engineer building software that outlasts its stack. React, TypeScript, React Native. Open to opportunities.",
+      "Frontend & mobile engineer. React, React Native, TypeScript. 4.8★ solo iOS app. Available for roles.",
     images: ["/meta.png"],
     creator: "@internetmaxwell",
   },
