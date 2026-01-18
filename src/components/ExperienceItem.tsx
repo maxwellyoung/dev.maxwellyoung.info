@@ -1,6 +1,7 @@
 interface ExperienceItemProps {
   title: string;
   company: string;
+  companyHref?: string;
   date: string;
   responsibilities: string[];
   metric?: string; // optional, render only if provided
@@ -10,6 +11,7 @@ interface ExperienceItemProps {
 export function ExperienceItem({
   title,
   company,
+  companyHref,
   date,
   responsibilities,
   metric,
@@ -21,7 +23,18 @@ export function ExperienceItem({
         <span className="resume-label">{title}</span>
       </div>
       <span className="block text-sm font-normal text-muted-foreground font-inter">
-        {company}
+        {companyHref ? (
+          <a
+            href={companyHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline focus-visible:underline focus-visible:outline-none"
+          >
+            {company}
+          </a>
+        ) : (
+          company
+        )}
       </span>
       <span className="block text-xs font-normal text-muted-foreground/70 font-inter">
         {date}

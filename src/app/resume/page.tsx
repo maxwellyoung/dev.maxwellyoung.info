@@ -256,6 +256,7 @@ export default function Resume() {
                 key={`${item.title}-${index}`}
                 title={item.title}
                 company={item.company}
+                companyHref={item.companyHref}
                 date={item.date}
                 responsibilities={item.responsibilities}
                 metric={item.metric}
@@ -273,6 +274,7 @@ export default function Resume() {
                 key={`${item.degree}-${index}`}
                 degree={item.degree}
                 institution={item.institution}
+                institutionHref={item.institutionHref}
                 date={item.date}
               />
             ))}
