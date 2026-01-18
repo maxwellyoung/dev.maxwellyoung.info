@@ -11,6 +11,7 @@ import { useKonamiCode } from "@/hooks/useKonamiCode";
 import { AnimatedLink, AccentLink } from "@/components/ui/animated-link";
 import { ChevronUp } from "lucide-react";
 import { GitHubActivity } from "@/components/GitHubActivity";
+import { GitHubStatus } from "@/components/GitHubStatus";
 import { NowPlaying } from "@/components/NowPlaying";
 import { ContactForm } from "@/components/ContactForm";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -160,7 +161,7 @@ export default function Home() {
               <span className="text-border">·</span>
               <AnimatedLink href="#resume">Resume</AnimatedLink>
               <span className="text-border">·</span>
-              <AnimatedLink href="https://github.com/maxwellyoung" external>GitHub</AnimatedLink>
+              <GitHubStatus />
               <span className="text-border">·</span>
               <AnimatedLink href="https://linkedin.com/in/maxwell-young-a55032125" external>LinkedIn</AnimatedLink>
             </motion.p>

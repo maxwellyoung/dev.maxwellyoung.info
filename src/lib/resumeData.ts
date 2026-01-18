@@ -36,7 +36,7 @@ export const resumeData: ResumeData = {
   },
   selectedWork: [
     {
-      title: "Silk — Frontend Engineer",
+      title: "Silk — Mobile Design Engineer",
       href: "https://silk.cx",
     },
     {
@@ -54,7 +54,7 @@ export const resumeData: ResumeData = {
   ],
   experience: [
     {
-      title: "Frontend Engineer",
+      title: "Mobile Design Engineer",
       company: "Silk",
       date: "Jun 2024 – Present",
       summary:
