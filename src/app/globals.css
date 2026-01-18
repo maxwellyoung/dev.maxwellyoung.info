@@ -66,7 +66,7 @@
     --secondary: 220 10% 10%;
     --secondary-foreground: 0 0% 90%;
     --muted: 220 10% 12%;
-    --muted-foreground: 220 5% 55%;
+    --muted-foreground: 220 5% 63%; /* Increased for WCAG AA contrast */
     /* Peter Saville red - brighter for dark mode */
     --accent: 355 78% 58%;
     --accent-foreground: 0 0% 100%;
@@ -146,9 +146,7 @@
 
 /* Links - understated, functional */
 a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  text-decoration-thickness: 1px;
+  text-decoration: none;
 }
 
 hr {
@@ -170,6 +168,7 @@ hr {
 @layer base {
   :root {
     --font-roboto-mono: "Roboto Mono", monospace;
+    --font-inter: var(--font-general-sans);
     --font-sans: var(--font-general-sans), ui-sans-serif, system-ui,
       -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial,
       "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";

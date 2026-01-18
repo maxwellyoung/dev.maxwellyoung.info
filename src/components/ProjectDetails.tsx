@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Github, FileText } from "lucide-react";
-import { Project } from "@/lib/projectsData";
+import { Project } from "@/lib/projects";
+import { spring } from "@/lib/motion";
 
 interface ProjectDetailsProps {
   project: Project | null;
@@ -31,12 +32,7 @@ export function ProjectDetails({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 30,
-            mass: 0.8,
-          }}
+          transition={spring.gentle}
           className="bg-[hsl(var(--card))] rounded-xl p-4 sm:p-6 border border-[hsl(var(--border))]"
         >
           {project.screenshots && project.screenshots.length > 0 && (

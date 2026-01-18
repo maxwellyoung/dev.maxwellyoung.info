@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import Head from "next/head";
 import { useCallback, useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { resumeData } from "@/lib/resumeData";
@@ -51,25 +49,24 @@ export default function Resume() {
 
   return (
     <div className="relative w-full p-6 flex flex-col items-center">
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Maxwell Young",
-              jobTitle: "Design Engineer",
-              url: "https://dev.maxwellyoung.info/",
-              email: "mailto:maxtheyoung@gmail.com",
-              sameAs: [
-                "https://github.com/maxwellyoung",
-                "https://www.linkedin.com/in/maxwell-young-a55032125/",
-              ],
-            }),
-          }}
-        />
-      </Head>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Maxwell Young",
+            jobTitle: "Design Engineer",
+            url: "https://dev.maxwellyoung.info/",
+            email: "mailto:maxwell@ninetynine.digital",
+            sameAs: [
+              "https://github.com/maxwellyoung",
+              "https://www.linkedin.com/in/maxwell-young-a55032125/",
+            ],
+          }),
+        }}
+      />
       <div className="container-grid w-full">
         {/* header */}
         <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
@@ -191,7 +188,7 @@ export default function Resume() {
                 date={item.date}
                 responsibilities={item.responsibilities}
                 metric={item.metric}
-                summary={(item as any).summary}
+                summary={item.summary}
               />
             ))}
 

@@ -18,24 +18,35 @@ export function NowPlaying() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+
     async function fetchNowPlaying() {
       try {
-        const res = await fetch("/api/spotify/now-playing");
-        if (res.ok) {
+        const res = await fetch("/api/spotify/now-playing", {
+          signal: controller.signal,
+        });
+        if (res.ok && isMounted) {
           const data = await res.json();
           setTrack(data.isPlaying ? data : null);
         }
-      } catch {
+      } catch (e) {
         // Silently fail - widget just won't show
+        // Ignore abort errors
+        if (e instanceof Error && e.name === "AbortError") return;
       } finally {
-        setLoading(false);
+        if (isMounted) setLoading(false);
       }
     }
 
     fetchNowPlaying();
     // Poll every 30 seconds
     const interval = setInterval(fetchNowPlaying, 30000);
-    return () => clearInterval(interval);
+    return () => {
+      isMounted = false;
+      controller.abort();
+      clearInterval(interval);
+    };
   }, []);
 
   // Don't show anything while loading or if not playing

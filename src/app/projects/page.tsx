@@ -10,7 +10,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Carousel from "@/components/Carousel";
-import { Project, projects } from "@/lib/projectsData";
+import { Project, projects } from "@/lib/projects";
 import { ProjectDetails } from "@/components/ProjectDetails";
 import { ChevronDown, Star } from "lucide-react";
 import { container, item, spring } from "@/lib/motion";
@@ -130,21 +130,33 @@ export default function ProjectsShowcase() {
       ? filtered.find((p) => p.name === expandedProject) || null
       : null;
 
-  const researchProjects = useMemo(
-    () => filtered.filter((p) => p.category === "research"),
+  // Hero projects: the spine - always visible, never sorted/filtered
+  const heroSlugs = ["silk", "vape-quit-coach"];
+  const heroProjects = useMemo(
+    () => projects.filter((p) => heroSlugs.includes(p.slug)),
+    []
+  );
+
+  // Everything else is filterable/sortable
+  const filterableProjects = useMemo(
+    () => filtered.filter((p) => !heroSlugs.includes(p.slug)),
     [filtered]
   );
 
+  // Client/studio work: evidence of taste + execution
   const studioProjects = useMemo(
-    () => filtered.filter((p) => p.category === "studio"),
-    [filtered]
+    () => filterableProjects.filter((p) => p.category === "studio"),
+    [filterableProjects]
   );
 
-  const personalProjects = useMemo(
-    () => filtered.filter((p) => p.category === "personal"),
-    [filtered]
+  // Experiments: playgrounds, not co-equals
+  const experimentProjects = useMemo(
+    () => filterableProjects.filter((p) => p.category === "personal"),
+    [filterableProjects]
   );
-  const isEmpty = filtered.length === 0;
+
+  // Only show "no results" if filterable projects are empty (hero always shows)
+  const isFilterableEmpty = filterableProjects.length === 0 && (query || activeFilters.length > 0);
 
   const resetFilters = () => {
     setQuery("");
@@ -170,7 +182,102 @@ export default function ProjectsShowcase() {
     return "bg-[hsl(var(--muted))] text-muted-foreground";
   };
 
-  // Reusable project row component with all the delightful touches
+  // Hero project card: larger, more dominant, text-led
+  const HeroProjectCard = ({ p }: { p: Project }) => {
+    const isExpanded = expandedProject === p.name;
+
+    return (
+      <motion.article
+        layout
+        variants={item.fadeUp}
+        className="group"
+      >
+        <button
+          onClick={(e) => {
+            setExpandedProject(isExpanded ? null : p.name);
+            e.currentTarget.parentElement?.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }}
+          className={`
+            w-full text-left p-6 rounded-lg
+            transition-all duration-200 ease-out
+            hover:bg-[hsl(var(--muted))]/50
+            active:scale-[0.995]
+            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
+            border
+            ${isExpanded
+              ? "border-[hsl(var(--accent))]/50 bg-[hsl(var(--muted))]/30"
+              : "border-[hsl(var(--border))]"
+            }
+          `}
+        >
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-2">
+                <h3 className="text-lg font-medium text-foreground">
+                  {p.name}
+                </h3>
+                {p.status === "Active" && (
+                  <span className="px-2 py-0.5 text-[10px] font-medium rounded-full bg-accent/10 text-accent border border-accent/20">
+                    Active
+                  </span>
+                )}
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {p.description}
+              </p>
+              {p.stack && (
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {p.stack.slice(0, 4).map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-0.5 text-[10px] rounded-full bg-[hsl(var(--muted))] text-muted-foreground"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+            <motion.div
+              animate={{ rotate: isExpanded ? 180 : 0 }}
+              transition={spring.snappy}
+              className="flex-shrink-0 text-muted-foreground/50 group-hover:text-muted-foreground transition-colors mt-1"
+            >
+              <ChevronDown className="h-5 w-5" />
+            </motion.div>
+          </div>
+        </button>
+
+        <AnimatePresence initial={false}>
+          {isExpanded && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={spring.gentle}
+              className="px-1 pb-4 overflow-hidden"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ ...spring.gentle, delay: 0.05 }}
+              >
+                <ProjectDetails
+                  project={p}
+                  onCarouselOpen={() => setIsCarouselOpen(true)}
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.article>
+    );
+  };
+
+  // Compact project row for client work and experiments
   const ProjectRow = ({ p }: { p: Project }) => {
     const isExpanded = expandedProject === p.name;
     const statusLabel = getStatusLabel(p.status);
@@ -288,10 +395,7 @@ export default function ProjectsShowcase() {
   };
 
   return (
-    <div
-      className="min-h-screen text-foreground font-sans"
-      tabIndex={0}
-    >
+    <div className="min-h-screen text-foreground font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 overflow-x-hidden">
         {/* Search and filters */}
         <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-3 mb-8">
@@ -362,9 +466,32 @@ export default function ProjectsShowcase() {
           </div>
         </div>
 
-        {/* Project lists */}
+        {/* Act I & II: The Spine - Always visible, never filtered */}
+        {heroProjects.length > 0 && (
+          <section aria-label="featured work" className="overflow-x-hidden w-full max-w-full mb-12">
+            <motion.div
+              variants={container.list}
+              initial="hidden"
+              animate="visible"
+              className="space-y-4"
+            >
+              {heroProjects.map((p) => (
+                <HeroProjectCard key={p.name} p={p} />
+              ))}
+            </motion.div>
+          </section>
+        )}
+
+        {/* Screen reader announcement for filter results */}
+        <div className="sr-only" aria-live="polite" aria-atomic="true">
+          {isFilterableEmpty
+            ? "No projects match your filters"
+            : `Showing ${filterableProjects.length} additional project${filterableProjects.length === 1 ? "" : "s"}`}
+        </div>
+
+        {/* Filterable project lists */}
         <div className="space-y-12">
-          {isEmpty ? (
+          {isFilterableEmpty ? (
             <motion.section
               className="mt-10 grid place-items-center"
               variants={item.fade}
@@ -373,7 +500,7 @@ export default function ProjectsShowcase() {
             >
               <div className="text-center">
                 <p className="text-sm text-muted-foreground">
-                  No projects match your filters.
+                  No additional projects match your filters.
                 </p>
                 <div className="mt-4 flex items-center justify-center gap-2">
                   <button
@@ -393,54 +520,21 @@ export default function ProjectsShowcase() {
             </motion.section>
           ) : (
             <>
-              {researchProjects.length > 0 && (
-                <section aria-label="research and exploration" className="overflow-x-hidden w-full max-w-full">
-                  <h2 className="mb-4 flex items-center gap-3">
-                    <div className="flex gap-0.5">
-                      <div className="w-1 h-3 bg-accent" />
-                      <div className="w-1 h-3 bg-[hsl(210_80%_55%)]" />
-                    </div>
-                    <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/70 uppercase">
-                      research &amp; exploration
-                    </span>
-                    <span className="h-px flex-1 bg-border/50" />
-                  </h2>
-                  <motion.ul
-                    variants={container.list}
-                    initial="hidden"
-                    animate="visible"
-                    className="divide-y divide-[hsl(var(--border))] overflow-x-hidden w-full max-w-full"
-                  >
-                    {researchProjects.map((p) => (
-                      <ProjectRow key={p.name} p={p} />
-                    ))}
-                  </motion.ul>
-                </section>
-              )}
-
+              {/* Act III: Applied Craft - Client work */}
               {studioProjects.length > 0 && (
-                <section aria-label="studio work" className="overflow-x-hidden w-full max-w-full">
+                <section aria-label="client work" className="overflow-x-hidden w-full max-w-full">
                   <h2 className="mb-4 flex items-center gap-3">
-                    <div className="flex gap-0.5">
-                      <div className="w-1 h-3 bg-accent" />
-                    </div>
-                    <a
-                      href="https://www.ninetynine.digital"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/70 uppercase hover:text-foreground transition-colors"
-                    >
-                      ninetynine.digital
-                    </a>
-                    <span className="font-mono text-[10px] text-muted-foreground/40">·</span>
-                    <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/70 uppercase">client work</span>
-                    <span className="h-px flex-1 bg-border/50" />
+                    <div className="w-1 h-3 bg-border" />
+                    <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/50 uppercase">
+                      client work
+                    </span>
+                    <span className="h-px flex-1 bg-border/30" />
                   </h2>
                   <motion.ul
                     variants={container.list}
                     initial="hidden"
                     animate="visible"
-                    className="divide-y divide-[hsl(var(--border))] overflow-x-hidden w-full max-w-full"
+                    className="divide-y divide-[hsl(var(--border))]/50 overflow-x-hidden w-full max-w-full"
                   >
                     {studioProjects.map((p) => (
                       <ProjectRow key={p.name} p={p} />
@@ -449,24 +543,23 @@ export default function ProjectsShowcase() {
                 </section>
               )}
 
-              {personalProjects.length > 0 && (
-                <section aria-label="personal projects" className="overflow-x-hidden w-full max-w-full">
+              {/* Act IV: Playgrounds */}
+              {experimentProjects.length > 0 && (
+                <section aria-label="experiments" className="overflow-x-hidden w-full max-w-full">
                   <h2 className="mb-4 flex items-center gap-3">
-                    <div className="flex gap-0.5">
-                      <div className="w-1 h-3 bg-[hsl(210_80%_55%)]" />
-                    </div>
-                    <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/70 uppercase">
-                      personal projects
+                    <div className="w-1 h-3 bg-border/50" />
+                    <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/40 uppercase">
+                      experiments
                     </span>
-                    <span className="h-px flex-1 bg-border/50" />
+                    <span className="h-px flex-1 bg-border/20" />
                   </h2>
                   <motion.ul
                     variants={container.list}
                     initial="hidden"
                     animate="visible"
-                    className="divide-y divide-[hsl(var(--border))] overflow-x-hidden w-full max-w-full"
+                    className="divide-y divide-[hsl(var(--border))]/30 overflow-x-hidden w-full max-w-full opacity-80"
                   >
-                    {personalProjects.map((p) => (
+                    {experimentProjects.map((p) => (
                       <ProjectRow key={p.name} p={p} />
                     ))}
                   </motion.ul>

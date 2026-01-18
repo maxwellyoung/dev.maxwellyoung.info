@@ -121,6 +121,13 @@ export default function ShowcaseClient({ source }: ShowcaseClientProps) {
     setPreviewIndex(0);
   }, [selected?.slug]);
 
+  const scrollRowIntoView = useCallback((slug: string) => {
+    const el = rightListRef.current?.querySelector<HTMLLIElement>(
+      `[data-id="${slug}"]`
+    );
+    el?.scrollIntoView({ block: "nearest" });
+  }, []);
+
   // keyboard navigation: j/k or ArrowDown/ArrowUp, Enter opens gallery
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -144,14 +151,7 @@ export default function ShowcaseClient({ source }: ShowcaseClientProps) {
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [filtered, selected]);
-
-  const scrollRowIntoView = (slug: string) => {
-    const el = rightListRef.current?.querySelector<HTMLLIElement>(
-      `[data-id="${slug}"]`
-    );
-    el?.scrollIntoView({ block: "nearest" });
-  };
+  }, [filtered, selected, scrollRowIntoView]);
 
   const toggleFilter = (p: Pill) =>
     setActiveFilters((prev) =>
@@ -259,7 +259,7 @@ export default function ShowcaseClient({ source }: ShowcaseClientProps) {
                         <button
                           onClick={() => setSelected(p)}
                           className={
-                            "w-full text-left rounded-lg ring-1 px-3 py-[6px] text-[13px] transition ease-[var(--ease-brand)] duration-150 " +
+                            "w-full text-left rounded-lg ring-1 px-3 py-[6px] text-[13px] transition ease-brand duration-150 " +
                             (selected?.slug === p.slug
                               ? "ring-[hsl(var(--accent))]/60 bg-[hsl(var(--accent))]/10"
                               : "ring-[hsl(var(--border))] hover:bg-[hsl(var(--muted))]/40 focus-visible:ring-[hsl(var(--accent))]")
@@ -392,7 +392,7 @@ function FilterChip({
     <button
       onClick={onClick}
       className={
-        "h-8 px-3 rounded-full text-xs tracking-[0.08em] transition-colors duration-150 ease-[var(--ease-brand)] ring-1 ring-[hsl(var(--border))] " +
+        "h-8 px-3 rounded-full text-xs tracking-[0.08em] transition-colors duration-150 ease-brand ring-1 ring-[hsl(var(--border))] " +
         (active
           ? "bg-[hsl(var(--accent))] text-white ring-[hsl(var(--accent))]"
           : "text-[hsl(var(--foreground)/0.6)] hover:ring-[hsl(var(--accent))]/60")
@@ -467,14 +467,14 @@ function MetaRow({ p }: { p: Project }) {
   );
 }
 
-function Links({ p, onOpenVideo }: { p: Project; onOpenVideo: () => void }) {
-  const LinkA = ({
-    href,
-    children,
-  }: {
-    href: string;
-    children: React.ReactNode;
-  }) => (
+function ExternalLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
     <a
       className="underline underline-offset-2 decoration-[var(--accent)]/60 hover:decoration-[var(--accent)]"
       href={href}
@@ -484,10 +484,13 @@ function Links({ p, onOpenVideo }: { p: Project; onOpenVideo: () => void }) {
       {children}
     </a>
   );
+}
+
+function Links({ p, onOpenVideo }: { p: Project; onOpenVideo: () => void }) {
   return (
     <div className="mt-4 flex gap-4 text-sm">
-      {p.links?.live && <LinkA href={p.links.live}>live</LinkA>}
-      {p.links?.repo && <LinkA href={p.links.repo}>repo</LinkA>}
+      {p.links?.live && <ExternalLink href={p.links.live}>live</ExternalLink>}
+      {p.links?.repo && <ExternalLink href={p.links.repo}>repo</ExternalLink>}
       {p.links?.video && (
         <button className="underline underline-offset-2" onClick={onOpenVideo}>
           video

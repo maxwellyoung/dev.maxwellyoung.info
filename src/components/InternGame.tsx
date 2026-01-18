@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { resumeData } from "@/lib/resumeData";
-import { projects as allProjects } from "@/lib/projectsData";
+import { projects as allProjects } from "@/lib/projects";
 
 type InternGameProps = {
   maxDPR?: number;

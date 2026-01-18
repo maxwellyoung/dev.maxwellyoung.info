@@ -5,11 +5,11 @@ import {
   AnimatePresence,
   motion,
   useMotionValue,
-  useTransform,
 } from "framer-motion";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FastAverageColor } from "fast-average-color";
+import { spring } from "@/lib/motion";
 
 interface CarouselProps {
   images: string[];
@@ -36,8 +36,11 @@ export default function Carousel({ images, onClose }: CarouselProps) {
         .then((color) => {
           setIsDark(color.isDark);
         })
-        .catch(() => {
-          // Color extraction failed - use default
+        .catch((error) => {
+          // Color extraction failed - use default dark theme
+          if (process.env.NODE_ENV === "development") {
+            console.warn("Carousel: Color extraction failed", error);
+          }
         })
         .finally(() => {
           setIsLoading(false);
@@ -147,7 +150,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
             initial={{ opacity: 0, x: index > 0 ? 100 : -100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: index > 0 ? -100 : 100 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            transition={spring.snappy}
             className="absolute flex items-center justify-center h-full w-full"
           >
             <Image
