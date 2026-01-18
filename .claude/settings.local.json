@@ -26,7 +26,8 @@
       "Bash(curl:*)",
       "WebFetch(domain:music.maxwellyoung.info)",
       "Bash(pnpm lint:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(git rm:*)"
     ]
   }
 }

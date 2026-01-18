@@ -209,10 +209,15 @@ export async function generateResumeATSPDF(): Promise<Blob> {
     for (const proj of resumeDataATS.projects) {
       if (y > pageHeight - 60) break;
 
+      // Render project name and tech on same line properly
       setFont(9, "bold");
-      pdf.text(sanitize(proj.name), margin, y);
+      const projName = sanitize(proj.name);
+      const projNameWidth = pdf.getTextWidth(projName);
+      pdf.text(projName, margin, y);
+
       setFont(9, "normal", darkGray);
-      pdf.text(` (${sanitize(proj.tech)})`, margin + pdf.getTextWidth(proj.name), y);
+      const techText = ` | ${sanitize(proj.tech)}`;
+      pdf.text(techText, margin + projNameWidth, y);
       y += 12;
 
       setFont(9, "normal");

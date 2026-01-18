@@ -19,10 +19,18 @@ import {
   Copy,
   Check,
   Palette,
+  Download,
+  Zap,
+  BookOpen,
+  Smartphone,
+  Code2,
+  Layers,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { useArtStyle } from "@/components/providers/ArtStyleProvider";
+import { downloadResumePDF } from "@/lib/generateResumePDF";
+import { downloadResumeATSPDF } from "@/lib/generateResumeATSPDF";
 
 interface CommandItem {
   id: string;
@@ -73,7 +81,92 @@ export function CommandPalette() {
     setTimeout(() => setCopied(false), 2000);
   }, []);
 
+  // Surprise actions - pick random interesting thing
+  const triggerSurprise = useCallback(() => {
+    const surpriseActions = [
+      () => router.push("/case-study/spark"), // Technical case study
+      () => window.open("https://jeremy-blake.vercel.app/", "_blank"), // Interactive art
+      () => window.open("https://vapequitcoach.com", "_blank"), // Solo app
+      () => {
+        toggleShaderMenu();
+        setTimeout(() => {
+          window.dispatchEvent(new CustomEvent("trigger-easter-egg"));
+        }, 500);
+      },
+      () => router.push("/case-study/silk"),
+      () => window.open("https://chlita.com", "_blank"), // Client work
+    ];
+    const action = surpriseActions[Math.floor(Math.random() * surpriseActions.length)];
+    action();
+  }, [router, toggleShaderMenu]);
+
   const commands: CommandItem[] = [
+    // Featured - what you want hiring managers to see
+    {
+      id: "silk-case",
+      label: "Case Study: Silk",
+      icon: <Smartphone className="w-4 h-4" />,
+      action: () => router.push("/case-study/silk"),
+      keywords: ["silk", "mobile", "react native", "case study"],
+      group: "Featured Work",
+    },
+    {
+      id: "spark-case",
+      label: "Case Study: Spark Dashboard",
+      icon: <Layers className="w-4 h-4" />,
+      action: () => router.push("/case-study/spark"),
+      keywords: ["spark", "dashboard", "react", "performance", "technical"],
+      group: "Featured Work",
+    },
+    {
+      id: "vqc-case",
+      label: "Case Study: Vape Quit Coach",
+      icon: <Zap className="w-4 h-4" />,
+      action: () => router.push("/case-study/vape-quit-coach"),
+      keywords: ["vape", "quit", "coach", "ios", "app", "solo"],
+      group: "Featured Work",
+    },
+    {
+      id: "chlita-case",
+      label: "Case Study: Ch'lita",
+      icon: <BookOpen className="w-4 h-4" />,
+      action: () => router.push("/case-study/chlita"),
+      keywords: ["chlita", "fashion", "portfolio", "sanity"],
+      group: "Featured Work",
+    },
+    // Quick Actions
+    {
+      id: "download-resume",
+      label: "Download Resume (Standard)",
+      icon: <Download className="w-4 h-4" />,
+      action: () => downloadResumePDF(),
+      keywords: ["download", "resume", "pdf", "cv"],
+      group: "Quick Actions",
+    },
+    {
+      id: "download-resume-ats",
+      label: "Download Resume (ATS)",
+      icon: <FileText className="w-4 h-4" />,
+      action: () => downloadResumeATSPDF(),
+      keywords: ["download", "resume", "ats", "recruiter", "pdf"],
+      group: "Quick Actions",
+    },
+    {
+      id: "copy-email",
+      label: copied ? "Copied!" : "Copy Email",
+      icon: copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />,
+      action: copyEmail,
+      keywords: ["email", "contact", "copy", "hire"],
+      group: "Quick Actions",
+    },
+    {
+      id: "surprise",
+      label: "Surprise Me",
+      icon: <Sparkles className="w-4 h-4" />,
+      action: triggerSurprise,
+      keywords: ["surprise", "random", "explore", "fun"],
+      group: "Quick Actions",
+    },
     // Navigation
     {
       id: "home",
@@ -81,68 +174,49 @@ export function CommandPalette() {
       icon: <Home className="w-4 h-4" />,
       action: () => router.push("/"),
       keywords: ["home", "start", "index"],
-      group: "Navigation",
+      group: "Navigate",
     },
     {
       id: "projects",
-      label: "Projects",
+      label: "All Projects",
       icon: <Briefcase className="w-4 h-4" />,
       action: () => router.push("/projects"),
       keywords: ["work", "portfolio", "projects"],
-      group: "Navigation",
+      group: "Navigate",
     },
     {
       id: "resume",
-      label: "Resume",
+      label: "Resume Page",
       icon: <FileText className="w-4 h-4" />,
       action: () => router.push("/resume"),
       keywords: ["cv", "resume", "experience"],
-      group: "Navigation",
+      group: "Navigate",
     },
-    // Actions
-    {
-      id: "copy-email",
-      label: copied ? "Copied!" : "Copy Email",
-      icon: copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />,
-      action: copyEmail,
-      keywords: ["email", "contact", "copy"],
-      group: "Actions",
-    },
+    // Settings
     {
       id: "theme",
-      label: theme === "dark" ? "Light Mode" : "Dark Mode",
+      label: theme === "dark" ? "Switch to Light" : "Switch to Dark",
       icon: theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />,
       action: () => setTheme(theme === "dark" ? "light" : "dark"),
       keywords: ["theme", "dark", "light", "mode"],
-      group: "Actions",
+      group: "Settings",
     },
     {
       id: "shaders",
-      label: "Background Shaders",
+      label: "Background Effects",
       icon: <Palette className="w-4 h-4" />,
       action: toggleShaderMenu,
       keywords: ["shader", "background", "style", "visual", "effect"],
-      group: "Actions",
+      group: "Settings",
     },
-    {
-      id: "easter-egg",
-      label: "Surprise Me",
-      icon: <Sparkles className="w-4 h-4" />,
-      action: () => {
-        // Trigger konami code effect
-        window.dispatchEvent(new CustomEvent("trigger-easter-egg"));
-      },
-      keywords: ["easter", "egg", "surprise", "fun"],
-      group: "Actions",
-    },
-    // Links
+    // External
     {
       id: "github",
       label: "GitHub",
       icon: <Github className="w-4 h-4" />,
       action: () => window.open("https://github.com/maxwellyoung", "_blank"),
-      keywords: ["github", "code", "repo"],
-      group: "Links",
+      keywords: ["github", "code", "repo", "source"],
+      group: "External",
     },
     {
       id: "linkedin",
@@ -150,8 +224,8 @@ export function CommandPalette() {
       icon: <Linkedin className="w-4 h-4" />,
       action: () =>
         window.open("https://linkedin.com/in/maxwell-young-a55032125", "_blank"),
-      keywords: ["linkedin", "connect", "network"],
-      group: "Links",
+      keywords: ["linkedin", "connect", "network", "hire"],
+      group: "External",
     },
     {
       id: "email",
@@ -159,16 +233,24 @@ export function CommandPalette() {
       icon: <Mail className="w-4 h-4" />,
       action: () =>
         window.open("mailto:maxwell@ninetynine.digital", "_blank"),
-      keywords: ["email", "contact", "message"],
-      group: "Links",
+      keywords: ["email", "contact", "message", "hire"],
+      group: "External",
     },
     {
-      id: "music",
-      label: "Music Site",
-      icon: <Music className="w-4 h-4" />,
-      action: () => window.open("https://music.maxwellyoung.info", "_blank"),
-      keywords: ["music", "audio", "songs"],
-      group: "Links",
+      id: "vqc-live",
+      label: "Vape Quit Coach (Live)",
+      icon: <Smartphone className="w-4 h-4" />,
+      action: () => window.open("https://vapequitcoach.com", "_blank"),
+      keywords: ["vape", "app", "ios", "live"],
+      group: "External",
+    },
+    {
+      id: "jeremy-blake",
+      label: "Jeremy Blake Art (Live)",
+      icon: <Code2 className="w-4 h-4" />,
+      action: () => window.open("https://jeremy-blake.vercel.app/", "_blank"),
+      keywords: ["jeremy", "blake", "art", "webgl", "threejs"],
+      group: "External",
     },
   ];
 
