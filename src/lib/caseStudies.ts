@@ -25,6 +25,50 @@ export interface CaseStudy {
 }
 
 export const caseStudies: Record<string, CaseStudy> = {
+  spark: {
+    slug: "spark",
+    title: "Spark Dashboard",
+    subtitle: "Consolidating 4 BI tools into one React app",
+    timeline: "Nov 2022 - Apr 2023",
+    role: "UI Developer",
+    team: "Data Intelligence Team",
+    tools: ["React", "Next.js", "TypeScript", "D3.js", "PostgreSQL"],
+    overview:
+      "Internal analytics dashboard serving 50+ data analysts at Spark New Zealand. The brief: replace a patchwork of Power BI reports, Excel exports, and custom SQL queries with a single unified interface.",
+    challenge:
+      "Four different tools meant four different data models, four authentication flows, and four sets of muscle memory. Analysts were spending more time switching contexts than analyzing data. The existing Power BI dashboards were slow (8-12 second loads), couldn't handle the query complexity analysts needed, and required IT tickets for any schema changes.",
+    approach: [
+      {
+        title: "The State Problem",
+        description:
+          "Analysts needed to build complex queries with multiple filters, date ranges, and aggregations - then share those exact views with colleagues. The naive approach (URL params) broke at ~15 filters. I ended up with a hybrid: critical filters in URL for shareability, full state persisted to localStorage with a hash reference. When you share a link, it includes a state hash. If the recipient has that state cached, instant load. If not, it rebuilds from URL params with sensible defaults. Not elegant, but it worked for queries with 40+ filter combinations.",
+      },
+      {
+        title: "The Performance Cliff",
+        description:
+          "First version rendered all chart data client-side. Fine for 1,000 rows. Unusable at 50,000. Tried virtualization - helped with DOM, didn't help with the 3 seconds of JavaScript parsing. Solution: moved aggregation to the backend, only shipped pre-computed rollups to the client. Charts went from 3s to 200ms. Tradeoff: lost some query flexibility. Analysts could no longer do arbitrary client-side pivots. We added the 10 most common pivot patterns as backend options and accepted the limitation.",
+      },
+      {
+        title: "The Migration",
+        description:
+          "Couldn't do a clean cutover - analysts had years of saved Power BI reports. Built an import tool that parsed .pbix files and extracted filter configurations, then mapped them to the new schema. Got about 70% accuracy. The remaining 30% required manual recreation, which surfaced edge cases in the old system that nobody remembered building. Documented everything. Some of those 'bugs' turned out to be intentional workarounds for data quality issues upstream.",
+      },
+    ],
+    outcome:
+      "Dashboard shipped to 50+ users. Load times dropped from 8-12 seconds to under 2 seconds for most queries. Eliminated the IT ticket bottleneck for report changes - analysts could now modify views directly. Not everything worked. The query builder was too flexible initially; we had to add guardrails after analysts crashed the database with unindexed joins. Added query cost estimation and soft limits.",
+    metrics: [
+      { label: "Load Time", value: "8s -> 2s" },
+      { label: "Users", value: "50+" },
+      { label: "Tools Replaced", value: "4" },
+    ],
+    learnings: [
+      "Performance optimization is often about moving work, not eliminating it. We didn't make the queries faster - we moved the heavy lifting to where it belonged (backend aggregation).",
+      "Migration is harder than building. Parsing legacy formats and mapping to new schemas took more time than the new UI.",
+      "Flexibility has costs. The 'let analysts do anything' approach almost killed the database. Constraints aren't just UX decisions - they're infrastructure protection.",
+      "Some bugs are features. Those weird Power BI workarounds existed for reasons. Document before you 'fix' them.",
+    ],
+    nextProject: { slug: "silk", title: "Silk" },
+  },
   silk: {
     slug: "silk",
     title: "Silk",
@@ -149,7 +193,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "The best client work happens when you understand their craft, not just their requirements.",
       "Performance is a design choice. A slow portfolio undermines the work it's showing.",
     ],
-    nextProject: { slug: "silk", title: "Silk" },
+    nextProject: { slug: "spark", title: "Spark Dashboard" },
   },
 };
 

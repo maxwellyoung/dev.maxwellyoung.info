@@ -25,7 +25,8 @@
       "Bash(timeout 15 pnpm dev:*)",
       "Bash(curl:*)",
       "WebFetch(domain:music.maxwellyoung.info)",
-      "Bash(pnpm lint:*)"
+      "Bash(pnpm lint:*)",
+      "WebSearch"
     ]
   }
 }
