@@ -6,7 +6,8 @@ import React, {
   useMemo,
   useDeferredValue,
 } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Carousel from "@/components/Carousel";
@@ -573,6 +574,11 @@ export default function ProjectsShowcase() {
       {/* Carousel dialog */}
       <Dialog open={isCarouselOpen} onOpenChange={setIsCarouselOpen}>
         <DialogContent className="max-w-none w-screen h-screen p-0">
+          <VisuallyHidden.Root>
+            <DialogTitle>
+              {selectedProject?.name ?? "Project"} Screenshots
+            </DialogTitle>
+          </VisuallyHidden.Root>
           {selectedProject?.screenshots && (
             <Carousel
               images={selectedProject.screenshots}

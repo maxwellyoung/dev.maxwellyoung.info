@@ -14,6 +14,8 @@ const DialogPortal = DialogPrimitive.Portal;
 
 const DialogClose = DialogPrimitive.Close;
 
+const DialogTitle = DialogPrimitive.Title;
+
 interface DialogContentProps
   extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> {
   hideCloseButton?: boolean;
@@ -45,4 +47,4 @@ const DialogContent = React.forwardRef<
 ));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
-export { Dialog, DialogTrigger, DialogContent, DialogClose, DialogPortal };
+export { Dialog, DialogTrigger, DialogContent, DialogClose, DialogPortal, DialogTitle };
