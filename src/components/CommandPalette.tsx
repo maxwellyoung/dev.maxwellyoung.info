@@ -93,7 +93,7 @@ export function CommandPalette() {
           window.dispatchEvent(new CustomEvent("trigger-easter-egg"));
         }, 500);
       },
-      () => router.push("/case-study/silk"),
+      () => router.push("/case-study/chlita"),
       () => window.open("https://chlita.com", "_blank"), // Client work
     ];
     const action = surpriseActions[Math.floor(Math.random() * surpriseActions.length)];
@@ -102,14 +102,6 @@ export function CommandPalette() {
 
   const commands: CommandItem[] = [
     // Featured - what you want hiring managers to see
-    {
-      id: "silk-case",
-      label: "Case Study: Silk",
-      icon: <Smartphone className="w-4 h-4" />,
-      action: () => router.push("/case-study/silk"),
-      keywords: ["silk", "mobile", "react native", "case study"],
-      group: "Featured Work",
-    },
     {
       id: "spark-case",
       label: "Case Study: Spark Dashboard",

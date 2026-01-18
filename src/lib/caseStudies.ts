@@ -24,6 +24,9 @@ export interface CaseStudy {
   nextProject?: { slug: string; title: string };
 }
 
+// Note: Silk case study disabled until app launch
+// To re-enable: uncomment silk entry below and in projects.ts
+
 export const caseStudies: Record<string, CaseStudy> = {
   spark: {
     slug: "spark",
@@ -67,47 +70,9 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Flexibility has costs. The 'let analysts do anything' approach almost killed the database. Constraints aren't just UX decisions - they're infrastructure protection.",
       "Some bugs are features. Those weird Power BI workarounds existed for reasons. Document before you 'fix' them.",
     ],
-    nextProject: { slug: "silk", title: "Silk" },
-  },
-  silk: {
-    slug: "silk",
-    title: "Silk",
-    subtitle: "Interfaces for a slower, more intentional web",
-    timeline: "Jun 2024 — Present",
-    role: "Mobile Design Engineer",
-    team: "Small team (< 10)",
-    tools: ["React Native", "TypeScript", "Expo", "Tailwind CSS"],
-    liveUrl: "https://silk.cx",
-    overview:
-      "Silk is a blogging and curation platform that rejects the engagement-metrics playbook. No algorithmic feeds, no targeted ads, no extraction. Just tools for collecting and sharing things you find interesting. I work on the frontend, building interfaces for blogs, private archives, and multimedia moodboards.",
-    challenge:
-      "Most social platforms optimize for time-on-site. Silk optimizes for something harder to measure: did you leave feeling like you gained something? The challenge is building interfaces that encourage thoughtfulness without feeling slow or frustrating. Every interaction needs to feel intentional, not addictive.",
-    approach: [
-      {
-        title: "Restraint as Feature",
-        description:
-          "Where other platforms add notifications, infinite scroll, and engagement hooks, we deliberately leave them out. My job is often to advocate for less—fewer animations, fewer prompts, fewer reasons to stay longer than you intended.",
-      },
-      {
-        title: "Content-First Interfaces",
-        description:
-          "The UI disappears behind what users create. Typography choices, spacing, and interaction patterns all serve the content. Moodboards feel like moodboards, not like 'moodboard software.'",
-      },
-      {
-        title: "Calm Technology",
-        description:
-          "Borrowed from Amber Case's principles: technology should require the smallest possible amount of attention. Hover states are subtle. Transitions are quick. Nothing begs for interaction.",
-      },
-    ],
-    outcome:
-      "Silk has cultivated a small but dedicated community of writers, archivists, and people who remember when the web felt handmade. I've shipped features for blog customization, archive organization, and collaborative moodboards.",
-    learnings: [
-      "Working on a product with strong values teaches you what you actually care about in software.",
-      "Sometimes the best feature is the one you don't build. Saying no is a design skill.",
-      "Small teams mean owning decisions end-to-end. There's nowhere to hide.",
-    ],
     nextProject: { slug: "vape-quit-coach", title: "Vape Quit Coach" },
   },
+  // silk: { ... } // Disabled until app launch
   "vape-quit-coach": {
     slug: "vape-quit-coach",
     title: "Vape Quit Coach",
