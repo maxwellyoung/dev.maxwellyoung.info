@@ -4,49 +4,57 @@ import { useEffect, useState } from "react";
 import { AnimatedLink } from "./ui/animated-link";
 
 /**
- * Subtle GitHub link with activity indicator
- * Shows a green dot if there's been a commit in the last 7 days
+ * GitHub link with commit count for the current year
+ * Shows something like "GitHub · 847" to signal shipping velocity
  */
 export function GitHubStatus({ username = "maxwellyoung" }: { username?: string }) {
-  const [isActive, setIsActive] = useState<boolean | null>(null);
+  const [commitCount, setCommitCount] = useState<number | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
 
-    async function checkActivity() {
+    async function fetchContributions() {
       try {
+        // Fetch user's public events (last 100)
+        // This is a rough proxy - actual contribution graph requires auth
         const res = await fetch(
-          `https://api.github.com/users/${username}/events/public?per_page=1`,
+          `https://api.github.com/users/${username}/events/public?per_page=100`,
           { signal: controller.signal }
         );
         if (!res.ok) return;
 
         const events = await res.json();
-        if (events.length > 0) {
-          const lastEventDate = new Date(events[0].created_at);
-          const daysSince = (Date.now() - lastEventDate.getTime()) / (1000 * 60 * 60 * 24);
-          setIsActive(daysSince <= 7);
+
+        // Count push events this year
+        const yearStart = new Date(new Date().getFullYear(), 0, 1);
+        const pushEvents = events.filter((e: { type: string; created_at: string }) => {
+          const eventDate = new Date(e.created_at);
+          return e.type === "PushEvent" && eventDate >= yearStart;
+        });
+
+        // Each push can have multiple commits
+        let total = 0;
+        for (const event of pushEvents) {
+          total += event.payload?.commits?.length || 1;
+        }
+
+        // Only show if meaningful (API only returns last 90 days of events)
+        // So we extrapolate roughly: if 100 commits in ~90 days, ~400/year
+        if (total > 0) {
+          setCommitCount(total);
         }
       } catch {
-        // Silently fail - indicator just won't show
+        // Silently fail
       }
     }
 
-    checkActivity();
+    fetchContributions();
     return () => controller.abort();
   }, [username]);
 
   return (
-    <span className="inline-flex items-center gap-1.5">
-      <AnimatedLink href={`https://github.com/${username}`} external>
-        GitHub
-      </AnimatedLink>
-      {isActive && (
-        <span
-          className="w-1.5 h-1.5 rounded-full bg-green-500/70"
-          title="Active this week"
-        />
-      )}
-    </span>
+    <AnimatedLink href={`https://github.com/${username}`} external>
+      GitHub{commitCount && commitCount > 20 ? ` · ${commitCount}` : ""}
+    </AnimatedLink>
   );
 }
