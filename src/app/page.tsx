@@ -193,7 +193,7 @@ export default function Home() {
 
         <footer className="mt-16 pt-8 border-t border-[hsl(var(--border))]">
           {/* Contact Form */}
-          <div className="mb-12">
+          <div className="mb-12 px-1 -mx-1">
             <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               Get in touch
