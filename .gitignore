@@ -36,6 +36,4 @@ yarn-error.log*
 next-env.d.ts
 
 # private docs (not for hiring managers to find)
-AUCKLAND_COMPANIES.md
-JOB_SEARCH_*.md
-NOTES_*.md
+/docs/
