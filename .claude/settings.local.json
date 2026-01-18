@@ -27,7 +27,10 @@
       "WebFetch(domain:music.maxwellyoung.info)",
       "Bash(pnpm lint:*)",
       "WebSearch",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(pnpm add:*)",
+      "Bash(npx playwright install:*)",
+      "Bash(npx tsx:*)"
     ]
   }
 }

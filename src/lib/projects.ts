@@ -85,6 +85,8 @@ export const projects: Project[] = [
     stack: ["React Native", "TypeScript", "Expo"],
     startDate: "2024-06-01",
     caseStudySlug: "silk",
+    screenshots: ["/projectImages/silk-1.webp", "/projectImages/silk-2.webp"],
+    thumb: "/projectImages/silk-1.webp",
     links: {
       live: "https://www.silk.cx",
     },
