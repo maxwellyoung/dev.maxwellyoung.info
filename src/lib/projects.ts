@@ -70,6 +70,44 @@ export interface Project {
 export const projects: Project[] = [
   // ===== RESEARCH & EXPLORATION =====
   {
+    slug: "liner",
+    name: "Liner",
+    status: "Active",
+    category: "personal",
+    role: "Solo",
+    featured: true,
+    priority: 0,
+    description:
+      "Spatial canvas for organizing music. Like Figma for musicians—drag songs, build albums, capture ideas on an infinite canvas. tldraw-powered with real-time cloud sync.",
+    longDescription:
+      "Liner is a spatial canvas for music organization. Drop audio files, paste streaming links, arrange songs visually. Built on tldraw's infinite canvas with custom shapes for songs, frames, and notes. Audio player with waveform visualization, queue management, and keyboard controls. Cloud sync via Convex + Clerk auth. Local-first architecture means your data stays yours. The design constraint: make organization feel like play, not work.",
+    tags: ["Next.js", "tldraw", "Convex", "Audio", "Canvas"],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "tldraw",
+      "Convex",
+      "Clerk",
+      "Zustand",
+      "Tailwind CSS",
+    ],
+    startDate: "2025-01-01",
+    links: {
+      live: "https://liner-puce.vercel.app",
+    },
+    link: "https://liner-puce.vercel.app",
+    screenshots: [
+      "/projectImages/liner-1.webp",
+      "/projectImages/liner-3.webp",
+    ],
+    thumb: "/projectImages/liner-1.webp",
+    impact: [
+      "Local-first with optional cloud sync",
+      "Custom tldraw shapes for music-specific UX",
+      "Audio waveform extraction and playback",
+    ],
+  },
+  {
     slug: "silk",
     name: "Silk",
     status: "Active",
@@ -78,7 +116,7 @@ export const projects: Project[] = [
     featured: true,
     priority: 0,
     description:
-      "Cross-platform blogging system that rejects engagement metrics. No feeds, no ranking, no infinite scroll. Designing usefulness without addiction mechanics is harder than optimizing CTR.",
+      "Cross-platform blogging system that rejects engagement metrics. No algorithmic feeds, no ranking, no extraction. Designing usefulness without addiction mechanics is harder than optimizing CTR.",
     longDescription:
       "Silk is a blogging and curation platform where I build the React Native frontend. The product philosophy is the constraint: no algorithmic feeds, no engagement optimization, no extraction. That means every feature has to justify itself on usefulness alone—not stickiness. I ship interfaces for blogs, private archives, and multimedia moodboards. When you can't rely on dark patterns, the UX has to actually work.",
     tags: ["React Native", "TypeScript", "Expo"],
