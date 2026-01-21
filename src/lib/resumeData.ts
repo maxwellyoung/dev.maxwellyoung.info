@@ -67,7 +67,7 @@ export const resumeData: ResumeData = {
       summary:
         "React Native frontend for a blogging platform that rejects engagement metrics.",
       responsibilities: [
-        "Built interfaces for blogs, archives, and moodboards—no infinite scroll, no algorithmic feed.",
+        "Built interfaces for blogs, archives, and moodboards—no algorithmic feed, no engagement optimization.",
         "Shipped multimedia upload and private archive features across iOS/Android/web.",
       ],
     },

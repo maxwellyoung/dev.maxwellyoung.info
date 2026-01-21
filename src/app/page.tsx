@@ -12,7 +12,6 @@ import { AnimatedLink, AccentLink } from "@/components/ui/animated-link";
 import { ChevronUp } from "lucide-react";
 import { GitHubActivity } from "@/components/GitHubActivity";
 import { NowPlaying } from "@/components/NowPlaying";
-import { ContactForm } from "@/components/ContactForm";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { container, item, spring, duration, ease } from "@/lib/motion";
 
@@ -137,7 +136,7 @@ export default function Home() {
 
             {/* Principles - filters in/out */}
             <motion.ul className="text-muted-foreground text-sm space-y-1 border-l border-border pl-3" variants={item.fadeUp}>
-              <li>No infinite scroll. No dark patterns. No engagement tricks.</li>
+              <li>No algorithmic feeds. No dark patterns. No engagement tricks.</li>
               <li>Fewer features, sharper tools.</li>
               <li>If the UI needs guilt to work, the design failed.</li>
             </motion.ul>
@@ -192,15 +191,6 @@ export default function Home() {
         </section>
 
         <footer className="mt-16 pt-8 border-t border-[hsl(var(--border))]">
-          {/* Contact Form */}
-          <div className="mb-12 px-1 -mx-1">
-            <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-              Get in touch
-            </h2>
-            <ContactForm />
-          </div>
-
           {/* Activity widgets */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
             <GitHubActivity />
