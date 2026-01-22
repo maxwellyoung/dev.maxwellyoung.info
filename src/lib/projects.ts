@@ -159,6 +159,33 @@ export const projects: Project[] = [
     },
     link: "https://vapequitcoach.com",
   },
+  {
+    slug: "holdspace",
+    name: "Holdspace",
+    status: "Active",
+    category: "personal",
+    role: "Solo",
+    featured: true,
+    priority: 2,
+    description:
+      "A private queue for things you want to return to. Shows one item at a time—your 'Now'—and holds the rest. Native Swift app with fluid gesture-driven UI, smart link previews, and no tracking.",
+    longDescription:
+      "Most productivity apps overwhelm you with lists. Holdspace does the opposite—it shows you one thing, and gently holds the rest until you're ready. Swipe right when you're done, swipe left to snooze. Built with SwiftUI and SwiftData for iOS 17+. Physics-based animations respond to your touch. Smart link enrichment fetches titles and previews automatically. No accounts, no analytics, no tracking. Home Screen and Lock Screen widgets. Share extension for capturing from any app. A tool that respects your attention.",
+    tags: ["Swift", "SwiftUI", "iOS", "SwiftData", "Native"],
+    stack: ["Swift", "SwiftUI", "SwiftData", "WidgetKit", "Live Activities"],
+    startDate: "2025-01-01",
+    screenshots: ["/projectImages/holdspace-1.webp"],
+    thumb: "/projectImages/holdspace-1.webp",
+    links: {
+      live: "https://apps.apple.com/nz/app/holdspace/id6758010909",
+    },
+    link: "https://apps.apple.com/nz/app/holdspace/id6758010909",
+    impact: [
+      "Privacy-first: no accounts, no analytics, all data stays on-device",
+      "One-at-a-time UX reduces overwhelm vs traditional list apps",
+      "Native SwiftUI with physics-based motion and haptics",
+    ],
+  },
   // ===== FEATURED =====
   {
     slug: "chlita",
