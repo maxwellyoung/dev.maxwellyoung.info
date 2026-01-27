@@ -129,7 +129,11 @@ export default function Home() {
             <motion.p className="text-foreground" variants={item.fadeUp}>
               Design Engineer at{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-              . Also shipping{" "}
+              . Building{" "}
+              <AnimatedLink href="https://liner-puce.vercel.app" external>Liner</AnimatedLink>
+              {" "}(spatial canvas for music) and{" "}
+              <AnimatedLink href="https://whakapapa.vercel.app" external>Whakapapa</AnimatedLink>
+              {" "}(AI-powered family knowledge base). Also shipping{" "}
               <AnimatedLink href="https://vapequitcoach.com" external>Vape Quit Coach</AnimatedLink>
               {" "}solo (iOS, 4.8★).
             </motion.p>
