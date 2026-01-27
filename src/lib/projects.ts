@@ -70,6 +70,47 @@ export interface Project {
 export const projects: Project[] = [
   // ===== RESEARCH & EXPLORATION =====
   {
+    slug: "whakapapa",
+    name: "Whakapapa",
+    status: "Active",
+    category: "personal",
+    role: "Solo",
+    featured: true,
+    priority: 0,
+    description:
+      "AI-powered family knowledge base. Drop in old letters, photos, or documents — Claude AI extracts people, dates, and relationships. Record stories in someone's own voice. Build a living family tree. Named after the Māori word for genealogy.",
+    longDescription:
+      "Whakapapa is a family knowledge base built to preserve stories before they're lost. The AI pipeline is the core: scan a document with your phone → OCR via Tesseract.js reads it → Claude extracts genealogical data (names, dates, relationships, places) → suggestions appear for review → approved data populates your family tree. Voice recording lets you capture stories in someone's own words. Interactive tree visualization with dagre + React Flow. GEDCOM import for existing genealogy data. Shareable links with optional password protection. Multi-workspace for different family lines. Role-based access for family collaboration. Named with deep respect for te ao Māori — whakapapa isn't just a family tree, it's the living web of stories and connections between people across generations.",
+    tags: ["Next.js", "Supabase", "Claude AI", "OCR", "React Flow", "Genealogy"],
+    stack: [
+      "Next.js 16",
+      "TypeScript",
+      "Supabase",
+      "Claude API",
+      "Tesseract.js",
+      "React Flow",
+      "dagre",
+      "Framer Motion",
+      "Tailwind CSS",
+    ],
+    startDate: "2025-01-01",
+    caseStudySlug: "whakapapa",
+    links: {
+      live: "https://whakapapa.vercel.app",
+      repo: "https://github.com/maxwellyoung/whakapapa",
+    },
+    link: "https://whakapapa.vercel.app",
+    codeLink: "https://github.com/maxwellyoung/whakapapa",
+    screenshots: [],
+    thumb: undefined,
+    impact: [
+      "AI extraction pipeline: document → OCR → Claude → structured genealogical data",
+      "Open source alternative to Ancestry.com ($0 vs $20-50/month)",
+      "Voice recording preserves stories in the storyteller's own voice",
+      "Cultural respect: named after Māori concept of living genealogy",
+    ],
+  },
+  {
     slug: "liner",
     name: "Liner",
     status: "Active",
@@ -92,6 +133,7 @@ export const projects: Project[] = [
       "Tailwind CSS",
     ],
     startDate: "2025-01-01",
+    caseStudySlug: "liner",
     links: {
       live: "https://liner-puce.vercel.app",
     },

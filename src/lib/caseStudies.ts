@@ -28,6 +28,99 @@ export interface CaseStudy {
 // To re-enable: uncomment silk entry below and in projects.ts
 
 export const caseStudies: Record<string, CaseStudy> = {
+  whakapapa: {
+    slug: "whakapapa",
+    title: "Whakapapa",
+    subtitle: "Preserving family stories with AI before they're lost",
+    timeline: "2025 — Present",
+    role: "Solo Designer & Developer",
+    tools: ["Next.js 16", "Supabase", "Claude API", "Tesseract.js", "React Flow", "dagre", "Framer Motion"],
+    liveUrl: "https://whakapapa.vercel.app",
+    githubUrl: "https://github.com/maxwellyoung/whakapapa",
+    overview:
+      "An AI-powered family knowledge base that turns old documents, photos, and spoken stories into a living, navigable family tree. Named after the Māori word for genealogy — because ancestry isn't just names and dates, it's the web of stories that connect us.",
+    challenge:
+      "Every family has stories slipping away. Letters in boxes, photos without names on the back, grandparents whose memories are fading. Existing genealogy tools (Ancestry.com, MyHeritage) are expensive, clunky, and treat family history as data entry. The challenge: build something that makes preservation effortless — AI does the heavy lifting, you just feed it documents and tell it stories.",
+    approach: [
+      {
+        title: "AI Extraction Pipeline",
+        description:
+          "The core innovation: scan a document with your phone camera → Tesseract.js OCR extracts text client-side → Claude AI analyzes the text and returns structured genealogical data (people, dates, relationships, places) → suggestions queue for human review → approved data populates the tree. No manual data entry. The AI handles birth certificates, old letters, newspaper clippings, and handwritten notes.",
+      },
+      {
+        title: "Voice-First Story Capture",
+        description:
+          "Not everything is written down. The app includes voice recording with transcription — sit with a grandparent, hit record, and their story is captured in their own voice. Attached to the people it's about. Interview prompts help guide the conversation when you're not sure what to ask.",
+      },
+      {
+        title: "Living Tree, Not Dead Database",
+        description:
+          "The family tree uses dagre for hierarchical layout and React Flow for interactive visualization. Color-coded relationships (parent-child, partners, siblings), zoom, search, keyboard navigation. But the tree is just one view — memories, stories, photos, and documents are all connected to the people they belong to. It's a knowledge base, not a chart.",
+      },
+      {
+        title: "Open & Respectful",
+        description:
+          "Open source (MIT) and free. Self-hostable. Privacy-first with Supabase Row Level Security. The name honors te ao Māori — whakapapa is a concept where ancestry is a living story, not a static record. That philosophy shaped every design decision.",
+      },
+    ],
+    outcome:
+      "A fully functional genealogy platform that replaces manual data entry with AI extraction. Open source with a growing community. Features that commercial tools charge $20-50/month for — available free.",
+    metrics: [
+      { label: "Open Source", value: "MIT" },
+      { label: "AI Pipeline", value: "Doc → OCR → Claude → Tree" },
+      { label: "Cost vs Ancestry", value: "$0 vs $240/yr" },
+    ],
+    learnings: [
+      "AI extraction isn't magic — it needs a human review step. The suggestion queue is the trust mechanism that makes AI-generated data feel safe to accept.",
+      "Voice recording changes the emotional register of a genealogy app. Reading a transcription is information; hearing grandma's voice is preservation.",
+      "Naming matters. 'Whakapapa' immediately communicates that this isn't another Silicon Valley genealogy SaaS — it's built with cultural awareness and respect.",
+      "Supabase + Next.js is an incredibly productive stack for solo builders. RLS policies handle multi-tenancy without a dedicated backend.",
+    ],
+    nextProject: { slug: "liner", title: "Liner" },
+  },
+  liner: {
+    slug: "liner",
+    title: "Liner",
+    subtitle: "A spatial canvas for organizing music",
+    timeline: "2025 — Present",
+    role: "Solo Designer & Developer",
+    tools: ["Next.js", "tldraw", "Convex", "Clerk", "Zustand", "Tailwind CSS"],
+    liveUrl: "https://liner-puce.vercel.app",
+    overview:
+      "Liner is Figma for musicians. An infinite spatial canvas where you drag songs, build albums, and capture ideas visually. Built on tldraw with custom shapes for audio, real-time cloud sync via Convex, and a local-first architecture.",
+    challenge:
+      "Musicians organize music in playlists — linear, one-dimensional lists. But album sequencing is spatial: you're thinking about flow, energy, transitions, thematic arcs. Spreadsheets and playlists can't capture that. The challenge: make music organization feel like arranging photos on a table, not filing documents in a cabinet.",
+    approach: [
+      {
+        title: "Spatial Over Sequential",
+        description:
+          "tldraw provides an infinite canvas with pan, zoom, and selection. I built custom shapes for songs (with waveform visualization), album frames, and sticky notes. Drag a song onto a frame and it belongs to that album. The spatial metaphor makes relationships between songs visible — proximity implies connection, distance implies contrast.",
+      },
+      {
+        title: "Audio as First-Class Object",
+        description:
+          "Songs aren't just cards with metadata. Drop an audio file and Liner extracts the waveform, creates a playable shape, and adds it to the queue. Keyboard controls (space, arrows) for playback. The canvas becomes a playable instrument, not just an organizational tool.",
+      },
+      {
+        title: "Local-First, Cloud-Synced",
+        description:
+          "Convex handles real-time sync and persistence. Clerk for authentication. But the architecture is local-first — your canvas works offline and syncs when connected. Zustand manages client-side state. The data model is yours, not locked into a service.",
+      },
+    ],
+    outcome:
+      "A working spatial canvas that musicians can use to sequence albums, organize ideas, and play audio — all in one interface. The spatial metaphor makes album sequencing feel intuitive in a way playlists never could.",
+    metrics: [
+      { label: "Custom tldraw Shapes", value: "3+" },
+      { label: "Architecture", value: "Local-first" },
+      { label: "Real-time Sync", value: "Convex" },
+    ],
+    learnings: [
+      "tldraw is an incredible foundation but custom shapes require deep understanding of the rendering pipeline. Worth it for the UX payoff.",
+      "Audio playback in a canvas context creates interesting UX challenges — what happens when you delete a playing song? When you undo? These edge cases define the experience.",
+      "Musicians think spatially about music more than they realize. The 'aha moment' is when someone drags two songs next to each other and immediately sees the album taking shape.",
+    ],
+    nextProject: { slug: "whakapapa", title: "Whakapapa" },
+  },
   spark: {
     slug: "spark",
     title: "Spark Dashboard",
