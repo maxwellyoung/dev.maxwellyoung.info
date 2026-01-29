@@ -24,10 +24,57 @@ export interface CaseStudy {
   nextProject?: { slug: string; title: string };
 }
 
-// Note: Silk case study disabled until app launch
-// To re-enable: uncomment silk entry below and in projects.ts
-
 export const caseStudies: Record<string, CaseStudy> = {
+  silk: {
+    slug: "silk",
+    title: "Silk Mobile",
+    subtitle: "Building a React Native app for thoughtful content sharing",
+    timeline: "2024 — Present",
+    role: "Mobile Engineer",
+    team: "CEO Zane Fodge, Engineer Eli Decker",
+    tools: ["React Native", "Expo", "TypeScript", "Cloudflare R2", "Neon Postgres", "Drizzle ORM"],
+    liveUrl: "https://www.silk.cx",
+    overview:
+      "Silk is a content sharing platform that rejects algorithmic feeds and engagement optimization. I built the React Native mobile app from the ground up, working alongside the founding team to create a mobile experience that prioritizes thoughtful curation over viral mechanics.",
+    challenge:
+      "Most social platforms optimize for engagement at any cost. Silk needed to prove that you could build compelling mobile UX without dark patterns, infinite scroll, or algorithmic manipulation. The technical challenge: architect a React Native app with complex media handling, real-time features, and seamless cross-platform performance while maintaining the product's philosophical constraints.",
+    approach: [
+      {
+        title: "TypeScript-First Architecture",
+        description:
+          "Built the entire mobile app with TypeScript from day one, implementing strict type safety across components, API layers, and state management. This foundation enabled confident refactoring and caught integration issues early, especially important when working with a serverless backend architecture using Cloudflare Workers and Neon Postgres with Drizzle ORM.",
+      },
+      {
+        title: "Unified Upload Infrastructure",
+        description:
+          "Discovered three conflicting upload routes in the existing system, each handling different media types inconsistently. Redesigned and unified the upload architecture into a single, type-safe flow that handles images, videos, and documents through Cloudflare R2 storage. This reduced client-side complexity and improved reliability across all media types.",
+      },
+      {
+        title: "Mobile-First Design Thinking",
+        description:
+          "Rather than adapting web patterns, designed native mobile interactions from scratch. Implemented gesture-driven navigation, optimized for thumb-friendly layouts, and built custom components that feel at home on both iOS and Android. Used Expo's capabilities for camera integration, push notifications, and background sync while maintaining cross-platform consistency.",
+      },
+      {
+        title: "API Route Consolidation",
+        description:
+          "Streamlined the backend integration by consolidating multiple API endpoints into cohesive, typed interfaces. Worked closely with the backend team to optimize data fetching patterns, implement proper error boundaries, and create resilient offline capabilities. This collaboration improved app performance and reduced network overhead.",
+      },
+    ],
+    outcome:
+      "Delivered a production-ready React Native app that embodies Silk's anti-engagement philosophy while providing a delightful mobile experience. The unified upload system handles thousands of media files efficiently, and the TypeScript architecture enables rapid feature development with confidence.",
+    metrics: [
+      { label: "Upload Routes", value: "3 → 1" },
+      { label: "Type Safety", value: "100%" },
+      { label: "Cross Platform", value: "iOS + Android" },
+    ],
+    learnings: [
+      "Mobile-first thinking isn't just responsive design. It's understanding how people actually use phones, designing for interruption, and optimizing for one-handed use.",
+      "Type safety becomes critical in React Native where runtime errors are harder to debug than in web development. The upfront TypeScript investment paid dividends in reliability.",
+      "Working with a small founding team taught me the importance of architectural decisions. Every technical choice becomes a product philosophy when you're building something new.",
+      "Rejecting engagement patterns forced us to find new ways to make the app compelling. The constraint became a feature, proving you can build great UX without manipulation.",
+    ],
+    nextProject: { slug: "vape-quit-coach", title: "Vape Quit Coach" },
+  },
   whakapapa: {
     slug: "whakapapa",
     title: "Whakapapa",
