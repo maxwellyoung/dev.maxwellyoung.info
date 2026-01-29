@@ -135,9 +135,9 @@ export const projects: Project[] = [
     startDate: "2025-01-01",
     caseStudySlug: "liner",
     links: {
-      live: "https://liner-puce.vercel.app",
+      live: "https://liner.ninetynine.digital",
     },
-    link: "https://liner-puce.vercel.app",
+    link: "https://liner.ninetynine.digital",
     screenshots: [
       "/projectImages/liner-1.webp",
       "/projectImages/liner-3.webp",
