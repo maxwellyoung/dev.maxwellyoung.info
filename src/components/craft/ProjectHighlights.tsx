@@ -38,7 +38,6 @@ export function ProjectHighlights() {
       },
       links: {
         live: "https://strawhouse-tau.vercel.app",
-        github: null
       },
       color: "purple"
     },
@@ -54,7 +53,6 @@ export function ProjectHighlights() {
       },
       links: {
         live: "https://vapequitcoach.com",
-        github: null
       },
       color: "green"
     }
