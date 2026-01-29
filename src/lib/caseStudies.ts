@@ -85,7 +85,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     timeline: "2025 — Present",
     role: "Solo Designer & Developer",
     tools: ["Next.js", "tldraw", "Convex", "Clerk", "Zustand", "Tailwind CSS"],
-    liveUrl: "https://liner-puce.vercel.app",
+    liveUrl: "https://liner.ninetynine.digital",
     overview:
       "Liner is Figma for musicians. An infinite spatial canvas where you drag songs, build albums, and capture ideas visually. Built on tldraw with custom shapes for audio, real-time cloud sync via Convex, and a local-first architecture.",
     challenge:

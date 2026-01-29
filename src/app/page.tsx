@@ -130,7 +130,7 @@ export default function Home() {
               Design Engineer at{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
               . Building{" "}
-              <AnimatedLink href="https://liner-puce.vercel.app" external>Liner</AnimatedLink>
+              <AnimatedLink href="https://liner.ninetynine.digital" external>Liner</AnimatedLink>
               {" "}(spatial canvas for music) and{" "}
               <AnimatedLink href="https://whakapapa.vercel.app" external>Whakapapa</AnimatedLink>
               {" "}(AI-powered family knowledge base). Also shipping{" "}
