@@ -57,7 +57,7 @@ This site is deployed on Vercel. Any push to the main branch will trigger a new 
 
 ## Contact
 
-For any inquiries, please reach out to me at [your-email@example.com](mailto:your-email@example.com).
+For any inquiries, please reach out to me at [maxtheyoung@gmail.com](mailto:maxtheyoung@gmail.com).
 
 ## License
 
