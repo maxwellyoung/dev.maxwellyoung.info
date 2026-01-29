@@ -164,7 +164,7 @@ export const projects: Project[] = [
     tags: ["React Native", "TypeScript", "Expo"],
     stack: ["React Native", "TypeScript", "Expo"],
     startDate: "2024-06-01",
-    // caseStudySlug: "silk", // Enable after app launch
+    caseStudySlug: "silk",
     links: {
       live: "https://www.silk.cx",
     },
