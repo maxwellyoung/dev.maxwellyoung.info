@@ -158,9 +158,9 @@ export const projects: Project[] = [
     featured: true,
     priority: 0,
     description:
-      "Cross-platform blogging system that rejects engagement metrics. No algorithmic feeds, no ranking, no extraction. Designing usefulness without addiction mechanics is harder than optimizing CTR.",
+      "React Native frontend for a cross-platform blogging and curation app. Rich text editing, multimedia moodboards, offline-first sync. The kind of mobile work where animation timing and gesture feel matter more than feature count.",
     longDescription:
-      "Silk is a blogging and curation platform where I build the React Native frontend. The product philosophy is the constraint: no algorithmic feeds, no engagement optimization, no extraction. That means every feature has to justify itself on usefulness alone—not stickiness. I ship interfaces for blogs, private archives, and multimedia moodboards. When you can't rely on dark patterns, the UX has to actually work.",
+      "Silk is a blogging and curation platform. I build the React Native frontend, shipping interfaces for rich text blogs, private archives, and multimedia moodboards. The work is detail-oriented: gesture-driven navigation, spring animations that feel right, offline-first data sync, and accessibility across iOS and Android. Most of the interesting problems are in making complex content creation feel simple on a phone screen.",
     tags: ["React Native", "TypeScript", "Expo"],
     stack: ["React Native", "TypeScript", "Expo"],
     startDate: "2024-06-01",
