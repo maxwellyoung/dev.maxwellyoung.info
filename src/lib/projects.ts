@@ -158,9 +158,9 @@ export const projects: Project[] = [
     featured: true,
     priority: 0,
     description:
-      "React Native frontend for a cross-platform blogging and curation app. Rich text editing, multimedia moodboards, offline-first sync. The kind of mobile work where animation timing and gesture feel matter more than feature count.",
+      "React Native mobile client for a new social platform built around blogging, curation, and multimedia moodboarding. Shipping cross-platform interfaces for a product rethinking how people collect and share things online.",
     longDescription:
-      "Silk is a blogging and curation platform. I build the React Native frontend, shipping interfaces for rich text blogs, private archives, and multimedia moodboards. The work is detail-oriented: gesture-driven navigation, spring animations that feel right, offline-first data sync, and accessibility across iOS and Android. Most of the interesting problems are in making complex content creation feel simple on a phone screen.",
+      "Silk is a social infrastructure platform where people blog, build private archives, and create multimedia moodboards called webs. I build the React Native mobile client. The product handles a wide range of content types (images, videos, articles, songs, webpages) so the mobile work is about making all of that feel native and fluid on a phone. Gesture-driven navigation, rich text editing, cross-platform parity between iOS and Android, and offline-first sync for archives.",
     tags: ["React Native", "TypeScript", "Expo"],
     stack: ["React Native", "TypeScript", "Expo"],
     startDate: "2024-06-01",
