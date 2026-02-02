@@ -251,6 +251,63 @@ export const caseStudies: Record<string, CaseStudy> = {
       "The best client work happens when you understand their craft, not just their requirements.",
       "Performance is a design choice. A slow portfolio undermines the work it's showing.",
     ],
+    nextProject: { slug: "dayle", title: "Dayle Palfreyman" },
+  },
+  dayle: {
+    slug: "dayle",
+    title: "Dayle Palfreyman",
+    subtitle: "An artist portfolio that disappears behind the art",
+    timeline: "2025 — Present",
+    role: "Solo Designer & Developer",
+    tools: [
+      "Next.js 15",
+      "Sanity CMS",
+      "Framer Motion",
+      "Tailwind CSS",
+      "TypeScript",
+    ],
+    liveUrl: "https://dayle.art",
+    githubUrl: "https://github.com/maxwellyoung/dayle",
+    overview:
+      "A portfolio for installation and object-based artist Dayle Palfreyman. The brief: make the art the only thing people see. No navigation clutter, no design ego, no templates. A full-screen immersive gallery with Sanity CMS for complete client independence.",
+    challenge:
+      "Artist portfolios have a unique tension: the site needs to feel considered and intentional, but it can't compete with the work. Most portfolio templates either look generic or add so much design language that they overshadow what they're showing. Dayle needed a site that felt like walking into a gallery, where the work fills the room and the architecture stays invisible.",
+    approach: [
+      {
+        title: "Full-Screen Immersive Gallery",
+        description:
+          "The homepage is a vertically-snapping gallery. Each artwork fills the entire viewport. No thumbnails, no grids, no sidebars. Scroll or use arrow keys to move between pieces. Click to enter the detail view with multiple images, video embeds, and artwork metadata. The interaction model borrows from museum kiosks, not web templates.",
+      },
+      {
+        title: "Motion with Restraint",
+        description:
+          "Every animation uses spring physics (not tween curves) for organic feel. Shared layout animations create seamless transitions between gallery and detail views. But the motion vocabulary is deliberately minimal: fade, slide, scale. Nothing calls attention to itself. The header auto-hides after 3 seconds on desktop. Chrome disappears on artwork detail pages. Reduced motion preferences are fully respected.",
+      },
+      {
+        title: "Accessibility as Foundation",
+        description:
+          "Skip navigation links, ARIA live regions that announce the current artwork to screen readers, proper focus indicators using the accent color, keyboard navigation throughout. Loading skeletons for every route. Alt text includes medium and year, not just title. The gallery has a visible slide counter. These aren't afterthoughts; accessibility was architected from the start.",
+      },
+      {
+        title: "CMS-Driven Independence",
+        description:
+          "Sanity Studio is configured so Dayle can manage artworks, exhibitions, writing, interviews, and site settings without touching code. Dynamic sitemap generation, JSON-LD structured data for artwork and exhibition pages, and canonical URLs are all automated. The site SEO improves every time Dayle adds content.",
+      },
+    ],
+    outcome:
+      "A site that loads fast, ranks well, and puts the art first. Full Lighthouse scores above 95. Dynamic SEO infrastructure means every new artwork is automatically optimized for Google. The client manages everything independently through Sanity.",
+    metrics: [
+      { label: "Lighthouse", value: "95+" },
+      { label: "Client Independence", value: "100%" },
+      { label: "Accessibility", value: "WCAG 2.1 AA" },
+      { label: "SEO", value: "Auto-generated sitemaps + JSON-LD" },
+    ],
+    learnings: [
+      "Artist portfolios are the ultimate test of design restraint. Every pixel you add competes with the work you're trying to showcase.",
+      "Spring-based animations feel more natural than tween curves for gallery interactions. The physics of deceleration matches how people expect physical objects to move.",
+      "Accessibility and good design are the same thing. Skip links, focus indicators, and screen reader support aren't compliance checkboxes. They're design decisions that make the site better for everyone.",
+      "Automating SEO infrastructure (sitemaps, structured data, canonical URLs) means the site gets better every time the client adds content, without any developer involvement.",
+    ],
     nextProject: { slug: "spark", title: "Spark Dashboard" },
   },
 };
