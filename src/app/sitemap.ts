@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { projects } from "@/lib/projects";
+import { getAllCaseStudySlugs } from "@/lib/caseStudies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://dev.maxwellyoung.info";
@@ -37,14 +38,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const caseStudyRoutes = projects
-    .filter((p) => p.caseStudySlug)
-    .map((p) => ({
-      url: `${baseUrl}/case-study/${p.caseStudySlug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    }));
+  // Get all case studies from the caseStudies lib (complete list)
+  const caseStudyRoutes = getAllCaseStudySlugs().map((slug) => ({
+    url: `${baseUrl}/case-study/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
 
-  return [...staticRoutes, ...caseStudyRoutes];
+  // Essay routes
+  const essayRoutes = [
+    "the-invisible-details-of-interaction-design",
+    "motion-grammar-for-humane-interfaces",
+    "the-typography-system-behind-strawhouse",
+  ].map((slug) => ({
+    url: `${baseUrl}/craft/essay/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...caseStudyRoutes, ...essayRoutes];
 }

@@ -1,9 +1,11 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Maxwell Young",
-  description: "Privacy policy for dev.maxwellyoung.info",
+  description:
+    "Privacy policy for dev.maxwellyoung.info. Learn about what data is collected and how it is used on this portfolio site.",
 };
 
 export default function PrivacyPage() {
@@ -69,6 +71,8 @@ export default function PrivacyPage() {
           Last updated: February 2026
         </p>
       </div>
+
+      <SiteFooter />
     </main>
   );
 }

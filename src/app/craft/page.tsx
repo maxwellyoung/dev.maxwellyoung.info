@@ -19,19 +19,19 @@ export const metadata: Metadata = {
 
 export default function CraftPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background">
       <div className="max-w-4xl mx-auto px-6 py-12">
         <CraftHeader />
-        
+
         <div className="space-y-24 mt-16">
           <InteractionStudies />
           <SpringExamples />
           <ProjectHighlights />
           <DesignEssays />
         </div>
-        
+
         <CraftFooter />
       </div>
-    </div>
+    </main>
   );
 }

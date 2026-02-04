@@ -56,6 +56,8 @@ function LikeButtonStudy() {
           }}
           whileTap={{ scale: 0.95 }}
           className="flex items-center space-x-2 group"
+          aria-label={isLiked ? "Unlike" : "Like"}
+          aria-pressed={isLiked}
         >
           <motion.div
             animate={{ scale: isLiked ? 1.2 : 1 }}
@@ -133,6 +135,7 @@ function DownloadProgressStudy() {
           disabled={isDownloading}
           className="relative overflow-hidden bg-accent/10 border border-accent/20 rounded-lg px-6 py-3 min-w-[160px]"
           whileTap={{ scale: 0.98 }}
+          aria-label={isDownloading ? `Downloading ${Math.round(progress)}%` : progress === 100 ? "Download complete" : "Download file"}
         >
           <motion.div
             initial={{ width: 0 }}
@@ -184,6 +187,8 @@ function ShareMenuStudy() {
             onClick={() => setIsOpen(!isOpen)}
             whileTap={{ scale: 0.95 }}
             className="bg-accent/10 border border-accent/20 rounded-full p-3"
+            aria-label={isOpen ? "Close share menu" : "Open share menu"}
+            aria-expanded={isOpen}
           >
             <Share className="w-5 h-5" />
           </motion.button>
@@ -259,6 +264,7 @@ function PlaybackControlStudy() {
             onClick={() => setIsPlaying(!isPlaying)}
             whileTap={{ scale: 0.95 }}
             className="bg-accent/10 border border-accent/20 rounded-full p-4 relative overflow-hidden"
+            aria-label={isPlaying ? "Pause" : "Play"}
           >
             <motion.div
               animate={{ 

@@ -1,9 +1,11 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Contact | Maxwell Young",
-  description: "Get in touch with Maxwell Young - Design Engineer in Auckland, NZ.",
+  description:
+    "Get in touch with Maxwell Young - Design Engineer based in Auckland, New Zealand. Available for frontend, mobile, and full-stack roles.",
 };
 
 export default function ContactPage() {
@@ -64,6 +66,8 @@ export default function ContactPage() {
           Currently open to frontend, mobile, and full-stack roles in Auckland or remote.
         </p>
       </div>
+
+      <SiteFooter />
     </main>
   );
 }
