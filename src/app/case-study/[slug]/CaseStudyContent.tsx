@@ -7,6 +7,7 @@ import { ArrowLeft, ExternalLink, Github, Calendar, Tag } from "lucide-react";
 import { AnimatedLink } from "@/components/ui/animated-link";
 import { type CaseStudy } from "@/lib/caseStudies";
 import { spring } from "@/lib/motion";
+import { SiteFooter } from "@/components/SiteFooter";
 
 interface CaseStudyContentProps {
   slug: string;
@@ -263,6 +264,8 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
             </Link>
           </motion.div>
         )}
+
+        <SiteFooter />
       </section>
     </main>
   );

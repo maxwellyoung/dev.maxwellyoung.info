@@ -23,7 +23,11 @@ type Pill = (typeof PILL_FILTERS)[number];
 
 const STORAGE_KEY = "projects-filter-state";
 
-export default function ProjectsShowcase() {
+interface ProjectsShowcaseProps {
+  embedded?: boolean;
+}
+
+export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
   const [activeFilters, setActiveFilters] = useState<Pill[]>([]);
@@ -398,9 +402,12 @@ export default function ProjectsShowcase() {
     );
   };
 
-  return (
-    <div className="min-h-screen text-foreground font-sans">
+  const content = (
+    <div className={embedded ? "" : "min-h-screen text-foreground font-sans"}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 overflow-x-hidden">
+        {!embedded && (
+          <h1 className="text-3xl font-medium text-foreground mb-8">Projects</h1>
+        )}
         {/* Search and filters */}
         <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-3 mb-8">
           <label htmlFor="project-search" className="sr-only">Search projects</label>
@@ -595,4 +602,15 @@ export default function ProjectsShowcase() {
       </Dialog>
     </div>
   );
+
+  if (embedded) {
+    return content;
+  }
+
+  return <main>{content}</main>;
+}
+
+// Default export for the standalone /projects page
+export default function ProjectsPage() {
+  return <ProjectsShowcase embedded={false} />;
 }

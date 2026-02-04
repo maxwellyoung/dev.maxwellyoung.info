@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import Resume from "./resume/page";
-import ProjectsShowcase from "./projects/page";
+import { ProjectsShowcase } from "./projects/page";
 import { motion, AnimatePresence } from "framer-motion";
 import FallingStars from "@/components/FallingStars";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
@@ -189,7 +189,7 @@ export default function Home() {
         </motion.section>
 
         <section id="projects">
-          <ProjectsShowcase />
+          <ProjectsShowcase embedded />
         </section>
 
         <section id="resume">

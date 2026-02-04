@@ -28,9 +28,14 @@ export async function generateMetadata({
     };
   }
 
+  // Use overview for description (min 120 chars for SEO)
+  const description = study.overview.length >= 120
+    ? study.overview.slice(0, 160)
+    : `${study.subtitle}. ${study.overview}`.slice(0, 160);
+
   return {
     title: `${study.title} — Case Study | Maxwell Young`,
-    description: study.subtitle,
+    description,
     openGraph: {
       title: `${study.title} — Case Study`,
       description: study.overview.slice(0, 160),

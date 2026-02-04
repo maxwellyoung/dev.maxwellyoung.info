@@ -92,9 +92,9 @@ export default function Resume() {
         {/* header */}
         <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
           <div>
-            <h1 className="text-3xl font-medium text-foreground font-roboto-mono">
+            <h2 className="text-3xl font-medium text-foreground font-roboto-mono">
               {resumeData.name}
-            </h1>
+            </h2>
 
             <div
               className="relative"

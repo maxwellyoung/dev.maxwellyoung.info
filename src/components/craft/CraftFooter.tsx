@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight, Twitter, Github } from "lucide-react";
+import Link from "next/link";
 
 export function CraftFooter() {
   const ref = useRef(null);
@@ -120,9 +121,11 @@ export function CraftFooter() {
           <div className="text-xs text-muted/60">
             © 2026 Maxwell Young • Design Engineer • Auckland, NZ
           </div>
-          
-          <div className="text-xs text-muted/40">
-            Built with Next.js, Framer Motion, and spring physics
+
+          <div className="flex items-center gap-4 text-xs text-muted/40">
+            <Link href="/" className="hover:text-muted/60 transition-colors">Home</Link>
+            <Link href="/contact" className="hover:text-muted/60 transition-colors">Contact</Link>
+            <Link href="/privacy" className="hover:text-muted/60 transition-colors">Privacy</Link>
           </div>
         </div>
       </div>
