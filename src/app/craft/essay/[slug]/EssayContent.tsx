@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import Link from "next/link";
 import { type Essay } from "@/lib/essays";
+import { SiteFooter } from "@/components/SiteFooter";
 
 interface EssayContentProps {
   essay: Essay;
@@ -135,6 +136,8 @@ export function EssayContent({ essay }: EssayContentProps) {
               <span>Back to all essays</span>
             </Link>
           </footer>
+
+          <SiteFooter />
         </motion.div>
       </article>
     </main>
