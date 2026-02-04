@@ -19,7 +19,7 @@ import { EasterEggs } from "@/components/EasterEggs";
 export const metadata: Metadata = {
   title: "Maxwell Young | Design Engineer | Auckland, NZ",
   description:
-    "Design engineer specializing in React, React Native, and TypeScript. 3+ years shipping production apps. Currently at Silk, previously Spark NZ. Available for frontend, mobile, and full-stack roles in Auckland or remote.",
+    "Design engineer at Silk. React, React Native, TypeScript. 3+ years shipping apps. Previously Spark NZ. Open to roles in Auckland or remote.",
   metadataBase: new URL("https://dev.maxwellyoung.info"),
   keywords: [
     // Job-hunting keywords
@@ -95,7 +95,6 @@ export const metadata: Metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
   themeColor: "#0E0E0E",
 };
 
@@ -132,16 +131,43 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "ProfilePage",
+        "@id": "https://dev.maxwellyoung.info/",
+        url: "https://dev.maxwellyoung.info/",
+        name: "Maxwell Young | Design Engineer",
+        description:
+          "Design engineer at Silk. React, React Native, TypeScript. 3+ years shipping apps. Previously Spark NZ. Open to roles in Auckland or remote.",
+        datePublished: "2024-01-01",
+        dateModified: "2026-02-05",
+        mainEntity: {
+          "@id": "https://dev.maxwellyoung.info/#person",
+        },
+        author: {
+          "@id": "https://dev.maxwellyoung.info/#person",
+        },
+      },
+      {
         "@type": "Person",
         "@id": "https://dev.maxwellyoung.info/#person",
         name: "Maxwell Young",
+        givenName: "Maxwell",
+        familyName: "Young",
         jobTitle: "Design Engineer",
         url: "https://dev.maxwellyoung.info/",
-        email: "maxtheyoung@gmail.com",
+        email: "maxwell@ninetynine.digital",
+        image: "https://dev.maxwellyoung.info/profile_work.webp",
         sameAs: [
           "https://github.com/maxwellyoung",
           "https://www.linkedin.com/in/maxwell-young-a55032125/",
           "https://www.ninetynine.digital",
+        ],
+        knowsAbout: [
+          "React",
+          "React Native",
+          "TypeScript",
+          "Next.js",
+          "UI/UX Design",
+          "Mobile Development",
         ],
         alumniOf: {
           "@type": "EducationalOrganization",
@@ -185,6 +211,7 @@ export default function RootLayout({
       className={`${generalSans.variable} ${sentient.variable}`}
     >
       <head>
+        <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

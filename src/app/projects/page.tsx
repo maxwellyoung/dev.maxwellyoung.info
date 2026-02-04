@@ -279,9 +279,11 @@ export default function ProjectsShowcase() {
   };
 
   // Compact project row for client work and experiments
-  const ProjectRow = ({ p }: { p: Project }) => {
+  const ProjectRow = ({ p, index = 0 }: { p: Project; index?: number }) => {
     const isExpanded = expandedProject === p.name;
     const statusLabel = getStatusLabel(p.status);
+    // First 4 images load eagerly to avoid LCP issues
+    const isEagerLoad = index < 4;
 
     return (
       <motion.li
@@ -319,7 +321,8 @@ export default function ProjectsShowcase() {
                   alt={p.name}
                   fill
                   className="object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-105"
-                  loading="lazy"
+                  loading={isEagerLoad ? "eager" : "lazy"}
+                  priority={isEagerLoad}
                   sizes="(max-width: 640px) 80px, 112px"
                 />
               ) : (
@@ -335,9 +338,9 @@ export default function ProjectsShowcase() {
             <div className="min-w-0 flex-1 overflow-hidden">
               <div className="flex items-center gap-2">
                 <ProjectHoverPreview screenshots={p.screenshots} projectName={p.name}>
-                  <h4 className="truncate break-words text-sm font-medium leading-tight text-foreground cursor-pointer">
+                  <h3 className="truncate break-words text-sm font-medium leading-tight text-foreground cursor-pointer">
                     {p.name}
-                  </h4>
+                  </h3>
                 </ProjectHoverPreview>
                 {p.featured && (
                   <Star className="h-3 w-3 flex-shrink-0 fill-[hsl(var(--accent))] text-[hsl(var(--accent))]" />
@@ -400,7 +403,9 @@ export default function ProjectsShowcase() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 overflow-x-hidden">
         {/* Search and filters */}
         <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-3 mb-8">
+          <label htmlFor="project-search" className="sr-only">Search projects</label>
           <input
+            id="project-search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="search projects"
@@ -414,8 +419,9 @@ export default function ProjectsShowcase() {
             "
           />
           <div className="w-full sm:w-auto sm:ml-auto flex items-center gap-2 text-sm">
-            <label className="text-muted-foreground">sort</label>
+            <label htmlFor="project-sort" className="text-muted-foreground">sort</label>
             <select
+              id="project-sort"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortKey)}
               className="
@@ -537,8 +543,8 @@ export default function ProjectsShowcase() {
                     animate="visible"
                     className="divide-y divide-[hsl(var(--border))]/50 overflow-x-hidden w-full max-w-full"
                   >
-                    {studioProjects.map((p) => (
-                      <ProjectRow key={p.name} p={p} />
+                    {studioProjects.map((p, index) => (
+                      <ProjectRow key={p.name} p={p} index={index} />
                     ))}
                   </motion.ul>
                 </section>
@@ -560,8 +566,8 @@ export default function ProjectsShowcase() {
                     animate="visible"
                     className="divide-y divide-[hsl(var(--border))]/30 overflow-x-hidden w-full max-w-full opacity-80"
                   >
-                    {experimentProjects.map((p) => (
-                      <ProjectRow key={p.name} p={p} />
+                    {experimentProjects.map((p, index) => (
+                      <ProjectRow key={p.name} p={p} index={studioProjects.length + index} />
                     ))}
                   </motion.ul>
                 </section>
