@@ -244,10 +244,10 @@ export default function Resume() {
         {/* body */}
         <div className="grid-12">
           {/* left / main */}
-          <main className="col-span-12 lg:col-span-8 order-2 lg:order-1 max-w-prose">
+          <section className="col-span-12 lg:col-span-8 order-2 lg:order-1 max-w-prose" aria-labelledby="experience-heading">
             {/* Selected work strip removed to reduce redundancy with Projects page */}
             <div className="relative">
-              <h2 className="resume-label" aria-label="Experience">
+              <h2 id="experience-heading" className="resume-label">
                 Experience
               </h2>
             </div>
@@ -278,7 +278,7 @@ export default function Resume() {
                 date={item.date}
               />
             ))}
-          </main>
+          </section>
 
           {/* right / sidebar */}
           <aside className="col-span-12 lg:col-span-4 order-1 lg:order-2 lg:border-l lg:border-[hsl(var(--border))] lg:pl-6">

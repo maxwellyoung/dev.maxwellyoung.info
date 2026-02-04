@@ -22,14 +22,9 @@ interface AnimatedLinkProps extends LinkProps {
 export const AnimatedLink = forwardRef<HTMLAnchorElement, AnimatedLinkProps>(
   ({ children, className, external, ...props }, ref) => {
     const baseClasses = cn(
-      "relative inline-block text-muted-foreground no-underline transition-colors duration-150",
-      "hover:no-underline",
-      "hover:text-foreground",
-      "after:absolute after:bottom-0 after:left-0 after:h-px",
-      "after:w-full after:origin-left after:scale-x-0",
-      "after:bg-accent/60 after:transition-transform after:duration-200",
-      "after:[transition-timing-function:cubic-bezier(0.22,0.68,0,1)]",
-      "hover:after:scale-x-100",
+      "relative inline-block text-muted-foreground transition-colors duration-150",
+      "underline decoration-muted-foreground/30 underline-offset-2",
+      "hover:text-foreground hover:decoration-accent/60",
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2",
       className
     );

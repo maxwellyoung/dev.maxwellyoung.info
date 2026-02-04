@@ -37,3 +37,4 @@ next-env.d.ts
 
 # private docs (not for hiring managers to find)
 /docs/
+squirrel.toml
