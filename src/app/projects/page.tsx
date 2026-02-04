@@ -16,6 +16,7 @@ import { ProjectDetails } from "@/components/ProjectDetails";
 import { ChevronDown, Star } from "lucide-react";
 import { container, item, spring } from "@/lib/motion";
 import { ProjectHoverPreview } from "@/components/ProjectHoverPreview";
+import { SiteFooter } from "@/components/SiteFooter";
 
 type SortKey = "newest" | "oldest" | "az";
 const PILL_FILTERS = ["Research", "AI/Data", "Fashion", "Creative"] as const;
@@ -600,6 +601,8 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
           )}
         </DialogContent>
       </Dialog>
+
+      {!embedded && <SiteFooter />}
     </div>
   );
 

@@ -7,11 +7,12 @@ import { SpringExamples } from "@/components/craft/SpringExamples";
 import { CraftFooter } from "@/components/craft/CraftFooter";
 
 export const metadata: Metadata = {
-  title: "Craft | Maxwell Young",
+  title: "Craft & Design Studies | Maxwell Young",
   description:
     "Interaction studies, design essays, and explorations in interface craft. Building things that feel alive through thoughtful motion and attention to detail.",
   openGraph: {
-    title: "Craft | Maxwell Young",
+    title: "Craft & Design Studies | Maxwell Young",
+    images: [{ url: "/meta.png", width: 1200, height: 630, alt: "Maxwell Young - Craft" }],
     description:
       "Interaction studies, design essays, and explorations in interface craft. Building things that feel alive through thoughtful motion and attention to detail.",
   },
