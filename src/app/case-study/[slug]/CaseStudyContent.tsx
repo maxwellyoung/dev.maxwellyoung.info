@@ -122,6 +122,8 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
               alt={study.title}
               fill
               className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 896px"
+              quality={70}
               priority
             />
           </motion.div>
@@ -184,6 +186,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                       alt={step.title}
                       fill
                       className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
                 )}

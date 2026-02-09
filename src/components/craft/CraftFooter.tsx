@@ -51,7 +51,7 @@ export function CraftFooter() {
             <span>•</span>
             
             <motion.a
-              href="https://jordan.is"
+              href="https://ibuildmyideas.com"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-foreground transition-colors inline-flex items-center space-x-1"

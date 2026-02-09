@@ -120,8 +120,9 @@ export default function Carousel({ images, onClose }: CarouselProps) {
           src={images[index]}
           alt="Background"
           fill
-          objectFit="cover"
-          className="blur-xl scale-110"
+          className="blur-xl scale-110 object-cover"
+          sizes="100vw"
+          quality={30}
         />
       </div>
 
@@ -157,8 +158,8 @@ export default function Carousel({ images, onClose }: CarouselProps) {
               src={images[index]}
               alt={`Screenshot ${index + 1}`}
               fill
-              objectFit="contain"
-              className="pointer-events-none"
+              className="pointer-events-none object-contain"
+              sizes="100vw"
             />
           </motion.div>
         </AnimatePresence>

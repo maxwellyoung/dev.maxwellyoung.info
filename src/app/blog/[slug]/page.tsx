@@ -207,6 +207,8 @@ export default function BlogPostPage() {
             alt={post.mainImage.alt || post.title}
             fill
             className="object-cover rounded-lg"
+            sizes="(max-width: 768px) 100vw, 768px"
+            priority
           />
         </div>
       )}

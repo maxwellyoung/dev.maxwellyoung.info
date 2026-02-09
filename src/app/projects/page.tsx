@@ -484,6 +484,13 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
         {/* Act I & II: The Spine - Always visible, never filtered */}
         {heroProjects.length > 0 && (
           <section aria-label="featured work" className="overflow-x-hidden w-full max-w-full mb-12">
+            <h2 className="mb-4 flex items-center gap-3">
+              <div className="w-1 h-3 bg-accent" />
+              <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/50 uppercase">
+                featured
+              </span>
+              <span className="h-px flex-1 bg-border/30" />
+            </h2>
             <motion.div
               variants={container.list}
               initial="hidden"

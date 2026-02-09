@@ -32,11 +32,13 @@ export async function generateMetadata({
       description: essay.excerpt,
       type: "article",
       publishedTime: essay.date,
+      images: [{ url: "/meta.png", width: 1200, height: 630, alt: essay.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: essay.title,
       description: essay.excerpt,
+      images: ["/meta.png"],
     },
   };
 }

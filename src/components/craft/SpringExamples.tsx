@@ -248,6 +248,7 @@ function ElasticInput() {
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
               placeholder="Type something..."
+              aria-label="Elastic input demo"
               className="w-full px-4 py-3 bg-transparent border border-border rounded-lg focus:outline-none focus:border-accent transition-colors"
             />
             

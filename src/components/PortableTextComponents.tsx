@@ -19,6 +19,7 @@ export const PortableTextComponents = {
             alt={value.alt || " "}
             fill
             className="object-cover rounded-lg"
+            sizes="(max-width: 768px) 100vw, 768px"
           />
         </div>
       );

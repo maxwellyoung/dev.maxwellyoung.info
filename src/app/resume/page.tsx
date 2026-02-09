@@ -235,7 +235,7 @@ export default function Resume() {
                 alt="Portrait of Maxwell Young"
                 width={72}
                 height={72}
-                priority
+                sizes="72px"
               />
             </button>
           </div>
