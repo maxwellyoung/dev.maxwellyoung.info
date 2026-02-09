@@ -55,7 +55,6 @@ export function ProjectDetails({
                     imageLoaded ? "opacity-100" : "opacity-0"
                   }`}
                   onLoad={() => setImageLoaded(true)}
-                  priority
                 />
               </div>
               {project.screenshots.length > 1 && (

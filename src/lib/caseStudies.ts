@@ -218,7 +218,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Designer & Developer",
     tools: ["Next.js", "Sanity CMS", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://chlita.com",
-    githubUrl: "https://github.com/maxwellyoung/chlita",
+    // githubUrl omitted — repo is private
     overview:
       "Portfolio website for Ch'lita, a fashion stylist whose clients include Rosalía and The Dare. The brief was simple: let the work speak. My job was to build something that disappeared behind the imagery.",
     challenge:
@@ -266,8 +266,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Tailwind CSS",
       "TypeScript",
     ],
-    liveUrl: "https://dayle.art",
-    githubUrl: "https://github.com/maxwellyoung/dayle",
+    liveUrl: "https://dayle.vercel.app",
+    // githubUrl omitted — repo is private
     overview:
       "A portfolio for installation and object-based artist Dayle Palfreyman. The brief: make the art the only thing people see. No navigation clutter, no design ego, no templates. A full-screen immersive gallery with Sanity CMS for complete client independence.",
     challenge:

@@ -217,7 +217,7 @@ export default function ShowcaseClient({ source }: ShowcaseClientProps) {
                         fill
                         sizes="(max-width: 1024px) 100vw, 66vw"
                         className="object-cover"
-                        priority
+                        priority={previewIndex === 0}
                       />
                     </div>
                     <h2 className="text-[20px] font-medium leading-tight tracking-[0.02em]">

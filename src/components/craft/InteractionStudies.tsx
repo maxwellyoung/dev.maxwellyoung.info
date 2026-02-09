@@ -56,7 +56,7 @@ function LikeButtonStudy() {
           }}
           whileTap={{ scale: 0.95 }}
           className="flex items-center space-x-2 group"
-          aria-label={isLiked ? "Unlike" : "Like"}
+          aria-label={isLiked ? `${count} likes, unlike` : `${count} likes, like`}
           aria-pressed={isLiked}
         >
           <motion.div

@@ -247,10 +247,8 @@ export const projects: Project[] = [
     caseStudySlug: "chlita",
     links: {
       live: "https://chlita.com",
-      repo: "https://github.com/maxwellyoung/chlita",
     },
     link: "https://chlita.com",
-    codeLink: "https://github.com/maxwellyoung/chlita",
     screenshots: [
       "/projectImages/chlita-1.webp",
       "/projectImages/chlita-2.webp",
@@ -314,11 +312,11 @@ export const projects: Project[] = [
     tags: ["Next.js 15", "Sanity CMS", "Framer Motion", "Accessibility", "Portfolio"],
     stack: ["Next.js 15", "TypeScript", "Sanity", "Tailwind CSS", "Framer Motion"],
     client: "Dayle Palfreyman",
+    caseStudySlug: "dayle",
     links: {
-      live: "https://dayle.art",
-      repo: "https://github.com/maxwellyoung/dayle",
+      live: "https://dayle.vercel.app",
     },
-    link: "https://dayle.art",
+    link: "https://dayle.vercel.app",
     screenshots: ["/projectImages/dayle-1.webp"],
     thumb: "/projectImages/dayle-1.webp",
   },

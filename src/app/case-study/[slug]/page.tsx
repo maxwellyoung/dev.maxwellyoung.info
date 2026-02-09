@@ -40,15 +40,20 @@ export async function generateMetadata({
       title: `${study.title} — Case Study`,
       description: study.overview.slice(0, 160),
       type: "article",
-      images: study.heroImage
-        ? [{ url: study.heroImage, width: 1200, height: 630, alt: study.title }]
-        : undefined,
+      images: [
+        {
+          url: study.heroImage || "/meta.png",
+          width: 1200,
+          height: 630,
+          alt: study.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${study.title} — Case Study`,
       description: study.subtitle,
-      images: study.heroImage ? [study.heroImage] : undefined,
+      images: [study.heroImage || "/meta.png"],
     },
   };
 }
