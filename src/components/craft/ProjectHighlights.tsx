@@ -143,7 +143,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               <h3 className="font-display text-2xl font-light mb-1">
                 {project.title}
               </h3>
-              <p className="text-muted/80 font-medium">
+              <p className="text-muted-foreground font-medium">
                 {project.subtitle}
               </p>
             </div>
@@ -206,7 +206,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 <div className="space-y-4">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <h4 className="font-medium text-sm text-muted/70 uppercase tracking-wide">
+                      <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">
                         Before
                       </h4>
                       <p className="text-sm text-muted leading-relaxed">
@@ -215,7 +215,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                     </div>
                     
                     <div className="space-y-2">
-                      <h4 className="font-medium text-sm text-muted/70 uppercase tracking-wide">
+                      <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">
                         After
                       </h4>
                       <p className="text-sm text-muted leading-relaxed">
@@ -225,7 +225,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   </div>
                   
                   <div className="pt-2 border-t border-border/50">
-                    <h4 className="font-medium text-sm text-muted/70 uppercase tracking-wide mb-2">
+                    <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide mb-2">
                       Key Insight
                     </h4>
                     <p className="text-sm font-medium">
@@ -292,7 +292,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   } mx-auto flex items-center justify-center`}>
                     <ExternalLink className="w-5 h-5" />
                   </div>
-                  <p className="text-xs text-muted/70 font-medium">
+                  <p className="text-xs text-muted-foreground font-medium">
                     Project Preview
                   </p>
                 </div>

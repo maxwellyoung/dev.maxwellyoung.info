@@ -67,7 +67,7 @@ export default function PrivacyPage() {
           </a>
         </p>
 
-        <p className="text-xs text-muted-foreground/60 mt-8">
+        <p className="text-xs text-muted-foreground mt-8">
           Last updated: February 2026
         </p>
       </div>

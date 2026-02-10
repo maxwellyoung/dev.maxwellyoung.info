@@ -32,7 +32,7 @@ export function CraftHeader() {
           Building things that feel alive through thoughtful motion and attention to detail.
         </p>
         
-        <div className="flex items-center text-sm text-muted/70 space-x-4">
+        <div className="flex items-center text-sm text-muted-foreground space-x-4">
           <span>Inspired by Emil Kowalski, Jordan Singer, Rauno Felber</span>
           <span>•</span>
           <span>Motion grammar for humane interfaces</span>

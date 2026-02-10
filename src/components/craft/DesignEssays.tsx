@@ -34,7 +34,7 @@ export function DesignEssays() {
       </div>
 
       <div className="pt-8 border-t border-border/50">
-        <p className="text-sm text-muted/70 text-center">
+        <p className="text-sm text-muted-foreground text-center">
           More essays coming soon. Following in the footsteps of Rauno, Emil,
           and the design engineers who document their craft.
         </p>
@@ -83,12 +83,12 @@ function EssayCard({ essay, index }: { essay: Essay; index: number }) {
                 {essay.title}
               </h3>
 
-              <p className="text-muted/80 leading-relaxed mt-2">
+              <p className="text-muted-foreground leading-relaxed mt-2">
                 {essay.excerpt}
               </p>
             </div>
 
-            <div className="flex items-center space-x-4 text-sm text-muted/60">
+            <div className="flex items-center space-x-4 text-sm text-muted-foreground">
               <span className="bg-muted/30 px-3 py-1 rounded-full font-medium">
                 {essay.category}
               </span>
@@ -118,7 +118,7 @@ function EssayCard({ essay, index }: { essay: Essay; index: number }) {
                 className="pt-4 border-t border-border/30"
               >
                 <div className="prose prose-sm dark:prose-invert max-w-none">
-                  <div className="text-muted/80 leading-relaxed">
+                  <div className="text-muted-foreground leading-relaxed">
                     {essay.content.split("\n\n")[0]?.substring(0, 200)}...
                   </div>
                 </div>

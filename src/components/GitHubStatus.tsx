@@ -72,7 +72,7 @@ export function GitHubStatus({ username = "maxwellyoung" }: { username?: string 
       {hasStats && (
         <span
           className={cn(
-            "text-[10px] text-muted-foreground/60 transition-all duration-200",
+            "text-[10px] text-muted-foreground transition-all duration-200",
             isHovered ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-1"
           )}
         >

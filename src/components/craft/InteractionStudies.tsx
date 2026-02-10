@@ -45,7 +45,7 @@ function LikeButtonStudy() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h3 className="font-display text-xl">Like Button Feedback</h3>
-        <span className="text-sm text-muted/70">Spring physics • Haptic feedback</span>
+        <span className="text-sm text-muted-foreground">Spring physics • Haptic feedback</span>
       </div>
       
       <div className="bg-card border border-border rounded-lg p-8 flex items-center justify-center">
@@ -94,7 +94,7 @@ function LikeButtonStudy() {
         </motion.button>
       </div>
       
-      <p className="text-sm text-muted/70 leading-relaxed">
+      <p className="text-sm text-muted-foreground leading-relaxed">
         Combines scale feedback with color transition and particle burst. 
         The spring animation creates a satisfying tactile feeling that rewards engagement.
       </p>
@@ -126,7 +126,7 @@ function DownloadProgressStudy() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h3 className="font-display text-xl">Download Progress</h3>
-        <span className="text-sm text-muted/70">Morphing states • Progress indication</span>
+        <span className="text-sm text-muted-foreground">Morphing states • Progress indication</span>
       </div>
       
       <div className="bg-card border border-border rounded-lg p-8 flex items-center justify-center">
@@ -156,7 +156,7 @@ function DownloadProgressStudy() {
         </motion.button>
       </div>
       
-      <p className="text-sm text-muted/70 leading-relaxed">
+      <p className="text-sm text-muted-foreground leading-relaxed">
         Button morphs to show download progress with fluid fill animation. 
         State changes feel connected and provide clear feedback about system status.
       </p>
@@ -178,7 +178,7 @@ function ShareMenuStudy() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h3 className="font-display text-xl">Share Menu</h3>
-        <span className="text-sm text-muted/70">Staggered reveal • Elastic motion</span>
+        <span className="text-sm text-muted-foreground">Staggered reveal • Elastic motion</span>
       </div>
       
       <div className="bg-card border border-border rounded-lg p-8 flex items-center justify-center">
@@ -222,7 +222,7 @@ function ShareMenuStudy() {
         </div>
       </div>
       
-      <p className="text-sm text-muted/70 leading-relaxed">
+      <p className="text-sm text-muted-foreground leading-relaxed">
         Share menu appears with staggered spring animations. Each item enters 
         with a slight delay, creating rhythm and drawing attention to options.
       </p>
@@ -255,7 +255,7 @@ function PlaybackControlStudy() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h3 className="font-display text-xl">Playback Control</h3>
-        <span className="text-sm text-muted/70">Morphing icon • Smooth transitions</span>
+        <span className="text-sm text-muted-foreground">Morphing icon • Smooth transitions</span>
       </div>
       
       <div className="bg-card border border-border rounded-lg p-8">
@@ -290,7 +290,7 @@ function PlaybackControlStudy() {
                 transition={{ duration: 0.1 }}
               />
             </div>
-            <div className="flex justify-between text-xs text-muted/70">
+            <div className="flex justify-between text-xs text-muted-foreground">
               <span>{Math.floor(currentTime / 10)}:{(currentTime % 10).toString().padStart(2, '0')}</span>
               <span>{Math.floor(duration / 10)}:{(duration % 10).toString().padStart(2, '0')}</span>
             </div>
@@ -298,7 +298,7 @@ function PlaybackControlStudy() {
         </div>
       </div>
       
-      <p className="text-sm text-muted/70 leading-relaxed">
+      <p className="text-sm text-muted-foreground leading-relaxed">
         Play button morphs to pause state with layered animations. 
         Progress bar updates smoothly to maintain the feeling of continuous playback.
       </p>
