@@ -23,7 +23,7 @@ export function CraftFooter() {
           <h3 className="font-display text-xl font-light">
             Inspired by the craft of
           </h3>
-          <div className="flex flex-wrap justify-center gap-4 text-sm text-muted/70">
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
             <motion.a
               href="https://rauno.me"
               target="_blank"
@@ -70,14 +70,14 @@ export function CraftFooter() {
             Not to simulate physics perfectly, but to capture the feeling of physics. 
             The essence, not the equations."
           </blockquote>
-          <cite className="text-sm text-muted/60 mt-2 block">
+          <cite className="text-sm text-muted-foreground mt-2 block">
             — From "The Invisible Details of Interaction Design"
           </cite>
         </div>
 
         {/* Connect */}
         <div className="text-center space-y-4">
-          <p className="text-muted/70 text-sm">
+          <p className="text-muted-foreground text-sm">
             Interested in design engineering or building interfaces that feel alive?
           </p>
           <div className="flex justify-center space-x-4">
@@ -118,14 +118,14 @@ export function CraftFooter() {
 
         {/* Bottom */}
         <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
-          <div className="text-xs text-muted/60">
+          <div className="text-xs text-muted-foreground">
             © 2026 Maxwell Young • Design Engineer • Auckland, NZ
           </div>
 
-          <div className="flex items-center gap-4 text-xs text-muted/40">
-            <Link href="/" className="hover:text-muted/60 transition-colors">Home</Link>
-            <Link href="/contact" className="hover:text-muted/60 transition-colors">Contact</Link>
-            <Link href="/privacy" className="hover:text-muted/60 transition-colors">Privacy</Link>
+          <div className="flex items-center gap-4 text-xs text-muted-foreground">
+            <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+            <Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link>
+            <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
           </div>
         </div>
       </div>

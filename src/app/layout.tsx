@@ -1,20 +1,27 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import dynamic from "next/dynamic";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { CSPostHogProvider } from "./providers";
-import Link from "next/link";
 import ArtStyleProvider from "@/components/providers/ArtStyleProvider";
-import ArtStyleMenu from "@/components/ArtStyleMenu";
-import LayoutDiagnostics from "@/components/LayoutDiagnostics";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { PageTransitionProvider } from "@/components/providers/PageTransitionProvider";
-import { CommandPalette, CommandPaletteHint } from "@/components/CommandPalette";
-import { EasterEggs } from "@/components/EasterEggs";
-// DotMatrix removed for cleaner backdrop
 
-// fonts are loaded via globals.css
+const ArtStyleMenu = dynamic(() => import("@/components/ArtStyleMenu"));
+const LayoutDiagnostics = dynamic(
+  () => import("@/components/LayoutDiagnostics")
+);
+const CommandPalette = dynamic(
+  () => import("@/components/CommandPalette").then((mod) => mod.CommandPalette)
+);
+const CommandPaletteHint = dynamic(
+  () => import("@/components/CommandPalette").then((mod) => mod.CommandPaletteHint)
+);
+const EasterEggs = dynamic(
+  () => import("@/components/EasterEggs").then((mod) => mod.EasterEggs)
+);
 
 export const metadata: Metadata = {
   title: "Maxwell Young | Design Engineer | Auckland, NZ",

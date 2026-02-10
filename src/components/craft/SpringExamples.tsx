@@ -74,7 +74,7 @@ function SpringComparison() {
             />
             <div className="flex-1">
               <div className="font-medium text-sm">{spring.name}</div>
-              <div className="text-xs text-muted/70">
+              <div className="text-xs text-muted-foreground">
                 Stiffness: {spring.stiffness} • Damping: {spring.damping} • Mass: {spring.mass}
               </div>
             </div>
@@ -115,7 +115,7 @@ function MagneticButton() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h3 className="font-display text-xl">Magnetic Button</h3>
-        <span className="text-sm text-muted/70">Mouse interaction • Attraction force</span>
+        <span className="text-sm text-muted-foreground">Mouse interaction • Attraction force</span>
       </div>
       
       <div 
@@ -132,7 +132,7 @@ function MagneticButton() {
         </motion.button>
       </div>
       
-      <p className="text-sm text-muted/70 leading-relaxed">
+      <p className="text-sm text-muted-foreground leading-relaxed">
         Button is attracted to cursor within proximity. Spring physics create 
         natural magnetic behavior that feels responsive without being jarring.
       </p>
@@ -159,7 +159,7 @@ function StackedCards() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h3 className="font-display text-xl">Stacked Cards</h3>
-        <span className="text-sm text-muted/70">Staggered animation • Z-index layers</span>
+        <span className="text-sm text-muted-foreground">Staggered animation • Z-index layers</span>
       </div>
       
       <div className="bg-card border border-border rounded-lg p-12 flex items-center justify-center">
@@ -209,7 +209,7 @@ function StackedCards() {
         </div>
       </div>
       
-      <p className="text-sm text-muted/70 leading-relaxed">
+      <p className="text-sm text-muted-foreground leading-relaxed">
         Click cards to cycle through stack. Each card has natural spring motion 
         and slight rotation to create depth. Hover reveals the layered structure.
       </p>
@@ -225,7 +225,7 @@ function ElasticInput() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h3 className="font-display text-xl">Elastic Input</h3>
-        <span className="text-sm text-muted/70">Focus states • Smooth scaling</span>
+        <span className="text-sm text-muted-foreground">Focus states • Smooth scaling</span>
       </div>
       
       <div className="bg-card border border-border rounded-lg p-8 flex items-center justify-center">
@@ -277,14 +277,14 @@ function ElasticInput() {
               stiffness: 300,
               damping: 20
             }}
-            className="mt-2 text-sm text-muted/70"
+            className="mt-2 text-sm text-muted-foreground"
           >
             {value.length} characters
           </motion.div>
         </div>
       </div>
       
-      <p className="text-sm text-muted/70 leading-relaxed">
+      <p className="text-sm text-muted-foreground leading-relaxed">
         Input field scales gently on focus with elastic spring physics. 
         The accent line grows smoothly, and character count appears with spring animation.
       </p>

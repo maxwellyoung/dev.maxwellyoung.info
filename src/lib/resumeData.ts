@@ -182,7 +182,7 @@ export const resumeData: ResumeData = {
     },
   ],
   socials: [
-    { name: "Website", url: "https://dev.maxwellyoung.info" },
+    { name: "Portfolio — dev.maxwellyoung.info", url: "https://dev.maxwellyoung.info" },
     { name: "GitHub", url: "https://github.com/maxwellyoung" },
     { name: "LinkedIn", url: "https://linkedin.com/in/maxwell-young-a55032125" },
   ],

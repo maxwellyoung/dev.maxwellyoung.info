@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Github, Calendar, Tag } from "lucide-react";
 import { AnimatedLink } from "@/components/ui/animated-link";
-import { type CaseStudy } from "@/lib/caseStudies";
+import { type CaseStudy, caseStudies } from "@/lib/caseStudies";
 import { spring } from "@/lib/motion";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -267,6 +267,43 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
             </Link>
           </motion.div>
         )}
+
+        {/* More case studies */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={spring.gentle}
+          className="pt-8 border-t border-[hsl(var(--border))]"
+        >
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-4">
+            More case studies
+          </p>
+          <ul className="space-y-2">
+            {Object.values(caseStudies)
+              .filter((cs) => cs.slug !== slug)
+              .slice(0, 4)
+              .map((cs) => (
+                <li key={cs.slug}>
+                  <Link
+                    href={`/case-study/${cs.slug}`}
+                    className="group flex items-center justify-between text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <span>{cs.title}</span>
+                    <span className="text-xs text-muted-foreground">{cs.role}</span>
+                  </Link>
+                </li>
+              ))}
+          </ul>
+          <div className="mt-4">
+            <Link
+              href="/projects"
+              className="text-sm text-muted-foreground hover:text-accent transition-colors"
+            >
+              View all projects
+            </Link>
+          </div>
+        </motion.div>
 
         <SiteFooter />
       </section>

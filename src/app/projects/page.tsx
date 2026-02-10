@@ -407,7 +407,14 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
     <div className={embedded ? "" : "min-h-screen text-foreground font-sans"}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 overflow-x-hidden">
         {!embedded && (
-          <h1 className="text-3xl font-medium text-foreground mb-8">Projects</h1>
+          <div className="mb-8">
+            <h1 className="text-3xl font-medium text-foreground mb-4">Projects</h1>
+            <p className="text-muted-foreground leading-relaxed max-w-2xl">
+              A mix of professional work, independent products, and experiments.
+              Featured projects are the work I&apos;m proudest of. Each one taught me
+              something about building software that respects people&apos;s time and attention.
+            </p>
+          </div>
         )}
         {/* Search and filters */}
         <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-3 mb-8">
@@ -486,7 +493,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
           <section aria-label="featured work" className="overflow-x-hidden w-full max-w-full mb-12">
             <h2 className="mb-4 flex items-center gap-3">
               <div className="w-1 h-3 bg-accent" />
-              <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/50 uppercase">
+              <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
                 featured
               </span>
               <span className="h-px flex-1 bg-border/30" />
@@ -547,7 +554,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
                 <section aria-label="client work" className="overflow-x-hidden w-full max-w-full">
                   <h2 className="mb-4 flex items-center gap-3">
                     <div className="w-1 h-3 bg-border" />
-                    <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/50 uppercase">
+                    <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
                       client work
                     </span>
                     <span className="h-px flex-1 bg-border/30" />
@@ -570,7 +577,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
                 <section aria-label="experiments" className="overflow-x-hidden w-full max-w-full">
                   <h2 className="mb-4 flex items-center gap-3">
                     <div className="w-1 h-3 bg-border/50" />
-                    <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/40 uppercase">
+                    <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
                       experiments
                     </span>
                     <span className="h-px flex-1 bg-border/20" />

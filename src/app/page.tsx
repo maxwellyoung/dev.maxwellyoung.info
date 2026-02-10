@@ -155,19 +155,21 @@ export default function Home() {
             </motion.div>
 
             <motion.nav
-              className="text-muted-foreground/60 text-xs flex flex-wrap items-center gap-x-2 gap-y-1"
+              className="text-muted-foreground text-xs flex flex-wrap items-center gap-x-2 gap-y-1"
               variants={item.fadeUp}
               aria-label="Primary navigation"
             >
-              <AnimatedLink href="#projects" className="text-muted-foreground/60 hover:text-muted-foreground">Work</AnimatedLink>
+              <AnimatedLink href="#projects" className="text-muted-foreground hover:text-foreground">Work</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="#resume" className="text-muted-foreground/60 hover:text-muted-foreground">Resume</AnimatedLink>
+              <AnimatedLink href="#resume" className="text-muted-foreground hover:text-foreground">Resume</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="/craft" className="text-muted-foreground/60 hover:text-muted-foreground">Craft</AnimatedLink>
+              <AnimatedLink href="/about" className="text-muted-foreground hover:text-foreground">About</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="https://github.com/maxwellyoung" external className="text-muted-foreground/60 hover:text-muted-foreground">GitHub</AnimatedLink>
+              <AnimatedLink href="/craft" className="text-muted-foreground hover:text-foreground">Craft</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="https://www.linkedin.com/in/maxwell-young-a55032125" external className="text-muted-foreground/60 hover:text-muted-foreground">LinkedIn</AnimatedLink>
+              <AnimatedLink href="https://github.com/maxwellyoung" external className="text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
+              <span className="text-border/40">·</span>
+              <AnimatedLink href="https://www.linkedin.com/in/maxwell-young-a55032125" external className="text-muted-foreground hover:text-foreground">LinkedIn</AnimatedLink>
             </motion.nav>
           </div>
 
@@ -211,13 +213,13 @@ export default function Home() {
               {" "}— software that earns its place on your screen.
             </p>
             <div className="flex items-center gap-4">
-              <AnimatedLink href="/contact" className="text-xs text-muted-foreground/40 hover:text-muted-foreground">
+              <AnimatedLink href="/contact" className="text-xs text-muted-foreground hover:text-foreground">
                 Contact
               </AnimatedLink>
-              <AnimatedLink href="/privacy" className="text-xs text-muted-foreground/40 hover:text-muted-foreground">
+              <AnimatedLink href="/privacy" className="text-xs text-muted-foreground hover:text-foreground">
                 Privacy
               </AnimatedLink>
-              <p className="text-xs text-muted-foreground/40 hidden sm:block font-mono">
+              <p className="text-xs text-muted-foreground hidden sm:block font-mono">
                 ↑↑↓↓←→←→BA
               </p>
             </div>

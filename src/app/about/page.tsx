@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "About | Maxwell Young",
@@ -156,6 +157,32 @@ export default function AboutPage() {
             </a>
           </div>
         </section>
+
+        <section className="space-y-4">
+          <h2 className="text-lg font-medium">Explore</h2>
+          <div className="flex flex-wrap gap-4 text-sm">
+            <Link
+              href="/projects"
+              className="text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4 decoration-border hover:decoration-foreground"
+            >
+              View projects
+            </Link>
+            <Link
+              href="/craft"
+              className="text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4 decoration-border hover:decoration-foreground"
+            >
+              Design craft & essays
+            </Link>
+            <Link
+              href="/resume"
+              className="text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4 decoration-border hover:decoration-foreground"
+            >
+              Resume
+            </Link>
+          </div>
+        </section>
+
+        <SiteFooter />
       </div>
     </main>
   );

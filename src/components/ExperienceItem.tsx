@@ -36,7 +36,7 @@ export function ExperienceItem({
           company
         )}
       </span>
-      <span className="block text-xs font-normal text-muted-foreground/70 font-inter">
+      <span className="block text-xs font-normal text-muted-foreground font-inter">
         {date}
       </span>
       {summary && (

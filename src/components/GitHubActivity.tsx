@@ -81,8 +81,8 @@ export function GitHubActivity({ username = "maxwellyoung" }: { username?: strin
         className="w-full flex items-center justify-between gap-2 p-3 text-left hover:bg-[hsl(var(--muted))]/30 transition-colors rounded-lg"
       >
         <div className="flex items-center gap-2">
-          <Github className="w-3.5 h-3.5 text-muted-foreground/60" />
-          <span className="text-[11px] text-muted-foreground/60">
+          <Github className="w-3.5 h-3.5 text-muted-foreground" />
+          <span className="text-[11px] text-muted-foreground">
             GitHub
           </span>
         </div>
@@ -90,7 +90,7 @@ export function GitHubActivity({ username = "maxwellyoung" }: { username?: strin
           animate={{ rotate: isExpanded ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <ChevronDown className="w-3.5 h-3.5 text-muted-foreground/40" />
+          <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />
         </motion.div>
       </button>
 
@@ -120,7 +120,7 @@ export function GitHubActivity({ username = "maxwellyoung" }: { username?: strin
                       {stats.recentActivity.slice(0, 2).map((activity, i) => (
                         <div
                           key={i}
-                          className="flex items-center gap-1.5 text-[10px] text-muted-foreground/70"
+                          className="flex items-center gap-1.5 text-[10px] text-muted-foreground"
                         >
                           <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />
                           <span className="truncate">

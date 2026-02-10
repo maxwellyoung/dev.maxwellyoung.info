@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import Link from "next/link";
-import { type Essay } from "@/lib/essays";
+import { type Essay, essays } from "@/lib/essays";
 import { SiteFooter } from "@/components/SiteFooter";
 
 interface EssayContentProps {
@@ -47,7 +47,7 @@ export function EssayContent({ essay }: EssayContentProps) {
               {essay.excerpt}
             </p>
 
-            <div className="flex items-center space-x-6 text-sm text-muted/70 border-t border-b border-border/50 py-4">
+            <div className="flex items-center space-x-6 text-sm text-muted-foreground border-t border-b border-border/50 py-4">
               <div className="flex items-center space-x-2">
                 <Calendar className="w-4 h-4" />
                 <span>
@@ -103,7 +103,7 @@ export function EssayContent({ essay }: EssayContentProps) {
                       const match = item.match(/^\d+\.\s\*\*(.+?)\*\*:\s*(.+)/);
                       if (match) {
                         return (
-                          <li key={itemIndex} className="text-muted/90">
+                          <li key={itemIndex} className="text-muted-foreground">
                             <strong className="text-foreground">{match[1]}</strong>: {match[2]}
                           </li>
                         );
@@ -117,7 +117,7 @@ export function EssayContent({ essay }: EssayContentProps) {
               // Regular paragraphs
               if (paragraph.trim()) {
                 return (
-                  <p key={index} className="text-muted/90 leading-relaxed mb-6">
+                  <p key={index} className="text-muted-foreground leading-relaxed mb-6">
                     {paragraph}
                   </p>
                 );
@@ -127,7 +127,31 @@ export function EssayContent({ essay }: EssayContentProps) {
             })}
           </div>
 
-          <footer className="mt-16 pt-8 border-t border-border/50">
+          {/* Other essays */}
+          {essays.filter((e) => e.slug !== essay.slug).length > 0 && (
+            <div className="mt-16 pt-8 border-t border-border/50">
+              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-4">
+                More essays
+              </p>
+              <ul className="space-y-2">
+                {essays
+                  .filter((e) => e.slug !== essay.slug)
+                  .map((e) => (
+                    <li key={e.slug}>
+                      <Link
+                        href={`/craft/essay/${e.slug}`}
+                        className="group flex items-center justify-between text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <span>{e.title}</span>
+                        <span className="text-xs text-muted-foreground">{e.readTime}</span>
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          )}
+
+          <footer className="mt-8 pt-8 border-t border-border/50">
             <Link
               href="/craft"
               className="inline-flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors group"
