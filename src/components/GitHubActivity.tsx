@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useSWR from "swr";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, ChevronDown } from "lucide-react";
 
@@ -14,63 +15,41 @@ interface GitHubStats {
   }[];
 }
 
+async function fetchGitHubStats(username: string): Promise<GitHubStats> {
+  const userRes = await fetch(`https://api.github.com/users/${username}`);
+  if (!userRes.ok) throw new Error("Failed to fetch user");
+  const userData = await userRes.json();
+
+  const eventsRes = await fetch(
+    `https://api.github.com/users/${username}/events/public?per_page=5`
+  );
+  const eventsData = eventsRes.ok ? await eventsRes.json() : [];
+
+  const recentActivity = eventsData.slice(0, 3).map((event: { type: string; repo?: { name?: string }; created_at: string }) => ({
+    type: event.type.replace("Event", ""),
+    repo: event.repo?.name?.split("/")[1] || "unknown",
+    date: new Date(event.created_at).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+    }),
+  }));
+
+  return {
+    publicRepos: userData.public_repos,
+    followers: userData.followers,
+    recentActivity,
+  };
+}
+
 export function GitHubActivity({ username = "maxwellyoung" }: { username?: string }) {
-  const [stats, setStats] = useState<GitHubStats | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  useEffect(() => {
-    // Only fetch when expanded
-    if (!isExpanded) return;
-
-    let isMounted = true;
-    const controller = new AbortController();
-
-    async function fetchGitHubData() {
-      try {
-        const userRes = await fetch(`https://api.github.com/users/${username}`, {
-          signal: controller.signal,
-        });
-        if (!userRes.ok) throw new Error("Failed to fetch user");
-        const userData = await userRes.json();
-
-        const eventsRes = await fetch(
-          `https://api.github.com/users/${username}/events/public?per_page=5`,
-          { signal: controller.signal }
-        );
-        const eventsData = eventsRes.ok ? await eventsRes.json() : [];
-
-        const recentActivity = eventsData.slice(0, 3).map((event: { type: string; repo?: { name?: string }; created_at: string }) => ({
-          type: event.type.replace("Event", ""),
-          repo: event.repo?.name?.split("/")[1] || "unknown",
-          date: new Date(event.created_at).toLocaleDateString("en-US", {
-            month: "short",
-            day: "numeric",
-          }),
-        }));
-
-        if (isMounted) {
-          setStats({
-            publicRepos: userData.public_repos,
-            followers: userData.followers,
-            recentActivity,
-          });
-        }
-      } catch (e) {
-        if (e instanceof Error && e.name === "AbortError") return;
-        if (isMounted) setError(true);
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    }
-
-    fetchGitHubData();
-    return () => {
-      isMounted = false;
-      controller.abort();
-    };
-  }, [username, isExpanded]);
+  // Only fetch when expanded (SWR key is null when collapsed)
+  const { data: stats, isLoading: loading, error } = useSWR(
+    isExpanded ? `github-stats-${username}` : null,
+    () => fetchGitHubStats(username),
+    { revalidateOnFocus: false }
+  );
 
   if (error) return null;
 
