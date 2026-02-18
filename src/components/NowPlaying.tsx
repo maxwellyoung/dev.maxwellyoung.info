@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -13,41 +13,22 @@ interface SpotifyTrack {
   songUrl: string;
 }
 
+async function fetchNowPlaying(): Promise<SpotifyTrack | null> {
+  const res = await fetch("/api/spotify/now-playing");
+  if (!res.ok) return null;
+  const data = await res.json();
+  return data.isPlaying ? data : null;
+}
+
 export function NowPlaying() {
-  const [track, setTrack] = useState<SpotifyTrack | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let isMounted = true;
-    const controller = new AbortController();
-
-    async function fetchNowPlaying() {
-      try {
-        const res = await fetch("/api/spotify/now-playing", {
-          signal: controller.signal,
-        });
-        if (res.ok && isMounted) {
-          const data = await res.json();
-          setTrack(data.isPlaying ? data : null);
-        }
-      } catch (e) {
-        // Silently fail - widget just won't show
-        // Ignore abort errors
-        if (e instanceof Error && e.name === "AbortError") return;
-      } finally {
-        if (isMounted) setLoading(false);
-      }
+  const { data: track, isLoading: loading } = useSWR(
+    "spotify-now-playing",
+    fetchNowPlaying,
+    {
+      refreshInterval: 30000, // Poll every 30 seconds
+      revalidateOnFocus: false,
     }
-
-    fetchNowPlaying();
-    // Poll every 30 seconds
-    const interval = setInterval(fetchNowPlaying, 30000);
-    return () => {
-      isMounted = false;
-      controller.abort();
-      clearInterval(interval);
-    };
-  }, []);
+  );
 
   // Don't show anything while loading or if not playing
   if (loading) return null;

@@ -24,6 +24,256 @@ type Pill = (typeof PILL_FILTERS)[number];
 
 const STORAGE_KEY = "projects-filter-state";
 
+// Utility functions at module scope
+function getStatusLabel(status?: Project["status"]) {
+  if (!status) return null;
+  return status === "WIP" ? "In Progress" : status;
+}
+
+function getStatusClassName(status?: Project["status"]) {
+  if (status === "Active" || status === "WIP") {
+    return "bg-accent/10 text-accent border border-accent/20";
+  }
+  return "bg-[hsl(var(--muted))] text-muted-foreground";
+}
+
+// Hero project card: larger, more dominant, text-led
+function HeroProjectCard({
+  p,
+  expandedProject,
+  onToggleExpand,
+  onCarouselOpen,
+}: {
+  p: Project;
+  expandedProject: string | null;
+  onToggleExpand: (name: string | null) => void;
+  onCarouselOpen: () => void;
+}) {
+  const isExpanded = expandedProject === p.name;
+
+  return (
+    <motion.article
+      layout
+      variants={item.fadeUp}
+      className="group"
+    >
+      <button
+        onClick={(e) => {
+          onToggleExpand(isExpanded ? null : p.name);
+          e.currentTarget.parentElement?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }}
+        className={`
+          w-full text-left p-6 rounded-lg
+          transition-all duration-200 ease-out
+          hover:bg-[hsl(var(--muted))]/50
+          active:scale-[0.995]
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
+          border
+          ${isExpanded
+            ? "border-[hsl(var(--accent))]/50 bg-[hsl(var(--muted))]/30"
+            : "border-[hsl(var(--border))]"
+          }
+        `}
+      >
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-2">
+              <h3 className="text-lg font-medium text-foreground">
+                {p.name}
+              </h3>
+              {p.status === "Active" && (
+                <span className="px-2 py-0.5 text-[10px] font-medium rounded-full bg-accent/10 text-accent border border-accent/20">
+                  Active
+                </span>
+              )}
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {p.description}
+            </p>
+            {p.stack && (
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {p.stack.slice(0, 4).map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2 py-0.5 text-[10px] rounded-full bg-[hsl(var(--muted))] text-muted-foreground"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+          <motion.div
+            animate={{ rotate: isExpanded ? 180 : 0 }}
+            transition={spring.snappy}
+            className="flex-shrink-0 text-muted-foreground/50 group-hover:text-muted-foreground transition-colors mt-1"
+          >
+            <ChevronDown className="h-5 w-5" />
+          </motion.div>
+        </div>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isExpanded && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={spring.gentle}
+            className="px-1 pb-4 overflow-hidden"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...spring.gentle, delay: 0.05 }}
+            >
+              <ProjectDetails
+                project={p}
+                onCarouselOpen={onCarouselOpen}
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.article>
+  );
+}
+
+// Compact project row for client work and experiments
+function ProjectRow({
+  p,
+  index = 0,
+  expandedProject,
+  onToggleExpand,
+  onCarouselOpen,
+}: {
+  p: Project;
+  index?: number;
+  expandedProject: string | null;
+  onToggleExpand: (name: string | null) => void;
+  onCarouselOpen: () => void;
+}) {
+  const isExpanded = expandedProject === p.name;
+  const statusLabel = getStatusLabel(p.status);
+  // First 4 images load eagerly to avoid LCP issues
+  const isEagerLoad = index < 4;
+
+  return (
+    <motion.li
+      layout
+      variants={item.slide}
+      className="w-full max-w-full group"
+    >
+      <button
+        onClick={(e) => {
+          onToggleExpand(isExpanded ? null : p.name);
+          e.currentTarget.parentElement?.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }}
+        className={`
+          w-full max-w-full text-left px-2 sm:px-3 py-3
+          transition-all duration-200 ease-out
+          hover:bg-[hsl(var(--muted))]/50
+          active:scale-[0.995]
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset
+          border-l-2
+          ${isExpanded
+            ? "border-l-[hsl(var(--accent))] bg-[hsl(var(--muted))]/30"
+            : "border-l-transparent"
+          }
+        `}
+      >
+        <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
+          {/* Thumbnail with hover glow */}
+          <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-200 group-hover:ring-[hsl(var(--accent))]/40 group-hover:shadow-md">
+            {p.screenshots?.[0] ? (
+              <Image
+                src={p.screenshots[0]}
+                alt={p.name}
+                fill
+                className="object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-105"
+                loading={isEagerLoad ? "eager" : "lazy"}
+                priority={isEagerLoad}
+                sizes="(max-width: 640px) 80px, 112px"
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[hsl(var(--muted))] to-[hsl(var(--accent))]/10">
+                <span className="text-xs font-medium text-muted-foreground/50 tracking-wider">
+                  {statusLabel ?? "\u2014"}
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Content */}
+          <div className="min-w-0 flex-1 overflow-hidden">
+            <div className="flex items-center gap-2">
+              <ProjectHoverPreview screenshots={p.screenshots} projectName={p.name}>
+                <h3 className="truncate break-words text-sm font-medium leading-tight text-foreground cursor-pointer">
+                  {p.name}
+                </h3>
+              </ProjectHoverPreview>
+              {p.featured && (
+                <Star className="h-3 w-3 flex-shrink-0 fill-[hsl(var(--accent))] text-[hsl(var(--accent))]" />
+              )}
+              {statusLabel && (
+                <span
+                  className={`shrink-0 px-1.5 py-0.5 text-[10px] rounded-full ${getStatusClassName(
+                    p.status
+                  )}`}
+                >
+                  {statusLabel}
+                </span>
+              )}
+            </div>
+            <p className="mt-1 truncate break-words text-xs text-muted-foreground">
+              {p.description}
+            </p>
+          </div>
+
+          {/* Expand indicator - rotates on expand */}
+          <motion.div
+            animate={{ rotate: isExpanded ? 180 : 0 }}
+            transition={spring.snappy}
+            className="flex-shrink-0 text-muted-foreground/50 group-hover:text-muted-foreground transition-colors"
+          >
+            <ChevronDown className="h-4 w-4" />
+          </motion.div>
+        </div>
+      </button>
+
+      {/* Expanded details */}
+      <AnimatePresence initial={false}>
+        {isExpanded && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={spring.gentle}
+            className="px-1 pb-4 overflow-hidden"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...spring.gentle, delay: 0.05 }}
+            >
+              <ProjectDetails
+                project={p}
+                onCarouselOpen={onCarouselOpen}
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.li>
+  );
+}
+
 interface ProjectsShowcaseProps {
   embedded?: boolean;
 }
@@ -176,232 +426,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
     }
   };
 
-  const getStatusLabel = (status?: Project["status"]) => {
-    if (!status) return null;
-    return status === "WIP" ? "In Progress" : status;
-  };
-
-  const getStatusClassName = (status?: Project["status"]) => {
-    if (status === "Active" || status === "WIP") {
-      return "bg-accent/10 text-accent border border-accent/20";
-    }
-    return "bg-[hsl(var(--muted))] text-muted-foreground";
-  };
-
-  // Hero project card: larger, more dominant, text-led
-  const HeroProjectCard = ({ p }: { p: Project }) => {
-    const isExpanded = expandedProject === p.name;
-
-    return (
-      <motion.article
-        layout
-        variants={item.fadeUp}
-        className="group"
-      >
-        <button
-          onClick={(e) => {
-            setExpandedProject(isExpanded ? null : p.name);
-            e.currentTarget.parentElement?.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }}
-          className={`
-            w-full text-left p-6 rounded-lg
-            transition-all duration-200 ease-out
-            hover:bg-[hsl(var(--muted))]/50
-            active:scale-[0.995]
-            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
-            border
-            ${isExpanded
-              ? "border-[hsl(var(--accent))]/50 bg-[hsl(var(--muted))]/30"
-              : "border-[hsl(var(--border))]"
-            }
-          `}
-        >
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-2">
-                <h3 className="text-lg font-medium text-foreground">
-                  {p.name}
-                </h3>
-                {p.status === "Active" && (
-                  <span className="px-2 py-0.5 text-[10px] font-medium rounded-full bg-accent/10 text-accent border border-accent/20">
-                    Active
-                  </span>
-                )}
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {p.description}
-              </p>
-              {p.stack && (
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {p.stack.slice(0, 4).map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-0.5 text-[10px] rounded-full bg-[hsl(var(--muted))] text-muted-foreground"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
-            <motion.div
-              animate={{ rotate: isExpanded ? 180 : 0 }}
-              transition={spring.snappy}
-              className="flex-shrink-0 text-muted-foreground/50 group-hover:text-muted-foreground transition-colors mt-1"
-            >
-              <ChevronDown className="h-5 w-5" />
-            </motion.div>
-          </div>
-        </button>
-
-        <AnimatePresence initial={false}>
-          {isExpanded && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={spring.gentle}
-              className="px-1 pb-4 overflow-hidden"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ ...spring.gentle, delay: 0.05 }}
-              >
-                <ProjectDetails
-                  project={p}
-                  onCarouselOpen={() => setIsCarouselOpen(true)}
-                />
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.article>
-    );
-  };
-
-  // Compact project row for client work and experiments
-  const ProjectRow = ({ p, index = 0 }: { p: Project; index?: number }) => {
-    const isExpanded = expandedProject === p.name;
-    const statusLabel = getStatusLabel(p.status);
-    // First 4 images load eagerly to avoid LCP issues
-    const isEagerLoad = index < 4;
-
-    return (
-      <motion.li
-        layout
-        variants={item.slide}
-        className="w-full max-w-full group"
-      >
-        <button
-          onClick={(e) => {
-            setExpandedProject(isExpanded ? null : p.name);
-            e.currentTarget.parentElement?.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
-          }}
-          className={`
-            w-full max-w-full text-left px-2 sm:px-3 py-3
-            transition-all duration-200 ease-out
-            hover:bg-[hsl(var(--muted))]/50
-            active:scale-[0.995]
-            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset
-            border-l-2
-            ${isExpanded
-              ? "border-l-[hsl(var(--accent))] bg-[hsl(var(--muted))]/30"
-              : "border-l-transparent"
-            }
-          `}
-        >
-          <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
-            {/* Thumbnail with hover glow */}
-            <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-200 group-hover:ring-[hsl(var(--accent))]/40 group-hover:shadow-md">
-              {p.screenshots?.[0] ? (
-                <Image
-                  src={p.screenshots[0]}
-                  alt={p.name}
-                  fill
-                  className="object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-105"
-                  loading={isEagerLoad ? "eager" : "lazy"}
-                  priority={isEagerLoad}
-                  sizes="(max-width: 640px) 80px, 112px"
-                />
-              ) : (
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[hsl(var(--muted))] to-[hsl(var(--accent))]/10">
-                  <span className="text-xs font-medium text-muted-foreground/50 tracking-wider">
-                    {statusLabel ?? "—"}
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {/* Content */}
-            <div className="min-w-0 flex-1 overflow-hidden">
-              <div className="flex items-center gap-2">
-                <ProjectHoverPreview screenshots={p.screenshots} projectName={p.name}>
-                  <h3 className="truncate break-words text-sm font-medium leading-tight text-foreground cursor-pointer">
-                    {p.name}
-                  </h3>
-                </ProjectHoverPreview>
-                {p.featured && (
-                  <Star className="h-3 w-3 flex-shrink-0 fill-[hsl(var(--accent))] text-[hsl(var(--accent))]" />
-                )}
-                {statusLabel && (
-                  <span
-                    className={`shrink-0 px-1.5 py-0.5 text-[10px] rounded-full ${getStatusClassName(
-                      p.status
-                    )}`}
-                  >
-                    {statusLabel}
-                  </span>
-                )}
-              </div>
-              <p className="mt-1 truncate break-words text-xs text-muted-foreground">
-                {p.description}
-              </p>
-            </div>
-
-            {/* Expand indicator - rotates on expand */}
-            <motion.div
-              animate={{ rotate: isExpanded ? 180 : 0 }}
-              transition={spring.snappy}
-              className="flex-shrink-0 text-muted-foreground/50 group-hover:text-muted-foreground transition-colors"
-            >
-              <ChevronDown className="h-4 w-4" />
-            </motion.div>
-          </div>
-        </button>
-
-        {/* Expanded details */}
-        <AnimatePresence initial={false}>
-          {isExpanded && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={spring.gentle}
-              className="px-1 pb-4 overflow-hidden"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ ...spring.gentle, delay: 0.05 }}
-              >
-                <ProjectDetails
-                  project={p}
-                  onCarouselOpen={() => setIsCarouselOpen(true)}
-                />
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.li>
-    );
-  };
+  const handleCarouselOpen = () => setIsCarouselOpen(true);
 
   const content = (
     <div className={embedded ? "" : "min-h-screen text-foreground font-sans"}>
@@ -505,7 +530,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
               className="space-y-4"
             >
               {heroProjects.map((p) => (
-                <HeroProjectCard key={p.name} p={p} />
+                <HeroProjectCard key={p.name} p={p} expandedProject={expandedProject} onToggleExpand={setExpandedProject} onCarouselOpen={handleCarouselOpen} />
               ))}
             </motion.div>
           </section>
@@ -566,7 +591,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
                     className="divide-y divide-[hsl(var(--border))]/50 overflow-x-hidden w-full max-w-full"
                   >
                     {studioProjects.map((p, index) => (
-                      <ProjectRow key={p.name} p={p} index={index} />
+                      <ProjectRow key={p.name} p={p} index={index} expandedProject={expandedProject} onToggleExpand={setExpandedProject} onCarouselOpen={handleCarouselOpen} />
                     ))}
                   </motion.ul>
                 </section>
@@ -589,7 +614,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
                     className="divide-y divide-[hsl(var(--border))]/30 overflow-x-hidden w-full max-w-full opacity-80"
                   >
                     {experimentProjects.map((p, index) => (
-                      <ProjectRow key={p.name} p={p} index={studioProjects.length + index} />
+                      <ProjectRow key={p.name} p={p} index={studioProjects.length + index} expandedProject={expandedProject} onToggleExpand={setExpandedProject} onCarouselOpen={handleCarouselOpen} />
                     ))}
                   </motion.ul>
                 </section>

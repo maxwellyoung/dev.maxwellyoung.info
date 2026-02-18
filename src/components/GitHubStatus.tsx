@@ -1,49 +1,40 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useSWR from "swr";
 import { cn } from "@/lib/utils";
+
+async function fetchCommitCount(username: string): Promise<number | null> {
+  const res = await fetch(
+    `https://api.github.com/users/${username}/events/public?per_page=100`
+  );
+  if (!res.ok) return null;
+
+  const events = await res.json();
+  const yearStart = new Date(new Date().getFullYear(), 0, 1);
+  const pushEvents = events.filter((e: { type: string; created_at: string }) => {
+    const eventDate = new Date(e.created_at);
+    return e.type === "PushEvent" && eventDate >= yearStart;
+  });
+
+  let total = 0;
+  for (const event of pushEvents) {
+    total += event.payload?.commits?.length || 1;
+  }
+
+  return total > 0 ? total : null;
+}
 
 /**
  * GitHub link that reveals commit count on hover
  */
 export function GitHubStatus({ username = "maxwellyoung" }: { username?: string }) {
-  const [commitCount, setCommitCount] = useState<number | null>(null);
+  const { data: commitCount } = useSWR(
+    `github-commits-${username}`,
+    () => fetchCommitCount(username),
+    { revalidateOnFocus: false }
+  );
   const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    async function fetchContributions() {
-      try {
-        const res = await fetch(
-          `https://api.github.com/users/${username}/events/public?per_page=100`,
-          { signal: controller.signal }
-        );
-        if (!res.ok) return;
-
-        const events = await res.json();
-        const yearStart = new Date(new Date().getFullYear(), 0, 1);
-        const pushEvents = events.filter((e: { type: string; created_at: string }) => {
-          const eventDate = new Date(e.created_at);
-          return e.type === "PushEvent" && eventDate >= yearStart;
-        });
-
-        let total = 0;
-        for (const event of pushEvents) {
-          total += event.payload?.commits?.length || 1;
-        }
-
-        if (total > 0) {
-          setCommitCount(total);
-        }
-      } catch {
-        // Silently fail
-      }
-    }
-
-    fetchContributions();
-    return () => controller.abort();
-  }, [username]);
 
   const hasStats = commitCount && commitCount > 10;
 
