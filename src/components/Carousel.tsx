@@ -5,6 +5,7 @@ import {
   AnimatePresence,
   motion,
   useMotionValue,
+  useReducedMotion,
 } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -19,6 +20,7 @@ interface CarouselProps {
 const DRAG_THRESHOLD = 150;
 
 export default function Carousel({ images, onClose }: CarouselProps) {
+  const shouldReduceMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [isDark, setIsDark] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
@@ -103,6 +105,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={shouldReduceMotion ? { duration: 0 } : undefined}
           className={`absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
             isDark
               ? "bg-white/10 hover:bg-white/20"
@@ -127,7 +130,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
       </div>
 
       <motion.div
-        drag="x"
+        drag={shouldReduceMotion ? false : "x"}
         dragConstraints={{ left: 0, right: 0 }}
         style={{ x }}
         onDragEnd={(_, info) => onDragEnd(info)}
@@ -139,6 +142,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={shouldReduceMotion ? { duration: 0 } : undefined}
               className="absolute z-10"
             >
               <Loader2 className={`animate-spin h-12 w-12 ${iconClasses}`} />
@@ -148,10 +152,10 @@ export default function Carousel({ images, onClose }: CarouselProps) {
         <AnimatePresence initial={false}>
           <motion.div
             key={index}
-            initial={{ opacity: 0, x: index > 0 ? 100 : -100 }}
+            initial={{ opacity: 0, x: shouldReduceMotion ? 0 : index > 0 ? 100 : -100 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: index > 0 ? -100 : 100 }}
-            transition={spring.snappy}
+            exit={{ opacity: 0, x: shouldReduceMotion ? 0 : index > 0 ? -100 : 100 }}
+            transition={shouldReduceMotion ? { duration: 0 } : spring.snappy}
             className="absolute flex items-center justify-center h-full w-full"
           >
             <Image
@@ -190,6 +194,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={shouldReduceMotion ? { duration: 0 } : undefined}
             className={`${buttonClasses} left-4`}
             onClick={() => setIndex(index - 1)}
             aria-label="Previous image"
@@ -205,6 +210,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={shouldReduceMotion ? { duration: 0 } : undefined}
             className={`${buttonClasses} right-4`}
             onClick={() => setIndex(index + 1)}
             aria-label="Next image"

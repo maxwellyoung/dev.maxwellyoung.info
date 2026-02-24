@@ -8,7 +8,7 @@ export function SiteFooter() {
           Home
         </Link>
         <span className="text-border/40">·</span>
-        <Link href="/projects" className="hover:text-foreground transition-colors">
+        <Link href="/#projects" className="hover:text-foreground transition-colors">
           Projects
         </Link>
         <span className="text-border/40">·</span>

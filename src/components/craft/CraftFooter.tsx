@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Twitter, Github } from "lucide-react";
 import Link from "next/link";
+import { duration, ease, tap } from "@/lib/motion";
 
 export function CraftFooter() {
   const ref = useRef(null);
@@ -14,7 +15,7 @@ export function CraftFooter() {
       ref={ref}
       initial={false}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
-      transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
+      transition={{ duration: duration.glacial, ease: ease.brand }}
       className="pt-16 pb-8"
     >
       <div className="space-y-8">
@@ -30,7 +31,7 @@ export function CraftFooter() {
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 px-4 py-2 border border-border rounded-lg text-sm hover:border-accent/30 hover:text-accent transition-colors"
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={tap.deep}
             >
               <Twitter className="w-4 h-4" />
               <span>Twitter</span>
@@ -42,7 +43,7 @@ export function CraftFooter() {
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 px-4 py-2 border border-border rounded-lg text-sm hover:border-accent/30 hover:text-accent transition-colors"
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={tap.deep}
             >
               <Github className="w-4 h-4" />
               <span>GitHub</span>
@@ -52,7 +53,7 @@ export function CraftFooter() {
               href="mailto:maxtheyoung@gmail.com"
               className="inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-lg text-sm hover:bg-accent/20 transition-colors"
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={tap.deep}
             >
               <span>Email</span>
             </motion.a>

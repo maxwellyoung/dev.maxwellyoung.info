@@ -99,7 +99,7 @@ export default function ContactPage() {
             Strongest with React, React Native, TypeScript, and Next.js. I care about
             performance, accessibility, and motion design. View my{" "}
             <Link
-              href="/projects"
+              href="/#projects"
               className="underline underline-offset-2 hover:text-foreground transition-colors"
             >
               project portfolio

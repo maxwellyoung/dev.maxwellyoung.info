@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
+import { duration, ease, tap } from "@/lib/motion";
 
 export function ProjectHighlights() {
   const ref = useRef(null);
@@ -62,7 +63,7 @@ export function ProjectHighlights() {
       ref={ref}
       initial={false}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 16 }}
-      transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
+      transition={{ duration: duration.glacial, ease: ease.brand }}
       className="space-y-8"
     >
       <div>
@@ -122,9 +123,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ 
-        duration: 0.8, 
+        duration: duration.glacial, 
         delay: index * 0.1,
-        ease: [0.2, 0.8, 0.2, 1] 
+        ease: ease.brand,
       }}
       className="group"
     >
@@ -177,7 +178,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
+              transition={{ duration: duration.normal, ease: ease.out }}
               className="min-h-[120px]"
             >
               {activeTab === 'overview' && (
@@ -244,7 +245,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-lg text-sm font-medium hover:bg-accent/20 transition-colors"
                   whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={tap.deep}
                 >
                   <ExternalLink className="w-4 h-4" />
                   <span>Live Site</span>
@@ -258,7 +259,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-2 px-4 py-2 border border-border rounded-lg text-sm font-medium hover:bg-muted/50 transition-colors"
                   whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={tap.deep}
                 >
                   <Github className="w-4 h-4" />
                   <span>Source</span>

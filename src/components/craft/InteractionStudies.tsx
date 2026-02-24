@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Heart, Download, Share, Play, Mail, Link2, Bookmark, MessageCircle } from "lucide-react";
+import { duration, ease, tap } from "@/lib/motion";
 
 export function InteractionStudies() {
   const ref = useRef(null);
@@ -13,7 +14,7 @@ export function InteractionStudies() {
       ref={ref}
       initial={false}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 16 }}
-      transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
+      transition={{ duration: duration.glacial, ease: ease.brand }}
       className="space-y-8"
     >
       <div>
@@ -53,7 +54,7 @@ function LikeButtonStudy() {
             setIsLiked(!isLiked);
             setCount(isLiked ? count - 1 : count + 1);
           }}
-          whileTap={{ scale: 0.95 }}
+          whileTap={tap.deep}
           className="flex items-center space-x-2 group"
           aria-label={isLiked ? `${count} likes, unlike` : `${count} likes, like`}
           aria-pressed={isLiked}
@@ -76,7 +77,7 @@ function LikeButtonStudy() {
               <motion.div
                 initial={{ scale: 1 }}
                 animate={{ scale: [1, 1.5, 0] }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: duration.slow }}
                 className="absolute inset-0 bg-accent rounded-full opacity-30"
               />
             )}
@@ -133,7 +134,7 @@ function DownloadProgressStudy() {
           onClick={startDownload}
           disabled={isDownloading}
           className="relative overflow-hidden bg-accent/10 border border-accent/20 rounded-lg px-6 py-3 min-w-[160px]"
-          whileTap={{ scale: 0.98 }}
+          whileTap={tap.press}
           aria-label={isDownloading ? `Downloading ${Math.round(progress)}%` : progress === 100 ? "Download complete" : "Download file"}
         >
           <motion.div
@@ -184,7 +185,7 @@ function ShareMenuStudy() {
         <div className="relative">
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            whileTap={{ scale: 0.95 }}
+            whileTap={tap.deep}
             className="bg-accent/10 border border-accent/20 rounded-full p-3"
             aria-label={isOpen ? "Close share menu" : "Open share menu"}
             aria-expanded={isOpen}
@@ -263,7 +264,7 @@ function PlaybackControlStudy() {
         <div className="flex items-center space-x-4">
           <motion.button
             onClick={() => setIsPlaying(!isPlaying)}
-            whileTap={{ scale: 0.95 }}
+            whileTap={tap.deep}
             className="bg-accent/10 border border-accent/20 rounded-full p-4 relative overflow-hidden"
             aria-label={isPlaying ? "Pause" : "Play"}
           >

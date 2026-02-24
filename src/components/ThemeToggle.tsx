@@ -1,14 +1,16 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { useEffect, useState } from "react";
+import { duration, ease, tap } from "@/lib/motion";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const { playSound } = useSoundEffects();
   const [mounted, setMounted] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     setMounted(true);
@@ -31,7 +33,7 @@ export function ThemeToggle() {
     <motion.button
       onClick={toggleTheme}
       className="relative w-9 h-9 rounded-full bg-[hsl(var(--muted))] hover:bg-[hsl(var(--accent))]/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-      whileTap={{ scale: 0.9 }}
+      whileTap={shouldReduceMotion ? undefined : tap.deep}
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
       <AnimatePresence mode="wait" initial={false}>
@@ -41,7 +43,7 @@ export function ThemeToggle() {
             initial={{ scale: 0, rotate: -90, opacity: 0 }}
             animate={{ scale: 1, rotate: 0, opacity: 1 }}
             exit={{ scale: 0, rotate: 90, opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            transition={{ duration: duration.quick, ease: ease.out }}
             className="absolute inset-0 flex items-center justify-center"
           >
             {/* Moon */}
@@ -57,7 +59,7 @@ export function ThemeToggle() {
                 fill="currentColor"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
+                transition={{ duration: duration.normal, delay: duration.instant }}
               />
             </svg>
           </motion.div>
@@ -67,7 +69,7 @@ export function ThemeToggle() {
             initial={{ scale: 0, rotate: 90, opacity: 0 }}
             animate={{ scale: 1, rotate: 0, opacity: 1 }}
             exit={{ scale: 0, rotate: -90, opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            transition={{ duration: duration.quick, ease: ease.out }}
             className="absolute inset-0 flex items-center justify-center"
           >
             {/* Sun */}
@@ -85,7 +87,7 @@ export function ThemeToggle() {
                 fill="currentColor"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: duration.quick }}
               />
               {/* Rays */}
               {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
@@ -104,7 +106,7 @@ export function ThemeToggle() {
                   }}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.2, delay: i * 0.02 }}
+                  transition={{ duration: duration.quick, delay: i * 0.02 }}
                 />
               ))}
             </svg>

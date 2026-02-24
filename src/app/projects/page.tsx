@@ -6,15 +6,16 @@ import React, {
   useMemo,
   useDeferredValue,
 } from "react";
+import { useRouter } from "next/navigation";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Carousel from "@/components/Carousel";
 import { Project, projects } from "@/lib/projects";
 import { ProjectDetails } from "@/components/ProjectDetails";
 import { ChevronDown, Star } from "lucide-react";
-import { container, item, spring } from "@/lib/motion";
+import { container, item, spring, duration, ease } from "@/lib/motion";
 import { ProjectHoverPreview } from "@/components/ProjectHoverPreview";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -43,11 +44,13 @@ function HeroProjectCard({
   expandedProject,
   onToggleExpand,
   onCarouselOpen,
+  shouldReduceMotion,
 }: {
   p: Project;
   expandedProject: string | null;
   onToggleExpand: (name: string | null) => void;
   onCarouselOpen: () => void;
+  shouldReduceMotion: boolean;
 }) {
   const isExpanded = expandedProject === p.name;
 
@@ -61,7 +64,7 @@ function HeroProjectCard({
         onClick={(e) => {
           onToggleExpand(isExpanded ? null : p.name);
           e.currentTarget.parentElement?.scrollIntoView({
-            behavior: "smooth",
+            behavior: shouldReduceMotion ? "auto" : "smooth",
             block: "start",
           });
         }}
@@ -70,7 +73,7 @@ function HeroProjectCard({
           transition-all duration-200 ease-out
           hover:bg-[hsl(var(--muted))]/50
           active:scale-[0.995]
-          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
           border
           ${isExpanded
             ? "border-[hsl(var(--accent))]/50 bg-[hsl(var(--muted))]/30"
@@ -108,7 +111,11 @@ function HeroProjectCard({
           </div>
           <motion.div
             animate={{ rotate: isExpanded ? 180 : 0 }}
-            transition={spring.snappy}
+            transition={
+              shouldReduceMotion
+                ? { duration: 0 }
+                : spring.snappy
+            }
             className="flex-shrink-0 text-muted-foreground/50 group-hover:text-muted-foreground transition-colors mt-1"
           >
             <ChevronDown className="h-5 w-5" />
@@ -122,13 +129,17 @@ function HeroProjectCard({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={spring.gentle}
+            transition={shouldReduceMotion ? { duration: 0 } : spring.gentle}
             className="px-1 pb-4 overflow-hidden"
           >
             <motion.div
-              initial={{ opacity: 0, y: -8 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ ...spring.gentle, delay: 0.05 }}
+              transition={
+                shouldReduceMotion
+                  ? { duration: 0 }
+                  : { ...spring.gentle, delay: 0.05 }
+              }
             >
               <ProjectDetails
                 project={p}
@@ -149,12 +160,14 @@ function ProjectRow({
   expandedProject,
   onToggleExpand,
   onCarouselOpen,
+  shouldReduceMotion,
 }: {
   p: Project;
   index?: number;
   expandedProject: string | null;
   onToggleExpand: (name: string | null) => void;
   onCarouselOpen: () => void;
+  shouldReduceMotion: boolean;
 }) {
   const isExpanded = expandedProject === p.name;
   const statusLabel = getStatusLabel(p.status);
@@ -171,7 +184,7 @@ function ProjectRow({
         onClick={(e) => {
           onToggleExpand(isExpanded ? null : p.name);
           e.currentTarget.parentElement?.scrollIntoView({
-            behavior: "smooth",
+            behavior: shouldReduceMotion ? "auto" : "smooth",
             block: "center",
           });
         }}
@@ -180,7 +193,7 @@ function ProjectRow({
           transition-all duration-200 ease-out
           hover:bg-[hsl(var(--muted))]/50
           active:scale-[0.995]
-          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
           border-l-2
           ${isExpanded
             ? "border-l-[hsl(var(--accent))] bg-[hsl(var(--muted))]/30"
@@ -239,7 +252,11 @@ function ProjectRow({
           {/* Expand indicator - rotates on expand */}
           <motion.div
             animate={{ rotate: isExpanded ? 180 : 0 }}
-            transition={spring.snappy}
+            transition={
+              shouldReduceMotion
+                ? { duration: 0 }
+                : spring.snappy
+            }
             className="flex-shrink-0 text-muted-foreground/50 group-hover:text-muted-foreground transition-colors"
           >
             <ChevronDown className="h-4 w-4" />
@@ -254,13 +271,17 @@ function ProjectRow({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={spring.gentle}
+            transition={shouldReduceMotion ? { duration: 0 } : spring.gentle}
             className="px-1 pb-4 overflow-hidden"
           >
             <motion.div
-              initial={{ opacity: 0, y: -8 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ ...spring.gentle, delay: 0.05 }}
+              transition={
+                shouldReduceMotion
+                  ? { duration: 0 }
+                  : { ...spring.gentle, delay: 0.05 }
+              }
             >
               <ProjectDetails
                 project={p}
@@ -279,6 +300,7 @@ interface ProjectsShowcaseProps {
 }
 
 export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
+  const shouldReduceMotion = useReducedMotion() ?? false;
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
   const [activeFilters, setActiveFilters] = useState<Pill[]>([]);
@@ -524,12 +546,19 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
             </h2>
             <motion.div
               variants={container.list}
-              initial="hidden"
+              initial={shouldReduceMotion ? false : "hidden"}
               animate="visible"
               className="space-y-4"
             >
               {heroProjects.map((p) => (
-                <HeroProjectCard key={p.name} p={p} expandedProject={expandedProject} onToggleExpand={setExpandedProject} onCarouselOpen={handleCarouselOpen} />
+                <HeroProjectCard
+                  key={p.name}
+                  p={p}
+                  expandedProject={expandedProject}
+                  onToggleExpand={setExpandedProject}
+                  onCarouselOpen={handleCarouselOpen}
+                  shouldReduceMotion={shouldReduceMotion}
+                />
               ))}
             </motion.div>
           </section>
@@ -548,7 +577,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
             <motion.section
               className="mt-10 grid place-items-center"
               variants={item.fade}
-              initial="hidden"
+              initial={shouldReduceMotion ? false : "hidden"}
               animate="visible"
             >
               <div className="text-center">
@@ -585,12 +614,20 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
                   </h2>
                   <motion.ul
                     variants={container.list}
-                    initial="hidden"
+                    initial={shouldReduceMotion ? false : "hidden"}
                     animate="visible"
                     className="divide-y divide-[hsl(var(--border))]/50 overflow-x-hidden w-full max-w-full"
                   >
                     {studioProjects.map((p, index) => (
-                      <ProjectRow key={p.name} p={p} index={index} expandedProject={expandedProject} onToggleExpand={setExpandedProject} onCarouselOpen={handleCarouselOpen} />
+                      <ProjectRow
+                        key={p.name}
+                        p={p}
+                        index={index}
+                        expandedProject={expandedProject}
+                        onToggleExpand={setExpandedProject}
+                        onCarouselOpen={handleCarouselOpen}
+                        shouldReduceMotion={shouldReduceMotion}
+                      />
                     ))}
                   </motion.ul>
                 </section>
@@ -608,12 +645,20 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
                   </h2>
                   <motion.ul
                     variants={container.list}
-                    initial="hidden"
+                    initial={shouldReduceMotion ? false : "hidden"}
                     animate="visible"
                     className="divide-y divide-[hsl(var(--border))]/30 overflow-x-hidden w-full max-w-full opacity-80"
                   >
                     {experimentProjects.map((p, index) => (
-                      <ProjectRow key={p.name} p={p} index={studioProjects.length + index} expandedProject={expandedProject} onToggleExpand={setExpandedProject} onCarouselOpen={handleCarouselOpen} />
+                      <ProjectRow
+                        key={p.name}
+                        p={p}
+                        index={studioProjects.length + index}
+                        expandedProject={expandedProject}
+                        onToggleExpand={setExpandedProject}
+                        onCarouselOpen={handleCarouselOpen}
+                        shouldReduceMotion={shouldReduceMotion}
+                      />
                     ))}
                   </motion.ul>
                 </section>
@@ -653,5 +698,11 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
 
 // Default export for the standalone /projects page
 export default function ProjectsPage() {
-  return <ProjectsShowcase embedded={false} />;
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/#projects");
+  }, [router]);
+
+  return null;
 }

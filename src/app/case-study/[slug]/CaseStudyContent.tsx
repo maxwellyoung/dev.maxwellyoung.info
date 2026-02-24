@@ -26,7 +26,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
     return (
       <main className="min-h-screen px-6 py-24 max-w-3xl mx-auto">
         <Link
-          href="/projects"
+          href="/#projects"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -38,7 +38,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           <p className="text-muted-foreground mb-8">
             This project&apos;s detailed case study is being written.
           </p>
-          <AnimatedLink href="/projects">View all projects</AnimatedLink>
+          <AnimatedLink href="/#projects">View all projects</AnimatedLink>
         </div>
       </main>
     );
@@ -50,7 +50,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
       <section className="relative px-6 py-24 max-w-4xl mx-auto">
         <motion.div {...fadeIn}>
           <Link
-            href="/projects"
+            href="/#projects"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -297,7 +297,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           </ul>
           <div className="mt-4">
             <Link
-              href="/projects"
+              href="/#projects"
               className="text-sm text-muted-foreground hover:text-accent transition-colors"
             >
               View all projects
