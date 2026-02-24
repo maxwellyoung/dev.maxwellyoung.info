@@ -97,13 +97,10 @@ export function ThemeToggle() {
                   y1="1"
                   x2="12"
                   y2="3"
+                  transform={`rotate(${angle} 12 12)`}
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
-                  style={{
-                    transformOrigin: "12px 12px",
-                    transform: `rotate(${angle}deg)`,
-                  }}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: duration.quick, delay: i * 0.02 }}
