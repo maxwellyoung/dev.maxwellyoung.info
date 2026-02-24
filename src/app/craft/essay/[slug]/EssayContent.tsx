@@ -24,7 +24,7 @@ export function EssayContent({ essay }: EssayContentProps) {
             className="inline-flex items-center space-x-2 text-muted hover:text-foreground transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span>Back to Craft</span>
+            <span>Back to Interaction Lab</span>
           </Link>
 
           <header className="mb-12">

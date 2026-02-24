@@ -17,7 +17,7 @@ export function SiteFooter() {
         </Link>
         <span className="text-border/40">·</span>
         <Link href="/craft" className="hover:text-foreground transition-colors">
-          Craft
+          Lab
         </Link>
         <span className="text-border/40">·</span>
         <Link href="/contact" className="hover:text-foreground transition-colors">

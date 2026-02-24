@@ -165,8 +165,6 @@ export default function Home() {
               <span className="text-border/40">·</span>
               <AnimatedLink href="/about" className="text-muted-foreground hover:text-foreground">About</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="/craft" className="text-muted-foreground hover:text-foreground">Craft</AnimatedLink>
-              <span className="text-border/40">·</span>
               <AnimatedLink href="https://github.com/maxwellyoung" external className="text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
               <span className="text-border/40">·</span>
               <AnimatedLink href="https://www.linkedin.com/in/maxwell-young-a55032125" external className="text-muted-foreground hover:text-foreground">LinkedIn</AnimatedLink>

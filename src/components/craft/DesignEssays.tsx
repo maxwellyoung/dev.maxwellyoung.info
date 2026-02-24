@@ -13,8 +13,8 @@ export function DesignEssays() {
   return (
     <motion.section
       ref={ref}
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      initial={false}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 16 }}
       transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
       className="space-y-8"
     >
@@ -35,8 +35,7 @@ export function DesignEssays() {
 
       <div className="pt-8 border-t border-border/50">
         <p className="text-sm text-muted-foreground text-center">
-          More essays coming soon. Following in the footsteps of Rauno, Emil,
-          and the design engineers who document their craft.
+          More essays coming soon. Each one is tied to a shipped interface or a concrete interaction problem.
         </p>
       </div>
     </motion.section>

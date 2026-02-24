@@ -435,9 +435,8 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
           <div className="mb-8">
             <h1 className="text-3xl font-medium text-foreground mb-4">Projects</h1>
             <p className="text-muted-foreground leading-relaxed max-w-2xl">
-              A mix of professional work, independent products, and experiments.
-              Featured projects are the work I&apos;m proudest of. Each one taught me
-              something about building software that respects people&apos;s time and attention.
+              Selected professional work, independent products, and experiments.
+              Each project focuses on clarity, reliability, and respectful UX.
             </p>
           </div>
         )}
@@ -448,7 +447,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
             id="project-search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="search projects"
+            placeholder="Search projects"
             className="
               h-10 rounded-xl bg-transparent px-4 text-sm outline-none
               ring-1 ring-[hsl(var(--border))]
@@ -459,7 +458,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
             "
           />
           <div className="w-full sm:w-auto sm:ml-auto flex items-center gap-2 text-sm">
-            <label htmlFor="project-sort" className="text-muted-foreground">sort</label>
+            <label htmlFor="project-sort" className="text-muted-foreground">Sort</label>
             <select
               id="project-sort"
               value={sortBy}
@@ -473,9 +472,9 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
                 text-foreground
               "
             >
-              <option value="newest">newest</option>
-              <option value="oldest">oldest</option>
-              <option value="az">a–z</option>
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+              <option value="az">A-Z</option>
             </select>
           </div>
 
@@ -567,7 +566,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
                       transition-all duration-200
                     "
                   >
-                    reset filters
+                    Reset filters
                   </button>
                 </div>
               </div>

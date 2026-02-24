@@ -171,7 +171,7 @@ export default function AboutPage() {
               href="/craft"
               className="text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4 decoration-border hover:decoration-foreground"
             >
-              Design craft & essays
+              Interaction studies & essays
             </Link>
             <Link
               href="/resume"

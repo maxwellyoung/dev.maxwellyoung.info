@@ -7,7 +7,7 @@ import { ArrowLeft } from "lucide-react";
 export function CraftHeader() {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.8,
@@ -24,19 +24,13 @@ export function CraftHeader() {
       
       <div className="space-y-6">
         <h1 className="font-display text-6xl md:text-8xl font-light tracking-tight">
-          Craft
+          Interaction Lab
         </h1>
         
         <p className="text-lg text-muted max-w-2xl leading-relaxed">
-          Interaction studies, design essays, and explorations in interface craft. 
-          Building things that feel alive through thoughtful motion and attention to detail.
+          Practical studies on motion, feedback, and UI behavior.
+          Each piece documents what was tried, what worked, and what changed in production work.
         </p>
-        
-        <div className="flex items-center text-sm text-muted-foreground space-x-4">
-          <span>Inspired by Emil Kowalski, Jordan Singer, Rauno Felber</span>
-          <span>•</span>
-          <span>Motion grammar for humane interfaces</span>
-        </div>
       </div>
     </motion.div>
   );

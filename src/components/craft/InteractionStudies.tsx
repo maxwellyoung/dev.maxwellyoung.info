@@ -2,7 +2,7 @@
 
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Heart, Download, Share, Play } from "lucide-react";
+import { Heart, Download, Share, Play, Mail, Link2, Bookmark, MessageCircle } from "lucide-react";
 
 export function InteractionStudies() {
   const ref = useRef(null);
@@ -11,8 +11,8 @@ export function InteractionStudies() {
   return (
     <motion.section
       ref={ref}
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      initial={false}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 16 }}
       transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
       className="space-y-8"
     >
@@ -21,9 +21,8 @@ export function InteractionStudies() {
           Interaction Studies
         </h2>
         <p className="text-muted leading-relaxed max-w-2xl">
-          Explorations in micro-interactions that reward learning and create 
-          delightful moments. Each study focuses on a specific interaction pattern 
-          or motion principle.
+          Focused studies in feedback, state transitions, and motion behavior.
+          Each pattern is designed to be reused in product work, not just as a demo.
         </p>
       </div>
 
@@ -168,10 +167,10 @@ function ShareMenuStudy() {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
-    { icon: "📧", label: "Email", delay: 0 },
-    { icon: "🐦", label: "Twitter", delay: 0.1 },
-    { icon: "📋", label: "Copy Link", delay: 0.2 },
-    { icon: "💾", label: "Save", delay: 0.3 },
+    { icon: Mail, label: "Email", delay: 0 },
+    { icon: MessageCircle, label: "Post", delay: 0.1 },
+    { icon: Link2, label: "Copy Link", delay: 0.2 },
+    { icon: Bookmark, label: "Save", delay: 0.3 },
   ];
 
   return (
@@ -200,7 +199,9 @@ function ShareMenuStudy() {
               exit={{ opacity: 0, scale: 0.9 }}
               className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-card border border-border rounded-lg p-2 min-w-[140px]"
             >
-              {menuItems.map((item, index) => (
+              {menuItems.map((item) => {
+                const Icon = item.icon;
+                return (
                 <motion.button
                   key={item.label}
                   initial={{ opacity: 0, x: -20 }}
@@ -213,10 +214,10 @@ function ShareMenuStudy() {
                   }}
                   className="w-full flex items-center space-x-3 px-3 py-2 text-left hover:bg-muted/50 rounded text-sm"
                 >
-                  <span>{item.icon}</span>
+                  <Icon className="h-4 w-4 text-muted-foreground" />
                   <span>{item.label}</span>
                 </motion.button>
-              ))}
+              )})}
             </motion.div>
           )}
         </div>
