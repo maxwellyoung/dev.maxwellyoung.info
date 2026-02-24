@@ -162,7 +162,7 @@ export default function AboutPage() {
           <h2 className="text-lg font-medium">Explore</h2>
           <div className="flex flex-wrap gap-4 text-sm">
             <Link
-              href="/projects"
+              href="/#projects"
               className="text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4 decoration-border hover:decoration-foreground"
             >
               View projects

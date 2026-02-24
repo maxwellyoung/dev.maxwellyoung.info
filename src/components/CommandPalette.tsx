@@ -172,7 +172,7 @@ export function CommandPalette() {
       id: "projects",
       label: "All Projects",
       icon: <Briefcase className="w-4 h-4" />,
-      action: () => router.push("/projects"),
+      action: () => router.push("/#projects"),
       keywords: ["work", "portfolio", "projects"],
       group: "Navigate",
     },

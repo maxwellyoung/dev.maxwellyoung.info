@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { duration, ease } from "@/lib/motion";
 
 export function CraftHeader() {
   return (
@@ -10,8 +11,8 @@ export function CraftHeader() {
       initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{
-        duration: 0.8,
-        ease: [0.2, 0.8, 0.2, 1],
+        duration: duration.glacial,
+        ease: ease.brand,
       }}
     >
       <Link

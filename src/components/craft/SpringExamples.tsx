@@ -2,6 +2,7 @@
 
 import { motion, useInView, AnimatePresence, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useRef, useState } from "react";
+import { duration, ease, tap } from "@/lib/motion";
 
 export function SpringExamples() {
   const ref = useRef(null);
@@ -12,7 +13,7 @@ export function SpringExamples() {
       ref={ref}
       initial={false}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 16 }}
-      transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
+      transition={{ duration: duration.glacial, ease: ease.brand }}
       className="space-y-8"
     >
       <div>
@@ -125,7 +126,7 @@ function MagneticButton() {
       >
         <motion.button
           style={{ x: springX, y: springY }}
-          whileTap={{ scale: 0.95 }}
+          whileTap={tap.deep}
           className="bg-accent text-accent-foreground px-8 py-4 rounded-lg font-medium shadow-lg"
         >
           Magnetic Button

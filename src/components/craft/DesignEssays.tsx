@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { ArrowUpRight, Clock, Calendar } from "lucide-react";
 import Link from "next/link";
 import { essays, type Essay } from "@/lib/essays";
+import { duration, ease } from "@/lib/motion";
 
 export function DesignEssays() {
   const ref = useRef(null);
@@ -15,7 +16,7 @@ export function DesignEssays() {
       ref={ref}
       initial={false}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 16 }}
-      transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
+      transition={{ duration: duration.glacial, ease: ease.brand }}
       className="space-y-8"
     >
       <div>
@@ -48,9 +49,9 @@ function EssayCard({ essay, index }: { essay: Essay; index: number }) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
-        duration: 0.6,
+        duration: duration.glacial,
         delay: index * 0.1,
-        ease: [0.2, 0.8, 0.2, 1],
+        ease: ease.brand,
       }}
       className={`group cursor-pointer ${essay.featured ? "col-span-full" : ""}`}
     >

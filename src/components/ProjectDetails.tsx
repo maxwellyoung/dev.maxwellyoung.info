@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Github, FileText } from "lucide-react";
@@ -17,6 +17,7 @@ export function ProjectDetails({
   project,
   onCarouselOpen,
 }: ProjectDetailsProps) {
+  const shouldReduceMotion = useReducedMotion();
   const [imageLoaded, setImageLoaded] = useState(false);
 
   // Reset image loaded state when project changes
@@ -29,10 +30,10 @@ export function ProjectDetails({
       {project && (
         <motion.div
           key={project.name}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={spring.gentle}
+          exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -20 }}
+          transition={shouldReduceMotion ? { duration: 0 } : spring.gentle}
           className="bg-[hsl(var(--card))] rounded-xl p-4 sm:p-6 border border-[hsl(var(--border))]"
         >
           {project.screenshots && project.screenshots.length > 0 && (
@@ -112,7 +113,7 @@ export function ProjectDetails({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
-                whileHover={{ x: 3 }}
+                whileHover={shouldReduceMotion ? undefined : { x: 3 }}
               >
                 View Live
                 <ArrowUpRight className="ml-1 h-3 w-3" />
@@ -124,7 +125,7 @@ export function ProjectDetails({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
-                whileHover={{ x: 3 }}
+                whileHover={shouldReduceMotion ? undefined : { x: 3 }}
               >
                 Source
                 <Github className="ml-1 h-3 w-3" />
