@@ -8,6 +8,7 @@ import { AnimatedLink } from "@/components/ui/animated-link";
 import { type CaseStudy, caseStudies } from "@/lib/caseStudies";
 import { spring } from "@/lib/motion";
 import { SiteFooter } from "@/components/SiteFooter";
+import { useEffect, useState } from "react";
 
 interface CaseStudyContentProps {
   slug: string;
@@ -21,6 +22,26 @@ const fadeIn = {
 };
 
 export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
+  const [showAnnotations, setShowAnnotations] = useState(false);
+
+  useEffect(() => {
+    const handleToggle = (event: Event) => {
+      const custom = event as CustomEvent<{ enabled?: boolean }>;
+      if (typeof custom.detail?.enabled === "boolean") {
+        setShowAnnotations(custom.detail.enabled);
+      }
+    };
+    window.addEventListener(
+      "toggle-case-study-annotations",
+      handleToggle as EventListener
+    );
+    return () =>
+      window.removeEventListener(
+        "toggle-case-study-annotations",
+        handleToggle as EventListener
+      );
+  }, []);
+
   if (!study) {
     // Return a placeholder for projects without full case studies
     return (
@@ -195,6 +216,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
               {study.decisionLog.map((entry, i) => (
                 <div
                   key={i}
+                  data-decision-card
                   className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-4"
                 >
                   <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">
@@ -216,6 +238,11 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                       </p>
                       <p className="text-muted-foreground">{entry.impact}</p>
                     </>
+                  )}
+                  {showAnnotations && (
+                    <p className="mt-4 text-xs text-accent">
+                      Annotation: This decision balances product clarity and implementation cost.
+                    </p>
                   )}
                 </div>
               ))}
