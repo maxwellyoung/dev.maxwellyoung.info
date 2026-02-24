@@ -13,6 +13,13 @@ export interface CaseStudy {
   githubUrl?: string;
   overview: string;
   challenge: string;
+  constraints?: string[];
+  decisionLog?: {
+    problem: string;
+    decision: string;
+    tradeoff: string;
+    impact?: string;
+  }[];
   approach: {
     title: string;
     description: string;
@@ -20,6 +27,8 @@ export interface CaseStudy {
   }[];
   outcome: string;
   metrics?: { label: string; value: string }[];
+  avoidedPatterns?: string[];
+  nextIterations?: string[];
   learnings: string[];
   nextProject?: { slug: string; title: string };
 }
@@ -41,6 +50,25 @@ export const caseStudies: Record<string, CaseStudy> = {
       "An AI-powered family knowledge base that turns old documents, photos, and spoken stories into a living, navigable family tree. Named after the Māori word for genealogy — because ancestry isn't just names and dates, it's the web of stories that connect us.",
     challenge:
       "Every family has stories slipping away. Letters in boxes, photos without names on the back, grandparents whose memories are fading. Existing genealogy tools (Ancestry.com, MyHeritage) are expensive, clunky, and treat family history as data entry. The challenge: build something that makes preservation effortless — AI does the heavy lifting, you just feed it documents and tell it stories.",
+    constraints: [
+      "Trust is fragile with family history data, so AI output must stay reviewable and reversible.",
+      "Many source artifacts are low quality scans and handwritten notes.",
+      "The product needed to be viable for a solo builder and affordable for families.",
+    ],
+    decisionLog: [
+      {
+        problem: "AI extraction can hallucinate relationships.",
+        decision: "Added a suggestion queue with explicit human approval before writing to the tree.",
+        tradeoff: "Slightly slower ingestion versus fully automatic sync.",
+        impact: "Higher confidence in accepted data and fewer correction loops.",
+      },
+      {
+        problem: "Genealogy tools often bury stories under forms.",
+        decision: "Made voice capture and story context first-class alongside people and dates.",
+        tradeoff: "More schema complexity and moderation edge cases.",
+        impact: "Richer family context and stronger emotional retention.",
+      },
+    ],
     approach: [
       {
         title: "AI Extraction Pipeline",
@@ -69,6 +97,15 @@ export const caseStudies: Record<string, CaseStudy> = {
       { label: "Open Source", value: "MIT" },
       { label: "AI Pipeline", value: "Doc → OCR → Claude → Tree" },
       { label: "Cost vs Ancestry", value: "$0 vs $240/yr" },
+    ],
+    avoidedPatterns: [
+      "Auto-trusting AI inserts directly into canonical records.",
+      "Forcing users into rigid, spreadsheet-like genealogy workflows.",
+      "Locking export/import behind paid plans.",
+    ],
+    nextIterations: [
+      "Confidence scoring and source-level reliability badges per extracted entity.",
+      "Guided interview flows optimized for elder story capture sessions.",
     ],
     learnings: [
       "AI extraction isn't magic — it needs a human review step. The suggestion queue is the trust mechanism that makes AI-generated data feel safe to accept.",
@@ -133,6 +170,25 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Internal analytics dashboard serving 50+ data analysts at Spark New Zealand. The brief: replace a patchwork of Power BI reports, Excel exports, and custom SQL queries with a single unified interface.",
     challenge:
       "Four different tools meant four different data models, four authentication flows, and four sets of muscle memory. Analysts were spending more time switching contexts than analyzing data. The existing Power BI dashboards were slow (8-12 second loads), couldn't handle the query complexity analysts needed, and required IT tickets for any schema changes.",
+    constraints: [
+      "Migration had to happen without breaking existing analyst workflows.",
+      "Database safety mattered as much as UI flexibility.",
+      "Legacy report logic had undocumented business assumptions.",
+    ],
+    decisionLog: [
+      {
+        problem: "Query state sharing broke with high filter counts.",
+        decision: "Used URL params for critical state plus localStorage hash references for full state.",
+        tradeoff: "More implementation complexity and some cache edge cases.",
+        impact: "Shareable links for complex views without URL explosion.",
+      },
+      {
+        problem: "Client-side rendering collapsed under large datasets.",
+        decision: "Moved heavy aggregation to backend and shipped rollups.",
+        tradeoff: "Reduced ad hoc pivot flexibility.",
+        impact: "Interactive chart latency dropped to usable levels.",
+      },
+    ],
     approach: [
       {
         title: "The State Problem",
@@ -157,6 +213,15 @@ export const caseStudies: Record<string, CaseStudy> = {
       { label: "Users", value: "50+" },
       { label: "Tools Replaced", value: "4" },
     ],
+    avoidedPatterns: [
+      "Unlimited free-form query execution against production tables.",
+      "Big-bang migration without compatibility bridges.",
+      "Treating analyst pain as a training problem instead of product debt.",
+    ],
+    nextIterations: [
+      "Query cost previews before run to prevent accidental heavy joins.",
+      "Saved-view governance with team-level ownership and audit trails.",
+    ],
     learnings: [
       "Performance optimization is often about moving work, not eliminating it. We didn't make the queries faster - we moved the heavy lifting to where it belonged (backend aggregation).",
       "Migration is harder than building. Parsing legacy formats and mapping to new schemas took more time than the new UI.",
@@ -179,6 +244,25 @@ export const caseStudies: Record<string, CaseStudy> = {
       "An iOS app for quitting vaping that treats addiction as a design problem rather than a moral failure. Most health apps use motivation and guilt—I built the opposite.",
     challenge:
       "Quitting apps typically rely on shame, streaks, and willpower. But willpower is a finite resource, and shame drives people away from the tools meant to help them. The challenge: design an experience that makes not vaping feel easier than vaping, without moralizing.",
+    constraints: [
+      "Behavior change support had to avoid shame mechanics and relapse punishment loops.",
+      "The app needed to be effective in high-stress, low-attention moments.",
+      "Solo development required disciplined scope and clear UX priorities.",
+    ],
+    decisionLog: [
+      {
+        problem: "Streak systems create brittle motivation and anxiety.",
+        decision: "Shifted progress framing from perfect streaks to identity and trend signals.",
+        tradeoff: "Less instantly gamified feedback.",
+        impact: "More resilient long-term engagement after setbacks.",
+      },
+      {
+        problem: "Craving moments are noisy and emotionally charged.",
+        decision: "Used calm, low-stimulus intervention screens with short actions.",
+        tradeoff: "Less visual spectacle during key moments.",
+        impact: "Lower cognitive load when users need support most.",
+      },
+    ],
     approach: [
       {
         title: "Behavioral Architecture",
@@ -201,6 +285,15 @@ export const caseStudies: Record<string, CaseStudy> = {
     metrics: [
       { label: "App Store Rating", value: "4.8★" },
       { label: "Solo Built", value: "100%" },
+    ],
+    avoidedPatterns: [
+      "Punitive streak resets and public shame nudges.",
+      "Engagement loops optimized for app opens rather than quit outcomes.",
+      "Clinical fear-based copy during relapse-adjacent moments.",
+    ],
+    nextIterations: [
+      "Adaptive intervention timing based on user-identified trigger windows.",
+      "Deeper longitudinal insights that preserve privacy and dignity.",
     ],
     learnings: [
       "Shame-based design is lazy design. The interface should make the right choice feel obvious, not heroic.",
@@ -272,6 +365,25 @@ export const caseStudies: Record<string, CaseStudy> = {
       "A portfolio for installation and object-based artist Dayle Palfreyman. The brief: make the art the only thing people see. No navigation clutter, no design ego, no templates. A full-screen immersive gallery with Sanity CMS for complete client independence.",
     challenge:
       "Artist portfolios have a unique tension: the site needs to feel considered and intentional, but it can't compete with the work. Most portfolio templates either look generic or add so much design language that they overshadow what they're showing. Dayle needed a site that felt like walking into a gallery, where the work fills the room and the architecture stays invisible.",
+    constraints: [
+      "Visual restraint was non-negotiable: the site could not compete with artworks.",
+      "Client autonomy required robust CMS patterns over one-off hardcoded pages.",
+      "Accessibility and performance had to hold on media-heavy routes.",
+    ],
+    decisionLog: [
+      {
+        problem: "Portfolio templates encourage UI chrome over artwork presence.",
+        decision: "Adopted full-screen, vertically snapping gallery with minimal persistent chrome.",
+        tradeoff: "Less conventional page structure for some users.",
+        impact: "Stronger immersion and clearer artwork-first hierarchy.",
+      },
+      {
+        problem: "Rich motion can quickly become distracting in art contexts.",
+        decision: "Constrained motion vocabulary to subtle spring-driven transitions.",
+        tradeoff: "Lower novelty and fewer visual flourishes.",
+        impact: "Consistent tone with reduced cognitive interference.",
+      },
+    ],
     approach: [
       {
         title: "Full-Screen Immersive Gallery",
@@ -301,6 +413,15 @@ export const caseStudies: Record<string, CaseStudy> = {
       { label: "Client Independence", value: "100%" },
       { label: "Accessibility", value: "WCAG 2.1 AA" },
       { label: "SEO", value: "Auto-generated sitemaps + JSON-LD" },
+    ],
+    avoidedPatterns: [
+      "Autoplay-heavy transitions that distract from images.",
+      "CMS models that require developer intervention for routine updates.",
+      "Accessibility retrofits after visual design lock-in.",
+    ],
+    nextIterations: [
+      "Collection-level storytelling templates for exhibition narratives.",
+      "Media compression pipeline tuning for even faster cold loads.",
     ],
     learnings: [
       "Artist portfolios are the ultimate test of design restraint. Every pixel you add competes with the work you're trying to showcase.",

@@ -168,11 +168,35 @@ type EasterEggType = "matrix" | "disco" | "gravity" | "stars" | null;
 
 export function EasterEggs() {
   const [activeEgg, setActiveEgg] = useState<EasterEggType>(null);
+  const [playModeEnabled, setPlayModeEnabled] = useState(false);
 
   const triggerRandomEgg = useCallback(() => {
+    if (!playModeEnabled) return;
     const eggs: EasterEggType[] = ["matrix", "disco", "gravity"];
     const random = eggs[Math.floor(Math.random() * eggs.length)];
     setActiveEgg(random);
+  }, [playModeEnabled]);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("play-mode-enabled");
+      setPlayModeEnabled(saved === "true");
+    } catch {
+      setPlayModeEnabled(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleToggle = (event: Event) => {
+      const custom = event as CustomEvent<{ enabled?: boolean }>;
+      const enabled = custom.detail?.enabled;
+      if (typeof enabled === "boolean") {
+        setPlayModeEnabled(enabled);
+      }
+    };
+    window.addEventListener("play-mode-toggled", handleToggle as EventListener);
+    return () =>
+      window.removeEventListener("play-mode-toggled", handleToggle as EventListener);
   }, []);
 
   // Listen for custom trigger event
@@ -189,7 +213,7 @@ export function EasterEggs() {
       buffer += e.key.toLowerCase();
       if (buffer.length > 10) buffer = buffer.slice(-10);
 
-      if (buffer.includes("hello")) {
+      if (buffer.includes("hello") || buffer.includes("party")) {
         triggerRandomEgg();
         buffer = "";
       }

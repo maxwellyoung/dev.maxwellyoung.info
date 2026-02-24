@@ -32,6 +32,9 @@ export function CraftHeader() {
           Practical studies on motion, feedback, and UI behavior.
           Each piece documents what was tried, what worked, and what changed in production work.
         </p>
+        <p className="text-sm text-muted-foreground">
+          Optional play mode is available in command palette for easter eggs and experimental UI toys.
+        </p>
       </div>
     </motion.div>
   );

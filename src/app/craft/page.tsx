@@ -4,6 +4,7 @@ import { InteractionStudies } from "@/components/craft/InteractionStudies";
 import { DesignEssays } from "@/components/craft/DesignEssays";
 import { ProjectHighlights } from "@/components/craft/ProjectHighlights";
 import { SpringExamples } from "@/components/craft/SpringExamples";
+import { MotionSpec } from "@/components/craft/MotionSpec";
 import { CraftFooter } from "@/components/craft/CraftFooter";
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function CraftPage() {
         <CraftHeader />
 
         <div className="space-y-24 mt-16">
+          <MotionSpec />
           <InteractionStudies />
           <SpringExamples />
           <ProjectHighlights />

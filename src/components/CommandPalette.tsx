@@ -44,6 +44,7 @@ interface CommandItem {
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [playModeEnabled, setPlayModeEnabled] = useState(false);
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const { playSound } = useSoundEffects();
@@ -79,6 +80,30 @@ export function CommandPalette() {
     navigator.clipboard.writeText("maxwell@ninetynine.digital");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  }, []);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("play-mode-enabled");
+      setPlayModeEnabled(saved === "true");
+    } catch {
+      setPlayModeEnabled(false);
+    }
+  }, []);
+
+  const togglePlayMode = useCallback(() => {
+    setPlayModeEnabled((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem("play-mode-enabled", String(next));
+      } catch {
+        // Ignore localStorage errors
+      }
+      window.dispatchEvent(
+        new CustomEvent("play-mode-toggled", { detail: { enabled: next } })
+      );
+      return next;
+    });
   }, []);
 
   // Surprise actions - pick random interesting thing
@@ -157,6 +182,14 @@ export function CommandPalette() {
       icon: <Sparkles className="w-4 h-4" />,
       action: triggerSurprise,
       keywords: ["surprise", "random", "explore", "fun"],
+      group: "Quick Actions",
+    },
+    {
+      id: "toggle-play-mode",
+      label: playModeEnabled ? "Disable Play Mode" : "Enable Play Mode",
+      icon: <Sparkles className="w-4 h-4" />,
+      action: togglePlayMode,
+      keywords: ["play", "fun", "easter", "mode"],
       group: "Quick Actions",
     },
     // Navigation

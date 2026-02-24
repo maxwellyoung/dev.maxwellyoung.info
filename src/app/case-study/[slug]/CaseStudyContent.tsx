@@ -158,6 +158,71 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           <p className="text-lg leading-relaxed">{study.challenge}</p>
         </motion.div>
 
+        {/* Constraints */}
+        {study.constraints && study.constraints.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={spring.gentle}
+          >
+            <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">
+              Constraints
+            </h2>
+            <ul className="space-y-3">
+              {study.constraints.map((constraint, i) => (
+                <li key={i} className="flex gap-3 text-muted-foreground">
+                  <span className="text-accent">•</span>
+                  <span>{constraint}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+
+        {/* Decision log */}
+        {study.decisionLog && study.decisionLog.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={spring.gentle}
+          >
+            <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-8">
+              Decision Log
+            </h2>
+            <div className="space-y-6">
+              {study.decisionLog.map((entry, i) => (
+                <div
+                  key={i}
+                  className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-4"
+                >
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">
+                    Problem
+                  </p>
+                  <p className="text-foreground mb-4">{entry.problem}</p>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">
+                    Decision
+                  </p>
+                  <p className="text-foreground mb-4">{entry.decision}</p>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">
+                    Tradeoff
+                  </p>
+                  <p className="text-muted-foreground">{entry.tradeoff}</p>
+                  {entry.impact && (
+                    <>
+                      <p className="text-xs uppercase tracking-wider text-muted-foreground mt-4 mb-2">
+                        Impact
+                      </p>
+                      <p className="text-muted-foreground">{entry.impact}</p>
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         {/* Approach */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -245,6 +310,50 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
             ))}
           </ul>
         </motion.div>
+
+        {/* Anti-patterns avoided */}
+        {study.avoidedPatterns && study.avoidedPatterns.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={spring.gentle}
+          >
+            <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">
+              Anti-Patterns Avoided
+            </h2>
+            <ul className="space-y-3">
+              {study.avoidedPatterns.map((pattern, i) => (
+                <li key={i} className="flex gap-3 text-muted-foreground">
+                  <span className="text-accent">×</span>
+                  <span>{pattern}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+
+        {/* Next iterations */}
+        {study.nextIterations && study.nextIterations.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={spring.gentle}
+          >
+            <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">
+              Next Iterations
+            </h2>
+            <ul className="space-y-3">
+              {study.nextIterations.map((item, i) => (
+                <li key={i} className="flex gap-3 text-muted-foreground">
+                  <span className="text-accent">→</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
 
         {/* Next project */}
         {study.nextProject && (
