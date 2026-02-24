@@ -1,12 +1,13 @@
 "use client";
 
-import { motion, useInView, AnimatePresence, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { motion, useInView, AnimatePresence, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 import { useRef, useState } from "react";
 import { duration, ease, tap } from "@/lib/motion";
 
 export function SpringExamples() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const shouldReduceMotion = useReducedMotion() ?? false;
 
   return (
     <motion.section
@@ -27,16 +28,16 @@ export function SpringExamples() {
       </div>
 
       <div className="grid gap-8">
-        <SpringComparison />
-        <MagneticButton />
-        <StackedCards />
-        <ElasticInput />
+        <SpringComparison shouldReduceMotion={shouldReduceMotion} />
+        <MagneticButton shouldReduceMotion={shouldReduceMotion} />
+        <StackedCards shouldReduceMotion={shouldReduceMotion} />
+        <ElasticInput shouldReduceMotion={shouldReduceMotion} />
       </div>
     </motion.section>
   );
 }
 
-function SpringComparison() {
+function SpringComparison({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
   const [trigger, setTrigger] = useState(0);
 
   const springs = [
@@ -66,10 +67,14 @@ function SpringComparison() {
               initial={{ x: 0, scale: 1 }}
               animate={{ x: 200, scale: 1.1 }}
               transition={{
-                type: "spring",
-                stiffness: spring.stiffness,
-                damping: spring.damping,
-                mass: spring.mass,
+                ...(shouldReduceMotion
+                  ? { duration: 0 }
+                  : {
+                      type: "spring",
+                      stiffness: spring.stiffness,
+                      damping: spring.damping,
+                      mass: spring.mass,
+                    }),
               }}
               className="w-4 h-4 bg-accent rounded-full"
             />
@@ -86,7 +91,7 @@ function SpringComparison() {
   );
 }
 
-function MagneticButton() {
+function MagneticButton({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 300, damping: 20 });
@@ -101,7 +106,7 @@ function MagneticButton() {
     
     // Magnetic effect: pull towards cursor when within range
     const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
-    if (distance < 100) {
+    if (!shouldReduceMotion && distance < 100) {
       x.set(distanceX * 0.3);
       y.set(distanceY * 0.3);
     }
@@ -125,7 +130,7 @@ function MagneticButton() {
         onMouseLeave={handleMouseLeave}
       >
         <motion.button
-          style={{ x: springX, y: springY }}
+          style={shouldReduceMotion ? undefined : { x: springX, y: springY }}
           whileTap={tap.deep}
           className="bg-accent text-accent-foreground px-8 py-4 rounded-lg font-medium shadow-lg"
         >
@@ -141,7 +146,7 @@ function MagneticButton() {
   );
 }
 
-function StackedCards() {
+function StackedCards({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
   const [cards, setCards] = useState([
     { id: 1, title: "First Card", color: "bg-blue-500/20 border-blue-500/30" },
     { id: 2, title: "Second Card", color: "bg-purple-500/20 border-purple-500/30" },
@@ -189,15 +194,23 @@ function StackedCards() {
                   transition: { duration: 0.2 } 
                 }}
                 whileHover={{ 
-                  scale: 1,
-                  y: index * 8 - 10,
-                  transition: { type: "spring", stiffness: 300, damping: 20 }
+                  ...(shouldReduceMotion
+                    ? {}
+                    : {
+                        scale: 1,
+                        y: index * 8 - 10,
+                        transition: { type: "spring", stiffness: 300, damping: 20 },
+                      })
                 }}
                 transition={{
-                  type: "spring",
-                  stiffness: 200,
-                  damping: 15,
-                  mass: 0.8
+                  ...(shouldReduceMotion
+                    ? { duration: 0 }
+                    : {
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 15,
+                        mass: 0.8,
+                      })
                 }}
                 onClick={() => moveToBack(card.id)}
                 className={`absolute inset-0 ${card.color} border rounded-lg p-4 cursor-pointer select-none flex items-center justify-center font-medium text-sm`}
@@ -218,7 +231,7 @@ function StackedCards() {
   );
 }
 
-function ElasticInput() {
+function ElasticInput({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
   const [value, setValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
@@ -233,12 +246,16 @@ function ElasticInput() {
         <div className="w-full max-w-md">
           <motion.div
             animate={{
-              scale: isFocused ? 1.02 : 1,
+              scale: shouldReduceMotion ? 1 : isFocused ? 1.02 : 1,
             }}
             transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 20
+              ...(shouldReduceMotion
+                ? { duration: 0 }
+                : {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                  })
             }}
             className="relative"
           >
@@ -259,9 +276,13 @@ function ElasticInput() {
                 width: isFocused ? "100%" : "0%" 
               }}
               transition={{
-                type: "spring",
-                stiffness: 400,
-                damping: 30
+                ...(shouldReduceMotion
+                  ? { duration: 0 }
+                  : {
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 30,
+                    })
               }}
               className="absolute bottom-0 left-0 h-0.5 bg-accent rounded-full"
             />
@@ -271,12 +292,16 @@ function ElasticInput() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ 
               opacity: value.length > 0 ? 1 : 0,
-              y: value.length > 0 ? 0 : 10
+              y: shouldReduceMotion ? 0 : value.length > 0 ? 0 : 10
             }}
             transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 20
+              ...(shouldReduceMotion
+                ? { duration: 0 }
+                : {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                  })
             }}
             className="mt-2 text-sm text-muted-foreground"
           >
