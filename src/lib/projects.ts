@@ -328,7 +328,8 @@ export const projects: Project[] = [
     role: "Lead",
     featured: false,
     priority: 4,
-    description: "Sleek portfolio with Sanity CMS and modern UI.",
+    description:
+      "Author-focused portfolio with Sanity CMS, a strong typographic system, and minimal chrome around long-form writing.",
     longDescription:
       "Next.js + Tailwind + Framer Motion + Sanity. Built an authorable, typographic site that gets out of the way of the writing.",
     tags: ["Next.js", "Sanity CMS", "Content Modeling"],

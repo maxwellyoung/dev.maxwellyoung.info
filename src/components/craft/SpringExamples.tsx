@@ -10,8 +10,8 @@ export function SpringExamples() {
   return (
     <motion.section
       ref={ref}
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      initial={false}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 16 }}
       transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
       className="space-y-8"
     >
@@ -119,7 +119,7 @@ function MagneticButton() {
       </div>
       
       <div 
-        className="bg-card border border-border rounded-lg p-12 flex items-center justify-center cursor-none"
+        className="bg-card border border-border rounded-lg p-12 flex items-center justify-center"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >

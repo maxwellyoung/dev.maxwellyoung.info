@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight, Twitter, Github } from "lucide-react";
+import { Twitter, Github } from "lucide-react";
 import Link from "next/link";
 
 export function CraftFooter() {
@@ -12,73 +12,16 @@ export function CraftFooter() {
   return (
     <motion.footer
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      initial={false}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
       transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
       className="pt-16 pb-8"
     >
       <div className="space-y-8">
-        {/* Inspiration */}
-        <div className="text-center space-y-4">
-          <h3 className="font-display text-xl font-light">
-            Inspired by the craft of
-          </h3>
-          <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
-            <motion.a
-              href="https://rauno.me"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors inline-flex items-center space-x-1"
-              whileHover={{ scale: 1.05 }}
-            >
-              <span>Rauno Felber</span>
-              <ArrowUpRight className="w-3 h-3" />
-            </motion.a>
-            
-            <span>•</span>
-            
-            <motion.a
-              href="https://emilkowal.ski"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors inline-flex items-center space-x-1"
-              whileHover={{ scale: 1.05 }}
-            >
-              <span>Emil Kowalski</span>
-              <ArrowUpRight className="w-3 h-3" />
-            </motion.a>
-            
-            <span>•</span>
-            
-            <motion.a
-              href="https://ibuildmyideas.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors inline-flex items-center space-x-1"
-              whileHover={{ scale: 1.05 }}
-            >
-              <span>Jordan Singer</span>
-              <ArrowUpRight className="w-3 h-3" />
-            </motion.a>
-          </div>
-        </div>
-
-        {/* Quote */}
-        <div className="text-center max-w-2xl mx-auto">
-          <blockquote className="font-display text-lg font-light text-muted italic leading-relaxed">
-            "The design engineer's job is to implement intuition in code. 
-            Not to simulate physics perfectly, but to capture the feeling of physics. 
-            The essence, not the equations."
-          </blockquote>
-          <cite className="text-sm text-muted-foreground mt-2 block">
-            — From "The Invisible Details of Interaction Design"
-          </cite>
-        </div>
-
         {/* Connect */}
         <div className="text-center space-y-4">
           <p className="text-muted-foreground text-sm">
-            Interested in design engineering or building interfaces that feel alive?
+            If you want this level of craft in your product, let's talk.
           </p>
           <div className="flex justify-center space-x-4">
             <motion.a

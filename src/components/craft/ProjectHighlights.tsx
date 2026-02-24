@@ -3,7 +3,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
-import Image from "next/image";
 
 export function ProjectHighlights() {
   const ref = useRef(null);
@@ -12,13 +11,13 @@ export function ProjectHighlights() {
   const projects = [
     {
       title: "Whakapapa",
-      subtitle: "AI-powered genealogy with spring animations",
-      description: "A cultural genealogy platform that uses spring physics for natural navigation. Built with Next.js, Framer Motion, and Claude AI for cultural storytelling.",
+      subtitle: "Genealogy workflow with motion-led guidance",
+      description: "A family knowledge product where motion is used to guide document review and relationship mapping without overwhelming people.",
       tech: ["Next.js", "Framer Motion", "Supabase", "Claude AI"],
       process: {
-        before: "Static family trees lacked engagement and felt cold",
-        after: "Dynamic spring animations bring stories to life",
-        insight: "Motion can make cultural heritage feel alive and personal"
+        before: "Document ingestion and relationship data were hard to scan quickly",
+        after: "Motion and hierarchy made review steps easier to parse",
+        insight: "Animation works best when it supports comprehension, not spectacle"
       },
       links: {
         live: "https://whakapapa.vercel.app",
@@ -27,29 +26,29 @@ export function ProjectHighlights() {
       color: "blue"
     },
     {
-      title: "Strawhouse Gallery",
-      subtitle: "Award-worthy gallery experience",
-      description: "An art gallery website that transforms browsing into an experience. Editorial layout with subtle animations and careful typography hierarchy.",
+      title: "Dayle Palfreyman",
+      subtitle: "Portfolio system for an installation artist",
+      description: "A full-screen portfolio with restrained motion, strong image rhythm, and client-friendly editing through Sanity CMS.",
       tech: ["Next.js", "Sanity CMS", "Framer Motion", "TypeScript"],
       process: {
-        before: "Traditional gallery websites feel sterile and corporate",
-        after: "Editorial approach makes art feel intimate and considered",
-        insight: "Gallery websites should enhance art, not compete with it"
+        before: "Art documentation felt fragmented and hard to maintain",
+        after: "A reusable content model gave consistency without losing personality",
+        insight: "Craft in portfolio sites is often about subtraction and pacing"
       },
       links: {
-        live: "https://strawhouse-tau.vercel.app",
+        live: "https://dayle.vercel.app",
       },
       color: "purple"
     },
     {
       title: "Vape Quit Coach",
-      subtitle: "AI behavior change with editorial design",
-      description: "A 4.8★ iOS app combining AI coaching with thoughtful interface design. Dark editorial cards and spring interactions reduce friction in behavior change.",
+      subtitle: "Behavior-change UX without guilt mechanics",
+      description: "A 4.8★ iOS app where feedback, pacing, and copy are designed to support action instead of anxiety.",
       tech: ["React Native", "Expo", "AI Coaching", "Editorial Design"],
       process: {
-        before: "Health apps feel clinical and judgmental",
-        after: "Editorial design makes difficult conversations feel supportive",
-        insight: "Behavior change needs empathy in both copy and interface"
+        before: "Most quit apps rely on shame and streak pressure",
+        after: "A calmer interface made repetition and return visits easier",
+        insight: "The tone of a product is a product decision, not a copy pass"
       },
       links: {
         live: "https://vapequitcoach.com",
@@ -61,8 +60,8 @@ export function ProjectHighlights() {
   return (
     <motion.section
       ref={ref}
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      initial={false}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 16 }}
       transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
       className="space-y-8"
     >
