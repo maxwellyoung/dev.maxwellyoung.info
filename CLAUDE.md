@@ -68,3 +68,19 @@ Custom fonts loaded via `next/font/local`:
 
 ### Theme
 Dark mode is default and enabled via `next-themes`. Color tokens use CSS custom properties with HSL values (configured in `globals.css`).
+
+
+## Relevant Skills
+
+Installed agent skills for this project's stack:
+
+- **vercel-react-best-practices** — React/Next.js performance optimization
+- **webapp-testing** — Playwright-based UI testing and screenshots
+- **web-design-guidelines** — Web Interface Guidelines compliance
+- **typescript-advanced-types** — Advanced generics, conditional types, type safety
+- **ui-animation** — Motion, easing, springs, reduced-motion
+- **design-motion-principles** — Animation audit (Kowalski, Krehel, Tompkins)
+- **accessibility-compliance** — WCAG 2.2, ARIA, keyboard navigation
+- **fixing-accessibility** — Diagnose and fix a11y issues
+- **analytics-tracking** — Event tracking, conversion funnels
+- **using-git-worktrees** — Isolated feature branches for parallel work
