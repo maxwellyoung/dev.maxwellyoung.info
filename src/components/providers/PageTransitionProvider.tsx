@@ -6,11 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { spring, duration, ease } from "@/lib/motion";
 
 const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 20,
-    scale: 0.99,
-  },
   enter: {
     opacity: 1,
     y: 0,
@@ -21,7 +16,7 @@ const pageVariants = {
     },
   },
   exit: {
-    opacity: 0,
+    opacity: 1,
     y: -10,
     scale: 0.995,
     transition: {
@@ -40,10 +35,10 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
   }, [pathname]);
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence initial={false}>
       <motion.div
         key={pathname}
-        initial="initial"
+        initial={false}
         animate="enter"
         exit="exit"
         variants={pageVariants}
