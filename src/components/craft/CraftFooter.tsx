@@ -22,7 +22,7 @@ export function CraftFooter() {
         {/* Connect */}
         <div className="text-center space-y-4">
           <p className="text-muted-foreground text-sm">
-            If you want this level of craft in your product, let's talk.
+            If you want this level of craft in your product, let&apos;s talk.
           </p>
           <div className="flex justify-center space-x-4">
             <motion.a
