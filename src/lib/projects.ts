@@ -119,10 +119,10 @@ export const projects: Project[] = [
     featured: true,
     priority: 0,
     description:
-      "Spatial canvas for organizing music. Like Figma for musicians—drag songs, build albums, capture ideas on an infinite canvas. tldraw-powered with real-time cloud sync.",
+      "Spatial canvas for organizing music. Like Figma for musicians — drag songs, build albums, sequence tracks. tldraw-powered infinite canvas with audio playback. iOS app in review.",
     longDescription:
       "Liner is a spatial canvas for music organization. Drop audio files, paste streaming links, arrange songs visually. Built on tldraw's infinite canvas with custom shapes for songs, frames, and notes. Audio player with waveform visualization, queue management, and keyboard controls. Cloud sync via Convex + Clerk auth. Local-first architecture means your data stays yours. The design constraint: make organization feel like play, not work.",
-    tags: ["Next.js", "tldraw", "Convex", "Audio", "Canvas"],
+    tags: ["Next.js", "tldraw", "Convex", "Audio", "Canvas", "iOS App"],
     stack: [
       "Next.js",
       "TypeScript",
@@ -147,6 +147,7 @@ export const projects: Project[] = [
       "Local-first with optional cloud sync",
       "Custom tldraw shapes for music-specific UX",
       "Audio waveform extraction and playback",
+      "iOS app built alongside the web app — same data layer via Convex",
     ],
   },
   {
@@ -181,7 +182,7 @@ export const projects: Project[] = [
     featured: true,
     priority: 1,
     description:
-      "Solo-built iOS app for quitting vaping. 4.8★ rating. I refused to build guilt mechanics, streak anxiety, or shame-based motivation. Instead: behavioral architecture that makes the right choice feel obvious, not heroic.",
+      "Solo-built iOS app for quitting vaping. 4.8★. Anti-Algorithm Recovery — tracks dopamine recovery, not just streaks. AI Coach, Panic Button, Interactive Rituals.",
     longDescription:
       "Most health apps weaponize guilt. Daily streaks that punish you for slipping. Progress bars that make failure visible. I refused to build any of that. Vape Quit Coach treats addiction as a design problem, not a willpower problem. The interface uses liminal states, identity-based progress, and environmental cues—not shame. Solo-built from zero: React Native, Expo, end-to-end. 4.8★ on the App Store. What I learned: shame-based design is lazy design. If your app needs to make users feel bad to work, you haven't solved the problem.",
     tags: ["React Native", "Expo", "Behavior Design", "Mobile App"],
@@ -200,6 +201,11 @@ export const projects: Project[] = [
       live: "https://vapequitcoach.com",
     },
     link: "https://vapequitcoach.com",
+    impact: [
+      "Apple Watch HR data integration: 125 → 92 BPM in 13 days of quitting",
+      "$31 MRR. From $0.96/week, 7-day free trial",
+      "Science-backed: CDC/NIH recovery milestones built into the timeline",
+    ],
   },
   {
     slug: "holdspace",
@@ -227,6 +233,113 @@ export const projects: Project[] = [
       "One-at-a-time UX reduces overwhelm vs traditional list apps",
       "Native SwiftUI with physics-based motion and haptics",
     ],
+  },
+  {
+    slug: "doomscroll",
+    name: "Doomscroll",
+    status: "Active",
+    category: "personal",
+    role: "Solo",
+    featured: true,
+    priority: 2,
+    description:
+      "Master any codebase by doomscrolling through it. Swipe-to-learn spaced repetition for code — TikTok UX meets software education.",
+    longDescription:
+      "Doomscroll is a spaced repetition learning app for developers. Instead of reading docs, you swipe through bite-sized code concepts the way you'd scroll TikTok. Each card teaches one idea — a pattern, an API, a gotcha. Swipe right to remember, left to review again. The algorithm surfaces the right card at the right time. Solo-built in React Native/Expo.",
+    tags: ["React Native", "Expo", "Education", "Spaced Repetition", "iOS"],
+    stack: ["React Native", "Expo", "TypeScript"],
+    links: {
+      live: "https://apps.apple.com/app/id6759280323",
+    },
+    link: "https://apps.apple.com/app/id6759280323",
+    impact: [
+      "TikTok-style swipe UX applied to technical learning",
+      "Spaced repetition algorithm surfaces cards at optimal review intervals",
+    ],
+  },
+  {
+    slug: "gnbn",
+    name: "Good News Bad News",
+    status: "Active",
+    category: "personal",
+    role: "Solo",
+    featured: true,
+    priority: 3,
+    description:
+      "The news, rebalanced. Every bad story paired with something good. A different relationship with current events.",
+    longDescription:
+      "The news cycle is built to make you anxious. Good News Bad News pairs every negative story with a positive one — not to minimize reality, but to restore proportion. Solo-built iOS app with a clean, opinionated reading experience.",
+    tags: ["React Native", "Expo", "News", "iOS", "Wellbeing"],
+    stack: ["React Native", "Expo", "TypeScript"],
+    links: {
+      live: "https://apps.apple.com/nz/app/good-news-bad-news/id6759280323",
+    },
+    link: "https://apps.apple.com/nz/app/good-news-bad-news/id6759280323",
+  },
+  {
+    slug: "dry-club",
+    name: "Dry Club",
+    status: "Active",
+    category: "personal",
+    role: "Solo",
+    featured: true,
+    priority: 3,
+    description:
+      "A sober social companion. Track your streak, find your people, navigate a world built around drinking.",
+    longDescription:
+      "Dry Club is for people choosing sobriety or moderation in a culture that makes that choice difficult. Track your no-drink streak, connect with others doing the same, and get tools for social situations. Built because Maxwell quit drinking and couldn't find an app that didn't feel clinical or preachy.",
+    tags: ["React Native", "Expo", "iOS", "Sobriety", "Social"],
+    stack: ["React Native", "Expo", "TypeScript", "RevenueCat"],
+    links: {
+      live: "https://apps.apple.com/app/dry-club",
+    },
+    link: "https://apps.apple.com/app/dry-club",
+    impact: [
+      "IAP subscription model with weekly/monthly/annual tiers",
+      "Built from personal experience — less clinical, more human",
+    ],
+  },
+  {
+    slug: "afterlight",
+    name: "Afterlight",
+    status: "Active",
+    category: "personal",
+    role: "Solo",
+    featured: true,
+    priority: 4,
+    description:
+      "Receipt scanner and expense tracker. Point your camera at a receipt; Afterlight reads it, categorizes it, and builds your spending picture.",
+    longDescription:
+      "Afterlight uses on-device vision to OCR receipts in real time. No manual entry. It categorizes expenses automatically and gives you a clear picture of where your money goes. Built with VisionKit and a custom ML categorization layer. Clean, minimal UI that gets out of the way.",
+    tags: ["Swift", "SwiftUI", "iOS", "OCR", "Finance", "VisionKit"],
+    stack: ["Swift", "SwiftUI", "VisionKit", "CoreML"],
+    links: {
+      live: "https://apps.apple.com/app/afterlight",
+    },
+    link: "https://apps.apple.com/app/afterlight",
+    impact: [
+      "On-device OCR — no data leaves the phone",
+      "ML-powered expense categorization",
+    ],
+  },
+  {
+    slug: "gambit",
+    name: "Gambit",
+    status: "Active" as Status,
+    category: "personal",
+    role: "Solo",
+    featured: true,
+    priority: 5,
+    description:
+      "Chess, but you set the terms. Choose your opening, difficulty, and style. Play against an adaptive engine that matches your level.",
+    longDescription:
+      "Gambit is an opinionated chess PWA. You pick your opening repertoire before the game, then the engine plays into your chosen lines — so you practice real positions, not random ones. Adaptive difficulty. Clean board. No ads, no accounts needed.",
+    tags: ["Next.js", "PWA", "Chess", "Game", "TypeScript"],
+    stack: ["Next.js", "TypeScript", "Stockfish", "Tailwind CSS"],
+    links: {
+      live: "https://playgambit.app",
+    },
+    link: "https://playgambit.app",
   },
   // ===== FEATURED =====
   {
