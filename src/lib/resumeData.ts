@@ -57,6 +57,14 @@ export const resumeData: ResumeData = {
       title: "Jeremy Blake — Interactive WebGL Art",
       href: "https://jeremy-blake.vercel.app",
     },
+    {
+      title: "Doomscroll — iOS Spaced Repetition App",
+      href: "https://apps.apple.com/app/id6759280323",
+    },
+    {
+      title: "Dry Club — Sober Social Companion",
+      href: "https://dryclub.app",
+    },
   ],
   experience: [
     {
@@ -72,15 +80,23 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      title: "Research Assistant",
+      title: "Hospitality",
+      company: "Rhythmethod",
+      date: "2025 – Present",
+      summary: "1-2 days/week. Keeps cash flow stable while the apps grow.",
+      responsibilities: [],
+    },
+    {
+      title: "Research Assistant + Masters Student",
       company: "Auckland University of Technology",
       companyHref: "https://www.aut.ac.nz/",
-      date: "Jan – Mar 2025",
+      date: "2025 – Present",
       summary:
-        "Prototyped mobile UI for AI-driven sleep research. Problem: ML outputs uncertainty that scares users.",
+        "AUT Computer Science masters. Research in explainable AI for health apps. Also building Liner (spatial music canvas) as final-year project.",
       responsibilities: [
-        "Designed visualizations that communicate prediction confidence without triggering health anxiety.",
-        "Contributed to explainable AI research—how to show 'the model isn't sure' without eroding trust.",
+        "Designing visualizations that communicate ML model uncertainty without triggering health anxiety.",
+        "Building Liner — a spatial canvas for music — as the R&D project: tldraw infinite canvas, audio playback, Convex sync.",
+        "Courses: AI, HCI, Special Topics, R&D Project.",
       ],
     },
     {
@@ -138,7 +154,7 @@ export const resumeData: ResumeData = {
     },
     {
       category: "Mobile",
-      items: ["React Native", "Expo", "Swift/SwiftUI"],
+      items: ["React Native", "Expo", "SwiftUI", "RevenueCat", "EAS Build"],
     },
     {
       category: "Backend",
@@ -169,6 +185,10 @@ export const resumeData: ResumeData = {
         "R",
         "Jupyter",
       ],
+    },
+    {
+      category: "AI/ML",
+      items: ["Claude API", "VisionKit", "CoreML", "OCR"],
     },
     {
       category: "Also",
