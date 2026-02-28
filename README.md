@@ -33,13 +33,13 @@ To run this project locally:
 
    ```
    cd dev.maxwellyoung.info
-   npm install
+   pnpm install
    ```
 
 3. Run the development server:
 
    ```
-   npm run dev
+   pnpm dev
    ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
