@@ -208,6 +208,42 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "receipt-radar",
+    name: "Receipt Radar",
+    status: "Active",
+    category: "personal",
+    role: "Solo",
+    featured: true,
+    priority: 2,
+    description:
+      "Grocery intelligence app that scans receipts, tracks spend, and helps people find better prices before the next shop.",
+    longDescription:
+      "Receipt Radar turns a pile of receipts into a live pricing memory. Scan a receipt, parse line items, track category-level spend, and compare prices over time so shoppers can make better decisions without spreadsheet overhead. Built with Expo + React Native and a real-time backend, with OCR and price intelligence services handling extraction and normalization. The focus is trust: clear sources, timestamps on pricing, and respectful privacy defaults.",
+    tags: ["React Native", "Expo", "Convex", "OCR", "Price Intelligence"],
+    stack: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Convex",
+      "Supabase",
+      "FastAPI",
+    ],
+    startDate: "2025-01-01",
+    screenshots: [
+      "/projectImages/receipt-radar-1.png",
+    ],
+    thumb: "/projectImages/receipt-radar-1.png",
+    links: {
+      live: "/receipt-radar",
+    },
+    link: "/receipt-radar",
+    impact: [
+      "Receipt parsing + item normalization for longitudinal spend tracking",
+      "Price comparison context with store/source transparency",
+      "Mobile-first workflow designed for real grocery routines",
+    ],
+  },
+  {
     slug: "holdspace",
     name: "Holdspace",
     status: "Active",

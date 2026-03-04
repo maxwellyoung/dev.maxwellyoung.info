@@ -101,7 +101,7 @@ export default function Home() {
                 animate={isHovered ? "hidden" : "visible"}
                 transition={spring.gentle}
               >
-                Design Engineer ·{" "}
+                Design Engineer at Silk ·{" "}
                 <AnimatedLink
                   href="https://www.ninetynine.digital"
                   external
@@ -130,19 +130,25 @@ export default function Home() {
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
               . Building{" "}
               <AnimatedLink href="https://liner.ninetynine.digital" external>Liner</AnimatedLink>
-              {" "}(spatial canvas for music) and{" "}
-              <AnimatedLink href="https://whakapapa.vercel.app" external>Whakapapa</AnimatedLink>
-              {" "}(AI-powered family knowledge base). Also shipping{" "}
+              , a spatial canvas for music, for my R&D thesis at AUT. Shipping apps independently through{" "}
+              <AnimatedLink href="https://www.ninetynine.digital" external>ninetynine digital</AnimatedLink>
+              , including{" "}
               <AnimatedLink href="https://vapequitcoach.com" external>Vape Quit Coach</AnimatedLink>
-              {" "}solo (iOS, 4.8★).
+              {" "}on iOS (4.8★). I also make music as{" "}
+              <AnimatedLink href="https://music.maxwellyoung.info" external>Maxwell Young</AnimatedLink>
+              .
             </motion.p>
 
-            {/* Principles - filters in/out */}
-            <motion.ul className="text-muted-foreground text-sm space-y-1 border-l border-border pl-3" variants={item.fadeUp}>
-              <li>No algorithmic feeds. No dark patterns. No engagement tricks.</li>
-              <li>Fewer features, sharper tools.</li>
-              <li>If the UI needs guilt to work, the design failed.</li>
-            </motion.ul>
+            {/* Quote */}
+            <motion.blockquote
+              className="text-muted-foreground text-sm space-y-2 border-l border-border pl-3"
+              variants={item.fadeUp}
+            >
+              <p>
+                &ldquo;The most dangerous thought you can have as a creative person is to think you know what you&apos;re doing.&rdquo;
+              </p>
+              <footer className="text-xs">— Bret Victor</footer>
+            </motion.blockquote>
 
             {/* CTA */}
             <motion.div className="pt-2" variants={item.fadeUp}>

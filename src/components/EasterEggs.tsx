@@ -39,7 +39,14 @@ function MatrixRain({ onComplete }: { onComplete: () => void }) {
 
 function MatrixColumn({ index }: { index: number }) {
   const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789";
-  const [stream, setStream] = useState<string[]>([]);
+  const [stream, setStream] = useState<string[]>(
+    () =>
+      Array.from({ length: 16 }, (_, i) =>
+        chars.charAt((index * 11 + i * 7) % chars.length)
+      )
+  );
+  const duration = 2 + (((index * 97) % 280) / 100);
+  const delay = ((index * 53) % 200) / 100;
 
   useEffect(() => {
     const generateStream = () => {
@@ -49,7 +56,6 @@ function MatrixColumn({ index }: { index: number }) {
       );
     };
 
-    setStream(generateStream());
     const interval = setInterval(() => {
       setStream(generateStream());
     }, 150);
@@ -67,9 +73,9 @@ function MatrixColumn({ index }: { index: number }) {
       initial={{ y: -500 }}
       animate={{ y: "100vh" }}
       transition={{
-        duration: Math.random() * 3 + 2,
+        duration,
         repeat: Infinity,
-        delay: Math.random() * 2,
+        delay,
         ease: "linear",
       }}
     >
@@ -259,7 +265,14 @@ function SpringDebugger({ onClose }: { onClose: () => void }) {
 
 export function EasterEggs() {
   const [activeEgg, setActiveEgg] = useState<EasterEggType>(null);
-  const [playModeEnabled, setPlayModeEnabled] = useState(false);
+  const [playModeEnabled, setPlayModeEnabled] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    try {
+      return localStorage.getItem("play-mode-enabled") === "true";
+    } catch {
+      return false;
+    }
+  });
   const [showSpringDebugger, setShowSpringDebugger] = useState(false);
   const [caseStudyAnnotations, setCaseStudyAnnotations] = useState(false);
 
@@ -269,15 +282,6 @@ export function EasterEggs() {
     const random = eggs[Math.floor(Math.random() * eggs.length)];
     setActiveEgg(random);
   }, [playModeEnabled]);
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("play-mode-enabled");
-      setPlayModeEnabled(saved === "true");
-    } catch {
-      setPlayModeEnabled(false);
-    }
-  }, []);
 
   useEffect(() => {
     const handleToggle = (event: Event) => {
