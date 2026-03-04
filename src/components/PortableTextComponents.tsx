@@ -25,6 +25,9 @@ export const PortableTextComponents = {
       );
     },
     code: ({ value }: any) => {
+      if (!value?.code) {
+        return null;
+      }
       return (
         <div className="my-6">
           {value.filename && (
@@ -64,14 +67,15 @@ export const PortableTextComponents = {
   },
   marks: {
     link: ({ children, value }: any) => {
-      const rel = !value.href.startsWith("/")
-        ? "noreferrer noopener"
-        : undefined;
+      const href = value?.href || "#";
+      const isExternal = !href.startsWith("/");
+      const rel = isExternal ? "noreferrer noopener" : undefined;
       return (
         <a
-          href={value.href}
+          href={href}
           rel={rel}
           className="text-blue-500 hover:underline"
+          target={isExternal ? "_blank" : undefined}
         >
           {children}
         </a>

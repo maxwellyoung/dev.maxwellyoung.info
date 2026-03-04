@@ -7,27 +7,24 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Calendar, Tag, Search, ArrowUpRight } from "lucide-react";
-import { PortableText } from "@portabletext/react";
 
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { BlogPost } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
-import { PortableTextComponents } from "./PortableTextComponents";
 import { BlogPostCard } from "./BlogPostCard";
-import { FullBlogPost } from "./FullBlogPost";
 
 export function BlogLayoutComponent() {
-  const { blogPosts, loading } = useBlogPosts();
+  const router = useRouter();
+  const { blogPosts, loading, error } = useBlogPosts();
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [isFullPostOpen, setIsFullPostOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const [lastScrollTime, setLastScrollTime] = useState(0);
@@ -45,10 +42,12 @@ export function BlogLayoutComponent() {
   }, [filteredPosts, selectedPost]);
 
   const nextPost = useCallback(() => {
+    if (filteredPosts.length === 0) return;
     setCurrentIndex((prevIndex) => (prevIndex + 1) % filteredPosts.length);
   }, [filteredPosts.length]);
 
   const prevPost = useCallback(() => {
+    if (filteredPosts.length === 0) return;
     setCurrentIndex(
       (prevIndex) =>
         (prevIndex - 1 + filteredPosts.length) % filteredPosts.length
@@ -93,6 +92,15 @@ export function BlogLayoutComponent() {
   }, [handleWheel]);
 
   useEffect(() => {
+    if (filteredPosts.length === 0) {
+      setSelectedPost(null);
+      setCurrentIndex(0);
+      return;
+    }
+    if (currentIndex >= filteredPosts.length) {
+      setCurrentIndex(0);
+      return;
+    }
     setSelectedPost(filteredPosts[currentIndex]);
 
     const scrollArea = scrollAreaRef.current;
@@ -220,6 +228,12 @@ export function BlogLayoutComponent() {
                   ></path>
                 </svg>
               </div>
+            ) : error ? (
+              <div className="bg-white dark:bg-neutral-800 bg-opacity-70 backdrop-blur-sm rounded-xl p-6 shadow-lg min-h-[400px]">
+                <p className="text-sm text-red-600 dark:text-red-400">
+                  Failed to load blog posts. Please try again.
+                </p>
+              </div>
             ) : (
               <AnimatePresence mode="wait">
                 {selectedPost && (
@@ -245,13 +259,10 @@ export function BlogLayoutComponent() {
                       {formatDate(selectedPost.publishedAt)}
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-300 mb-6 font-light line-clamp-4">
-                      <PortableText
-                        value={selectedPost.content}
-                        components={PortableTextComponents}
-                      />
+                      {selectedPost.excerpt || "No excerpt available for this post yet."}
                     </div>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {selectedPost.tags.map((tag) => (
+                    <div className="flex flex-wrap gap-2 mb-4 min-h-6">
+                      {(selectedPost.tags || []).map((tag) => (
                         <span
                           key={tag}
                           className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
@@ -262,7 +273,7 @@ export function BlogLayoutComponent() {
                       ))}
                     </div>
                     <Button
-                      onClick={() => setIsFullPostOpen(true)}
+                      onClick={() => router.push(`/blog/${selectedPost.slug.current}`)}
                       className="inline-flex items-center text-sm font-light bg-transparent hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100 py-2 px-4 border border-gray-300 dark:border-gray-600 rounded transition-colors duration-200"
                     >
                       Read Full Post
@@ -276,6 +287,9 @@ export function BlogLayoutComponent() {
           <div className="h-full">
             <ScrollArea className="w-full h-full" ref={scrollAreaRef}>
               <div className="space-y-4 p-4">
+                {filteredPosts.length === 0 && (
+                  <p className="text-sm text-muted-foreground">No posts match your search.</p>
+                )}
                 {filteredPosts.map((post, index) => (
                   <BlogPostCard
                     key={post._id}
@@ -294,11 +308,6 @@ export function BlogLayoutComponent() {
           </div>
         </div>
       </div>
-      <Dialog open={isFullPostOpen} onOpenChange={setIsFullPostOpen}>
-        <DialogContent className="max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-          <FullBlogPost post={selectedPost} />
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }

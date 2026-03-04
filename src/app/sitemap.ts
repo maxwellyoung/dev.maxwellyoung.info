@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
 import { getAllCaseStudySlugs } from "@/lib/caseStudies";
+import { getAllBlogSlugs } from "@/lib/sanity";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://dev.maxwellyoung.info";
 
   const staticRoutes = [
@@ -35,6 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.6,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
   ];
 
   // Get all case studies from the caseStudies lib (complete list)
@@ -57,5 +64,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...caseStudyRoutes, ...essayRoutes];
+  const blogSlugs = await getAllBlogSlugs().catch(() => []);
+  const blogRoutes = blogSlugs.map((slug) => ({
+    url: `${baseUrl}/blog/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...caseStudyRoutes, ...essayRoutes, ...blogRoutes];
 }

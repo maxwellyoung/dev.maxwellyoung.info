@@ -21,13 +21,17 @@ export function FullBlogPost({ post }: FullBlogPostProps) {
         {formatDate(post.publishedAt)}
       </div>
       <div className="prose dark:prose-invert max-w-none">
-        <PortableText
-          value={post.content}
-          components={PortableTextComponents}
-        />
+        {post.content ? (
+          <PortableText
+            value={post.content}
+            components={PortableTextComponents}
+          />
+        ) : (
+          <p>No content available for this post yet.</p>
+        )}
       </div>
       <div className="flex flex-wrap gap-2 mt-6">
-        {post.tags.map((tag) => (
+        {(post.tags || []).map((tag) => (
           <span
             key={tag}
             className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
