@@ -37,5 +37,7 @@ yarn-error.log*
 next-env.d.ts
 
 # private docs (not for hiring managers to find)
-/docs/
+/docs/*
+!/docs/career-os/
+!/docs/career-os/**
 squirrel.toml
