@@ -1,64 +1,44 @@
-# 90-Day Review and Reset Protocol
+# 90-Day Review
 
-Run this at the end of each 90-day block.
+First review: June 4, 2026 (90 days from March 4)
 
-## Acceptance tests
+## Acceptance tests (pass/fail by Day 90)
 
-1. Income capacity multiple improved vs baseline.
-2. Proof quality/relevance improved (more measurable outcomes).
-3. Opportunity quality improved (higher scorecard averages).
-4. Workload remained sustainable.
+| Test | Target | Result | Pass? |
+|---|---|---|---|
+| Side income exists | >$0/mo for 3 consecutive months | | |
+| VQC MRR | $100+ | | |
+| Freelance project completed | At least 1 paid project | | |
+| Portfolio case studies | 4+ published | | |
+| Apps live on App Store | 6+ | | |
+| Technical blog posts | 3+ published | | |
+| Outreach conversations | 10+ | | |
+| Silk contract healthy | Rate discussion happened | | |
+| Merch drop executed | 1 drop completed (any revenue) | | |
+| NYC move timeline | Concrete plan exists | | |
 
-## Decision rule
+## Reset protocol (if <6/10 pass)
 
-- If 0-1 tests fail: continue with minor adjustments.
-- If 2+ tests fail: run strategy reset sprint.
+1. Identify which tests failed and why
+2. Was it effort (didn't do the work) or strategy (wrong approach)?
+3. If effort: simplify — cut to 1 experiment, 1 proof asset, 1 outreach channel
+4. If strategy: pivot — new positioning, new audience, new offer
+5. Set 30-day mini-review with adjusted targets
 
-## Scenario playbooks
+## Monthly check-ins
 
-### A) Role-first acceleration
+### Month 1 (April 4)
+- What shipped:
+- What's working:
+- What's not:
+- Adjust:
 
-- If promotion/new role emerges early:
-- Keep side work premium and capacity-capped.
-- Convert role wins into proof assets quickly.
+### Month 2 (May 4)
+- What shipped:
+- What's working:
+- What's not:
+- Adjust:
 
-### B) Side-first acceleration
-
-- If side demand outpaces role leverage:
-- Raise price floor and tighten qualification.
-- Protect core role until side revenue is stable for 3+ months.
-
-### C) Market downturn
-
-- Shift focus to cashflow stability and retention.
-- Reduce experiments to one at a time.
-- Preserve proof cadence at minimum viable level.
-
-### D) Burnout risk
-
-- Drop to one role track + one side asset.
-- Pause low-conversion channels.
-- Recover deep work quality before scaling again.
-
-### E) Underperformance
-
-- Reassess positioning statement.
-- Refresh offer based on observed demand.
-- Rebuild proof assets around tighter outcomes.
-
-## Reset sprint (14 days)
-
-- Day 1-2: diagnose bottlenecks from scoreboard data.
-- Day 3-5: reselect top opportunity path using scorecard.
-- Day 6-9: relaunch one proof artifact + 5 outreach actions.
-- Day 10-14: restart weekly loop and lock new experiment.
-
-## Quarterly archive
-
-Track each quarter here:
-
-| Quarter | Income Multiple | Best Channel | Worst Channel | Keep | Kill | Next Focus |
-|---|---:|---|---|---|---|---|
-|  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
+### Month 3 (June 4) — FULL REVIEW
+- Run acceptance tests above
+- Decision: continue / pivot / scale

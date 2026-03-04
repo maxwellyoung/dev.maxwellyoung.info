@@ -1,36 +1,42 @@
 # Weekly Scoreboard
 
-Use this every Friday. Keep one row per week.
+Track lead and lag indicators weekly. Review every Sunday.
 
-## Baseline snapshot (before Week 1)
+## Lead indicators (things you control)
 
-- Current annual salary:
-- Current monthly side revenue:
-- Total annual income run-rate:
-- Current role/title:
-- Current audience/distribution baseline (if any):
-- Current liquid runway (months):
+| Metric | Target | W/C Mar 3 | W/C Mar 10 | W/C Mar 17 | W/C Mar 24 |
+|---|---|---|---|---|---|
+| Hours on side projects | 8-12h | | | | |
+| Proof assets shipped | 1/week | | | | |
+| Outreach messages sent | 3/week | | | | |
+| Content pieces published | 1/week | | | | |
+| Code commits (non-Silk) | 10+/week | | | | |
 
-## Weekly KPI table
+## Lag indicators (outcomes)
 
-| Week Of | Deep Skill Hours | Proof Assets Shipped | High-Quality Conversations | Offers Sent | Opportunities Advanced | Side Revenue (Monthly Run-Rate) | Notes |
-|---|---:|---:|---:|---:|---:|---:|---|
-|  | 0 | 0 | 0 | 0 | 0 | 0 |  |
-|  | 0 | 0 | 0 | 0 | 0 | 0 |  |
-|  | 0 | 0 | 0 | 0 | 0 | 0 |  |
-|  | 0 | 0 | 0 | 0 | 0 | 0 |  |
-|  | 0 | 0 | 0 | 0 | 0 | 0 |  |
+| Metric | Target | Mar | Apr | May | Jun |
+|---|---|---|---|---|---|
+| Side income (non-Silk) | $500+/mo by Jun | $31 (VQC) | | | |
+| App Store apps live | 6+ by Apr | 4 | | | |
+| Portfolio case studies | 6 by May | 2 (VQC, dev folio) | | | |
+| Inbound inquiries | 2+/mo by Jun | 0 | | | |
+| Newsletter/blog subscribers | 50+ by Jun | 0 | | | |
 
-## Weekly pass/fail
+## Weekly review template
 
-- Needle-moving deliverable shipped: `[yes/no]`
-- Active experiments <= 2: `[yes/no]`
-- Core job performance protected: `[yes/no]`
-- Stop-doing list updated: `[yes/no]`
+### Week of: ___
 
-## Monthly roll-up
+**What shipped:**
+-
 
-- Income capacity multiple vs baseline:
-- Best converting activity:
-- Lowest ROI activity to kill:
-- One strategic change for next month:
+**What didn't ship (and why):**
+-
+
+**Top insight:**
+-
+
+**Next week's #1 priority:**
+-
+
+**Stop doing:**
+-

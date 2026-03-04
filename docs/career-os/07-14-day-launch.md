@@ -1,63 +1,35 @@
-# 14-Day Launch Sprint
+# 14-Day Launch Sequence
 
-Start date: `2026-03-04` (or update to your actual start date).
+Use this to launch any new offer, product, or campaign. Adapt per context.
 
-## Day 1-2: Baseline audit
+## Current launch: Freelance profile + first outreach (target: late March)
 
-- Record salary, side revenue, annual run-rate.
-- Inventory top 5 skills with market value notes.
-- List existing proof artifacts and identify gaps.
-- Build initial target list: 30 high-value contacts.
+### Pre-launch (Days 1-4): Foundation
+- [ ] Day 1: Complete Braintrust profile (password reset, upload portfolio, write bio)
+- [ ] Day 1: Update dev.maxwellyoung.info with latest projects (Silk mobile, Liner, VQC)
+- [ ] Day 2: Write 2 technical blog posts (canvas engine, headless iOS builds)
+- [ ] Day 2: Record 60-second Loom walkthrough of Silk mobile
+- [ ] Day 3: Apply to Toptal screening (takes 2-4 weeks to process)
+- [ ] Day 3: Set up Calendly for intro calls (free tier)
+- [ ] Day 4: Draft outreach templates (warm intro request, cold DM, project application)
 
-Deliverables:
-- Baseline entered in `04-weekly-scoreboard.md`
-- Draft target contact sheet (30 names)
+### Soft launch (Days 5-9): Test the message
+- [ ] Day 5: Send 3 warm outreach messages (Peter, Bernard, 1 Ara Tipu contact)
+- [ ] Day 6: Apply to 3 Braintrust projects matching your stack
+- [ ] Day 7: Post on X about what you're building (Liner or Silk learnings)
+- [ ] Day 8: Apply to 2 more projects, follow up on Day 5 messages
+- [ ] Day 9: Collect feedback — is the positioning landing? Adjust if needed
 
-## Day 3-4: Positioning + offer hypothesis
+### Launch (Days 10-14): Full push
+- [ ] Day 10: Apply to 5 more projects (Braintrust + Toptal if approved)
+- [ ] Day 11: Publish first technical blog post
+- [ ] Day 12: Share blog post on X, HN, relevant Discords
+- [ ] Day 13: Follow up on all applications + outreach
+- [ ] Day 14: Review — how many conversations? What's the conversion funnel?
 
-- Complete `01-positioning-statement-v1.md`.
-- Define one offer concept in `06-offer-sheet.md`.
-- Draft 3 outreach variants based on your positioning.
-
-Deliverables:
-- Positioning Statement v1 finalized
-- Offer Sheet draft complete
-
-## Day 5-7: Proof + outreach start
-
-- Publish first authority artifact (case study/teardown/thread).
-- Reach out to first 5 high-value contacts.
-- Log response quality and objections.
-
-Deliverables:
-- First proof artifact shipped
-- 5 outbound conversations initiated
-
-## Day 8-10: Scoring + portfolio structure
-
-- Complete `02-opportunity-scorecard.md` and thresholds.
-- Create structure for 12 proof assets in `03-proof-portfolio.md`.
-- Score all active opportunities and reject low-scoring work.
-
-Deliverables:
-- Opportunity Scorecard active
-- Proof Portfolio map set
-
-## Day 11-14: Full weekly loop
-
-- Execute full weekly cadence (skill, proof, pipeline, asset).
-- Fill first row in `04-weekly-scoreboard.md`.
-- Define first quarterly experiment in `05-quarterly-experiment-brief.md`.
-
-Deliverables:
-- Week 1 scoreboard completed
-- Experiment brief v1 launched
-
-## Launch pass/fail
-
-Pass launch if all are true:
-
-- Positioning statement tested in at least 5 conversations.
-- One proof artifact published.
-- At least one qualified opportunity scored >= 65.
-- Weekly loop completed once end-to-end.
+### Post-launch review
+- Applications sent:
+- Conversations started:
+- Proposals submitted:
+- Projects won:
+- Learning:
