@@ -35,14 +35,14 @@ export interface BlogPost {
     current: string;
   };
   publishedAt: string;
-  excerpt: string;
-  content: PortableTextContent[];
-  tags: string[];
+  excerpt?: string;
+  content?: PortableTextContent[];
+  tags?: string[];
   mainImage?: {
     asset: {
       _id: string;
       url: string;
     };
-    alt: string;
+    alt?: string;
   };
 }

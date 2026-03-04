@@ -1,5 +1,4 @@
 import { MetadataRoute } from "next";
-import { projects } from "@/lib/projects";
 import { getAllCaseStudySlugs } from "@/lib/caseStudies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -29,6 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "yearly" as const,
       priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/receipt-radar`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
     },
   ];
 

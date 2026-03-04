@@ -24,6 +24,24 @@ const PILL_FILTERS = ["Research", "AI/Data", "Fashion", "Creative"] as const;
 type Pill = (typeof PILL_FILTERS)[number];
 
 const STORAGE_KEY = "projects-filter-state";
+const HERO_SLUGS = ["silk", "liner", "vape-quit-coach", "receipt-radar"] as const;
+
+function readSavedProjectFilters(): { filters: Pill[]; sort: SortKey } {
+  if (typeof window === "undefined") {
+    return { filters: [], sort: "newest" };
+  }
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return { filters: [], sort: "newest" };
+    const { filters, sort } = JSON.parse(saved);
+    return {
+      filters: Array.isArray(filters) ? filters : [],
+      sort: sort && ["newest", "oldest", "az"].includes(sort) ? sort : "newest",
+    };
+  } catch {
+    return { filters: [], sort: "newest" };
+  }
+}
 
 // Utility functions at module scope
 function getStatusLabel(status?: Project["status"]) {
@@ -303,24 +321,14 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
   const shouldReduceMotion = useReducedMotion() ?? false;
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
-  const [activeFilters, setActiveFilters] = useState<Pill[]>([]);
-  const [sortBy, setSortBy] = useState<SortKey>("newest");
+  const [activeFilters, setActiveFilters] = useState<Pill[]>(
+    () => readSavedProjectFilters().filters
+  );
+  const [sortBy, setSortBy] = useState<SortKey>(
+    () => readSavedProjectFilters().sort
+  );
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
-
-  // Restore filter state from localStorage on mount
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const { filters, sort } = JSON.parse(saved);
-        if (Array.isArray(filters)) setActiveFilters(filters);
-        if (sort && ["newest", "oldest", "az"].includes(sort)) setSortBy(sort);
-      }
-    } catch {
-      // Ignore parse errors
-    }
-  }, []);
 
   // Persist filter state to localStorage
   useEffect(() => {
@@ -393,31 +401,28 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
     return list;
   }, [deferredQuery, activeFilters, sortBy, orderIndex]);
 
-  useEffect(() => {
-    if (!filtered.length) {
-      setExpandedProject(null);
-      return;
-    }
-    if (expandedProject && !filtered.find((p) => p.name === expandedProject)) {
-      setExpandedProject(null);
-    }
-  }, [filtered, expandedProject]);
+  const safeExpandedProject = useMemo(
+    () =>
+      expandedProject && filtered.some((p) => p.name === expandedProject)
+        ? expandedProject
+        : null,
+    [expandedProject, filtered]
+  );
 
   const selectedProject: Project | null =
-    expandedProject
-      ? filtered.find((p) => p.name === expandedProject) || null
+    safeExpandedProject
+      ? filtered.find((p) => p.name === safeExpandedProject) || null
       : null;
 
   // Hero projects: the spine - always visible, never sorted/filtered
-  const heroSlugs = ["silk", "vape-quit-coach"];
   const heroProjects = useMemo(
-    () => projects.filter((p) => heroSlugs.includes(p.slug)),
+    () => projects.filter((p) => HERO_SLUGS.includes(p.slug as (typeof HERO_SLUGS)[number])),
     []
   );
 
   // Everything else is filterable/sortable
   const filterableProjects = useMemo(
-    () => filtered.filter((p) => !heroSlugs.includes(p.slug)),
+    () => filtered.filter((p) => !HERO_SLUGS.includes(p.slug as (typeof HERO_SLUGS)[number])),
     [filtered]
   );
 
@@ -554,7 +559,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
                 <HeroProjectCard
                   key={p.name}
                   p={p}
-                  expandedProject={expandedProject}
+                  expandedProject={safeExpandedProject}
                   onToggleExpand={setExpandedProject}
                   onCarouselOpen={handleCarouselOpen}
                   shouldReduceMotion={shouldReduceMotion}
@@ -623,7 +628,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
                         key={p.name}
                         p={p}
                         index={index}
-                        expandedProject={expandedProject}
+                        expandedProject={safeExpandedProject}
                         onToggleExpand={setExpandedProject}
                         onCarouselOpen={handleCarouselOpen}
                         shouldReduceMotion={shouldReduceMotion}
@@ -654,7 +659,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
                         key={p.name}
                         p={p}
                         index={studioProjects.length + index}
-                        expandedProject={expandedProject}
+                        expandedProject={safeExpandedProject}
                         onToggleExpand={setExpandedProject}
                         onCarouselOpen={handleCarouselOpen}
                         shouldReduceMotion={shouldReduceMotion}

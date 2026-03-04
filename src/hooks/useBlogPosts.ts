@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { client } from "@/lib/sanity";
+import { getBlogPosts } from "@/lib/sanity";
 import { BlogPost } from "@/lib/types";
 
 export function useBlogPosts() {
@@ -11,34 +11,7 @@ export function useBlogPosts() {
     async function fetchBlogPosts() {
       try {
         setLoading(true);
-        const query = `*[_type == "blogPost"] {
-          _id,
-          title,
-          slug,
-          publishedAt,
-          excerpt,
-          content[] {
-            ...,
-            _type == "image" => {
-              "asset": asset->
-            },
-            _type == "code" => {
-              ...,
-              language,
-              filename,
-              code
-            }
-          },
-          tags,
-          mainImage {
-            asset->{
-              _id,
-              url
-            },
-            alt
-          }
-        }`;
-        const posts = await client.fetch(query);
+        const posts = await getBlogPosts();
         setBlogPosts(posts);
       } catch (err) {
         setError(

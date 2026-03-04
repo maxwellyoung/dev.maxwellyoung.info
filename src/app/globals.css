@@ -301,6 +301,20 @@ hr {
   );
 }
 
+/* Craft route contrast tuning */
+.craft-surface .text-muted {
+  color: hsl(var(--foreground) / 0.8);
+}
+
+.craft-surface .text-muted-foreground {
+  color: hsl(var(--foreground) / 0.72);
+}
+
+.craft-surface .border-border\/30,
+.craft-surface .border-border\/50 {
+  border-color: hsl(var(--border) / 0.9);
+}
+
 /* New Order blue glow */
 .glow-blue {
   text-shadow: 0 0 20px hsl(210 80% 55% / 0.5);

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function CraftPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="craft-surface min-h-screen bg-background">
       <div className="max-w-4xl mx-auto px-6 py-12">
         <CraftHeader />
 
