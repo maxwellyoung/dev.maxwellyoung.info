@@ -163,44 +163,6 @@ export default function Home() {
               <footer className="text-xs">— Bret Victor</footer>
             </motion.blockquote>
 
-            <motion.div variants={item.fadeUp}>
-              <OutcomeProofStrip />
-            </motion.div>
-
-            <motion.div
-              variants={item.fadeUp}
-              className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-4 space-y-3"
-            >
-              <p className="text-xs uppercase tracking-wider text-muted-foreground">
-                Two Ways To Work
-              </p>
-              <div className="grid sm:grid-cols-2 gap-3">
-                <TrackedActionLink
-                  href="/work-with-me"
-                  eventName="ecosystem_path_selected"
-                  eventProps={{ path: "hire_maxwell", placement: "home_splitter" }}
-                  className="rounded-lg border border-[hsl(var(--border))] p-3 hover:border-accent/50 transition-colors"
-                >
-                  <p className="text-sm font-medium text-foreground">Hire Maxwell</p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Focused 2-week design engineering sprint.
-                  </p>
-                </TrackedActionLink>
-                <TrackedActionLink
-                  href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_splitter"
-                  external
-                  eventName="ecosystem_path_selected"
-                  eventProps={{ path: "hire_studio", placement: "home_splitter" }}
-                  className="rounded-lg border border-[hsl(var(--border))] p-3 hover:border-accent/50 transition-colors"
-                >
-                  <p className="text-sm font-medium text-foreground">Hire ninetynine studio</p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Full product and brand execution with broader scope.
-                  </p>
-                </TrackedActionLink>
-              </div>
-            </motion.div>
-
             {/* CTA */}
             <motion.div className="pt-2" variants={item.fadeUp}>
               <AccentLink
@@ -278,6 +240,41 @@ export default function Home() {
 
         <section id="resume">
           <Resume />
+        </section>
+
+        <section className="space-y-6 pt-6">
+          <OutcomeProofStrip />
+
+          <div className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-4 space-y-3">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground">
+              Two Ways To Work
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <TrackedActionLink
+                href="/work-with-me"
+                eventName="ecosystem_path_selected"
+                eventProps={{ path: "hire_maxwell", placement: "post_resume_splitter" }}
+                className="rounded-lg border border-[hsl(var(--border))] p-3 hover:border-accent/50 transition-colors"
+              >
+                <p className="text-sm font-medium text-foreground">Hire Maxwell</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Focused 2-week design engineering sprint.
+                </p>
+              </TrackedActionLink>
+              <TrackedActionLink
+                href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_splitter"
+                external
+                eventName="ecosystem_path_selected"
+                eventProps={{ path: "hire_studio", placement: "post_resume_splitter" }}
+                className="rounded-lg border border-[hsl(var(--border))] p-3 hover:border-accent/50 transition-colors"
+              >
+                <p className="text-sm font-medium text-foreground">Hire ninetynine studio</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Full product and brand execution with broader scope.
+                </p>
+              </TrackedActionLink>
+            </div>
+          </div>
         </section>
 
         <footer className="mt-16 pt-8 border-t border-[hsl(var(--border))]">
