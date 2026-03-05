@@ -7,7 +7,13 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint .",
-    "test": "node --import tsx --test src/**/*.test.ts"
+    "test": "node --import tsx --test src/**/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "check:projects": "tsx scripts/check-project-metadata.ts",
+    "check:craft": "node scripts/check-craft-guards.mjs",
+    "check:site": "node scripts/site-regression-check.mjs",
+    "check:site:screenshots": "node scripts/site-regression-check.mjs --screenshots",
+    "verify": "npm run check:projects && npm run test && npm run typecheck"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

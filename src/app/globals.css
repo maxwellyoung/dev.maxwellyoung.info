@@ -302,17 +302,77 @@ hr {
 }
 
 /* Craft route contrast tuning */
+.craft-surface {
+  --craft-surface-0: hsl(var(--background));
+  --craft-surface-1: hsl(var(--card));
+  --craft-surface-2: hsl(var(--muted) / 0.35);
+  --craft-ink-strong: hsl(var(--foreground));
+  --craft-ink-soft: hsl(var(--foreground) / 0.78);
+  --craft-accent-solid: hsl(var(--accent));
+  --craft-accent-soft: hsl(var(--accent) / 0.14);
+  --craft-icon-size: 16px;
+  --craft-icon-stroke: 1.75;
+  --craft-icon-optical-y: -0.25px;
+  position: relative;
+  isolation: isolate;
+}
+
+.craft-depth-field {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 15% 10%, hsl(var(--accent) / 0.06), transparent 45%),
+    radial-gradient(circle at 85% 20%, hsl(210 80% 55% / 0.05), transparent 40%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 23px,
+      hsl(var(--border) / 0.18) 24px
+    );
+}
+
 .craft-surface .text-muted {
-  color: hsl(var(--foreground) / 0.8);
+  color: var(--craft-ink-soft);
 }
 
 .craft-surface .text-muted-foreground {
-  color: hsl(var(--foreground) / 0.72);
+  color: hsl(var(--foreground) / 0.74);
 }
 
 .craft-surface .border-border\/30,
 .craft-surface .border-border\/50 {
   border-color: hsl(var(--border) / 0.9);
+}
+
+.craft-surface .craft-focus,
+.focus-ring-standard {
+  outline: none;
+}
+
+.craft-surface .craft-focus:focus-visible,
+.focus-ring-standard:focus-visible {
+  box-shadow:
+    0 0 0 2px hsl(var(--background)),
+    0 0 0 4px hsl(var(--accent));
+  border-radius: 0.5rem;
+}
+
+.motion-safe-transform {
+  transition-property: transform, opacity, color, background-color, border-color, box-shadow;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.motion-reduce-opacity-only {
+  transition-property: opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe-transform {
+    transition-property: opacity !important;
+    transform: none !important;
+  }
 }
 
 /* New Order blue glow */

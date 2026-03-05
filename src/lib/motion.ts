@@ -13,6 +13,12 @@
 
 // Duration tokens (in seconds for Framer Motion)
 export const duration = {
+  // Frequency lanes (new canonical system)
+  micro: 0.14,
+  interaction: 0.22,
+  structural: 0.34,
+
+  // Backwards-compatible aliases (temporary during migration)
   instant: 0.1,
   quick: 0.15,
   normal: 0.25,
@@ -59,6 +65,20 @@ export const ease = {
 
 // Transition presets
 export const transition = {
+  // Canonical frequency lane transitions
+  laneMicro: {
+    duration: duration.micro,
+    ease: ease.outQuick,
+  },
+  laneInteraction: {
+    duration: duration.interaction,
+    ease: ease.out,
+  },
+  laneStructural: {
+    duration: duration.structural,
+    ease: ease.brand,
+  },
+
   // Micro interactions: button presses, toggles
   micro: { ...spring.snappy },
 
@@ -80,6 +100,10 @@ export const transition = {
   // Slow: dramatic moments
   slow: { ...spring.soft },
 } as const;
+
+// Policy flag for interaction decisions.
+// Decorative animation should not trigger on keyboard-driven navigation/actions.
+export const shouldAnimateKeyboardInteraction = false;
 
 // Stagger configurations
 export const stagger = {

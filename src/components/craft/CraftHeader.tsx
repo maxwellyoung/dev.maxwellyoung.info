@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { duration, ease } from "@/lib/motion";
+import { SymbolPrinciple } from "@/components/craft/CraftSymbols";
 
 export function CraftHeader() {
   return (
@@ -17,9 +18,9 @@ export function CraftHeader() {
     >
       <Link
         href="/"
-        className="inline-flex items-center text-muted hover:text-foreground transition-colors mb-12 group"
+        className="craft-focus motion-safe-transform inline-flex items-center text-muted hover:text-foreground mb-12 group"
       >
-        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
+        <ArrowLeft aria-hidden="true" className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
         Back to portfolio
       </Link>
       
@@ -32,8 +33,9 @@ export function CraftHeader() {
           Practical studies on motion, feedback, and UI behavior.
           Each piece documents what was tried, what worked, and what changed in production work.
         </p>
-        <p className="text-sm text-muted-foreground">
-          Optional play mode is available in command palette for easter eggs and experimental UI toys.
+        <p className="text-sm text-muted-foreground inline-flex gap-2">
+          <SymbolPrinciple className="text-accent mt-0.5 shrink-0" />
+          Optional play mode is available in command palette for controlled experiments.
         </p>
       </div>
     </motion.div>
