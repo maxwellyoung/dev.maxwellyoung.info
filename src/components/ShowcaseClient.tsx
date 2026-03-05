@@ -9,6 +9,7 @@ import {
   useDeferredValue,
 } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import type { Project } from "@/lib/projects";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -84,9 +85,9 @@ export default function ShowcaseClient({ source }: ShowcaseClientProps) {
             case "Featured":
               return !!p.featured;
             case "Client":
-              return p.category === "Client";
+              return p.category.toLowerCase() === "client";
             case "Personal":
-              return p.category === "Personal";
+              return p.category.toLowerCase() === "personal";
             case "AI/Data":
               return (p.tags || []).some((t) => /^(ai|ml|data|scrap)/i.test(t));
             case "Fashion":
@@ -96,7 +97,7 @@ export default function ShowcaseClient({ source }: ShowcaseClientProps) {
                 ["TYTM8", "Goodness"].some((n) => p.name?.includes(n))
               );
             case "Creative":
-              return p.category === "Experiment";
+              return p.category.toLowerCase() === "experiment";
             default:
               return true;
           }
@@ -474,6 +475,18 @@ function ExternalLink({
   href: string;
   children: React.ReactNode;
 }) {
+  const isInternal = href.startsWith("/");
+  if (isInternal) {
+    return (
+      <Link
+        className="underline underline-offset-2 decoration-[var(--accent)]/60 hover:decoration-[var(--accent)]"
+        href={href}
+      >
+        {children}
+      </Link>
+    );
+  }
+
   return (
     <a
       className="underline underline-offset-2 decoration-[var(--accent)]/60 hover:decoration-[var(--accent)]"
@@ -487,15 +500,21 @@ function ExternalLink({
 }
 
 function Links({ p, onOpenVideo }: { p: Project; onOpenVideo: () => void }) {
+  const hasLive = !!p.links?.live;
+  const hasRepo = !!p.links?.repo;
+  const hasVideo = !!p.links?.video;
+  const isPendingLaunch = !hasLive && (p.status === "WIP" || p.status === "Planned");
+
   return (
     <div className="mt-4 flex gap-4 text-sm">
-      {p.links?.live && <ExternalLink href={p.links.live}>live</ExternalLink>}
-      {p.links?.repo && <ExternalLink href={p.links.repo}>repo</ExternalLink>}
-      {p.links?.video && (
+      {hasLive && <ExternalLink href={p.links!.live!}>live</ExternalLink>}
+      {hasRepo && <ExternalLink href={p.links!.repo!}>repo</ExternalLink>}
+      {hasVideo && (
         <button className="underline underline-offset-2" onClick={onOpenVideo}>
           video
         </button>
       )}
+      {isPendingLaunch && <span className="text-muted">launch pending</span>}
     </div>
   );
 }

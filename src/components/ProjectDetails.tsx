@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Github, FileText } from "lucide-react";
-import { Project } from "@/lib/projects";
+import { Project, getProjectStatusLabel, isActiveStatus } from "@/lib/projects";
 import { spring } from "@/lib/motion";
 
 interface ProjectDetailsProps {
@@ -34,7 +34,7 @@ export function ProjectDetails({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -20 }}
           transition={shouldReduceMotion ? { duration: 0 } : spring.gentle}
-          className="bg-[hsl(var(--card))] rounded-xl p-4 sm:p-6 border border-[hsl(var(--border))]"
+          className="bg-[hsl(var(--card))] rounded-xl p-4 sm:p-6 border border-[hsl(var(--border))] overflow-x-clip"
         >
           {project.screenshots && project.screenshots.length > 0 && (
             <button
@@ -69,13 +69,13 @@ export function ProjectDetails({
             <h2 className="text-lg md:text-xl font-medium leading-tight text-foreground">
               {project.name}
             </h2>
-            {project.status && (
+            {getProjectStatusLabel(project) && (
               <span className={`shrink-0 px-2 py-0.5 text-xs rounded-full ${
-                project.status === "Active" || project.status === "WIP"
+                isActiveStatus(project)
                   ? "bg-accent/10 text-accent border border-accent/20"
                   : "bg-[hsl(var(--muted))] text-muted-foreground"
               }`}>
-                {project.status === "WIP" ? "In Progress" : project.status}
+                {getProjectStatusLabel(project)}
               </span>
             )}
           </div>
@@ -120,29 +120,41 @@ export function ProjectDetails({
                 Read Case Study
               </Link>
             )}
-            {project.link && (
-              <motion.a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
-                whileHover={shouldReduceMotion ? undefined : { x: 3 }}
-              >
-                View Live
-                <ArrowUpRight className="ml-1 h-3 w-3" />
-              </motion.a>
-            )}
+            {project.link &&
+              (project.link.startsWith("/") ? (
+                <Link
+                  href={project.link}
+                  className="group inline-flex items-center text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
+                >
+                  View Live
+                  <ArrowUpRight className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
+              ) : (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
+                >
+                  View Live
+                  <ArrowUpRight className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              ))}
             {project.codeLink && (
-              <motion.a
+              <a
                 href={project.codeLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
-                whileHover={shouldReduceMotion ? undefined : { x: 3 }}
+                className="group inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
               >
                 Source
-                <Github className="ml-1 h-3 w-3" />
-              </motion.a>
+                <Github className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" />
+              </a>
+            )}
+            {!project.link && (project.status === "WIP" || project.status === "Planned") && (
+              <span className="inline-flex items-center text-sm text-muted-foreground">
+                Launch pending
+              </span>
             )}
           </div>
         </motion.div>
