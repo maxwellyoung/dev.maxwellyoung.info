@@ -273,10 +273,10 @@ export const projects: Project[] = [
   {
     slug: "doomscroll",
     name: "Doomscroll",
-    status: "Active",
+    status: "Planned",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     priority: 2,
     description:
       "Master any codebase by doomscrolling through it. Swipe-to-learn spaced repetition for code — TikTok UX meets software education.",
@@ -284,10 +284,8 @@ export const projects: Project[] = [
       "Doomscroll is a spaced repetition learning app for developers. Instead of reading docs, you swipe through bite-sized code concepts the way you'd scroll TikTok. Each card teaches one idea — a pattern, an API, a gotcha. Swipe right to remember, left to review again. The algorithm surfaces the right card at the right time. Solo-built in React Native/Expo.",
     tags: ["React Native", "Expo", "Education", "Spaced Repetition", "iOS"],
     stack: ["React Native", "Expo", "TypeScript"],
-    links: {
-      live: "https://apps.apple.com/app/id6759280323",
-    },
-    link: "https://apps.apple.com/app/id6759280323",
+    screenshots: [],
+    thumb: undefined,
     impact: [
       "TikTok-style swipe UX applied to technical learning",
       "Spaced repetition algorithm surfaces cards at optimal review intervals",
@@ -308,9 +306,11 @@ export const projects: Project[] = [
     tags: ["React Native", "Expo", "News", "iOS", "Wellbeing"],
     stack: ["React Native", "Expo", "TypeScript"],
     links: {
-      live: "https://apps.apple.com/nz/app/good-news-bad-news/id6759280323",
+      live: "https://www.ninetynine.digital/good-news-bad-news",
     },
-    link: "https://apps.apple.com/nz/app/good-news-bad-news/id6759280323",
+    link: "https://www.ninetynine.digital/good-news-bad-news",
+    screenshots: ["/projectImages/gnbn-icon.png"],
+    thumb: "/projectImages/gnbn-icon.png",
   },
   {
     slug: "dry-club",
@@ -327,9 +327,11 @@ export const projects: Project[] = [
     tags: ["React Native", "Expo", "iOS", "Sobriety", "Social"],
     stack: ["React Native", "Expo", "TypeScript", "RevenueCat"],
     links: {
-      live: "https://apps.apple.com/app/dry-club",
+      live: "https://www.ninetynine.digital/dry-club",
     },
-    link: "https://apps.apple.com/app/dry-club",
+    link: "https://www.ninetynine.digital/dry-club",
+    screenshots: ["/projectImages/dry-club-icon.png"],
+    thumb: "/projectImages/dry-club-icon.png",
     impact: [
       "IAP subscription model with weekly/monthly/annual tiers",
       "Built from personal experience — less clinical, more human",
@@ -350,9 +352,11 @@ export const projects: Project[] = [
     tags: ["Swift", "SwiftUI", "iOS", "OCR", "Finance", "VisionKit"],
     stack: ["Swift", "SwiftUI", "VisionKit", "CoreML"],
     links: {
-      live: "https://apps.apple.com/app/afterlight",
+      live: "https://www.ninetynine.digital/afterlight",
     },
-    link: "https://apps.apple.com/app/afterlight",
+    link: "https://www.ninetynine.digital/afterlight",
+    screenshots: ["/projectImages/afterlight-icon.png"],
+    thumb: "/projectImages/afterlight-icon.png",
     impact: [
       "On-device OCR — no data leaves the phone",
       "ML-powered expense categorization",
