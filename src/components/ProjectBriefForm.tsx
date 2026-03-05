@@ -38,6 +38,17 @@ export function ProjectBriefForm() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const query =
+      typeof window !== "undefined"
+        ? new URLSearchParams(window.location.search)
+        : new URLSearchParams();
+    const referrer =
+      typeof document !== "undefined" && document.referrer
+        ? document.referrer
+        : "direct";
+    const utmSource = query.get("utm_source") || "none";
+    const utmMedium = query.get("utm_medium") || "none";
+    const utmCampaign = query.get("utm_campaign") || "none";
 
     const subject = `Design Engineering Sprint Brief — ${company || name || "New Inquiry"}`;
     const lines = [
@@ -52,7 +63,12 @@ export function ProjectBriefForm() {
       problem,
       "",
       `Qualification Signal: ${isQualified ? "Qualified" : "Needs scope review"}`,
+      `Studio Fit Signal: ${looksLikeStudioEngagement ? "Likely studio scope" : "Likely sprint scope"}`,
       "Source: dev.maxwellyoung.info/work-with-me",
+      `Referrer: ${referrer}`,
+      `UTM Source: ${utmSource}`,
+      `UTM Medium: ${utmMedium}`,
+      `UTM Campaign: ${utmCampaign}`,
     ];
     const body = lines.join("\n");
     const mailto = `mailto:maxwell@ninetynine.digital?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -64,6 +80,9 @@ export function ProjectBriefForm() {
       timeline_band: timelineBand,
       qualified: isQualified,
       studio_fit: looksLikeStudioEngagement,
+      utm_source: utmSource,
+      utm_medium: utmMedium,
+      utm_campaign: utmCampaign,
     });
 
     window.location.href = mailto;
