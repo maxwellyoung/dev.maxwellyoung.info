@@ -16,6 +16,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { container, item, spring, duration, ease } from "@/lib/motion";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 import posthog from "posthog-js";
+import { OutcomeProofStrip } from "@/components/OutcomeProofStrip";
 
 
 export default function Home() {
@@ -152,6 +153,10 @@ export default function Home() {
               <footer className="text-xs">— Bret Victor</footer>
             </motion.blockquote>
 
+            <motion.div variants={item.fadeUp}>
+              <OutcomeProofStrip />
+            </motion.div>
+
             {/* CTA */}
             <motion.div className="pt-2" variants={item.fadeUp}>
               <AccentLink
@@ -165,6 +170,19 @@ export default function Home() {
               >
                 Work with me
               </AccentLink>
+              <div className="mt-2">
+                <TrackedActionLink
+                  href="/resources/design-engineering-checklist"
+                  eventName="home_secondary_cta_clicked"
+                  eventProps={{
+                    placement: "hero",
+                    target: "design_engineering_checklist",
+                  }}
+                  className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors"
+                >
+                  Free: Design Engineering Checklist
+                </TrackedActionLink>
+              </div>
             </motion.div>
 
             <motion.nav

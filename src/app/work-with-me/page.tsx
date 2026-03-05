@@ -93,6 +93,14 @@ export default function WorkWithMePage() {
           >
             Or use contact page
           </TrackedActionLink>
+          <TrackedActionLink
+            href="/resources/design-engineering-checklist"
+            eventName="work_with_me_secondary_cta_clicked"
+            eventProps={{ placement: "work_with_me_page", action: "view_checklist" }}
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-2"
+          >
+            Get free checklist
+          </TrackedActionLink>
         </div>
       </section>
 
