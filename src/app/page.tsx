@@ -202,6 +202,10 @@ export default function Home() {
               <span className="text-border/40">·</span>
               <AnimatedLink href="/about" className="text-muted-foreground hover:text-foreground">About</AnimatedLink>
               <span className="text-border/40">·</span>
+              <AnimatedLink href="/for-hiring-managers" className="text-muted-foreground hover:text-foreground">
+                Hiring
+              </AnimatedLink>
+              <span className="text-border/40">·</span>
               <TrackedActionLink
                 href="/work-with-me"
                 eventName="home_nav_clicked"
@@ -303,6 +307,9 @@ export default function Home() {
               </AnimatedLink>
               <AnimatedLink href="/work-with-me" className="text-xs text-muted-foreground hover:text-foreground">
                 Work With Me
+              </AnimatedLink>
+              <AnimatedLink href="/for-hiring-managers" className="text-xs text-muted-foreground hover:text-foreground">
+                Hiring
               </AnimatedLink>
               <AnimatedLink href="/privacy" className="text-xs text-muted-foreground hover:text-foreground">
                 Privacy
