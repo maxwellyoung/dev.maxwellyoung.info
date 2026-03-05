@@ -9,6 +9,8 @@ import { type CaseStudy, caseStudies } from "@/lib/caseStudies";
 import { spring } from "@/lib/motion";
 import { SiteFooter } from "@/components/SiteFooter";
 import { useEffect, useState } from "react";
+import posthog from "posthog-js";
+import { TrackedActionLink } from "@/components/TrackedActionLink";
 
 interface CaseStudyContentProps {
   slug: string;
@@ -41,6 +43,15 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
         handleToggle as EventListener
       );
   }, []);
+
+  useEffect(() => {
+    if (!study) return;
+    posthog.capture("case_study_viewed", {
+      slug: study.slug,
+      title: study.title,
+      role: study.role,
+    });
+  }, [study]);
 
   if (!study) {
     // Return a placeholder for projects without full case studies
@@ -98,6 +109,12 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                 href={study.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  posthog.capture("case_study_outbound_clicked", {
+                    slug: study.slug,
+                    target: "live_site",
+                  })
+                }
                 className="flex items-center gap-2 hover:text-foreground transition-colors"
               >
                 <ExternalLink className="w-4 h-4" />
@@ -109,6 +126,12 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                 href={study.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  posthog.capture("case_study_outbound_clicked", {
+                    slug: study.slug,
+                    target: "source_code",
+                  })
+                }
                 className="flex items-center gap-2 hover:text-foreground transition-colors"
               >
                 <Github className="w-4 h-4" />
@@ -381,6 +404,43 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
             </ul>
           </motion.div>
         )}
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={spring.gentle}
+          className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-6"
+        >
+          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
+            Need This Type Of Outcome?
+          </p>
+          <h2 className="text-xl font-medium mb-3">
+            I run focused design engineering sprints for product teams.
+          </h2>
+          <p className="text-muted-foreground leading-relaxed mb-5">
+            If your team needs clearer UX, faster implementation, and measurable
+            performance improvements, I can help.
+          </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <TrackedActionLink
+              href="/work-with-me"
+              eventName="case_study_cta_clicked"
+              eventProps={{ slug: study.slug, target: "work_with_me" }}
+              className="inline-flex items-center rounded-md bg-foreground text-background px-4 py-2 text-sm hover:opacity-90 transition-opacity"
+            >
+              View Sprint Offer
+            </TrackedActionLink>
+            <TrackedActionLink
+              href="/contact"
+              eventName="case_study_cta_clicked"
+              eventProps={{ slug: study.slug, target: "contact" }}
+              className="text-sm text-muted-foreground hover:text-accent transition-colors"
+            >
+              Contact
+            </TrackedActionLink>
+          </div>
+        </motion.div>
 
         {/* Next project */}
         {study.nextProject && (

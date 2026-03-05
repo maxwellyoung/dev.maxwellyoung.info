@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
+import { TrackedActionLink } from "@/components/TrackedActionLink";
 
 export const metadata: Metadata = {
   title: "Contact Maxwell Young | Design Engineer",
@@ -32,12 +33,15 @@ export default function ContactPage() {
           <p className="mb-2">
             The fastest way to reach me. I respond to genuine inquiries within a day.
           </p>
-          <a
-            href="mailto:maxwell@ninetynine.digital"
+          <TrackedActionLink
+            href="mailto:maxwell@ninetynine.digital?subject=Project%20Inquiry"
+            external
+            eventName="contact_primary_cta_clicked"
+            eventProps={{ target: "email" }}
             className="underline underline-offset-2 hover:text-foreground transition-colors"
           >
             maxwell@ninetynine.digital
-          </a>
+          </TrackedActionLink>
         </div>
 
         <div>
@@ -112,6 +116,21 @@ export default function ContactPage() {
               full background
             </Link>.
           </p>
+        </div>
+
+        <div>
+          <h2 className="text-sm font-medium text-foreground mb-2">Hiring Sprint</h2>
+          <p className="leading-relaxed mb-3">
+            If you already know you need implementation help, start here first.
+          </p>
+          <TrackedActionLink
+            href="/work-with-me"
+            eventName="contact_page_cta_clicked"
+            eventProps={{ target: "work_with_me" }}
+            className="underline underline-offset-2 hover:text-foreground transition-colors"
+          >
+            View Work With Me
+          </TrackedActionLink>
         </div>
       </div>
 

@@ -14,6 +14,8 @@ import { GitHubActivity } from "@/components/GitHubActivity";
 import { NowPlaying } from "@/components/NowPlaying";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { container, item, spring, duration, ease } from "@/lib/motion";
+import { TrackedActionLink } from "@/components/TrackedActionLink";
+import posthog from "posthog-js";
 
 
 export default function Home() {
@@ -101,7 +103,7 @@ export default function Home() {
                 animate={isHovered ? "hidden" : "visible"}
                 transition={spring.gentle}
               >
-                Design Engineer at Silk ·{" "}
+                Design Engineer ·{" "}
                 <AnimatedLink
                   href="https://www.ninetynine.digital"
                   external
@@ -153,10 +155,15 @@ export default function Home() {
             {/* CTA */}
             <motion.div className="pt-2" variants={item.fadeUp}>
               <AccentLink
-                href="mailto:maxwell@ninetynine.digital"
-                external
+                href="/work-with-me"
+                onClick={() =>
+                  posthog.capture("home_primary_cta_clicked", {
+                    placement: "hero",
+                    target: "work_with_me",
+                  })
+                }
               >
-                Available for work
+                Work with me
               </AccentLink>
             </motion.div>
 
@@ -170,6 +177,15 @@ export default function Home() {
               <AnimatedLink href="#resume" className="text-muted-foreground hover:text-foreground">Resume</AnimatedLink>
               <span className="text-border/40">·</span>
               <AnimatedLink href="/about" className="text-muted-foreground hover:text-foreground">About</AnimatedLink>
+              <span className="text-border/40">·</span>
+              <TrackedActionLink
+                href="/work-with-me"
+                eventName="home_nav_clicked"
+                eventProps={{ target: "work_with_me" }}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                Work With Me
+              </TrackedActionLink>
               <span className="text-border/40">·</span>
               <AnimatedLink href="https://github.com/maxwellyoung" external className="text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
               <span className="text-border/40">·</span>
@@ -219,6 +235,9 @@ export default function Home() {
             <div className="flex items-center gap-4">
               <AnimatedLink href="/contact" className="text-xs text-muted-foreground hover:text-foreground">
                 Contact
+              </AnimatedLink>
+              <AnimatedLink href="/work-with-me" className="text-xs text-muted-foreground hover:text-foreground">
+                Work With Me
               </AnimatedLink>
               <AnimatedLink href="/privacy" className="text-xs text-muted-foreground hover:text-foreground">
                 Privacy
