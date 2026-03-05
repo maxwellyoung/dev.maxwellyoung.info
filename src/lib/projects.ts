@@ -1,6 +1,7 @@
 // lib/projects.ts
 
 export type Status = "Completed" | "WIP" | "Planned" | "Active";
+export type ReleaseStage = "released" | "in-progress" | "planned";
 export type Role =
   | "Solo"
   | "Lead"
@@ -43,6 +44,8 @@ export interface Project {
   slug: string; // stable id for routes
   name: string;
   status: Status;
+  releaseStage?: ReleaseStage; // lifecycle truth for launch state
+  allowPreviewLink?: boolean; // permit live links while still in-progress
   category: Category;
   role?: Role;
   description: string; // short card copy
@@ -67,12 +70,48 @@ export interface Project {
   codeLink?: string; // alias for links.repo
 }
 
-export const projects: Project[] = [
+function inferReleaseStage(status: Status): ReleaseStage {
+  if (status === "WIP") return "in-progress";
+  if (status === "Planned") return "planned";
+  return "released";
+}
+
+function normalizeProject(project: Project): Project {
+  const releaseStage = project.releaseStage ?? inferReleaseStage(project.status);
+  const links = { ...(project.links ?? {}) };
+
+  if (releaseStage !== "released" && !project.allowPreviewLink) {
+    delete links.live;
+  }
+
+  return {
+    ...project,
+    releaseStage,
+    links: Object.keys(links).length ? links : undefined,
+    link: links.live,
+    codeLink: links.repo,
+  };
+}
+
+export function getProjectStatusLabel(project: Project): string | null {
+  if (project.releaseStage === "in-progress") return "In Progress";
+  if (project.releaseStage === "planned") return "Planned";
+  if (project.releaseStage === "released") return "Released";
+  return project.status === "WIP" ? "In Progress" : project.status;
+}
+
+export function isActiveStatus(project: Project): boolean {
+  return project.releaseStage === "in-progress";
+}
+
+const rawProjects: Project[] = [
   // ===== RESEARCH & EXPLORATION =====
   {
     slug: "whakapapa",
     name: "Whakapapa",
-    status: "Active",
+    status: "WIP",
+    releaseStage: "in-progress",
+    allowPreviewLink: true,
     category: "personal",
     role: "Solo",
     featured: true,
@@ -113,7 +152,9 @@ export const projects: Project[] = [
   {
     slug: "liner",
     name: "Liner",
-    status: "Active",
+    status: "WIP",
+    releaseStage: "in-progress",
+    allowPreviewLink: true,
     category: "personal",
     role: "Solo",
     featured: true,
@@ -246,7 +287,8 @@ export const projects: Project[] = [
   {
     slug: "holdspace",
     name: "Holdspace",
-    status: "Active",
+    status: "Completed",
+    releaseStage: "released",
     category: "personal",
     role: "Solo",
     featured: true,
@@ -273,7 +315,8 @@ export const projects: Project[] = [
   {
     slug: "doomscroll",
     name: "Doomscroll",
-    status: "Planned",
+    status: "Completed",
+    releaseStage: "released",
     category: "personal",
     role: "Solo",
     featured: false,
@@ -294,7 +337,8 @@ export const projects: Project[] = [
   {
     slug: "gnbn",
     name: "Good News Bad News",
-    status: "Active",
+    status: "Completed",
+    releaseStage: "released",
     category: "personal",
     role: "Solo",
     featured: true,
@@ -315,7 +359,8 @@ export const projects: Project[] = [
   {
     slug: "dry-club",
     name: "Dry Club",
-    status: "Active",
+    status: "WIP",
+    releaseStage: "in-progress",
     category: "personal",
     role: "Solo",
     featured: true,
@@ -326,10 +371,7 @@ export const projects: Project[] = [
       "Dry Club is for people choosing sobriety or moderation in a culture that makes that choice difficult. Track your no-drink streak, connect with others doing the same, and get tools for social situations. Built because Maxwell quit drinking and couldn't find an app that didn't feel clinical or preachy.",
     tags: ["React Native", "Expo", "iOS", "Sobriety", "Social"],
     stack: ["React Native", "Expo", "TypeScript", "RevenueCat"],
-    links: {
-      live: "https://www.ninetynine.digital/dry-club",
-    },
-    link: "https://www.ninetynine.digital/dry-club",
+    links: {},
     screenshots: ["/projectImages/dry-club-icon.png"],
     thumb: "/projectImages/dry-club-icon.png",
     impact: [
@@ -340,7 +382,8 @@ export const projects: Project[] = [
   {
     slug: "afterlight",
     name: "Afterlight",
-    status: "Active",
+    status: "WIP",
+    releaseStage: "in-progress",
     category: "personal",
     role: "Solo",
     featured: true,
@@ -351,10 +394,7 @@ export const projects: Project[] = [
       "Afterlight uses on-device vision to OCR receipts in real time. No manual entry. It categorizes expenses automatically and gives you a clear picture of where your money goes. Built with VisionKit and a custom ML categorization layer. Clean, minimal UI that gets out of the way.",
     tags: ["Swift", "SwiftUI", "iOS", "OCR", "Finance", "VisionKit"],
     stack: ["Swift", "SwiftUI", "VisionKit", "CoreML"],
-    links: {
-      live: "https://www.ninetynine.digital/afterlight",
-    },
-    link: "https://www.ninetynine.digital/afterlight",
+    links: {},
     screenshots: ["/projectImages/afterlight-icon.png"],
     thumb: "/projectImages/afterlight-icon.png",
     impact: [
@@ -366,20 +406,21 @@ export const projects: Project[] = [
     slug: "gambit",
     name: "Gambit",
     status: "Active" as Status,
+    releaseStage: "released",
     category: "personal",
     role: "Solo",
     featured: true,
     priority: 5,
     description:
-      "Chess, but you set the terms. Choose your opening, difficulty, and style. Play against an adaptive engine that matches your level.",
+      "Opening-focused chess practice app. Pick lines and train against a clean, fast board built for repetition.",
     longDescription:
       "Gambit is an opinionated chess PWA. You pick your opening repertoire before the game, then the engine plays into your chosen lines — so you practice real positions, not random ones. Adaptive difficulty. Clean board. No ads, no accounts needed.",
     tags: ["Next.js", "PWA", "Chess", "Game", "TypeScript"],
     stack: ["Next.js", "TypeScript", "Stockfish", "Tailwind CSS"],
     links: {
-      live: "https://playgambit.app",
+      live: "https://gambit.ninetynine.digital",
     },
-    link: "https://playgambit.app",
+    link: "https://gambit.ninetynine.digital",
   },
   // ===== FEATURED =====
   {
@@ -580,4 +621,6 @@ export const projects: Project[] = [
     ],
     thumb: "/projectImages/music-1.webp",
   },
-  ];
+];
+
+export const projects: Project[] = rawProjects.map(normalizeProject);

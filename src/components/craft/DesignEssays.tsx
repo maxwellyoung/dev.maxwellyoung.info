@@ -1,33 +1,22 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { ArrowUpRight, Clock, Calendar } from "lucide-react";
 import Link from "next/link";
 import { essays, type Essay } from "@/lib/essays";
 import { duration, ease } from "@/lib/motion";
+import { CraftSection } from "@/components/craft/CraftSection";
+import { SymbolEvidence, SymbolPrinciple, SymbolProgress } from "@/components/craft/CraftSymbols";
 
 export function DesignEssays() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
   return (
-    <motion.section
-      ref={ref}
-      initial={false}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 16 }}
-      transition={{ duration: duration.glacial, ease: ease.brand }}
-      className="space-y-8"
+    <CraftSection
+      id="design-essays"
+      title="Design Essays"
+      intent="Short writing tied to shipped interfaces. Reflection is treated as a design artifact."
+      constraint="Each essay must map one principle to one concrete build decision."
+      evidence="Entries include date, read time, and direct link to source narrative."
     >
-      <div>
-        <h2 className="font-display text-3xl font-light mb-4">Design Essays</h2>
-        <p className="text-muted leading-relaxed max-w-2xl">
-          Thoughts on craft, motion, and the intersection of design and
-          engineering. Documenting lessons learned and principles discovered
-          while building interfaces that feel alive.
-        </p>
-      </div>
-
       <div className="space-y-8">
         {essays.map((essay, index) => (
           <EssayCard key={essay.title} essay={essay} index={index} />
@@ -39,7 +28,7 @@ export function DesignEssays() {
           More essays coming soon. Each one is tied to a shipped interface or a concrete interaction problem.
         </p>
       </div>
-    </motion.section>
+    </CraftSection>
   );
 }
 
@@ -53,20 +42,20 @@ function EssayCard({ essay, index }: { essay: Essay; index: number }) {
         delay: index * 0.1,
         ease: ease.brand,
       }}
-      className={`group cursor-pointer ${essay.featured ? "col-span-full" : ""}`}
+      className={`group ${essay.featured ? "col-span-full" : ""}`}
     >
-      <Link href={`/craft/essay/${essay.slug}`}>
+      <Link href={`/craft/essay/${essay.slug}`} className="craft-focus block rounded-xl">
         <div
           className={`
-          border border-border/50 rounded-xl p-6 md:p-8
-          hover:border-accent/30 transition-all duration-500
-          hover:shadow-lg group-hover:scale-[1.01]
+          border border-border/70 rounded-xl p-6 md:p-8
+          hover:border-accent/30 motion-safe-transform duration-300
+          hover:shadow-lg group-hover:-translate-y-0.5
           ${essay.featured ? "bg-accent/5" : "hover:bg-muted/30"}
         `}
         >
           {essay.featured && (
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-2 h-2 bg-accent rounded-full"></div>
+              <SymbolPrinciple className="text-accent" />
               <span className="text-xs font-medium text-accent uppercase tracking-wide">
                 Featured Essay
               </span>
@@ -90,11 +79,14 @@ function EssayCard({ essay, index }: { essay: Essay; index: number }) {
 
             <div className="flex items-center space-x-4 text-sm text-muted-foreground">
               <span className="bg-muted/30 px-3 py-1 rounded-full font-medium">
-                {essay.category}
+                <span className="inline-flex items-center gap-1">
+                  <SymbolProgress className="text-accent" />
+                  {essay.category}
+                </span>
               </span>
 
               <div className="flex items-center space-x-1">
-                <Calendar className="w-3 h-3" />
+                <Calendar aria-hidden="true" className="w-3 h-3" />
                 <span>
                   {new Date(essay.date).toLocaleDateString("en-US", {
                     month: "short",
@@ -105,7 +97,7 @@ function EssayCard({ essay, index }: { essay: Essay; index: number }) {
               </div>
 
               <div className="flex items-center space-x-1">
-                <Clock className="w-3 h-3" />
+                <Clock aria-hidden="true" className="w-3 h-3" />
                 <span>{essay.readTime}</span>
               </div>
             </div>
@@ -134,12 +126,13 @@ function EssayCard({ essay, index }: { essay: Essay; index: number }) {
             }}
           >
             <motion.span
-              className="text-sm font-medium text-accent group-hover:text-accent-foreground transition-colors inline-flex items-center space-x-1"
+              className="text-sm font-medium text-accent group-hover:text-foreground transition-colors inline-flex items-center space-x-1"
               whileHover={{ x: 5 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
+              <SymbolEvidence className="text-accent" />
               <span>Read essay</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <ArrowUpRight aria-hidden="true" className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </motion.span>
           </motion.div>
         </div>

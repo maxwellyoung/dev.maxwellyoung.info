@@ -12,7 +12,12 @@ import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Carousel from "@/components/Carousel";
-import { Project, projects } from "@/lib/projects";
+import {
+  Project,
+  projects,
+  getProjectStatusLabel,
+  isActiveStatus,
+} from "@/lib/projects";
 import { ProjectDetails } from "@/components/ProjectDetails";
 import { ChevronDown, Star } from "lucide-react";
 import { container, item, spring, duration, ease } from "@/lib/motion";
@@ -20,7 +25,7 @@ import { ProjectHoverPreview } from "@/components/ProjectHoverPreview";
 import { SiteFooter } from "@/components/SiteFooter";
 
 type SortKey = "newest" | "oldest" | "az";
-const PILL_FILTERS = ["Research", "AI/Data", "Fashion", "Creative"] as const;
+const PILL_FILTERS = ["Launched", "Research", "AI/Data", "Fashion", "Creative"] as const;
 type Pill = (typeof PILL_FILTERS)[number];
 
 const STORAGE_KEY = "projects-filter-state";
@@ -44,13 +49,8 @@ function readSavedProjectFilters(): { filters: Pill[]; sort: SortKey } {
 }
 
 // Utility functions at module scope
-function getStatusLabel(status?: Project["status"]) {
-  if (!status) return null;
-  return status === "WIP" ? "In Progress" : status;
-}
-
-function getStatusClassName(status?: Project["status"]) {
-  if (status === "Active" || status === "WIP") {
+function getStatusClassName(project: Project) {
+  if (isActiveStatus(project)) {
     return "bg-accent/10 text-accent border border-accent/20";
   }
   return "bg-[hsl(var(--muted))] text-muted-foreground";
@@ -105,9 +105,9 @@ function HeroProjectCard({
               <h3 className="text-lg font-medium text-foreground">
                 {p.name}
               </h3>
-              {p.status === "Active" && (
+              {isActiveStatus(p) && (
                 <span className="px-2 py-0.5 text-[10px] font-medium rounded-full bg-accent/10 text-accent border border-accent/20">
-                  Active
+                  In Progress
                 </span>
               )}
             </div>
@@ -188,7 +188,7 @@ function ProjectRow({
   shouldReduceMotion: boolean;
 }) {
   const isExpanded = expandedProject === p.name;
-  const statusLabel = getStatusLabel(p.status);
+  const statusLabel = getProjectStatusLabel(p);
   // First 4 images load eagerly to avoid LCP issues
   const isEagerLoad = index < 4;
 
@@ -254,9 +254,7 @@ function ProjectRow({
               )}
               {statusLabel && (
                 <span
-                  className={`shrink-0 px-1.5 py-0.5 text-[10px] rounded-full ${getStatusClassName(
-                    p.status
-                  )}`}
+                  className={`shrink-0 px-1.5 py-0.5 text-[10px] rounded-full ${getStatusClassName(p)}`}
                 >
                   {statusLabel}
                 </span>
@@ -371,6 +369,8 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
           const name = (p.name || "").toLowerCase();
           const desc = (p.description || "").toLowerCase();
           switch (f) {
+            case "Launched":
+              return p.releaseStage === "released" && Boolean(p.links?.live);
             case "Research":
               return p.category === "research" || tags.some((t) => /research|ml|health/i.test(t));
             case "AI/Data":

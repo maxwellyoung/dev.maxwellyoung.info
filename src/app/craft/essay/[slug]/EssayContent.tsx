@@ -5,6 +5,7 @@ import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import Link from "next/link";
 import { type Essay, essays } from "@/lib/essays";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SymbolEvidence, SymbolPrinciple, SymbolProgress } from "@/components/craft/CraftSymbols";
 
 interface EssayContentProps {
   essay: Essay;
@@ -12,8 +13,9 @@ interface EssayContentProps {
 
 export function EssayContent({ essay }: EssayContentProps) {
   return (
-    <main className="min-h-screen bg-background">
-      <article className="max-w-3xl mx-auto px-6 py-12">
+    <main className="craft-surface min-h-screen bg-background">
+      <div className="craft-depth-field" aria-hidden="true" />
+      <article className="relative z-10 max-w-3xl mx-auto px-6 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -21,19 +23,21 @@ export function EssayContent({ essay }: EssayContentProps) {
         >
           <Link
             href="/craft"
-            className="inline-flex items-center space-x-2 text-muted hover:text-foreground transition-colors mb-8 group"
+            className="craft-focus motion-safe-transform inline-flex items-center space-x-2 text-muted hover:text-foreground mb-8 group"
           >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft aria-hidden="true" className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Interaction Lab</span>
           </Link>
 
           <header className="mb-12">
             <div className="flex items-center space-x-3 mb-4">
-              <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">
+              <span className="bg-accent/10 text-foreground border border-accent/30 px-3 py-1 rounded-full text-sm font-medium inline-flex items-center gap-1">
+                <SymbolProgress className="text-accent" />
                 {essay.category}
               </span>
               {essay.featured && (
-                <span className="bg-accent/20 text-accent px-3 py-1 rounded-full text-sm font-medium">
+                <span className="bg-accent/20 text-foreground border border-accent/35 px-3 py-1 rounded-full text-sm font-medium inline-flex items-center gap-1">
+                  <SymbolPrinciple className="text-accent" />
                   Featured
                 </span>
               )}
@@ -47,9 +51,9 @@ export function EssayContent({ essay }: EssayContentProps) {
               {essay.excerpt}
             </p>
 
-            <div className="flex items-center space-x-6 text-sm text-muted-foreground border-t border-b border-border/50 py-4">
+            <div className="flex items-center flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground border-t border-b border-border/50 py-4">
               <div className="flex items-center space-x-2">
-                <Calendar className="w-4 h-4" />
+                <Calendar aria-hidden="true" className="w-4 h-4" />
                 <span>
                   {new Date(essay.date).toLocaleDateString("en-US", {
                     month: "long",
@@ -59,7 +63,7 @@ export function EssayContent({ essay }: EssayContentProps) {
                 </span>
               </div>
               <div className="flex items-center space-x-2">
-                <Clock className="w-4 h-4" />
+                <Clock aria-hidden="true" className="w-4 h-4" />
                 <span>{essay.readTime} read</span>
               </div>
             </div>
@@ -72,7 +76,7 @@ export function EssayContent({ essay }: EssayContentProps) {
                 return (
                   <h2
                     key={index}
-                    className="font-display text-2xl font-light mt-12 mb-6"
+                    className="font-display text-2xl font-light mt-12 mb-6 text-balance"
                   >
                     {paragraph.replace("## ", "")}
                   </h2>
@@ -140,7 +144,7 @@ export function EssayContent({ essay }: EssayContentProps) {
                     <li key={e.slug}>
                       <Link
                         href={`/craft/essay/${e.slug}`}
-                        className="group flex items-center justify-between text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        className="craft-focus motion-safe-transform group flex items-center justify-between text-sm text-muted-foreground hover:text-foreground rounded-md px-2 py-1"
                       >
                         <span>{e.title}</span>
                         <span className="text-xs text-muted-foreground">{e.readTime}</span>
@@ -154,9 +158,9 @@ export function EssayContent({ essay }: EssayContentProps) {
           <footer className="mt-8 pt-8 border-t border-border/50">
             <Link
               href="/craft"
-              className="inline-flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors group"
+              className="craft-focus motion-safe-transform inline-flex items-center space-x-2 text-accent hover:text-foreground group"
             >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+              <SymbolEvidence className="text-accent" />
               <span>Back to all essays</span>
             </Link>
           </footer>

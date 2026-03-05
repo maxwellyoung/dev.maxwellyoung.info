@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { Twitter, Github } from "lucide-react";
 import Link from "next/link";
 import { duration, ease, tap } from "@/lib/motion";
+import { SymbolEvidence } from "@/components/craft/CraftSymbols";
 
 export function CraftFooter() {
   const ref = useRef(null);
@@ -29,11 +30,11 @@ export function CraftFooter() {
               href="https://twitter.com/internetmaxwell"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 px-4 py-2 border border-border rounded-lg text-sm hover:border-accent/30 hover:text-accent transition-colors"
+              className="craft-focus motion-safe-transform inline-flex items-center space-x-2 px-4 py-2 border border-border rounded-lg text-sm hover:border-accent/30 hover:text-accent"
               whileHover={{ scale: 1.05 }}
               whileTap={tap.deep}
             >
-              <Twitter className="w-4 h-4" />
+              <Twitter aria-hidden="true" className="w-4 h-4" />
               <span>Twitter</span>
             </motion.a>
             
@@ -41,20 +42,21 @@ export function CraftFooter() {
               href="https://github.com/maxwellyoung"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 px-4 py-2 border border-border rounded-lg text-sm hover:border-accent/30 hover:text-accent transition-colors"
+              className="craft-focus motion-safe-transform inline-flex items-center space-x-2 px-4 py-2 border border-border rounded-lg text-sm hover:border-accent/30 hover:text-accent"
               whileHover={{ scale: 1.05 }}
               whileTap={tap.deep}
             >
-              <Github className="w-4 h-4" />
+              <Github aria-hidden="true" className="w-4 h-4" />
               <span>GitHub</span>
             </motion.a>
             
             <motion.a
               href="mailto:maxtheyoung@gmail.com"
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-lg text-sm hover:bg-accent/20 transition-colors"
+              className="craft-focus motion-safe-transform inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 border border-accent/30 rounded-lg text-sm hover:bg-accent/20"
               whileHover={{ scale: 1.05 }}
               whileTap={tap.deep}
             >
+              <SymbolEvidence className="text-accent" />
               <span>Email</span>
             </motion.a>
           </div>
@@ -67,9 +69,9 @@ export function CraftFooter() {
           </div>
 
           <div className="flex items-center gap-4 text-xs text-muted-foreground">
-            <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
-            <Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link>
-            <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
+            <Link href="/" className="craft-focus motion-safe-transform hover:text-foreground">Home</Link>
+            <Link href="/contact" className="craft-focus motion-safe-transform hover:text-foreground">Contact</Link>
+            <Link href="/privacy" className="craft-focus motion-safe-transform hover:text-foreground">Privacy</Link>
           </div>
         </div>
       </div>

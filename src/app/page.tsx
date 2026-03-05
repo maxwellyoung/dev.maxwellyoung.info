@@ -210,7 +210,7 @@ export default function Home() {
                 href="/work-with-me"
                 eventName="home_nav_clicked"
                 eventProps={{ target: "work_with_me" }}
-                className="text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground underline decoration-muted-foreground/30 underline-offset-2 hover:decoration-accent/60 transition-colors duration-150"
               >
                 Work With Me
               </TrackedActionLink>
@@ -219,6 +219,41 @@ export default function Home() {
               <span className="text-border/40">·</span>
               <AnimatedLink href="https://www.linkedin.com/in/maxwell-young-a55032125" external className="text-muted-foreground hover:text-foreground">LinkedIn</AnimatedLink>
             </motion.nav>
+
+            <motion.div
+              variants={item.fadeUp}
+              className="text-[11px] text-muted-foreground/90 border border-[hsl(var(--border))] rounded-md px-2.5 py-2 flex flex-wrap items-center gap-x-2 gap-y-1"
+              aria-label="Ecosystem paths"
+            >
+              <span className="uppercase tracking-wider text-[10px] text-muted-foreground/70">Paths:</span>
+              <TrackedActionLink
+                href="/for-hiring-managers"
+                eventName="ecosystem_rail_click"
+                eventProps={{ path: "hiring_snapshot", placement: "hero_rail" }}
+                className="hover:text-foreground underline decoration-muted-foreground/30 underline-offset-2 hover:decoration-accent/60 transition-colors"
+              >
+                Hiring Snapshot
+              </TrackedActionLink>
+              <span className="text-border/50">·</span>
+              <TrackedActionLink
+                href="/work-with-me"
+                eventName="ecosystem_rail_click"
+                eventProps={{ path: "hire_maxwell", placement: "hero_rail" }}
+                className="hover:text-foreground underline decoration-muted-foreground/30 underline-offset-2 hover:decoration-accent/60 transition-colors"
+              >
+                Hire Maxwell
+              </TrackedActionLink>
+              <span className="text-border/50">·</span>
+              <TrackedActionLink
+                href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_rail"
+                external
+                eventName="ecosystem_rail_click"
+                eventProps={{ path: "hire_studio", placement: "hero_rail" }}
+                className="hover:text-foreground underline decoration-muted-foreground/30 underline-offset-2 hover:decoration-accent/60 transition-colors"
+              >
+                Hire Studio
+              </TrackedActionLink>
+            </motion.div>
           </div>
 
           {/* Scroll indicator */}

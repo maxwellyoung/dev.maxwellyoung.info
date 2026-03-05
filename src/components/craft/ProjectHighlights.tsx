@@ -1,13 +1,14 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
-import { duration, ease, tap } from "@/lib/motion";
+import { duration, ease, tap, transition } from "@/lib/motion";
+import { CraftSection } from "@/components/craft/CraftSection";
+import { SymbolEvidence, SymbolProgress, SymbolState } from "@/components/craft/CraftSymbols";
 
 export function ProjectHighlights() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const shouldReduceMotion = useReducedMotion() ?? false;
 
   const projects = [
     {
@@ -59,29 +60,19 @@ export function ProjectHighlights() {
   ];
 
   return (
-    <motion.section
-      ref={ref}
-      initial={false}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 16 }}
-      transition={{ duration: duration.glacial, ease: ease.brand }}
-      className="space-y-8"
+    <CraftSection
+      id="project-highlights"
+      title="Project Highlights"
+      intent="Selected products where interaction choices changed comprehension and follow-through."
+      constraint="Narrative must show before, after, and one transferable principle."
+      evidence="Cards expose process outcomes and sources, not just aesthetics."
     >
-      <div>
-        <h2 className="font-display text-3xl font-light mb-4">
-          Project Highlights
-        </h2>
-        <p className="text-muted leading-relaxed max-w-2xl">
-          Selected projects showcasing the intersection of design and engineering. 
-          Each project explores different aspects of craft, from motion design to editorial layout.
-        </p>
-      </div>
-
       <div className="space-y-12">
         {projects.map((project, index) => (
-          <ProjectCard key={project.title} project={project} index={index} />
+          <ProjectCard key={project.title} project={project} index={index} shouldReduceMotion={shouldReduceMotion} />
         ))}
       </div>
-    </motion.section>
+    </CraftSection>
   );
 }
 
@@ -102,7 +93,15 @@ interface Project {
   color: string;
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({
+  project,
+  index,
+  shouldReduceMotion,
+}: {
+  project: Project;
+  index: number;
+  shouldReduceMotion: boolean;
+}) {
   const [isHovered, setIsHovered] = useState(false);
   const [activeTab, setActiveTab] = useState<'overview' | 'process'>('overview');
 
@@ -113,9 +112,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   };
 
   const accentClasses = {
-    blue: "bg-blue-500/20 text-blue-400",
-    purple: "bg-purple-500/20 text-purple-400",
-    green: "bg-green-500/20 text-green-400"
+    blue: "bg-blue-500/14 text-foreground border border-blue-500/35",
+    purple: "bg-purple-500/14 text-foreground border border-purple-500/35",
+    green: "bg-green-500/14 text-foreground border border-green-500/35"
   };
 
   return (
@@ -130,7 +129,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       className="group"
     >
       <div
-        className={`border rounded-xl p-8 transition-all duration-500 hover:border-accent/30 ${
+        className={`border rounded-xl p-8 motion-safe-transform duration-300 hover:border-accent/40 ${
           colorClasses[project.color as keyof typeof colorClasses]
         }`}
         onMouseEnter={() => setIsHovered(true)}
@@ -149,10 +148,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             </div>
 
             {/* Tab Navigation */}
-            <div className="flex space-x-1 bg-muted/10 p-1 rounded-lg w-fit">
+            <div className="flex space-x-1 bg-muted/10 p-1 rounded-lg w-fit" role="tablist" aria-label={`${project.title} details`}>
               <button
                 onClick={() => setActiveTab('overview')}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                role="tab"
+                aria-selected={activeTab === "overview"}
+                className={`craft-focus motion-safe-transform px-4 py-2 rounded-md text-sm font-medium duration-200 ${
                   activeTab === 'overview' 
                     ? 'bg-background text-foreground shadow-sm' 
                     : 'text-muted hover:text-foreground'
@@ -162,7 +163,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               </button>
               <button
                 onClick={() => setActiveTab('process')}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                role="tab"
+                aria-selected={activeTab === "process"}
+                className={`craft-focus motion-safe-transform px-4 py-2 rounded-md text-sm font-medium duration-200 ${
                   activeTab === 'process' 
                     ? 'bg-background text-foreground shadow-sm' 
                     : 'text-muted hover:text-foreground'
@@ -173,68 +176,73 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             </div>
 
             {/* Tab Content */}
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: duration.normal, ease: ease.out }}
-              className="min-h-[120px]"
-            >
-              {activeTab === 'overview' && (
-                <div className="space-y-4">
-                  <p className="text-muted leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          accentClasses[project.color as keyof typeof accentClasses]
-                        }`}
-                      >
-                        {tech}
-                      </span>
-                    ))}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 12 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: shouldReduceMotion ? 0 : -12 }}
+                transition={shouldReduceMotion ? transition.fade : transition.laneInteraction}
+                className="min-h-[120px]"
+              >
+                {activeTab === 'overview' && (
+                  <div className="space-y-4">
+                    <p className="text-muted leading-relaxed">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className={`px-3 py-1 rounded-full text-xs font-medium ${
+                            accentClasses[project.color as keyof typeof accentClasses]
+                          }`}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {activeTab === 'process' && (
-                <div className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">
-                        Before
-                      </h4>
-                      <p className="text-sm text-muted leading-relaxed">
-                        {project.process.before}
-                      </p>
+                {activeTab === 'process' && (
+                  <div className="space-y-4">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide inline-flex items-center gap-2">
+                          <SymbolState className="text-accent" />
+                          Before
+                        </h4>
+                        <p className="text-sm text-muted leading-relaxed">
+                          {project.process.before}
+                        </p>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide inline-flex items-center gap-2">
+                          <SymbolProgress className="text-accent" />
+                          After
+                        </h4>
+                        <p className="text-sm text-muted leading-relaxed">
+                          {project.process.after}
+                        </p>
+                      </div>
                     </div>
                     
-                    <div className="space-y-2">
-                      <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">
-                        After
+                    <div className="pt-2 border-t border-border/50">
+                      <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide mb-2 inline-flex items-center gap-2">
+                        <SymbolEvidence className="text-accent" />
+                        Key Insight
                       </h4>
-                      <p className="text-sm text-muted leading-relaxed">
-                        {project.process.after}
+                      <p className="text-sm font-medium">
+                        {project.process.insight}
                       </p>
                     </div>
                   </div>
-                  
-                  <div className="pt-2 border-t border-border/50">
-                    <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide mb-2">
-                      Key Insight
-                    </h4>
-                    <p className="text-sm font-medium">
-                      {project.process.insight}
-                    </p>
-                  </div>
-                </div>
-              )}
-            </motion.div>
+                )}
+              </motion.div>
+            </AnimatePresence>
 
             {/* Links */}
             <div className="flex space-x-3">
@@ -243,11 +251,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   href={project.links.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-lg text-sm font-medium hover:bg-accent/20 transition-colors"
+                  className="craft-focus motion-safe-transform inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 border border-accent/30 rounded-lg text-sm font-medium hover:bg-accent/20"
                   whileHover={{ scale: 1.05 }}
                   whileTap={tap.deep}
                 >
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink aria-hidden="true" className="w-4 h-4" />
                   <span>Live Site</span>
                 </motion.a>
               )}
@@ -257,11 +265,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   href={project.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 px-4 py-2 border border-border rounded-lg text-sm font-medium hover:bg-muted/50 transition-colors"
+                  className="craft-focus motion-safe-transform inline-flex items-center space-x-2 px-4 py-2 border border-border rounded-lg text-sm font-medium hover:bg-muted/50"
                   whileHover={{ scale: 1.05 }}
                   whileTap={tap.deep}
                 >
-                  <Github className="w-4 h-4" />
+                  <Github aria-hidden="true" className="w-4 h-4" />
                   <span>Source</span>
                 </motion.a>
               )}
@@ -282,7 +290,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               }}
               className={`aspect-[4/3] rounded-lg border ${
                 colorClasses[project.color as keyof typeof colorClasses]
-              } relative overflow-hidden group-hover:shadow-xl transition-shadow duration-500`}
+              } relative overflow-hidden group-hover:shadow-xl motion-safe-transform duration-300`}
             >
               {/* Placeholder for project screenshot/video */}
               <div className="absolute inset-0 bg-gradient-to-br from-background/50 to-transparent flex items-center justify-center">
@@ -292,7 +300,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   } mx-auto flex items-center justify-center`}>
                     <ExternalLink className="w-5 h-5" />
                   </div>
-                  <p className="text-xs text-muted-foreground font-medium">
+                  <p className="text-xs text-muted-foreground font-medium inline-flex items-center gap-1">
+                    <SymbolEvidence className="text-accent" />
                     Project Preview
                   </p>
                 </div>

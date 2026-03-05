@@ -1,39 +1,29 @@
 "use client";
 
-import { motion, useInView, AnimatePresence, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
-import { useRef, useState } from "react";
-import { duration, ease, tap } from "@/lib/motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
+import { useState } from "react";
+import { duration, tap } from "@/lib/motion";
+import { CraftSection } from "@/components/craft/CraftSection";
+import { SymbolCaution, SymbolEvidence, SymbolPrinciple, SymbolState } from "@/components/craft/CraftSymbols";
 
 export function SpringExamples() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
   const shouldReduceMotion = useReducedMotion() ?? false;
 
   return (
-    <motion.section
-      ref={ref}
-      initial={false}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 16 }}
-      transition={{ duration: duration.glacial, ease: ease.brand }}
-      className="space-y-8"
+    <CraftSection
+      id="spring-physics"
+      title="Spring Physics"
+      intent="Natural motion should map to interface weight and urgency, not just visual flair."
+      constraint="Use spring mechanics only when they add causal clarity."
+      evidence="All demos use transform/opacity with reduced-motion equivalents."
     >
-      <div>
-        <h2 className="font-display text-3xl font-light mb-4">
-          Spring Physics
-        </h2>
-        <p className="text-muted leading-relaxed max-w-2xl">
-          Exploring natural motion through spring animations. These examples show 
-          how different spring configurations create distinct feelings and personality in interfaces.
-        </p>
-      </div>
-
       <div className="grid gap-8">
         <SpringComparison shouldReduceMotion={shouldReduceMotion} />
         <MagneticButton shouldReduceMotion={shouldReduceMotion} />
         <StackedCards shouldReduceMotion={shouldReduceMotion} />
         <ElasticInput shouldReduceMotion={shouldReduceMotion} />
       </div>
-    </motion.section>
+    </CraftSection>
   );
 }
 
@@ -48,19 +38,22 @@ function SpringComparison({ shouldReduceMotion }: { shouldReduceMotion: boolean 
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h3 className="font-display text-xl">Spring Configurations</h3>
+    <article className="rounded-xl border border-border/70 bg-card/60 p-6 space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h3 className="font-display text-xl inline-flex items-center gap-2">
+          <SymbolState className="text-accent" />
+          Spring Configurations
+        </h3>
         <button
           onClick={() => setTrigger(prev => prev + 1)}
-          className="px-4 py-2 bg-accent/10 border border-accent/20 rounded-lg text-sm hover:bg-accent/20 transition-colors"
+          className="craft-focus motion-safe-transform px-4 py-2 bg-accent/10 border border-accent/30 rounded-lg text-sm hover:bg-accent/20"
         >
           Animate
         </button>
       </div>
       
       <div className="bg-card border border-border rounded-lg p-6 space-y-4">
-        {springs.map((spring, index) => (
+        {springs.map((spring) => (
           <div key={spring.name} className="flex items-center space-x-4">
             <motion.div
               key={trigger}
@@ -87,7 +80,7 @@ function SpringComparison({ shouldReduceMotion }: { shouldReduceMotion: boolean 
           </div>
         ))}
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -118,9 +111,12 @@ function MagneticButton({ shouldReduceMotion }: { shouldReduceMotion: boolean })
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h3 className="font-display text-xl">Magnetic Button</h3>
+    <article className="rounded-xl border border-border/70 bg-card/60 p-6 space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h3 className="font-display text-xl inline-flex items-center gap-2">
+          <SymbolPrinciple className="text-accent" />
+          Magnetic Button
+        </h3>
         <span className="text-sm text-muted-foreground">Mouse interaction • Attraction force</span>
       </div>
       
@@ -132,25 +128,25 @@ function MagneticButton({ shouldReduceMotion }: { shouldReduceMotion: boolean })
         <motion.button
           style={shouldReduceMotion ? undefined : { x: springX, y: springY }}
           whileTap={tap.deep}
-          className="bg-accent text-accent-foreground px-8 py-4 rounded-lg font-medium shadow-lg"
+          className="craft-focus motion-safe-transform bg-foreground text-background px-8 py-4 rounded-lg font-medium shadow-lg"
         >
           Magnetic Button
         </motion.button>
       </div>
       
-      <p className="text-sm text-muted-foreground leading-relaxed">
-        Button is attracted to cursor within proximity. Spring physics create 
-        natural magnetic behavior that feels responsive without being jarring.
+      <p className="text-sm text-muted-foreground leading-relaxed inline-flex gap-2">
+        <SymbolEvidence className="text-accent mt-0.5 shrink-0" />
+        Utility note: the interaction remains optional and never blocks action completion.
       </p>
-    </div>
+    </article>
   );
 }
 
 function StackedCards({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
   const [cards, setCards] = useState([
-    { id: 1, title: "First Card", color: "bg-blue-500/20 border-blue-500/30" },
-    { id: 2, title: "Second Card", color: "bg-purple-500/20 border-purple-500/30" },
-    { id: 3, title: "Third Card", color: "bg-pink-500/20 border-pink-500/30" },
+    { id: 1, title: "First Card", color: "bg-blue-500/10 border-blue-500/40 text-foreground" },
+    { id: 2, title: "Second Card", color: "bg-purple-500/10 border-purple-500/40 text-foreground" },
+    { id: 3, title: "Third Card", color: "bg-pink-500/10 border-pink-500/40 text-foreground" },
   ]);
 
   const moveToBack = (id: number) => {
@@ -162,9 +158,12 @@ function StackedCards({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h3 className="font-display text-xl">Stacked Cards</h3>
+    <article className="rounded-xl border border-border/70 bg-card/60 p-6 space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h3 className="font-display text-xl inline-flex items-center gap-2">
+          <SymbolState className="text-accent" />
+          Stacked Cards
+        </h3>
         <span className="text-sm text-muted-foreground">Staggered animation • Z-index layers</span>
       </div>
       
@@ -223,11 +222,11 @@ function StackedCards({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
         </div>
       </div>
       
-      <p className="text-sm text-muted-foreground leading-relaxed">
-        Click cards to cycle through stack. Each card has natural spring motion 
-        and slight rotation to create depth. Hover reveals the layered structure.
+      <p className="text-sm text-muted-foreground leading-relaxed inline-flex gap-2">
+        <SymbolCaution className="text-accent mt-0.5 shrink-0" />
+        Anti-pattern avoided: depth cues are subtle enough to preserve scanability.
       </p>
-    </div>
+    </article>
   );
 }
 
@@ -236,9 +235,12 @@ function ElasticInput({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h3 className="font-display text-xl">Elastic Input</h3>
+    <article className="rounded-xl border border-border/70 bg-card/60 p-6 space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h3 className="font-display text-xl inline-flex items-center gap-2">
+          <SymbolState className="text-accent" />
+          Elastic Input
+        </h3>
         <span className="text-sm text-muted-foreground">Focus states • Smooth scaling</span>
       </div>
       
@@ -267,7 +269,7 @@ function ElasticInput({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
               onBlur={() => setIsFocused(false)}
               placeholder="Type something..."
               aria-label="Elastic input demo"
-              className="w-full px-4 py-3 bg-transparent border border-border rounded-lg focus:outline-none focus:border-accent transition-colors"
+              className="craft-focus motion-safe-transform w-full px-4 py-3 bg-transparent border border-border rounded-lg focus:outline-none focus:border-accent"
             />
             
             <motion.div
@@ -310,10 +312,10 @@ function ElasticInput({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
         </div>
       </div>
       
-      <p className="text-sm text-muted-foreground leading-relaxed">
-        Input field scales gently on focus with elastic spring physics. 
-        The accent line grows smoothly, and character count appears with spring animation.
+      <p className="text-sm text-muted-foreground leading-relaxed inline-flex gap-2">
+        <SymbolEvidence className="text-accent mt-0.5 shrink-0" />
+        Product rationale: focus, text entry, and response remain visually coupled.
       </p>
-    </div>
+    </article>
   );
 }
