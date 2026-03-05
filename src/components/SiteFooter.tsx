@@ -30,6 +30,16 @@ export function SiteFooter() {
           Work With Me
         </TrackedActionLink>
         <span className="text-border/40">·</span>
+        <TrackedActionLink
+          href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=global_footer"
+          external
+          eventName="footer_nav_clicked"
+          eventProps={{ target: "ninetynine_studio" }}
+          className="hover:text-foreground transition-colors"
+        >
+          ninetynine
+        </TrackedActionLink>
+        <span className="text-border/40">·</span>
         <Link href="/contact" className="hover:text-foreground transition-colors">
           Contact
         </Link>

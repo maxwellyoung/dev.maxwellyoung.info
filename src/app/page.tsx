@@ -105,14 +105,16 @@ export default function Home() {
                 transition={spring.gentle}
               >
                 Design Engineer ·{" "}
-                <AnimatedLink
-                  href="https://www.ninetynine.digital"
+                <TrackedActionLink
+                  href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_nav"
                   external
+                  eventName="ninetynine_outbound_clicked"
+                  eventProps={{ placement: "hero_subtitle", source: "devfolio" }}
                   className="relative z-10 pointer-events-auto text-muted-foreground"
                   onClick={(e: React.MouseEvent) => e.stopPropagation()}
                 >
                   ninetynine.digital
-                </AnimatedLink>
+                </TrackedActionLink>
               </motion.p>
               <motion.p
                 className="block text-xl font-light text-muted-foreground absolute inset-0 whitespace-nowrap"
@@ -134,7 +136,15 @@ export default function Home() {
               . Building{" "}
               <AnimatedLink href="https://liner.ninetynine.digital" external>Liner</AnimatedLink>
               , a spatial canvas for music, for my R&D thesis at AUT. Shipping apps independently through{" "}
-              <AnimatedLink href="https://www.ninetynine.digital" external>ninetynine digital</AnimatedLink>
+              <TrackedActionLink
+                href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_body"
+                external
+                eventName="ninetynine_outbound_clicked"
+                eventProps={{ placement: "bio", source: "devfolio" }}
+                className="text-muted-foreground underline decoration-muted-foreground/30 underline-offset-2 hover:text-foreground hover:decoration-accent/60 transition-colors"
+              >
+                ninetynine digital
+              </TrackedActionLink>
               , including{" "}
               <AnimatedLink href="https://vapequitcoach.com" external>Vape Quit Coach</AnimatedLink>
               {" "}on iOS (4.8★). I also make music as{" "}
@@ -155,6 +165,40 @@ export default function Home() {
 
             <motion.div variants={item.fadeUp}>
               <OutcomeProofStrip />
+            </motion.div>
+
+            <motion.div
+              variants={item.fadeUp}
+              className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-4 space-y-3"
+            >
+              <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                Two Ways To Work
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <TrackedActionLink
+                  href="/work-with-me"
+                  eventName="ecosystem_path_selected"
+                  eventProps={{ path: "hire_maxwell", placement: "home_splitter" }}
+                  className="rounded-lg border border-[hsl(var(--border))] p-3 hover:border-accent/50 transition-colors"
+                >
+                  <p className="text-sm font-medium text-foreground">Hire Maxwell</p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Focused 2-week design engineering sprint.
+                  </p>
+                </TrackedActionLink>
+                <TrackedActionLink
+                  href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_splitter"
+                  external
+                  eventName="ecosystem_path_selected"
+                  eventProps={{ path: "hire_studio", placement: "home_splitter" }}
+                  className="rounded-lg border border-[hsl(var(--border))] p-3 hover:border-accent/50 transition-colors"
+                >
+                  <p className="text-sm font-medium text-foreground">Hire ninetynine studio</p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Full product and brand execution with broader scope.
+                  </p>
+                </TrackedActionLink>
+              </div>
             </motion.div>
 
             {/* CTA */}
@@ -245,9 +289,15 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <p className="text-sm text-muted-foreground">
-              <AnimatedLink href="https://www.ninetynine.digital" external>
+              <TrackedActionLink
+                href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_footer"
+                external
+                eventName="ninetynine_outbound_clicked"
+                eventProps={{ placement: "home_footer", source: "devfolio" }}
+                className="relative inline-block text-muted-foreground transition-colors duration-150 underline decoration-muted-foreground/30 underline-offset-2 hover:text-foreground hover:decoration-accent/60"
+              >
                 ninetynine.digital
-              </AnimatedLink>
+              </TrackedActionLink>
               {" "}— software that earns its place on your screen.
             </p>
             <div className="flex items-center gap-4">
