@@ -151,6 +151,31 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
               </span>
             ))}
           </div>
+
+          <div className="grid sm:grid-cols-3 gap-3 mb-12">
+            <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3">
+              <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
+                Ownership
+              </p>
+              <p className="text-sm text-foreground">{study.role}</p>
+            </div>
+            <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3">
+              <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
+                Team
+              </p>
+              <p className="text-sm text-foreground">{study.team || "Solo / small team"}</p>
+            </div>
+            <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3">
+              <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
+                Key Result
+              </p>
+              <p className="text-sm text-foreground">
+                {study.metrics?.[0]?.value
+                  ? `${study.metrics[0].value} ${study.metrics[0].label}`
+                  : study.outcome}
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         {/* Hero image */}

@@ -83,6 +83,19 @@ export function ProjectDetails({
             {project.longDescription || project.description}
           </p>
 
+          <div className="mt-3 grid sm:grid-cols-2 gap-2 text-xs">
+            <div className="rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--muted))]/30 px-2.5 py-2">
+              <p className="text-muted-foreground uppercase tracking-wider mb-1">Role</p>
+              <p className="text-foreground">{project.role || "Contributor"}</p>
+            </div>
+            {project.impact?.[0] && (
+              <div className="rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--muted))]/30 px-2.5 py-2">
+                <p className="text-muted-foreground uppercase tracking-wider mb-1">Impact</p>
+                <p className="text-foreground">{project.impact[0]}</p>
+              </div>
+            )}
+          </div>
+
           {/* Tags */}
           {project.tags && project.tags.length > 0 && (
             <div className="mt-3 flex flex-wrap gap-1.5">
