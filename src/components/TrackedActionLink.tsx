@@ -10,6 +10,7 @@ interface TrackedActionLinkProps extends LinkProps {
   eventName: string;
   eventProps?: Record<string, string | number | boolean>;
   external?: boolean;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export function TrackedActionLink({
@@ -18,10 +19,12 @@ export function TrackedActionLink({
   eventName,
   eventProps,
   external = false,
+  onClick,
   ...props
 }: TrackedActionLinkProps) {
-  const handleClick = (_event: MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     posthog.capture(eventName, eventProps);
+    onClick?.(event);
   };
 
   if (external) {

@@ -104,6 +104,26 @@ export default function WorkWithMePage() {
         </div>
       </section>
 
+      <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
+        <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">
+          Need A Bigger Engagement?
+        </p>
+        <h2 className="text-xl font-medium mb-3">Route to ninetynine.digital</h2>
+        <p className="text-muted-foreground mb-4">
+          For broader product, brand, and multi-surface delivery, the studio
+          path is a better fit than a single sprint.
+        </p>
+        <TrackedActionLink
+          href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=work_with_me_escalation"
+          external
+          eventName="work_with_me_escalation_clicked"
+          eventProps={{ target: "ninetynine_studio" }}
+          className="underline underline-offset-2 hover:text-foreground transition-colors"
+        >
+          Visit ninetynine.digital
+        </TrackedActionLink>
+      </section>
+
       <SiteFooter />
     </main>
   );

@@ -88,14 +88,15 @@ export default function ContactPage() {
               Silk
             </a>
             , building React Native interfaces for a social platform. I also run{" "}
-            <a
-              href="https://www.ninetynine.digital"
-              target="_blank"
-              rel="noopener noreferrer"
+            <TrackedActionLink
+              href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=contact_context"
+              external
+              eventName="ninetynine_outbound_clicked"
+              eventProps={{ placement: "contact_context", source: "devfolio" }}
               className="underline underline-offset-2 hover:text-foreground transition-colors"
             >
               ninetynine.digital
-            </a>
+            </TrackedActionLink>
             , where I design and build products for clients in fashion, art, and tech.
           </p>
           <p className="leading-relaxed">
@@ -130,6 +131,16 @@ export default function ContactPage() {
             className="underline underline-offset-2 hover:text-foreground transition-colors"
           >
             View Work With Me
+          </TrackedActionLink>
+          <span className="mx-2 text-border/40">·</span>
+          <TrackedActionLink
+            href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=contact_split"
+            external
+            eventName="contact_page_cta_clicked"
+            eventProps={{ target: "ninetynine_studio" }}
+            className="underline underline-offset-2 hover:text-foreground transition-colors"
+          >
+            Visit Studio
           </TrackedActionLink>
         </div>
       </div>
