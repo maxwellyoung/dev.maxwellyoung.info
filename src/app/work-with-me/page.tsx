@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
+import { ProjectBriefForm } from "@/components/ProjectBriefForm";
 
 export const metadata: Metadata = {
   title: "Work With Me | Maxwell Young",
@@ -72,18 +73,19 @@ export default function WorkWithMePage() {
         </p>
         <h2 className="text-xl font-medium mb-3">Start with a project brief</h2>
         <p className="text-muted-foreground mb-5">
-          Send your current flow, problem, and timeline. If it is a fit, I will
-          reply with scope and next steps within 24 hours.
+          Share your flow, timeline, and budget. This form opens a prefilled
+          email brief so you can send structured details quickly.
         </p>
-        <div className="flex flex-wrap items-center gap-4">
+        <ProjectBriefForm />
+        <div className="mt-5 flex flex-wrap items-center gap-4">
           <TrackedActionLink
             href="mailto:maxwell@ninetynine.digital?subject=Design%20Engineering%20Sprint%20Inquiry"
             external
             eventName="work_with_me_primary_cta_clicked"
-            eventProps={{ placement: "work_with_me_page", action: "email_brief" }}
-            className="inline-flex items-center rounded-md bg-foreground text-background px-4 py-2 text-sm hover:opacity-90 transition-opacity"
+            eventProps={{ placement: "work_with_me_page", action: "email_brief_direct" }}
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-2"
           >
-            Email Project Brief
+            Prefer plain email?
           </TrackedActionLink>
           <TrackedActionLink
             href="/contact"
