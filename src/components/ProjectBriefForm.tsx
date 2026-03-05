@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import posthog from "posthog-js";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { TrackedActionLink } from "@/components/TrackedActionLink";
 
 type BudgetBand = "under-4k" | "4k-10k" | "10k-25k" | "25k-plus";
 type TimelineBand = "asap" | "2-4-weeks" | "1-2-months" | "flexible";
@@ -23,6 +24,11 @@ export function ProjectBriefForm() {
       budgetBand === "10k-25k" ||
       budgetBand === "25k-plus") &&
     (timelineBand === "asap" || timelineBand === "2-4-weeks");
+  const looksLikeStudioEngagement =
+    budgetBand === "25k-plus" ||
+    projectType === "design-system" ||
+    timelineBand === "1-2-months" ||
+    timelineBand === "flexible";
 
   const markStarted = () => {
     if (started) return;
@@ -57,6 +63,7 @@ export function ProjectBriefForm() {
       budget_band: budgetBand,
       timeline_band: timelineBand,
       qualified: isQualified,
+      studio_fit: looksLikeStudioEngagement,
     });
 
     window.location.href = mailto;
@@ -101,6 +108,23 @@ export function ProjectBriefForm() {
           <option value="conversion-optimization">Conversion optimization</option>
         </select>
       </div>
+
+      {looksLikeStudioEngagement && (
+        <div className="rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--muted))]/30 p-3">
+          <p className="text-xs text-muted-foreground">
+            This may be better as a full studio engagement.
+          </p>
+          <TrackedActionLink
+            href="https://www.ninetynine.digital/contact?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=brief_qualification"
+            external
+            eventName="project_brief_escalation_clicked"
+            eventProps={{ reason: "studio_fit" }}
+            className="text-sm underline underline-offset-2 hover:text-foreground transition-colors"
+          >
+            Route to ninetynine studio intake
+          </TrackedActionLink>
+        </div>
+      )}
 
       <div className="grid sm:grid-cols-2 gap-3">
         <select
