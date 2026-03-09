@@ -1,6 +1,5 @@
 import { MetadataRoute } from "next";
 import { getAllCaseStudySlugs } from "@/lib/caseStudies";
-import { getAllBlogSlugs } from "@/lib/sanity";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://dev.maxwellyoung.info";
@@ -31,33 +30,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/work-with-me`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/receipt-radar`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/for-hiring-managers`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/resources/design-engineering-checklist`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
       priority: 0.7,
     },
   ];
@@ -82,13 +57,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  const blogSlugs = await getAllBlogSlugs().catch(() => []);
-  const blogRoutes = blogSlugs.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
-
-  return [...staticRoutes, ...caseStudyRoutes, ...essayRoutes, ...blogRoutes];
+  return [...staticRoutes, ...caseStudyRoutes, ...essayRoutes];
 }

@@ -581,3 +581,14 @@ export const projects: Project[] = [
     thumb: "/projectImages/music-1.webp",
   },
   ];
+
+export function getProjectStatusLabel(project: Project): string | null {
+  if (project.status === "Active") return "Active"
+  if (project.status === "WIP") return "In Progress"
+  if (project.status === "Completed") return "Released"
+  return null
+}
+
+export function isActiveStatus(project: Project): boolean {
+  return project.status === "Active" || project.status === "WIP"
+}
