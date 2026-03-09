@@ -32,7 +32,7 @@ type ResumeData = {
 export const resumeData: ResumeData = {
   name: "Maxwell Young",
   title: "Design Engineer",
-  availability: "Open to opportunities · NZ / Remote",
+  availability: "Auckland, NZ",
   contact: {
     email: "maxwell@ninetynine.digital",
     location: "Auckland, NZ",

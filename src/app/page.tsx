@@ -16,7 +16,6 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { container, item, spring, duration, ease } from "@/lib/motion";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 import posthog from "posthog-js";
-import { OutcomeProofStrip } from "@/components/OutcomeProofStrip";
 
 
 export default function Home() {
@@ -163,34 +162,6 @@ export default function Home() {
               <footer className="text-xs">— Bret Victor</footer>
             </motion.blockquote>
 
-            {/* CTA */}
-            <motion.div className="pt-2" variants={item.fadeUp}>
-              <AccentLink
-                href="/work-with-me"
-                onClick={() =>
-                  posthog.capture("home_primary_cta_clicked", {
-                    placement: "hero",
-                    target: "work_with_me",
-                  })
-                }
-              >
-                Work with me
-              </AccentLink>
-              <div className="mt-2">
-                <TrackedActionLink
-                  href="/resources/design-engineering-checklist"
-                  eventName="home_secondary_cta_clicked"
-                  eventProps={{
-                    placement: "hero",
-                    target: "design_engineering_checklist",
-                  }}
-                  className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors"
-                >
-                  Free: Design Engineering Checklist
-                </TrackedActionLink>
-              </div>
-            </motion.div>
-
             <motion.nav
               className="text-muted-foreground text-xs flex flex-wrap items-center gap-x-2 gap-y-1"
               variants={item.fadeUp}
@@ -201,19 +172,6 @@ export default function Home() {
               <AnimatedLink href="#resume" className="text-muted-foreground hover:text-foreground">Resume</AnimatedLink>
               <span className="text-border/40">·</span>
               <AnimatedLink href="/about" className="text-muted-foreground hover:text-foreground">About</AnimatedLink>
-              <span className="text-border/40">·</span>
-              <AnimatedLink href="/for-hiring-managers" className="text-muted-foreground hover:text-foreground">
-                Hiring
-              </AnimatedLink>
-              <span className="text-border/40">·</span>
-              <TrackedActionLink
-                href="/work-with-me"
-                eventName="home_nav_clicked"
-                eventProps={{ target: "work_with_me" }}
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Work With Me
-              </TrackedActionLink>
               <span className="text-border/40">·</span>
               <AnimatedLink href="https://github.com/maxwellyoung" external className="text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
               <span className="text-border/40">·</span>
@@ -246,40 +204,7 @@ export default function Home() {
           <Resume />
         </section>
 
-        <section className="space-y-6 pt-6">
-          <OutcomeProofStrip />
 
-          <div className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-4 space-y-3">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground">
-              Two Ways To Work
-            </p>
-            <div className="grid sm:grid-cols-2 gap-3">
-              <TrackedActionLink
-                href="/work-with-me"
-                eventName="ecosystem_path_selected"
-                eventProps={{ path: "hire_maxwell", placement: "post_resume_splitter" }}
-                className="rounded-lg border border-[hsl(var(--border))] p-3 hover:border-accent/50 transition-colors"
-              >
-                <p className="text-sm font-medium text-foreground">Hire Maxwell</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Focused 2-week design engineering sprint.
-                </p>
-              </TrackedActionLink>
-              <TrackedActionLink
-                href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_splitter"
-                external
-                eventName="ecosystem_path_selected"
-                eventProps={{ path: "hire_studio", placement: "post_resume_splitter" }}
-                className="rounded-lg border border-[hsl(var(--border))] p-3 hover:border-accent/50 transition-colors"
-              >
-                <p className="text-sm font-medium text-foreground">Hire ninetynine studio</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Full product and brand execution with broader scope.
-                </p>
-              </TrackedActionLink>
-            </div>
-          </div>
-        </section>
 
         <footer className="mt-16 pt-8 border-t border-[hsl(var(--border))]">
           {/* Activity widgets */}
@@ -304,12 +229,6 @@ export default function Home() {
             <div className="flex items-center gap-4">
               <AnimatedLink href="/contact" className="text-xs text-muted-foreground hover:text-foreground">
                 Contact
-              </AnimatedLink>
-              <AnimatedLink href="/work-with-me" className="text-xs text-muted-foreground hover:text-foreground">
-                Work With Me
-              </AnimatedLink>
-              <AnimatedLink href="/for-hiring-managers" className="text-xs text-muted-foreground hover:text-foreground">
-                Hiring
               </AnimatedLink>
               <AnimatedLink href="/privacy" className="text-xs text-muted-foreground hover:text-foreground">
                 Privacy
