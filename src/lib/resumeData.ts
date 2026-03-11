@@ -87,12 +87,12 @@ export const resumeData: ResumeData = {
       responsibilities: [],
     },
     {
-      title: "Research Assistant + Masters Student",
+      title: "Bachelor's Student",
       company: "Auckland University of Technology",
       companyHref: "https://www.aut.ac.nz/",
       date: "2025 – Present",
       summary:
-        "AUT Computer Science masters. Research in explainable AI for health apps. Also building Liner (spatial music canvas) as final-year project.",
+        "AUT Computer Science bachelor's degree. Research in explainable AI for health apps. Also building Liner (spatial music canvas) as final-year project.",
       responsibilities: [
         "Designing visualizations that communicate ML model uncertainty without triggering health anxiety.",
         "Building Liner — a spatial canvas for music — as the R&D project: tldraw infinite canvas, audio playback, Convex sync.",
