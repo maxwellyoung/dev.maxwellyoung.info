@@ -80,13 +80,6 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      title: "Hospitality",
-      company: "Rhythmethod",
-      date: "2025 – Present",
-      summary: "1-2 days/week. Keeps cash flow stable while the apps grow.",
-      responsibilities: [],
-    },
-    {
       title: "Bachelor's Student",
       company: "Auckland University of Technology",
       companyHref: "https://www.aut.ac.nz/",
