@@ -21,18 +21,13 @@ export default function ContactPage() {
 
       <h1 className="text-2xl font-medium mb-6">Contact</h1>
 
-      <div className="space-y-6 text-muted-foreground">
+      <div className="space-y-8 text-muted-foreground">
         <p className="leading-relaxed">
-          I build interfaces that feel considered, not clever. If you have a project that
-          needs a design engineer who cares about the details people feel but can&apos;t
-          name, I&apos;d like to hear about it.
+          For roles, projects, or collaborations, email is best.
         </p>
 
         <div>
           <h2 className="text-sm font-medium text-foreground mb-2">Email</h2>
-          <p className="mb-2">
-            The fastest way to reach me. I respond to genuine inquiries within a day.
-          </p>
           <TrackedActionLink
             href="mailto:maxwell@ninetynine.digital?subject=Project%20Inquiry"
             external
@@ -45,7 +40,7 @@ export default function ContactPage() {
         </div>
 
         <div>
-          <h2 className="text-sm font-medium text-foreground mb-2">Social</h2>
+          <h2 className="text-sm font-medium text-foreground mb-2">Elsewhere</h2>
           <ul className="space-y-1">
             <li>
               <a
@@ -54,7 +49,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="underline underline-offset-2 hover:text-foreground transition-colors"
               >
-                GitHub — open source work and side projects
+                GitHub
               </a>
             </li>
             <li>
@@ -64,7 +59,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="underline underline-offset-2 hover:text-foreground transition-colors"
               >
-                LinkedIn — professional background
+                LinkedIn
               </a>
             </li>
           </ul>
@@ -72,77 +67,26 @@ export default function ContactPage() {
 
         <div>
           <h2 className="text-sm font-medium text-foreground mb-2">Location</h2>
-          <p>Auckland, New Zealand (NZST, UTC+12)</p>
+          <p>Auckland, New Zealand &mdash; NZST (UTC+12)</p>
         </div>
 
-        <div>
-          <h2 className="text-sm font-medium text-foreground mb-2">What I work on</h2>
-          <p className="leading-relaxed mb-3">
-            Currently a mobile design engineer at{" "}
-            <a
-              href="https://www.silk.cx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-foreground transition-colors"
-            >
-              Silk
-            </a>
-            , building React Native interfaces for a social platform. I also run{" "}
-            <TrackedActionLink
-              href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=contact_context"
-              external
-              eventName="ninetynine_outbound_clicked"
-              eventProps={{ placement: "contact_context", source: "devfolio" }}
-              className="underline underline-offset-2 hover:text-foreground transition-colors"
-            >
-              ninetynine.digital
-            </TrackedActionLink>
-            , where I design and build products for clients in fashion, art, and tech.
-          </p>
-          <p className="leading-relaxed">
-            Open to frontend, mobile, and full-stack roles in Auckland or remote.
-            Strongest with React, React Native, TypeScript, and Next.js. I care about
-            performance, accessibility, and motion design. View my{" "}
-            <Link
-              href="/#projects"
-              className="underline underline-offset-2 hover:text-foreground transition-colors"
-            >
-              project portfolio
-            </Link>{" "}
-            or read my{" "}
-            <Link
-              href="/about"
-              className="underline underline-offset-2 hover:text-foreground transition-colors"
-            >
-              full background
-            </Link>.
-          </p>
-        </div>
-
-        <div>
-          <h2 className="text-sm font-medium text-foreground mb-2">Hiring Sprint</h2>
-          <p className="leading-relaxed mb-3">
-            If you already know you need implementation help, start here first.
-          </p>
-          <TrackedActionLink
-            href="/work-with-me"
-            eventName="contact_page_cta_clicked"
-            eventProps={{ target: "work_with_me" }}
+        <p className="text-sm">
+          More context on{" "}
+          <Link
+            href="/about"
             className="underline underline-offset-2 hover:text-foreground transition-colors"
           >
-            View Work With Me
-          </TrackedActionLink>
-          <span className="mx-2 text-border/40">·</span>
-          <TrackedActionLink
-            href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=contact_split"
-            external
-            eventName="contact_page_cta_clicked"
-            eventProps={{ target: "ninetynine_studio" }}
+            about
+          </Link>
+          {" "}or{" "}
+          <Link
+            href="/#projects"
             className="underline underline-offset-2 hover:text-foreground transition-colors"
           >
-            Visit Studio
-          </TrackedActionLink>
-        </div>
+            work
+          </Link>
+          .
+        </p>
       </div>
 
       <SiteFooter />

@@ -1,80 +1,28 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
-import dynamic from "next/dynamic";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { CSPostHogProvider } from "./providers";
-import ArtStyleProvider from "@/components/providers/ArtStyleProvider";
-import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { PageTransitionProvider } from "@/components/providers/PageTransitionProvider";
 
-const ArtStyleMenu = dynamic(() => import("@/components/ArtStyleMenu"));
-const LayoutDiagnostics = dynamic(
-  () => import("@/components/LayoutDiagnostics")
-);
-const CommandPalette = dynamic(
-  () => import("@/components/CommandPalette").then((mod) => mod.CommandPalette)
-);
-const CommandPaletteHint = dynamic(
-  () => import("@/components/CommandPalette").then((mod) => mod.CommandPaletteHint)
-);
-const EasterEggs = dynamic(
-  () => import("@/components/EasterEggs").then((mod) => mod.EasterEggs)
-);
-
 export const metadata: Metadata = {
-  title: "Maxwell Young | Design Engineer | Auckland, NZ",
+  title: "Maxwell Young — Design Engineer",
   description:
-    "Design engineer at Silk. React, React Native, TypeScript. 3+ years shipping apps. Previously Spark NZ. Open to roles in Auckland or remote.",
+    "Design engineer at Silk. I run ninetynine digital and release music as Maxwell Young.",
   metadataBase: new URL("https://dev.maxwellyoung.info"),
-  keywords: [
-    // Job-hunting keywords
-    "design engineer Auckland",
-    "frontend developer New Zealand",
-    "React Native developer NZ",
-    "mobile developer Auckland",
-    "TypeScript developer",
-    "frontend engineer hire",
-    // Technical skills
-    "React",
-    "React Native",
-    "TypeScript",
-    "Next.js",
-    "Expo",
-    "Node.js",
-    "Tailwind CSS",
-    // Context
-    "Silk",
-    "Spark New Zealand",
-    "ninetynine.digital",
-    "portfolio",
-    "software engineer",
-  ],
   authors: [{ name: "Maxwell Young" }],
   creator: "Maxwell Young",
-  publisher: "Maxwell Young",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
   icons: {
     icon: "/favicon.png",
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "Maxwell Young | Design Engineer | Auckland, NZ",
+    title: "Maxwell Young — Design Engineer",
     description:
-      "Frontend & mobile engineer. React, React Native, TypeScript. 4.8★ solo iOS app. Currently at Silk. Available for roles in Auckland or remote.",
+      "Design engineer at Silk. I run ninetynine digital and release music as Maxwell Young.",
     url: "https://dev.maxwellyoung.info",
-    siteName: "Maxwell Young - Portfolio",
+    siteName: "Maxwell Young",
     locale: "en_NZ",
     type: "website",
     images: [
@@ -82,15 +30,15 @@ export const metadata: Metadata = {
         url: "/meta.png",
         width: 1200,
         height: 630,
-        alt: "Maxwell Young - Design Engineer based in Auckland, New Zealand",
+        alt: "Maxwell Young",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Maxwell Young | Design Engineer | Auckland",
+    title: "Maxwell Young — Design Engineer",
     description:
-      "Frontend & mobile engineer. React, React Native, TypeScript. 4.8★ solo iOS app. Available for roles.",
+      "Design engineer at Silk. I run ninetynine digital and release music as Maxwell Young.",
     images: ["/meta.png"],
     creator: "@internetmaxwell",
   },
@@ -136,77 +84,23 @@ export default function RootLayout({
 }) {
   const structuredData = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "ProfilePage",
-        "@id": "https://dev.maxwellyoung.info/",
-        url: "https://dev.maxwellyoung.info/",
-        name: "Maxwell Young | Design Engineer",
-        description:
-          "Design engineer at Silk. React, React Native, TypeScript. 3+ years shipping apps. Previously Spark NZ. Open to roles in Auckland or remote.",
-        datePublished: "2024-01-01",
-        dateModified: "2026-02-05",
-        mainEntity: {
-          "@id": "https://dev.maxwellyoung.info/#person",
-        },
-        author: {
-          "@id": "https://dev.maxwellyoung.info/#person",
-        },
-      },
-      {
-        "@type": "Person",
-        "@id": "https://dev.maxwellyoung.info/#person",
-        name: "Maxwell Young",
-        givenName: "Maxwell",
-        familyName: "Young",
-        jobTitle: "Design Engineer",
-        url: "https://dev.maxwellyoung.info/",
-        email: "maxwell@ninetynine.digital",
-        image: "https://dev.maxwellyoung.info/profile_work.webp",
-        sameAs: [
-          "https://github.com/maxwellyoung",
-          "https://www.linkedin.com/in/maxwell-young-a55032125/",
-          "https://www.ninetynine.digital",
-        ],
-        knowsAbout: [
-          "React",
-          "React Native",
-          "TypeScript",
-          "Next.js",
-          "UI/UX Design",
-          "Mobile Development",
-        ],
-        alumniOf: {
-          "@type": "EducationalOrganization",
-          name: "Auckland University of Technology",
-        },
-        worksFor: [
-          {
-            "@type": "Organization",
-            name: "Silk",
-            url: "https://www.silk.cx",
-          },
-          {
-            "@type": "Organization",
-            "@id": "https://www.ninetynine.digital/#organization",
-            name: "ninetynine.digital",
-            url: "https://www.ninetynine.digital",
-            founder: {
-              "@id": "https://dev.maxwellyoung.info/#person",
-            },
-          },
-        ],
-      },
+    "@type": "Person",
+    "@id": "https://dev.maxwellyoung.info/#person",
+    name: "Maxwell Young",
+    jobTitle: "Design Engineer",
+    url: "https://dev.maxwellyoung.info/",
+    email: "maxwell@ninetynine.digital",
+    sameAs: [
+      "https://github.com/maxwellyoung",
+      "https://www.linkedin.com/in/maxwell-young-a55032125/",
+      "https://www.ninetynine.digital",
+    ],
+    worksFor: [
+      { "@type": "Organization", name: "Silk", url: "https://www.silk.cx" },
       {
         "@type": "Organization",
-        "@id": "https://www.ninetynine.digital/#organization",
         name: "ninetynine.digital",
         url: "https://www.ninetynine.digital",
-        description:
-          "Independent studio crafting enduring digital products. Custom portfolios for artists and writers, consumer applications, and creative web experiences.",
-        founder: {
-          "@id": "https://dev.maxwellyoung.info/#person",
-        },
       },
     ],
   };
@@ -221,7 +115,10 @@ export default function RootLayout({
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -237,18 +134,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CSPostHogProvider>
-            <ArtStyleProvider>
-              <SmoothScrollProvider>
-                <PageTransitionProvider>
-                  <div className="relative z-10">{children}</div>
-                </PageTransitionProvider>
-              </SmoothScrollProvider>
-              <CommandPalette />
-              <CommandPaletteHint />
-              <EasterEggs />
-              <ArtStyleMenu />
-              <LayoutDiagnostics />
-            </ArtStyleProvider>
+            <PageTransitionProvider>
+              <div className="relative z-10">{children}</div>
+            </PageTransitionProvider>
             <Analytics />
           </CSPostHogProvider>
         </ThemeProvider>

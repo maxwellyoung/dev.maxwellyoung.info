@@ -438,29 +438,20 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-6"
         >
           <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
-            Need This Type Of Outcome?
+            Get In Touch
           </p>
           <h2 className="text-xl font-medium mb-3">
-            I run focused design engineering sprints for product teams.
+            If you want to talk about similar work, email me.
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-5">
-            If your team needs clearer UX, faster implementation, and measurable
-            performance improvements, I can help.
+            Contact is the simplest place to start.
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <TrackedActionLink
-              href="/work-with-me"
-              eventName="case_study_cta_clicked"
-              eventProps={{ slug: study.slug, target: "work_with_me" }}
-              className="inline-flex items-center rounded-md bg-foreground text-background px-4 py-2 text-sm hover:opacity-90 transition-opacity"
-            >
-              View Sprint Offer
-            </TrackedActionLink>
             <TrackedActionLink
               href="/contact"
               eventName="case_study_cta_clicked"
               eventProps={{ slug: study.slug, target: "contact" }}
-              className="text-sm text-muted-foreground hover:text-accent transition-colors"
+              className="inline-flex items-center rounded-md bg-foreground text-background px-4 py-2 text-sm hover:opacity-90 transition-opacity"
             >
               Contact
             </TrackedActionLink>

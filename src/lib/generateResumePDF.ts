@@ -100,13 +100,6 @@ export async function generateResumePDF(): Promise<Blob> {
   pdf.text(sanitizeForPDF(contactLine), marginLeft, y);
   y += 14;
 
-  // Availability
-  if (resumeData.availability) {
-    setFont(9, "normal", gray);
-    pdf.text(sanitizeForPDF(resumeData.availability), marginLeft, y);
-    y += 10;
-  }
-
   // Divider
   y += 8;
   pdf.setDrawColor(220, 220, 220);
