@@ -17,7 +17,6 @@
     --secondary-foreground: 24 9.8% 10%;
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 25%;
-    /* Peter Saville red - Factory Records / New Order palette */
     --accent: 355 72% 48%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 70% 48%;
@@ -27,23 +26,7 @@
     --ring: 355 72% 48%;
     --radius: 0.5rem;
 
-    /* Grid tokens (Christopher Alexander pattern language) */
-    --grid-columns: 12;
-    --grid-gutter: 24px;
-    --grid-margin: 24px;
-    --grid-max-width: 640px;
-    --baseline: 8px;
-
-    /* Semantic spacing scale (not just numbers) */
-    --space-xs: 4px;   /* breathing room */
-    --space-sm: 8px;   /* tight grouping */
-    --space-md: 16px;  /* comfortable separation */
-    --space-lg: 24px;  /* section rhythm */
-    --space-xl: 32px;  /* major divisions */
-    --space-2xl: 48px; /* page sections */
-    --space-3xl: 64px; /* hero breathing */
-
-    /* Motion tokens (Emil Kowalski motion grammar) */
+    /* Motion tokens */
     --ease-brand: cubic-bezier(0.2, 0.8, 0.2, 1);
     --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
     --ease-in: cubic-bezier(0.4, 0.0, 1, 1);
@@ -54,7 +37,6 @@
   }
 
   .dark {
-    /* New Order / Power Corruption & Lies - deep midnight */
     --background: 220 15% 4%;
     --foreground: 0 0% 90%;
     --card: 220 12% 6%;
@@ -66,12 +48,9 @@
     --secondary: 220 10% 10%;
     --secondary-foreground: 0 0% 90%;
     --muted: 220 10% 12%;
-    --muted-foreground: 220 5% 78%; /* Increased for WCAG AA contrast at reduced opacities */
-    /* Peter Saville red - brighter for dark mode */
+    --muted-foreground: 220 5% 78%;
     --accent: 355 78% 58%;
     --accent-foreground: 0 0% 100%;
-    /* Blue Monday accent */
-    --accent-secondary: 210 80% 55%;
     --destructive: 0 63% 34%;
     --destructive-foreground: 0 0% 100%;
     --border: 220 10% 15%;
@@ -127,24 +106,6 @@
   }
 }
 
-/* Grid system (Brockmann-inspired) */
-.container-grid {
-  width: 100%;
-  max-width: var(--grid-max-width);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--grid-margin);
-  padding-right: var(--grid-margin);
-}
-
-.grid-12 {
-  display: grid;
-  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
-  column-gap: var(--grid-gutter);
-  row-gap: calc(var(--baseline) * 2);
-}
-
-/* Links - understated, functional */
 a {
   text-decoration: none;
 }
@@ -154,7 +115,6 @@ hr {
   opacity: 1;
 }
 
-/* Reduced motion - accessibility first */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.001ms !important;
@@ -167,7 +127,6 @@ hr {
 /* Font stack */
 @layer base {
   :root {
-    --font-roboto-mono: "Roboto Mono", monospace;
     --font-inter: var(--font-general-sans);
     --font-sans: var(--font-general-sans), ui-sans-serif, system-ui,
       -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial,
@@ -178,9 +137,6 @@ hr {
   }
 }
 
-.font-roboto-mono {
-  font-family: var(--font-roboto-mono);
-}
 .font-sans {
   font-family: var(--font-sans);
 }
@@ -219,247 +175,8 @@ hr {
   }
 }
 
-/* Print styles */
-@media print {
-  .grid {
-    display: block !important;
-  }
-  .resume-label {
-    color: #000 !important;
-  }
-  body {
-    background: #fff !important;
-  }
-  a[href]:after {
-    content: " (" attr(href) ")";
-    font-weight: 400;
-  }
-  .hide-print {
-    display: none !important;
-  }
-}
-
-/* Keyframes */
-@keyframes glint {
-  0% { background-position: -200%; }
-  100% { background-position: 200%; }
-}
-
-/* Factory Records / Peter Saville inspired elements */
-.fac-catalog {
-  font-family: var(--font-mono, ui-monospace, monospace);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: hsl(var(--muted-foreground));
-}
-
-.fac-bar {
-  width: 3px;
-  height: 100%;
-  background: hsl(var(--accent));
-}
-
-.fac-stripe {
-  background: repeating-linear-gradient(
-    90deg,
-    hsl(var(--accent)) 0px,
-    hsl(var(--accent)) 2px,
-    transparent 2px,
-    transparent 8px
-  );
-}
-
-/* Industrial heading treatment */
-.heading-industrial {
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-/* Saville scanlines overlay */
-.scanlines {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 2px,
-    rgba(0, 0, 0, 0.03) 2px,
-    rgba(0, 0, 0, 0.03) 4px
-  );
-}
-
-.dark .scanlines {
-  background: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 2px,
-    rgba(255, 255, 255, 0.02) 2px,
-    rgba(255, 255, 255, 0.02) 4px
-  );
-}
-
-/* Craft route contrast tuning */
-.craft-surface .text-muted {
-  color: hsl(var(--foreground) / 0.8);
-}
-
-.craft-surface .text-muted-foreground {
-  color: hsl(var(--foreground) / 0.72);
-}
-
-.craft-surface .border-border\/30,
-.craft-surface .border-border\/50 {
-  border-color: hsl(var(--border) / 0.9);
-}
-
-/* New Order blue glow */
-.glow-blue {
-  text-shadow: 0 0 20px hsl(210 80% 55% / 0.5);
-}
-
-/* FAC accent underline */
-.fac-underline {
-  text-decoration: none;
-  background-image: linear-gradient(hsl(var(--accent)), hsl(var(--accent)));
-  background-size: 100% 2px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-}
-
-/* Falling stars (Easter egg) */
-.dark .falling-star {
-  background-color: white;
-}
-.falling-star {
-  background-color: black;
-}
-
-/* Dot matrix background */
-.dot-matrix {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  --dot-size: 16px;
-  --drift-x: 16px;
-  --drift-y: 8px;
-  --mask-focus-x: 50%;
-  --mask-focus-y: 30%;
-  background-image: radial-gradient(
-      circle at center,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0) 40%,
-      rgba(0, 0, 0, 0.25) 100%
-    ),
-    radial-gradient(
-      1px 1px at 1px 1px,
-      rgba(0, 0, 0, 0.18) 99%,
-      transparent 100%
-    );
-  background-size: 100% 100%, var(--dot-size) var(--dot-size);
-  background-position: 0 0, 0 0;
-  mask-image: radial-gradient(
-    ellipse at var(--mask-focus-x) var(--mask-focus-y),
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 1) 50%,
-    rgba(0, 0, 0, 0.6) 70%,
-    rgba(0, 0, 0, 0.2) 100%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse at var(--mask-focus-x) var(--mask-focus-y),
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 1) 50%,
-    rgba(0, 0, 0, 0.6) 70%,
-    rgba(0, 0, 0, 0.2) 100%
-  );
-  animation: dotDrift 20s var(--ease-brand) infinite alternate;
-  will-change: transform, background-position;
-}
-
-.dark .dot-matrix {
-  background-image: radial-gradient(
-      circle at center,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0) 40%,
-      rgba(0, 0, 0, 0.45) 100%
-    ),
-    radial-gradient(
-      1px 1px at 1px 1px,
-      rgba(255, 255, 255, 0.1) 99%,
-      transparent 100%
-    );
-}
-
-@keyframes dotDrift {
-  0% { background-position: 0 0, 0 0; }
-  100% { background-position: 0 0, var(--drift-x) var(--drift-y); }
-}
-
-.dot-matrix::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    1200px 600px at var(--mask-focus-x) calc(var(--mask-focus-y)),
-    rgba(255, 255, 255, 0.06),
-    rgba(255, 255, 255, 0) 60%
-  );
-  mix-blend-mode: screen;
-}
-
-/* Scrollbar hiding */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Debug grid overlay */
-.grid-overlay {
-  background-image: linear-gradient(
-      to bottom,
-      rgba(234, 45, 66, 0.25) 1px,
-      transparent 1px
-    ),
-    repeating-linear-gradient(
-      to right,
-      transparent 0,
-      transparent
-        calc(
-          (
-              var(--grid-max-width) - var(--grid-gutter) *
-                (var(--grid-columns) - 1)
-            ) / var(--grid-columns)
-        ),
-      rgba(66, 133, 244, 0.15)
-        calc(
-          (
-              var(--grid-max-width) - var(--grid-gutter) *
-                (var(--grid-columns) - 1)
-            ) / var(--grid-columns)
-        ),
-      rgba(66, 133, 244, 0.15)
-        calc(
-          (
-              var(--grid-max-width) - var(--grid-gutter) *
-                (var(--grid-columns) - 1)
-            ) / var(--grid-columns) + var(--grid-gutter)
-        )
-    );
-  background-size: 100% var(--baseline), var(--grid-max-width) 100%;
-  background-position: center top, center top;
-  background-repeat: repeat, repeat;
-}
-
 /* Print styles for resume */
 @media print {
-  /* Reset colors for print */
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 0%;
@@ -474,47 +191,43 @@ hr {
     line-height: 1.4;
   }
 
-  /* Hide non-essential elements */
   .hide-print,
   nav,
   footer,
   button,
-  [role="dialog"],
-  .art-style-menu {
+  [role="dialog"] {
     display: none !important;
   }
 
-  /* Clean up resume section */
   #resume {
     page-break-before: always;
   }
 
-  /* Remove shadows and backgrounds */
   * {
     box-shadow: none !important;
     text-shadow: none !important;
   }
 
-  /* Ensure links show URLs */
   a[href^="http"]:after {
     content: " (" attr(href) ")";
     font-size: 9pt;
     color: #666;
   }
 
-  /* Keep headings with content */
+  .resume-label {
+    color: #000 !important;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
     page-break-inside: avoid;
   }
 
-  /* Prevent orphans */
   p, li {
     orphans: 3;
     widows: 3;
   }
 
-  /* Page margins */
   @page {
     margin: 1.5cm;
   }

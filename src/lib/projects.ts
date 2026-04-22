@@ -7,7 +7,6 @@ export type Role =
   | "Collaborator"
   | "Frontend"
   | "Studio Collaboration";
-// Unified categories - lowercase versions for filtering, title case for display
 export type Category =
   | "Client"
   | "Personal"
@@ -18,97 +17,76 @@ export type Category =
   | "research";
 
 export interface BuildLogEntry {
-  date: string; // ISO date
-  whatWorks: string[]; // shipped bits
-  nextMilestone?: string; // “by 2025-08-18: …”
-  openQuestion?: string; // thing you’re exploring
+  date: string;
+  whatWorks: string[];
+  nextMilestone?: string;
+  openQuestion?: string;
 }
 
 export interface Metrics {
-  lighthouseMobile?: number; // 0–100
+  lighthouseMobile?: number;
   lcpMs?: number;
   cls?: number;
   bundleKB?: number;
-  ocrAccuracyPct?: number; // RR specific
-  scraperRefreshMin?: number; // RR specific
+  ocrAccuracyPct?: number;
+  scraperRefreshMin?: number;
 }
 
 export interface Links {
   live?: string;
   repo?: string;
-  video?: string; // mp4/webm
+  video?: string;
 }
 
 export interface Project {
-  slug: string; // stable id for routes
+  slug: string;
   name: string;
   status: Status;
   category: Category;
   role?: Role;
-  description: string; // short card copy
-  longDescription?: string; // case page
-  startDate?: string; // ISO
-  endDate?: string; // ISO
-  featured?: boolean; // show on home
-  priority?: number; // lower = earlier in lists
-  tags?: string[]; // "Next.js", "CMS", "AI"
-  stack?: string[]; // tech list
-  client?: string; // if applicable
-  redacted?: boolean; // NDA-friendly
+  description: string;
+  longDescription?: string;
+  startDate?: string;
+  endDate?: string;
+  featured?: boolean;
+  priority?: number;
+  tags?: string[];
+  stack?: string[];
+  client?: string;
+  redacted?: boolean;
   links?: Links;
-  screenshots?: string[]; // /public paths
-  thumb?: string; // primary image
-  impact?: string[]; // outcomes / wins
+  screenshots?: string[];
+  thumb?: string;
+  impact?: string[];
   metrics?: Metrics;
-  buildLog?: BuildLogEntry[]; // for WIP
-  caseStudySlug?: string; // route to case study page
-  // Legacy compat fields (derived from links)
-  link?: string; // alias for links.live
-  codeLink?: string; // alias for links.repo
+  buildLog?: BuildLogEntry[];
+  caseStudySlug?: string;
+  link?: string;
+  codeLink?: string;
 }
 
 export const projects: Project[] = [
-  // ===== RESEARCH & EXPLORATION =====
   {
-    slug: "whakapapa",
-    name: "Whakapapa",
+    slug: "silk",
+    name: "Silk",
     status: "Active",
-    category: "personal",
-    role: "Solo",
+    category: "research",
+    role: "Lead",
     featured: true,
     priority: 0,
     description:
-      "AI-powered family knowledge base. Drop in old letters, photos, or documents — Claude AI extracts people, dates, and relationships. Record stories in someone's own voice. Build a living family tree. Named after the Māori word for genealogy.",
+      "React Native client for Silk. Cross-platform product work across publishing, collection, and media-heavy mobile flows.",
     longDescription:
-      "Whakapapa is a family knowledge base built to preserve stories before they're lost. The AI pipeline is the core: scan a document with your phone → OCR via Tesseract.js reads it → Claude extracts genealogical data (names, dates, relationships, places) → suggestions appear for review → approved data populates your family tree. Voice recording lets you capture stories in someone's own words. Interactive tree visualization with dagre + React Flow. GEDCOM import for existing genealogy data. Shareable links with optional password protection. Multi-workspace for different family lines. Role-based access for family collaboration. Named with deep respect for te ao Māori — whakapapa isn't just a family tree, it's the living web of stories and connections between people across generations.",
-    tags: ["Next.js", "Supabase", "Claude AI", "OCR", "React Flow", "Genealogy"],
-    stack: [
-      "Next.js 16",
-      "TypeScript",
-      "Supabase",
-      "Claude API",
-      "Tesseract.js",
-      "React Flow",
-      "dagre",
-      "Framer Motion",
-      "Tailwind CSS",
-    ],
-    startDate: "2025-01-01",
-    caseStudySlug: "whakapapa",
+      "I work on the React Native client for Silk. The product includes writing, private archives, and media-rich collections, so the mobile work covers navigation, editing, media handling, and parity across iOS and Android.",
+    tags: ["React Native", "TypeScript", "Expo"],
+    stack: ["React Native", "TypeScript", "Expo"],
+    startDate: "2024-06-01",
     links: {
-      live: "https://whakapapa.vercel.app",
-      repo: "https://github.com/maxwellyoung/whakapapa",
+      live: "https://www.silk.cx",
     },
-    link: "https://whakapapa.vercel.app",
-    codeLink: "https://github.com/maxwellyoung/whakapapa",
-    screenshots: [],
-    thumb: undefined,
-    impact: [
-      "AI extraction pipeline: document → OCR → Claude → structured genealogical data",
-      "Open source alternative to Ancestry.com ($0 vs $20-50/month)",
-      "Voice recording preserves stories in the storyteller's own voice",
-      "Cultural respect: named after Māori concept of living genealogy",
-    ],
+    link: "https://www.silk.cx",
+    screenshots: ["/projectImages/silk-1.webp"],
+    thumb: "/projectImages/silk-1.webp",
   },
   {
     slug: "liner",
@@ -117,11 +95,11 @@ export const projects: Project[] = [
     category: "personal",
     role: "Solo",
     featured: true,
-    priority: 0,
+    priority: 1,
     description:
-      "Spatial canvas for organizing music. Like Figma for musicians — drag songs, build albums, sequence tracks. tldraw-powered infinite canvas with audio playback. iOS app in review.",
+      "Spatial canvas for organizing music. Built on tldraw with audio playback, custom shapes, and shared data across web and iOS.",
     longDescription:
-      "Liner is a spatial canvas for music organization. Drop audio files, paste streaming links, arrange songs visually. Built on tldraw's infinite canvas with custom shapes for songs, frames, and notes. Audio player with waveform visualization, queue management, and keyboard controls. Cloud sync via Convex + Clerk auth. Local-first architecture means your data stays yours. The design constraint: make organization feel like play, not work.",
+      "Liner is a music workspace for arranging songs, notes, and references on an infinite canvas. It uses tldraw with custom shapes for music objects, waveform extraction and playback, keyboard controls, and optional sync through Convex and Clerk. The same underlying model is used across the web app and the iOS app.",
     tags: ["Next.js", "tldraw", "Convex", "Audio", "Canvas", "iOS App"],
     stack: [
       "Next.js",
@@ -151,40 +129,17 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "silk",
-    name: "Silk",
-    status: "Active",
-    category: "research",
-    role: "Lead",
-    featured: true,
-    priority: 0,
-    description:
-      "React Native mobile client for a new social platform built around blogging, curation, and multimedia moodboarding. Shipping cross-platform interfaces for a product rethinking how people collect and share things online.",
-    longDescription:
-      "Silk is a social infrastructure platform where people blog, build private archives, and create multimedia moodboards called webs. I build the React Native mobile client. The product handles a wide range of content types (images, videos, articles, songs, webpages) so the mobile work is about making all of that feel native and fluid on a phone. Gesture-driven navigation, rich text editing, cross-platform parity between iOS and Android, and offline-first sync for archives.",
-    tags: ["React Native", "TypeScript", "Expo"],
-    stack: ["React Native", "TypeScript", "Expo"],
-    startDate: "2024-06-01",
-    // caseStudySlug: "silk", // Enable after app launch
-    links: {
-      live: "https://www.silk.cx",
-    },
-    link: "https://www.silk.cx",
-    screenshots: ["/projectImages/silk-1.webp"],
-    thumb: "/projectImages/silk-1.webp",
-  },
-  {
     slug: "vape-quit-coach",
     name: "Vape Quit Coach",
     status: "Active",
     category: "personal",
     role: "Solo",
     featured: true,
-    priority: 1,
+    priority: 2,
     description:
-      "Solo-built iOS app for quitting vaping. 4.8★. Anti-Algorithm Recovery — tracks dopamine recovery, not just streaks. AI Coach, Panic Button, Interactive Rituals.",
+      "iOS app for quitting vaping. Built in React Native and Expo with coaching, recovery tracking, and relapse support.",
     longDescription:
-      "Most health apps weaponize guilt. Daily streaks that punish you for slipping. Progress bars that make failure visible. I refused to build any of that. Vape Quit Coach treats addiction as a design problem, not a willpower problem. The interface uses liminal states, identity-based progress, and environmental cues—not shame. Solo-built from zero: React Native, Expo, end-to-end. 4.8★ on the App Store. What I learned: shame-based design is lazy design. If your app needs to make users feel bad to work, you haven't solved the problem.",
+      "Vape Quit Coach is a solo-built iOS app for smoking cessation. It includes recovery timelines, coaching flows, and support tools designed for relapse-prone moments. Built end-to-end in React Native and Expo.",
     tags: ["React Native", "Expo", "Behavior Design", "Mobile App"],
     stack: ["React Native", "Expo", "TypeScript"],
     startDate: "2024-01-01",
@@ -208,53 +163,17 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "receipt-radar",
-    name: "Receipt Radar",
-    status: "Active",
-    category: "personal",
-    role: "Solo",
-    featured: true,
-    priority: 2,
-    description:
-      "Grocery intelligence app that scans receipts, tracks spend, and helps people find better prices before the next shop.",
-    longDescription:
-      "Receipt Radar turns a pile of receipts into a live pricing memory. Scan a receipt, parse line items, track category-level spend, and compare prices over time so shoppers can make better decisions without spreadsheet overhead. Built with Expo + React Native and a real-time backend, with OCR and price intelligence services handling extraction and normalization. The focus is trust: clear sources, timestamps on pricing, and respectful privacy defaults.",
-    tags: ["React Native", "Expo", "Convex", "OCR", "Price Intelligence"],
-    stack: [
-      "React Native",
-      "Expo",
-      "TypeScript",
-      "Convex",
-      "Supabase",
-      "FastAPI",
-    ],
-    startDate: "2025-01-01",
-    screenshots: [
-      "/projectImages/receipt-radar-1.png",
-    ],
-    thumb: "/projectImages/receipt-radar-1.png",
-    links: {
-      live: "/receipt-radar",
-    },
-    link: "/receipt-radar",
-    impact: [
-      "Receipt parsing + item normalization for longitudinal spend tracking",
-      "Price comparison context with store/source transparency",
-      "Mobile-first workflow designed for real grocery routines",
-    ],
-  },
-  {
     slug: "holdspace",
     name: "Holdspace",
     status: "Active",
     category: "personal",
     role: "Solo",
     featured: true,
-    priority: 2,
+    priority: 3,
     description:
-      "A private queue for things you want to return to. Shows one item at a time—your 'Now'—and holds the rest. Native Swift app with fluid gesture-driven UI, smart link previews, and no tracking.",
+      "Native iOS app for keeping a small personal queue. One item in focus, the rest held in the background.",
     longDescription:
-      "Most productivity apps overwhelm you with lists. Holdspace does the opposite—it shows you one thing, and gently holds the rest until you're ready. Swipe right when you're done, swipe left to snooze. Built with SwiftUI and SwiftData for iOS 17+. Physics-based animations respond to your touch. Smart link enrichment fetches titles and previews automatically. No accounts, no analytics, no tracking. Home Screen and Lock Screen widgets. Share extension for capturing from any app. A tool that respects your attention.",
+      "Holdspace is a native SwiftUI app for keeping a lightweight queue of links and tasks. It shows one current item at a time, supports quick gesture actions, and keeps everything on-device with widgets and a share extension.",
     tags: ["Swift", "SwiftUI", "iOS", "SwiftData", "Native"],
     stack: ["Swift", "SwiftUI", "SwiftData", "WidgetKit", "Live Activities"],
     startDate: "2025-01-01",
@@ -271,129 +190,91 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "doomscroll",
-    name: "Doomscroll",
-    status: "Planned",
-    category: "personal",
-    role: "Solo",
-    featured: false,
-    priority: 2,
-    description:
-      "Master any codebase by doomscrolling through it. Swipe-to-learn spaced repetition for code — TikTok UX meets software education.",
-    longDescription:
-      "Doomscroll is a spaced repetition learning app for developers. Instead of reading docs, you swipe through bite-sized code concepts the way you'd scroll TikTok. Each card teaches one idea — a pattern, an API, a gotcha. Swipe right to remember, left to review again. The algorithm surfaces the right card at the right time. Solo-built in React Native/Expo.",
-    tags: ["React Native", "Expo", "Education", "Spaced Repetition", "iOS"],
-    stack: ["React Native", "Expo", "TypeScript"],
-    screenshots: [],
-    thumb: undefined,
-    impact: [
-      "TikTok-style swipe UX applied to technical learning",
-      "Spaced repetition algorithm surfaces cards at optimal review intervals",
-    ],
-  },
-  {
-    slug: "gnbn",
-    name: "Good News Bad News",
-    status: "Active",
-    category: "personal",
-    role: "Solo",
-    featured: true,
-    priority: 3,
-    description:
-      "The news, rebalanced. Every bad story paired with something good. A different relationship with current events.",
-    longDescription:
-      "The news cycle is built to make you anxious. Good News Bad News pairs every negative story with a positive one — not to minimize reality, but to restore proportion. Solo-built iOS app with a clean, opinionated reading experience.",
-    tags: ["React Native", "Expo", "News", "iOS", "Wellbeing"],
-    stack: ["React Native", "Expo", "TypeScript"],
-    links: {
-      live: "https://www.ninetynine.digital/good-news-bad-news",
-    },
-    link: "https://www.ninetynine.digital/good-news-bad-news",
-    screenshots: ["/projectImages/gnbn-icon.png"],
-    thumb: "/projectImages/gnbn-icon.png",
-  },
-  {
-    slug: "dry-club",
-    name: "Dry Club",
-    status: "Active",
-    category: "personal",
-    role: "Solo",
-    featured: true,
-    priority: 3,
-    description:
-      "A sober social companion. Track your streak, find your people, navigate a world built around drinking.",
-    longDescription:
-      "Dry Club is for people choosing sobriety or moderation in a culture that makes that choice difficult. Track your no-drink streak, connect with others doing the same, and get tools for social situations. Built because Maxwell quit drinking and couldn't find an app that didn't feel clinical or preachy.",
-    tags: ["React Native", "Expo", "iOS", "Sobriety", "Social"],
-    stack: ["React Native", "Expo", "TypeScript", "RevenueCat"],
-    links: {
-      live: "https://www.ninetynine.digital/dry-club",
-    },
-    link: "https://www.ninetynine.digital/dry-club",
-    screenshots: ["/projectImages/dry-club-icon.png"],
-    thumb: "/projectImages/dry-club-icon.png",
-    impact: [
-      "IAP subscription model with weekly/monthly/annual tiers",
-      "Built from personal experience — less clinical, more human",
-    ],
-  },
-  {
-    slug: "afterlight",
-    name: "Afterlight",
+    slug: "whakapapa",
+    name: "Whakapapa",
     status: "Active",
     category: "personal",
     role: "Solo",
     featured: true,
     priority: 4,
     description:
-      "Receipt scanner and expense tracker. Point your camera at a receipt; Afterlight reads it, categorizes it, and builds your spending picture.",
+      "Family history app for documents, photos, voice notes, and relationship data. OCR and LLM extraction turn source material into structured family records.",
     longDescription:
-      "Afterlight uses on-device vision to OCR receipts in real time. No manual entry. It categorizes expenses automatically and gives you a clear picture of where your money goes. Built with VisionKit and a custom ML categorization layer. Clean, minimal UI that gets out of the way.",
-    tags: ["Swift", "SwiftUI", "iOS", "OCR", "Finance", "VisionKit"],
-    stack: ["Swift", "SwiftUI", "VisionKit", "CoreML"],
+      "Whakapapa is a family history app built around source material. You can scan letters and documents, upload photos, record stories, and review extracted people, dates, relationships, and places before adding them to a shared tree. The stack combines OCR, LLM-assisted extraction, React Flow for the tree view, and support for GEDCOM import and multi-workspace collaboration.",
+    tags: ["Next.js", "Supabase", "Claude AI", "OCR", "React Flow", "Genealogy"],
+    stack: [
+      "Next.js 16",
+      "TypeScript",
+      "Supabase",
+      "Claude API",
+      "Tesseract.js",
+      "React Flow",
+      "dagre",
+      "Framer Motion",
+      "Tailwind CSS",
+    ],
+    startDate: "2025-01-01",
+    caseStudySlug: "whakapapa",
     links: {
-      live: "https://www.ninetynine.digital/afterlight",
+      live: "https://whakapapa.vercel.app",
+      repo: "https://github.com/maxwellyoung/whakapapa",
     },
-    link: "https://www.ninetynine.digital/afterlight",
-    screenshots: ["/projectImages/afterlight-icon.png"],
-    thumb: "/projectImages/afterlight-icon.png",
+    link: "https://whakapapa.vercel.app",
+    codeLink: "https://github.com/maxwellyoung/whakapapa",
+    screenshots: [],
+    thumb: undefined,
     impact: [
-      "On-device OCR — no data leaves the phone",
-      "ML-powered expense categorization",
+      "AI extraction pipeline: document → OCR → Claude → structured genealogical data",
+      "Voice recording preserves stories in the storyteller's own voice",
+      "Cultural respect: named after Māori concept of living genealogy",
     ],
   },
   {
-    slug: "gambit",
-    name: "Gambit",
-    status: "Active" as Status,
+    slug: "receipt-radar",
+    name: "Receipt Radar",
+    status: "Active",
     category: "personal",
     role: "Solo",
     featured: true,
     priority: 5,
     description:
-      "Chess, but you set the terms. Choose your opening, difficulty, and style. Play against an adaptive engine that matches your level.",
+      "Receipt scanning app for grocery spend tracking and price comparison.",
     longDescription:
-      "Gambit is an opinionated chess PWA. You pick your opening repertoire before the game, then the engine plays into your chosen lines — so you practice real positions, not random ones. Adaptive difficulty. Clean board. No ads, no accounts needed.",
-    tags: ["Next.js", "PWA", "Chess", "Game", "TypeScript"],
-    stack: ["Next.js", "TypeScript", "Stockfish", "Tailwind CSS"],
+      "Receipt Radar turns paper receipts into structured grocery history. It scans receipts, normalizes line items, tracks spend over time, and makes price comparisons easier to review before the next shop. Built with React Native, Expo, OCR services, and a real-time backend.",
+    tags: ["React Native", "Expo", "Convex", "OCR", "Price Intelligence"],
+    stack: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Convex",
+      "Supabase",
+      "FastAPI",
+    ],
+    startDate: "2025-01-01",
+    screenshots: ["/projectImages/receipt-radar-1.png"],
+    thumb: "/projectImages/receipt-radar-1.png",
     links: {
-      live: "https://playgambit.app",
+      live: "/receipt-radar",
     },
-    link: "https://playgambit.app",
+    link: "/receipt-radar",
+    impact: [
+      "Receipt parsing + item normalization for longitudinal spend tracking",
+      "Price comparison context with store/source transparency",
+      "Mobile-first workflow designed for real grocery routines",
+    ],
   },
-  // ===== FEATURED =====
   {
     slug: "chlita",
-    name: "Ch'lita — Fashion Stylist Portfolio",
+    name: "Ch'lita",
     status: "Completed",
     category: "studio",
     role: "Lead",
     featured: true,
-    priority: 2,
+    priority: 6,
     description:
-      "Portfolio for a stylist (Rosalia, The Dare). Sanity CMS, zero layout shift. The site disappears behind the images.",
+      "Portfolio site for stylist Ch'lita with a CMS-driven image-led layout.",
     longDescription:
-      "Built for Ch'lita, whose clients include some of music's most visually striking artists. The brief was simple: let the imagery lead. Sanity CMS for her to update, responsive art direction that doesn't crop poorly, and just enough motion to feel alive.",
+      "Built for stylist Ch'lita as a portfolio that keeps the visual work in front. The site uses Sanity for authoring, responsive image handling, and restrained motion.",
     tags: ["Next.js", "Sanity CMS", "Fashion", "Art Direction"],
     stack: ["Next.js", "TypeScript", "Sanity", "Framer Motion", "Vercel"],
     client: "Ch'lita",
@@ -410,27 +291,54 @@ export const projects: Project[] = [
       "/projectImages/chlita-5.webp",
     ],
     thumb: "/projectImages/chlita-1.webp",
-    impact: [
-      "Authoring time down via schema-driven project templates",
-      "CLS stabilised with aspect-ratio hints + responsive art direction",
+  },
+  {
+    slug: "dayle",
+    name: "Dayle Palfreyman",
+    status: "Completed",
+    category: "studio",
+    role: "Lead",
+    featured: true,
+    priority: 7,
+    description:
+      "Portfolio site for installation artist Dayle Palfreyman with a full-screen gallery and CMS editing.",
+    longDescription:
+      "Built for Dayle Palfreyman as a full-screen portfolio with vertical snapping, simple navigation, and client-managed content through Sanity.",
+    tags: [
+      "Next.js 15",
+      "Sanity CMS",
+      "Framer Motion",
+      "Accessibility",
+      "Portfolio",
     ],
-    metrics: {
-      // lighthouseMobile: 90,
-      // cls: 0.01,
+    stack: [
+      "Next.js 15",
+      "TypeScript",
+      "Sanity",
+      "Tailwind CSS",
+      "Framer Motion",
+    ],
+    client: "Dayle Palfreyman",
+    caseStudySlug: "dayle",
+    links: {
+      live: "https://dayle.vercel.app",
     },
+    link: "https://dayle.vercel.app",
+    screenshots: ["/projectImages/dayle-1.webp"],
+    thumb: "/projectImages/dayle-1.webp",
   },
   {
     slug: "goodness-gracious",
-    name: "Goodness Gracious — Shopify",
+    name: "Goodness Gracious",
     status: "Completed",
     category: "studio",
     role: "Frontend",
     featured: true,
-    priority: 3,
+    priority: 8,
     description:
-      "Shopify site for an Auckland bakery. 40% faster load time. Built with New Territory Studio.",
+      "Shopify site for an Auckland bakery, built with New Territory Studio.",
     longDescription:
-      "Goodness Gracious is a beloved Auckland bakery. The site needed to match the feeling of walking in — warm, unhurried, inviting. Shopify Liquid, careful typography, and layouts that don't jump around as images load.",
+      "A Shopify build for Goodness Gracious focused on a stable layout, straightforward commerce flows, and a visual tone that matched the bakery.",
     tags: ["Shopify", "Performance", "Ecommerce"],
     stack: ["Shopify Liquid", "CSS"],
     client: "Goodness Gracious (via New Territory Studio)",
@@ -443,69 +351,19 @@ export const projects: Project[] = [
       "/projectImages/goodness-2.webp",
     ],
     thumb: "/projectImages/goodness-1.webp",
-    impact: [
-      "CLS stabilised across hero/media sections",
-      "Reusable, section-based theme",
-    ],
-  },
-
-  // ===== MORE WORK =====
-  {
-    slug: "dayle",
-    name: "Dayle Palfreyman — Artist Portfolio",
-    status: "Completed",
-    category: "studio",
-    role: "Lead",
-    featured: true,
-    priority: 3,
-    description:
-      "Immersive full-screen gallery for an installation artist. Sanity CMS, spring animations, WCAG 2.1 AA accessibility.",
-    longDescription:
-      "Built for Dayle Palfreyman, an installation and object-based artist. Full-screen vertically-snapping gallery with spring-based animations, auto-hiding chrome, and comprehensive accessibility. Sanity CMS for complete client independence. JSON-LD structured data and dynamic sitemaps for automated SEO.",
-    tags: ["Next.js 15", "Sanity CMS", "Framer Motion", "Accessibility", "Portfolio"],
-    stack: ["Next.js 15", "TypeScript", "Sanity", "Tailwind CSS", "Framer Motion"],
-    client: "Dayle Palfreyman",
-    caseStudySlug: "dayle",
-    links: {
-      live: "https://dayle.vercel.app",
-    },
-    link: "https://dayle.vercel.app",
-    screenshots: ["/projectImages/dayle-1.webp"],
-    thumb: "/projectImages/dayle-1.webp",
-  },
-  {
-    slug: "ivan-guzman",
-    name: "Ivan Guzman — Writer & Cultural Strategist",
-    status: "Completed",
-    category: "studio",
-    role: "Lead",
-    featured: false,
-    priority: 4,
-    description:
-      "Author-focused portfolio with Sanity CMS, a strong typographic system, and minimal chrome around long-form writing.",
-    longDescription:
-      "Next.js + Tailwind + Framer Motion + Sanity. Built an authorable, typographic site that gets out of the way of the writing.",
-    tags: ["Next.js", "Sanity CMS", "Content Modeling"],
-    stack: ["Next.js", "Tailwind CSS", "Framer Motion", "Sanity"],
-    links: {
-      live: "https://ivan-guzman.com/",
-    },
-    link: "https://ivan-guzman.com/",
-    screenshots: ["/projectImages/ivan-1.webp"],
-    thumb: "/projectImages/ivan-1.webp",
   },
   {
     slug: "jeremy-blake",
-    name: "Jeremy Blake — Interactive Art",
+    name: "Jeremy Blake",
     status: "Completed",
     category: "personal",
     role: "Solo",
     featured: true,
-    priority: 6,
+    priority: 9,
     description:
-      "An interactive tribute to the color-field artist. Move your cursor; the colors respond.",
+      "Interactive WebGL piece built in response to Jeremy Blake's digital paintings.",
     longDescription:
-      "Jeremy Blake made digital paintings that breathed. This is my attempt to capture that feeling — shaders that respond to your presence, tuned to run smoothly even on modest hardware. Art as code, code as instrument.",
+      "A personal WebGL study inspired by Jeremy Blake. It uses shader-driven color fields that respond to pointer movement and run in the browser.",
     tags: ["React", "Three.js", "WebGL", "GLSL", "Interactive Art"],
     stack: ["React", "Three.js", "WebGL"],
     links: {
@@ -517,67 +375,17 @@ export const projects: Project[] = [
     screenshots: ["/projectImages/blake.webp", "/projectImages/blake2.webp"],
     thumb: "/projectImages/blake.webp",
   },
-  {
-    slug: "cinesync",
-    name: "CineSync",
-    status: "Completed",
-    category: "personal",
-    role: "Solo",
-    featured: false,
-    priority: 7,
-    description:
-      "Film discovery that learns your taste. Tell it a mood; it finds the movie.",
-    longDescription:
-      "A quiet experiment in recommendation. You describe what you're feeling, it suggests films. Built with Supabase and lightweight embeddings — trying to make AI feel less like a feature and more like a knowledgeable friend.",
-    tags: ["Next.js", "Supabase", "AI", "Embeddings"],
-    stack: ["Next.js", "TypeScript", "Supabase", "OpenAI"],
-    links: {
-      live: "https://cinesync-peach.vercel.app/",
-      video: "/projectVideos/cinesync-demo.webm",
-    },
-    link: "https://cinesync-peach.vercel.app/",
-    screenshots: [
-      "/projectImages/cinesync1.webp",
-      "/projectImages/cinesync2.webp",
-      "/projectImages/cinesync3.webp",
-    ],
-    thumb: "/projectImages/cinesync1.webp",
-  },
-  {
-    slug: "music-maxwell",
-    name: "Music Site — Artist Portfolio",
-    status: "Completed",
-    category: "personal",
-    role: "Solo",
-    featured: true,
-    priority: 8,
-    description:
-      "A personal music hub with collectibles, listening rooms, and community features. Full-stack Next.js.",
-    longDescription:
-      "Built as a home for my music — not just a landing page, but a space. Collectible digital items, listening rooms with real-time features via Pusher, a forum for conversation, and a shop powered by Shopify. Three.js visuals where they matter, Clerk auth, Prisma + Neon for the data layer. The kind of site I'd want as a fan.",
-    tags: ["Next.js", "Prisma", "Three.js", "Real-time", "Shopify"],
-    stack: [
-      "Next.js",
-      "TypeScript",
-      "Prisma",
-      "Neon",
-      "Clerk",
-      "Pusher",
-      "Three.js",
-      "Shopify",
-      "Tailwind",
-    ],
-    links: {
-      live: "https://music.maxwellyoung.info",
-      repo: "https://github.com/maxwellyoung/music_maxwell",
-    },
-    link: "https://music.maxwellyoung.info",
-    codeLink: "https://github.com/maxwellyoung/music_maxwell",
-    screenshots: [
-      "/projectImages/music-1.webp",
-      "/projectImages/music-2.webp",
-      "/projectImages/music-3.webp",
-    ],
-    thumb: "/projectImages/music-1.webp",
-  },
-  ];
+];
+
+export function isActiveStatus(project: Pick<Project, "status">): boolean {
+  return project.status === "Active" || project.status === "WIP";
+}
+
+export function getProjectStatusLabel(
+  project: Pick<Project, "status">
+): string | null {
+  if (project.status === "Active") return "Active";
+  if (project.status === "WIP") return "WIP";
+  if (project.status === "Planned") return "Planned";
+  return null;
+}

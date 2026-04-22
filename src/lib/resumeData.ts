@@ -1,7 +1,6 @@
 type ResumeData = {
   name: string;
   title: string;
-  availability?: string;
   contact: {
     email: string;
     location: string;
@@ -9,7 +8,6 @@ type ResumeData = {
     github: string;
     linkedin: string;
   };
-  selectedWork: { title: string; href: string }[];
   experience: {
     title: string;
     company: string;
@@ -32,7 +30,6 @@ type ResumeData = {
 export const resumeData: ResumeData = {
   name: "Maxwell Young",
   title: "Design Engineer",
-  availability: "Open to opportunities · NZ / Remote",
   contact: {
     email: "maxwell@ninetynine.digital",
     location: "Auckland, NZ",
@@ -40,32 +37,6 @@ export const resumeData: ResumeData = {
     github: "github.com/maxwellyoung",
     linkedin: "linkedin.com/in/maxwell-young-a55032125",
   },
-  selectedWork: [
-    {
-      title: "Silk — Mobile Design Engineer",
-      href: "https://silk.cx",
-    },
-    {
-      title: "Vape Quit Coach — iOS App (4.8★)",
-      href: "https://vapequitcoach.com",
-    },
-    {
-      title: "Ch'lita — Fashion Stylist Portfolio",
-      href: "https://chlita.com",
-    },
-    {
-      title: "Jeremy Blake — Interactive WebGL Art",
-      href: "https://jeremy-blake.vercel.app",
-    },
-    {
-      title: "Doomscroll — iOS Spaced Repetition App",
-      href: "https://apps.apple.com/app/id6759280323",
-    },
-    {
-      title: "Dry Club — Sober Social Companion",
-      href: "https://dryclub.app",
-    },
-  ],
   experience: [
     {
       title: "Mobile Design Engineer",
@@ -73,44 +44,24 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.silk.cx/",
       date: "Jun 2024 – Present",
       summary:
-        "React Native frontend for a blogging platform that rejects engagement metrics.",
+        "React Native product work across publishing, archives, and media-heavy flows.",
       responsibilities: [
-        "Built interfaces for blogs, archives, and moodboards—no algorithmic feed, no engagement optimization.",
-        "Shipped multimedia upload and private archive features across iOS/Android/web.",
-      ],
-    },
-    {
-      title: "Hospitality",
-      company: "Rhythmethod",
-      date: "2025 – Present",
-      summary: "1-2 days/week. Keeps cash flow stable while the apps grow.",
-      responsibilities: [],
-    },
-    {
-      title: "Research Assistant + Masters Student",
-      company: "Auckland University of Technology",
-      companyHref: "https://www.aut.ac.nz/",
-      date: "2025 – Present",
-      summary:
-        "AUT Computer Science masters. Research in explainable AI for health apps. Also building Liner (spatial music canvas) as final-year project.",
-      responsibilities: [
-        "Designing visualizations that communicate ML model uncertainty without triggering health anxiety.",
-        "Building Liner — a spatial canvas for music — as the R&D project: tldraw infinite canvas, audio playback, Convex sync.",
-        "Courses: AI, HCI, Special Topics, R&D Project.",
+        "Built interfaces for publishing, archives, and media-heavy mobile flows.",
+        "Shipped upload and archive features across iOS and Android.",
       ],
     },
     {
       title: "Design Engineer",
-      company: "Freelance (ninetynine.digital)",
+      company: "ninetynine.digital",
       companyHref: "https://www.ninetynine.digital/",
       date: "Apr 2023 – Present",
       summary:
-        "Solo design + dev for clients in fashion, food, and tech. 7+ sites shipped.",
+        "Independent studio. Client sites and my own products.",
       responsibilities: [
-        "Vape Quit Coach (iOS): solo-built, 4.8★. Refused guilt mechanics—used behavioral architecture instead.",
-        "Goodness Gracious (Shopify): 40% faster load time via image optimization and CLS fixes.",
-        "Ch'lita (Next.js/Sanity): zero-layout-shift portfolio for a stylist with major-label clients.",
-        "Dayle (Next.js/Sanity): artist portfolio with CMS-driven works and writing sections.",
+        "Built and shipped Vape Quit Coach for iOS in React Native and Expo.",
+        "Built Liner, a spatial canvas for music, with tldraw, audio playback, and Convex sync.",
+        "Portfolio and CMS work for Ch'lita and Dayle in Next.js and Sanity.",
+        "Shopify performance and layout stability for Goodness Gracious.",
       ],
     },
     {
@@ -119,20 +70,19 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.spark.co.nz/",
       date: "Nov 2022 – Apr 2023",
       summary:
-        "Internal analytics dashboard for 50+ data analysts. Consolidated 4 tools → 1.",
+        "Internal analytics dashboard work for Spark's data intelligence team.",
       responsibilities: [
-        "Replaced Power BI workflows with React/Next.js app—faster iteration, better UX.",
-        "Built Figma design system that cut design-to-dev handoff time.",
+        "Helped replace Power BI workflows with a React and Next.js dashboard.",
+        "Built interface patterns and design system components for the team.",
       ],
     },
   ],
   education: [
     {
-      degree:
-        "B.Sc. Computer & Information Sciences (Software Development, Data Science)",
+      degree: "B.Sc. Computer & Information Sciences",
       institution: "Auckland University of Technology",
       institutionHref: "https://www.aut.ac.nz/",
-      date: "2024 – 2026 (Expected)",
+      date: "2024 – 2026",
     },
     {
       degree: "Certificate in Web Development (Level 6)",
@@ -143,66 +93,44 @@ export const resumeData: ResumeData = {
   ],
   skills: [
     {
-      category: "Frontend",
+      category: "Frontend & Mobile",
       items: [
         "TypeScript",
         "React",
+        "React Native",
         "Next.js",
+        "Expo",
+        "SwiftUI",
         "Tailwind CSS",
         "Framer Motion",
       ],
     },
     {
-      category: "Mobile",
-      items: ["React Native", "Expo", "SwiftUI", "RevenueCat", "EAS Build"],
-    },
-    {
-      category: "Backend",
+      category: "Backend & Data",
       items: [
         "Node.js",
         "PostgreSQL",
+        "Convex",
+        "Supabase",
         "Prisma",
-        "REST APIs",
-        "Vercel",
-        "AWS",
+        "Python",
       ],
     },
     {
       category: "Design",
-      items: [
-        "Figma",
-        "Design Systems",
-        "Interaction Design",
-        "Prototyping",
-      ],
-    },
-    {
-      category: "Data",
-      items: [
-        "Python",
-        "Pandas",
-        "SQL",
-        "R",
-        "Jupyter",
-      ],
-    },
-    {
-      category: "AI/ML",
-      items: ["Claude API", "VisionKit", "CoreML", "OCR"],
+      items: ["Figma", "Design Systems", "Interaction Design", "Prototyping"],
     },
     {
       category: "Also",
       items: [
-        "Three.js/WebGL",
+        "Three.js / WebGL",
         "Accessibility (WCAG)",
         "Performance (Core Web Vitals)",
-        "Docker",
-        "CI/CD",
+        "Claude API",
       ],
     },
   ],
   socials: [
-    { name: "Portfolio — dev.maxwellyoung.info", url: "https://dev.maxwellyoung.info" },
     { name: "GitHub", url: "https://github.com/maxwellyoung" },
     { name: "LinkedIn", url: "https://linkedin.com/in/maxwell-young-a55032125" },
   ],

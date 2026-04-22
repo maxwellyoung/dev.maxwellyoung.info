@@ -2,38 +2,41 @@ import { Metadata } from "next";
 import { CraftHeader } from "@/components/craft/CraftHeader";
 import { InteractionStudies } from "@/components/craft/InteractionStudies";
 import { DesignEssays } from "@/components/craft/DesignEssays";
-import { ProjectHighlights } from "@/components/craft/ProjectHighlights";
-import { SpringExamples } from "@/components/craft/SpringExamples";
 import { MotionSpec } from "@/components/craft/MotionSpec";
-import { CraftFooter } from "@/components/craft/CraftFooter";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Interaction Lab & Essays | Maxwell Young",
+  title: "Craft | Maxwell Young",
   description:
-    "Interaction studies, design essays, and practical notes on motion and UI behavior.",
+    "Interaction studies, motion spec, and essays on UI behavior.",
   openGraph: {
-    title: "Interaction Lab & Essays | Maxwell Young",
-    images: [{ url: "/meta.png", width: 1200, height: 630, alt: "Maxwell Young - Interaction Lab" }],
+    title: "Craft | Maxwell Young",
+    images: [
+      {
+        url: "/meta.png",
+        width: 1200,
+        height: 630,
+        alt: "Maxwell Young — Craft",
+      },
+    ],
     description:
-      "Interaction studies, design essays, and practical notes on motion and UI behavior.",
+      "Interaction studies, motion spec, and essays on UI behavior.",
   },
 };
 
 export default function CraftPage() {
   return (
-    <main className="craft-surface min-h-screen bg-background">
-      <div className="max-w-4xl mx-auto px-6 py-12">
+    <main className="min-h-screen bg-background">
+      <div className="max-w-2xl mx-auto px-6 py-16">
         <CraftHeader />
 
-        <div className="space-y-24 mt-16">
+        <div className="space-y-20 mt-16">
           <MotionSpec />
           <InteractionStudies />
-          <SpringExamples />
-          <ProjectHighlights />
           <DesignEssays />
         </div>
 
-        <CraftFooter />
+        <SiteFooter />
       </div>
     </main>
   );
