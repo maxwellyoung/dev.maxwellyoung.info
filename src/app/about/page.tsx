@@ -62,6 +62,12 @@ export default function AboutPage() {
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li>
               <span className="text-foreground font-medium">
+                Research Assistant
+              </span>{" "}
+              at University of Auckland (2026)
+            </li>
+            <li>
+              <span className="text-foreground font-medium">
                 Mobile Design Engineer
               </span>{" "}
               at Silk (Jun 2024 &ndash; Present)

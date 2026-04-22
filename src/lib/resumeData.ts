@@ -39,6 +39,30 @@ export const resumeData: ResumeData = {
   },
   experience: [
     {
+      title: "Research Assistant",
+      company: "University of Auckland",
+      companyHref: "https://www.auckland.ac.nz/",
+      date: "2026",
+      summary:
+        "Funded research app work supporting a medical research project.",
+      responsibilities: [
+        "Built product and interface work for a funded medical research application.",
+        "Contributed implementation and UX decisions for a research-facing software tool.",
+      ],
+    },
+    {
+      title: "Research Assistant",
+      company: "Auckland University of Technology",
+      companyHref: "https://www.aut.ac.nz/",
+      date: "Jan 2025 – Mar 2025",
+      summary:
+        "Funded sleep-app research work with AUT.",
+      responsibilities: [
+        "Worked on a sleep-focused research app as part of a funded university project.",
+        "Supported product development and interface implementation for the research team.",
+      ],
+    },
+    {
       title: "Mobile Design Engineer",
       company: "Silk",
       companyHref: "https://www.silk.cx/",

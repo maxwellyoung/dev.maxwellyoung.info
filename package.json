@@ -8,7 +8,13 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint .",
-    "test": "node --import tsx --test src/**/*.test.ts"
+    "test": "node --import tsx --test src/**/*.test.ts",
+    "fallow": "npx --yes fallow",
+    "fallow:dead-code": "npx --yes fallow dead-code",
+    "fallow:dupes": "npx --yes fallow dupes",
+    "fallow:health": "npx --yes fallow health",
+    "fallow:audit": "npx --yes fallow audit",
+    "fallow:fix:dry-run": "npx --yes fallow fix --dry-run"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",
