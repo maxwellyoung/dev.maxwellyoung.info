@@ -44,7 +44,7 @@ export default function AboutPage() {
             I&apos;m Maxwell Young, a design engineer based in Auckland, New
             Zealand. I work at{" "}
             <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-            , building their iOS and Android apps in React Native.
+            , contributing to their iOS and Android apps in React Native.
           </p>
 
           <p>

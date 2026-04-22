@@ -46,8 +46,8 @@ export const resumeData: ResumeData = {
       summary:
         "React Native product work across publishing, archives, and media-heavy flows.",
       responsibilities: [
-        "Built interfaces for publishing, archives, and media-heavy mobile flows.",
-        "Shipped upload and archive features across iOS and Android.",
+        "Contribute to interfaces for publishing, archives, and media-heavy mobile flows.",
+        "Work across iOS and Android React Native features alongside a small team.",
       ],
     },
     {

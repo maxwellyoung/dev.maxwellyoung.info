@@ -71,13 +71,13 @@ export const projects: Project[] = [
     name: "Silk",
     status: "Active",
     category: "research",
-    role: "Lead",
+    role: "Collaborator",
     featured: true,
     priority: 0,
     description:
-      "React Native client for Silk. Cross-platform product work across publishing, collection, and media-heavy mobile flows.",
+      "React Native client work at Silk — contributing to mobile publishing, archive, and media flows.",
     longDescription:
-      "I work on the React Native client for Silk. The product includes writing, private archives, and media-rich collections, so the mobile work covers navigation, editing, media handling, and parity across iOS and Android.",
+      "I work on the React Native client at Silk as part of a small team. The product spans writing, private archives, and media-rich collections, and I contribute across navigation, editing, media handling, and iOS / Android parity.",
     tags: ["React Native", "TypeScript", "Expo"],
     stack: ["React Native", "TypeScript", "Expo"],
     startDate: "2024-06-01",
@@ -268,7 +268,7 @@ export const projects: Project[] = [
     name: "Ch'lita",
     status: "Completed",
     category: "studio",
-    role: "Lead",
+    role: "Solo",
     featured: true,
     priority: 6,
     description:
@@ -297,7 +297,7 @@ export const projects: Project[] = [
     name: "Dayle Palfreyman",
     status: "Completed",
     category: "studio",
-    role: "Lead",
+    role: "Solo",
     featured: true,
     priority: 7,
     description:
