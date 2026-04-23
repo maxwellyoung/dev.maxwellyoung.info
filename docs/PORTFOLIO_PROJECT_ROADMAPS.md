@@ -2,60 +2,104 @@
 
 ## Strategy
 
-The public portfolio should not mirror a private folder system. It should use the current mental model as editorial scaffolding, then present the work in the order that creates the strongest visitor signal.
+The portfolio should not be "what I am working on right now." It should be a curated proof system: show the strongest public evidence of taste, shipping, technical range, and judgment, whether the work is active or completed.
 
-Current public set:
+Private mental model:
 
-| Bucket | Projects | Public Purpose |
+| Bucket | Projects | Public Handling |
 | --- | --- | --- |
-| Work | Silk, Safer Medicines Research | Shows production teamwork and research-facing software work. |
-| Personal products | Liner, Whakapapa | Shows original product judgment, systems thinking, and solo shipping. |
-| School R&D | Palmerston North Council R&D | Shows ambiguity, stakeholder constraints, and civic/product discovery. |
+| Work | Silk, AR-OPT | Silk is public. AR-OPT stays private until research/release context is ready. |
+| Personal products | Liner, Whakapapa, Vape Quit Coach, Holdspace, Receipt Radar | Public if there is enough artifact/proof to support the story. |
+| Client/studio | Ch'lita, Dayle Palfreyman, Goodness Gracious | Public because completed client work is often stronger proof than unfinished current work. |
+| School/R&D | COMP702 LTP | Private until permissions, artifact quality, and framing are clear. |
+| Experiments | Jeremy Blake | Public as texture, but lower priority than product/client proof. |
 
-The live Work list should stay ranked by proof strength, not grouped as folders. Labels like `Work`, `Personal Product`, and `School R&D` give context without making the page feel like a resume outline.
+Public rule: include work when it is safe to show and helps the visitor understand capability. Do not expose a repo, live link, or implementation detail just because it exists.
+
+## Visibility Model
+
+| Visibility | Meaning | Current Examples |
+| --- | --- | --- |
+| Public | Render on the Work list. Links are allowed if the artifact is public and useful. | Liner, Whakapapa, Silk, Ch'lita, Dayle, Goodness Gracious |
+| Parked | Keep in data, but do not render until it supports the current narrative. | Future category if the list gets too long |
+| Private | Track internally only. No public rendering, no links. | AR-OPT, COMP702 LTP |
 
 ## Visitor Rubric
 
 | Criterion | Weight | What Good Looks Like |
 | --- | ---: | --- |
 | Strategic signal | 25% | The project makes the kind of work you want more of feel obvious. |
-| Product ambition | 20% | It shows systems thinking, original product judgment, or technical depth. |
-| Proof density | 20% | Screenshots, metrics, case-study notes, and links make the work credible. |
-| Visual memorability | 15% | The project is easy to remember after browsing. |
+| Product/client proof | 20% | It shows real constraints, real users, or a shipped artifact. |
+| Product ambition | 15% | It shows systems thinking, original product judgment, or technical depth. |
+| Proof density | 15% | Screenshots, metrics, case-study notes, and links make the work credible. |
+| Visual memorability | 10% | The project is easy to remember after browsing. |
 | Visitor relevance | 10% | A recruiter, client, collaborator, or founder can map it to their needs. |
-| Story completeness | 10% | The problem, role, constraints, and outcome are clear without extra context. |
+| Story completeness | 5% | The problem, role, constraints, and outcome are clear without extra context. |
 
-## Current Ranking
+## Public Ranking
 
 1. Liner
 2. Whakapapa
 3. Silk
-4. Safer Medicines Research
-5. Palmerston North Council R&D
+4. Vape Quit Coach
+5. Holdspace
+6. Ch'lita
+7. Dayle Palfreyman
+8. Goodness Gracious
+9. Receipt Radar
+10. Jeremy Blake
+
+## Private Inventory
+
+### AR-OPT
+
+Current handling: private inventory only.
+
+Why: this is the medical/research project behind the safer-medicines work. It has meaningful repo evidence and implementation depth, but it is not ready for public release or public claims.
+
+Roadmap to public:
+
+- Confirm what can be named: institution, project title, problem area, role, data boundaries, and approved outputs.
+- Remove or avoid any sensitive data, internal notes, live clinical implications, or premature medical claims.
+- Decide whether the public artifact should be a write-up, screenshot-free project note, approved demo, publication link, or nothing yet.
+- If public later, frame it as research software and decision-support tooling, not as a clinical product.
+
+### COMP702 LTP
+
+Current handling: private inventory only.
+
+Why: this is a school/R&D project around Palmerston North Council long-term plan material. It may be valuable proof of civic/product research, but only if the artifact is shareable and the framing is strong.
+
+Roadmap to public:
+
+- Gather the final report, slides, prototype, evaluation notes, and any public-source-only material.
+- Check whether council/school context can be referenced safely.
+- Convert it into a compact R&D case study only if it shows clear research method, constraints, recommendation, and learning.
+- Avoid presenting it as deployed civic software unless it actually shipped or was used.
 
 ## Cross-Project Roadmap
 
-### Phase 1: Public Proof Pass
+### Phase 1: Proof Pass
 
-- Add one strong visual artifact for every visible project.
-- Add a consistent proof block: role, context label, constraint, artifact, and result.
-- Keep research-sensitive work high-level until it can be safely described.
-- Replace placeholder descriptions with specific constraints and decisions as soon as artifacts are available.
+- Add one strong visual artifact for every public project.
+- Add a consistent proof block: role, context label, status, constraint, artifact, and result.
+- Keep private projects in inventory but off the Work list.
+- Prefer completed work with strong proof over current work with weak proof.
 
 ### Phase 2: Case Study Depth
 
 - Keep Liner and Whakapapa as the deepest product case studies.
-- Add a public-safe Silk contribution summary.
-- Add a public-safe safer-medicines research note once the research scope can be described clearly.
-- Add a Palmerston North Council R&D write-up if there is a report, prototype, presentation, or final artifact that can be shared.
+- Add public-safe Silk contribution notes if approved.
+- Improve client-work case studies enough that completed work looks intentional, not like filler.
+- Only promote AR-OPT or COMP702 LTP once they clear privacy, quality, and framing checks.
 
 ### Phase 3: Conversion Layer
 
 - Add a small contact CTA after expanded project details.
 - Add analytics events for project expand, case-study click, outbound link click, and contact CTA.
-- Add a short "current focus" line near the Work section if it helps explain why the set is intentionally small.
+- Add a "selected work" framing if the list grows beyond what the page can support.
 
-## Project Roadmaps
+## Public Project Roadmaps
 
 ### Liner
 
@@ -67,19 +111,6 @@ Immediate improvements:
 - Add an architecture note showing shared web/iOS data model, Convex sync, tldraw custom shapes, and audio processing.
 - Tighten the audience copy around music directors, producers, DJs, playlist builders, or people organizing references.
 
-Product roadmap:
-
-- Ship polished import flows for Spotify, Apple Music, local files, and URL drops.
-- Add shareable read-only boards for collaborators.
-- Add templates for set planning, reference boards, album sequencing, and rehearsal notes.
-- Improve offline-first behavior and conflict handling between web and iOS.
-
-Proof to add:
-
-- Canvas walkthrough video.
-- Before/after interaction sketches.
-- One concrete performance metric, such as board load time or waveform generation time.
-
 ### Whakapapa
 
 Portfolio goal: make this read as a serious AI-assisted family history product, not just a demo.
@@ -88,24 +119,11 @@ Immediate improvements:
 
 - Add screenshots for document upload, OCR review, extracted people/places/dates, and tree visualization.
 - Add a diagram of the extraction pipeline: source material to OCR to LLM structuring to human review to family graph.
-- Clarify cultural handling: the product borrows a meaningful term, so the page should explain respect, data ownership, and review-first design.
-
-Product roadmap:
-
-- Add confidence scoring and provenance for every extracted fact.
-- Build a review queue that lets family members accept, reject, merge, or annotate extracted records.
-- Add GEDCOM import/export hardening and duplicate-person detection.
-- Add workspace permissions for families, historians, and private branches.
-
-Proof to add:
-
-- Pipeline diagram.
-- One anonymized extraction example.
-- Source-to-tree screenshot sequence.
+- Clarify cultural handling, data ownership, and review-first design.
 
 ### Silk
 
-Portfolio goal: use Silk to prove professional team contribution and React Native production experience.
+Portfolio goal: prove professional team contribution and React Native production experience.
 
 Immediate improvements:
 
@@ -113,68 +131,67 @@ Immediate improvements:
 - Add public-safe screenshots or abstracted UI crops if the team allows them.
 - Clarify the technical domains: publishing, media, archive, editor flows, navigation, parity, and mobile reliability.
 
-Product/proof roadmap:
+### Vape Quit Coach
 
-- Keep a private brag log of shipped features, bugs fixed, performance wins, and cross-platform decisions.
-- Convert approved contributions into anonymized case-study bullets.
-- Track one or two measurable improvements, such as crash reduction, media upload reliability, or editor latency if available.
-
-Proof to add:
-
-- Public-safe contribution summary.
-- Team context and role boundary.
-- One approved artifact or external link beyond the product homepage.
-
-### Safer Medicines Research
-
-Portfolio goal: show that the work spans production software and serious research contexts without making unsupported medical claims.
+Portfolio goal: show behavior-design seriousness, mobile product ownership, and monetization proof.
 
 Immediate improvements:
 
-- Keep public copy high-level while the research context is active.
-- Identify what can safely be named: institution, role, broad research area, technical responsibilities, and non-sensitive outputs.
-- Add a short explanation of how research software differs from product software: uncertainty, validation, data handling, reproducibility, and collaboration.
+- Add App Store screenshots or a polished screenshot grid.
+- Clarify retention/revenue story without overclaiming health outcomes.
+- Add a safety/privacy note around behavior-change support.
 
-Research/software roadmap:
+### Holdspace
 
-- Maintain a private contribution log with dates, shipped artifacts, datasets/tools touched, and decisions made.
-- Turn repeatable research tooling into a public-safe technical pattern if allowed.
-- Add a project note once there is a publication, poster, demo, repository, or approved summary.
-
-Proof to add:
-
-- Public-safe project summary.
-- Approved artifact link if one exists later.
-- Clear boundaries around what is intentionally not disclosed.
-
-### Palmerston North Council R&D
-
-Portfolio goal: use this as evidence for civic/product discovery and stakeholder-aware design, not as a generic school assignment.
+Portfolio goal: show native iOS craft, restraint, and interaction taste.
 
 Immediate improvements:
 
-- Gather the final artifact: report, slide deck, prototype, brief, or demo.
-- Write the project around the ambiguity: council context, constraints, research process, and recommendation.
-- Avoid overclaiming implementation unless software was actually built and used.
+- Add a screen recording of share extension to queue to widget to completed item.
+- Explain why one-item focus is different from a standard task app.
+- Add App Store availability and privacy-first data handling.
 
-R&D roadmap:
+### Ch'lita
 
-- Convert the school project into a compact case study: brief, users/stakeholders, research method, prototype/solution direction, tradeoffs, and outcome.
-- Add one visual from the artifact if public sharing is allowed.
-- Add a "what I would do next" section focused on validation and implementation risk.
+Portfolio goal: show client delivery, visual sensitivity, and CMS-backed editorial work.
 
-Proof to add:
+Immediate improvements:
 
-- Public-safe artifact screenshot.
-- Research process summary.
-- Final recommendation and rationale.
+- Add client constraint, CMS model, responsive image handling, and stronger screenshots.
+- Make the project read as a complete client outcome, not just a link.
 
-## Parked Projects
+### Dayle Palfreyman
 
-These projects can stay out of the main Work list for now, but they are still useful as supporting material if the site later needs breadth:
+Portfolio goal: show quiet artist-led design and client-editable portfolio craft.
 
-- Vape Quit Coach: useful if health/product monetization is part of the target narrative.
-- Holdspace: useful if native iOS craft becomes a stronger positioning angle.
-- Ch'lita, Dayle Palfreyman, Goodness Gracious: useful for client delivery and visual/web craft.
-- Receipt Radar: useful if OCR, grocery data, or mobile data capture becomes relevant.
-- Jeremy Blake: useful as experimental texture, not a primary proof point.
+Immediate improvements:
+
+- Add more screenshots to show the full-screen gallery system.
+- Explain vertical snapping, CMS editing, and accessibility decisions.
+
+### Goodness Gracious
+
+Portfolio goal: show commercial frontend work and ecommerce delivery.
+
+Immediate improvements:
+
+- Add context around studio collaboration and exact frontend responsibilities.
+- Add screenshots showing commerce flow, product pages, cart, and responsive behavior.
+
+### Receipt Radar
+
+Portfolio goal: show OCR/data-capture product thinking, but it needs sharper proof before moving higher.
+
+Immediate improvements:
+
+- Add scan, parsed receipt, normalized grocery list, and comparison-view screenshots.
+- Clarify whether this is a working app, prototype, or local experiment.
+
+### Jeremy Blake
+
+Portfolio goal: add experimental texture without letting it dominate the product/client story.
+
+Immediate improvements:
+
+- Reframe as an interaction study.
+- Add a motion preview so visitors understand it without opening the link.
