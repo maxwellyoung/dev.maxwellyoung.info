@@ -38,6 +38,7 @@ next-env.d.ts
 
 # private docs (not for hiring managers to find)
 /docs/*
+!/docs/PORTFOLIO_PROJECT_ROADMAPS.md
 !/docs/career-os/
 !/docs/career-os/**
 squirrel.toml

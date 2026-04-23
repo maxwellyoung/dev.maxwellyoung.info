@@ -65,7 +65,7 @@ export interface Project {
   codeLink?: string;
 }
 
-export const projects: Project[] = [
+const projects: Project[] = [
   {
     slug: "silk",
     name: "Silk",
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     category: "research",
     role: "Collaborator",
     featured: true,
-    priority: 0,
+    priority: 3,
     description:
       "React Native client work at Silk — contributing to mobile publishing, archive, and media flows.",
     longDescription:
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     category: "personal",
     role: "Solo",
     featured: true,
-    priority: 1,
+    priority: 0,
     description:
       "Spatial canvas for organizing music. Built on tldraw with audio playback, custom shapes, and shared data across web and iOS.",
     longDescription:
@@ -135,7 +135,7 @@ export const projects: Project[] = [
     category: "personal",
     role: "Solo",
     featured: true,
-    priority: 2,
+    priority: 1,
     description:
       "iOS app for quitting vaping. Built in React Native and Expo with coaching, recovery tracking, and relapse support.",
     longDescription:
@@ -169,7 +169,7 @@ export const projects: Project[] = [
     category: "personal",
     role: "Solo",
     featured: true,
-    priority: 3,
+    priority: 4,
     description:
       "Native iOS app for keeping a small personal queue. One item in focus, the rest held in the background.",
     longDescription:
@@ -196,7 +196,7 @@ export const projects: Project[] = [
     category: "personal",
     role: "Solo",
     featured: true,
-    priority: 4,
+    priority: 2,
     description:
       "Family history app for documents, photos, voice notes, and relationship data. OCR and LLM extraction turn source material into structured family records.",
     longDescription:
@@ -380,6 +380,12 @@ export const projects: Project[] = [
 export function isActiveStatus(project: Pick<Project, "status">): boolean {
   return project.status === "Active" || project.status === "WIP";
 }
+
+export const rankedProjects = [...projects].sort(
+  (a, b) =>
+    (a.priority ?? Number.MAX_SAFE_INTEGER) -
+    (b.priority ?? Number.MAX_SAFE_INTEGER),
+);
 
 export function getProjectStatusLabel(
   project: Pick<Project, "status">

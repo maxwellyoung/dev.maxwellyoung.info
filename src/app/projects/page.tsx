@@ -7,7 +7,7 @@ import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Carousel from "@/components/Carousel";
-import { Project, projects } from "@/lib/projects";
+import { Project, rankedProjects } from "@/lib/projects";
 import { ProjectDetails } from "@/components/ProjectDetails";
 import { ChevronDown } from "lucide-react";
 import { container, item, spring } from "@/lib/motion";
@@ -146,7 +146,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
 
   const selectedProject: Project | null = expandedProject
-    ? projects.find((p) => p.name === expandedProject) || null
+    ? rankedProjects.find((p) => p.name === expandedProject) || null
     : null;
 
   const handleCarouselOpen = () => setIsCarouselOpen(true);
@@ -166,7 +166,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
           animate="visible"
           className="divide-y divide-[hsl(var(--border))]/50 overflow-x-hidden w-full max-w-full"
         >
-          {projects.map((p, index) => (
+          {rankedProjects.map((p, index) => (
             <ProjectRow
               key={p.name}
               p={p}
