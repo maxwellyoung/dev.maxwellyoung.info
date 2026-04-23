@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
+  "ignorePatterns": [
+    "posts/**/*.mdx",
+    "scripts/capture-screenshots.ts",
+    "src/app/resume/head.tsx",
+    "src/components/ProjectCard.tsx",
+    "src/components/providers/PostHogProvider.tsx",
+    "src/hooks/useKeyboardNavigation.ts",
+    "src/hooks/useProjectScroll.ts",
+    "src/lib/awardsTypes.ts"
+  ],
+  "ignoreDependencies": [
+    "@mdx-js/loader",
+    "@mdx-js/react",
+    "@next/mdx",
+    "@vercel/speed-insights",
+    "gray-matter",
+    "postcss-load-config",
+    "remark-frontmatter",
+    "remark-html",
+    "remark-parse",
+    "remark-stringify",
+    "tailwindcss-animate",
+    "unified"
+  ]
+}

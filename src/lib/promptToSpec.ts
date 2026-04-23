@@ -1,4 +1,4 @@
-export type PromptSpec = {
+type PromptSpec = {
   theme:
     | "flames"
     | "water"
@@ -44,75 +44,108 @@ const COLOR_MAP: Record<string, string> = {
   white: "#eaeaea",
 };
 
+const THEME_MATCHERS: Array<{
+  theme: PromptSpec["theme"];
+  pattern: RegExp;
+}> = [
+  { theme: "flames", pattern: /flame|fire|ember|lava|inferno|bonfire|torch|smoke/ },
+  { theme: "water", pattern: /water|ocean|sea|wave|caustic|lagoon|pool|ripple/ },
+  { theme: "aurora", pattern: /aurora|northern lights|borealis|curtains|ribbon/ },
+  { theme: "zebra", pattern: /zebra|stripe|monochrome stripes|barcode/ },
+  { theme: "matrix", pattern: /matrix|glyph|code rain|terminal rain/ },
+  { theme: "vhs", pattern: /vhs|scanline|retro|crt|chromatic/ },
+  { theme: "flow", pattern: /flow|curl|stream|smoke trail|tendrils/ },
+  { theme: "particles", pattern: /particle|firefly|spark|snow|starfield/ },
+  { theme: "mesh", pattern: /mesh|grid|wire|wireframe/ },
+];
+
+const MOTION_MATCHERS: Array<{
+  motion: PromptSpec["motion"];
+  pattern: RegExp;
+}> = [
+  { motion: "slow", pattern: /slow|calm|gentle|subtle|still|glacial|soft/ },
+  { motion: "fast", pattern: /fast|rapid|energetic|intense|hyper|frantic/ },
+];
+
+const COMPLEXITY_MATCHERS: Array<{
+  complexity: PromptSpec["complexity"];
+  pattern: RegExp;
+}> = [
+  { complexity: 0.3, pattern: /minimal|simple|clean|minimalist/ },
+  {
+    complexity: 0.8,
+    pattern: /complex|intricate|rich|ornate|chaotic|maximalist|baroque/,
+  },
+];
+
+function chooseTheme(input: string): PromptSpec["theme"] {
+  return (
+    THEME_MATCHERS.find((matcher) => matcher.pattern.test(input))?.theme ||
+    "generic"
+  );
+}
+
+function chooseMotion(input: string): PromptSpec["motion"] {
+  return (
+    MOTION_MATCHERS.find((matcher) => matcher.pattern.test(input))?.motion ||
+    "medium"
+  );
+}
+
+function chooseComplexity(input: string): PromptSpec["complexity"] {
+  return (
+    COMPLEXITY_MATCHERS.find((matcher) => matcher.pattern.test(input))
+      ?.complexity || 0.5
+  );
+}
+
 function extractPalette(
   prompt: string
 ): { colorA?: string; colorB?: string } | undefined {
-  const lower = prompt.toLowerCase();
-  // First, try to find hex codes explicitly provided
-  const hexes = Array.from(
-    lower.matchAll(/#([0-9a-f]{3}|[0-9a-f]{6})\b/gi)
-  ).map((m) => m[0]);
+  const hexes = Array.from(prompt.matchAll(/#([0-9a-f]{3}|[0-9a-f]{6})\b/gi)).map(
+    (match) => match[0]
+  );
+
   if (hexes.length > 0) {
-    const a = hexes[0];
-    const b =
-      hexes[1] || (a.toLowerCase() === "#ffffff" ? "#0a1830" : "#0e0e0e");
-    return { colorA: a, colorB: b };
+    const colorA = hexes[0];
+    const colorB =
+      hexes[1] || (colorA.toLowerCase() === "#ffffff" ? "#0a1830" : "#0e0e0e");
+    return { colorA, colorB };
   }
-  const colors = Object.keys(COLOR_MAP).filter((c) => lower.includes(c));
-  if (colors.length === 0) return undefined;
-  const a = COLOR_MAP[colors[0]];
-  const b =
-    COLOR_MAP[colors[1]] || (colors[0] === "white" ? "#0a1830" : "#0e0e0e");
-  return { colorA: a, colorB: b };
+
+  const namedColors = Object.keys(COLOR_MAP).filter((color) => prompt.includes(color));
+  if (namedColors.length === 0) {
+    return undefined;
+  }
+
+  const primaryColor = namedColors[0];
+  return {
+    colorA: COLOR_MAP[primaryColor],
+    colorB:
+      COLOR_MAP[namedColors[1]] ||
+      (primaryColor === "white" ? "#0a1830" : "#0e0e0e"),
+  };
+}
+
+function buildExtras(prompt: string): PromptSpec["extras"] {
+  return {
+    sparks: /spark|ember/.test(prompt),
+    vignette: !/no vignette|novignette/.test(prompt),
+    chroma: /vhs|chromatic|retro/.test(prompt),
+    monochrome: /monochrome|black and white|grayscale|greyscale/.test(prompt),
+    highContrast: /high contrast|punchy|bold/.test(prompt),
+    particles: /particles|snow|firefly|embers/.test(prompt),
+  };
 }
 
 export function parsePromptToSpec(prompt?: string): PromptSpec {
-  const p = String(prompt || "").toLowerCase();
-  const theme: PromptSpec["theme"] =
-    /flame|fire|ember|lava|inferno|bonfire|torch|smoke/.test(p)
-      ? "flames"
-      : /water|ocean|sea|wave|caustic|lagoon|pool|ripple/.test(p)
-      ? "water"
-      : /aurora|northern lights|borealis|curtains|ribbon/.test(p)
-      ? "aurora"
-      : /zebra|stripe|monochrome stripes|barcode/.test(p)
-      ? "zebra"
-      : /matrix|glyph|code rain|terminal rain/.test(p)
-      ? "matrix"
-      : /vhs|scanline|retro|crt|chromatic/.test(p)
-      ? "vhs"
-      : /flow|curl|stream|smoke trail|tendrils/.test(p)
-      ? "flow"
-      : /particle|firefly|spark|snow|starfield/.test(p)
-      ? "particles"
-      : /mesh|grid|wire|wireframe/.test(p)
-      ? "mesh"
-      : "generic";
+  const normalizedPrompt = String(prompt || "").toLowerCase();
 
-  const motion: PromptSpec["motion"] =
-    /slow|calm|gentle|subtle|still|glacial|soft/.test(p)
-      ? "slow"
-      : /fast|rapid|energetic|intense|hyper|frantic/.test(p)
-      ? "fast"
-      : "medium";
-
-  const complexity: PromptSpec["complexity"] =
-    /minimal|simple|clean|minimalist/.test(p)
-      ? 0.3
-      : /complex|intricate|rich|ornate|chaotic|maximalist|baroque/.test(p)
-      ? 0.8
-      : 0.5;
-
-  const extras = {
-    sparks: /spark|ember/.test(p),
-    vignette: !/no vignette|novignette/.test(p),
-    chroma: /vhs|chromatic|retro/.test(p),
-    monochrome: /monochrome|black and white|grayscale|greyscale/.test(p),
-    highContrast: /high contrast|punchy|bold/.test(p),
-    particles: /particles|snow|firefly|embers/.test(p),
-  } as const;
-
-  const palette = extractPalette(p);
-
-  return { theme, motion, complexity, palette, extras };
+  return {
+    theme: chooseTheme(normalizedPrompt),
+    motion: chooseMotion(normalizedPrompt),
+    complexity: chooseComplexity(normalizedPrompt),
+    palette: extractPalette(normalizedPrompt),
+    extras: buildExtras(normalizedPrompt),
+  };
 }

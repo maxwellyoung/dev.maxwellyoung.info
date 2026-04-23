@@ -39,27 +39,27 @@ export const resumeData: ResumeData = {
   },
   experience: [
     {
-      title: "Research Assistant",
+      title: "Software Research Assistant",
       company: "University of Auckland",
       companyHref: "https://www.auckland.ac.nz/",
-      date: "2026",
+      date: "Apr 2026 – Present",
       summary:
-        "Funded research app work supporting a medical research project.",
+        "Funded safer-medicines research tooling for a deprescribing and clinical review workflow.",
       responsibilities: [
-        "Built product and interface work for a funded medical research application.",
-        "Contributed implementation and UX decisions for a research-facing software tool.",
+        "Turned a medication recommendation spreadsheet into a machine-usable rules dataset for a safer-medicines and deprescribing project.",
+        "Built clinician-facing prototypes that match structured patient assessments to candidate medication review rules with provenance, ranking summaries, and audit-aware workflow support.",
       ],
     },
     {
-      title: "Research Assistant",
+      title: "Software Research Assistant",
       company: "Auckland University of Technology",
       companyHref: "https://www.aut.ac.nz/",
-      date: "Jan 2025 – Mar 2025",
+      date: "Nov 2025 – Jan 2026",
       summary:
-        "Funded sleep-app research work with AUT.",
+        "Funded sleep research app spanning mobile product, backend services, and on-device ML.",
       responsibilities: [
-        "Worked on a sleep-focused research app as part of a funded university project.",
-        "Supported product development and interface implementation for the research team.",
+        "Built a React Native and Expo mobile app for EEG-based sleep-stage classification with session views, hypnograms, questionnaires, and sleep metrics.",
+        "Integrated on-device and cloud inference flows using AttnSleep TFLite, FastAPI, Express, and Supabase, with separate consumer and lab modes for the AUT research workflow.",
       ],
     },
     {

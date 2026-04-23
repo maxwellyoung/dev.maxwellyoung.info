@@ -62,7 +62,7 @@ interface AccentLinkProps extends AnimatedLinkProps {
   arrow?: boolean;
 }
 
-export const AccentLink = forwardRef<HTMLAnchorElement, AccentLinkProps>(
+const AccentLink = forwardRef<HTMLAnchorElement, AccentLinkProps>(
   ({ children, className, arrow = true, external, ...props }, ref) => {
     const baseClasses = cn(
       "group inline-flex items-center gap-1.5",

@@ -1,4 +1,4 @@
-import sanityClient from "@sanity/client";
+import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import type { BlogPost } from "@/lib/types";
 
@@ -6,7 +6,7 @@ const apiVersion =
   process.env.NEXT_PUBLIC_SANITY_API_VERSION?.replace(/^v/, "") ||
   "2024-03-21";
 
-export const client = sanityClient({
+const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   apiVersion,

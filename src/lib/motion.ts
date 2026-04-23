@@ -58,7 +58,7 @@ export const ease = {
 } as const;
 
 // Transition presets
-export const transition = {
+const transition = {
   // Micro interactions: button presses, toggles
   micro: { ...spring.snappy },
 
@@ -82,7 +82,7 @@ export const transition = {
 } as const;
 
 // Stagger configurations
-export const stagger = {
+const stagger = {
   // Fast: for many small items (icons, dots)
   fast: 0.025,
 
@@ -204,7 +204,7 @@ export const item = {
 } as const;
 
 // Hover/tap animations
-export const hover = {
+const hover = {
   // Subtle lift - for cards
   lift: {
     scale: 1.02,
@@ -243,7 +243,7 @@ export const tap = {
 // Note: For reactive reduced motion detection in React components,
 // use Framer Motion's useReducedMotion() hook instead of this static check.
 // This static check is only for non-React contexts or SSR.
-export const prefersReducedMotion =
+const prefersReducedMotion =
   typeof window !== "undefined"
     ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
     : false;
@@ -253,7 +253,7 @@ export const prefersReducedMotion =
  * For React components, prefer Framer Motion's useReducedMotion() hook.
  * This is for vanilla JS contexts that need reactive updates.
  */
-export function createReducedMotionListener(
+function createReducedMotionListener(
   callback: (prefersReduced: boolean) => void
 ): () => void {
   if (typeof window === "undefined") {
@@ -273,7 +273,7 @@ export function createReducedMotionListener(
   return () => mediaQuery.removeEventListener("change", handler);
 }
 
-export function withReducedMotion<T extends object>(
+function withReducedMotion<T extends object>(
   config: T,
   reduced = prefersReducedMotion
 ): T | { duration: 0 } {
@@ -284,7 +284,7 @@ export function withReducedMotion<T extends object>(
 }
 
 // Reduced motion variants - instant transitions
-export const reducedMotion = {
+const reducedMotion = {
   fadeUp: {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
@@ -304,7 +304,7 @@ export const reducedMotion = {
  * const shouldReduceMotion = useReducedMotion();
  * const variants = getVariants('fadeUp', shouldReduceMotion);
  */
-export function getVariants(
+function getVariants(
   variant: keyof typeof item,
   reduced = prefersReducedMotion
 ) {
@@ -312,7 +312,7 @@ export function getVariants(
 }
 
 // Layout animation helpers
-export const layoutTransition = {
+const layoutTransition = {
   // For shared element transitions
   shared: {
     type: "spring" as const,

@@ -107,7 +107,7 @@ export function NowPlaying() {
 }
 
 // Fallback component when Spotify API is not configured
-export function NowPlayingFallback() {
+function NowPlayingFallback() {
   return (
     <div className="flex items-center gap-3 p-3 rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--background))]/50">
       <div className="relative w-10 h-10 rounded overflow-hidden flex-shrink-0 bg-[hsl(var(--muted))] flex items-center justify-center">

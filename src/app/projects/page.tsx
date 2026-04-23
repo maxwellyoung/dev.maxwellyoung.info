@@ -14,6 +14,11 @@ import { container, item, spring } from "@/lib/motion";
 import { ProjectHoverPreview } from "@/components/ProjectHoverPreview";
 import { SiteFooter } from "@/components/SiteFooter";
 
+const workRevealTransition = {
+  height: { duration: 0.32, ease: [0, 0, 0.2, 1] as const },
+  opacity: { duration: 0.2, ease: [0, 0, 0.2, 1] as const },
+};
+
 function ProjectRow({
   p,
   index = 0,
@@ -31,6 +36,7 @@ function ProjectRow({
 }) {
   const isExpanded = expandedProject === p.name;
   const isEagerLoad = index < 4;
+  const panelId = `project-panel-${p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
 
   return (
     <motion.li
@@ -40,12 +46,20 @@ function ProjectRow({
     >
       <button
         onClick={(e) => {
-          onToggleExpand(isExpanded ? null : p.name);
-          e.currentTarget.parentElement?.scrollIntoView({
-            behavior: shouldReduceMotion ? "auto" : "smooth",
-            block: "center",
-          });
+          const nextExpanded = isExpanded ? null : p.name;
+          onToggleExpand(nextExpanded);
+
+          if (!isExpanded) {
+            requestAnimationFrame(() => {
+              e.currentTarget.scrollIntoView({
+                behavior: shouldReduceMotion ? "auto" : "smooth",
+                block: "nearest",
+              });
+            });
+          }
         }}
+        aria-expanded={isExpanded}
+        aria-controls={panelId}
         className={`
           w-full max-w-full text-left px-2 sm:px-3 py-3
           transition-colors duration-200 ease-out
@@ -94,19 +108,20 @@ function ProjectRow({
       <AnimatePresence initial={false}>
         {isExpanded && (
           <motion.div
+            id={panelId}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={shouldReduceMotion ? { duration: 0 } : spring.gentle}
+            transition={shouldReduceMotion ? { duration: 0 } : workRevealTransition}
             className="px-1 pb-4 overflow-hidden"
           >
             <motion.div
-              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -8 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={
                 shouldReduceMotion
                   ? { duration: 0 }
-                  : { ...spring.gentle, delay: 0.05 }
+                  : { ...spring.gentle, delay: 0.04 }
               }
             >
               <ProjectDetails
