@@ -18,6 +18,8 @@ type Category =
   | "studio"
   | "personal"
   | "research";
+type Visibility = "public" | "parked" | "private";
+type Lifecycle = "current" | "completed" | "archived" | "sensitive";
 
 interface BuildLogEntry {
   date: string;
@@ -52,6 +54,8 @@ export interface Project {
   startDate?: string;
   endDate?: string;
   featured?: boolean;
+  visibility?: Visibility;
+  lifecycle?: Lifecycle;
   priority?: number;
   tags?: string[];
   stack?: string[];
@@ -76,6 +80,8 @@ const projects: Project[] = [
     category: "Work",
     role: "Collaborator",
     featured: true,
+    visibility: "public",
+    lifecycle: "current",
     priority: 2,
     description:
       "React Native client work at Silk — contributing to mobile publishing, archive, and media flows.",
@@ -96,23 +102,26 @@ const projects: Project[] = [
     ],
   },
   {
-    slug: "safer-medicines-research",
-    name: "Safer Medicines Research",
+    slug: "ar-opt",
+    name: "AR-OPT",
     status: "Active",
     category: "Work",
     role: "Research Assistant",
-    featured: true,
-    priority: 3,
+    featured: false,
+    visibility: "private",
+    lifecycle: "sensitive",
+    priority: 98,
     description:
-      "Software research assistant work at the University of Auckland on funded safer-medicines research.",
+      "Private research software project for funded safer-medicines research at the University of Auckland.",
     longDescription:
-      "I work as a software research assistant at the University of Auckland on funded safer-medicines research. This is research-facing software work, so the public project note stays high-level until the work can be described in more detail.",
+      "AR-OPT is the internal project behind my University of Auckland safer-medicines research assistant work. It stays private until the research context, repo, and public claims are ready for release.",
     tags: ["Research Software", "Health", "Data", "University of Auckland"],
     stack: ["Research Software"],
     startDate: "2026-04-01",
+    redacted: true,
     impact: [
       "Funded safer-medicines research at the University of Auckland",
-      "Public write-up intentionally limited while the research context is active",
+      "Private inventory record only; not rendered on the public Work list",
     ],
   },
   {
@@ -122,6 +131,8 @@ const projects: Project[] = [
     category: "personal",
     role: "Solo",
     featured: true,
+    visibility: "public",
+    lifecycle: "current",
     priority: 0,
     description:
       "Spatial canvas for organizing music. Built on tldraw with audio playback, custom shapes, and shared data across web and iOS.",
@@ -161,8 +172,10 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: false,
-    priority: 1,
+    featured: true,
+    visibility: "public",
+    lifecycle: "current",
+    priority: 3,
     description:
       "iOS app for quitting vaping. Built in React Native and Expo with coaching, recovery tracking, and relapse support.",
     longDescription:
@@ -195,7 +208,9 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: false,
+    featured: true,
+    visibility: "public",
+    lifecycle: "current",
     priority: 4,
     description:
       "Native iOS app for keeping a small personal queue. One item in focus, the rest held in the background.",
@@ -223,6 +238,8 @@ const projects: Project[] = [
     category: "personal",
     role: "Solo",
     featured: true,
+    visibility: "public",
+    lifecycle: "current",
     priority: 1,
     description:
       "Family history app for documents, photos, voice notes, and relationship data. OCR and LLM extraction turn source material into structured family records.",
@@ -258,21 +275,24 @@ const projects: Project[] = [
   },
   {
     slug: "palmerston-north-council-rd",
-    name: "Palmerston North Council R&D",
+    name: "COMP702 LTP",
     status: "Completed",
     category: "School",
     role: "Collaborator",
-    featured: true,
-    priority: 4,
+    featured: false,
+    visibility: "private",
+    lifecycle: "sensitive",
+    priority: 99,
     description:
-      "School R&D project exploring a software/service direction for Palmerston North Council.",
+      "Private school R&D project exploring a software/service direction around Palmerston North Council long-term plan material.",
     longDescription:
-      "A school R&D project for Palmerston North Council. The public version should focus on the research process, stakeholder constraints, prototype decisions, and what the work taught me about civic software once the artifact details are ready to share.",
-    tags: ["R&D", "Civic Tech", "Research", "School Project"],
-    stack: ["Research", "Prototyping"],
+      "COMP702 LTP is an internal inventory record for the Palmerston North Council-related school R&D project. It should stay private until the artifact, permissions, and public framing are clear.",
+    tags: ["R&D", "Civic Tech", "Research", "School Project", "LTP"],
+    stack: ["Python", "LLM Evaluation", "Research", "Prototyping"],
+    redacted: true,
     impact: [
       "Civic-facing research and development brief",
-      "Useful proof for ambiguity, stakeholder thinking, and applied product discovery",
+      "Private inventory record only; not rendered on the public Work list",
     ],
   },
   {
@@ -281,8 +301,10 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: false,
-    priority: 5,
+    featured: true,
+    visibility: "public",
+    lifecycle: "current",
+    priority: 8,
     description:
       "Receipt scanning app for grocery spend tracking and price comparison.",
     longDescription:
@@ -315,8 +337,10 @@ const projects: Project[] = [
     status: "Completed",
     category: "studio",
     role: "Solo",
-    featured: false,
-    priority: 6,
+    featured: true,
+    visibility: "public",
+    lifecycle: "completed",
+    priority: 5,
     description:
       "Portfolio site for stylist Ch'lita with a CMS-driven image-led layout.",
     longDescription:
@@ -344,8 +368,10 @@ const projects: Project[] = [
     status: "Completed",
     category: "studio",
     role: "Solo",
-    featured: false,
-    priority: 7,
+    featured: true,
+    visibility: "public",
+    lifecycle: "completed",
+    priority: 6,
     description:
       "Portfolio site for installation artist Dayle Palfreyman with a full-screen gallery and CMS editing.",
     longDescription:
@@ -379,8 +405,10 @@ const projects: Project[] = [
     status: "Completed",
     category: "studio",
     role: "Frontend",
-    featured: false,
-    priority: 8,
+    featured: true,
+    visibility: "public",
+    lifecycle: "completed",
+    priority: 7,
     description:
       "Shopify site for an Auckland bakery, built with New Territory Studio.",
     longDescription:
@@ -404,7 +432,9 @@ const projects: Project[] = [
     status: "Completed",
     category: "personal",
     role: "Solo",
-    featured: false,
+    featured: true,
+    visibility: "public",
+    lifecycle: "archived",
     priority: 9,
     description:
       "Interactive WebGL piece built in response to Jeremy Blake's digital paintings.",
@@ -427,11 +457,14 @@ export function isActiveStatus(project: Pick<Project, "status">): boolean {
   return project.status === "Active" || project.status === "WIP";
 }
 
-export const rankedProjects = projects.filter((project) => project.featured).sort(
-  (a, b) =>
-    (a.priority ?? Number.MAX_SAFE_INTEGER) -
-    (b.priority ?? Number.MAX_SAFE_INTEGER),
-);
+export const rankedProjects = projects
+  .filter((project) => project.visibility === "public" || project.featured)
+  .filter((project) => project.visibility !== "private")
+  .sort(
+    (a, b) =>
+      (a.priority ?? Number.MAX_SAFE_INTEGER) -
+      (b.priority ?? Number.MAX_SAFE_INTEGER),
+  );
 
 export function getProjectContextLabel(
   project: Pick<Project, "category" | "client">
