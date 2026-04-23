@@ -7,7 +7,7 @@ import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Carousel from "@/components/Carousel";
-import { Project, rankedProjects } from "@/lib/projects";
+import { Project, getProjectContextLabel, rankedProjects } from "@/lib/projects";
 import { ProjectDetails } from "@/components/ProjectDetails";
 import { ChevronDown } from "lucide-react";
 import { container, item, spring } from "@/lib/motion";
@@ -86,9 +86,14 @@ function ProjectRow({
 
           <div className="min-w-0 flex-1 overflow-hidden">
             <ProjectHoverPreview screenshots={p.screenshots} projectName={p.name}>
-              <h3 className="truncate break-words text-sm font-medium leading-tight text-foreground cursor-pointer">
-                {p.name}
-              </h3>
+              <div className="cursor-pointer">
+                <p className="mb-0.5 truncate text-[0.62rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+                  {getProjectContextLabel(p)}
+                </p>
+                <h3 className="truncate break-words text-sm font-medium leading-tight text-foreground">
+                  {p.name}
+                </h3>
+              </div>
             </ProjectHoverPreview>
             <p className="mt-1 truncate break-words text-xs text-muted-foreground">
               {p.description}
