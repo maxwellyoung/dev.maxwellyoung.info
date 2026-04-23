@@ -5,7 +5,12 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Github, FileText } from "lucide-react";
-import { Project, getProjectStatusLabel, isActiveStatus } from "@/lib/projects";
+import {
+  Project,
+  getProjectContextLabel,
+  getProjectStatusLabel,
+  isActiveStatus,
+} from "@/lib/projects";
 import { spring } from "@/lib/motion";
 
 interface ProjectDetailsProps {
@@ -66,15 +71,22 @@ export function ProjectDetails({
             </button>
           )}
           <div className="flex items-start justify-between gap-2">
-            <h2 className="text-lg md:text-xl font-medium leading-tight text-foreground">
-              {project.name}
-            </h2>
+            <div>
+              <p className="mb-1 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                {getProjectContextLabel(project)}
+              </p>
+              <h2 className="text-lg md:text-xl font-medium leading-tight text-foreground">
+                {project.name}
+              </h2>
+            </div>
             {getProjectStatusLabel(project) && (
-              <span className={`shrink-0 px-2 py-0.5 text-xs rounded-full ${
-                isActiveStatus(project)
-                  ? "bg-accent/10 text-accent border border-accent/20"
-                  : "bg-[hsl(var(--muted))] text-muted-foreground"
-              }`}>
+              <span
+                className={`shrink-0 px-2 py-0.5 text-xs rounded-full ${
+                  isActiveStatus(project)
+                    ? "bg-accent/10 text-accent border border-accent/20"
+                    : "bg-[hsl(var(--muted))] text-muted-foreground"
+                }`}
+              >
                 {getProjectStatusLabel(project)}
               </span>
             )}

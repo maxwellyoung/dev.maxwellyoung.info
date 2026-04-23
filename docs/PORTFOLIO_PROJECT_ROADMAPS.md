@@ -1,53 +1,59 @@
 # Portfolio Project Roadmaps
 
-## Visitor Rubric
+## Strategy
 
-Projects should be ranked by the likelihood that a first-time visitor quickly understands the ambition, trusts the craft, and wants to keep exploring.
+The public portfolio should not mirror a private folder system. It should use the current mental model as editorial scaffolding, then present the work in the order that creates the strongest visitor signal.
+
+Current public set:
+
+| Bucket | Projects | Public Purpose |
+| --- | --- | --- |
+| Work | Silk, Safer Medicines Research | Shows production teamwork and research-facing software work. |
+| Personal products | Liner, Whakapapa | Shows original product judgment, systems thinking, and solo shipping. |
+| School R&D | Palmerston North Council R&D | Shows ambiguity, stakeholder constraints, and civic/product discovery. |
+
+The live Work list should stay ranked by proof strength, not grouped as folders. Labels like `Work`, `Personal Product`, and `School R&D` give context without making the page feel like a resume outline.
+
+## Visitor Rubric
 
 | Criterion | Weight | What Good Looks Like |
 | --- | ---: | --- |
 | Strategic signal | 25% | The project makes the kind of work you want more of feel obvious. |
-| Product ambition | 20% | It shows systems thinking, original product judgment, or real technical depth. |
+| Product ambition | 20% | It shows systems thinking, original product judgment, or technical depth. |
 | Proof density | 20% | Screenshots, metrics, case-study notes, and links make the work credible. |
-| Visual memorability | 15% | The project adds texture to the site and is easy to remember after browsing. |
-| Visitor relevance | 10% | A recruiter, client, collaborator, or founder can quickly map it to their needs. |
+| Visual memorability | 15% | The project is easy to remember after browsing. |
+| Visitor relevance | 10% | A recruiter, client, collaborator, or founder can map it to their needs. |
 | Story completeness | 10% | The problem, role, constraints, and outcome are clear without extra context. |
 
 ## Current Ranking
 
 1. Liner
-2. Vape Quit Coach
-3. Whakapapa
-4. Silk
-5. Holdspace
-6. Ch'lita
-7. Dayle Palfreyman
-8. Receipt Radar
-9. Goodness Gracious
-10. Jeremy Blake
+2. Whakapapa
+3. Silk
+4. Safer Medicines Research
+5. Palmerston North Council R&D
 
-## Cross-Project Site Roadmap
+## Cross-Project Roadmap
 
-### Phase 1: Portfolio Proof Pass
+### Phase 1: Public Proof Pass
 
-- Add one strong lead image or product video for every active project.
-- Give each project a consistent proof block: role, stack, constraint, shipped artifact, and one measurable or concrete outcome.
-- Replace vague descriptions with specific product language: what the user does, what was hard, and what changed because of the work.
-- Add one short "what I would improve next" note per project so unfinished products read as intentional rather than incomplete.
+- Add one strong visual artifact for every visible project.
+- Add a consistent proof block: role, context label, constraint, artifact, and result.
+- Keep research-sensitive work high-level until it can be safely described.
+- Replace placeholder descriptions with specific constraints and decisions as soon as artifacts are available.
 
 ### Phase 2: Case Study Depth
 
-- Promote the top five projects into full case studies with problem, constraints, design decisions, technical decisions, shipped result, and next roadmap.
-- Add build-log snapshots for active products so visitors can see momentum.
-- Capture mobile and desktop screenshots at consistent aspect ratios.
-- Add short architecture diagrams for Liner, Whakapapa, Vape Quit Coach, Receipt Radar, and Silk.
+- Keep Liner and Whakapapa as the deepest product case studies.
+- Add a public-safe Silk contribution summary.
+- Add a public-safe safer-medicines research note once the research scope can be described clearly.
+- Add a Palmerston North Council R&D write-up if there is a report, prototype, presentation, or final artifact that can be shared.
 
 ### Phase 3: Conversion Layer
 
-- Add a stronger "best work first" homepage sequence using the ranked order.
-- Add filters for product, mobile, client, and experimental work only after the core order is strong.
-- Add a contact CTA near the end of expanded project details.
-- Add lightweight analytics events for project expand, carousel open, case-study click, outbound link click, and contact CTA.
+- Add a small contact CTA after expanded project details.
+- Add analytics events for project expand, case-study click, outbound link click, and contact CTA.
+- Add a short "current focus" line near the Work section if it helps explain why the set is intentionally small.
 
 ## Project Roadmaps
 
@@ -56,57 +62,43 @@ Projects should be ranked by the likelihood that a first-time visitor quickly un
 Portfolio goal: lead with Liner because it has the clearest blend of product taste, technical ambition, and original interaction design.
 
 Immediate improvements:
+
 - Add a 20-30 second video showing the canvas, custom music objects, waveform playback, keyboard controls, and sync.
 - Add an architecture note showing shared web/iOS data model, Convex sync, tldraw custom shapes, and audio processing.
-- Tighten the copy around who it is for: music directors, producers, DJs, playlist builders, or people organizing references.
+- Tighten the audience copy around music directors, producers, DJs, playlist builders, or people organizing references.
 
 Product roadmap:
-- Ship a polished import flow for Spotify, Apple Music, local files, and URL drops.
+
+- Ship polished import flows for Spotify, Apple Music, local files, and URL drops.
 - Add shareable read-only boards for collaborators.
-- Add session templates for set planning, reference boards, album sequencing, and rehearsal notes.
+- Add templates for set planning, reference boards, album sequencing, and rehearsal notes.
 - Improve offline-first behavior and conflict handling between web and iOS.
 
-Portfolio proof to add:
+Proof to add:
+
 - Canvas walkthrough video.
 - Before/after interaction sketches.
 - One concrete performance metric, such as board load time or waveform generation time.
-
-### Vape Quit Coach
-
-Portfolio goal: show behavior-design seriousness and mobile product ownership.
-
-Immediate improvements:
-- Add App Store screenshots or a polished screenshot grid directly to the case study.
-- Make the retention and revenue story clearer: current MRR, trial model, activation metric, and strongest user outcome.
-- Add a privacy and health-safety note explaining boundaries around coaching claims.
-
-Product roadmap:
-- Improve onboarding by segmenting users by quit date, nicotine level, triggers, and support preference.
-- Add relapse recovery flows that help users recover without resetting their identity as someone quitting.
-- Add Apple Health and Watch integrations beyond heart-rate proof if the product can support them safely.
-- Run pricing and trial experiments around weekly vs monthly plans.
-
-Portfolio proof to add:
-- Onboarding flow screenshots.
-- Recovery timeline screenshots.
-- A small metrics panel for MRR, conversion, activation, and retention once reliable.
 
 ### Whakapapa
 
 Portfolio goal: make this read as a serious AI-assisted family history product, not just a demo.
 
 Immediate improvements:
+
 - Add screenshots for document upload, OCR review, extracted people/places/dates, and tree visualization.
 - Add a diagram of the extraction pipeline: source material to OCR to LLM structuring to human review to family graph.
 - Clarify cultural handling: the product borrows a meaningful term, so the page should explain respect, data ownership, and review-first design.
 
 Product roadmap:
+
 - Add confidence scoring and provenance for every extracted fact.
 - Build a review queue that lets family members accept, reject, merge, or annotate extracted records.
 - Add GEDCOM import/export hardening and duplicate-person detection.
 - Add workspace permissions for families, historians, and private branches.
 
-Portfolio proof to add:
+Proof to add:
+
 - Pipeline diagram.
 - One anonymized extraction example.
 - Source-to-tree screenshot sequence.
@@ -116,138 +108,73 @@ Portfolio proof to add:
 Portfolio goal: use Silk to prove professional team contribution and React Native production experience.
 
 Immediate improvements:
+
 - Add a concise "what I contributed" section that is specific without exposing private work.
 - Add public-safe screenshots or abstracted UI crops if the team allows them.
 - Clarify the technical domains: publishing, media, archive, editor flows, navigation, parity, and mobile reliability.
 
-Product roadmap:
+Product/proof roadmap:
+
 - Keep a private brag log of shipped features, bugs fixed, performance wins, and cross-platform decisions.
 - Convert approved contributions into anonymized case-study bullets.
-- Track one or two measurable improvements, such as crash reduction, media upload reliability, or editor latency.
+- Track one or two measurable improvements, such as crash reduction, media upload reliability, or editor latency if available.
 
-Portfolio proof to add:
+Proof to add:
+
 - Public-safe contribution summary.
 - Team context and role boundary.
 - One approved artifact or external link beyond the product homepage.
 
-### Holdspace
+### Safer Medicines Research
 
-Portfolio goal: show native iOS craft, restraint, and a clear personal productivity point of view.
-
-Immediate improvements:
-- Add a screen recording of share extension to queue to widget to completed item.
-- Explain why one-item focus is different from a normal task app.
-- Add App Store availability and install CTA prominently.
-
-Product roadmap:
-- Add a first-run explanation that frames the app as a queue, not a to-do list.
-- Add optional reminders without turning the app into a noisy task manager.
-- Improve widget states for current item, empty queue, and quick action.
-- Add import sources: share sheet, clipboard detection, and manual quick add.
-
-Portfolio proof to add:
-- App Store screenshot set.
-- Short motion/haptics note.
-- Privacy-first data handling note.
-
-### Ch'lita
-
-Portfolio goal: show visual sensitivity, client delivery, and CMS-backed editorial work.
+Portfolio goal: show that the work spans production software and serious research contexts without making unsupported medical claims.
 
 Immediate improvements:
-- Add the client constraint: image-led styling portfolio, easy updates, fast browsing, no CMS complexity leaking into the experience.
-- Add a short note about responsive image handling and art direction.
-- Add stronger screenshots that show the visual rhythm, not only individual pages.
 
-Product roadmap:
-- Add editorial categories, featured looks, and press/archive organization if useful to the client.
-- Improve image metadata, alt text, and social sharing previews.
-- Add a lightweight performance pass focused on image delivery and LCP.
+- Keep public copy high-level while the research context is active.
+- Identify what can safely be named: institution, role, broad research area, technical responsibilities, and non-sensitive outputs.
+- Add a short explanation of how research software differs from product software: uncertainty, validation, data handling, reproducibility, and collaboration.
 
-Portfolio proof to add:
-- CMS model screenshot or diagram.
-- Mobile and desktop image-grid comparison.
-- Client outcome or launch note if available.
+Research/software roadmap:
 
-### Dayle Palfreyman
+- Maintain a private contribution log with dates, shipped artifacts, datasets/tools touched, and decisions made.
+- Turn repeatable research tooling into a public-safe technical pattern if allowed.
+- Add a project note once there is a publication, poster, demo, repository, or approved summary.
 
-Portfolio goal: show that you can design quiet, artist-led web experiences without overbuilding.
+Proof to add:
 
-Immediate improvements:
-- Add more than one screenshot so the visitor sees the full-screen gallery system.
-- Explain the vertical snapping and CMS editing decisions.
-- Include accessibility decisions because the project already tags accessibility.
+- Public-safe project summary.
+- Approved artifact link if one exists later.
+- Clear boundaries around what is intentionally not disclosed.
 
-Product roadmap:
-- Improve keyboard navigation and screen-reader affordances for gallery browsing.
-- Add artwork metadata patterns: title, medium, dimensions, year, exhibition, and availability.
-- Add image preloading rules that preserve the full-screen feel without hurting performance.
+### Palmerston North Council R&D
 
-Portfolio proof to add:
-- Gallery interaction recording.
-- Accessibility checklist excerpt.
-- CMS authoring model note.
-
-### Receipt Radar
-
-Portfolio goal: keep it on the site, but make the proof sharper before pushing it higher.
+Portfolio goal: use this as evidence for civic/product discovery and stakeholder-aware design, not as a generic school assignment.
 
 Immediate improvements:
-- Add screenshots for scan, parsed receipt, normalized grocery list, and comparison view.
-- Clarify whether this is a working app, prototype, or local experiment.
-- Add OCR accuracy and receipt-processing constraints if known.
 
-Product roadmap:
-- Add merchant detection and line-item normalization confidence.
-- Add price-history charts by item, store, and unit size.
-- Add a manual correction flow so OCR mistakes improve future parsing.
-- Add export and privacy controls for spending history.
+- Gather the final artifact: report, slide deck, prototype, brief, or demo.
+- Write the project around the ambiguity: council context, constraints, research process, and recommendation.
+- Avoid overclaiming implementation unless software was actually built and used.
 
-Portfolio proof to add:
-- Receipt-to-data walkthrough.
-- OCR accuracy metric.
-- Example of price comparison insight.
+R&D roadmap:
 
-### Goodness Gracious
+- Convert the school project into a compact case study: brief, users/stakeholders, research method, prototype/solution direction, tradeoffs, and outcome.
+- Add one visual from the artifact if public sharing is allowed.
+- Add a "what I would do next" section focused on validation and implementation risk.
 
-Portfolio goal: keep this as commercial/client proof, but avoid letting it compete with deeper product work.
+Proof to add:
 
-Immediate improvements:
-- Add context around the studio collaboration and your exact frontend responsibilities.
-- Add screenshots showing commerce flow, product pages, cart, and responsive behavior.
-- Add a performance or stability metric if available.
+- Public-safe artifact screenshot.
+- Research process summary.
+- Final recommendation and rationale.
 
-Product roadmap:
-- Improve product discovery with clearer categories, gifting, catering, or pickup flows if relevant.
-- Audit Shopify theme performance and app bloat.
-- Improve structured data for bakery products, local business information, and reviews where appropriate.
+## Parked Projects
 
-Portfolio proof to add:
-- Role and handoff summary.
-- Shopify constraints note.
-- Mobile commerce screenshots.
+These projects can stay out of the main Work list for now, but they are still useful as supporting material if the site later needs breadth:
 
-### Jeremy Blake
-
-Portfolio goal: keep this as an experimental texture piece, but move it behind stronger product and client work.
-
-Immediate improvements:
-- Reframe the copy as an interaction study rather than a major project.
-- Add a short note explaining the shader idea, pointer response, and what you learned.
-- Add a looping video or GIF so visitors do not need to open the link to understand it.
-
-Product roadmap:
-- Add presets, seedable color palettes, and exportable stills.
-- Add a technical note on the shader pipeline and performance constraints.
-- Consider turning it into a generative-art lab page if more experiments exist.
-
-Portfolio proof to add:
-- Motion preview.
-- Code excerpt or shader diagram.
-- One short reflection on visual systems and interaction design.
-
-## Backlog Candidates
-
-- Add Spark Dashboard if the case study is still representative of the work. It likely belongs near Silk or Holdspace if it has screenshots and a clear business outcome.
-- Add a "Now building" section for active products so unfinished work reads as momentum.
-- Add a "Selected client work" section if studio/client work starts diluting the product-builder narrative.
+- Vape Quit Coach: useful if health/product monetization is part of the target narrative.
+- Holdspace: useful if native iOS craft becomes a stronger positioning angle.
+- Ch'lita, Dayle Palfreyman, Goodness Gracious: useful for client delivery and visual/web craft.
+- Receipt Radar: useful if OCR, grocery data, or mobile data capture becomes relevant.
+- Jeremy Blake: useful as experimental texture, not a primary proof point.

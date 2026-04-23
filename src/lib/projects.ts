@@ -6,12 +6,15 @@ type Role =
   | "Lead"
   | "Collaborator"
   | "Frontend"
-  | "Studio Collaboration";
+  | "Studio Collaboration"
+  | "Research Assistant";
 type Category =
   | "Client"
   | "Personal"
   | "Studio"
   | "Experiment"
+  | "Work"
+  | "School"
   | "studio"
   | "personal"
   | "research";
@@ -70,10 +73,10 @@ const projects: Project[] = [
     slug: "silk",
     name: "Silk",
     status: "Active",
-    category: "research",
+    category: "Work",
     role: "Collaborator",
     featured: true,
-    priority: 3,
+    priority: 2,
     description:
       "React Native client work at Silk — contributing to mobile publishing, archive, and media flows.",
     longDescription:
@@ -87,6 +90,30 @@ const projects: Project[] = [
     link: "https://www.silk.cx",
     screenshots: ["/projectImages/silk-1.webp"],
     thumb: "/projectImages/silk-1.webp",
+    impact: [
+      "Production React Native work across iOS and Android",
+      "Contributions span navigation, editing, media handling, and platform parity",
+    ],
+  },
+  {
+    slug: "safer-medicines-research",
+    name: "Safer Medicines Research",
+    status: "Active",
+    category: "Work",
+    role: "Research Assistant",
+    featured: true,
+    priority: 3,
+    description:
+      "Software research assistant work at the University of Auckland on funded safer-medicines research.",
+    longDescription:
+      "I work as a software research assistant at the University of Auckland on funded safer-medicines research. This is research-facing software work, so the public project note stays high-level until the work can be described in more detail.",
+    tags: ["Research Software", "Health", "Data", "University of Auckland"],
+    stack: ["Research Software"],
+    startDate: "2026-04-01",
+    impact: [
+      "Funded safer-medicines research at the University of Auckland",
+      "Public write-up intentionally limited while the research context is active",
+    ],
   },
   {
     slug: "liner",
@@ -134,7 +161,7 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     priority: 1,
     description:
       "iOS app for quitting vaping. Built in React Native and Expo with coaching, recovery tracking, and relapse support.",
@@ -168,7 +195,7 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     priority: 4,
     description:
       "Native iOS app for keeping a small personal queue. One item in focus, the rest held in the background.",
@@ -196,7 +223,7 @@ const projects: Project[] = [
     category: "personal",
     role: "Solo",
     featured: true,
-    priority: 2,
+    priority: 1,
     description:
       "Family history app for documents, photos, voice notes, and relationship data. OCR and LLM extraction turn source material into structured family records.",
     longDescription:
@@ -230,12 +257,31 @@ const projects: Project[] = [
     ],
   },
   {
+    slug: "palmerston-north-council-rd",
+    name: "Palmerston North Council R&D",
+    status: "Completed",
+    category: "School",
+    role: "Collaborator",
+    featured: true,
+    priority: 4,
+    description:
+      "School R&D project exploring a software/service direction for Palmerston North Council.",
+    longDescription:
+      "A school R&D project for Palmerston North Council. The public version should focus on the research process, stakeholder constraints, prototype decisions, and what the work taught me about civic software once the artifact details are ready to share.",
+    tags: ["R&D", "Civic Tech", "Research", "School Project"],
+    stack: ["Research", "Prototyping"],
+    impact: [
+      "Civic-facing research and development brief",
+      "Useful proof for ambiguity, stakeholder thinking, and applied product discovery",
+    ],
+  },
+  {
     slug: "receipt-radar",
     name: "Receipt Radar",
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     priority: 5,
     description:
       "Receipt scanning app for grocery spend tracking and price comparison.",
@@ -269,7 +315,7 @@ const projects: Project[] = [
     status: "Completed",
     category: "studio",
     role: "Solo",
-    featured: true,
+    featured: false,
     priority: 6,
     description:
       "Portfolio site for stylist Ch'lita with a CMS-driven image-led layout.",
@@ -298,7 +344,7 @@ const projects: Project[] = [
     status: "Completed",
     category: "studio",
     role: "Solo",
-    featured: true,
+    featured: false,
     priority: 7,
     description:
       "Portfolio site for installation artist Dayle Palfreyman with a full-screen gallery and CMS editing.",
@@ -333,7 +379,7 @@ const projects: Project[] = [
     status: "Completed",
     category: "studio",
     role: "Frontend",
-    featured: true,
+    featured: false,
     priority: 8,
     description:
       "Shopify site for an Auckland bakery, built with New Territory Studio.",
@@ -358,7 +404,7 @@ const projects: Project[] = [
     status: "Completed",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     priority: 9,
     description:
       "Interactive WebGL piece built in response to Jeremy Blake's digital paintings.",
@@ -381,11 +427,29 @@ export function isActiveStatus(project: Pick<Project, "status">): boolean {
   return project.status === "Active" || project.status === "WIP";
 }
 
-export const rankedProjects = [...projects].sort(
+export const rankedProjects = projects.filter((project) => project.featured).sort(
   (a, b) =>
     (a.priority ?? Number.MAX_SAFE_INTEGER) -
     (b.priority ?? Number.MAX_SAFE_INTEGER),
 );
+
+export function getProjectContextLabel(
+  project: Pick<Project, "category" | "client">
+): string {
+  if (project.category === "Work" || project.category === "research") {
+    return "Work";
+  }
+  if (project.category === "School") {
+    return "School R&D";
+  }
+  if (project.category === "personal" || project.category === "Personal") {
+    return "Personal Product";
+  }
+  if (project.client || project.category === "studio" || project.category === "Studio") {
+    return "Client Work";
+  }
+  return "Experiment";
+}
 
 export function getProjectStatusLabel(
   project: Pick<Project, "status">
