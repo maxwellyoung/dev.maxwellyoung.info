@@ -1,13 +1,13 @@
 // lib/projects.ts
 
-export type Status = "Completed" | "WIP" | "Planned" | "Active";
-export type Role =
+type Status = "Completed" | "WIP" | "Planned" | "Active";
+type Role =
   | "Solo"
   | "Lead"
   | "Collaborator"
   | "Frontend"
   | "Studio Collaboration";
-export type Category =
+type Category =
   | "Client"
   | "Personal"
   | "Studio"
@@ -16,14 +16,14 @@ export type Category =
   | "personal"
   | "research";
 
-export interface BuildLogEntry {
+interface BuildLogEntry {
   date: string;
   whatWorks: string[];
   nextMilestone?: string;
   openQuestion?: string;
 }
 
-export interface Metrics {
+interface Metrics {
   lighthouseMobile?: number;
   lcpMs?: number;
   cls?: number;
@@ -32,7 +32,7 @@ export interface Metrics {
   scraperRefreshMin?: number;
 }
 
-export interface Links {
+interface Links {
   live?: string;
   repo?: string;
   video?: string;

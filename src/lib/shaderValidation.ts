@@ -30,12 +30,118 @@ export function ensureFragmentSafety(source: string | undefined): {
   return { ok: true };
 }
 
-export function extractUniformNames(source: string): string[] {
-  const names: string[] = [];
-  const re = /uniform\s+\w+\s+(u_[A-Za-z0-9_]+)\s*;/g;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(source)) !== null) names.push(m[1]);
-  return Array.from(new Set(names));
+type QualitySignal = {
+  reason: string;
+  score: number;
+  matches: (source: string) => boolean;
+};
+
+const QUALITY_SIGNALS: QualitySignal[] = [
+  { reason: "len400", score: 1, matches: (source) => source.length >= 400 },
+  {
+    reason: "len250",
+    score: 0.5,
+    matches: (source) => source.length >= 250 && source.length < 400,
+  },
+  {
+    reason: "noise",
+    score: 2,
+    matches: (source) => /\bnoise\s*\(/.test(source) || /\bfbm\s*\(/.test(source),
+  },
+  {
+    reason: "hash",
+    score: 1,
+    matches: (source) => /\bfloat\s+hash\s*\(/.test(source),
+  },
+  {
+    reason: "loop",
+    score: 1,
+    matches: (source) =>
+      /for\s*\(\s*int\s+\w+\s*=\s*0\s*;[^;]*;\s*\w\+\+\s*\)/.test(source),
+  },
+  {
+    reason: "mouse",
+    score: 1,
+    matches: (source) => (source.match(/u_mouse/g) || []).length >= 2,
+  },
+  {
+    reason: "colorsAB",
+    score: 2,
+    matches: (source) => /u_colorA/.test(source) && /u_colorB/.test(source),
+  },
+  {
+    reason: "mixAB",
+    score: 1.5,
+    matches: (source) =>
+      /mix\s*\(\s*u_colorA\s*,\s*u_colorB\s*,|mix\s*\(\s*u_colorB\s*,\s*u_colorA\s*,/.test(
+        source
+      ),
+  },
+  {
+    reason: "palette",
+    score: 1,
+    matches: (source) =>
+      /\bvec3\s+pal\s*\(/.test(source) ||
+      /\bpal\s*\(/.test(source) ||
+      /\bcos\s*\(/.test(source),
+  },
+  {
+    reason: "aspect",
+    score: 1,
+    matches: (source) =>
+      /R\.x\s*\/\s*R\.y|u_resolution\.x\s*\/\s*u_resolution\.y/.test(source),
+  },
+  {
+    reason: "smoothstep",
+    score: 0.5,
+    matches: (source) => /\bsmoothstep\s*\(/.test(source),
+  },
+  {
+    reason: "length",
+    score: 0.5,
+    matches: (source) => /\blength\s*\(/.test(source),
+  },
+];
+
+function collectQualitySignals(source: string) {
+  return QUALITY_SIGNALS.reduce(
+    (result, signal) => {
+      if (signal.matches(source)) {
+        result.score += signal.score;
+        result.reasons.push(signal.reason);
+      }
+      return result;
+    },
+    { score: 0, reasons: [] as string[] }
+  );
+}
+
+function hasFlatColorFailure(source: string, reasons: string[]) {
+  const setsFlatColor =
+    /gl_FragColor\s*=\s*vec4\s*\(\s*(u_colorA|u_colorB)\s*,\s*1\.0\s*\)\s*;/.test(
+      source
+    );
+  const hasProceduralSignal = reasons.some((reason) =>
+    ["noise", "loop", "palette", "smoothstep"].includes(reason)
+  );
+
+  return setsFlatColor && !hasProceduralSignal;
+}
+
+function hasTrivialGradientFailure(source: string, reasons: string[]) {
+  const hasTimeUse =
+    /u_time[^;\n]*[+\-*]/.test(source) || /[+\-*]\s*u_time/.test(source);
+  const trivialAxisMix =
+    /gl_FragColor\s*=\s*vec4\s*\(\s*mix\s*\(\s*u_colorA\s*,\s*u_colorB\s*,\s*uv\.(x|y)\s*\)\s*,\s*1\.0\s*\)\s*;/.test(
+      source
+    );
+
+  return (
+    trivialAxisMix &&
+    !reasons.includes("noise") &&
+    !hasTimeUse &&
+    !reasons.includes("mouse")
+  );
 }
 
 export function assessFragmentQuality(source: string | undefined): {
@@ -45,102 +151,18 @@ export function assessFragmentQuality(source: string | undefined): {
 } {
   if (!source || typeof source !== "string")
     return { ok: false, score: 0, reasons: ["empty"] };
-  const s = source;
-  let score = 0;
-  const reasons: string[] = [];
 
-  // Length heuristics
-  if (s.length >= 400) {
-    score += 1;
-    reasons.push("len400");
-  } else if (s.length >= 250) {
-    score += 0.5;
-    reasons.push("len250");
-  }
+  const { score, reasons } = collectQualitySignals(source);
 
-  // Signal for procedural richness
-  const hasNoise = /\bnoise\s*\(/.test(s) || /\bfbm\s*\(/.test(s);
-  if (hasNoise) {
-    score += 2;
-    reasons.push("noise");
-  }
-  const hasHash = /\bfloat\s+hash\s*\(/.test(s);
-  if (hasHash) {
-    score += 1;
-    reasons.push("hash");
-  }
-  const hasLoop = /for\s*\(\s*int\s+\w+\s*=\s*0\s*;[^;]*;\s*\w\+\+\s*\)/.test(
-    s
-  );
-  if (hasLoop) {
-    score += 1;
-    reasons.push("loop");
-  }
-  const usesMouse = (s.match(/u_mouse/g) || []).length >= 2; // count > 1 to avoid only declaration
-  if (usesMouse) {
-    score += 1;
-    reasons.push("mouse");
-  }
-  const usesColors = /u_colorA/.test(s) && /u_colorB/.test(s);
-  if (usesColors) {
-    // double-weight color usage to push away from single-color outputs
-    score += 2;
-    reasons.push("colorsAB");
-  }
-  const mixesColors =
-    /mix\s*\(\s*u_colorA\s*,\s*u_colorB\s*,|mix\s*\(\s*u_colorB\s*,\s*u_colorA\s*,/.test(
-      s
-    );
-  if (mixesColors) {
-    score += 1.5;
-    reasons.push("mixAB");
-  }
-  const hasPalette =
-    /\bvec3\s+pal\s*\(/.test(s) || /\bpal\s*\(/.test(s) || /\bcos\s*\(/.test(s);
-  if (hasPalette) {
-    score += 1;
-    reasons.push("palette");
-  }
-  const aspectCorrect =
-    /R\.x\s*\/\s*R\.y|u_resolution\.x\s*\/\s*u_resolution\.y/.test(s);
-  if (aspectCorrect) {
-    score += 1;
-    reasons.push("aspect");
-  }
-  const hasSmoothstep = /\bsmoothstep\s*\(/.test(s);
-  if (hasSmoothstep) {
-    score += 0.5;
-    reasons.push("smoothstep");
-  }
-  const usesDistance = /\blength\s*\(/.test(s);
-  if (usesDistance) {
-    score += 0.5;
-    reasons.push("length");
-  }
-
-  // Negative signals (trivial outputs / flat color)
-  const setsFlatColor =
-    /gl_FragColor\s*=\s*vec4\s*\(\s*(u_colorA|u_colorB)\s*,\s*1\.0\s*\)\s*;/.test(
-      s
-    );
-  const noProcedural = !hasNoise && !hasLoop && !hasPalette && !hasSmoothstep;
-  if (setsFlatColor && noProcedural) {
+  if (hasFlatColorFailure(source, reasons)) {
     reasons.push("flat-color");
     return { ok: false, score: Math.max(0, score - 3), reasons };
   }
 
-  // Trivial gradient check: just uv axis mix without time/noise/mouse
-  const hasTimeUse = /u_time[^;\n]*[+\-*]/.test(s) || /[+\-*]\s*u_time/.test(s);
-  const trivialAxisMix =
-    /gl_FragColor\s*=\s*vec4\s*\(\s*mix\s*\(\s*u_colorA\s*,\s*u_colorB\s*,\s*uv\.(x|y)\s*\)\s*,\s*1\.0\s*\)\s*;/.test(
-      s
-    );
-  if (trivialAxisMix && !hasNoise && !hasTimeUse && !usesMouse) {
+  if (hasTrivialGradientFailure(source, reasons)) {
     reasons.push("trivial-gradient");
     return { ok: false, score: Math.max(0, score - 3), reasons };
   }
 
-  // Final decision: require higher richness to avoid flat outputs
-  const ok = score >= 6.5;
-  return { ok, score, reasons };
+  return { ok: score >= 6.5, score, reasons };
 }

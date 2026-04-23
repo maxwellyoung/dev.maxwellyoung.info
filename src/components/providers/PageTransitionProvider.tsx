@@ -2,10 +2,15 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { spring, duration, ease } from "@/lib/motion";
 
 const pageVariants = {
+  initial: {
+    opacity: 0,
+    y: 18,
+    scale: 0.995,
+  },
   enter: {
     opacity: 1,
     y: 0,
@@ -16,8 +21,8 @@ const pageVariants = {
     },
   },
   exit: {
-    opacity: 1,
-    y: -10,
+    opacity: 0,
+    y: -14,
     scale: 0.995,
     transition: {
       duration: duration.quick,
@@ -28,20 +33,29 @@ const pageVariants = {
 
 export function PageTransitionProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const shouldReduceMotion = useReducedMotion() ?? false;
 
   // Scroll to top on route change
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [pathname]);
 
+  const variants = shouldReduceMotion
+    ? {
+        initial: { opacity: 1 },
+        enter: { opacity: 1, transition: { duration: 0 } },
+        exit: { opacity: 1, transition: { duration: 0 } },
+      }
+    : pageVariants;
+
   return (
-    <AnimatePresence initial={false}>
+    <AnimatePresence initial={false} mode="wait">
       <motion.div
         key={pathname}
-        initial={false}
+        initial="initial"
         animate="enter"
         exit="exit"
-        variants={pageVariants}
+        variants={variants}
       >
         {children}
       </motion.div>

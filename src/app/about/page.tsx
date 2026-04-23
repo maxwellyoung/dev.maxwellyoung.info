@@ -62,9 +62,9 @@ export default function AboutPage() {
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li>
               <span className="text-foreground font-medium">
-                Research Assistant
+                Software Research Assistant
               </span>{" "}
-              at University of Auckland (2026)
+              at University of Auckland (Apr 2026 &ndash; Present, funded safer-medicines research)
             </li>
             <li>
               <span className="text-foreground font-medium">
@@ -74,9 +74,9 @@ export default function AboutPage() {
             </li>
             <li>
               <span className="text-foreground font-medium">
-                Research Assistant
+                Software Research Assistant
               </span>{" "}
-              at Auckland University of Technology (Jan &ndash; Mar 2025)
+              at Auckland University of Technology (Nov 2025 &ndash; Jan 2026, funded sleep research)
             </li>
             <li>
               <span className="text-foreground font-medium">
