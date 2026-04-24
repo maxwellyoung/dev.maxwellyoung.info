@@ -15,8 +15,9 @@ export function CopyEmail({ email, className = "", showEmail = true }: CopyEmail
 
   return (
     <button
+      type="button"
       onClick={() => copy(email)}
-      className={`group inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm ${className}`}
+      className={`group inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-sm text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${className}`}
       aria-label={status === "copied" ? "Email copied!" : `Copy email: ${email}`}
     >
       {showEmail && (
@@ -33,7 +34,7 @@ export function CopyEmail({ email, className = "", showEmail = true }: CopyEmail
               transition={{ duration: 0.15 }}
               className="absolute inset-0 text-accent"
             >
-              <Check className="w-4 h-4" />
+              <Check className="w-4 h-4" aria-hidden="true" />
             </motion.span>
           ) : (
             <motion.span
@@ -44,7 +45,7 @@ export function CopyEmail({ email, className = "", showEmail = true }: CopyEmail
               transition={{ duration: 0.15 }}
               className="absolute inset-0 opacity-50 group-hover:opacity-100 transition-opacity"
             >
-              <Copy className="w-4 h-4" />
+              <Copy className="w-4 h-4" aria-hidden="true" />
             </motion.span>
           )}
         </AnimatePresence>

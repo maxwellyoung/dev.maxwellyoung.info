@@ -31,7 +31,7 @@ export function SkillCategory({
             aria-expanded={expanded}
             aria-controls={contentId}
             onClick={onToggle}
-            className="resume-label inline-flex items-center gap-2 select-none hover:text-foreground transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
+            className="resume-label inline-flex min-h-11 items-center gap-2 rounded-sm select-none transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             <span>{category}</span>
             <motion.svg
@@ -72,8 +72,7 @@ export function SkillCategory({
           duration: prefersReducedMotion ? 0 : 0.2,
           ease: "easeInOut",
         }}
-        style={{ overflow: "hidden" }}
-        className={compact ? "mt-2" : "mt-2"}
+        className="mt-2 overflow-hidden"
       >
         <div
           className={

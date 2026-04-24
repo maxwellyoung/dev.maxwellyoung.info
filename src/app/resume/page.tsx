@@ -45,17 +45,17 @@ export default function Resume() {
         }}
       />
 
-      <header className="flex items-start justify-between gap-4 mb-10">
-        <div className="flex items-center gap-4">
+      <header className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row">
+        <div className="flex min-w-0 items-center gap-4">
           <Image
-            className="rounded-full"
+            className="flex-shrink-0 rounded-full"
             src="/profile_work.webp"
             alt="Portrait of Maxwell Young"
             width={56}
             height={56}
             sizes="56px"
           />
-          <div>
+          <div className="min-w-0">
             <h1 className="text-xl font-medium text-foreground">
               {resumeData.name}
             </h1>
@@ -67,9 +67,10 @@ export default function Resume() {
         </div>
 
         <button
+          type="button"
           onClick={handleDownload}
           disabled={isDownloading}
-          className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-4 decoration-muted-foreground/30 hover:decoration-foreground/60 transition-colors disabled:opacity-50"
+          className="inline-flex min-h-11 items-center whitespace-nowrap rounded-sm text-xs text-muted-foreground underline decoration-muted-foreground/30 underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-50"
         >
           {isDownloading ? "Generating…" : "Download PDF"}
         </button>
