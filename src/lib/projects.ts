@@ -89,7 +89,7 @@ const projects: Project[] = [
       "I work on the React Native client at Silk as part of a small team. The product spans writing, private archives, and media-rich collections, and I contribute across navigation, editing, media handling, and iOS / Android parity.",
     tags: ["React Native", "TypeScript", "Expo"],
     stack: ["React Native", "TypeScript", "Expo"],
-    startDate: "2024-06-01",
+    startDate: "2025-09-01",
     links: {
       live: "https://www.silk.cx",
     },

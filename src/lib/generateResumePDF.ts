@@ -134,6 +134,16 @@ function writeHeader(context: PdfContext) {
   context.y += 20;
 
   setFont(context, 9, "normal", context.colors.gray);
+  writeWrappedText(
+    context,
+    resumeData.profile,
+    context.marginLeft,
+    context.contentWidth,
+    11
+  );
+  context.y += 8;
+
+  setFont(context, 9, "normal", context.colors.gray);
   const contactLine = `${resumeData.contact.email}  |  ${resumeData.contact.location}  |  ${resumeData.contact.website.replace("https://", "")}`;
   context.pdf.text(sanitizeForPDF(contactLine), context.marginLeft, context.y);
   context.y += 22;

@@ -1,6 +1,7 @@
 type ResumeData = {
   name: string;
   title: string;
+  profile: string;
   contact: {
     email: string;
     location: string;
@@ -30,6 +31,8 @@ type ResumeData = {
 export const resumeData: ResumeData = {
   name: "Maxwell Young",
   title: "Design Engineer",
+  profile:
+    "Mobile and product engineer working across React Native, Next.js, design systems, research tooling, and applied ML prototypes. I build production mobile features, client products, and research interfaces where software has to stay understandable under real workflow constraints.",
   contact: {
     email: "maxwell@ninetynine.digital",
     location: "Auckland, NZ",
@@ -44,10 +47,10 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.auckland.ac.nz/",
       date: "Apr 2026 – Present",
       summary:
-        "Funded safer-medicines research tooling for a deprescribing and clinical review workflow.",
+        "Building safer-medicines research tooling for a deprescribing and clinical review workflow.",
       responsibilities: [
-        "Turned a medication recommendation spreadsheet into a machine-usable rules dataset for a safer-medicines and deprescribing project.",
-        "Built clinician-facing prototypes that match structured patient assessments to candidate medication review rules with provenance, ranking summaries, and audit-aware workflow support.",
+        "Turned a medication recommendation spreadsheet into a Python-backed rules dataset for safer-medicines and deprescribing research.",
+        "Built research prototypes that match structured patient assessments to candidate medication review rules with provenance, ranking summaries, and audit-aware workflow support.",
       ],
     },
     {
@@ -58,7 +61,7 @@ export const resumeData: ResumeData = {
       summary:
         "Funded sleep research app spanning mobile product, backend services, and on-device ML.",
       responsibilities: [
-        "Built a React Native and Expo mobile app for EEG-based sleep-stage classification with session views, hypnograms, questionnaires, and sleep metrics.",
+        "Built a React Native and Expo mobile app for EEG-based sleep-stage classification, including session review, hypnogram views, questionnaires, and sleep metrics.",
         "Integrated on-device and cloud inference flows using AttnSleep TFLite, FastAPI, Express, and Supabase, with separate consumer and lab modes for the AUT research workflow.",
       ],
     },
@@ -66,12 +69,12 @@ export const resumeData: ResumeData = {
       title: "Mobile Design Engineer",
       company: "Silk",
       companyHref: "https://www.silk.cx/",
-      date: "Jun 2024 – Present",
+      date: "September 2025 – Present",
       summary:
-        "React Native product work across publishing, archives, and media-heavy flows.",
+        "React Native product engineering across mobile auth, publishing, archives, and media-heavy flows.",
       responsibilities: [
-        "Contribute to interfaces for publishing, archives, and media-heavy mobile flows.",
-        "Work across iOS and Android React Native features alongside a small team.",
+        "Owned mobile auth, publishing, archive, and media upload/playback flows across iOS and Android.",
+        "Built React Native architecture and delivery patterns for navigation, editing, media handling, and platform parity in a small product team.",
       ],
     },
     {
@@ -80,12 +83,10 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.ninetynine.digital/",
       date: "Apr 2023 – Present",
       summary:
-        "Independent studio. Client sites and my own products.",
+        "Independent product and client studio for mobile apps, web products, and CMS-backed portfolio work.",
       responsibilities: [
-        "Built and shipped Vape Quit Coach for iOS in React Native and Expo.",
-        "Built Liner, a spatial canvas for music, with tldraw, audio playback, and Convex sync.",
-        "Portfolio and CMS work for Ch'lita and Dayle in Next.js and Sanity.",
-        "Shopify performance and layout stability for Goodness Gracious.",
+        "Shipped independent products including Vape Quit Coach for iOS and Liner, a spatial canvas for music with tldraw, audio playback, and Convex sync.",
+        "Delivered client sites for Ch'lita and Dayle with Next.js and Sanity, plus Shopify performance and layout stability work for Goodness Gracious.",
       ],
     },
     {
@@ -106,7 +107,7 @@ export const resumeData: ResumeData = {
       degree: "B.Sc. Computer & Information Sciences",
       institution: "Auckland University of Technology",
       institutionHref: "https://www.aut.ac.nz/",
-      date: "2024 – 2026",
+      date: "2024 – expected 2026",
     },
     {
       degree: "Certificate in Web Development (Level 6)",
@@ -150,7 +151,7 @@ export const resumeData: ResumeData = {
         "Three.js / WebGL",
         "Accessibility (WCAG)",
         "Performance (Core Web Vitals)",
-        "Claude API",
+        "Claude / OpenAI APIs",
       ],
     },
   ],

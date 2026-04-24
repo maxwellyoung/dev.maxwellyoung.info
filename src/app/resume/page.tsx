@@ -60,6 +60,9 @@ export default function Resume() {
               {resumeData.name}
             </h1>
             <p className="text-sm text-muted-foreground">{resumeData.title}</p>
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
+              {resumeData.profile}
+            </p>
           </div>
         </div>
 
