@@ -70,7 +70,7 @@ export default function AboutPage() {
               <span className="text-foreground font-medium">
                 Mobile Design Engineer
               </span>{" "}
-              at Silk (Jun 2024 &ndash; Present)
+              at Silk (September 2025 &ndash; Present)
             </li>
             <li>
               <span className="text-foreground font-medium">
