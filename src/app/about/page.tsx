@@ -100,7 +100,7 @@ export default function AboutPage() {
               <span className="text-foreground font-medium">
                 B.Sc. Computer &amp; Information Sciences
               </span>{" "}
-              &mdash; Auckland University of Technology (2024 &ndash; 2026)
+              &mdash; Auckland University of Technology (2024 &ndash; expected 2026)
             </li>
             <li>
               <span className="text-foreground font-medium">
