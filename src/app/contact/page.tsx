@@ -14,7 +14,7 @@ export default function ContactPage() {
     <main className="min-h-screen p-8 max-w-2xl mx-auto">
       <Link
         href="/"
-        className="text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 inline-block"
+        className="mb-8 inline-flex min-h-11 items-center rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
       >
         ← Back
       </Link>
@@ -33,7 +33,7 @@ export default function ContactPage() {
             external
             eventName="contact_primary_cta_clicked"
             eventProps={{ target: "email" }}
-            className="underline underline-offset-2 hover:text-foreground transition-colors"
+            className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-foreground transition-colors"
           >
             maxwell@ninetynine.digital
           </TrackedActionLink>
@@ -47,7 +47,7 @@ export default function ContactPage() {
                 href="https://github.com/maxwellyoung"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-foreground transition-colors"
+                className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-foreground transition-colors"
               >
                 GitHub
               </a>
@@ -57,7 +57,7 @@ export default function ContactPage() {
                 href="https://www.linkedin.com/in/maxwell-young-a55032125/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-foreground transition-colors"
+                className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-foreground transition-colors"
               >
                 LinkedIn
               </a>

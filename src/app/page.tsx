@@ -34,7 +34,7 @@ export default function Home() {
     <div className="min-h-screen text-foreground p-4 md:p-8 overflow-x-hidden">
       <main className="w-full max-w-2xl mx-auto overflow-x-hidden">
         <motion.section
-          className="flex flex-col justify-center items-start min-h-[70vh] space-y-8 p-4 md:p-8"
+          className="flex min-h-[56vh] flex-col items-start justify-center space-y-6 p-4 md:min-h-[70vh] md:space-y-8 md:p-8"
           variants={container.hero}
           initial="hidden"
           animate="visible"
@@ -68,17 +68,17 @@ export default function Home() {
             </motion.p>
 
             <motion.nav
-              className="text-muted-foreground text-xs flex flex-wrap items-center gap-x-2 gap-y-1"
+              className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground"
               variants={item.fadeUp}
               aria-label="Primary navigation"
             >
-              <AnimatedLink href="#projects" className="text-muted-foreground hover:text-foreground">Work</AnimatedLink>
+              <AnimatedLink href="#projects" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Work</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="/resume" className="text-muted-foreground hover:text-foreground">Resume</AnimatedLink>
+              <AnimatedLink href="/resume" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Resume</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="/contact" className="text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
+              <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="https://github.com/maxwellyoung" external className="text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
+              <AnimatedLink href="https://github.com/maxwellyoung" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
             </motion.nav>
           </div>
         </motion.section>
@@ -107,10 +107,10 @@ export default function Home() {
               {" "}&mdash; independent studio
             </p>
             <div className="flex items-center gap-4">
-              <AnimatedLink href="/contact" className="text-xs text-muted-foreground hover:text-foreground">
+              <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-sm text-muted-foreground hover:text-foreground">
                 Contact
               </AnimatedLink>
-              <AnimatedLink href="/privacy" className="text-xs text-muted-foreground hover:text-foreground">
+              <AnimatedLink href="/privacy" className="inline-flex min-h-11 items-center text-sm text-muted-foreground hover:text-foreground">
                 Privacy
               </AnimatedLink>
             </div>

@@ -32,7 +32,7 @@ export default function AboutPage() {
         <header>
           <Link
             href="/"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="inline-flex min-h-11 items-center rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             &larr; Back
           </Link>
@@ -114,15 +114,15 @@ export default function AboutPage() {
         <section className="space-y-4">
           <h2 className="text-lg font-medium">Contact</h2>
           <p className="text-sm">
-            <AnimatedLink href="mailto:maxwell@ninetynine.digital" external>
+            <AnimatedLink href="mailto:maxwell@ninetynine.digital" external className="inline-flex min-h-11 items-center">
               maxwell@ninetynine.digital
             </AnimatedLink>
           </p>
           <div className="flex gap-4 text-sm">
-            <AnimatedLink href="https://github.com/maxwellyoung" external>
+            <AnimatedLink href="https://github.com/maxwellyoung" external className="inline-flex min-h-11 items-center">
               GitHub
             </AnimatedLink>
-            <AnimatedLink href="https://www.linkedin.com/in/maxwell-young-a55032125/" external>
+            <AnimatedLink href="https://www.linkedin.com/in/maxwell-young-a55032125/" external className="inline-flex min-h-11 items-center">
               LinkedIn
             </AnimatedLink>
           </div>
@@ -131,9 +131,9 @@ export default function AboutPage() {
         <section className="space-y-4">
           <h2 className="text-lg font-medium">Explore</h2>
           <div className="flex flex-wrap gap-4 text-sm">
-            <AnimatedLink href="/#projects">Projects</AnimatedLink>
-            <AnimatedLink href="/craft">Craft</AnimatedLink>
-            <AnimatedLink href="/resume">Resume</AnimatedLink>
+            <AnimatedLink href="/#projects" className="inline-flex min-h-11 items-center">Projects</AnimatedLink>
+            <AnimatedLink href="/craft" className="inline-flex min-h-11 items-center">Craft</AnimatedLink>
+            <AnimatedLink href="/resume" className="inline-flex min-h-11 items-center">Resume</AnimatedLink>
           </div>
         </section>
 

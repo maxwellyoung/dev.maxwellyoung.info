@@ -13,7 +13,7 @@ export default function PrivacyPage() {
     <main className="min-h-screen p-8 max-w-2xl mx-auto">
       <Link
         href="/"
-        className="text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 inline-block"
+        className="mb-8 inline-flex min-h-11 items-center rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
       >
         ← Back
       </Link>
