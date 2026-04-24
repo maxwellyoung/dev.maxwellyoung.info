@@ -58,12 +58,13 @@ function LikeButtonStudy() {
       note="Scale feedback with color transition and particle burst. Spring physics reward engagement."
     >
       <motion.button
+        type="button"
         onClick={() => {
           setIsLiked(!isLiked);
           setCount(isLiked ? count - 1 : count + 1);
         }}
         whileTap={tap.deep}
-        className="flex items-center space-x-2 group"
+        className="group flex min-h-11 min-w-11 items-center space-x-2 rounded-md px-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         aria-label={isLiked ? `${count} likes, unlike` : `${count} likes, like`}
         aria-pressed={isLiked}
       >
@@ -73,9 +74,10 @@ function LikeButtonStudy() {
           className="relative"
         >
           <Heart
-            className={`w-6 h-6 transition-all duration-300 ${
+            className={`h-6 w-6 transition-all duration-300 ${
               isLiked ? "fill-accent text-accent" : "text-muted"
             }`}
+            aria-hidden="true"
           />
           {isLiked && (
             <motion.div
@@ -126,9 +128,10 @@ function DownloadProgressStudy() {
       note="Button morphs to show progress with a fluid fill. State changes stay connected so the system feels legible."
     >
       <motion.button
+        type="button"
         onClick={startDownload}
         disabled={isDownloading}
-        className="relative overflow-hidden bg-accent/10 border border-accent/20 rounded-lg px-6 py-3 min-w-[160px]"
+        className="relative min-h-11 min-w-[160px] overflow-hidden rounded-lg border border-accent/20 bg-accent/10 px-6 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         whileTap={tap.press}
         aria-label={
           isDownloading
@@ -145,7 +148,7 @@ function DownloadProgressStudy() {
         />
 
         <div className="relative flex items-center justify-center space-x-2">
-          <Download className="w-4 h-4" />
+          <Download className="h-4 w-4" aria-hidden="true" />
           <span className="font-medium">
             {isDownloading
               ? `${Math.round(progress)}%`
@@ -176,13 +179,14 @@ function ShareMenuStudy() {
     >
       <div className="relative">
         <motion.button
+          type="button"
           onClick={() => setIsOpen(!isOpen)}
           whileTap={tap.deep}
-          className="bg-accent/10 border border-accent/20 rounded-full p-3"
+          className="min-h-11 min-w-11 rounded-full border border-accent/20 bg-accent/10 p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           aria-label={isOpen ? "Close share menu" : "Open share menu"}
           aria-expanded={isOpen}
         >
-          <Share className="w-5 h-5" />
+          <Share className="h-5 w-5" aria-hidden="true" />
         </motion.button>
 
         {isOpen && (
@@ -196,6 +200,7 @@ function ShareMenuStudy() {
               const Icon = item.icon;
               return (
                 <motion.button
+                  type="button"
                   key={item.label}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -205,9 +210,9 @@ function ShareMenuStudy() {
                     stiffness: 400,
                     damping: 25,
                   }}
-                  className="w-full flex items-center space-x-3 px-3 py-2 text-left hover:bg-muted/50 rounded text-sm"
+                  className="flex min-h-11 w-full items-center space-x-3 rounded px-3 py-2 text-left text-sm hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                 >
-                  <Icon className="h-4 w-4 text-muted-foreground" />
+                  <Icon className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
                   <span>{item.label}</span>
                 </motion.button>
               );
@@ -247,9 +252,10 @@ function PlaybackControlStudy() {
     >
       <div className="flex items-center space-x-4 w-full max-w-md">
         <motion.button
+          type="button"
           onClick={() => setIsPlaying(!isPlaying)}
           whileTap={tap.deep}
-          className="bg-accent/10 border border-accent/20 rounded-full p-4 relative overflow-hidden"
+          className="relative min-h-11 min-w-11 overflow-hidden rounded-full border border-accent/20 bg-accent/10 p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           aria-label={isPlaying ? "Pause" : "Play"}
         >
           <motion.div
@@ -261,9 +267,10 @@ function PlaybackControlStudy() {
             className="absolute inset-3 bg-accent/20 rounded-sm"
           />
           <Play
-            className={`w-6 h-6 transition-all duration-200 ${
+            className={`h-6 w-6 transition-all duration-200 ${
               isPlaying ? "opacity-0 scale-75" : "opacity-100 scale-100"
             }`}
+            aria-hidden="true"
           />
         </motion.button>
 

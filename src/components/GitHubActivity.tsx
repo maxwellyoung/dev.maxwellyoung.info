@@ -56,11 +56,14 @@ export function GitHubActivity({ username = "maxwellyoung" }: { username?: strin
   return (
     <div className="rounded-lg border border-[hsl(var(--border))]/50 bg-[hsl(var(--background))]/30">
       <button
+        type="button"
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-between gap-2 p-3 text-left hover:bg-[hsl(var(--muted))]/30 transition-colors rounded-lg"
+        className="flex min-h-11 w-full items-center justify-between gap-2 rounded-lg p-3 text-left transition-colors hover:bg-[hsl(var(--muted))]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+        aria-expanded={isExpanded}
+        aria-controls={`github-activity-${username}`}
       >
         <div className="flex items-center gap-2">
-          <Github className="w-3.5 h-3.5 text-muted-foreground" />
+          <Github className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
           <span className="text-[11px] text-muted-foreground">
             GitHub
           </span>
@@ -69,7 +72,7 @@ export function GitHubActivity({ username = "maxwellyoung" }: { username?: strin
           animate={{ rotate: isExpanded ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />
+          <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
         </motion.div>
       </button>
 
@@ -80,6 +83,7 @@ export function GitHubActivity({ username = "maxwellyoung" }: { username?: strin
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
+            id={`github-activity-${username}`}
             className="overflow-hidden"
           >
             <div className="px-3 pb-3">

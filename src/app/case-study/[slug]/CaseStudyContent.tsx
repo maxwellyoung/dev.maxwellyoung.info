@@ -59,7 +59,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
       <main className="min-h-screen px-6 py-24 max-w-3xl mx-auto">
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12"
+          className="mb-12 inline-flex min-h-11 items-center gap-2 rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to projects
@@ -83,7 +83,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
         <motion.div {...fadeIn}>
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12"
+            className="mb-12 inline-flex min-h-11 items-center gap-2 rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to projects
@@ -115,7 +115,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                     target: "live_site",
                   })
                 }
-                className="flex items-center gap-2 hover:text-foreground transition-colors"
+                className="inline-flex min-h-11 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
               >
                 <ExternalLink className="w-4 h-4" />
                 Live site
@@ -132,7 +132,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                     target: "source_code",
                   })
                 }
-                className="flex items-center gap-2 hover:text-foreground transition-colors"
+                className="inline-flex min-h-11 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
               >
                 <Github className="w-4 h-4" />
                 Source
@@ -451,7 +451,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
               href="/contact"
               eventName="case_study_cta_clicked"
               eventProps={{ slug: study.slug, target: "contact" }}
-              className="inline-flex items-center rounded-md bg-foreground text-background px-4 py-2 text-sm hover:opacity-90 transition-opacity"
+              className="inline-flex min-h-11 items-center rounded-md bg-foreground px-4 py-2 text-sm text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               Contact
             </TrackedActionLink>

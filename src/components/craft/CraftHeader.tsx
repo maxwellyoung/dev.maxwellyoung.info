@@ -5,7 +5,7 @@ export function CraftHeader() {
     <div>
       <Link
         href="/"
-        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        className="inline-flex min-h-11 items-center rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
       >
         &larr; Back
       </Link>
