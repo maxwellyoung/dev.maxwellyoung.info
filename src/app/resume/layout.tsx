@@ -3,9 +3,13 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Resume — Maxwell Young",
   description: "Resume of Maxwell Young, Design Engineer.",
+  alternates: {
+    canonical: "https://dev.maxwellyoung.info/resume",
+  },
   openGraph: {
     title: "Resume — Maxwell Young",
     description: "Resume of Maxwell Young, Design Engineer.",
+    url: "https://dev.maxwellyoung.info/resume",
     type: "profile",
   },
   twitter: {

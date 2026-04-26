@@ -43,6 +43,19 @@ interface Links {
   video?: string;
 }
 
+type ProjectCoverVariant = "image" | "device" | "brand" | "concept";
+type ProjectCoverTone = "slate" | "teal" | "amber" | "forest" | "plum";
+
+interface ProjectCover {
+  variant?: ProjectCoverVariant;
+  src?: string;
+  alt?: string;
+  objectPosition?: string;
+  kicker?: string;
+  summary?: string;
+  tone?: ProjectCoverTone;
+}
+
 export interface Project {
   slug: string;
   name: string;
@@ -64,6 +77,7 @@ export interface Project {
   links?: Links;
   screenshots?: string[];
   thumb?: string;
+  cover?: ProjectCover;
   impact?: string[];
   metrics?: Metrics;
   buildLog?: BuildLogEntry[];
@@ -96,32 +110,15 @@ const projects: Project[] = [
     link: "https://www.silk.cx",
     screenshots: ["/projectImages/silk-1.webp"],
     thumb: "/projectImages/silk-1.webp",
+    cover: {
+      variant: "brand",
+      kicker: "React Native product engineering",
+      summary: "Mobile auth, publishing, archives, media upload and playback",
+      tone: "slate",
+    },
     impact: [
       "Production React Native work across iOS and Android",
       "Contributions span navigation, editing, media handling, and platform parity",
-    ],
-  },
-  {
-    slug: "ar-opt",
-    name: "AR-OPT",
-    status: "Active",
-    category: "Work",
-    role: "Research Assistant",
-    featured: false,
-    visibility: "private",
-    lifecycle: "sensitive",
-    priority: 98,
-    description:
-      "Private research software project for funded safer-medicines research at the University of Auckland.",
-    longDescription:
-      "AR-OPT is the internal project behind my University of Auckland safer-medicines research assistant work. It stays private until the research context, repo, and public claims are ready for release.",
-    tags: ["Research Software", "Health", "Data", "University of Auckland"],
-    stack: ["Research Software"],
-    startDate: "2026-04-01",
-    redacted: true,
-    impact: [
-      "Funded safer-medicines research at the University of Auckland",
-      "Private inventory record only; not rendered on the public Work list",
     ],
   },
   {
@@ -159,6 +156,15 @@ const projects: Project[] = [
       "/projectImages/liner-3.webp",
     ],
     thumb: "/projectImages/liner-1.webp",
+    cover: {
+      variant: "image",
+      src: "/projectImages/liner-3.webp",
+      alt: "Liner canvas workspace",
+      objectPosition: "center top",
+      kicker: "Spatial music workspace",
+      summary: "Canvas, audio playback, shared data across web and iOS",
+      tone: "teal",
+    },
     impact: [
       "Local-first with optional cloud sync",
       "Custom tldraw shapes for music-specific UX",
@@ -192,6 +198,14 @@ const projects: Project[] = [
       "/projectImages/vqc-5.webp",
     ],
     thumb: "/projectImages/vqc-1.webp",
+    cover: {
+      variant: "device",
+      src: "/projectImages/vqc-1.webp",
+      alt: "Vape Quit Coach app screen",
+      kicker: "Behavior-change mobile app",
+      summary: "Coaching, recovery timelines, relapse support",
+      tone: "teal",
+    },
     links: {
       live: "https://vapequitcoach.com",
     },
@@ -221,6 +235,14 @@ const projects: Project[] = [
     startDate: "2025-01-01",
     screenshots: ["/projectImages/holdspace-1.webp"],
     thumb: "/projectImages/holdspace-1.webp",
+    cover: {
+      variant: "device",
+      src: "/projectImages/holdspace-1.webp",
+      alt: "Holdspace iPhone screenshot",
+      kicker: "Native iOS app",
+      summary: "A focused queue with widgets, gestures, and on-device data",
+      tone: "plum",
+    },
     links: {
       live: "https://apps.apple.com/nz/app/holdspace/id6758010909",
     },
@@ -267,32 +289,16 @@ const projects: Project[] = [
     codeLink: "https://github.com/maxwellyoung/whakapapa",
     screenshots: [],
     thumb: undefined,
+    cover: {
+      variant: "brand",
+      kicker: "Genealogy research tool",
+      summary: "OCR and LLM extraction turn source material into family records",
+      tone: "forest",
+    },
     impact: [
       "AI extraction pipeline: document → OCR → Claude → structured genealogical data",
       "Voice recording preserves stories in the storyteller's own voice",
       "Cultural respect: named after Māori concept of living genealogy",
-    ],
-  },
-  {
-    slug: "palmerston-north-council-rd",
-    name: "COMP702 LTP",
-    status: "Completed",
-    category: "School",
-    role: "Collaborator",
-    featured: false,
-    visibility: "private",
-    lifecycle: "sensitive",
-    priority: 99,
-    description:
-      "Private school R&D project exploring a software/service direction around Palmerston North Council long-term plan material.",
-    longDescription:
-      "COMP702 LTP is an internal inventory record for the Palmerston North Council-related school R&D project. It should stay private until the artifact, permissions, and public framing are clear.",
-    tags: ["R&D", "Civic Tech", "Research", "School Project", "LTP"],
-    stack: ["Python", "LLM Evaluation", "Research", "Prototyping"],
-    redacted: true,
-    impact: [
-      "Civic-facing research and development brief",
-      "Private inventory record only; not rendered on the public Work list",
     ],
   },
   {
@@ -321,6 +327,12 @@ const projects: Project[] = [
     startDate: "2025-01-01",
     screenshots: ["/projectImages/receipt-radar-1.png"],
     thumb: "/projectImages/receipt-radar-1.png",
+    cover: {
+      variant: "brand",
+      kicker: "Grocery intelligence app",
+      summary: "Receipt OCR, price comparison, and longitudinal spend tracking",
+      tone: "amber",
+    },
     links: {
       live: "/receipt-radar",
     },
@@ -361,6 +373,15 @@ const projects: Project[] = [
       "/projectImages/chlita-5.webp",
     ],
     thumb: "/projectImages/chlita-1.webp",
+    cover: {
+      variant: "image",
+      src: "/projectImages/chlita-3.webp",
+      alt: "Ch'lita portfolio site",
+      objectPosition: "center top",
+      kicker: "CMS-driven stylist portfolio",
+      summary: "Image-led layout with restrained motion and fast editorial browsing",
+      tone: "plum",
+    },
   },
   {
     slug: "dayle",
@@ -398,6 +419,15 @@ const projects: Project[] = [
     link: "https://dayle.vercel.app",
     screenshots: ["/projectImages/dayle-1.webp"],
     thumb: "/projectImages/dayle-1.webp",
+    cover: {
+      variant: "image",
+      src: "/projectImages/dayle-1.webp",
+      alt: "Dayle Palfreyman portfolio",
+      objectPosition: "center center",
+      kicker: "Artist portfolio",
+      summary: "Full-screen gallery with Sanity-managed content",
+      tone: "slate",
+    },
   },
   {
     slug: "goodness-gracious",
@@ -425,6 +455,15 @@ const projects: Project[] = [
       "/projectImages/goodness-2.webp",
     ],
     thumb: "/projectImages/goodness-1.webp",
+    cover: {
+      variant: "image",
+      src: "/projectImages/goodness-1.webp",
+      alt: "Goodness Gracious bakery site",
+      objectPosition: "center top",
+      kicker: "Shopify storefront",
+      summary: "Commerce flows and stable layout for a bakery brand",
+      tone: "amber",
+    },
   },
   {
     slug: "jeremy-blake",
@@ -450,6 +489,15 @@ const projects: Project[] = [
     codeLink: "https://github.com/maxwellyoung/jeremy-blake",
     screenshots: ["/projectImages/blake.webp", "/projectImages/blake2.webp"],
     thumb: "/projectImages/blake.webp",
+    cover: {
+      variant: "image",
+      src: "/projectImages/blake2.webp",
+      alt: "Jeremy Blake interactive WebGL study",
+      objectPosition: "center center",
+      kicker: "Interactive WebGL study",
+      summary: "Shader-driven color fields reacting to pointer movement",
+      tone: "teal",
+    },
   },
 ];
 
@@ -465,6 +513,10 @@ export const rankedProjects = projects
       (a.priority ?? Number.MAX_SAFE_INTEGER) -
       (b.priority ?? Number.MAX_SAFE_INTEGER),
   );
+
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projects.find((project) => project.slug === slug);
+}
 
 export function getProjectContextLabel(
   project: Pick<Project, "category" | "client">

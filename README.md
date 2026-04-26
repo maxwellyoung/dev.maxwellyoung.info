@@ -51,13 +51,19 @@ To run this project locally:
 - `src/lib`: Utility functions
 - `public`: Static assets
 
+## Project Image Workflow
+
+- Prompt planning: `pnpm project-images:plan`
+- Batch generation: `pnpm project-images:generate`
+- Full guide: `docs/project-image-generation.md`
+
 ## Deployment
 
 This site is deployed on Vercel. Any push to the main branch will trigger a new deployment.
 
 ## Contact
 
-For any inquiries, please reach out to me at [maxtheyoung@gmail.com](mailto:maxtheyoung@gmail.com).
+For any inquiries, please reach out to me at [maxwell@ninetynine.digital](mailto:maxwell@ninetynine.digital).
 
 ## License
 

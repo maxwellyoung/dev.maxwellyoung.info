@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "styleGuide": {
+    "ratio": "3:2 landscape",
+    "outputGoal": "portfolio cover art that reads cleanly at card size",
+    "globalConstraints": [
+      "No logos, no brand trademarks, no text overlays, no watermarks.",
+      "No faces or named real people.",
+      "Use clean composition with one clear focal area near center-left.",
+      "Keep palette rich but controlled; avoid muddy low-contrast scenes.",
+      "Render quality should feel editorial and contemporary."
+    ]
+  },
+  "projects": [
+    {
+      "slug": "liner",
+      "filename": "liner-cover-gen.png",
+      "prompt": "Editorial product illustration of a spatial music workspace on an infinite canvas: layered cards, waveform strips, thread-like connectors, and subtle neon cyan markers over deep graphite surfaces. Abstract UI-inspired composition, depth, and light bloom. Clean, premium, modern, no readable text."
+    },
+    {
+      "slug": "whakapapa",
+      "filename": "whakapapa-cover-gen.png",
+      "prompt": "Atmospheric genealogy research scene built from archival paper textures, photo fragments, map pins, and branching node lines that form a family-tree silhouette. Forest green and warm parchment palette, respectful and grounded mood, high detail, cinematic soft light, no text."
+    },
+    {
+      "slug": "vape-quit-coach",
+      "filename": "vape-quit-coach-cover-gen.png",
+      "prompt": "Hopeful behavior-change mobile wellness visual: phone-like central frame, pulse rings, progress arcs, and calm gradient horizon from deep teal to sunrise amber. Minimal, focused, reassuring, product-forward composition, premium app campaign style, no text."
+    },
+    {
+      "slug": "holdspace",
+      "filename": "holdspace-cover-gen.png",
+      "prompt": "Minimal native iOS productivity concept showing one highlighted card in crisp focus while several soft translucent cards recede into background layers. Plum and graphite palette, tactile glass-like depth, quiet and intentional composition, no text."
+    },
+    {
+      "slug": "receipt-radar",
+      "filename": "receipt-radar-cover-gen.png",
+      "prompt": "Data-driven grocery intelligence concept: floating receipt strips, item tokens, and price trend ribbons arranged in a warm amber and charcoal visual system. Clean fintech-meets-consumer composition, high clarity, modern product art direction, no logos or text."
+    },
+    {
+      "slug": "chlita",
+      "filename": "chlita-cover-gen.png",
+      "prompt": "Fashion portfolio moodboard style still life with dramatic fabric folds, editorial lighting, and gallery-like framing. Elevated plum and neutral palette, expressive but restrained, high-end visual direction, no faces, no text."
+    },
+    {
+      "slug": "dayle",
+      "filename": "dayle-cover-gen.png",
+      "prompt": "Installation art gallery atmosphere with sculptural forms, large negative space, and directional light shafts across concrete-like surfaces. Monochrome slate palette with subtle warm accents, refined and calm, no text or signage."
+    },
+    {
+      "slug": "goodness-gracious",
+      "filename": "goodness-gracious-cover-gen.png",
+      "prompt": "Craft bakery product scene with artisanal pastries arranged in a modern still-life composition, warm morning light, textured surfaces, and natural tones. Friendly but premium brand aesthetic, no labels, no readable text."
+    },
+    {
+      "slug": "jeremy-blake",
+      "filename": "jeremy-blake-cover-gen.png",
+      "prompt": "Abstract WebGL-inspired artwork: layered fluid color fields, light-reactive gradients, and painterly digital interference patterns with deep teal and electric highlights. Experimental, immersive, high detail, no text."
+    },
+    {
+      "slug": "silk",
+      "filename": "silk-cover-gen.png",
+      "prompt": "Elegant writing and publishing product atmosphere: stacked paper-like panels, media thumbnails as abstract blocks, and archive folders receding into depth. Slate and soft silver palette, polished enterprise-product mood, no logos, no text."
+    }
+  ]
+}
