@@ -23,13 +23,14 @@ export default function Carousel({ images, onClose }: CarouselProps) {
   const shouldReduceMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [isDark, setIsDark] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loadedImage, setLoadedImage] = useState<string | null>(null);
   const x = useMotionValue(0);
+  const currentImage = images[index];
+  const isLoading = loadedImage !== currentImage;
 
   useEffect(() => {
-    setIsLoading(true);
     const img = new window.Image();
-    img.src = images[index];
+    img.src = currentImage;
     const fac = new FastAverageColor();
 
     const processImage = () => {
@@ -45,7 +46,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
           }
         })
         .finally(() => {
-          setIsLoading(false);
+          setLoadedImage(currentImage);
           fac.destroy();
         });
     };
@@ -60,7 +61,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
       img.onload = null;
       fac.destroy();
     };
-  }, [index, images]);
+  }, [currentImage]);
 
   const onDragEnd = (info: { offset: { x: number } }) => {
     if (info.offset.x > DRAG_THRESHOLD && index > 0) {

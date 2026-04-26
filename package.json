@@ -14,7 +14,9 @@
     "fallow:dupes": "npx --yes fallow dupes",
     "fallow:health": "npx --yes fallow health",
     "fallow:audit": "npx --yes fallow audit",
-    "fallow:fix:dry-run": "npx --yes fallow fix --dry-run"
+    "fallow:fix:dry-run": "npx --yes fallow fix --dry-run",
+    "project-images:plan": "node scripts/generate-project-images.mjs --print",
+    "project-images:generate": "node scripts/generate-project-images.mjs --run"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, Camera, LineChart, ShieldCheck } from "lucide-react";
+import { ProjectMedia } from "@/components/ProjectMedia";
+import { getProjectBySlug } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Receipt Radar | Maxwell Young",
@@ -10,6 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default function ReceiptRadarPage() {
+  const project = getProjectBySlug("receipt-radar");
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <div className="mx-auto w-full max-w-4xl px-6 py-14">
@@ -74,20 +78,33 @@ export default function ReceiptRadarPage() {
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-xl border border-border bg-card p-4">
-            <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-muted">
-              <Image
-                src="/projectImages/receipt-radar-1.png"
-                alt="Receipt Radar app icon"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 400px"
-                priority
-              />
-            </div>
-            <p className="mt-3 text-xs text-muted-foreground">
-              Interface and launch assets are still being finalized.
-            </p>
+          <div className="overflow-hidden rounded-xl border border-border bg-card p-4">
+            {project && (
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-muted">
+                <ProjectMedia
+                  project={project}
+                  variant="detail"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 400px"
+                />
+                <div className="absolute bottom-4 left-4 flex items-center gap-3 rounded-full border border-white/15 bg-black/45 px-3 py-2 backdrop-blur">
+                  <div className="relative h-9 w-9 overflow-hidden rounded-lg border border-white/10 bg-white/10">
+                    <Image
+                      src="/projectImages/receipt-radar-1.png"
+                      alt="Receipt Radar icon"
+                      fill
+                      className="object-contain p-1.5"
+                      sizes="36px"
+                      priority
+                    />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-sm font-medium text-white">Receipt Radar</p>
+                    <p className="text-xs text-white/70">Interface and launch assets in progress</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </section>
       </div>

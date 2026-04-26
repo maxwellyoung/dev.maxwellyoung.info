@@ -2,6 +2,7 @@
  * Capture screenshots for portfolio projects using Playwright
  * Run: npx playwright install chromium && npx tsx scripts/capture-screenshots.ts
  */
+/* eslint-disable no-console */
 
 import { chromium } from "playwright";
 import { existsSync, mkdirSync } from "fs";

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +12,7 @@ import {
   isActiveStatus,
 } from "@/lib/projects";
 import { spring } from "@/lib/motion";
+import { ProjectMedia } from "@/components/ProjectMedia";
 
 interface ProjectDetailsProps {
   project: Project | null;
@@ -23,12 +24,14 @@ export function ProjectDetails({
   onCarouselOpen,
 }: ProjectDetailsProps) {
   const shouldReduceMotion = useReducedMotion();
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  // Reset image loaded state when project changes
-  useEffect(() => {
-    setImageLoaded(false);
-  }, [project?.name]);
+  const [loadedImage, setLoadedImage] = useState<string | null>(null);
+  const currentImage = project?.screenshots?.[0] ?? null;
+  const imageLoaded = loadedImage === currentImage;
+  const hasMedia = Boolean(
+    project?.cover || project?.thumb || project?.screenshots?.length,
+  );
+  const screenshotCount = project?.screenshots?.length ?? 0;
+  const canOpenCarousel = screenshotCount > 0;
 
   return (
     <AnimatePresence mode="wait">
@@ -41,34 +44,50 @@ export function ProjectDetails({
           transition={shouldReduceMotion ? { duration: 0 } : spring.gentle}
           className="bg-[hsl(var(--card))] rounded-xl p-4 sm:p-6 border border-[hsl(var(--border))] overflow-x-clip"
         >
-          {project.screenshots && project.screenshots.length > 0 && (
-            <button
-              type="button"
-              className="relative w-full cursor-pointer mb-5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-xl"
-              onClick={onCarouselOpen}
-            >
-              <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-[hsl(var(--border))] transition-all duration-300 group-hover:ring-[hsl(var(--accent))]/40 group-hover:shadow-lg bg-[hsl(var(--muted))]">
-                {/* Loading skeleton */}
-                {!imageLoaded && (
-                  <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-[hsl(var(--muted))] via-[hsl(var(--muted))]/50 to-[hsl(var(--muted))]" />
-                )}
-                <Image
-                  src={project.screenshots[0]}
-                  alt={`${project.name} screenshot`}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 66vw"
-                  className={`object-cover transition-all duration-500 group-hover:scale-[1.02] ${
-                    imageLoaded ? "opacity-100" : "opacity-0"
-                  }`}
-                  onLoad={() => setImageLoaded(true)}
-                />
-              </div>
-              {project.screenshots.length > 1 && (
-                <div className="absolute bottom-3 right-3 bg-background/90 text-foreground px-2 py-1 rounded-full text-xs border border-[hsl(var(--border))]">
-                  +{project.screenshots.length - 1}
+          {hasMedia && (
+            <div className="mb-5">
+              {canOpenCarousel ? (
+                <button
+                  type="button"
+                  className="relative w-full cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-xl"
+                  onClick={onCarouselOpen}
+                >
+                  <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-[hsl(var(--border))] transition-all duration-300 group-hover:ring-[hsl(var(--accent))]/40 group-hover:shadow-lg bg-[hsl(var(--muted))]">
+                    {!imageLoaded && currentImage && (
+                      <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-[hsl(var(--muted))] via-[hsl(var(--muted))]/50 to-[hsl(var(--muted))]" />
+                    )}
+                    <ProjectMedia
+                      project={project}
+                      variant="detail"
+                      sizes="(max-width: 1024px) 100vw, 66vw"
+                    />
+                    {currentImage && (
+                      <Image
+                        src={currentImage}
+                        alt=""
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 66vw"
+                        className="opacity-0 pointer-events-none"
+                        onLoad={() => setLoadedImage(currentImage)}
+                      />
+                    )}
+                  </div>
+                  {screenshotCount > 1 && (
+                    <div className="absolute bottom-3 right-3 bg-background/90 text-foreground px-2 py-1 rounded-full text-xs border border-[hsl(var(--border))]">
+                      +{screenshotCount - 1}
+                    </div>
+                  )}
+                </button>
+              ) : (
+                <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-[hsl(var(--border))] bg-[hsl(var(--muted))]">
+                  <ProjectMedia
+                    project={project}
+                    variant="detail"
+                    sizes="(max-width: 1024px) 100vw, 66vw"
+                  />
                 </div>
               )}
-            </button>
+            </div>
           )}
           <div className="flex items-start justify-between gap-2">
             <div>

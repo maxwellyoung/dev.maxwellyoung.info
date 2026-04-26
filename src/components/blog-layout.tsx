@@ -21,7 +21,6 @@ import { BlogPostCard } from "./BlogPostCard";
 export function BlogLayoutComponent() {
   const router = useRouter();
   const { blogPosts, loading, error } = useBlogPosts();
-  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -33,26 +32,23 @@ export function BlogLayoutComponent() {
   const filteredPosts = blogPosts.filter((post) =>
     post.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  useEffect(() => {
-    if (filteredPosts.length > 0 && !selectedPost) {
-      setSelectedPost(filteredPosts[0]);
-      setCurrentIndex(0);
-    }
-  }, [filteredPosts, selectedPost]);
+  const filteredPostCount = filteredPosts.length;
+  const selectedIndex =
+    filteredPostCount === 0 ? 0 : Math.min(currentIndex, filteredPostCount - 1);
+  const selectedPost = filteredPosts[selectedIndex] ?? null;
 
   const nextPost = useCallback(() => {
-    if (filteredPosts.length === 0) return;
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % filteredPosts.length);
-  }, [filteredPosts.length]);
+    if (filteredPostCount === 0) return;
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % filteredPostCount);
+  }, [filteredPostCount]);
 
   const prevPost = useCallback(() => {
-    if (filteredPosts.length === 0) return;
+    if (filteredPostCount === 0) return;
     setCurrentIndex(
       (prevIndex) =>
-        (prevIndex - 1 + filteredPosts.length) % filteredPosts.length
+        (prevIndex - 1 + filteredPostCount) % filteredPostCount
     );
-  }, [filteredPosts.length]);
+  }, [filteredPostCount]);
 
   const handleWheel = useCallback(
     (event: WheelEvent) => {
@@ -92,20 +88,11 @@ export function BlogLayoutComponent() {
   }, [handleWheel]);
 
   useEffect(() => {
-    if (filteredPosts.length === 0) {
-      setSelectedPost(null);
-      setCurrentIndex(0);
-      return;
-    }
-    if (currentIndex >= filteredPosts.length) {
-      setCurrentIndex(0);
-      return;
-    }
-    setSelectedPost(filteredPosts[currentIndex]);
+    if (filteredPostCount === 0) return;
 
     const scrollArea = scrollAreaRef.current;
     const selectedPostElement = scrollArea?.querySelector(
-      `[data-post-index="${currentIndex}"]`
+      `[data-post-index="${selectedIndex}"]`
     );
 
     if (scrollArea && selectedPostElement) {
@@ -123,7 +110,7 @@ export function BlogLayoutComponent() {
         });
       }
     }
-  }, [currentIndex, filteredPosts]);
+  }, [filteredPostCount, selectedIndex]);
 
   const backgroundSpring = useSpring(0, { stiffness: 100, damping: 30 });
   const backgroundRotation = useTransform(backgroundSpring, [0, 1], [0, 360]);
@@ -296,8 +283,6 @@ export function BlogLayoutComponent() {
                     post={post}
                     isSelected={selectedPost?._id === post._id}
                     onClick={() => {
-                      setSelectedPost(post);
-
                       setCurrentIndex(index);
                     }}
                     data-post-index={index}

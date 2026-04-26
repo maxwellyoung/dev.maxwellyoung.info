@@ -10,7 +10,7 @@ export default function Head() {
             name: "Maxwell Young",
             jobTitle: "Design Engineer",
             url: "https://dev.maxwellyoung.info/",
-            email: "mailto:maxtheyoung@gmail.com",
+            email: "mailto:maxwell@ninetynine.digital",
             sameAs: [
               "https://github.com/maxwellyoung",
               "https://www.linkedin.com/in/maxwell-young-a55032125/",

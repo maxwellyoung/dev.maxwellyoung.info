@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
 import Carousel from "@/components/Carousel";
 import { Project, getProjectContextLabel, rankedProjects } from "@/lib/projects";
 import { ProjectDetails } from "@/components/ProjectDetails";
@@ -13,6 +12,7 @@ import { ChevronDown } from "lucide-react";
 import { container, item, spring } from "@/lib/motion";
 import { ProjectHoverPreview } from "@/components/ProjectHoverPreview";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ProjectMedia } from "@/components/ProjectMedia";
 
 const workRevealTransition = {
   height: { duration: 0.32, ease: [0, 0, 0.2, 1] as const },
@@ -69,23 +69,16 @@ function ProjectRow({
       >
         <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
           <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-200 group-hover:ring-[hsl(var(--accent))]/40">
-            {p.screenshots?.[0] ? (
-              <Image
-                src={p.screenshots[0]}
-                alt={p.name}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-                loading={isEagerLoad ? "eager" : "lazy"}
-                priority={isEagerLoad}
-                sizes="(max-width: 640px) 80px, 112px"
-              />
-            ) : (
-              <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--muted))] to-[hsl(var(--accent))]/10" />
-            )}
+            <ProjectMedia
+              project={p}
+              variant="row"
+              priority={isEagerLoad}
+              sizes="(max-width: 640px) 80px, 112px"
+            />
           </div>
 
           <div className="min-w-0 flex-1 overflow-hidden">
-            <ProjectHoverPreview screenshots={p.screenshots} projectName={p.name}>
+            <ProjectHoverPreview project={p}>
               <div className="cursor-pointer">
                 <p className="mb-0.5 truncate text-[0.62rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                   {getProjectContextLabel(p)}

@@ -2,28 +2,27 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import { ProjectMedia } from "@/components/ProjectMedia";
+import type { Project } from "@/lib/projects";
 
 interface ProjectHoverPreviewProps {
   children: React.ReactNode;
-  screenshots?: string[];
-  projectName: string;
+  project: Pick<Project, "name" | "description" | "screenshots" | "thumb" | "cover" | "tags">;
 }
 
 export function ProjectHoverPreview({
   children,
-  screenshots,
-  projectName,
+  project,
 }: ProjectHoverPreviewProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
 
-  const hasScreenshots = screenshots && screenshots.length > 0;
+  const hasPreview = Boolean(project.cover || project.thumb || project.screenshots?.[0]);
 
   useEffect(() => {
-    if (!isHovered || !hasScreenshots) return;
+    if (!isHovered || !hasPreview) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return;
@@ -53,9 +52,9 @@ export function ProjectHoverPreview({
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [isHovered, hasScreenshots]);
+  }, [isHovered, hasPreview]);
 
-  if (!hasScreenshots) {
+  if (!hasPreview) {
     return <>{children}</>;
   }
 
@@ -83,17 +82,10 @@ export function ProjectHoverPreview({
             }}
           >
             <div className="relative w-[280px] h-[180px] rounded-lg overflow-hidden shadow-2xl border border-[hsl(var(--border))] bg-[hsl(var(--background))]">
-              <Image
-                src={screenshots[0]}
-                alt={`${projectName} preview`}
-                fill
-                className="object-cover"
-                sizes="280px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <ProjectMedia project={project} variant="hover" sizes="280px" />
               <div className="absolute bottom-2 left-3 right-3">
                 <p className="text-xs text-white/90 font-medium truncate">
-                  {projectName}
+                  {project.name}
                 </p>
               </div>
             </div>
