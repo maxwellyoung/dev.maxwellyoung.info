@@ -10,36 +10,6 @@ import { NowPlaying } from "@/components/NowPlaying";
 import { container, item } from "@/lib/motion";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 
-function AvailabilitySignal() {
-  const cells = ["0", "2"];
-
-  return (
-    <motion.div
-      variants={item.fadeUp}
-      className="grid w-full gap-3 rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/55 p-3 sm:grid-cols-[auto_1fr] sm:items-center"
-    >
-      <div className="flex gap-1.5" aria-label="Two week sprint format">
-        {cells.map((cell, index) => (
-          <span
-            key={`${cell}-${index}`}
-            className="grid h-12 w-9 place-items-center rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--background))] font-mono text-xl text-foreground shadow-sm"
-          >
-            {cell}
-          </span>
-        ))}
-      </div>
-      <div className="min-w-0">
-        <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-          Focused sprint lane
-        </p>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Product polish, prototype rescue, and interface systems when the work
-          has a sharp edge.
-        </p>
-      </div>
-    </motion.div>
-  );
-}
 
 export default function Home() {
   const { setTheme } = useTheme();
@@ -112,8 +82,6 @@ export default function Home() {
               <AnimatedLink href="https://github.com/maxwellyoung" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
             </motion.nav>
           </div>
-
-          <AvailabilitySignal />
         </motion.section>
 
         <section id="projects">
