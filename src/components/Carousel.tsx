@@ -82,7 +82,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
     return () => document.removeEventListener("keydown", handleKeyPress);
   }, [index, images.length, onClose]);
 
-  const buttonClasses = `absolute top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
+  const buttonClasses = `absolute top-1/2 -translate-y-1/2 z-20 hidden h-10 w-10 items-center justify-center rounded-full transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:flex ${
     isDark ? "bg-white/10 hover:bg-white/20" : "bg-black/10 hover:bg-black/20"
   }`;
   const iconClasses = `h-6 w-6 ${isDark ? "text-white" : "text-black"}`;
@@ -100,14 +100,14 @@ export default function Carousel({ images, onClose }: CarouselProps) {
   }, [index, images]);
 
   return (
-    <div className="relative h-screen w-screen bg-black/50">
+    <div className="relative h-[100dvh] w-screen overflow-hidden bg-black/50">
       <AnimatePresence>
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={shouldReduceMotion ? { duration: 0 } : undefined}
-          className={`absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
+          className={`absolute right-4 top-[max(1rem,env(safe-area-inset-top))] z-20 flex h-11 w-11 items-center justify-center rounded-full transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
             isDark
               ? "bg-white/10 hover:bg-white/20"
               : "bg-black/10 hover:bg-black/20"
@@ -135,7 +135,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
         dragConstraints={{ left: 0, right: 0 }}
         style={{ x }}
         onDragEnd={(_, info) => onDragEnd(info)}
-        className="relative z-10 h-full w-full flex items-center justify-center"
+        className="relative z-10 flex h-full w-full items-center justify-center px-3 py-[max(1rem,env(safe-area-inset-top))] sm:px-12 sm:py-8"
       >
         <AnimatePresence>
           {isLoading && (
@@ -157,20 +157,20 @@ export default function Carousel({ images, onClose }: CarouselProps) {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: shouldReduceMotion ? 0 : index > 0 ? -100 : 100 }}
             transition={shouldReduceMotion ? { duration: 0 } : spring.snappy}
-            className="absolute flex items-center justify-center h-full w-full"
+            className="absolute flex h-full w-full items-center justify-center"
           >
             <Image
               src={images[index]}
               alt={`Screenshot ${index + 1}`}
               fill
-              className="pointer-events-none object-contain"
+              className="pointer-events-none object-contain p-3 sm:p-8"
               sizes="100vw"
             />
           </motion.div>
         </AnimatePresence>
       </motion.div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
+      <div className="absolute bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 z-20 flex -translate-x-1/2 space-x-2">
         {images.map((_, i) => (
           <button
             key={i}

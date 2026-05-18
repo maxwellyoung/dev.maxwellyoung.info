@@ -10,7 +10,6 @@ import { NowPlaying } from "@/components/NowPlaying";
 import { container, item } from "@/lib/motion";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 
-
 export default function Home() {
   const { setTheme } = useTheme();
 
@@ -49,9 +48,13 @@ export default function Home() {
 
           <div className="leading-relaxed space-y-4">
             <motion.p className="text-foreground" variants={item.fadeUp}>
-              Design Engineer at{" "}
+              I build product interfaces with a bias for shipping, motion that
+              clarifies state, and systems that hold up on real devices.
+              Currently design engineering at{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-              . I run{" "}
+              , building{" "}
+              <AnimatedLink href="https://liner.ninetynine.digital" external>Liner</AnimatedLink>
+              , and taking selective studio work through{" "}
               <TrackedActionLink
                 href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_body"
                 external
@@ -61,10 +64,6 @@ export default function Home() {
               >
                 ninetynine digital
               </TrackedActionLink>
-              , where I&rsquo;m building{" "}
-              <AnimatedLink href="https://liner.ninetynine.digital" external>Liner</AnimatedLink>
-              . Music as{" "}
-              <AnimatedLink href="https://music.maxwellyoung.info" external>Maxwell Young</AnimatedLink>
               .
             </motion.p>
 
