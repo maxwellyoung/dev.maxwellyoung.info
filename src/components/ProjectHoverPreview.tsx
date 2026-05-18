@@ -15,6 +15,7 @@ export function ProjectHoverPreview({
   project,
 }: ProjectHoverPreviewProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [canHoverPreview, setCanHoverPreview] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
@@ -22,7 +23,21 @@ export function ProjectHoverPreview({
   const hasPreview = Boolean(project.cover || project.thumb || project.screenshots?.[0]);
 
   useEffect(() => {
-    if (!isHovered || !hasPreview) return;
+    const hoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const syncHoverCapability = () => {
+      setCanHoverPreview(hoverQuery.matches);
+      if (!hoverQuery.matches) {
+        setIsHovered(false);
+      }
+    };
+
+    syncHoverCapability();
+    hoverQuery.addEventListener("change", syncHoverCapability);
+    return () => hoverQuery.removeEventListener("change", syncHoverCapability);
+  }, []);
+
+  useEffect(() => {
+    if (!isHovered || !hasPreview || !canHoverPreview) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return;
@@ -52,9 +67,9 @@ export function ProjectHoverPreview({
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [isHovered, hasPreview]);
+  }, [isHovered, hasPreview, canHoverPreview]);
 
-  if (!hasPreview) {
+  if (!hasPreview || !canHoverPreview) {
     return <>{children}</>;
   }
 

@@ -71,24 +71,37 @@ function ProjectBrandCover({
   const kicker = project.cover?.kicker ?? "Selected work";
   const tags = isCompact ? [] : (project.tags ?? []).slice(0, variant === "detail" ? 4 : 2);
 
+  if (isCompact) {
+    return (
+      <div className={`absolute inset-0 overflow-hidden ${tone.surface}`}>
+        <div className={`absolute inset-0 ${tone.glow}`} />
+        <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.9)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.9)_1px,transparent_1px)] [background-size:18px_18px]" />
+        <div className="absolute inset-x-3 top-3 h-1 rounded-full bg-white/18" />
+        <div className="relative flex h-full items-center justify-center p-3 text-center">
+          <p className="max-w-[5.6rem] text-[0.62rem] font-medium uppercase leading-tight tracking-[0.14em] text-white/85">
+            {project.name}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={`absolute inset-0 overflow-hidden ${tone.surface}`}>
       <div className={`absolute inset-0 ${tone.glow}`} />
       <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
       <div className="absolute right-4 top-4 h-16 w-16 rounded-full border border-white/10 bg-white/5 blur-2xl" />
-      <div className={`relative flex h-full flex-col justify-between ${isCompact ? "p-2.5" : "p-4 sm:p-5"}`}>
-        <div className={isCompact ? "space-y-1.5" : "space-y-2"}>
+      <div className="relative flex h-full flex-col justify-between p-4 sm:p-5">
+        <div className="space-y-2">
           <span
-            className={`inline-flex items-center rounded-full font-medium uppercase tracking-[0.16em] ${tone.accent} ${
-              isCompact ? "px-2 py-0.5 text-[0.52rem]" : "min-h-7 px-2.5 py-1 text-[0.62rem]"
-            }`}
+            className={`inline-flex min-h-7 items-center rounded-full px-2.5 py-1 text-[0.62rem] font-medium uppercase tracking-[0.16em] ${tone.accent}`}
           >
             {kicker}
           </span>
           <div className={`w-full border-t ${tone.line}`} />
         </div>
 
-        <div className={isCompact ? "space-y-1.5" : "space-y-3"}>
+        <div className="space-y-3">
           <div>
             <p className={isCompact ? "text-xs font-medium leading-tight" : "text-lg font-medium leading-tight sm:text-xl"}>
               {project.name}
@@ -165,21 +178,21 @@ function ProjectConceptCover({
         )}
 
         <div className={isCompact ? "space-y-1.5" : "space-y-4"}>
-          <div className={`grid gap-1.5 ${isCompact ? "grid-cols-3" : "grid-cols-3"}`}>
+          <div className="grid grid-cols-3 gap-1.5">
             {frames.map((frame, index) => (
               <div
                 key={frame}
-                className={`rounded-md border border-white/10 bg-white/[0.07] ${isCompact ? "h-8 p-1" : "min-h-16 p-2.5"}`}
+                className={`rounded-md border border-white/10 bg-white/[0.07] ${isCompact ? "flex h-8 items-center justify-center p-1" : "min-h-16 p-2.5"}`}
               >
-                <div className="mb-2 h-1 w-6 rounded-full bg-white/35" />
                 {!isCompact && (
                   <>
+                    <div className="mb-2 h-1 w-6 rounded-full bg-white/35" />
                     <div className="mb-1.5 h-1.5 rounded-full bg-white/20" />
                     <div className="h-1.5 w-2/3 rounded-full bg-white/15" />
                   </>
                 )}
-                <p className={`mt-auto font-medium text-white/75 ${isCompact ? "text-[0.42rem]" : "text-[0.55rem] tracking-[0.14em]"}`}>
-                  {index + 1}. {frame}
+                <p className={`font-medium text-white/75 ${isCompact ? "text-[0.42rem] leading-none" : "mt-auto text-[0.55rem] tracking-[0.14em]"}`}>
+                  {isCompact ? index + 1 : `${index + 1}. ${frame}`}
                 </p>
               </div>
             ))}
@@ -255,9 +268,13 @@ export function ProjectMedia({
         <div className={`absolute inset-0 ${tone.glow}`} />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-black/20" />
 
-        <div className="relative flex h-full items-center justify-center p-4 sm:p-6">
-          <div className="relative h-full max-h-full w-[42%] min-w-[7rem] max-w-[13rem] overflow-hidden rounded-[1.6rem] border border-white/12 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
-            <div className="absolute inset-x-1/2 top-2 z-10 h-5 w-20 -translate-x-1/2 rounded-full bg-black/80" />
+        <div className={`relative flex h-full items-center justify-center ${variant === "row" ? "p-1.5" : "p-4 sm:p-6"}`}>
+          <div className={
+            variant === "row"
+              ? "relative h-full w-auto aspect-[9/16] overflow-hidden rounded-[0.7rem] border border-white/12 bg-black shadow-[0_12px_28px_rgba(0,0,0,0.35)]"
+              : "relative h-full max-h-full w-[42%] min-w-[7rem] max-w-[13rem] overflow-hidden rounded-[1.6rem] border border-white/12 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.45)]"
+          }>
+            <div className={variant === "row" ? "absolute inset-x-1/2 top-1 z-10 h-1.5 w-6 -translate-x-1/2 rounded-full bg-black/80" : "absolute inset-x-1/2 top-2 z-10 h-5 w-20 -translate-x-1/2 rounded-full bg-black/80"} />
             <ProjectImageCover
               src={imageSrc}
               alt={imageAlt}

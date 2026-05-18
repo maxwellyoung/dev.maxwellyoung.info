@@ -98,9 +98,9 @@ const projects: Project[] = [
     lifecycle: "current",
     priority: 2,
     description:
-      "React Native client work at Silk — contributing to mobile publishing, archive, and media flows.",
+      "React Native product engineering at Silk across core publishing and media experiences.",
     longDescription:
-      "I work on the React Native client at Silk as part of a small team. The product spans writing, private archives, and media-rich collections, and I contribute across navigation, editing, media handling, and iOS / Android parity.",
+      "I work on the React Native product at Silk as part of a small team, contributing across navigation, editing, media handling, and iOS / Android parity.",
     tags: ["React Native", "TypeScript", "Expo"],
     stack: ["React Native", "TypeScript", "Expo"],
     startDate: "2025-09-01",
@@ -113,7 +113,7 @@ const projects: Project[] = [
     cover: {
       variant: "brand",
       kicker: "React Native product engineering",
-      summary: "Mobile auth, publishing, archives, media upload and playback",
+      summary: "Publishing, media upload and playback, and cross-platform polish",
       tone: "slate",
     },
     impact: [
@@ -344,6 +344,64 @@ const projects: Project[] = [
     ],
   },
   {
+    slug: "good-news-bad-news",
+    name: "Good News Bad News",
+    status: "Active",
+    category: "personal",
+    role: "Solo",
+    featured: true,
+    visibility: "public",
+    lifecycle: "current",
+    priority: 5,
+    description:
+      "Expo news app that turns daily reading into a bounded ritual: three good stories, three bad stories, a mood check, and an archive.",
+    longDescription:
+      "Good News Bad News is a React Native and Expo app for balanced daily news. It pairs a swipeable six-story pack with source links, a post-read balance check, offline caching, and a 30-day archive. A Cloudflare Worker curates daily packs from RSS sources with Workers AI and caches them in KV.",
+    tags: [
+      "React Native",
+      "Expo",
+      "Cloudflare Workers",
+      "SQLite",
+      "Workers AI",
+      "News",
+    ],
+    stack: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Expo SQLite",
+      "Zustand",
+      "Cloudflare Workers",
+      "Workers AI",
+      "KV",
+    ],
+    startDate: "2026-01-01",
+    screenshots: [
+      "/projectImages/good-news-bad-news-1.png",
+      "/projectImages/good-news-bad-news-2.png",
+      "/projectImages/good-news-bad-news-3.png",
+      "/projectImages/good-news-bad-news-4.png",
+    ],
+    thumb: "/projectImages/good-news-bad-news-1.png",
+    cover: {
+      variant: "device",
+      src: "/projectImages/good-news-bad-news-1.png",
+      alt: "Good News Bad News home screen",
+      kicker: "Balanced news ritual",
+      summary: "Swipeable daily packs, mood check-ins, offline archive",
+      tone: "forest",
+    },
+    links: {
+      repo: "https://github.com/maxwellyoung/good-news-bad-news",
+    },
+    codeLink: "https://github.com/maxwellyoung/good-news-bad-news",
+    impact: [
+      "Daily pack model keeps news reading intentionally bounded",
+      "Cloudflare Worker fetches RSS sources, curates with Workers AI, and caches packs in KV",
+      "Offline-first mobile UX with local SQLite storage and a 30-day archive",
+    ],
+  },
+  {
     slug: "chlita",
     name: "Ch'lita",
     status: "Completed",
@@ -352,7 +410,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "completed",
-    priority: 5,
+    priority: 6,
     description:
       "Portfolio site for stylist Ch'lita with a CMS-driven image-led layout.",
     longDescription:
@@ -392,7 +450,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "completed",
-    priority: 6,
+    priority: 7,
     description:
       "Portfolio site for installation artist Dayle Palfreyman with a full-screen gallery and CMS editing.",
     longDescription:
@@ -438,7 +496,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "completed",
-    priority: 7,
+    priority: 8,
     description:
       "Shopify site for an Auckland bakery, built with New Territory Studio.",
     longDescription:
@@ -474,7 +532,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "archived",
-    priority: 9,
+    priority: 10,
     description:
       "Interactive WebGL piece built in response to Jeremy Blake's digital paintings.",
     longDescription:
