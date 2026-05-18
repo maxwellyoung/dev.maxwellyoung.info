@@ -4,9 +4,33 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 
 export const metadata: Metadata = {
-  title: "Contact Maxwell Young | Design Engineer",
+  title: "Contact",
   description:
-    "Get in touch with Maxwell Young - Design Engineer based in Auckland, New Zealand. Available for frontend, mobile, and full-stack roles.",
+    "Contact Maxwell Young for product engineering, mobile app, and interface systems work.",
+  alternates: {
+    canonical: "https://dev.maxwellyoung.info/contact",
+  },
+  openGraph: {
+    title: "Contact Maxwell Young",
+    description:
+      "Contact Maxwell Young for product engineering, mobile app, and interface systems work.",
+    url: "https://dev.maxwellyoung.info/contact",
+    images: [
+      {
+        url: "/meta.png",
+        width: 1200,
+        height: 630,
+        alt: "Contact Maxwell Young",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Maxwell Young",
+    description:
+      "Contact Maxwell Young for product engineering, mobile app, and interface systems work.",
+    images: ["/meta.png"],
+  },
 };
 
 export default function ContactPage() {

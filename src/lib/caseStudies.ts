@@ -127,6 +127,25 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Liner is a spatial workspace for arranging songs, notes, and album structures on an infinite canvas.",
     challenge:
       "Playlists and folders are useful for storage, but they are poor tools for sequencing and comparing songs in a broader structure. The goal was to make music organization more visual and direct.",
+    constraints: [
+      "Audio playback had to stay responsive while the canvas handled selection, pan, zoom, and editing state.",
+      "The same product model needed to support web and iOS work without splitting the concept into two unrelated apps.",
+      "The interface had to remain useful before every possible cloud-sync and collaboration feature existed.",
+    ],
+    decisionLog: [
+      {
+        problem: "A standard list UI made music sequencing feel like storage rather than arrangement.",
+        decision: "Built the core workflow around an infinite canvas with custom music objects.",
+        tradeoff: "More interaction edge cases than a conventional playlist builder.",
+        impact: "Tracks, notes, and album structures can be compared spatially instead of only sequentially.",
+      },
+      {
+        problem: "Audio state can easily fight canvas editing state.",
+        decision: "Treated playback as part of the object model instead of a detached global player.",
+        tradeoff: "More coordination between keyboard shortcuts, selected shapes, and playback controls.",
+        impact: "Music objects behave like working material rather than static attachments.",
+      },
+    ],
     approach: [
       {
         title: "Spatial Over Sequential",
@@ -150,6 +169,15 @@ export const caseStudies: Record<string, CaseStudy> = {
       { label: "Custom tldraw Shapes", value: "3+" },
       { label: "Architecture", value: "Local-first" },
       { label: "Real-time Sync", value: "Convex" },
+    ],
+    avoidedPatterns: [
+      "Treating tracks as files in a folder rather than objects in a composition workspace.",
+      "Global playback controls detached from the selected canvas material.",
+      "Cloud-first assumptions that make the product feel broken offline or during rough sync states.",
+    ],
+    nextIterations: [
+      "Deeper arrangement tools for comparing alternate sequences and album structures.",
+      "More explicit collaboration states for shared music workspaces.",
     ],
     learnings: [
       "tldraw is flexible, but custom shapes require careful work around rendering and state.",
@@ -316,6 +344,25 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Portfolio website for stylist Ch'lita built around editorial image presentation and simple CMS updates.",
     challenge:
       "The site needed to support strong image presentation without adding visual clutter or creating layout instability.",
+    constraints: [
+      "The styling work needed to lead; the interface could not compete with image rhythm or art direction.",
+      "The client needed a CMS workflow that did not require developer support for routine updates.",
+      "Image-heavy pages had to stay fast enough that the portfolio still felt editorial, not sluggish.",
+    ],
+    decisionLog: [
+      {
+        problem: "Portfolio sites often over-design the frame around the work.",
+        decision: "Kept the interface sparse and made image sequencing the primary design material.",
+        tradeoff: "Fewer decorative brand moments in the surrounding UI.",
+        impact: "The styling work remains the first thing visitors notice.",
+      },
+      {
+        problem: "Manual portfolio updates create a maintenance bottleneck.",
+        decision: "Modeled the work in Sanity so image sets and project details can be managed independently.",
+        tradeoff: "More setup work up front than hardcoded pages.",
+        impact: "The site can evolve with new work without recurring developer involvement.",
+      },
+    ],
     approach: [
       {
         title: "Subtractive Design",
@@ -338,6 +385,15 @@ export const caseStudies: Record<string, CaseStudy> = {
     metrics: [
       { label: "Performance", value: "98+" },
       { label: "Client Independence", value: "100%" },
+    ],
+    avoidedPatterns: [
+      "Decorative transitions that make the portfolio feel slower than the work deserves.",
+      "Hardcoded project pages that make every update a developer task.",
+      "Over-cropped responsive images that undermine the styling context.",
+    ],
+    nextIterations: [
+      "Richer editorial grouping for campaigns and press features.",
+      "A lighter upload review flow for checking crops before publishing.",
     ],
     learnings: [
       "Restraint is harder than addition. Every feature you don't add is a decision.",

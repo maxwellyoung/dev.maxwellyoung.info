@@ -1,9 +1,7 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
 import {
   getCaseStudy,
   getAllCaseStudySlugs,
-  type CaseStudy,
 } from "@/lib/caseStudies";
 import { CaseStudyContent } from "./CaseStudyContent";
 
@@ -34,12 +32,17 @@ export async function generateMetadata({
     : `${study.subtitle}. ${study.overview}`.slice(0, 160);
 
   return {
-    title: `${study.title} — Case Study | Maxwell Young`,
+    title: `${study.title} — Case Study`,
     description,
+    alternates: {
+      canonical: `https://dev.maxwellyoung.info/case-study/${study.slug}`,
+    },
     openGraph: {
       title: `${study.title} — Case Study`,
       description: study.overview.slice(0, 160),
+      url: `https://dev.maxwellyoung.info/case-study/${study.slug}`,
       type: "article",
+      siteName: "Maxwell Young",
       images: [
         {
           url: study.heroImage || "/meta.png",
@@ -62,5 +65,37 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const { slug } = await params;
   const study = getCaseStudy(slug);
 
-  return <CaseStudyContent slug={slug} study={study} />;
+  const structuredData = study
+    ? {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        headline: `${study.title} — Case Study`,
+        name: study.title,
+        description: study.overview,
+        url: `https://dev.maxwellyoung.info/case-study/${study.slug}`,
+        image: study.heroImage
+          ? `https://dev.maxwellyoung.info${study.heroImage}`
+          : "https://dev.maxwellyoung.info/meta.png",
+        author: {
+          "@type": "Person",
+          name: "Maxwell Young",
+          url: "https://dev.maxwellyoung.info",
+        },
+        about: study.tools,
+      }
+    : null;
+
+  return (
+    <>
+      {structuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
+      )}
+      <CaseStudyContent slug={slug} study={study} />
+    </>
+  );
 }

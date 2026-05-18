@@ -152,7 +152,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
             ))}
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-3 mb-12">
+            <div className="grid gap-3 mb-12 sm:grid-cols-3">
             <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3">
               <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
                 Ownership
@@ -348,7 +348,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           <p className="text-lg leading-relaxed mb-8">{study.outcome}</p>
 
           {study.metrics && (
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
               {study.metrics.map((metric) => (
                 <div
                   key={metric.label}
