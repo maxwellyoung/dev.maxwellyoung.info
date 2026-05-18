@@ -7,12 +7,24 @@ import { CSPostHogProvider } from "./providers";
 import { PageTransitionProvider } from "@/components/providers/PageTransitionProvider";
 
 export const metadata: Metadata = {
-  title: "Maxwell Young — Design Engineer",
+  title: {
+    default: "Maxwell Young — Design Engineer",
+    template: "%s | Maxwell Young",
+  },
   description:
-    "Design engineer at Silk. I run ninetynine digital and release music as Maxwell Young.",
+    "Design engineer at Silk building product interfaces, mobile apps, and systems that hold up on real devices.",
   metadataBase: new URL("https://dev.maxwellyoung.info"),
   authors: [{ name: "Maxwell Young" }],
   creator: "Maxwell Young",
+  keywords: [
+    "Maxwell Young",
+    "Design Engineer",
+    "React Native",
+    "Next.js",
+    "Product Engineering",
+    "Auckland",
+    "ninetynine digital",
+  ],
   icons: {
     icon: "/favicon.png",
     apple: "/favicon.png",
@@ -20,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Maxwell Young — Design Engineer",
     description:
-      "Design engineer at Silk. I run ninetynine digital and release music as Maxwell Young.",
+      "Design engineer at Silk building product interfaces, mobile apps, and systems that hold up on real devices.",
     url: "https://dev.maxwellyoung.info",
     siteName: "Maxwell Young",
     locale: "en_NZ",
@@ -38,12 +50,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Maxwell Young — Design Engineer",
     description:
-      "Design engineer at Silk. I run ninetynine digital and release music as Maxwell Young.",
+      "Design engineer at Silk building product interfaces, mobile apps, and systems that hold up on real devices.",
     images: ["/meta.png"],
     creator: "@internetmaxwell",
   },
   alternates: {
     canonical: "https://dev.maxwellyoung.info",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -90,6 +106,13 @@ export default function RootLayout({
     jobTitle: "Design Engineer",
     url: "https://dev.maxwellyoung.info/",
     email: "maxwell@ninetynine.digital",
+    knowsAbout: [
+      "Design engineering",
+      "React Native",
+      "Next.js",
+      "Mobile product development",
+      "Interface systems",
+    ],
     sameAs: [
       "https://github.com/maxwellyoung",
       "https://www.linkedin.com/in/maxwell-young-a55032125/",
