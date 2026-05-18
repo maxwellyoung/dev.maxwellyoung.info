@@ -98,9 +98,9 @@ const projects: Project[] = [
     lifecycle: "current",
     priority: 2,
     description:
-      "React Native product engineering at Silk across core publishing and media experiences.",
+      "React Native product engineering at Silk across publishing, mobile media, and platform polish.",
     longDescription:
-      "I work on the React Native product at Silk as part of a small team, contributing across navigation, editing, media handling, and iOS / Android parity.",
+      "I contribute to Silk's React Native product inside a small shipping team. My work touches the surfaces that make the mobile product feel reliable in practice: publishing flows, editor behavior, media upload and playback, navigation, release hardening, and iOS / Android parity.",
     tags: ["React Native", "TypeScript", "Expo"],
     stack: ["React Native", "TypeScript", "Expo"],
     startDate: "2025-09-01",
@@ -111,9 +111,9 @@ const projects: Project[] = [
     screenshots: ["/projectImages/silk-1.webp"],
     thumb: "/projectImages/silk-1.webp",
     cover: {
-      variant: "brand",
+      variant: "concept",
       kicker: "React Native product engineering",
-      summary: "Publishing, media upload and playback, and cross-platform polish",
+      summary: "Publishing, media upload and playback, release hardening, and cross-platform polish",
       tone: "slate",
     },
     impact: [
@@ -132,7 +132,7 @@ const projects: Project[] = [
     lifecycle: "current",
     priority: 0,
     description:
-      "Spatial canvas for organizing music. Built on tldraw with audio playback, custom shapes, and shared data across web and iOS.",
+      "Spatial canvas for arranging music, notes, and references with playback-aware objects.",
     longDescription:
       "Liner is a music workspace for arranging songs, notes, and references on an infinite canvas. It uses tldraw with custom shapes for music objects, waveform extraction and playback, keyboard controls, and optional sync through Convex and Clerk. The same underlying model is used across the web app and the iOS app.",
     tags: ["Next.js", "tldraw", "Convex", "Audio", "Canvas", "iOS App"],
@@ -157,10 +157,7 @@ const projects: Project[] = [
     ],
     thumb: "/projectImages/liner-1.webp",
     cover: {
-      variant: "image",
-      src: "/projectImages/liner-3.webp",
-      alt: "Liner canvas workspace",
-      objectPosition: "center top",
+      variant: "concept",
       kicker: "Spatial music workspace",
       summary: "Canvas, audio playback, shared data across web and iOS",
       tone: "teal",
@@ -183,9 +180,9 @@ const projects: Project[] = [
     lifecycle: "current",
     priority: 3,
     description:
-      "iOS app for quitting vaping. Built in React Native and Expo with coaching, recovery tracking, and relapse support.",
+      "React Native iOS app for quitting vaping with coaching, recovery milestones, and relapse support.",
     longDescription:
-      "Vape Quit Coach is a solo-built iOS app for smoking cessation. It includes recovery timelines, coaching flows, and support tools designed for relapse-prone moments. Built end-to-end in React Native and Expo.",
+      "Vape Quit Coach is a solo-built iOS app for quitting vaping. It combines recovery timelines, coaching flows, Apple Watch heart-rate context, and support tools for relapse-prone moments. I designed, built, shipped, and monetized the product end-to-end in React Native and Expo.",
     tags: ["React Native", "Expo", "Behavior Design", "Mobile App"],
     stack: ["React Native", "Expo", "TypeScript"],
     startDate: "2024-01-01",
@@ -227,9 +224,9 @@ const projects: Project[] = [
     lifecycle: "current",
     priority: 4,
     description:
-      "Native iOS app for keeping a small personal queue. One item in focus, the rest held in the background.",
+      "Native iOS queue for keeping one item in focus while the rest waits in the background.",
     longDescription:
-      "Holdspace is a native SwiftUI app for keeping a lightweight queue of links and tasks. It shows one current item at a time, supports quick gesture actions, and keeps everything on-device with widgets and a share extension.",
+      "Holdspace is a native SwiftUI app for a lightweight personal queue. It keeps one current item in focus, supports quick gesture actions, and stores everything on-device, with widgets and a share extension planned around the same private queue model.",
     tags: ["Swift", "SwiftUI", "iOS", "SwiftData", "Native"],
     stack: ["Swift", "SwiftUI", "SwiftData", "WidgetKit", "Live Activities"],
     startDate: "2025-01-01",
@@ -264,7 +261,7 @@ const projects: Project[] = [
     lifecycle: "current",
     priority: 1,
     description:
-      "Family history app for documents, photos, voice notes, and relationship data. OCR and LLM extraction turn source material into structured family records.",
+      "Family-history workspace that turns documents, photos, and voice notes into reviewed family records.",
     longDescription:
       "Whakapapa is a family history app built around source material. You can scan letters and documents, upload photos, record stories, and review extracted people, dates, relationships, and places before adding them to a shared tree. The stack combines OCR, LLM-assisted extraction, React Flow for the tree view, and support for GEDCOM import and multi-workspace collaboration.",
     tags: ["Next.js", "Supabase", "Claude AI", "OCR", "React Flow", "Genealogy"],
@@ -290,7 +287,7 @@ const projects: Project[] = [
     screenshots: [],
     thumb: undefined,
     cover: {
-      variant: "brand",
+      variant: "concept",
       kicker: "Genealogy research tool",
       summary: "OCR and LLM extraction turn source material into family records",
       tone: "forest",
@@ -312,7 +309,7 @@ const projects: Project[] = [
     lifecycle: "current",
     priority: 8,
     description:
-      "Receipt scanning app for grocery spend tracking and price comparison.",
+      "Mobile receipt scanner for grocery spend tracking, item normalization, and price comparison.",
     longDescription:
       "Receipt Radar turns paper receipts into structured grocery history. It scans receipts, normalizes line items, tracks spend over time, and makes price comparisons easier to review before the next shop. Built with React Native, Expo, OCR services, and a real-time backend.",
     tags: ["React Native", "Expo", "Convex", "OCR", "Price Intelligence"],
@@ -328,7 +325,7 @@ const projects: Project[] = [
     screenshots: ["/projectImages/receipt-radar-1.webp"],
     thumb: "/projectImages/receipt-radar-1.webp",
     cover: {
-      variant: "brand",
+      variant: "concept",
       kicker: "Grocery intelligence app",
       summary: "Receipt OCR, price comparison, and longitudinal spend tracking",
       tone: "amber",
@@ -354,7 +351,7 @@ const projects: Project[] = [
     lifecycle: "current",
     priority: 5,
     description:
-      "Expo news app that turns daily reading into a bounded ritual: three good stories, three bad stories, a mood check, and an archive.",
+      "Expo news app that turns daily reading into a bounded six-story ritual with a mood check.",
     longDescription:
       "Good News Bad News is a React Native and Expo app for balanced daily news. It pairs a swipeable six-story pack with source links, a post-read balance check, offline caching, and a 30-day archive. A Cloudflare Worker curates daily packs from RSS sources with Workers AI and caches them in KV.",
     tags: [
@@ -384,9 +381,7 @@ const projects: Project[] = [
     ],
     thumb: "/projectImages/good-news-bad-news-1.webp",
     cover: {
-      variant: "device",
-      src: "/projectImages/good-news-bad-news-1.webp",
-      alt: "Good News Bad News home screen",
+      variant: "concept",
       kicker: "Balanced news ritual",
       summary: "Swipeable daily packs, mood check-ins, offline archive",
       tone: "forest",
@@ -412,9 +407,9 @@ const projects: Project[] = [
     lifecycle: "completed",
     priority: 6,
     description:
-      "Portfolio site for stylist Ch'lita with a CMS-driven image-led layout.",
+      "CMS-backed stylist portfolio built around fast image browsing and quiet editorial motion.",
     longDescription:
-      "Built for stylist Ch'lita as a portfolio that keeps the visual work in front. The site uses Sanity for authoring, responsive image handling, and restrained motion.",
+      "Built for stylist Ch'lita as an image-led portfolio that keeps the work in front. The site uses Sanity for authoring, responsive image handling, and restrained motion so new editorial work can be published without touching code.",
     tags: ["Next.js", "Sanity CMS", "Fashion", "Art Direction"],
     stack: ["Next.js", "TypeScript", "Sanity", "Framer Motion", "Vercel"],
     client: "Ch'lita",
@@ -440,6 +435,11 @@ const projects: Project[] = [
       summary: "Image-led layout with restrained motion and fast editorial browsing",
       tone: "plum",
     },
+    impact: [
+      "Sanity-backed publishing flow for updating portfolio work without code changes",
+      "Responsive image treatment keeps the work prominent across mobile and desktop",
+      "Restrained motion supports editorial browsing without competing with the styling work",
+    ],
   },
   {
     slug: "dayle",
@@ -452,9 +452,9 @@ const projects: Project[] = [
     lifecycle: "completed",
     priority: 7,
     description:
-      "Portfolio site for installation artist Dayle Palfreyman with a full-screen gallery and CMS editing.",
+      "Artist portfolio with a full-screen gallery, vertical rhythm, and client-managed content.",
     longDescription:
-      "Built for Dayle Palfreyman as a full-screen portfolio with vertical snapping, simple navigation, and client-managed content through Sanity.",
+      "Built for Dayle Palfreyman as a full-screen installation-art portfolio. The interface uses vertical snapping, minimal navigation, and Sanity-managed content so the site can stay sparse while still being easy to update.",
     tags: [
       "Next.js 15",
       "Sanity CMS",
@@ -486,6 +486,11 @@ const projects: Project[] = [
       summary: "Full-screen gallery with Sanity-managed content",
       tone: "slate",
     },
+    impact: [
+      "Client-managed Sanity content keeps installation documentation easy to update",
+      "Full-screen gallery treatment prioritizes artwork over site chrome",
+      "Simple navigation and vertical rhythm suit repeated portfolio browsing",
+    ],
   },
   {
     slug: "goodness-gracious",
@@ -498,9 +503,9 @@ const projects: Project[] = [
     lifecycle: "completed",
     priority: 8,
     description:
-      "Shopify site for an Auckland bakery, built with New Territory Studio.",
+      "Shopify storefront for an Auckland bakery, built with New Territory Studio.",
     longDescription:
-      "A Shopify build for Goodness Gracious focused on a stable layout, straightforward commerce flows, and a visual tone that matched the bakery.",
+      "A Shopify build for Goodness Gracious through New Territory Studio. The work focused on stable responsive templates, straightforward commerce flows, and a visual tone that matched the bakery without slowing down browsing or ordering.",
     tags: ["Shopify", "Performance", "Ecommerce"],
     stack: ["Shopify Liquid", "CSS"],
     client: "Goodness Gracious (via New Territory Studio)",
@@ -522,6 +527,11 @@ const projects: Project[] = [
       summary: "Commerce flows and stable layout for a bakery brand",
       tone: "amber",
     },
+    impact: [
+      "Shopify Liquid implementation for a live bakery storefront",
+      "Responsive templates support browsing, product selection, and ordering",
+      "Built in collaboration with New Territory Studio",
+    ],
   },
   {
     slug: "jeremy-blake",
@@ -534,9 +544,9 @@ const projects: Project[] = [
     lifecycle: "archived",
     priority: 10,
     description:
-      "Interactive WebGL piece built in response to Jeremy Blake's digital paintings.",
+      "Interactive WebGL color-field study built in response to Jeremy Blake's digital paintings.",
     longDescription:
-      "A personal WebGL study inspired by Jeremy Blake. It uses shader-driven color fields that respond to pointer movement and run in the browser.",
+      "A personal WebGL study inspired by Jeremy Blake's digital paintings. It uses shader-driven color fields, browser-native interaction, and pointer-responsive motion to explore atmosphere without a conventional interface.",
     tags: ["React", "Three.js", "WebGL", "GLSL", "Interactive Art"],
     stack: ["React", "Three.js", "WebGL"],
     links: {
@@ -556,6 +566,11 @@ const projects: Project[] = [
       summary: "Shader-driven color fields reacting to pointer movement",
       tone: "teal",
     },
+    impact: [
+      "Browser-native WebGL study with shader-driven motion",
+      "Pointer interaction changes the color-field composition in real time",
+      "Small experimental build focused on atmosphere and responsiveness",
+    ],
   },
 ];
 

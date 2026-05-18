@@ -7,7 +7,7 @@ import type { Project } from "@/lib/projects";
 
 interface ProjectHoverPreviewProps {
   children: React.ReactNode;
-  project: Pick<Project, "name" | "description" | "screenshots" | "thumb" | "cover" | "tags">;
+  project: Pick<Project, "slug" | "name" | "description" | "screenshots" | "thumb" | "cover" | "tags">;
 }
 
 export function ProjectHoverPreview({

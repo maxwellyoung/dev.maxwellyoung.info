@@ -37,7 +37,7 @@ const toneClasses = {
 } as const;
 
 interface ProjectMediaProps {
-  project: Pick<Project, "name" | "description" | "screenshots" | "thumb" | "cover" | "tags">;
+  project: Pick<Project, "slug" | "name" | "description" | "screenshots" | "thumb" | "cover" | "tags">;
   variant: ProjectMediaVariant;
   priority?: boolean;
   sizes?: string;
@@ -139,6 +139,8 @@ const conceptFrames = {
   silk: ["WRITE", "ARCHIVE", "MEDIA"],
   whakapapa: ["SCAN", "EXTRACT", "REVIEW"],
   "receipt-radar": ["CAPTURE", "NORMALIZE", "COMPARE"],
+  liner: ["CANVAS", "AUDIO", "SYNC"],
+  "good-news-bad-news": ["GOOD", "BAD", "CHECK"],
 } as const;
 
 function ProjectConceptCover({
@@ -151,7 +153,8 @@ function ProjectConceptCover({
   const tone = toneClasses[project.cover?.tone ?? "slate"];
   const isCompact = variant === "row";
   const isHover = variant === "hover";
-  const conceptKey = project.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const hideDetailSummaryOnMobile = variant === "detail";
+  const conceptKey = project.slug;
   const frames = conceptFrames[conceptKey as keyof typeof conceptFrames] ?? ["BUILD", "SHIP", "LEARN"];
   const summary = clampCopy(
     project.cover?.summary ?? project.description,
@@ -177,8 +180,8 @@ function ProjectConceptCover({
           </div>
         )}
 
-        <div className={isCompact ? "space-y-1.5" : "space-y-4"}>
-          <div className="grid grid-cols-3 gap-1.5">
+        <div className={isCompact ? "" : "space-y-4"}>
+          <div className={`grid grid-cols-3 ${isCompact ? "gap-1" : "gap-1.5"}`}>
             {frames.map((frame, index) => (
               <div
                 key={frame}
@@ -191,23 +194,27 @@ function ProjectConceptCover({
                     <div className="h-1.5 w-2/3 rounded-full bg-white/15" />
                   </>
                 )}
-                <p className={`font-medium text-white/75 ${isCompact ? "text-[0.42rem] leading-none" : "mt-auto text-[0.55rem] tracking-[0.14em]"}`}>
-                  {isCompact ? index + 1 : `${index + 1}. ${frame}`}
+                <p className={`font-medium text-white/75 ${isCompact ? "text-[0.42rem] leading-none tracking-[0.08em]" : "mt-auto text-[0.55rem] tracking-[0.14em]"}`}>
+                  {isCompact ? frame.slice(0, 3) : `${index + 1}. ${frame}`}
                 </p>
               </div>
             ))}
           </div>
 
-          <div>
-            <p className={isCompact ? "truncate text-xs font-medium leading-tight" : "text-lg font-medium leading-tight sm:text-xl"}>
-              {project.name}
-            </p>
-            {!isCompact && (
-              <p className={`mt-2 max-w-[30rem] leading-relaxed text-white/70 ${isHover ? "text-[0.78rem]" : "text-sm sm:text-[0.95rem]"}`}>
+          {!isCompact && (
+            <div>
+              <p className="text-lg font-medium leading-tight sm:text-xl">
+                {project.name}
+              </p>
+              <p
+                className={`mt-2 max-w-[30rem] leading-relaxed text-white/70 ${
+                  isHover ? "text-[0.78rem]" : "text-sm sm:text-[0.95rem]"
+                } ${hideDetailSummaryOnMobile ? "hidden sm:block" : ""}`}
+              >
                 {summary}
               </p>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
