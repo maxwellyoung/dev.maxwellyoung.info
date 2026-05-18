@@ -167,7 +167,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     team: "Data Intelligence Team",
     tools: ["React", "Next.js", "TypeScript", "D3.js", "PostgreSQL"],
     overview:
-      "Internal analytics dashboard for 50+ data analysts at Spark New Zealand, replacing a mix of Power BI reports, Excel exports, and direct SQL workflows.",
+      "Internal analytics dashboard for a specialist analyst team at Spark New Zealand, replacing a fragmented reporting workflow.",
     challenge:
       "Analysts were working across multiple tools with inconsistent models, slow performance, and a high dependency on IT support for report changes.",
     constraints: [
@@ -230,7 +230,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     nextProject: { slug: "vape-quit-coach", title: "Vape Quit Coach" },
   },
-  // silk: { ... } // Disabled until app launch
+  // silk entry intentionally kept out of the published case study set
   "vape-quit-coach": {
     slug: "vape-quit-coach",
     title: "Vape Quit Coach",
@@ -311,7 +311,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Designer & Developer",
     tools: ["Next.js", "Sanity CMS", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://chlita.com",
-    // githubUrl omitted — repo is private
+    // githubUrl intentionally omitted
     overview:
       "Portfolio website for stylist Ch'lita built around editorial image presentation and simple CMS updates.",
     challenge:
@@ -360,7 +360,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "TypeScript",
     ],
     liveUrl: "https://dayle.vercel.app",
-    // githubUrl omitted — repo is private
+    // githubUrl intentionally omitted
     overview:
       "A portfolio for installation artist Dayle Palfreyman with a full-screen gallery, simple navigation, and Sanity CMS.",
     challenge:
