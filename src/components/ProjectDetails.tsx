@@ -32,6 +32,8 @@ export function ProjectDetails({
   );
   const screenshotCount = project?.screenshots?.length ?? 0;
   const canOpenCarousel = screenshotCount > 0;
+  const visibleTags = project?.tags?.slice(0, 6) ?? [];
+  const secondaryImpact = project?.impact?.slice(1, 3) ?? [];
 
   return (
     <AnimatePresence mode="wait">
@@ -42,17 +44,18 @@ export function ProjectDetails({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -20 }}
           transition={shouldReduceMotion ? { duration: 0 } : spring.gentle}
-          className="bg-[hsl(var(--card))] rounded-xl p-4 sm:p-6 border border-[hsl(var(--border))] overflow-x-clip"
+          className="overflow-x-clip rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4 shadow-sm sm:p-5"
         >
           {hasMedia && (
             <div className="mb-5">
               {canOpenCarousel ? (
                 <button
                   type="button"
-                  className="relative w-full cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-xl"
+                  className="relative w-full cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-lg"
                   onClick={onCarouselOpen}
+                  aria-label={`Open ${project.name} screenshots`}
                 >
-                  <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-[hsl(var(--border))] transition-all duration-300 group-hover:ring-[hsl(var(--accent))]/40 group-hover:shadow-lg bg-[hsl(var(--muted))]">
+                  <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg ring-1 ring-[hsl(var(--border))] transition-all duration-300 group-hover:ring-[hsl(var(--accent))]/40 group-hover:shadow-lg bg-[hsl(var(--muted))]">
                     {!imageLoaded && currentImage && (
                       <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-[hsl(var(--muted))] via-[hsl(var(--muted))]/50 to-[hsl(var(--muted))]" />
                     )}
@@ -72,14 +75,9 @@ export function ProjectDetails({
                       />
                     )}
                   </div>
-                  {screenshotCount > 1 && (
-                    <div className="absolute bottom-3 right-3 bg-background/90 text-foreground px-2 py-1 rounded-full text-xs border border-[hsl(var(--border))]">
-                      +{screenshotCount - 1}
-                    </div>
-                  )}
                 </button>
               ) : (
-                <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl ring-1 ring-[hsl(var(--border))] bg-[hsl(var(--muted))]">
+                <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg ring-1 ring-[hsl(var(--border))] bg-[hsl(var(--muted))]">
                   <ProjectMedia
                     project={project}
                     variant="detail"
@@ -110,30 +108,40 @@ export function ProjectDetails({
               </span>
             )}
           </div>
-          <p className="mt-2 text-sm text-muted-foreground font-light">
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             {project.longDescription || project.description}
           </p>
 
-          <div className="mt-3 grid sm:grid-cols-2 gap-2 text-xs">
-            <div className="rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--muted))]/30 px-2.5 py-2">
-              <p className="text-muted-foreground uppercase tracking-wider mb-1">Role</p>
-              <p className="text-foreground">{project.role || "Contributor"}</p>
+          <div className="mt-4 grid gap-2 text-xs sm:grid-cols-2">
+            <div className="rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--muted))]/25 px-3 py-2.5">
+              <p className="mb-1 text-[0.6rem] uppercase tracking-[0.16em] text-muted-foreground">Role</p>
+              <p className="text-sm text-foreground">{project.role || "Contributor"}</p>
             </div>
             {project.impact?.[0] && (
-              <div className="rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--muted))]/30 px-2.5 py-2">
-                <p className="text-muted-foreground uppercase tracking-wider mb-1">Impact</p>
-                <p className="text-foreground">{project.impact[0]}</p>
+              <div className="rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--muted))]/25 px-3 py-2.5">
+                <p className="mb-1 text-[0.6rem] uppercase tracking-[0.16em] text-muted-foreground">Proof point</p>
+                <p className="text-sm leading-snug text-foreground">{project.impact[0]}</p>
               </div>
             )}
           </div>
 
-          {/* Tags */}
-          {project.tags && project.tags.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              {project.tags.slice(0, 5).map((tag) => (
+          {secondaryImpact.length > 0 && (
+            <div className="mt-3 space-y-1.5 text-sm text-muted-foreground">
+              {secondaryImpact.map((impact) => (
+                <p key={impact} className="flex gap-2 leading-relaxed">
+                  <span className="mt-[0.6em] h-1 w-1 shrink-0 rounded-full bg-accent/70" />
+                  <span>{impact}</span>
+                </p>
+              ))}
+            </div>
+          )}
+
+          {visibleTags.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {visibleTags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2 py-0.5 text-xs rounded-md bg-[hsl(var(--muted))] text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  className="rounded-md bg-[hsl(var(--muted))] px-2 py-1 text-xs text-muted-foreground transition-colors duration-200 hover:text-foreground"
                 >
                   {tag}
                 </span>
@@ -141,21 +149,21 @@ export function ProjectDetails({
             </div>
           )}
 
-          <div className="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-4">
+          <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
             {project.caseStudySlug && (
               <Link
                 href={`/case-study/${project.caseStudySlug}`}
-                className="inline-flex items-center text-sm font-medium text-accent hover:text-accent/80 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
+                className="inline-flex min-h-10 items-center justify-center rounded-md border border-accent/20 bg-accent/10 px-3 text-sm font-medium text-accent transition-colors duration-200 hover:bg-accent/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
               >
                 <FileText className="mr-1.5 h-3.5 w-3.5" />
-                Read Case Study
+                Case study
               </Link>
             )}
             {project.link &&
               (project.link.startsWith("/") ? (
                 <Link
                   href={project.link}
-                  className="group inline-flex items-center text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
+                  className="group inline-flex min-h-10 items-center justify-center rounded-md border border-[hsl(var(--border))] px-3 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent/30 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
                 >
                   View Live
                   <ArrowUpRight className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -165,7 +173,7 @@ export function ProjectDetails({
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
+                  className="group inline-flex min-h-10 items-center justify-center rounded-md border border-[hsl(var(--border))] px-3 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent/30 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
                 >
                   View Live
                   <ArrowUpRight className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -176,7 +184,7 @@ export function ProjectDetails({
                 href={project.codeLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
+                className="group inline-flex min-h-10 items-center justify-center rounded-md border border-[hsl(var(--border))] px-3 text-sm text-muted-foreground transition-colors duration-200 hover:border-accent/30 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
               >
                 Source
                 <Github className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" />

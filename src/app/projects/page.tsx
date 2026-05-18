@@ -15,8 +15,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { ProjectMedia } from "@/components/ProjectMedia";
 
 const workRevealTransition = {
-  height: { duration: 0.32, ease: [0, 0, 0.2, 1] as const },
-  opacity: { duration: 0.2, ease: [0, 0, 0.2, 1] as const },
+  height: { duration: 0.26, ease: [0.16, 1, 0.3, 1] as const },
+  opacity: { duration: 0.18, ease: [0, 0, 0.2, 1] as const },
 };
 
 function ProjectRow({
@@ -47,28 +47,30 @@ function ProjectRow({
       <button
         onClick={(e) => {
           const nextExpanded = isExpanded ? null : p.name;
+          const trigger = e.currentTarget;
           onToggleExpand(nextExpanded);
 
           if (!isExpanded) {
-            requestAnimationFrame(() => {
-              e.currentTarget.scrollIntoView({
+            window.setTimeout(() => {
+              const top = trigger.getBoundingClientRect().top + window.scrollY - 16;
+              window.scrollTo({
+                top,
                 behavior: shouldReduceMotion ? "auto" : "smooth",
-                block: "nearest",
               });
-            });
+            }, 260);
           }
         }}
         aria-expanded={isExpanded}
         aria-controls={panelId}
         className={`
-          w-full max-w-full text-left px-2 sm:px-3 py-3
+          w-full max-w-full rounded-lg text-left px-2 sm:px-3 py-3.5
           transition-colors duration-200 ease-out
-          hover:bg-[hsl(var(--muted))]/50
+          hover:bg-[hsl(var(--muted))]/45
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
         `}
       >
         <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
-          <div className="relative h-16 w-20 sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-200 group-hover:ring-[hsl(var(--accent))]/40">
+          <div className="relative h-16 w-20 sm:h-[4.5rem] sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-200 group-hover:ring-[hsl(var(--accent))]/40">
             <ProjectMedia
               project={p}
               variant="row"
@@ -111,7 +113,7 @@ function ProjectRow({
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={shouldReduceMotion ? { duration: 0 } : workRevealTransition}
-            className="px-1 pb-4 overflow-hidden"
+            className="px-1 pb-5 overflow-hidden"
           >
             <motion.div
               initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 8 }}
@@ -156,6 +158,25 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
           <div className="mb-8">
             <h1 className="text-xl font-medium text-foreground">Work</h1>
           </div>
+        )}
+
+        {embedded && (
+          <motion.div
+            variants={item.fadeUp}
+            initial={shouldReduceMotion ? false : "hidden"}
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="mb-4 flex flex-col gap-1 px-2 sm:px-3"
+          >
+            <p className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              Selected work
+            </p>
+            <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
+              Product engineering, mobile apps, and interface systems. Open a
+              row for the short version: what it is, what I owned, and where it
+              shipped.
+            </p>
+          </motion.div>
         )}
 
         <motion.ul
