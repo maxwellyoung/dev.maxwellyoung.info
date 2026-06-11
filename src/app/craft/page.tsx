@@ -3,12 +3,13 @@ import { CraftHeader } from "@/components/craft/CraftHeader";
 import { InteractionStudies } from "@/components/craft/InteractionStudies";
 import { DesignEssays } from "@/components/craft/DesignEssays";
 import { MotionSpec } from "@/components/craft/MotionSpec";
+import { CraftReferences } from "@/components/craft/CraftReferences";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Craft | Maxwell Young",
   description:
-    "Interaction studies, motion spec, and essays on UI behavior.",
+    "Interaction studies, motion spec, references, and essays on UI behavior.",
   openGraph: {
     title: "Craft | Maxwell Young",
     images: [
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
       },
     ],
     description:
-      "Interaction studies, motion spec, and essays on UI behavior.",
+      "Interaction studies, motion spec, references, and essays on UI behavior.",
   },
 };
 
@@ -32,6 +33,7 @@ export default function CraftPage() {
 
         <div className="space-y-20 mt-16">
           <MotionSpec />
+          <CraftReferences />
           <InteractionStudies />
           <DesignEssays />
         </div>
