@@ -111,10 +111,10 @@ const projects: Project[] = [
     screenshots: ["/projectImages/silk-1.webp"],
     thumb: "/projectImages/silk-1.webp",
     cover: {
-      variant: "concept",
-      kicker: "React Native product engineering",
-      summary: "Publishing, media upload and playback, release hardening, and cross-platform polish",
-      tone: "slate",
+      variant: "image",
+      src: "/projectImages/silk-1.webp",
+      alt: "Silk landing page screenshot",
+      objectPosition: "center",
     },
     impact: [
       "Production React Native work across iOS and Android",
@@ -157,10 +157,10 @@ const projects: Project[] = [
     ],
     thumb: "/projectImages/liner-1.webp",
     cover: {
-      variant: "concept",
-      kicker: "Spatial music workspace",
-      summary: "Canvas, audio playback, shared data across web and iOS",
-      tone: "teal",
+      variant: "image",
+      src: "/projectImages/liner-3.webp",
+      alt: "Liner spatial music canvas",
+      objectPosition: "center center",
     },
     impact: [
       "Local-first with optional cloud sync",
@@ -214,6 +214,49 @@ const projects: Project[] = [
     ],
   },
   {
+    slug: "skillscan",
+    name: "SkillScan",
+    status: "Active",
+    category: "personal",
+    role: "Solo",
+    featured: true,
+    visibility: "public",
+    lifecycle: "current",
+    priority: 4,
+    description:
+      "Static security scanner for Claude Code skills and MCP servers.",
+    longDescription:
+      "SkillScan is a developer security tool for reviewing Claude Code skills, MCP servers, GitHub repositories, and pasted code before running them locally. It uses deterministic static checks to surface risky shell, network, filesystem, credential, and prompt-injection patterns with severity, snippets, and remediation notes.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Security",
+      "Static Analysis",
+      "Developer Tools",
+    ],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    startDate: "2026-01-01",
+    screenshots: ["/projectImages/skillscan-1.webp"],
+    thumb: "/projectImages/skillscan-1.webp",
+    cover: {
+      variant: "image",
+      src: "/projectImages/skillscan-1.webp",
+      alt: "SkillScan security scanner interface",
+      objectPosition: "center center",
+    },
+    links: {
+      live: "https://skillscan-rouge.vercel.app",
+      repo: "https://github.com/maxwellyoung/skillscan",
+    },
+    link: "https://skillscan-rouge.vercel.app",
+    codeLink: "https://github.com/maxwellyoung/skillscan",
+    impact: [
+      "Pattern-based checks for shell execution, network access, filesystem access, credentials, and prompt injection",
+      "GitHub URL and direct-code scanning with severity, snippets, and remediation notes",
+      "A focused developer-tool UI for first-pass supply-chain review",
+    ],
+  },
+  {
     slug: "holdspace",
     name: "Holdspace",
     status: "Active",
@@ -222,7 +265,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "current",
-    priority: 4,
+    priority: 5,
     description:
       "Native iOS queue for keeping one item in focus while the rest waits in the background.",
     longDescription:
@@ -263,7 +306,7 @@ const projects: Project[] = [
     description:
       "Family-history workspace that turns documents, photos, and voice notes into reviewed family records.",
     longDescription:
-      "Whakapapa is a family history app built around source material. You can scan letters and documents, upload photos, record stories, and review extracted people, dates, relationships, and places before adding them to a shared tree. The stack combines OCR, LLM-assisted extraction, React Flow for the tree view, and support for GEDCOM import and multi-workspace collaboration.",
+      "Whakapapa is a family history app built around source material. You can scan letters and documents, upload photos, record stories, and review extracted people, dates, relationships, and places before adding them to a shared tree. The interface uses an authored design language — Narrative Atlas: parchment surfaces, serif display type, and a story mode that treats lineage as a field of remembered lives rather than a database. The stack combines OCR, LLM-assisted extraction, React Flow for the tree view, and support for GEDCOM import and multi-workspace collaboration.",
     tags: ["Next.js", "Supabase", "Claude AI", "OCR", "React Flow", "Genealogy"],
     stack: [
       "Next.js 16",
@@ -284,16 +327,17 @@ const projects: Project[] = [
     },
     link: "https://whakapapa.vercel.app",
     codeLink: "https://github.com/maxwellyoung/whakapapa",
-    screenshots: [],
-    thumb: undefined,
+    screenshots: ["/projectImages/whakapapa-1.webp"],
+    thumb: "/projectImages/whakapapa-1.webp",
     cover: {
-      variant: "concept",
-      kicker: "Genealogy research tool",
-      summary: "OCR and LLM extraction turn source material into family records",
-      tone: "forest",
+      variant: "image",
+      src: "/projectImages/whakapapa-1.webp",
+      alt: "Whakapapa family-history homepage",
+      objectPosition: "center center",
     },
     impact: [
       "AI extraction pipeline: document → OCR → Claude → structured genealogical data",
+      "Narrative Atlas design language: parchment, serif display type, story-first navigation",
       "Voice recording preserves stories in the storyteller's own voice",
       "Cultural respect: named after Māori concept of living genealogy",
     ],
@@ -307,7 +351,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "current",
-    priority: 8,
+    priority: 11,
     description:
       "Mobile receipt scanner for grocery spend tracking, item normalization, and price comparison.",
     longDescription:
@@ -325,10 +369,10 @@ const projects: Project[] = [
     screenshots: ["/projectImages/receipt-radar-1.webp"],
     thumb: "/projectImages/receipt-radar-1.webp",
     cover: {
-      variant: "concept",
-      kicker: "Grocery intelligence app",
-      summary: "Receipt OCR, price comparison, and longitudinal spend tracking",
-      tone: "amber",
+      variant: "image",
+      src: "/projectImages/receipt-radar-1.webp",
+      alt: "Receipt Radar app icon",
+      objectPosition: "center center",
     },
     links: {
       live: "/receipt-radar",
@@ -349,7 +393,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "current",
-    priority: 5,
+    priority: 6,
     description:
       "Expo news app that turns daily reading into a bounded six-story ritual with a mood check.",
     longDescription:
@@ -381,19 +425,98 @@ const projects: Project[] = [
     ],
     thumb: "/projectImages/good-news-bad-news-1.webp",
     cover: {
-      variant: "concept",
-      kicker: "Balanced news ritual",
-      summary: "Swipeable daily packs, mood check-ins, offline archive",
+      variant: "device",
+      src: "/projectImages/good-news-bad-news-1.webp",
+      alt: "Good News Bad News app screen",
       tone: "forest",
     },
     links: {
+      live: "https://apps.apple.com/nz/app/id6759082896",
       repo: "https://github.com/maxwellyoung/good-news-bad-news",
     },
+    link: "https://apps.apple.com/nz/app/id6759082896",
     codeLink: "https://github.com/maxwellyoung/good-news-bad-news",
     impact: [
+      "Live on the App Store",
       "Daily pack model keeps news reading intentionally bounded",
       "Cloudflare Worker fetches RSS sources, curates with Workers AI, and caches packs in KV",
       "Offline-first mobile UX with local SQLite storage and a 30-day archive",
+    ],
+  },
+  {
+    slug: "afterlight",
+    name: "Afterlight",
+    status: "Active",
+    category: "personal",
+    role: "Solo",
+    featured: true,
+    visibility: "public",
+    lifecycle: "current",
+    priority: 7,
+    description:
+      "Local-first concert diary — Letterboxd for live music, but quieter.",
+    longDescription:
+      "Afterlight is a concert diary for logging gigs, photos, and memories. It is local-first by design: everything lives on-device with no account or network required. The visual language is gig poster modernism — Factory Records palette, Swiss clarity, grain textures, and spring-based motion.",
+    tags: ["React Native", "Expo", "Local-first", "Music", "Design System"],
+    stack: ["React Native", "Expo", "TypeScript", "AsyncStorage"],
+    startDate: "2025-11-01",
+    screenshots: [
+      "/projectImages/afterlight-1.webp",
+      "/projectImages/afterlight-2.webp",
+    ],
+    thumb: "/projectImages/afterlight-1.webp",
+    cover: {
+      variant: "device",
+      src: "/projectImages/afterlight-1.webp",
+      alt: "Afterlight concert diary screen",
+      kicker: "Local-first concert diary",
+      summary: "Gig poster modernism: true black, FAC blue, grain",
+      tone: "slate",
+    },
+    impact: [
+      "Local-first: no accounts, no analytics, concerts and photos stay on-device",
+      "Authored design system: Factory Records palette with spring motion grammar",
+      "Submitted to the App Store — version 1.0 in review",
+    ],
+  },
+  {
+    slug: "doomscroll",
+    name: "doomscroll",
+    status: "Active",
+    category: "personal",
+    role: "Solo",
+    featured: true,
+    visibility: "public",
+    lifecycle: "current",
+    priority: 8,
+    description:
+      "Swipe-to-learn spaced repetition for code — master a codebase by doomscrolling through it.",
+    longDescription:
+      "doomscroll turns the doomscroll reflex into a learning loop. It serves bite-size code cards in a swipeable feed with streaks and spaced repetition, so the muscle memory of scrolling feeds becomes a way to absorb a codebase. Built with React Native and Expo, designed around dark space, floating code, and one-glyph iconography.",
+    tags: ["React Native", "Expo", "Spaced Repetition", "Developer Tools"],
+    stack: ["React Native", "Expo", "TypeScript"],
+    startDate: "2026-02-01",
+    screenshots: [
+      "/projectImages/doomscroll-1.webp",
+      "/projectImages/doomscroll-2.webp",
+    ],
+    thumb: "/projectImages/doomscroll-1.webp",
+    cover: {
+      variant: "device",
+      src: "/projectImages/doomscroll-2.webp",
+      alt: "doomscroll swipe-to-learn card feed",
+      kicker: "Swipe-to-learn for code",
+      summary: "Spaced repetition disguised as a feed",
+      tone: "teal",
+    },
+    links: {
+      live: "https://apps.apple.com/nz/app/id6759310735",
+    },
+    link: "https://apps.apple.com/nz/app/id6759310735",
+    impact: [
+      "Live on the App Store",
+      "Swipe-first card feed with streaks and spaced repetition",
+      "Interaction design built on a strict motion grammar — springs, not decorations",
     ],
   },
   {
@@ -405,7 +528,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "completed",
-    priority: 6,
+    priority: 9,
     description:
       "CMS-backed stylist portfolio built around fast image browsing and quiet editorial motion.",
     longDescription:
@@ -450,7 +573,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "completed",
-    priority: 7,
+    priority: 10,
     description:
       "Artist portfolio with a full-screen gallery, vertical rhythm, and client-managed content.",
     longDescription:
@@ -501,7 +624,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "completed",
-    priority: 8,
+    priority: 13,
     description:
       "Shopify storefront for an Auckland bakery, built with New Territory Studio.",
     longDescription:
@@ -542,7 +665,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "archived",
-    priority: 10,
+    priority: 12,
     description:
       "Interactive WebGL color-field study built in response to Jeremy Blake's digital paintings.",
     longDescription:
