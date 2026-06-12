@@ -104,7 +104,6 @@ const projects: Project[] = [
     tags: ["React Native", "TypeScript", "Expo"],
     stack: ["React Native", "TypeScript", "Expo"],
     startDate: "2025-09-01",
-    caseStudySlug: "silk",
     links: {
       live: "https://www.silk.cx",
     },
