@@ -7,7 +7,6 @@ import { ExperienceItem } from "@/components/ExperienceItem";
 import { EducationItem } from "@/components/EducationItem";
 import { SkillCategory } from "@/components/SkillCategory";
 import { AnimatedLink } from "@/components/ui/animated-link";
-import { downloadResumePDF } from "@/lib/generateResumePDF";
 import { CopyEmail } from "@/components/CopyEmail";
 
 export default function Resume() {
@@ -17,6 +16,7 @@ export default function Resume() {
   const handleDownload = async () => {
     setIsDownloading(true);
     try {
+      const { downloadResumePDF } = await import("@/lib/generateResumePDF");
       await downloadResumePDF();
     } catch (error) {
       console.error("Failed to generate PDF:", error);

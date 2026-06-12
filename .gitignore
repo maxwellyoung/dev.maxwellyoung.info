@@ -40,3 +40,7 @@ next-env.d.ts
 /docs/*
 squirrel.toml
 .claude/
+
+# local test artifacts
+.playwright-mcp/
+/skillscan-product-pass.png
