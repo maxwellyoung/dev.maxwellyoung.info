@@ -96,7 +96,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "current",
-    priority: 2,
+    priority: 0,
     description:
       "React Native product engineering at Silk across publishing, mobile media, and platform polish.",
     longDescription:
@@ -130,7 +130,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "current",
-    priority: 0,
+    priority: 3,
     description:
       "Spatial canvas for arranging music, notes, and references with playback-aware objects.",
     longDescription:
@@ -175,10 +175,10 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
-    priority: 3,
+    priority: 4,
     description:
       "React Native iOS app for quitting vaping with coaching, recovery milestones, and relapse support.",
     longDescription:
@@ -219,10 +219,10 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
-    priority: 4,
+    priority: 5,
     description:
       "Static security scanner for Claude Code skills and MCP servers.",
     longDescription:
@@ -262,10 +262,10 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
-    priority: 5,
+    priority: 6,
     description:
       "Native iOS queue for keeping one item in focus while the rest waits in the background.",
     longDescription:
@@ -299,10 +299,10 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
-    priority: 1,
+    priority: 7,
     description:
       "Family-history workspace that turns documents, photos, and voice notes into reviewed family records.",
     longDescription:
@@ -348,7 +348,7 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
     priority: 11,
@@ -390,10 +390,10 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
-    priority: 6,
+    priority: 8,
     description:
       "Expo news app that turns daily reading into a bounded six-story ritual with a mood check.",
     longDescription:
@@ -452,7 +452,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "current",
-    priority: 7,
+    priority: 1,
     description:
       "Local-first concert diary — Letterboxd for live music, but quieter.",
     longDescription:
@@ -460,6 +460,10 @@ const projects: Project[] = [
     tags: ["React Native", "Expo", "Local-first", "Music", "Design System"],
     stack: ["React Native", "Expo", "TypeScript", "AsyncStorage"],
     startDate: "2025-11-01",
+    links: {
+      live: "https://afterlight.ninetynine.digital",
+    },
+    link: "https://afterlight.ninetynine.digital",
     screenshots: [
       "/projectImages/afterlight-1.webp",
       "/projectImages/afterlight-2.webp",
@@ -476,7 +480,7 @@ const projects: Project[] = [
     impact: [
       "Local-first: no accounts, no analytics, concerts and photos stay on-device",
       "Authored design system: Factory Records palette with spring motion grammar",
-      "Submitted to the App Store — version 1.0 in review",
+      "Polished 1.0 build shaped around a small, offline-first concert-memory loop",
     ],
   },
   {
@@ -485,10 +489,10 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
-    priority: 8,
+    priority: 9,
     description:
       "Swipe-to-learn spaced repetition for code — master a codebase by doomscrolling through it.",
     longDescription:
@@ -528,7 +532,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "completed",
-    priority: 9,
+    priority: 2,
     description:
       "CMS-backed stylist portfolio built around fast image browsing and quiet editorial motion.",
     longDescription:
@@ -570,10 +574,10 @@ const projects: Project[] = [
     status: "Completed",
     category: "studio",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "completed",
-    priority: 10,
+    priority: 12,
     description:
       "Artist portfolio with a full-screen gallery, vertical rhythm, and client-managed content.",
     longDescription:
@@ -621,7 +625,7 @@ const projects: Project[] = [
     status: "Completed",
     category: "studio",
     role: "Frontend",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "completed",
     priority: 13,
@@ -662,10 +666,10 @@ const projects: Project[] = [
     status: "Completed",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "archived",
-    priority: 12,
+    priority: 14,
     description:
       "Interactive WebGL color-field study built in response to Jeremy Blake's digital paintings.",
     longDescription:
@@ -709,6 +713,12 @@ export const rankedProjects = projects
       (a.priority ?? Number.MAX_SAFE_INTEGER) -
       (b.priority ?? Number.MAX_SAFE_INTEGER),
   );
+
+export const flagshipProjects = rankedProjects.filter((project) => project.featured);
+
+export const supportingProjects = rankedProjects.filter(
+  (project) => !project.featured,
+);
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);

@@ -6,7 +6,13 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Carousel from "@/components/Carousel";
-import { Project, getProjectContextLabel, rankedProjects } from "@/lib/projects";
+import {
+  Project,
+  flagshipProjects,
+  getProjectContextLabel,
+  rankedProjects,
+  supportingProjects,
+} from "@/lib/projects";
 import { ProjectDetails } from "@/components/ProjectDetails";
 import { ChevronDown } from "lucide-react";
 import { container, item, spring } from "@/lib/motion";
@@ -26,6 +32,7 @@ function ProjectRow({
   onToggleExpand,
   onCarouselOpen,
   shouldReduceMotion,
+  emphasis = "supporting",
 }: {
   p: Project;
   index?: number;
@@ -33,10 +40,12 @@ function ProjectRow({
   onToggleExpand: (name: string | null) => void;
   onCarouselOpen: () => void;
   shouldReduceMotion: boolean;
+  emphasis?: "flagship" | "supporting";
 }) {
   const isExpanded = expandedProject === p.name;
-  const isEagerLoad = index < 4;
+  const isEagerLoad = emphasis === "flagship" && index < 4;
   const panelId = `project-panel-${p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+  const isFlagship = emphasis === "flagship";
 
   return (
     <motion.li
@@ -70,12 +79,22 @@ function ProjectRow({
         `}
       >
         <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
-          <div className="relative h-16 w-20 sm:h-[4.5rem] sm:w-28 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-200 group-hover:ring-[hsl(var(--accent))]/40">
+          <div
+            className={`relative flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-200 group-hover:ring-[hsl(var(--accent))]/40 ${
+              isFlagship
+                ? "h-20 w-24 sm:h-24 sm:w-36"
+                : "h-16 w-20 sm:h-[4.5rem] sm:w-28"
+            }`}
+          >
             <ProjectMedia
               project={p}
               variant="row"
               priority={isEagerLoad}
-              sizes="(max-width: 640px) 80px, 112px"
+              sizes={
+                isFlagship
+                  ? "(max-width: 640px) 96px, 144px"
+                  : "(max-width: 640px) 80px, 112px"
+              }
             />
           </div>
 
@@ -85,12 +104,22 @@ function ProjectRow({
                 <p className="mb-0.5 truncate text-[0.62rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                   {getProjectContextLabel(p)}
                 </p>
-                <h3 className="truncate break-words text-sm font-medium leading-tight text-foreground">
+                <h3
+                  className={`truncate break-words font-medium leading-tight text-foreground ${
+                    isFlagship ? "text-base sm:text-lg" : "text-sm"
+                  }`}
+                >
                   {p.name}
                 </h3>
               </div>
             </ProjectHoverPreview>
-            <p className="mt-1 truncate break-words text-xs text-muted-foreground">
+            <p
+              className={`mt-1 break-words text-muted-foreground ${
+                isFlagship
+                  ? "line-clamp-2 text-sm leading-relaxed"
+                  : "truncate text-xs"
+              }`}
+            >
               {p.description}
             </p>
           </div>
@@ -140,6 +169,65 @@ interface ProjectsShowcaseProps {
   embedded?: boolean;
 }
 
+function ProjectSection({
+  title,
+  description,
+  projects,
+  expandedProject,
+  onToggleExpand,
+  onCarouselOpen,
+  shouldReduceMotion,
+  emphasis = "supporting",
+}: {
+  title: string;
+  description: string;
+  projects: Project[];
+  expandedProject: string | null;
+  onToggleExpand: (name: string | null) => void;
+  onCarouselOpen: () => void;
+  shouldReduceMotion: boolean;
+  emphasis?: "flagship" | "supporting";
+}) {
+  return (
+    <section className="space-y-3">
+      <motion.div
+        variants={item.fadeUp}
+        initial={shouldReduceMotion ? false : "hidden"}
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+        className="flex flex-col gap-1 px-2 sm:px-3"
+      >
+        <h2 className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+          {title}
+        </h2>
+        <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
+          {description}
+        </p>
+      </motion.div>
+
+      <motion.ul
+        variants={container.list}
+        initial={shouldReduceMotion ? false : "hidden"}
+        animate="visible"
+        className="divide-y divide-[hsl(var(--border))]/50 overflow-x-hidden w-full max-w-full"
+      >
+        {projects.map((p, index) => (
+          <ProjectRow
+            key={p.name}
+            p={p}
+            index={index}
+            expandedProject={expandedProject}
+            onToggleExpand={onToggleExpand}
+            onCarouselOpen={onCarouselOpen}
+            shouldReduceMotion={shouldReduceMotion}
+            emphasis={emphasis}
+          />
+        ))}
+      </motion.ul>
+    </section>
+  );
+}
+
 export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
   const shouldReduceMotion = useReducedMotion() ?? false;
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
@@ -160,43 +248,30 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
           </div>
         )}
 
-        {embedded && (
-          <motion.div
-            variants={item.fadeUp}
-            initial={shouldReduceMotion ? false : "hidden"}
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="mb-4 flex flex-col gap-1 px-2 sm:px-3"
-          >
-            <p className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-              Selected work
-            </p>
-            <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
-              Product engineering, mobile apps, and interface systems. Open a
-              row for the short version: what it is, what I owned, and where it
-              shipped.
-            </p>
-          </motion.div>
-        )}
+        <div className="space-y-10">
+          <ProjectSection
+            title={embedded ? "Flagship work" : "Selected work"}
+            description="Start here: production React Native at Silk, solo products designed and shipped end-to-end, and client work with a clear visual point of view."
+            projects={flagshipProjects}
+            expandedProject={expandedProject}
+            onToggleExpand={setExpandedProject}
+            onCarouselOpen={handleCarouselOpen}
+            shouldReduceMotion={shouldReduceMotion}
+            emphasis="flagship"
+          />
 
-        <motion.ul
-          variants={container.list}
-          initial={shouldReduceMotion ? false : "hidden"}
-          animate="visible"
-          className="divide-y divide-[hsl(var(--border))]/50 overflow-x-hidden w-full max-w-full"
-        >
-          {rankedProjects.map((p, index) => (
-            <ProjectRow
-              key={p.name}
-              p={p}
-              index={index}
+          {supportingProjects.length > 0 && (
+            <ProjectSection
+              title="Supporting work"
+              description="More shipped products, experiments, and client builds — shorter stories, same standards."
+              projects={supportingProjects}
               expandedProject={expandedProject}
               onToggleExpand={setExpandedProject}
               onCarouselOpen={handleCarouselOpen}
               shouldReduceMotion={shouldReduceMotion}
             />
-          ))}
-        </motion.ul>
+          )}
+        </div>
       </div>
 
       <Dialog open={isCarouselOpen} onOpenChange={setIsCarouselOpen}>
