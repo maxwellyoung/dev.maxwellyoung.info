@@ -52,9 +52,11 @@ export default function Home() {
               clarifies state, and systems that hold up on real devices.
               Currently design engineering at{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-              , building{" "}
+              ; after hours I&apos;m building{" "}
               <AnimatedLink href="https://liner.ninetynine.digital" external>Liner</AnimatedLink>
-              , and taking selective studio work through{" "}
+              {" "}and{" "}
+              <AnimatedLink href="https://afterlight.ninetynine.digital" external>Afterlight</AnimatedLink>
+              {" "}through{" "}
               <TrackedActionLink
                 href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_body"
                 external

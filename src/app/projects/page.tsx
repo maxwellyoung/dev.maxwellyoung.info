@@ -72,66 +72,75 @@ function ProjectRow({
         aria-expanded={isExpanded}
         aria-controls={panelId}
         className={`
-          w-full max-w-full rounded-lg text-left px-2 sm:px-3 py-3.5
+          w-full max-w-full rounded-lg text-left px-2 sm:px-3 ${isFlagship ? "py-3.5" : "py-2.5"}
           transition-colors duration-200 ease-out
           hover:bg-[hsl(var(--muted))]/45
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
         `}
       >
-        <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
-          <div
-            className={`relative flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-200 group-hover:ring-[hsl(var(--accent))]/40 ${
-              isFlagship
-                ? "h-20 w-24 sm:h-24 sm:w-36"
-                : "h-16 w-20 sm:h-[4.5rem] sm:w-28"
-            }`}
-          >
-            <ProjectMedia
-              project={p}
-              variant="row"
-              priority={isEagerLoad}
-              sizes={
-                isFlagship
-                  ? "(max-width: 640px) 96px, 144px"
-                  : "(max-width: 640px) 80px, 112px"
-              }
-            />
-          </div>
+        {isFlagship ? (
+          <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
+            <div className="relative h-20 w-24 sm:h-24 sm:w-36 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-200 group-hover:ring-[hsl(var(--accent))]/40">
+              <ProjectMedia
+                project={p}
+                variant="row"
+                priority={isEagerLoad}
+                sizes="(max-width: 640px) 96px, 144px"
+              />
+            </div>
 
-          <div className="min-w-0 flex-1 overflow-hidden">
-            <ProjectHoverPreview project={p}>
-              <div className="cursor-pointer">
-                <p className="mb-0.5 truncate text-[0.62rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                  {getProjectContextLabel(p)}
-                </p>
-                <h3
-                  className={`truncate break-words font-medium leading-tight text-foreground ${
-                    isFlagship ? "text-base sm:text-lg" : "text-sm"
-                  }`}
-                >
-                  {p.name}
-                </h3>
-              </div>
-            </ProjectHoverPreview>
-            <p
-              className={`mt-1 break-words text-muted-foreground ${
-                isFlagship
-                  ? "line-clamp-2 text-sm leading-relaxed"
-                  : "truncate text-xs"
-              }`}
+            <div className="min-w-0 flex-1 overflow-hidden">
+              <ProjectHoverPreview project={p}>
+                <div className="cursor-pointer">
+                  <p className="mb-0.5 truncate text-[0.62rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+                    {getProjectContextLabel(p)}
+                  </p>
+                  <h3 className="truncate break-words text-base sm:text-lg font-medium leading-tight text-foreground">
+                    {p.name}
+                  </h3>
+                </div>
+              </ProjectHoverPreview>
+              <p className="mt-1 line-clamp-2 break-words text-sm leading-relaxed text-muted-foreground">
+                {p.description}
+              </p>
+            </div>
+
+            <motion.div
+              animate={{ rotate: isExpanded ? 180 : 0 }}
+              transition={shouldReduceMotion ? { duration: 0 } : spring.snappy}
+              className="flex-shrink-0 text-muted-foreground/50 group-hover:text-muted-foreground transition-colors"
             >
-              {p.description}
-            </p>
+              <ChevronDown className="h-4 w-4" />
+            </motion.div>
           </div>
+        ) : (
+          <div className="flex items-center gap-3 w-full overflow-hidden">
+            <div className="min-w-0 flex-1 overflow-hidden">
+              <ProjectHoverPreview project={p}>
+                <div className="flex min-w-0 cursor-pointer items-baseline gap-3">
+                  <h3 className="flex-shrink-0 text-sm font-medium leading-tight text-foreground">
+                    {p.name}
+                  </h3>
+                  <p className="hidden min-w-0 truncate text-xs text-muted-foreground sm:block">
+                    {p.description}
+                  </p>
+                </div>
+              </ProjectHoverPreview>
+            </div>
 
-          <motion.div
-            animate={{ rotate: isExpanded ? 180 : 0 }}
-            transition={shouldReduceMotion ? { duration: 0 } : spring.snappy}
-            className="flex-shrink-0 text-muted-foreground/50 group-hover:text-muted-foreground transition-colors"
-          >
-            <ChevronDown className="h-4 w-4" />
-          </motion.div>
-        </div>
+            <span className="hidden flex-shrink-0 text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/60 sm:inline">
+              {getProjectContextLabel(p)}
+            </span>
+
+            <motion.div
+              animate={{ rotate: isExpanded ? 180 : 0 }}
+              transition={shouldReduceMotion ? { duration: 0 } : spring.snappy}
+              className="flex-shrink-0 text-muted-foreground/50 group-hover:text-muted-foreground transition-colors"
+            >
+              <ChevronDown className="h-4 w-4" />
+            </motion.div>
+          </div>
+        )}
       </button>
 
       <AnimatePresence initial={false}>
