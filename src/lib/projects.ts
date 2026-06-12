@@ -158,8 +158,8 @@ const projects: Project[] = [
     thumb: "/projectImages/liner-1.webp",
     cover: {
       variant: "image",
-      src: "/projectImages/liner-3.webp",
-      alt: "Liner spatial music canvas",
+      src: "/projectImages/liner-1.webp",
+      alt: "Liner landing page — See the songs. Shape the release.",
       objectPosition: "center center",
     },
     impact: [
