@@ -33,10 +33,135 @@ export interface CaseStudy {
   nextProject?: { slug: string; title: string };
 }
 
-// Note: Silk case study disabled until app launch
-// To re-enable: uncomment silk entry below and in projects.ts
-
 export const caseStudies: Record<string, CaseStudy> = {
+  silk: {
+    slug: "silk",
+    title: "Silk",
+    subtitle: "Production React Native inside a small shipping team",
+    heroImage: "/projectImages/silk-1.webp",
+    timeline: "Sep 2025 — Present",
+    role: "Mobile Design Engineer",
+    team: "Small product team",
+    tools: ["React Native", "Expo", "TypeScript"],
+    liveUrl: "https://www.silk.cx",
+    overview:
+      "Silk is a social product built in React Native by a small team that ships constantly. I work on the surfaces people touch every day — publishing flows, editor behavior, media upload and playback, navigation — and on the quieter work of making iOS and Android feel like the same product.",
+    challenge:
+      "Most of my work before Silk was solo: my codebase, my decisions, my mess. A production app with real users inverts all of that. The challenge was never React Native itself — it was learning to make changes that hold up inside a system other people are changing at the same time, and to leave each surface better than I found it without breaking anything users already trust.",
+    constraints: [
+      "Real users on every release. A regression is not hypothetical; someone's post fails to publish.",
+      "Two platforms, one small team — iOS and Android have to feel like one product without pretending they are the same operating system.",
+      "Media is the product. Upload, playback, and editing have to stay fast on mid-range hardware, not just on the phones we develop with.",
+    ],
+    approach: [
+      {
+        title: "Publishing as a promise",
+        description:
+          "A publishing flow is a promise: nothing you made gets lost between tapping the field and seeing the post. I work on editor behavior and the states around it — keyboards, drafts, interruptions, failures, retries. It is unglamorous sequencing work, and it is most of what decides whether an app feels reliable.",
+      },
+      {
+        title: "Media that behaves",
+        description:
+          "Media fails in ways demo videos never show: backgrounded uploads, flaky connections, formats that disagree between platforms. The work is making the happy path fast and the unhappy paths honest — clear progress, clear failure, never a silent loss.",
+      },
+      {
+        title: "Parity without sameness",
+        description:
+          "Platform parity is a product decision, not a technical default. Some things should feel identical on iOS and Android; some things should feel native to each. Part of the job is knowing which is which, and holding that line release after release.",
+      },
+      {
+        title: "Boring releases",
+        description:
+          "The least visible work I do is release hardening — the testing, edge-case hunting, and small refusals that make a release uneventful. When it goes well, nobody notices, which is the point.",
+      },
+    ],
+    outcome:
+      "Ongoing. The honest outcome of this kind of work is that nobody notices it: posts publish, video plays, the app behaves the same on the platform you don't own. It is also where I learned the difference between building features and building product.",
+    learnings: [
+      "Solo projects teach you to build; teams teach you to change things safely. They are different skills, and the second one is rarer.",
+      "Most of what reads as polish is actually state management. The craft is in the failure paths.",
+      "Working in a codebase you didn't start teaches a kind of humility solo work never will — every odd-looking decision was someone solving a problem you haven't hit yet.",
+    ],
+    nextProject: { slug: "afterlight", title: "Afterlight" },
+  },
+  afterlight: {
+    slug: "afterlight",
+    title: "Afterlight",
+    subtitle: "A concert diary that keeps your nights to yourself",
+    heroImage: "/projectImages/afterlight-1.webp",
+    timeline: "2025 — Present",
+    role: "Solo Designer & Developer",
+    tools: ["React Native", "Expo", "TypeScript", "AsyncStorage"],
+    liveUrl: "https://afterlight.ninetynine.digital",
+    overview:
+      "Afterlight is a concert diary — Letterboxd for live music, but quieter. You log the gig, keep the photos, write down what you remember before it fades. Everything stays on your phone: no account, no feed, no analytics.",
+    challenge:
+      "Concert memories live scattered across camera rolls, ticket stubs, and half-remembered setlists. The obvious product to build here is social — reviews, followers, taste as performance. I wanted the opposite: a private record. The hard part was making something feel rich and alive without any of the machinery apps normally use to feel alive — no network effects, no notifications, nothing pulling you back. The app has to earn its place purely through the quality of remembering.",
+    constraints: [
+      "Local-first for real: no accounts, no servers, no analytics. If the value isn't on the device, it doesn't exist.",
+      "A diary is for years, not sessions. The design has to age well and the data has to survive.",
+      "Solo build — every feature competes with finishing.",
+    ],
+    decisionLog: [
+      {
+        problem: "Social features are the default growth engine for any logging app.",
+        decision: "Cut them entirely. No accounts, no sharing graph, no server.",
+        tradeoff: "No virality, and no effortless cloud-backup story out of the box.",
+        impact: "The promise fits in one sentence, and privacy isn't a settings page — it's the architecture.",
+      },
+      {
+        problem: "Music apps default to streaming-service aesthetics — gradients, glass, glow.",
+        decision: "Authored a design system from gig poster modernism instead: Factory Records palette, Swiss type discipline, grain, true black.",
+        tradeoff: "A strong aesthetic position will alienate some users.",
+        impact: "The app feels like the objects it's about — posters, tickets, the printed ephemera of going out.",
+      },
+      {
+        problem: "Spring animation invites spectacle.",
+        decision: "Built a small motion grammar — a handful of springs used consistently, nothing animating from scale(0), nothing over 300ms.",
+        tradeoff: "Restraint reads as less impressive in a screen recording.",
+        impact: "Motion clarifies state instead of performing for the user.",
+      },
+    ],
+    approach: [
+      {
+        title: "The loop is the product",
+        description:
+          "Log a gig, attach the photos, write a line about the night. The whole app is in service of a loop small enough to finish and good enough to repeat. Everything that didn't serve it got cut.",
+      },
+      {
+        title: "Gig poster modernism",
+        description:
+          "The visual language borrows from the printed history of live music — FAC blue, true black, grain textures, type set with Swiss discipline. A strong reference makes a thousand small decisions for you.",
+      },
+      {
+        title: "Local-first as a feature",
+        description:
+          "On-device storage isn't a compromise; it's the pitch. Your concert history is yours in the most literal sense available to software: it never leaves the hardware in your pocket.",
+      },
+    ],
+    outcome:
+      "A finished 1.0 shaped around a small, offline-first loop — log the gig, keep the photos, remember the night — wrapped in a design system I'd defend line by line.",
+    metrics: [
+      { label: "Accounts required", value: "0" },
+      { label: "Data leaves device", value: "Never" },
+      { label: "Design system", value: "Authored from scratch" },
+    ],
+    avoidedPatterns: [
+      "Streaks, badges, or anything that turns remembering into homework.",
+      "Cloud accounts as the price of entry.",
+      "Streaming-app aesthetics — the design borrows from posters, not players.",
+    ],
+    nextIterations: [
+      "Setlist capture and richer gig metadata.",
+      "An export format that treats your history as yours — plain, readable files rather than a proprietary lockbox.",
+    ],
+    learnings: [
+      "Cutting the network from a product removes a third of the code and half the anxiety.",
+      "A strong visual reference is a decision-making machine — Factory Records answered questions I would otherwise have litigated alone for weeks.",
+      "Local-first is a constraint that designs for you: with no server, every feature has to justify itself on the device or it doesn't ship.",
+    ],
+    nextProject: { slug: "chlita", title: "Ch'lita" },
+  },
   whakapapa: {
     slug: "whakapapa",
     title: "Whakapapa",
@@ -113,7 +238,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Source material and context matter as much as entity extraction.",
       "Supabase and Next.js made the solo build manageable without a separate backend service.",
     ],
-    nextProject: { slug: "liner", title: "Liner" },
+    nextProject: { slug: "vape-quit-coach", title: "Vape Quit Coach" },
   },
   liner: {
     slug: "liner",
@@ -256,9 +381,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Flexible query tools need guardrails to protect shared infrastructure.",
       "Legacy behavior often encodes business rules, even when it looks accidental.",
     ],
-    nextProject: { slug: "vape-quit-coach", title: "Vape Quit Coach" },
+    nextProject: { slug: "silk", title: "Silk" },
   },
-  // silk entry intentionally kept out of the published case study set
   "vape-quit-coach": {
     slug: "vape-quit-coach",
     title: "Vape Quit Coach",
@@ -328,7 +452,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Low-stimulus support flows matter more than high-energy motivation during cravings.",
       "Solo work makes the product tradeoffs easier to see because no one else is making them for you.",
     ],
-    nextProject: { slug: "chlita", title: "Ch'lita" },
+    nextProject: { slug: "dayle", title: "Dayle Palfreyman" },
   },
   chlita: {
     slug: "chlita",
@@ -400,7 +524,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "The best client work happens when you understand their craft, not just their requirements.",
       "Performance is a design choice. A slow portfolio undermines the work it's showing.",
     ],
-    nextProject: { slug: "dayle", title: "Dayle Palfreyman" },
+    nextProject: { slug: "liner", title: "Liner" },
   },
   dayle: {
     slug: "dayle",
