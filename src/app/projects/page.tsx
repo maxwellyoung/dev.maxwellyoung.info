@@ -20,9 +20,15 @@ import { ProjectHoverPreview } from "@/components/ProjectHoverPreview";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ProjectMedia } from "@/components/ProjectMedia";
 
+// Open settles like a drawer; close is quicker — the user has already decided.
 const workRevealTransition = {
-  height: { duration: 0.26, ease: [0.16, 1, 0.3, 1] as const },
-  opacity: { duration: 0.18, ease: [0, 0, 0.2, 1] as const },
+  height: { duration: 0.3, ease: [0.32, 0.72, 0, 1] as const },
+  opacity: { duration: 0.2, ease: [0, 0, 0.2, 1] as const },
+};
+
+const workCollapseTransition = {
+  height: { duration: 0.22, ease: [0.32, 0.72, 0, 1] as const },
+  opacity: { duration: 0.12, ease: [0.4, 0, 1, 1] as const },
 };
 
 function ProjectRow({
@@ -46,35 +52,22 @@ function ProjectRow({
   const isEagerLoad = emphasis === "flagship" && index < 4;
   const panelId = `project-panel-${p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
   const isFlagship = emphasis === "flagship";
+  const rowRef = React.useRef<HTMLLIElement>(null);
 
   return (
     <motion.li
-      layout
+      ref={rowRef}
       variants={item.slide}
       className="w-full max-w-full group"
     >
       <button
-        onClick={(e) => {
-          const nextExpanded = isExpanded ? null : p.name;
-          const trigger = e.currentTarget;
-          onToggleExpand(nextExpanded);
-
-          if (!isExpanded) {
-            window.setTimeout(() => {
-              const top = trigger.getBoundingClientRect().top + window.scrollY - 16;
-              window.scrollTo({
-                top,
-                behavior: shouldReduceMotion ? "auto" : "smooth",
-              });
-            }, 260);
-          }
-        }}
+        onClick={() => onToggleExpand(isExpanded ? null : p.name)}
         aria-expanded={isExpanded}
         aria-controls={panelId}
         className={`
           w-full max-w-full rounded-lg text-left px-2 sm:px-3 ${isFlagship ? "py-3.5" : "py-2.5"}
-          transition-colors duration-200 ease-out
-          hover:bg-[hsl(var(--muted))]/45
+          transition-[color,background-color,transform] duration-200 ease-out
+          hover:bg-[hsl(var(--muted))]/45 active:scale-[0.99]
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
         `}
       >
@@ -149,24 +142,32 @@ function ProjectRow({
             id={panelId}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+            exit={{
+              opacity: 0,
+              height: 0,
+              transition: shouldReduceMotion
+                ? { duration: 0 }
+                : workCollapseTransition,
+            }}
             transition={shouldReduceMotion ? { duration: 0 } : workRevealTransition}
+            onAnimationComplete={(definition) => {
+              // Once open, nudge into view only if the panel isn't fully
+              // visible — scrollIntoView with "nearest" is a no-op otherwise.
+              if (
+                typeof definition === "object" &&
+                definition !== null &&
+                "height" in definition &&
+                definition.height === "auto"
+              ) {
+                rowRef.current?.scrollIntoView({
+                  block: "nearest",
+                  behavior: shouldReduceMotion ? "auto" : "smooth",
+                });
+              }
+            }}
             className="px-1 pb-5 overflow-hidden"
           >
-            <motion.div
-              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={
-                shouldReduceMotion
-                  ? { duration: 0 }
-                  : { ...spring.gentle, delay: 0.04 }
-              }
-            >
-              <ProjectDetails
-                project={p}
-                onCarouselOpen={onCarouselOpen}
-              />
-            </motion.div>
+            <ProjectDetails project={p} onCarouselOpen={onCarouselOpen} />
           </motion.div>
         )}
       </AnimatePresence>
