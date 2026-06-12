@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Github, FileText } from "lucide-react";
@@ -11,7 +10,6 @@ import {
   getProjectStatusLabel,
   isActiveStatus,
 } from "@/lib/projects";
-import { spring } from "@/lib/motion";
 import { ProjectMedia } from "@/components/ProjectMedia";
 
 interface ProjectDetailsProps {
@@ -23,7 +21,6 @@ export function ProjectDetails({
   project,
   onCarouselOpen,
 }: ProjectDetailsProps) {
-  const shouldReduceMotion = useReducedMotion();
   const [loadedImage, setLoadedImage] = useState<string | null>(null);
   const currentImage = project?.screenshots?.[0] ?? null;
   const imageLoaded = loadedImage === currentImage;
@@ -35,17 +32,10 @@ export function ProjectDetails({
   const visibleTags = project?.tags?.slice(0, 6) ?? [];
   const secondaryImpact = project?.impact?.slice(1, 3) ?? [];
 
+  if (!project) return null;
+
   return (
-    <AnimatePresence mode="wait">
-      {project && (
-        <motion.div
-          key={project.name}
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -20 }}
-          transition={shouldReduceMotion ? { duration: 0 } : spring.gentle}
-          className="overflow-x-clip rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4 shadow-sm sm:p-5"
-        >
+    <div className="overflow-x-clip rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4 shadow-sm sm:p-5">
           {hasMedia && (
             <div className="mb-5">
               {canOpenCarousel ? (
@@ -196,8 +186,6 @@ export function ProjectDetails({
               </span>
             )}
           </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    </div>
   );
 }
