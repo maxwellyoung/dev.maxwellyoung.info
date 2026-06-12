@@ -43,7 +43,7 @@ function ProjectRow({
   emphasis?: "flagship" | "supporting";
 }) {
   const isExpanded = expandedProject === p.name;
-  const isEagerLoad = index < 4;
+  const isEagerLoad = emphasis === "flagship" && index < 4;
   const panelId = `project-panel-${p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
   const isFlagship = emphasis === "flagship";
 

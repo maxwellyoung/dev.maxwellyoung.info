@@ -9,7 +9,7 @@ import { type CaseStudy, caseStudies } from "@/lib/caseStudies";
 import { spring } from "@/lib/motion";
 import { SiteFooter } from "@/components/SiteFooter";
 import { useEffect, useState } from "react";
-import posthog from "posthog-js";
+import { capture } from "@/lib/analytics";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 
 interface CaseStudyContentProps {
@@ -46,7 +46,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
 
   useEffect(() => {
     if (!study) return;
-    posthog.capture("case_study_viewed", {
+    capture("case_study_viewed", {
       slug: study.slug,
       title: study.title,
       role: study.role,
@@ -110,7 +110,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() =>
-                  posthog.capture("case_study_outbound_clicked", {
+                  capture("case_study_outbound_clicked", {
                     slug: study.slug,
                     target: "live_site",
                   })
@@ -127,7 +127,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() =>
-                  posthog.capture("case_study_outbound_clicked", {
+                  capture("case_study_outbound_clicked", {
                     slug: study.slug,
                     target: "source_code",
                   })
