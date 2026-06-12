@@ -33,10 +33,89 @@ export interface CaseStudy {
   nextProject?: { slug: string; title: string };
 }
 
-// Note: Silk case study disabled until app launch
-// To re-enable: uncomment silk entry below and in projects.ts
+// Silk case study unpublished for now — full draft lives in git history
+// (commit a46c00b). To publish: restore the entry here and set
+// caseStudySlug: "silk" in projects.ts.
 
 export const caseStudies: Record<string, CaseStudy> = {
+  afterlight: {
+    slug: "afterlight",
+    title: "Afterlight",
+    subtitle: "A concert diary that keeps your nights to yourself",
+    heroImage: "/projectImages/afterlight-1.webp",
+    timeline: "2025 — Present",
+    role: "Solo Designer & Developer",
+    tools: ["React Native", "Expo", "TypeScript", "AsyncStorage"],
+    liveUrl: "https://afterlight.ninetynine.digital",
+    overview:
+      "Afterlight is a concert diary — Letterboxd for live music, but quieter. You log the gig, keep the photos, write down what you remember before it fades. Everything stays on your phone: no account, no feed, no analytics.",
+    challenge:
+      "Concert memories live scattered across camera rolls, ticket stubs, and half-remembered setlists. The obvious product to build here is social — reviews, followers, taste as performance. I wanted the opposite: a private record. The hard part was making something feel rich and alive without any of the machinery apps normally use to feel alive — no network effects, no notifications, nothing pulling you back. The app has to earn its place purely through the quality of remembering.",
+    constraints: [
+      "Local-first for real: no accounts, no servers, no analytics. If the value isn't on the device, it doesn't exist.",
+      "A diary is for years, not sessions. The design has to age well and the data has to survive.",
+      "Solo build — every feature competes with finishing.",
+    ],
+    decisionLog: [
+      {
+        problem: "Social features are the default growth engine for any logging app.",
+        decision: "Cut them entirely. No accounts, no sharing graph, no server.",
+        tradeoff: "No virality, and no effortless cloud-backup story out of the box.",
+        impact: "The promise fits in one sentence, and privacy isn't a settings page — it's the architecture.",
+      },
+      {
+        problem: "Music apps default to streaming-service aesthetics — gradients, glass, glow.",
+        decision: "Authored a design system from gig poster modernism instead: Factory Records palette, Swiss type discipline, grain, true black.",
+        tradeoff: "A strong aesthetic position will alienate some users.",
+        impact: "The app feels like the objects it's about — posters, tickets, the printed ephemera of going out.",
+      },
+      {
+        problem: "Spring animation invites spectacle.",
+        decision: "Built a small motion grammar — a handful of springs used consistently, nothing animating from scale(0), nothing over 300ms.",
+        tradeoff: "Restraint reads as less impressive in a screen recording.",
+        impact: "Motion clarifies state instead of performing for the user.",
+      },
+    ],
+    approach: [
+      {
+        title: "The loop is the product",
+        description:
+          "Log a gig, attach the photos, write a line about the night. The whole app is in service of a loop small enough to finish and good enough to repeat. Everything that didn't serve it got cut.",
+      },
+      {
+        title: "Gig poster modernism",
+        description:
+          "The visual language borrows from the printed history of live music — FAC blue, true black, grain textures, type set with Swiss discipline. A strong reference makes a thousand small decisions for you.",
+      },
+      {
+        title: "Local-first as a feature",
+        description:
+          "On-device storage isn't a compromise; it's the pitch. Your concert history is yours in the most literal sense available to software: it never leaves the hardware in your pocket.",
+      },
+    ],
+    outcome:
+      "A finished 1.0 shaped around a small, offline-first loop — log the gig, keep the photos, remember the night — wrapped in a design system I'd defend line by line.",
+    metrics: [
+      { label: "Accounts required", value: "0" },
+      { label: "Data leaves device", value: "Never" },
+      { label: "Design system", value: "Authored from scratch" },
+    ],
+    avoidedPatterns: [
+      "Streaks, badges, or anything that turns remembering into homework.",
+      "Cloud accounts as the price of entry.",
+      "Streaming-app aesthetics — the design borrows from posters, not players.",
+    ],
+    nextIterations: [
+      "Setlist capture and richer gig metadata.",
+      "An export format that treats your history as yours — plain, readable files rather than a proprietary lockbox.",
+    ],
+    learnings: [
+      "Cutting the network from a product removes a third of the code and half the anxiety.",
+      "A strong visual reference is a decision-making machine — Factory Records answered questions I would otherwise have litigated alone for weeks.",
+      "Local-first is a constraint that designs for you: with no server, every feature has to justify itself on the device or it doesn't ship.",
+    ],
+    nextProject: { slug: "chlita", title: "Ch'lita" },
+  },
   whakapapa: {
     slug: "whakapapa",
     title: "Whakapapa",
@@ -113,7 +192,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Source material and context matter as much as entity extraction.",
       "Supabase and Next.js made the solo build manageable without a separate backend service.",
     ],
-    nextProject: { slug: "liner", title: "Liner" },
+    nextProject: { slug: "vape-quit-coach", title: "Vape Quit Coach" },
   },
   liner: {
     slug: "liner",
@@ -256,9 +335,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Flexible query tools need guardrails to protect shared infrastructure.",
       "Legacy behavior often encodes business rules, even when it looks accidental.",
     ],
-    nextProject: { slug: "vape-quit-coach", title: "Vape Quit Coach" },
+    nextProject: { slug: "afterlight", title: "Afterlight" },
   },
-  // silk entry intentionally kept out of the published case study set
   "vape-quit-coach": {
     slug: "vape-quit-coach",
     title: "Vape Quit Coach",
@@ -328,7 +406,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Low-stimulus support flows matter more than high-energy motivation during cravings.",
       "Solo work makes the product tradeoffs easier to see because no one else is making them for you.",
     ],
-    nextProject: { slug: "chlita", title: "Ch'lita" },
+    nextProject: { slug: "dayle", title: "Dayle Palfreyman" },
   },
   chlita: {
     slug: "chlita",
@@ -400,7 +478,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "The best client work happens when you understand their craft, not just their requirements.",
       "Performance is a design choice. A slow portfolio undermines the work it's showing.",
     ],
-    nextProject: { slug: "dayle", title: "Dayle Palfreyman" },
+    nextProject: { slug: "liner", title: "Liner" },
   },
   dayle: {
     slug: "dayle",

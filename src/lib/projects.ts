@@ -460,6 +460,7 @@ const projects: Project[] = [
     tags: ["React Native", "Expo", "Local-first", "Music", "Design System"],
     stack: ["React Native", "Expo", "TypeScript", "AsyncStorage"],
     startDate: "2025-11-01",
+    caseStudySlug: "afterlight",
     links: {
       live: "https://afterlight.ninetynine.digital",
     },
