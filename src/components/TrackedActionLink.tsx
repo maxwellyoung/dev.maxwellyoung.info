@@ -1,7 +1,7 @@
 "use client";
 
 import Link, { LinkProps } from "next/link";
-import posthog from "posthog-js";
+import { capture } from "@/lib/analytics";
 import { MouseEvent, ReactNode } from "react";
 
 interface TrackedActionLinkProps extends LinkProps {
@@ -23,7 +23,7 @@ export function TrackedActionLink({
   ...props
 }: TrackedActionLinkProps) {
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    posthog.capture(eventName, eventProps);
+    capture(eventName, eventProps);
     onClick?.(event);
   };
 
