@@ -104,6 +104,7 @@ const projects: Project[] = [
     tags: ["React Native", "TypeScript", "Expo"],
     stack: ["React Native", "TypeScript", "Expo"],
     startDate: "2025-09-01",
+    caseStudySlug: "silk",
     links: {
       live: "https://www.silk.cx",
     },
@@ -460,6 +461,7 @@ const projects: Project[] = [
     tags: ["React Native", "Expo", "Local-first", "Music", "Design System"],
     stack: ["React Native", "Expo", "TypeScript", "AsyncStorage"],
     startDate: "2025-11-01",
+    caseStudySlug: "afterlight",
     links: {
       live: "https://afterlight.ninetynine.digital",
     },
