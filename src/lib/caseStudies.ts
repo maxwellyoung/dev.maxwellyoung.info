@@ -33,57 +33,11 @@ export interface CaseStudy {
   nextProject?: { slug: string; title: string };
 }
 
+// Silk case study unpublished for now — full draft lives in git history
+// (commit a46c00b). To publish: restore the entry here and set
+// caseStudySlug: "silk" in projects.ts.
+
 export const caseStudies: Record<string, CaseStudy> = {
-  silk: {
-    slug: "silk",
-    title: "Silk",
-    subtitle: "Production React Native inside a small shipping team",
-    heroImage: "/projectImages/silk-1.webp",
-    timeline: "Sep 2025 — Present",
-    role: "Mobile Design Engineer",
-    team: "Small product team",
-    tools: ["React Native", "Expo", "TypeScript"],
-    liveUrl: "https://www.silk.cx",
-    overview:
-      "Silk is a social product built in React Native by a small team that ships constantly. I work on the surfaces people touch every day — publishing flows, editor behavior, media upload and playback, navigation — and on the quieter work of making iOS and Android feel like the same product.",
-    challenge:
-      "Most of my work before Silk was solo: my codebase, my decisions, my mess. A production app with real users inverts all of that. The challenge was never React Native itself — it was learning to make changes that hold up inside a system other people are changing at the same time, and to leave each surface better than I found it without breaking anything users already trust.",
-    constraints: [
-      "Real users on every release. A regression is not hypothetical; someone's post fails to publish.",
-      "Two platforms, one small team — iOS and Android have to feel like one product without pretending they are the same operating system.",
-      "Media is the product. Upload, playback, and editing have to stay fast on mid-range hardware, not just on the phones we develop with.",
-    ],
-    approach: [
-      {
-        title: "Publishing as a promise",
-        description:
-          "A publishing flow is a promise: nothing you made gets lost between tapping the field and seeing the post. I work on editor behavior and the states around it — keyboards, drafts, interruptions, failures, retries. It is unglamorous sequencing work, and it is most of what decides whether an app feels reliable.",
-      },
-      {
-        title: "Media that behaves",
-        description:
-          "Media fails in ways demo videos never show: backgrounded uploads, flaky connections, formats that disagree between platforms. The work is making the happy path fast and the unhappy paths honest — clear progress, clear failure, never a silent loss.",
-      },
-      {
-        title: "Parity without sameness",
-        description:
-          "Platform parity is a product decision, not a technical default. Some things should feel identical on iOS and Android; some things should feel native to each. Part of the job is knowing which is which, and holding that line release after release.",
-      },
-      {
-        title: "Boring releases",
-        description:
-          "The least visible work I do is release hardening — the testing, edge-case hunting, and small refusals that make a release uneventful. When it goes well, nobody notices, which is the point.",
-      },
-    ],
-    outcome:
-      "Ongoing. The honest outcome of this kind of work is that nobody notices it: posts publish, video plays, the app behaves the same on the platform you don't own. It is also where I learned the difference between building features and building product.",
-    learnings: [
-      "Solo projects teach you to build; teams teach you to change things safely. They are different skills, and the second one is rarer.",
-      "Most of what reads as polish is actually state management. The craft is in the failure paths.",
-      "Working in a codebase you didn't start teaches a kind of humility solo work never will — every odd-looking decision was someone solving a problem you haven't hit yet.",
-    ],
-    nextProject: { slug: "afterlight", title: "Afterlight" },
-  },
   afterlight: {
     slug: "afterlight",
     title: "Afterlight",
@@ -381,7 +335,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Flexible query tools need guardrails to protect shared infrastructure.",
       "Legacy behavior often encodes business rules, even when it looks accidental.",
     ],
-    nextProject: { slug: "silk", title: "Silk" },
+    nextProject: { slug: "afterlight", title: "Afterlight" },
   },
   "vape-quit-coach": {
     slug: "vape-quit-coach",
