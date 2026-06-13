@@ -48,9 +48,11 @@ export default function Home() {
 
           <div className="leading-relaxed space-y-4">
             <motion.p className="text-foreground" variants={item.fadeUp}>
-              I build product interfaces with a bias for shipping, motion that
-              clarifies state, and systems that hold up on real devices.
-              Currently design engineering at{" "}
+              I&apos;m a product-minded design engineer building mobile and web
+              interfaces across React Native, Expo, and Next.js. I care about
+              fast shipping, clear interaction states, motion with purpose, and
+              systems that hold up on real devices. Currently design engineering
+              at{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
               ; after hours I&apos;m building{" "}
               <AnimatedLink href="https://liner.ninetynine.digital" external>Liner</AnimatedLink>
@@ -68,6 +70,29 @@ export default function Home() {
               </TrackedActionLink>
               .
             </motion.p>
+
+
+            <motion.div
+              className="grid grid-cols-1 gap-2 pt-2 text-sm text-muted-foreground sm:grid-cols-2"
+              variants={item.fadeUp}
+              aria-label="Core strengths"
+            >
+              {[
+                "React Native / Expo",
+                "Product flows",
+                "Mobile interaction design",
+                "Motion + state",
+                "Supabase / local-first / AI-assisted workflows",
+                "Design systems / polish passes",
+              ].map((strength) => (
+                <span
+                  key={strength}
+                  className="rounded-md border border-[hsl(var(--border))]/70 bg-[hsl(var(--muted))]/25 px-3 py-2 text-xs text-muted-foreground"
+                >
+                  {strength}
+                </span>
+              ))}
+            </motion.div>
 
             <motion.nav
               className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground"
