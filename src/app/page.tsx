@@ -72,14 +72,6 @@ export default function Home() {
             </motion.p>
 
 
-            <motion.p
-              className="max-w-xl text-sm leading-relaxed text-muted-foreground"
-              variants={item.fadeUp}
-            >
-              Strongest in React Native / Expo, product flows, mobile interaction
-              design, and motion systems with a practical backend sense.
-            </motion.p>
-
             <motion.nav
               className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground"
               variants={item.fadeUp}
