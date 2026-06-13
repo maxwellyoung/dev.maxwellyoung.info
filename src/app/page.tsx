@@ -72,27 +72,13 @@ export default function Home() {
             </motion.p>
 
 
-            <motion.div
-              className="grid grid-cols-1 gap-2 pt-2 text-sm text-muted-foreground sm:grid-cols-2"
+            <motion.p
+              className="max-w-xl text-sm leading-relaxed text-muted-foreground"
               variants={item.fadeUp}
-              aria-label="Core strengths"
             >
-              {[
-                "React Native / Expo",
-                "Product flows",
-                "Mobile interaction design",
-                "Motion + state",
-                "Supabase / local-first / AI-assisted workflows",
-                "Design systems / polish passes",
-              ].map((strength) => (
-                <span
-                  key={strength}
-                  className="rounded-md border border-[hsl(var(--border))]/70 bg-[hsl(var(--muted))]/25 px-3 py-2 text-xs text-muted-foreground"
-                >
-                  {strength}
-                </span>
-              ))}
-            </motion.div>
+              Strongest in React Native / Expo, product flows, mobile interaction
+              design, and motion systems with a practical backend sense.
+            </motion.p>
 
             <motion.nav
               className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground"
