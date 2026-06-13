@@ -20,6 +20,7 @@ type Category =
   | "research";
 type Visibility = "public" | "parked" | "private";
 type Lifecycle = "current" | "completed" | "archived" | "sensitive";
+type LaunchStage = "Live" | "In development" | "Case study" | "Client shipped" | "Production work";
 
 interface BuildLogEntry {
   date: string;
@@ -69,6 +70,7 @@ export interface Project {
   featured?: boolean;
   visibility?: Visibility;
   lifecycle?: Lifecycle;
+  launchStage?: LaunchStage;
   priority?: number;
   tags?: string[];
   stack?: string[];
@@ -96,9 +98,10 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "current",
+    launchStage: "Production work",
     priority: 0,
     description:
-      "React Native product engineering at Silk across publishing, mobile media, and platform polish.",
+      "Production React Native work across mobile publishing flows, media handling, gesture-heavy UI, and platform polish.",
     longDescription:
       "I contribute to Silk's React Native product inside a small shipping team. My work touches the surfaces that make the mobile product feel reliable in practice: publishing flows, editor behavior, media upload and playback, navigation, release hardening, and iOS / Android parity.",
     tags: ["React Native", "TypeScript", "Expo"],
@@ -118,6 +121,7 @@ const projects: Project[] = [
     },
     impact: [
       "Production React Native work across iOS and Android",
+      "Shipped mobile publishing flows, media handling, gesture-heavy UI, and release polish",
       "Contributions span navigation, editing, media handling, and platform parity",
     ],
   },
@@ -130,6 +134,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "current",
+    launchStage: "In development",
     priority: 3,
     description:
       "Spatial canvas for arranging music, notes, and references with playback-aware objects.",
@@ -178,6 +183,7 @@ const projects: Project[] = [
     featured: false,
     visibility: "public",
     lifecycle: "current",
+    launchStage: "Live",
     priority: 4,
     description:
       "React Native iOS app for quitting vaping with coaching, recovery milestones, and relapse support.",
@@ -222,6 +228,7 @@ const projects: Project[] = [
     featured: false,
     visibility: "public",
     lifecycle: "current",
+    launchStage: "Live",
     priority: 5,
     description:
       "Static security scanner for Claude Code skills and MCP servers.",
@@ -265,6 +272,7 @@ const projects: Project[] = [
     featured: false,
     visibility: "public",
     lifecycle: "current",
+    launchStage: "Live",
     priority: 6,
     description:
       "Native iOS queue for keeping one item in focus while the rest waits in the background.",
@@ -302,6 +310,7 @@ const projects: Project[] = [
     featured: false,
     visibility: "public",
     lifecycle: "current",
+    launchStage: "In development",
     priority: 7,
     description:
       "Family-history workspace that turns documents, photos, and voice notes into reviewed family records.",
@@ -348,12 +357,13 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: false,
+    featured: true,
     visibility: "public",
     lifecycle: "current",
-    priority: 11,
+    launchStage: "In development",
+    priority: 2,
     description:
-      "Mobile receipt scanner for grocery spend tracking, item normalization, and price comparison.",
+      "Mobile receipt scanner for grocery spend tracking, item normalization, price memory, and comparison before the next shop.",
     longDescription:
       "Receipt Radar turns paper receipts into structured grocery history. It scans receipts, normalizes line items, tracks spend over time, and makes price comparisons easier to review before the next shop. Built with React Native, Expo, OCR services, and a real-time backend.",
     tags: ["React Native", "Expo", "Convex", "OCR", "Price Intelligence"],
@@ -393,6 +403,7 @@ const projects: Project[] = [
     featured: false,
     visibility: "public",
     lifecycle: "current",
+    launchStage: "Live",
     priority: 8,
     description:
       "Expo news app that turns daily reading into a bounded six-story ritual with a mood check.",
@@ -452,6 +463,7 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "current",
+    launchStage: "In development",
     priority: 1,
     description:
       "Local-first concert diary — Letterboxd for live music, but quieter.",
@@ -493,6 +505,7 @@ const projects: Project[] = [
     featured: false,
     visibility: "public",
     lifecycle: "current",
+    launchStage: "Live",
     priority: 9,
     description:
       "Swipe-to-learn spaced repetition for code — master a codebase by doomscrolling through it.",
@@ -533,7 +546,8 @@ const projects: Project[] = [
     featured: true,
     visibility: "public",
     lifecycle: "completed",
-    priority: 2,
+    launchStage: "Client shipped",
+    priority: 10,
     description:
       "CMS-backed stylist portfolio built around fast image browsing and quiet editorial motion.",
     longDescription:
@@ -578,6 +592,7 @@ const projects: Project[] = [
     featured: false,
     visibility: "public",
     lifecycle: "completed",
+    launchStage: "Client shipped",
     priority: 12,
     description:
       "Artist portfolio with a full-screen gallery, vertical rhythm, and client-managed content.",
@@ -629,6 +644,7 @@ const projects: Project[] = [
     featured: false,
     visibility: "public",
     lifecycle: "completed",
+    launchStage: "Client shipped",
     priority: 13,
     description:
       "Shopify storefront for an Auckland bakery, built with New Territory Studio.",
@@ -670,6 +686,7 @@ const projects: Project[] = [
     featured: false,
     visibility: "public",
     lifecycle: "archived",
+    launchStage: "Case study",
     priority: 14,
     description:
       "Interactive WebGL color-field study built in response to Jeremy Blake's digital paintings.",
@@ -744,10 +761,12 @@ export function getProjectContextLabel(
 }
 
 export function getProjectStatusLabel(
-  project: Pick<Project, "status">
+  project: Pick<Project, "status" | "launchStage">
 ): string | null {
-  if (project.status === "Active") return "Active";
+  if (project.launchStage) return project.launchStage;
+  if (project.status === "Active") return "In development";
   if (project.status === "WIP") return "WIP";
   if (project.status === "Planned") return "Planned";
+  if (project.status === "Completed") return "Live";
   return null;
 }

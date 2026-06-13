@@ -261,7 +261,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
         <div className="space-y-10">
           <ProjectSection
             title={embedded ? "Flagship work" : "Selected work"}
-            description="Start here: production React Native at Silk, solo products designed and shipped end-to-end, and client work with a clear visual point of view."
+            description="Start here: production React Native at Silk, solo products with clear user payoffs, and client work with a visual point of view."
             projects={flagshipProjects}
             expandedProject={expandedProject}
             onToggleExpand={setExpandedProject}
@@ -273,7 +273,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
           {supportingProjects.length > 0 && (
             <ProjectSection
               title="Supporting work"
-              description="More shipped products, experiments, and client builds — shorter stories, same standards."
+              description="More shipped products, experiments, and client builds. Labels separate live work, in-development products, case studies, and shipped client projects."
               projects={supportingProjects}
               expandedProject={expandedProject}
               onToggleExpand={setExpandedProject}
