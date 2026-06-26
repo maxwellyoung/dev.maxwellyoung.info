@@ -76,127 +76,140 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
     );
   }
 
+  const hasHeroImage = Boolean(study.heroImage);
+
   return (
     <main className="min-h-screen">
       {/* Hero */}
-      <section className="relative px-6 py-24 max-w-4xl mx-auto">
-        <motion.div {...fadeIn}>
+      <section className="relative px-6 py-16 md:py-20">
+        <motion.div {...fadeIn} className="mx-auto max-w-5xl">
           <Link
             href="/#projects"
-            className="mb-12 inline-flex min-h-11 items-center gap-2 rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            className="mb-10 inline-flex min-h-11 items-center gap-2 rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to projects
           </Link>
 
-          <h1 className="text-4xl md:text-5xl font-medium tracking-tight mb-4">
-            {study.title}
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8">{study.subtitle}</p>
+          <div
+            className={
+              hasHeroImage
+                ? "grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.82fr)] lg:items-start"
+                : "max-w-3xl"
+            }
+          >
+            <div className="min-w-0">
+              <h1 className="text-3xl font-medium tracking-normal sm:text-4xl md:text-5xl">
+                {study.title}
+              </h1>
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+                {study.subtitle}
+              </p>
 
-          {/* Meta */}
-          <div className="flex flex-wrap gap-6 text-sm text-muted-foreground mb-12">
-            <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4" />
-              {study.timeline}
+              <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
+                <div className="flex min-h-8 items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  {study.timeline}
+                </div>
+                <div className="flex min-h-8 items-center gap-2">
+                  <Tag className="w-4 h-4" />
+                  {study.role}
+                </div>
+                {study.liveUrl && (
+                  <a
+                    href={study.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      capture("case_study_outbound_clicked", {
+                        slug: study.slug,
+                        target: "live_site",
+                      })
+                    }
+                    className="inline-flex min-h-8 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Live site
+                  </a>
+                )}
+                {study.githubUrl && (
+                  <a
+                    href={study.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      capture("case_study_outbound_clicked", {
+                        slug: study.slug,
+                        target: "source_code",
+                      })
+                    }
+                    className="inline-flex min-h-8 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                  >
+                    <Github className="w-4 h-4" />
+                    Source
+                  </a>
+                )}
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-1.5">
+                {study.tools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="rounded-sm border border-border/60 bg-[hsl(var(--muted))]/35 px-2.5 py-1 text-xs text-muted-foreground"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-8 grid overflow-hidden rounded-sm border border-[hsl(var(--border))] sm:grid-cols-3">
+                <div className="bg-[hsl(var(--card))]/40 p-3 sm:border-r sm:border-[hsl(var(--border))]">
+                  <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                    Ownership
+                  </p>
+                  <p className="text-sm text-foreground">{study.role}</p>
+                </div>
+                <div className="border-t border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3 sm:border-t-0 sm:border-r">
+                  <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                    Team
+                  </p>
+                  <p className="text-sm text-foreground">
+                    {study.team || "Solo / small team"}
+                  </p>
+                </div>
+                <div className="border-t border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3 sm:border-t-0">
+                  <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                    Key Result
+                  </p>
+                  <p className="line-clamp-2 text-sm text-foreground">
+                    {study.metrics?.[0]?.value
+                      ? `${study.metrics[0].value} ${study.metrics[0].label}`
+                      : study.outcome}
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <Tag className="w-4 h-4" />
-              {study.role}
-            </div>
-            {study.liveUrl && (
-              <a
-                href={study.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() =>
-                  capture("case_study_outbound_clicked", {
-                    slug: study.slug,
-                    target: "live_site",
-                  })
-                }
-                className="inline-flex min-h-11 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+
+            {hasHeroImage && study.heroImage && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.985 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={spring.gentle}
+                className="relative aspect-[4/3] overflow-hidden rounded-sm border border-[hsl(var(--border))] bg-[hsl(var(--muted))] shadow-[0_18px_60px_rgba(0,0,0,0.06)] dark:shadow-[0_18px_60px_rgba(0,0,0,0.28)] sm:aspect-video lg:mt-1"
               >
-                <ExternalLink className="w-4 h-4" />
-                Live site
-              </a>
+                <Image
+                  src={study.heroImage}
+                  alt={study.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 440px"
+                  quality={75}
+                  priority
+                />
+              </motion.div>
             )}
-            {study.githubUrl && (
-              <a
-                href={study.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() =>
-                  capture("case_study_outbound_clicked", {
-                    slug: study.slug,
-                    target: "source_code",
-                  })
-                }
-                className="inline-flex min-h-11 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-              >
-                <Github className="w-4 h-4" />
-                Source
-              </a>
-            )}
-          </div>
-
-          {/* Tools */}
-          <div className="flex flex-wrap gap-2 mb-12">
-            {study.tools.map((tool) => (
-              <span
-                key={tool}
-                className="px-2.5 py-1 text-xs rounded-full bg-[hsl(var(--muted))] text-muted-foreground"
-              >
-                {tool}
-              </span>
-            ))}
-          </div>
-
-            <div className="grid gap-3 mb-12 sm:grid-cols-3">
-            <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3">
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
-                Ownership
-              </p>
-              <p className="text-sm text-foreground">{study.role}</p>
-            </div>
-            <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3">
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
-                Team
-              </p>
-              <p className="text-sm text-foreground">{study.team || "Solo / small team"}</p>
-            </div>
-            <div className="rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3">
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
-                Key Result
-              </p>
-              <p className="text-sm text-foreground">
-                {study.metrics?.[0]?.value
-                  ? `${study.metrics[0].value} ${study.metrics[0].label}`
-                  : study.outcome}
-              </p>
-            </div>
           </div>
         </motion.div>
-
-        {/* Hero image */}
-        {study.heroImage && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={spring.gentle}
-            className="relative aspect-video rounded-xl overflow-hidden border border-[hsl(var(--border))]"
-          >
-            <Image
-              src={study.heroImage}
-              alt={study.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 896px"
-              quality={70}
-              priority
-            />
-          </motion.div>
-        )}
       </section>
 
       {/* Content */}

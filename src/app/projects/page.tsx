@@ -53,6 +53,14 @@ function ProjectRow({
   const panelId = `project-panel-${p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
   const isFlagship = emphasis === "flagship";
   const rowRef = React.useRef<HTMLLIElement>(null);
+  const supportingMeta = [p.role, p.launchStage ?? getProjectContextLabel(p)]
+    .filter((value): value is string => Boolean(value))
+    .slice(0, 2);
+  const flagshipMeta = [
+    p.role,
+    p.launchStage ?? getProjectContextLabel(p),
+    p.stack?.[0] ?? p.tags?.[0],
+  ].filter((value): value is string => Boolean(value));
 
   return (
     <motion.li
@@ -65,15 +73,19 @@ function ProjectRow({
         aria-expanded={isExpanded}
         aria-controls={panelId}
         className={`
-          w-full max-w-full rounded-lg text-left px-2 sm:px-3 ${isFlagship ? "py-3.5" : "py-2.5"}
-          transition-[color,background-color,transform] duration-200 ease-out
-          hover:bg-[hsl(var(--muted))]/45 active:scale-[0.99]
+          relative w-full max-w-full overflow-hidden rounded-sm border border-transparent text-left px-2 sm:px-3 ${isFlagship ? "py-3.5" : "py-2.5"}
+          transition-[color,background-color,border-color,transform] duration-300 ease-out
+          hover:border-border/70 hover:bg-[hsl(var(--muted))]/35 active:scale-[0.99]
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
         `}
       >
+        <span
+          aria-hidden="true"
+          className="absolute inset-y-2 left-0 w-px origin-top scale-y-0 bg-accent/70 transition-transform duration-300 ease-out group-hover:scale-y-100"
+        />
         {isFlagship ? (
           <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
-            <div className="relative h-20 w-24 sm:h-24 sm:w-36 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-200 group-hover:ring-[hsl(var(--accent))]/40">
+            <div className="relative h-20 w-24 sm:h-24 sm:w-36 flex-shrink-0 overflow-hidden rounded-sm ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:ring-[hsl(var(--accent))]/45 group-hover:shadow-[0_14px_32px_rgba(0,0,0,0.08)] dark:group-hover:shadow-[0_14px_32px_rgba(0,0,0,0.25)]">
               <ProjectMedia
                 project={p}
                 variant="row"
@@ -88,7 +100,7 @@ function ProjectRow({
                   <p className="mb-0.5 truncate text-[0.62rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                     {getProjectContextLabel(p)}
                   </p>
-                  <h3 className="truncate break-words text-base sm:text-lg font-medium leading-tight text-foreground">
+                  <h3 className="truncate break-words text-base sm:text-lg font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
                     {p.name}
                   </h3>
                 </div>
@@ -96,6 +108,15 @@ function ProjectRow({
               <p className="mt-1 line-clamp-2 break-words text-sm leading-relaxed text-muted-foreground">
                 {p.description}
               </p>
+              {flagshipMeta.length > 0 && (
+                <div className="mt-2 flex min-w-0 flex-wrap gap-x-3 gap-y-1 text-[0.58rem] font-medium uppercase tracking-[0.14em] text-muted-foreground/70">
+                  {flagshipMeta.map((meta) => (
+                    <span key={meta} className="max-w-full truncate">
+                      {meta}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
 
             <motion.div
@@ -111,7 +132,7 @@ function ProjectRow({
             <div className="min-w-0 flex-1 overflow-hidden">
               <ProjectHoverPreview project={p}>
                 <div className="flex min-w-0 cursor-pointer items-baseline gap-3">
-                  <h3 className="flex-shrink-0 text-sm font-medium leading-tight text-foreground">
+                  <h3 className="flex-shrink-0 text-sm font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
                     {p.name}
                   </h3>
                   <p className="hidden min-w-0 truncate text-xs text-muted-foreground sm:block">
@@ -122,7 +143,7 @@ function ProjectRow({
             </div>
 
             <span className="hidden flex-shrink-0 text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/60 sm:inline">
-              {getProjectContextLabel(p)}
+              {supportingMeta.join(" / ")}
             </span>
 
             <motion.div

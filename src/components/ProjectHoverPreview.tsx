@@ -89,17 +89,17 @@ export function ProjectHoverPreview({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.22, ease: [0.25, 0.1, 0.25, 1] }}
             className="fixed z-50 pointer-events-none"
             style={{
               left: mousePosition.x,
               top: mousePosition.y,
             }}
           >
-            <div className="relative w-[280px] h-[180px] rounded-lg overflow-hidden shadow-2xl border border-[hsl(var(--border))] bg-[hsl(var(--background))]">
+            <div className="relative h-[180px] w-[280px] overflow-hidden rounded-sm border border-[hsl(var(--border))] bg-[hsl(var(--background))] shadow-2xl">
               <ProjectMedia project={project} variant="hover" sizes="280px" />
-              <div className="absolute bottom-2 left-3 right-3">
-                <p className="text-xs text-white/90 font-medium truncate">
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 pb-2 pt-8">
+                <p className="truncate text-xs font-medium text-white/90">
                   {project.name}
                 </p>
               </div>

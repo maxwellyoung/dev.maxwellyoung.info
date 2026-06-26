@@ -35,17 +35,19 @@ export function ProjectDetails({
   if (!project) return null;
 
   return (
-    <div className="overflow-x-clip rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-4 shadow-sm sm:p-5">
+    <div className="overflow-x-clip rounded-sm border border-[hsl(var(--border))] bg-[hsl(var(--card))] shadow-sm transition-shadow duration-300 sm:shadow-[0_18px_50px_rgba(0,0,0,0.04)] dark:sm:shadow-[0_18px_50px_rgba(0,0,0,0.28)]">
+      <div className="h-px w-full bg-gradient-to-r from-accent/70 via-border to-transparent" />
+      <div className="p-4 sm:p-5">
           {hasMedia && (
             <div className="mb-5">
               {canOpenCarousel ? (
                 <button
                   type="button"
-                  className="relative w-full cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-lg"
+                  className="relative w-full cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
                   onClick={onCarouselOpen}
                   aria-label={`Open ${project.name} screenshots`}
                 >
-                  <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg ring-1 ring-[hsl(var(--border))] transition-all duration-300 group-hover:ring-[hsl(var(--accent))]/40 group-hover:shadow-lg bg-[hsl(var(--muted))]">
+                  <div className="relative w-full aspect-[16/9] overflow-hidden rounded-sm ring-1 ring-[hsl(var(--border))] transition-all duration-500 ease-out group-hover:-translate-y-0.5 group-hover:ring-[hsl(var(--accent))]/45 group-hover:shadow-lg bg-[hsl(var(--muted))]">
                     {!imageLoaded && currentImage && (
                       <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-[hsl(var(--muted))] via-[hsl(var(--muted))]/50 to-[hsl(var(--muted))]" />
                     )}
@@ -67,7 +69,7 @@ export function ProjectDetails({
                   </div>
                 </button>
               ) : (
-                <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg ring-1 ring-[hsl(var(--border))] bg-[hsl(var(--muted))]">
+                <div className="relative w-full aspect-[16/9] overflow-hidden rounded-sm ring-1 ring-[hsl(var(--border))] bg-[hsl(var(--muted))]">
                   <ProjectMedia
                     project={project}
                     variant="detail"
@@ -79,7 +81,7 @@ export function ProjectDetails({
           )}
           <div className="flex items-start justify-between gap-2">
             <div>
-              <p className="mb-1 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              <p className="mb-1 text-[0.65rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 {getProjectContextLabel(project)}
               </p>
               <h2 className="text-lg md:text-xl font-medium leading-tight text-foreground">
@@ -88,10 +90,10 @@ export function ProjectDetails({
             </div>
             {getProjectStatusLabel(project) && (
               <span
-                className={`shrink-0 px-2 py-0.5 text-xs rounded-full ${
+                className={`shrink-0 rounded-sm border px-2 py-0.5 text-xs ${
                   isActiveStatus(project)
-                    ? "bg-accent/10 text-accent border border-accent/20"
-                    : "bg-[hsl(var(--muted))] text-muted-foreground"
+                    ? "border-accent/20 bg-accent/10 text-accent"
+                    : "border-border/70 bg-[hsl(var(--muted))]/60 text-muted-foreground"
                 }`}
               >
                 {getProjectStatusLabel(project)}
@@ -102,14 +104,18 @@ export function ProjectDetails({
             {project.longDescription || project.description}
           </p>
 
-          <div className="mt-4 grid gap-2 text-xs sm:grid-cols-2">
-            <div className="rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--muted))]/25 px-3 py-2.5">
-              <p className="mb-1 text-[0.6rem] uppercase tracking-[0.16em] text-muted-foreground">Role</p>
+          <div className="mt-4 grid overflow-hidden rounded-sm border border-[hsl(var(--border))] text-xs sm:grid-cols-2">
+            <div className="bg-[hsl(var(--muted))]/20 px-3 py-2.5 sm:border-r sm:border-[hsl(var(--border))]">
+              <p className="mb-1 text-[0.6rem] uppercase tracking-[0.16em] text-muted-foreground">
+                Role
+              </p>
               <p className="text-sm text-foreground">{project.role || "Contributor"}</p>
             </div>
             {project.impact?.[0] && (
-              <div className="rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--muted))]/25 px-3 py-2.5">
-                <p className="mb-1 text-[0.6rem] uppercase tracking-[0.16em] text-muted-foreground">Proof point</p>
+              <div className="border-t border-[hsl(var(--border))] bg-[hsl(var(--muted))]/20 px-3 py-2.5 sm:border-t-0">
+                <p className="mb-1 text-[0.6rem] uppercase tracking-[0.16em] text-muted-foreground">
+                  Proof point
+                </p>
                 <p className="text-sm leading-snug text-foreground">{project.impact[0]}</p>
               </div>
             )}
@@ -131,7 +137,7 @@ export function ProjectDetails({
               {visibleTags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-md bg-[hsl(var(--muted))] px-2 py-1 text-xs text-muted-foreground transition-colors duration-200 hover:text-foreground"
+                  className="rounded-sm border border-border/50 bg-[hsl(var(--muted))]/50 px-2 py-1 text-xs text-muted-foreground transition-colors duration-200 hover:border-accent/20 hover:text-foreground"
                 >
                   {tag}
                 </span>
@@ -143,7 +149,7 @@ export function ProjectDetails({
             {project.caseStudySlug && (
               <Link
                 href={`/case-study/${project.caseStudySlug}`}
-                className="inline-flex min-h-10 items-center justify-center rounded-md border border-accent/20 bg-accent/10 px-3 text-sm font-medium text-accent transition-colors duration-200 hover:bg-accent/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
+                className="inline-flex min-h-10 items-center justify-center rounded-sm border border-accent/20 bg-accent/10 px-3 text-sm font-medium text-accent transition-colors duration-200 hover:bg-accent/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
               >
                 <FileText className="mr-1.5 h-3.5 w-3.5" />
                 Case study
@@ -153,7 +159,7 @@ export function ProjectDetails({
               (project.link.startsWith("/") ? (
                 <Link
                   href={project.link}
-                  className="group inline-flex min-h-10 items-center justify-center rounded-md border border-[hsl(var(--border))] px-3 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent/30 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
+                  className="group inline-flex min-h-10 items-center justify-center rounded-sm border border-[hsl(var(--border))] px-3 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
                 >
                   View Live
                   <ArrowUpRight className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -163,7 +169,7 @@ export function ProjectDetails({
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex min-h-10 items-center justify-center rounded-md border border-[hsl(var(--border))] px-3 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent/30 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
+                  className="group inline-flex min-h-10 items-center justify-center rounded-sm border border-[hsl(var(--border))] px-3 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
                 >
                   View Live
                   <ArrowUpRight className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -174,7 +180,7 @@ export function ProjectDetails({
                 href={project.codeLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex min-h-10 items-center justify-center rounded-md border border-[hsl(var(--border))] px-3 text-sm text-muted-foreground transition-colors duration-200 hover:border-accent/30 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
+                className="group inline-flex min-h-10 items-center justify-center rounded-sm border border-[hsl(var(--border))] px-3 text-sm text-muted-foreground transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
               >
                 Source
                 <Github className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -186,6 +192,7 @@ export function ProjectDetails({
               </span>
             )}
           </div>
+      </div>
     </div>
   );
 }

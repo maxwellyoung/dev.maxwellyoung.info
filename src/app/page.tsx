@@ -95,13 +95,13 @@ export default function Home() {
           <ProjectsShowcase embedded />
         </section>
 
-        <footer className="mt-16 pt-8 border-t border-[hsl(var(--border))]">
+        <footer className="mt-16 border-t border-[hsl(var(--border))] pt-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
             <GitHubActivity />
             <NowPlaying />
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="flex flex-col gap-4 border-t border-border/50 pt-5 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-muted-foreground">
               <TrackedActionLink
                 href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_footer"
@@ -114,11 +114,11 @@ export default function Home() {
               </TrackedActionLink>
               {" "}&mdash; independent studio
             </p>
-            <div className="flex items-center gap-4">
-              <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-sm text-muted-foreground hover:text-foreground">
+            <div className="flex items-center gap-2">
+              <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center rounded-sm px-2 text-sm text-muted-foreground hover:bg-muted/30 hover:text-foreground">
                 Contact
               </AnimatedLink>
-              <AnimatedLink href="/privacy" className="inline-flex min-h-11 items-center text-sm text-muted-foreground hover:text-foreground">
+              <AnimatedLink href="/privacy" className="inline-flex min-h-11 items-center rounded-sm px-2 text-sm text-muted-foreground hover:bg-muted/30 hover:text-foreground">
                 Privacy
               </AnimatedLink>
             </div>

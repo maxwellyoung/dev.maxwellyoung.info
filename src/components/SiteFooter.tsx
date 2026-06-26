@@ -1,32 +1,27 @@
 import Link from "next/link";
 
 export function SiteFooter() {
+  const links = [
+    { href: "/", label: "Home" },
+    { href: "/#projects", label: "Projects" },
+    { href: "/about", label: "About" },
+    { href: "/craft", label: "Lab" },
+    { href: "/contact", label: "Contact" },
+    { href: "/privacy", label: "Privacy" },
+  ];
+
   return (
-    <footer className="mt-16 py-8 border-t border-border/50">
-      <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
-        <Link href="/" className="inline-flex min-h-11 items-center rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
-          Home
-        </Link>
-        <span className="text-border/40">·</span>
-        <Link href="/#projects" className="inline-flex min-h-11 items-center rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
-          Projects
-        </Link>
-        <span className="text-border/40">·</span>
-        <Link href="/about" className="inline-flex min-h-11 items-center rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
-          About
-        </Link>
-        <span className="text-border/40">·</span>
-        <Link href="/craft" className="inline-flex min-h-11 items-center rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
-          Lab
-        </Link>
-        <span className="text-border/40">·</span>
-        <Link href="/contact" className="inline-flex min-h-11 items-center rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
-          Contact
-        </Link>
-        <span className="text-border/40">·</span>
-        <Link href="/privacy" className="inline-flex min-h-11 items-center rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
-          Privacy
-        </Link>
+    <footer className="mt-16 border-t border-border/50 py-8">
+      <div className="grid grid-cols-2 overflow-hidden rounded-sm border border-border/60 text-sm text-muted-foreground sm:grid-cols-6">
+        {links.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="inline-flex min-h-11 items-center justify-center border-border/60 px-3 transition-colors duration-300 hover:bg-muted/30 hover:text-foreground focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 max-sm:[&:nth-child(odd)]:border-r max-sm:[&:nth-child(-n+4)]:border-b sm:border-r sm:last:border-r-0"
+          >
+            {link.label}
+          </Link>
+        ))}
       </div>
     </footer>
   );
