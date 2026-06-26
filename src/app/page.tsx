@@ -57,7 +57,9 @@ export default function Home() {
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
               ; after hours I&apos;m building{" "}
               <AnimatedLink href="https://liner.ninetynine.digital" external>Liner</AnimatedLink>
-              {" "}and{" "}
+              {", "}
+              <AnimatedLink href="/basketcase">Basketcase</AnimatedLink>
+              {", and "}
               <AnimatedLink href="https://afterlight.ninetynine.digital" external>Afterlight</AnimatedLink>
               {" "}through{" "}
               <TrackedActionLink

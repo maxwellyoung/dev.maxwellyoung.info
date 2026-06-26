@@ -51,6 +51,7 @@ interface ProjectCover {
   variant?: ProjectCoverVariant;
   src?: string;
   alt?: string;
+  fit?: "cover" | "contain";
   objectPosition?: string;
   kicker?: string;
   summary?: string;
@@ -352,8 +353,8 @@ const projects: Project[] = [
     ],
   },
   {
-    slug: "receipt-radar",
-    name: "Receipt Radar",
+    slug: "basketcase",
+    name: "Basketcase",
     status: "Active",
     category: "personal",
     role: "Solo",
@@ -363,10 +364,10 @@ const projects: Project[] = [
     launchStage: "In development",
     priority: 2,
     description:
-      "Mobile receipt scanner for grocery spend tracking, item normalization, price memory, and comparison before the next shop.",
+      "Mobile receipt scanner that turns grocery receipts into item history, price memory, and calmer pre-shop comparison.",
     longDescription:
-      "Receipt Radar turns paper receipts into structured grocery history. It scans receipts, normalizes line items, tracks spend over time, and makes price comparisons easier to review before the next shop. Built with React Native, Expo, OCR services, and a real-time backend.",
-    tags: ["React Native", "Expo", "Convex", "OCR", "Price Intelligence"],
+      "Basketcase turns paper receipts into structured grocery history. It scans receipts, normalizes line items, tracks spend over time, and gives each price comparison a source trail before the next shop. Built with React Native, Expo, OCR services, and a real-time backend.",
+    tags: ["React Native", "Expo", "Convex", "OCR", "Price Memory"],
     stack: [
       "React Native",
       "Expo",
@@ -376,22 +377,25 @@ const projects: Project[] = [
       "FastAPI",
     ],
     startDate: "2025-01-01",
-    screenshots: ["/projectImages/receipt-radar-1.webp"],
-    thumb: "/projectImages/receipt-radar-1.webp",
+    screenshots: [
+      "/projectImages/basketcase-cover.webp",
+      "/projectImages/basketcase-hero.webp",
+    ],
+    thumb: "/projectImages/basketcase-cover.webp",
     cover: {
       variant: "image",
-      src: "/projectImages/receipt-radar-1.webp",
-      alt: "Receipt Radar app icon",
+      src: "/projectImages/basketcase-cover.webp",
+      alt: "Basketcase product artwork with receipt strips and price-memory charts",
       objectPosition: "center center",
     },
     links: {
-      live: "/receipt-radar",
+      live: "/basketcase",
     },
-    link: "/receipt-radar",
+    link: "/basketcase",
     impact: [
-      "Receipt parsing + item normalization for longitudinal spend tracking",
-      "Price comparison context with store/source transparency",
-      "Mobile-first workflow designed for real grocery routines",
+      "Receipt parsing and item normalization turn messy receipts into longitudinal history",
+      "Price memory stays source-labelled so comparisons remain explainable",
+      "Mobile-first workflow designed around the few minutes after a real grocery run",
     ],
   },
   {

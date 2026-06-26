@@ -80,6 +80,16 @@ const nextConfig = {
         destination: "/#projects",
         permanent: true,
       },
+      {
+        source: "/receipt-radar",
+        destination: "/basketcase",
+        permanent: true,
+      },
+      {
+        source: "/receipt-radar/:path*",
+        destination: "/basketcase",
+        permanent: true,
+      },
     ];
   },
 };

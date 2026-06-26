@@ -138,7 +138,7 @@ function ProjectBrandCover({
 const conceptFrames = {
   silk: ["WRITE", "ARCHIVE", "MEDIA"],
   whakapapa: ["SCAN", "EXTRACT", "REVIEW"],
-  "receipt-radar": ["CAPTURE", "NORMALIZE", "COMPARE"],
+  basketcase: ["CAPTURE", "NORMALIZE", "COMPARE"],
   liner: ["CANVAS", "AUDIO", "SYNC"],
   "good-news-bad-news": ["GOOD", "BAD", "CHECK"],
 } as const;
@@ -258,6 +258,7 @@ export function ProjectMedia({
   const cover = project.cover;
   const imageSrc = cover?.src ?? project.thumb ?? project.screenshots?.[0];
   const imageAlt = cover?.alt ?? `${project.name} preview`;
+  const imageFit = cover?.fit ?? "cover";
 
   if (cover?.variant === "concept") {
     return <ProjectConceptCover project={project} variant={variant} />;
@@ -304,9 +305,15 @@ export function ProjectMedia({
         objectPosition={cover?.objectPosition}
         sizes={sizes}
         priority={priority}
-        className="object-cover"
+        className={
+          imageFit === "contain"
+            ? "object-contain p-1.5 sm:p-3"
+            : "object-cover"
+        }
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+      {imageFit === "cover" && (
+        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+      )}
     </>
   );
 }
