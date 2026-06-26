@@ -8,6 +8,7 @@ import { EducationItem } from "@/components/EducationItem";
 import { SkillCategory } from "@/components/SkillCategory";
 import { AnimatedLink } from "@/components/ui/animated-link";
 import { CopyEmail } from "@/components/CopyEmail";
+import { CompanyLogoStudy } from "@/components/CompanyLogoStudy";
 
 export default function Resume() {
   const [openSkillIndex, setOpenSkillIndex] = useState<number | null>(0);
@@ -75,6 +76,8 @@ export default function Resume() {
           {isDownloading ? "Generating…" : "Download PDF"}
         </button>
       </header>
+
+      <CompanyLogoStudy className="hide-print mb-10" compact />
 
       <section className="mb-10" aria-labelledby="experience-heading">
         <h2

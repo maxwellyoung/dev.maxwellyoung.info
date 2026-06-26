@@ -9,6 +9,7 @@ import { GitHubActivity } from "@/components/GitHubActivity";
 import { NowPlaying } from "@/components/NowPlaying";
 import { container, item } from "@/lib/motion";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
+import { CompanyLogoStudy } from "@/components/CompanyLogoStudy";
 
 export default function Home() {
   const { setTheme } = useTheme();
@@ -87,6 +88,8 @@ export default function Home() {
             </motion.nav>
           </div>
         </motion.section>
+
+        <CompanyLogoStudy className="mb-14 px-4 md:px-8" />
 
         <section id="projects">
           <ProjectsShowcase embedded />
