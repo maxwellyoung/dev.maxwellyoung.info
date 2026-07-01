@@ -411,7 +411,7 @@ export const caseStudies: Record<string, CaseStudy> = {
   chlita: {
     slug: "chlita",
     title: "Ch'lita",
-    subtitle: "A portfolio built around the work",
+    subtitle: "A portfolio for i-D's Fashion Editor-at-Large",
     heroImage: "/projectImages/chlita-1.webp",
     timeline: "2024",
     role: "Designer & Developer",
@@ -419,7 +419,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     liveUrl: "https://chlita.com",
     // githubUrl intentionally omitted
     overview:
-      "Portfolio website for stylist Ch'lita built around editorial image presentation and simple CMS updates.",
+      "Portfolio for Ch'lita Collins — Fashion Editor-at-Large at i-D, and stylist whose work spans Rosalía, The Dare, Tom Guinness and Oliver Hadlee Pearch. Built around editorial image presentation and simple CMS updates, so the work stays in front.",
     challenge:
       "The site needed to support strong image presentation without adding visual clutter or creating layout instability.",
     constraints: [

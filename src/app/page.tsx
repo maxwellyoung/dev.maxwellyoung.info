@@ -6,7 +6,7 @@ import { ProjectsShowcase } from "./projects/page";
 import { motion } from "framer-motion";
 import { AnimatedLink } from "@/components/ui/animated-link";
 import { GitHubActivity } from "@/components/GitHubActivity";
-import { NowPlaying } from "@/components/NowPlaying";
+import { CurrentlyInto } from "@/components/CurrentlyInto";
 import { container, item } from "@/lib/motion";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 import { CompanyLogoStudy } from "@/components/CompanyLogoStudy";
@@ -100,7 +100,7 @@ export default function Home() {
         <footer className="mt-16 border-t border-[hsl(var(--border))] pt-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
             <GitHubActivity />
-            <NowPlaying />
+            <CurrentlyInto />
           </div>
 
           <div className="flex flex-col gap-4 border-t border-border/50 pt-5 sm:flex-row sm:items-center sm:justify-between">

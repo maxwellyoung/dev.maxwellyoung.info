@@ -553,12 +553,12 @@ const projects: Project[] = [
     launchStage: "Client shipped",
     priority: 10,
     description:
-      "CMS-backed stylist portfolio built around fast image browsing and quiet editorial motion.",
+      "Portfolio for Ch'lita Collins — Fashion Editor-at-Large at i-D — built around fast image browsing and quiet editorial motion.",
     longDescription:
-      "Built for stylist Ch'lita as an image-led portfolio that keeps the work in front. The site uses Sanity for authoring, responsive image handling, and restrained motion so new editorial work can be published without touching code.",
-    tags: ["Next.js", "Sanity CMS", "Fashion", "Art Direction"],
+      "Built for Ch'lita Collins, Fashion Editor-at-Large at i-D and stylist to Rosalía and The Dare. An image-led portfolio that keeps the work in front: Sanity for authoring, responsive image handling, and restrained motion so new editorial work ships without touching code.",
+    tags: ["Next.js", "Sanity CMS", "Fashion", "Art Direction", "i-D"],
     stack: ["Next.js", "TypeScript", "Sanity", "Framer Motion", "Vercel"],
-    client: "Ch'lita",
+    client: "Ch'lita — Fashion Editor-at-Large, i-D",
     caseStudySlug: "chlita",
     links: {
       live: "https://chlita.com",
@@ -577,7 +577,7 @@ const projects: Project[] = [
       src: "/projectImages/chlita-3.webp",
       alt: "Ch'lita portfolio site",
       objectPosition: "center top",
-      kicker: "CMS-driven stylist portfolio",
+      kicker: "Portfolio for i-D's Fashion Editor-at-Large",
       summary: "Image-led layout with restrained motion and fast editorial browsing",
       tone: "plum",
     },

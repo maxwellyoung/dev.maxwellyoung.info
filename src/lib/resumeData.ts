@@ -86,7 +86,7 @@ export const resumeData: ResumeData = {
         "Independent product and client studio for mobile apps, web products, and CMS-backed portfolio work.",
       responsibilities: [
         "Shipped independent products including Vape Quit Coach for iOS and Liner, a spatial canvas for music with tldraw, audio playback, and Convex sync.",
-        "Delivered client sites for Ch'lita and Dayle with Next.js and Sanity, plus Shopify performance and layout stability work for Goodness Gracious.",
+        "Delivered client sites with Next.js and Sanity for Ch'lita Collins (Fashion Editor-at-Large at i-D) and artist Dayle Palfreyman, plus Shopify performance and layout stability work for Goodness Gracious.",
       ],
     },
     {
