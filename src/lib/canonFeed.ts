@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 3548,
   "regionCount": 14,
   "regions": [
-    "Classic suspense & psychological thrille",
-    "Mind-bending narratives & meta-commentar",
-    "Modern relationships & societal reflecti",
-    "Classic gaming nostalgia"
+    "Psychological Thrillers",
+    "Mind-Bending Narratives",
+    "Introspective Art",
+    "Contemporary Social Reflections"
   ],
   "now": [
     {
@@ -49,7 +49,7 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "Blue Prince",
+      "title": "Puzzle Agent",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
