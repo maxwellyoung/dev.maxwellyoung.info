@@ -7,6 +7,7 @@ export interface CanonNowItem {
   title: string;
   creator?: string;
   year?: number;
+  art?: { src: string; w: number; h: number };
 }
 
 export interface CanonLove {
@@ -25,7 +26,7 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-07-01",
+  "generatedAt": "2026-07-02",
   "totalWorks": 3410,
   "regionCount": 14,
   "regions": [
@@ -39,21 +40,41 @@ export const canonFeed: CanonFeed = {
       "verb": "watched",
       "title": "Wiener-Dog",
       "creator": "Todd Solondz",
-      "year": 2016
+      "year": 2016,
+      "art": {
+        "src": "/canon/watched.jpg",
+        "w": 240,
+        "h": 360
+      }
     },
     {
       "verb": "playing",
-      "title": "Puzzle Agent"
+      "title": "Puzzle Agent",
+      "art": {
+        "src": "/canon/playing.jpg",
+        "w": 240,
+        "h": 360
+      }
     },
     {
       "verb": "reading",
       "title": "I Am a Strange Loop",
-      "creator": "Douglas R. Hofstadter"
+      "creator": "Douglas R. Hofstadter",
+      "art": {
+        "src": "/canon/reading.jpg",
+        "w": 360,
+        "h": 360
+      }
     },
     {
       "verb": "in rotation",
       "title": "1010: Time Has Nothing To Do With What You Choose...",
-      "creator": "1010benja"
+      "creator": "1010benja",
+      "art": {
+        "src": "/canon/rotation.jpg",
+        "w": 360,
+        "h": 360
+      }
     }
   ],
   "loves": [
