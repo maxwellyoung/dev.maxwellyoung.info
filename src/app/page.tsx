@@ -5,7 +5,6 @@ import { useTheme } from "next-themes";
 import { ProjectsShowcase } from "./projects/page";
 import { motion } from "framer-motion";
 import { AnimatedLink } from "@/components/ui/animated-link";
-import { GitHubActivity } from "@/components/GitHubActivity";
 import { CurrentlyInto } from "@/components/CurrentlyInto";
 import { container, item } from "@/lib/motion";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
@@ -98,8 +97,7 @@ export default function Home() {
         </section>
 
         <footer className="mt-16 border-t border-[hsl(var(--border))] pt-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-            <GitHubActivity />
+          <div className="mb-8">
             <CurrentlyInto />
           </div>
 
