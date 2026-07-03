@@ -23,7 +23,7 @@ export function SkillCategory({
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <div className={compact ? "mt-6" : "mt-8"}>
+    <div className={compact ? "border-t border-border/60" : "mt-8"}>
       <div>
         {collapsible ? (
           <button
@@ -31,7 +31,7 @@ export function SkillCategory({
             aria-expanded={expanded}
             aria-controls={contentId}
             onClick={onToggle}
-            className="resume-label inline-flex min-h-11 items-center gap-2 rounded-sm select-none transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            className="resume-label flex min-h-11 w-full items-center justify-between gap-2 rounded-sm px-1 text-left select-none transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             <span>{category}</span>
             <motion.svg
@@ -72,11 +72,11 @@ export function SkillCategory({
           duration: prefersReducedMotion ? 0 : 0.2,
           ease: "easeInOut",
         }}
-        className="mt-2 overflow-hidden"
+        className="overflow-hidden px-1"
       >
         <div
           className={
-            (compact ? "block text-[13px] leading-6" : "block text-sm") +
+            (compact ? "block pb-3 text-[13px] leading-6" : "block pt-2 text-sm") +
             " font-normal text-muted-foreground font-inter"
           }
         >

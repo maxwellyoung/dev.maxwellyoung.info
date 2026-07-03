@@ -126,7 +126,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                         target: "live_site",
                       })
                     }
-                    className="inline-flex min-h-8 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                   >
                     <ExternalLink className="w-4 h-4" />
                     Live site
@@ -143,7 +143,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                         target: "source_code",
                       })
                     }
-                    className="inline-flex min-h-8 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                   >
                     <Github className="w-4 h-4" />
                     Source
@@ -485,7 +485,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
             </p>
             <Link
               href={`/case-study/${study.nextProject.slug}`}
-              className="group inline-flex items-center gap-2 text-lg font-medium hover:text-accent transition-colors"
+              className="group inline-flex min-h-11 items-center gap-2 rounded-sm text-lg font-medium transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               {study.nextProject.title}
               <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
@@ -512,7 +512,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                 <li key={cs.slug}>
                   <Link
                     href={`/case-study/${cs.slug}`}
-                    className="group flex items-center justify-between text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="group flex min-h-11 items-center justify-between gap-4 rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                   >
                     <span>{cs.title}</span>
                     <span className="text-xs text-muted-foreground">{cs.role}</span>
@@ -523,7 +523,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           <div className="mt-4">
             <Link
               href="/#projects"
-              className="text-sm text-muted-foreground hover:text-accent transition-colors"
+              className="inline-flex min-h-11 items-center rounded-sm text-sm text-muted-foreground transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               View all projects
             </Link>

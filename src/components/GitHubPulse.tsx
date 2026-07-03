@@ -50,7 +50,7 @@ export function GitHubPulse({ username = "maxwellyoung" }: { username?: string }
     <div className="min-w-0">
       <p className="flex items-center gap-1.5 whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
         <Github className="h-3 w-3 shrink-0" aria-hidden="true" />
-        Meanwhile, on GitHub
+        Recently shipping
       </p>
       <ul className="mt-1.5 space-y-1">
         {(data?.events ?? [{ type: "", repo: "", date: "" }, { type: "", repo: "", date: "" }]).map(

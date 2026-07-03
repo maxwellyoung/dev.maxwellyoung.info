@@ -9,6 +9,7 @@ import { SkillCategory } from "@/components/SkillCategory";
 import { AnimatedLink } from "@/components/ui/animated-link";
 import { CopyEmail } from "@/components/CopyEmail";
 import { CompanyLogoStudy } from "@/components/CompanyLogoStudy";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export default function Resume() {
   const [openSkillIndex, setOpenSkillIndex] = useState<number | null>(0);
@@ -47,7 +48,7 @@ export default function Resume() {
       />
 
       <header className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row">
-        <div className="flex min-w-0 items-center gap-4">
+        <div className="flex min-w-0 items-start gap-4">
           <Image
             className="flex-shrink-0 rounded-full"
             src="/profile_work.webp"
@@ -159,6 +160,10 @@ export default function Resume() {
           </div>
         </div>
       </section>
+
+      <div className="hide-print">
+        <SiteFooter />
+      </div>
     </div>
   );
 }

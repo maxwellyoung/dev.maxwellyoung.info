@@ -102,7 +102,7 @@ const projects: Project[] = [
     launchStage: "Production work",
     priority: 0,
     description:
-      "Production React Native work across mobile publishing flows, media handling, gesture-heavy UI, and platform polish.",
+      "Production React Native work on mobile publishing flows, media handling, gesture-heavy interfaces, and the platform polish that makes creative tooling feel native.",
     longDescription:
       "I contribute to Silk's React Native product inside a small shipping team. My work touches the surfaces that make the mobile product feel reliable in practice: publishing flows, editor behavior, media upload and playback, navigation, release hardening, and iOS / Android parity.",
     tags: ["React Native", "TypeScript", "Expo"],
@@ -138,7 +138,7 @@ const projects: Project[] = [
     launchStage: "In development",
     priority: 3,
     description:
-      "Spatial canvas for arranging music, notes, and references with playback-aware objects.",
+      "Spatial canvas for shaping a release: arrange songs, notes, references, and playback moments in one place.",
     longDescription:
       "Liner is a music workspace for arranging songs, notes, and references on an infinite canvas. It uses tldraw with custom shapes for music objects, waveform extraction and playback, keyboard controls, and optional sync through Convex and Clerk. The same underlying model is used across the web app and the iOS app.",
     tags: ["Next.js", "tldraw", "Convex", "Audio", "Canvas", "iOS App"],
@@ -364,7 +364,7 @@ const projects: Project[] = [
     launchStage: "In development",
     priority: 2,
     description:
-      "Mobile receipt scanner that turns grocery receipts into item history, price memory, and calmer pre-shop comparison.",
+      "Receipt scanner that turns grocery shops into item history, price memory, and clearer decisions before the next run.",
     longDescription:
       "Basketcase turns paper receipts into structured grocery history. It scans receipts, normalizes line items, tracks spend over time, and gives each price comparison a source trail before the next shop. Built with React Native, Expo, OCR services, and a real-time backend.",
     tags: ["React Native", "Expo", "Convex", "OCR", "Price Memory"],

@@ -19,7 +19,7 @@ function monthOf(iso: string) {
 }
 
 export function CurrentlyInto() {
-  const { now, regions, totalWorks, generatedAt } = canonFeed;
+  const { now, totalWorks, generatedAt } = canonFeed;
   if (!now.length) return null;
 
   return (
@@ -81,13 +81,12 @@ export function CurrentlyInto() {
 
         {/* right rail — the taste line up top, the code pulse at the bottom */}
         <div className="flex min-w-0 flex-1 flex-col justify-between gap-4 sm:min-w-[200px] sm:border-l sm:border-border/50 sm:pl-6">
-          {regions.length >= 2 ? (
-            <p className="max-w-[26rem] text-[13px] leading-relaxed text-muted-foreground">
-              <span className="text-foreground">{totalWorks.toLocaleString()} works catalogued</span>{" "}
-              across film, games, books and music — somewhere between{" "}
-              {regions[0].toLowerCase()} and {regions[1].toLowerCase()}.
-            </p>
-          ) : null}
+          <p className="max-w-[26rem] text-[13px] leading-relaxed text-muted-foreground">
+            <span className="text-foreground">{totalWorks.toLocaleString()} works catalogued</span>{" "}
+            across film, games, books, and music. The pattern, apparently:{" "}
+            psychological pressure, strange systems, and narratives that fold
+            back on themselves.
+          </p>
           <GitHubPulse />
         </div>
       </div>

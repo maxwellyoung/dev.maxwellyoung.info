@@ -91,9 +91,9 @@ export function CompanyLogoStudy({
     >
       <h2
         id="company-logo-study-heading"
-        className="mb-4 text-xs font-medium uppercase tracking-normal text-muted-foreground"
+        className="mb-4 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
       >
-        Experience Marks
+        Past and present
       </h2>
 
       <div className="grid grid-cols-2 overflow-hidden rounded-sm border border-border/70 sm:grid-cols-4">

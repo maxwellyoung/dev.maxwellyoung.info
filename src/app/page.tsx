@@ -46,15 +46,17 @@ export default function Home() {
             </p>
           </motion.header>
 
-          <div className="leading-relaxed space-y-4">
+          <div className="max-w-xl leading-relaxed space-y-4">
             <motion.p className="text-foreground" variants={item.fadeUp}>
-              I&apos;m a product-minded design engineer building mobile and web
-              interfaces across React Native, Expo, and Next.js. I care about
-              fast shipping, clear interaction states, motion with purpose, and
-              systems that hold up on real devices. Currently design engineering
-              at{" "}
-              <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-              ; after hours I&apos;m building{" "}
+              I&apos;m a design engineer building polished mobile and web products
+              across React Native, Expo, and Next.js.
+            </motion.p>
+
+            <motion.p className="text-foreground" variants={item.fadeUp}>
+              Currently at{" "}
+              <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>,
+              where I work on production React Native flows, media-heavy
+              interfaces, and platform polish. After hours, I build{" "}
               <AnimatedLink href="https://liner.ninetynine.digital" external>Liner</AnimatedLink>
               {", "}
               <AnimatedLink href="/basketcase">Basketcase</AnimatedLink>
@@ -79,22 +81,22 @@ export default function Home() {
               variants={item.fadeUp}
               aria-label="Primary navigation"
             >
-              <AnimatedLink href="#projects" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Work</AnimatedLink>
+              <AnimatedLink href="#projects" className="inline-flex min-h-11 items-center text-foreground underline decoration-accent/50 underline-offset-4 hover:decoration-accent">View work</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="/resume" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Resume</AnimatedLink>
+              <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-foreground underline decoration-accent/50 underline-offset-4 hover:decoration-accent">Work with me</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
+              <AnimatedLink href="/resume" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Résumé</AnimatedLink>
               <span className="text-border/40">·</span>
               <AnimatedLink href="https://github.com/maxwellyoung" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
             </motion.nav>
           </div>
         </motion.section>
 
-        <CompanyLogoStudy className="mb-14 px-4 md:px-8" />
-
         <section id="projects">
           <ProjectsShowcase embedded />
         </section>
+
+        <CompanyLogoStudy className="mt-10 mb-14 mx-4 md:mx-8" />
 
         <footer className="mt-16 border-t border-[hsl(var(--border))] pt-8">
           <div className="mb-8">

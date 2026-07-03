@@ -15,11 +15,13 @@ import { ProjectMedia } from "@/components/ProjectMedia";
 interface ProjectDetailsProps {
   project: Project | null;
   onCarouselOpen: () => void;
+  headingLevel?: 3 | 4;
 }
 
 export function ProjectDetails({
   project,
   onCarouselOpen,
+  headingLevel = 3,
 }: ProjectDetailsProps) {
   const [loadedImage, setLoadedImage] = useState<string | null>(null);
   const currentImage = project?.screenshots?.[0] ?? null;
@@ -33,6 +35,8 @@ export function ProjectDetails({
   const secondaryImpact = project?.impact?.slice(1, 3) ?? [];
 
   if (!project) return null;
+
+  const TitleHeading = headingLevel === 4 ? "h4" : "h3";
 
   return (
     <div className="overflow-x-clip rounded-sm border border-[hsl(var(--border))] bg-[hsl(var(--card))] shadow-sm transition-shadow duration-300 sm:shadow-[0_18px_50px_rgba(0,0,0,0.04)] dark:sm:shadow-[0_18px_50px_rgba(0,0,0,0.28)]">
@@ -84,9 +88,9 @@ export function ProjectDetails({
               <p className="mb-1 text-[0.65rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 {getProjectContextLabel(project)}
               </p>
-              <h2 className="text-lg md:text-xl font-medium leading-tight text-foreground">
+              <TitleHeading className="text-lg md:text-xl font-medium leading-tight text-foreground">
                 {project.name}
-              </h2>
+              </TitleHeading>
             </div>
             {getProjectStatusLabel(project) && (
               <span
@@ -149,7 +153,7 @@ export function ProjectDetails({
             {project.caseStudySlug && (
               <Link
                 href={`/case-study/${project.caseStudySlug}`}
-                className="inline-flex min-h-10 items-center justify-center rounded-sm border border-accent/20 bg-accent/10 px-3 text-sm font-medium text-accent transition-colors duration-200 hover:bg-accent/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
+                className="inline-flex min-h-11 items-center justify-center rounded-sm border border-accent/20 bg-accent/10 px-3 text-sm font-medium text-accent transition-colors duration-200 hover:bg-accent/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
               >
                 <FileText className="mr-1.5 h-3.5 w-3.5" />
                 Case study
@@ -159,9 +163,9 @@ export function ProjectDetails({
               (project.link.startsWith("/") ? (
                 <Link
                   href={project.link}
-                  className="group inline-flex min-h-10 items-center justify-center rounded-sm border border-[hsl(var(--border))] px-3 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
+                  className="group inline-flex min-h-11 items-center justify-center rounded-sm border border-[hsl(var(--border))] px-3 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
                 >
-                  View Live
+                  View live
                   <ArrowUpRight className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               ) : (
@@ -169,9 +173,9 @@ export function ProjectDetails({
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex min-h-10 items-center justify-center rounded-sm border border-[hsl(var(--border))] px-3 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
+                  className="group inline-flex min-h-11 items-center justify-center rounded-sm border border-[hsl(var(--border))] px-3 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
                 >
-                  View Live
+                  View live
                   <ArrowUpRight className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               ))}
@@ -180,7 +184,7 @@ export function ProjectDetails({
                 href={project.codeLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex min-h-10 items-center justify-center rounded-sm border border-[hsl(var(--border))] px-3 text-sm text-muted-foreground transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
+                className="group inline-flex min-h-11 items-center justify-center rounded-sm border border-[hsl(var(--border))] px-3 text-sm text-muted-foreground transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
               >
                 Source
                 <Github className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" />

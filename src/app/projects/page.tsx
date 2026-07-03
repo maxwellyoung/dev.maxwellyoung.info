@@ -39,6 +39,7 @@ function ProjectRow({
   onCarouselOpen,
   shouldReduceMotion,
   emphasis = "supporting",
+  titleHeadingLevel = 3,
 }: {
   p: Project;
   index?: number;
@@ -47,11 +48,13 @@ function ProjectRow({
   onCarouselOpen: () => void;
   shouldReduceMotion: boolean;
   emphasis?: "flagship" | "supporting";
+  titleHeadingLevel?: 3 | 4;
 }) {
   const isExpanded = expandedProject === p.name;
   const isEagerLoad = emphasis === "flagship" && index < 4;
   const panelId = `project-panel-${p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
   const isFlagship = emphasis === "flagship";
+  const TitleHeading = titleHeadingLevel === 4 ? "h4" : "h3";
   const rowRef = React.useRef<HTMLLIElement>(null);
   const supportingMeta = [p.role, p.launchStage ?? getProjectContextLabel(p)]
     .filter((value): value is string => Boolean(value))
@@ -73,7 +76,7 @@ function ProjectRow({
         aria-expanded={isExpanded}
         aria-controls={panelId}
         className={`
-          relative w-full max-w-full overflow-hidden rounded-sm border border-transparent text-left px-2 sm:px-3 ${isFlagship ? "py-3.5" : "py-2.5"}
+          relative min-h-11 w-full max-w-full overflow-hidden rounded-sm border border-transparent text-left px-2 sm:px-3 ${isFlagship ? "py-3.5" : "py-2.5"}
           transition-[color,background-color,border-color,transform] duration-300 ease-out
           hover:border-border/70 hover:bg-[hsl(var(--muted))]/35 active:scale-[0.99]
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
@@ -100,9 +103,9 @@ function ProjectRow({
                   <p className="mb-0.5 truncate text-[0.62rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                     {getProjectContextLabel(p)}
                   </p>
-                  <h3 className="truncate break-words text-base sm:text-lg font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
+                  <TitleHeading className="truncate break-words text-base sm:text-lg font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
                     {p.name}
-                  </h3>
+                  </TitleHeading>
                 </div>
               </ProjectHoverPreview>
               <p className="mt-1 line-clamp-2 break-words text-sm leading-relaxed text-muted-foreground">
@@ -132,9 +135,9 @@ function ProjectRow({
             <div className="min-w-0 flex-1 overflow-hidden">
               <ProjectHoverPreview project={p}>
                 <div className="flex min-w-0 cursor-pointer items-baseline gap-3">
-                  <h3 className="flex-shrink-0 text-sm font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
+                  <TitleHeading className="flex-shrink-0 text-sm font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
                     {p.name}
-                  </h3>
+                  </TitleHeading>
                   <p className="hidden min-w-0 truncate text-xs text-muted-foreground sm:block">
                     {p.description}
                   </p>
@@ -188,7 +191,11 @@ function ProjectRow({
             }}
             className="px-1 pb-5 overflow-hidden"
           >
-            <ProjectDetails project={p} onCarouselOpen={onCarouselOpen} />
+            <ProjectDetails
+              project={p}
+              onCarouselOpen={onCarouselOpen}
+              headingLevel={titleHeadingLevel}
+            />
           </motion.div>
         )}
       </AnimatePresence>
@@ -209,6 +216,8 @@ function ProjectSection({
   onCarouselOpen,
   shouldReduceMotion,
   emphasis = "supporting",
+  headingLevel = 2,
+  projectHeadingLevel = 3,
 }: {
   title: string;
   description: string;
@@ -218,7 +227,11 @@ function ProjectSection({
   onCarouselOpen: () => void;
   shouldReduceMotion: boolean;
   emphasis?: "flagship" | "supporting";
+  headingLevel?: 2 | 3;
+  projectHeadingLevel?: 3 | 4;
 }) {
+  const SectionHeading = headingLevel === 3 ? "h3" : "h2";
+
   return (
     <section className="space-y-3">
       <motion.div
@@ -228,9 +241,9 @@ function ProjectSection({
         viewport={{ once: true, margin: "-80px" }}
         className="flex flex-col gap-1 px-2 sm:px-3"
       >
-        <h2 className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+        <SectionHeading className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
           {title}
-        </h2>
+        </SectionHeading>
         <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
           {description}
         </p>
@@ -252,10 +265,46 @@ function ProjectSection({
             onCarouselOpen={onCarouselOpen}
             shouldReduceMotion={shouldReduceMotion}
             emphasis={emphasis}
+            titleHeadingLevel={projectHeadingLevel}
           />
         ))}
       </motion.ul>
     </section>
+  );
+}
+
+const capabilities = [
+  "Turning rough product ideas into shippable mobile flows",
+  "Polishing gestures, loading, empty states, and edge cases",
+  "Building React Native and Expo apps that behave on real devices",
+  "Moving between design judgement and implementation without losing either",
+];
+
+function CapabilitiesSection({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
+  return (
+    <motion.section
+      variants={item.fadeUp}
+      initial={shouldReduceMotion ? false : "hidden"}
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      className="border-y border-border/70 px-2 py-7 sm:px-3"
+      aria-labelledby="capabilities-heading"
+    >
+      <h2
+        id="capabilities-heading"
+        className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
+      >
+        Good for
+      </h2>
+      <ul className="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+        {capabilities.map((capability) => (
+          <li key={capability} className="flex gap-3 text-sm leading-relaxed text-foreground">
+            <span aria-hidden="true" className="mt-[0.65em] h-px w-4 shrink-0 bg-accent/70" />
+            {capability}
+          </li>
+        ))}
+      </ul>
+    </motion.section>
   );
 }
 
@@ -269,6 +318,29 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
     : null;
 
   const handleCarouselOpen = () => setIsCarouselOpen(true);
+
+  const supportingGroups = [
+    {
+      title: "Live products",
+      description: "Products available now, designed and shipped end to end.",
+      projects: supportingProjects.filter((project) => project.launchStage === "Live"),
+    },
+    {
+      title: "In development",
+      description: "Active product work with a clear next release.",
+      projects: supportingProjects.filter((project) => project.launchStage === "In development"),
+    },
+    {
+      title: "Client work",
+      description: "Shipped sites built around the client’s work, voice, and visual world.",
+      projects: supportingProjects.filter((project) => project.launchStage === "Client shipped"),
+    },
+    {
+      title: "Studies and experiments",
+      description: "Focused explorations in interaction, systems, and visual language.",
+      projects: supportingProjects.filter((project) => project.launchStage === "Case study"),
+    },
+  ].filter((group) => group.projects.length > 0);
 
   const content = (
     <div className={embedded ? "" : "min-h-screen text-foreground font-sans"}>
@@ -291,16 +363,33 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
             emphasis="flagship"
           />
 
+          <CapabilitiesSection shouldReduceMotion={shouldReduceMotion} />
+
           {supportingProjects.length > 0 && (
-            <ProjectSection
-              title="Supporting work"
-              description="More shipped products, experiments, and client builds. Labels separate live work, in-development products, case studies, and shipped client projects."
-              projects={supportingProjects}
-              expandedProject={expandedProject}
-              onToggleExpand={setExpandedProject}
-              onCarouselOpen={handleCarouselOpen}
-              shouldReduceMotion={shouldReduceMotion}
-            />
+            <section className="space-y-7" aria-labelledby="supporting-work-heading">
+              <div className="px-2 sm:px-3">
+                <h2 id="supporting-work-heading" className="text-sm font-medium text-foreground">
+                  Supporting work
+                </h2>
+                <p className="mt-1 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                  A curated archive, grouped by the kind of proof each project carries.
+                </p>
+              </div>
+              {supportingGroups.map((group) => (
+                <ProjectSection
+                  key={group.title}
+                  title={group.title}
+                  description={group.description}
+                  projects={group.projects}
+                  expandedProject={expandedProject}
+                  onToggleExpand={setExpandedProject}
+                  onCarouselOpen={handleCarouselOpen}
+                  shouldReduceMotion={shouldReduceMotion}
+                  headingLevel={3}
+                  projectHeadingLevel={4}
+                />
+              ))}
+            </section>
           )}
         </div>
       </div>

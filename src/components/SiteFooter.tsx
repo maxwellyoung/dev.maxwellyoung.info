@@ -5,7 +5,7 @@ export function SiteFooter() {
     { href: "/", label: "Home" },
     { href: "/#projects", label: "Projects" },
     { href: "/about", label: "About" },
-    { href: "/craft", label: "Lab" },
+    { href: "/craft", label: "Craft" },
     { href: "/contact", label: "Contact" },
     { href: "/privacy", label: "Privacy" },
   ];
