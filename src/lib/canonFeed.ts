@@ -52,7 +52,7 @@ export const canonFeed: CanonFeed = {
       "title": "Forza Horizon 6",
       "art": {
         "src": "/canon/playing.jpg",
-        "w": 360,
+        "w": 116,
         "h": 116
       }
     },
