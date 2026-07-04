@@ -48,11 +48,11 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "Day of the Tentacle Remastered",
+      "title": "Forza Horizon 6",
       "art": {
         "src": "/canon/playing.jpg",
-        "w": 240,
-        "h": 360
+        "w": 168,
+        "h": 168
       }
     },
     {
@@ -66,8 +66,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "1010: Time Has Nothing To Do With What You Choose...",
-      "creator": "1010benja",
+      "title": "Your Day Will Come",
+      "creator": "Chanel Beads",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
