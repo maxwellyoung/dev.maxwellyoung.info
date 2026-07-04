@@ -86,6 +86,8 @@ export default function Home() {
               <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
               <span className="text-border/40">·</span>
               <AnimatedLink href="https://github.com/maxwellyoung" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
+              <span className="text-border/40">·</span>
+              <AnimatedLink href="https://birds.silk.cx/@maxwell" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Silk</AnimatedLink>
             </motion.nav>
           </div>
         </motion.section>
