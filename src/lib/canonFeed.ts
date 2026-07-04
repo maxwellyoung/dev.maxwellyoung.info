@@ -37,10 +37,9 @@ export const canonFeed: CanonFeed = {
   ],
   "now": [
     {
-      "verb": "watched",
-      "title": "Wiener-Dog",
-      "creator": "Todd Solondz",
-      "year": 2016,
+      "verb": "watching",
+      "title": "A Woman Is a Woman",
+      "creator": "Jean-Luc Godard",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 240,
@@ -49,11 +48,11 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "Forza Horizon 6",
+      "title": "Day of the Tentacle Remastered",
       "art": {
         "src": "/canon/playing.jpg",
-        "w": 116,
-        "h": 116
+        "w": 240,
+        "h": 360
       }
     },
     {
