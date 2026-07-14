@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { canonFeed } from "@/lib/canonFeed";
 import { GitHubPulse } from "@/components/GitHubPulse";
 
@@ -22,6 +22,15 @@ const CAPTION_H = 64; // reserved caption height — equal figure heights keep t
 function monthOf(iso: string) {
   const d = new Date(`${iso}T00:00:00`);
   return d.toLocaleDateString("en-NZ", { month: "long", year: "numeric" });
+}
+
+function destinationLabel(href: string) {
+  const host = new URL(href).hostname;
+  if (host.endsWith("steampowered.com")) return "Open on Steam";
+  if (host.endsWith("themoviedb.org")) return "Open on TMDB";
+  if (host.endsWith("openlibrary.org")) return "Find on Open Library";
+  if (host.endsWith("music.apple.com")) return "Find on Apple Music";
+  return "Open source";
 }
 
 export function CurrentlyInto() {
@@ -219,6 +228,24 @@ export function CurrentlyInto() {
                   </p>
                 ) : selectedItem.year ? (
                   <p className="mt-1 text-xs text-muted-foreground">{selectedItem.year}</p>
+                ) : null}
+
+                {selectedItem.note ? (
+                  <p className="mt-4 max-w-sm text-[13px] leading-relaxed text-foreground/80">
+                    {selectedItem.note}
+                  </p>
+                ) : null}
+
+                {selectedItem.href ? (
+                  <a
+                    href={selectedItem.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-3 inline-flex min-h-11 items-center gap-1.5 rounded-sm text-xs font-medium text-[hsl(var(--accent))] outline-none transition-[color,transform] duration-150 ease-out hover:text-foreground active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--background))] motion-reduce:transition-none"
+                  >
+                    {destinationLabel(selectedItem.href)}
+                    <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" />
+                  </a>
                 ) : null}
               </div>
 
