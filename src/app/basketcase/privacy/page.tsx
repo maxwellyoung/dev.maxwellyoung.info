@@ -8,7 +8,7 @@ import {
 export const metadata: Metadata = {
   title: "Basketcase Privacy Policy",
   description:
-    "Privacy policy for Basketcase, a New Zealand grocery receipt and price-history app.",
+    "Learn how Basketcase collects, uses, stores, and protects account details, grocery receipts, price history, and support information in New Zealand.",
 };
 
 export default function BasketcasePrivacyPage() {

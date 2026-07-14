@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "Basketcase | Maxwell Young",
   description:
-    "Basketcase turns grocery receipts into item history, price memory, and calmer pre-shop comparison.",
+    "Basketcase is a mobile grocery prototype that turns scanned receipts into source-labelled item history, price memory, and calmer pre-shop comparison.",
   openGraph: {
     title: "Basketcase",
     description:
@@ -71,7 +71,7 @@ const buildProof = [
 
 export default function BasketcasePage() {
   return (
-    <main className="min-h-screen bg-[#f7f1e6] text-[#071321]">
+    <main id="main-content" className="min-h-screen bg-[#f7f1e6] text-[#071321]">
       <div className="mx-auto w-full max-w-6xl px-5 py-6 sm:px-8">
         <header className="flex flex-wrap items-center justify-between gap-4 border-b border-[#071321]/10 pb-5 text-sm">
           <Link

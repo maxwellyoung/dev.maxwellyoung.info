@@ -7,6 +7,12 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+const metadataTitles: Record<string, string> = {
+  "the-invisible-details-of-interaction-design": "Invisible Interaction Details",
+  "motion-grammar-for-humane-interfaces": "Humane Motion Grammar",
+  "the-typography-system-behind-strawhouse": "Strawhouse Typography",
+};
+
 export async function generateStaticParams() {
   return getAllEssaySlugs().map((slug) => ({ slug }));
 }
@@ -25,7 +31,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${essay.title} | Maxwell Young`,
+    title: metadataTitles[slug] ?? essay.title,
     description: essay.excerpt,
     openGraph: {
       title: essay.title,

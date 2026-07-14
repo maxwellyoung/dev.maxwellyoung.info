@@ -56,7 +56,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
   if (!study) {
     // Return a placeholder for projects without full case studies
     return (
-      <main className="min-h-screen px-6 py-24 max-w-3xl mx-auto">
+      <main id="main-content" className="min-h-screen px-6 py-24 max-w-3xl mx-auto">
         <Link
           href="/#projects"
           className="mb-12 inline-flex min-h-11 items-center gap-2 rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
@@ -79,7 +79,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
   const hasHeroImage = Boolean(study.heroImage);
 
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       {/* Hero */}
       <section className="relative px-6 py-16 md:py-20">
         <motion.div {...fadeIn} className="mx-auto max-w-5xl">
@@ -179,11 +179,11 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                 </div>
                 <div className="border-t border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3 sm:border-t-0">
                   <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-                    Key Result
+                    Primary proof
                   </p>
                   <p className="line-clamp-2 text-sm text-foreground">
-                    {study.metrics?.[0]?.value
-                      ? `${study.metrics[0].value} ${study.metrics[0].label}`
+                    {study.proofPoints?.[0]?.value
+                      ? study.proofPoints[0].value
                       : study.outcome}
                   </p>
                 </div>
@@ -216,7 +216,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
       <section className="px-6 max-w-3xl mx-auto space-y-16 pb-32">
         {/* Overview */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={spring.gentle}
@@ -229,7 +229,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
 
         {/* Challenge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={spring.gentle}
@@ -243,7 +243,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
         {/* Constraints */}
         {study.constraints && study.constraints.length > 0 && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={spring.gentle}
@@ -265,7 +265,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
         {/* Decision log */}
         {study.decisionLog && study.decisionLog.length > 0 && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={spring.gentle}
@@ -313,7 +313,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
 
         {/* Approach */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={spring.gentle}
@@ -350,7 +350,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
 
         {/* Outcome */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={spring.gentle}
@@ -360,28 +360,33 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           </h2>
           <p className="text-lg leading-relaxed mb-8">{study.outcome}</p>
 
-          {study.metrics && (
-            <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
-              {study.metrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="p-4 rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 text-center"
-                >
-                  <p className="text-2xl font-medium text-accent">
-                    {metric.value}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {metric.label}
-                  </p>
-                </div>
-              ))}
-            </div>
+          {study.proofPoints && (
+            <>
+              <h3 className="mb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Proof points
+              </h3>
+              <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
+                {study.proofPoints.map((point) => (
+                  <div
+                    key={point.label}
+                    className="p-4 rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 text-center"
+                  >
+                    <p className="text-2xl font-medium text-accent">
+                      {point.value}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {point.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </>
           )}
         </motion.div>
 
         {/* Learnings */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={spring.gentle}
@@ -402,7 +407,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
         {/* Anti-patterns avoided */}
         {study.avoidedPatterns && study.avoidedPatterns.length > 0 && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={spring.gentle}
@@ -424,7 +429,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
         {/* Next iterations */}
         {study.nextIterations && study.nextIterations.length > 0 && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={spring.gentle}
@@ -444,7 +449,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
         )}
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={spring.gentle}
@@ -474,7 +479,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
         {/* Next project */}
         {study.nextProject && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={spring.gentle}
@@ -495,7 +500,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
 
         {/* More case studies */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={spring.gentle}

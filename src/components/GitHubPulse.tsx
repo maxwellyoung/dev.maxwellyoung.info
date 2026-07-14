@@ -68,7 +68,7 @@ export function GitHubPulse({ username = "maxwellyoung" }: { username?: string }
                     {e.repo}
                   </a>
                 </span>
-                <span className="shrink-0 text-[10px] text-muted-foreground/60">{e.date}</span>
+                <span className="shrink-0 text-[10px] text-muted-foreground">{e.date}</span>
               </li>
             ) : (
               <li key={i} className="h-3.5 w-36 animate-pulse rounded-sm bg-[hsl(var(--muted))]" />

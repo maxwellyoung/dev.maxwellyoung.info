@@ -8,7 +8,7 @@ import {
 export const metadata: Metadata = {
   title: "Basketcase Support",
   description:
-    "Support for Basketcase, the New Zealand grocery receipt and price-history app.",
+    "Get help with Basketcase receipt scanning, account access, privacy requests, data deletion, price context, and other grocery-history app questions.",
 };
 
 export default function BasketcaseSupportPage() {

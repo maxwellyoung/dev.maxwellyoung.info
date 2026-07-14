@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | Maxwell Young",
   },
   description:
-    "Design engineer at Silk building product interfaces, mobile apps, and systems that hold up on real devices.",
+    "Design engineer at Silk building accessible mobile and web interfaces with React Native, React, TypeScript, and real-device product craft.",
   metadataBase: new URL("https://dev.maxwellyoung.info"),
   authors: [{ name: "Maxwell Young" }],
   creator: "Maxwell Young",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Maxwell Young — Design Engineer",
     description:
-      "Design engineer at Silk building product interfaces, mobile apps, and systems that hold up on real devices.",
+      "Design engineer at Silk building accessible mobile and web interfaces with React Native, React, TypeScript, and real-device product craft.",
     url: "https://dev.maxwellyoung.info",
     siteName: "Maxwell Young",
     locale: "en_NZ",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Maxwell Young — Design Engineer",
     description:
-      "Design engineer at Silk building product interfaces, mobile apps, and systems that hold up on real devices.",
+      "Design engineer at Silk building accessible mobile and web interfaces with React Native, React, TypeScript, and real-device product craft.",
     images: ["/meta.png"],
     creator: "@internetmaxwell",
   },
@@ -98,6 +98,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const shouldLoadVercelAnalytics = process.env.VERCEL_ENV === "production";
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -150,6 +151,12 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans overflow-x-hidden min-h-screen">
+        <a
+          href="#main-content"
+          className="sr-only fixed left-4 top-4 z-[100] rounded-sm bg-background px-4 py-2 text-foreground shadow-lg focus:not-sr-only focus:outline-none focus:ring-2 focus:ring-accent"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -160,7 +167,7 @@ export default function RootLayout({
             <PageTransitionProvider>
               <div className="relative z-10">{children}</div>
             </PageTransitionProvider>
-            <Analytics />
+            {shouldLoadVercelAnalytics && <Analytics />}
           </CSPostHogProvider>
         </ThemeProvider>
       </body>

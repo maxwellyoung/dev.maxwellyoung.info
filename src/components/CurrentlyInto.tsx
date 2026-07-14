@@ -28,8 +28,10 @@ export function CurrentlyInto() {
   const { now, regions, totalWorks, generatedAt } = canonFeed;
   const [expanded, setExpanded] = useState(false);
   const [instant, setInstant] = useState(false);
+  const [selectedNowIndex, setSelectedNowIndex] = useState(0);
   const detailsId = useId();
   const cardRef = useRef<HTMLDivElement>(null);
+  const selectedItem = now[selectedNowIndex] ?? now[0];
 
   useEffect(() => {
     if (!expanded) return;
@@ -56,7 +58,6 @@ export function CurrentlyInto() {
       <button
         type="button"
         aria-expanded={expanded}
-        aria-controls={detailsId}
         onClick={(event) => {
           setInstant(event.detail === 0);
           setExpanded((current) => !current);
@@ -71,7 +72,7 @@ export function CurrentlyInto() {
           <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--accent))]/80" />
           Currently into
         </span>
-        <span className="flex min-w-0 items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground/60">
+        <span className="flex min-w-0 items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
           <span className="truncate">{monthOf(generatedAt)}</span>
           <span className="hidden text-muted-foreground sm:inline">
             {expanded ? "Close shelf" : "Open shelf"}
@@ -89,33 +90,53 @@ export function CurrentlyInto() {
 
       <div className="mt-4 flex flex-col gap-6 sm:flex-row sm:items-stretch">
         {/* the shelf — covers share a true baseline, each at natural aspect */}
-        <div className="flex items-end gap-3">
-          {now.map((item) => {
+        <div className="flex items-end gap-3" aria-label="Current media shelf">
+          {now.map((item, index) => {
             const coverW = item.art ? Math.round((SHELF_H * item.art.w) / item.art.h) : 88;
             const colW = Math.max(coverW, 76);
+            const selected = expanded && selectedNowIndex === index;
             return (
               <figure key={`${item.verb}-${item.title}`} className="min-w-0" style={{ width: colW }}>
                 <div className="flex items-end" style={{ height: SHELF_H }}>
-                  {item.art ? (
-                    <Image
-                      src={item.art.src}
-                      alt={`${item.title} cover`}
-                      width={coverW}
-                      height={SHELF_H}
-                      className="rounded-[3px] border border-border/60 object-cover transition-transform duration-300 group-hover:-translate-y-0.5"
-                      style={{ height: SHELF_H, width: coverW }}
-                    />
-                  ) : (
-                    <div
-                      className="flex h-full items-center justify-center rounded-[3px] border border-border/60 bg-[hsl(var(--muted))] p-1 text-center text-[10px] leading-tight text-muted-foreground"
-                      style={{ width: coverW }}
-                    >
-                      {item.title}
-                    </div>
-                  )}
+                  <button
+                    type="button"
+                    aria-label={`Show details for ${item.title}`}
+                    aria-pressed={selected}
+                    onClick={(event) => {
+                      setInstant(event.detail === 0);
+                      setSelectedNowIndex(index);
+                      setExpanded(true);
+                    }}
+                    className={`relative rounded-[4px] outline-none transition-transform active:scale-[0.975] focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--background))] motion-reduce:transform-none motion-reduce:transition-none motion-reduce:active:scale-100 ${
+                      selected ? "-translate-y-1 shadow-[0_7px_18px_-9px_hsl(var(--foreground)/0.5)] ring-1 ring-[hsl(var(--accent))]/60 motion-reduce:translate-y-0" : ""
+                    }`}
+                    style={{
+                      height: SHELF_H,
+                      width: coverW,
+                      transitionDuration: instant ? "0ms" : "150ms",
+                      transitionTimingFunction: "cubic-bezier(0.23, 1, 0.32, 1)",
+                    }}
+                  >
+                    {item.art ? (
+                      <Image
+                        src={item.art.src}
+                        alt=""
+                        fill
+                        sizes={`${coverW}px`}
+                        className="rounded-[3px] border border-border/60 object-cover"
+                      />
+                    ) : (
+                      <span className="flex h-full items-center justify-center rounded-[3px] border border-border/60 bg-[hsl(var(--muted))] p-1 text-center text-[10px] leading-tight text-muted-foreground">
+                        {item.title}
+                      </span>
+                    )}
+                    {selected ? (
+                      <span className="absolute inset-x-2 -bottom-2 h-0.5 rounded-full bg-[hsl(var(--accent))]" />
+                    ) : null}
+                  </button>
                 </div>
                 <figcaption className="mt-2 overflow-hidden" style={{ height: CAPTION_H }}>
-                  <p className="truncate text-[10px] uppercase tracking-[0.1em] text-muted-foreground/70">
+                  <p className="truncate text-[10px] uppercase tracking-[0.1em] text-muted-foreground">
                     {item.verb}
                   </p>
                   <p className="line-clamp-2 text-xs font-medium leading-snug text-foreground" title={item.title}>
@@ -146,12 +167,70 @@ export function CurrentlyInto() {
       {expanded ? (
         <div
           id={detailsId}
-          className="mt-5 grid gap-6 border-t border-border/50 pt-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)]"
+          className="mt-5 grid gap-5 border-t border-border/50 pt-5 sm:grid-cols-[minmax(0,1.35fr)_minmax(12rem,0.65fr)]"
         >
-          <section aria-labelledby={`${detailsId}-favourites`}>
+          <section
+            aria-labelledby={`${detailsId}-spotlight-title`}
+            className="grid min-w-0 grid-cols-[auto_minmax(0,1fr)] gap-4 rounded-sm border border-border/50 bg-[hsl(var(--muted))]/20 p-4"
+          >
+            {selectedItem.art ? (
+              <div
+                className="relative self-start overflow-hidden rounded-[3px] border border-border/60 bg-[hsl(var(--muted))] shadow-[0_10px_24px_-16px_hsl(var(--foreground)/0.55)]"
+                style={{
+                  height: 148,
+                  width: Math.max(96, Math.round((148 * selectedItem.art.w) / selectedItem.art.h)),
+                }}
+              >
+                <Image
+                  src={selectedItem.art.src}
+                  alt={`${selectedItem.title} cover`}
+                  fill
+                  sizes="148px"
+                  className="object-cover"
+                />
+              </div>
+            ) : (
+              <div className="flex h-[148px] w-24 items-center justify-center rounded-[3px] border border-border/60 bg-[hsl(var(--muted))] p-2 text-center text-xs text-muted-foreground">
+                {selectedItem.title}
+              </div>
+            )}
+
+            <div className="flex min-w-0 flex-col justify-between gap-5">
+              <div>
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-[hsl(var(--accent))]">
+                    {selectedItem.verb}
+                  </p>
+                  <p className="font-mono text-[10px] tabular-nums text-muted-foreground">
+                    {String(selectedNowIndex + 1).padStart(2, "0")} / {String(now.length).padStart(2, "0")}
+                  </p>
+                </div>
+                <h3
+                  id={`${detailsId}-spotlight-title`}
+                  className="mt-2 text-balance text-lg font-medium leading-tight tracking-[-0.015em] text-foreground"
+                >
+                  {selectedItem.title}
+                </h3>
+                {selectedItem.creator ? (
+                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                    {selectedItem.creator}
+                    {selectedItem.year ? `, ${selectedItem.year}` : ""}
+                  </p>
+                ) : selectedItem.year ? (
+                  <p className="mt-1 text-xs text-muted-foreground">{selectedItem.year}</p>
+                ) : null}
+              </div>
+
+              <p className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+                Shelf snapshot · {monthOf(generatedAt)}
+              </p>
+            </div>
+          </section>
+
+          <section aria-labelledby={`${detailsId}-favourites`} className="min-w-0 sm:py-1">
             <p
               id={`${detailsId}-favourites`}
-              className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground/70"
+              className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground"
             >
               Recent favourites
             </p>
@@ -167,7 +246,7 @@ export function CurrentlyInto() {
                       <span className="block truncate text-[11px] text-muted-foreground">{love.creator}</span>
                     ) : null}
                   </span>
-                  <span className="font-mono text-[10px] tabular-nums text-muted-foreground/70">
+                  <span className="font-mono text-[10px] tabular-nums text-muted-foreground">
                     {love.rating}/10
                   </span>
                 </li>
@@ -175,18 +254,23 @@ export function CurrentlyInto() {
             </ol>
           </section>
 
-          <section aria-labelledby={`${detailsId}-taste-map`}>
-            <p
-              id={`${detailsId}-taste-map`}
-              className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground/70"
-            >
-              The wider canon
-            </p>
-            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-              A living index of {totalWorks.toLocaleString()} works across the things I watch, play,
-              read and keep in rotation.
-            </p>
-            <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Taste regions">
+          <section
+            aria-labelledby={`${detailsId}-taste-map`}
+            className="border-t border-border/40 pt-4 sm:col-span-2 sm:grid sm:grid-cols-[minmax(12rem,0.8fr)_minmax(0,1.2fr)] sm:items-start sm:gap-6"
+          >
+            <div>
+              <p
+                id={`${detailsId}-taste-map`}
+                className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground"
+              >
+                The wider canon
+              </p>
+              <p className="mt-2 max-w-sm text-xs leading-relaxed text-muted-foreground">
+                A living index of {totalWorks.toLocaleString()} works across the things I watch,
+                play, read and keep in rotation.
+              </p>
+            </div>
+            <ul className="mt-3 flex flex-wrap gap-1.5 sm:mt-0" aria-label="Taste regions">
               {regions.map((region) => (
                 <li
                   key={region}

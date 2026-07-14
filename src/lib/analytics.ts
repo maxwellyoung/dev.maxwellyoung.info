@@ -13,9 +13,13 @@ function loadPostHog(): Promise<PostHogClient> | null {
   if (!posthogPromise) {
     posthogPromise = import("posthog-js").then(({ default: posthog }) => {
       posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
-        api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+        api_host: "https://us.i.posthog.com",
         person_profiles: "identified_only",
+        autocapture: false,
         capture_pageview: false,
+        capture_pageleave: false,
+        disable_session_recording: true,
+        persistence: "memory",
       });
       return posthog;
     });

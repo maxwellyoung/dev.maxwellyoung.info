@@ -1,86 +1,57 @@
-# Maxwell Young's Developer Portfolio
+# Maxwell Young — Developer Portfolio
 
-This repository contains the source code for my personal developer portfolio website. It showcases my projects, skills, and professional experience in web development.
+Source for [dev.maxwellyoung.info](https://dev.maxwellyoung.info), a curated public portfolio and resume for Maxwell Young.
 
-## Features
+## What is included
 
-- **Project Showcase**: Displays a curated list of my completed and ongoing projects.
-- **Interactive UI**: Built with Next.js and React for a smooth, single-page application experience.
-- **Responsive Design**: Fully responsive layout that works well on desktop and mobile devices.
-- **Dark Mode**: Supports both light and dark themes for comfortable viewing.
-- **Dynamic Filtering**: Users can filter projects by status (Completed, WIP, Idea) and search by keywords.
-- **Project Details**: Detailed modal views for each project with descriptions and links.
+- Selected production, independent-product, and client work
+- Evidence-focused case studies for work that is approved for publication
+- A browser resume with client-side PDF export
+- Interaction and motion studies
+- Responsive, keyboard-accessible light and dark themes
 
-## Tech Stack
+Employer-internal, client-private, academic-private, and unreleased material does not belong in this repository. Public claims should be supported by visible product evidence or clearly framed as prototypes.
 
-- **Framework**: Next.js
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: Shadcn UI
-- **Animations**: Framer Motion
+## Stack
 
-## Getting Started
+- Next.js and React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Vercel Analytics and optional PostHog analytics
 
-To run this project locally:
+## Local development
 
-1. Clone the repository:
+```bash
+pnpm install
+pnpm dev
+```
 
-   ```
-   git clone https://github.com/maxwellyoung/dev.maxwellyoung.info.git
-   ```
+Open [http://localhost:3000](http://localhost:3000).
 
-2. Install dependencies:
+## Verification
 
-   ```
-   cd dev.maxwellyoung.info
-   pnpm install
-   ```
+```bash
+pnpm privacy:scan
+pnpm test
+pnpm lint
+pnpm build
+```
 
-3. Run the development server:
+The privacy scan checks the public worktree for private planning artifacts, local paths, raw team context, Notion links, and credential-like strings.
 
-   ```
-   pnpm dev
-   ```
+## Content sources
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
-
-## Project Structure
-
-- `src/app`: Next.js app directory (for App Router)
-- `src/components`: React components
-- `src/lib`: Utility functions
-- `public`: Static assets
-
-## Project Image Workflow
-
-- Prompt planning: `pnpm project-images:plan`
-- Batch generation: `pnpm project-images:generate`
-- Full guide: `docs/project-image-generation.md`
+- `src/lib/projects.ts` — public project summaries
+- `src/lib/caseStudies.ts` — publishable case studies
+- `src/lib/resumeData.ts` — resume content
+- `src/app/` — routes, metadata, and product pages
+- `public/` — curated public media
 
 ## Deployment
 
-This site is deployed on Vercel. Any push to the main branch will trigger a new deployment.
+The site is deployed on Vercel. Deployment is intentionally separate from local verification.
 
 ## Contact
 
-For any inquiries, please reach out to me at [maxwell@ninetynine.digital](mailto:maxwell@ninetynine.digital).
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## Contributing
-
-Contributions are welcome! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
-
-## Acknowledgements
-
-- Thanks to the creators of Next.js, React, Tailwind CSS, Shadcn UI, and Framer Motion for their amazing tools and libraries.
-- Special thanks to my friends and family for their support and feedback.
-
-## Future Plans
-
-- Add more projects to the showcase.
-- Implement user authentication for personalized experiences.
-- Integrate a blog section to share my thoughts and tutorials.
-- Enhance accessibility features for a more inclusive experience.
+[maxwell@ninetynine.digital](mailto:maxwell@ninetynine.digital)

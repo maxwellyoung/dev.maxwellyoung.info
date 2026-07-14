@@ -19,9 +19,6 @@ export type ArtStyle =
   | "fireflies"
   | "ai";
 
-const OPENAI_COMPLETIONS_URL =
-  "https://api.openai.com/v1/chat/completions";
-
 const ART_STYLE_SYNONYMS: Record<string, ArtStyle> = {
   firefly: "fireflies",
   fireflies: "fireflies",
@@ -93,60 +90,6 @@ export function createId(length = 10): string {
     id += chars[Math.floor(Math.random() * chars.length)];
   }
   return id;
-}
-
-export function hasOpenAISecret(): boolean {
-  return Boolean(process.env.OPENAI_SECRET);
-}
-
-async function requestOpenAIContent(
-  body: Record<string, unknown>
-): Promise<string | null> {
-  if (!process.env.OPENAI_SECRET) {
-    return null;
-  }
-
-  const response = await fetch(OPENAI_COMPLETIONS_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.OPENAI_SECRET}`,
-    },
-    body: JSON.stringify(body),
-  });
-
-  if (!response.ok) {
-    return null;
-  }
-
-  const data = await response.json();
-  return typeof data?.choices?.[0]?.message?.content === "string"
-    ? data.choices[0].message.content
-    : null;
-}
-
-export async function requestOpenAIJson<T>(
-  body: Record<string, unknown>
-): Promise<T | null> {
-  return safeParseJson<T>(await requestOpenAIContent(body));
-}
-
-export async function requestOpenAIText(
-  body: Record<string, unknown>
-): Promise<string | null> {
-  return requestOpenAIContent(body);
-}
-
-function safeParseJson<T>(value: unknown): T | null {
-  if (typeof value !== "string" || value.length === 0) {
-    return null;
-  }
-
-  try {
-    return JSON.parse(value) as T;
-  } catch {
-    return null;
-  }
 }
 
 export function getPromptPaletteBias(prompt: string): {

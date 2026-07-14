@@ -29,16 +29,6 @@ function createRecipeFallback(prompt: string): BackgroundLayer[] {
   ];
 }
 
-function createOpenAIErrorFallback(): BackgroundLayer[] {
-  return [
-    {
-      type: "shaderTemplate",
-      template: "flow-curl",
-      uniforms: { colorA: "#9ae6b4", colorB: "#0a1f12", density: 1.1 },
-    },
-  ];
-}
-
 export function createLocalGeneratedRecipe(prompt: string) {
   return [
     {
@@ -194,15 +184,5 @@ export function normalizeGeneratedRecipe(
     name: payload?.name || "Generated",
     prompt: String(prompt || payload?.prompt || ""),
     recipe: normalizedRecipe,
-  };
-}
-
-export function createGeneratedRecipeOpenAIError(id: string, prompt?: string) {
-  return {
-    id,
-    name: "Generated",
-    prompt,
-    recipe: createOpenAIErrorFallback(),
-    error: "openai_error",
   };
 }

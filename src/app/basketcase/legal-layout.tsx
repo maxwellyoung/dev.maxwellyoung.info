@@ -15,7 +15,7 @@ export function BasketcaseLegalLayout({
   children,
 }: BasketcaseLegalLayoutProps) {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main id="main-content" className="min-h-screen bg-background text-foreground">
       <div className="mx-auto w-full max-w-3xl px-6 py-14">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <Link
@@ -26,7 +26,7 @@ export function BasketcaseLegalLayout({
           </Link>
           <nav className="flex items-center gap-4 text-sm text-muted-foreground">
             <Link className="transition-colors hover:text-foreground" href="/basketcase/privacy">
-              Privacy
+              Basketcase privacy
             </Link>
             <Link className="transition-colors hover:text-foreground" href="/basketcase/terms">
               Terms

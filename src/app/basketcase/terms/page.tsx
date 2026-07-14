@@ -8,7 +8,7 @@ import {
 export const metadata: Metadata = {
   title: "Basketcase Terms of Service",
   description:
-    "Terms of service for Basketcase, a New Zealand grocery receipt and price-history app.",
+    "Read the terms for using Basketcase, including acceptable use, receipt scanning, price information, account security, and New Zealand governing law.",
 };
 
 export default function BasketcaseTermsPage() {

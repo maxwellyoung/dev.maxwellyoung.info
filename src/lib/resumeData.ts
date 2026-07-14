@@ -32,7 +32,7 @@ export const resumeData: ResumeData = {
   name: "Maxwell Young",
   title: "Design Engineer",
   profile:
-    "Mobile and product engineer working across React Native, Next.js, design systems, research tooling, and applied ML prototypes. I build production mobile features, client products, and research interfaces where software has to stay understandable under real workflow constraints.",
+    "Product-minded design engineer building mobile and web interfaces with React Native and React. I focus on clear interaction states, accessible systems, and software that holds up on real devices.",
   contact: {
     email: "maxwell@ninetynine.digital",
     location: "Auckland, NZ",
@@ -47,10 +47,10 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.auckland.ac.nz/",
       date: "Apr 2026 – Present",
       summary:
-        "Building safer-medicines research tooling for a deprescribing and clinical review workflow.",
+        "Building traceable software for safer-medicines research workflows.",
       responsibilities: [
-        "Turned a medication recommendation spreadsheet into a Python-backed rules dataset for safer-medicines and deprescribing research.",
-        "Built research prototypes that match structured patient assessments to candidate medication review rules with provenance, ranking summaries, and audit-aware workflow support.",
+        "Turn research rules and source material into structured, reviewable software workflows.",
+        "Build prototypes that preserve provenance and support careful human review.",
       ],
     },
     {
@@ -59,10 +59,10 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.aut.ac.nz/",
       date: "Nov 2025 – Jan 2026",
       summary:
-        "Funded sleep research app spanning mobile product, backend services, and on-device ML.",
+        "Mobile research tooling for sleep-session analysis and review.",
       responsibilities: [
-        "Built a React Native and Expo mobile app for EEG-based sleep-stage classification, including session review, hypnogram views, questionnaires, and sleep metrics.",
-        "Integrated on-device and cloud inference flows using AttnSleep TFLite, FastAPI, Express, and Supabase, with separate consumer and lab modes for the AUT research workflow.",
+        "Built a React Native and Expo app for session review, questionnaires, and sleep-stage visualization.",
+        "Integrated mobile, backend, and model-inference workflows for research use.",
       ],
     },
     {
@@ -71,10 +71,10 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.silk.cx/",
       date: "September 2025 – Present",
       summary:
-        "React Native product engineering across mobile auth, publishing, archives, and media-heavy flows.",
+        "Product interface engineering across Silk's mobile and web experiences.",
       responsibilities: [
-        "Owned mobile auth, publishing, archive, and media upload/playback flows across iOS and Android.",
-        "Built React Native architecture and delivery patterns for navigation, editing, media handling, and platform parity in a small product team.",
+        "Build and refine media-heavy product flows across React Native and React.",
+        "Improve cross-platform consistency, accessibility, performance, and real-device reliability across iOS and Android.",
       ],
     },
     {
@@ -157,6 +157,6 @@ export const resumeData: ResumeData = {
   ],
   socials: [
     { name: "GitHub", url: "https://github.com/maxwellyoung" },
-    { name: "LinkedIn", url: "https://linkedin.com/in/maxwell-young-a55032125" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/maxwell-young-a55032125/" },
   ],
 };
