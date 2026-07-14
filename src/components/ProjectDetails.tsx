@@ -47,7 +47,7 @@ export function ProjectDetails({
                   onClick={onCarouselOpen}
                   aria-label={`Open ${project.name} screenshots`}
                 >
-                  <div className="relative w-full aspect-[16/9] overflow-hidden rounded-sm ring-1 ring-[hsl(var(--border))] transition-all duration-500 ease-out group-hover:-translate-y-0.5 group-hover:ring-[hsl(var(--accent))]/45 group-hover:shadow-lg bg-[hsl(var(--muted))]">
+                  <div className="relative w-full aspect-[16/9] overflow-hidden rounded-sm ring-1 ring-[hsl(var(--border))] bg-[hsl(var(--muted))] transition-[box-shadow,--tw-ring-color] [transition-duration:180ms] [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:ring-[hsl(var(--accent))]/45 group-hover:shadow-lg motion-reduce:transition-none">
                     {!imageLoaded && currentImage && (
                       <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-[hsl(var(--muted))] via-[hsl(var(--muted))]/50 to-[hsl(var(--muted))]" />
                     )}
