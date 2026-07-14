@@ -11,6 +11,8 @@ const PUBLIC_DESTINATIONS = new Set([
 
 test("currently-into spotlights have public, allowlisted destinations", () => {
   assert.ok(canonFeed.now.length > 0);
+  assert.ok(canonFeed.sourceSyncedAt, "feed is missing the Canon source sync timestamp");
+  assert.ok(!Number.isNaN(new Date(canonFeed.sourceSyncedAt).getTime()), "sourceSyncedAt is not parseable");
 
   for (const item of canonFeed.now) {
     assert.ok(item.id.length > 0, `${item.title} is missing a stable Canon id`);

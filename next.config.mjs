@@ -3,6 +3,11 @@ const nextConfig = {
   poweredByHeader: false,
   outputFileTracingRoot: process.cwd(),
   images: {
+    localPatterns: [
+      {
+        pathname: "/**",
+      },
+    ],
     remotePatterns: [
       {
         protocol: "https",

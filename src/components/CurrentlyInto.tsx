@@ -31,6 +31,16 @@ function dayOf(iso: string) {
   return d.toLocaleDateString("en-NZ", { day: "numeric", month: "short", year: "numeric" });
 }
 
+function dateTimeOf(iso: string) {
+  const d = new Date(iso);
+  return d.toLocaleDateString("en-NZ", {
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    month: "short",
+  });
+}
+
 function destinationLabel(href: string) {
   const host = new URL(href).hostname;
   if (host.endsWith("steampowered.com")) return "Open on Steam";
@@ -51,8 +61,12 @@ function sourceName(href?: string) {
   return host.replace(/^www\./, "");
 }
 
+function versionedArtSrc(src: string, version: string) {
+  return `${src}?v=${encodeURIComponent(version)}`;
+}
+
 export function CurrentlyInto() {
-  const { now, regions, totalWorks, generatedAt } = canonFeed;
+  const { now, regions, totalWorks, generatedAt, sourceSyncedAt } = canonFeed;
   const [expanded, setExpanded] = useState(false);
   const [instant, setInstant] = useState(false);
   const [selectedNowIndex, setSelectedNowIndex] = useState(0);
@@ -62,7 +76,9 @@ export function CurrentlyInto() {
   const selectedSource = sourceName(selectedItem?.href);
   const selectedMedium = MEDIUM_BY_VERB[selectedItem?.verb] ?? "Work";
   const selectedPosition = `${String(selectedNowIndex + 1).padStart(2, "0")} / ${String(now.length).padStart(2, "0")}`;
-  const snapshotDate = dayOf(generatedAt);
+  const exportDate = dayOf(generatedAt);
+  const sourceSyncDate = sourceSyncedAt ? dateTimeOf(sourceSyncedAt) : exportDate;
+  const artVersion = sourceSyncedAt ?? generatedAt;
 
   const selectRelativeItem = (direction: -1 | 1, keyboard = false) => {
     setInstant(keyboard);
@@ -111,7 +127,7 @@ export function CurrentlyInto() {
           Currently into
         </span>
         <span className="flex min-w-0 items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
-          <span className="truncate">Updated {snapshotDate}</span>
+          <span className="truncate">Synced {sourceSyncDate}</span>
           <span className="hidden text-muted-foreground sm:inline">
             {expanded ? "Close shelf" : "Open shelf"}
           </span>
@@ -177,7 +193,7 @@ export function CurrentlyInto() {
                   >
                     {item.art ? (
                       <Image
-                        src={item.art.src}
+                        src={versionedArtSrc(item.art.src, artVersion)}
                         alt=""
                         fill
                         sizes={`${coverW}px`}
@@ -240,7 +256,7 @@ export function CurrentlyInto() {
                 }}
               >
                 <Image
-                  src={selectedItem.art.src}
+                  src={versionedArtSrc(selectedItem.art.src, artVersion)}
                   alt={`${selectedItem.title} cover`}
                   fill
                   sizes="148px"
@@ -301,7 +317,7 @@ export function CurrentlyInto() {
                     <dt className="text-[9px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
                       Snapshot
                     </dt>
-                    <dd className="mt-1 truncate text-xs text-foreground">{snapshotDate}</dd>
+                    <dd className="mt-1 truncate text-xs text-foreground">{sourceSyncDate}</dd>
                   </div>
                 </dl>
 
@@ -319,7 +335,7 @@ export function CurrentlyInto() {
               </div>
 
               <p className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-                Public Canon export · {snapshotDate} · {selectedPosition}
+                Canon synced · {sourceSyncDate} · {selectedPosition}
               </p>
             </div>
           </section>
