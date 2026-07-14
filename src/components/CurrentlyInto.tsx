@@ -19,6 +19,13 @@ import { GitHubPulse } from "@/components/GitHubPulse";
 const SHELF_H = 104; // display height of the tallest cover, px
 const CAPTION_H = 64; // reserved caption height — equal figure heights keep the shelf baseline true
 
+const MEDIUM_BY_VERB: Record<string, string> = {
+  playing: "Game",
+  reading: "Book",
+  watching: "Film",
+  "in rotation": "Music",
+};
+
 function monthOf(iso: string) {
   const d = new Date(`${iso}T00:00:00`);
   return d.toLocaleDateString("en-NZ", { month: "long", year: "numeric" });
@@ -33,6 +40,17 @@ function destinationLabel(href: string) {
   return "Open source";
 }
 
+function sourceName(href?: string) {
+  if (!href) return "No public source";
+
+  const host = new URL(href).hostname;
+  if (host.endsWith("steampowered.com")) return "Steam";
+  if (host.endsWith("themoviedb.org")) return "TMDB";
+  if (host.endsWith("openlibrary.org")) return "Open Library";
+  if (host.endsWith("music.apple.com")) return "Apple Music";
+  return host.replace(/^www\./, "");
+}
+
 export function CurrentlyInto() {
   const { now, regions, totalWorks, generatedAt } = canonFeed;
   const [expanded, setExpanded] = useState(false);
@@ -41,6 +59,15 @@ export function CurrentlyInto() {
   const detailsId = useId();
   const cardRef = useRef<HTMLDivElement>(null);
   const selectedItem = now[selectedNowIndex] ?? now[0];
+  const selectedSource = sourceName(selectedItem?.href);
+  const selectedMedium = MEDIUM_BY_VERB[selectedItem?.verb] ?? "Work";
+  const selectedPosition = `${String(selectedNowIndex + 1).padStart(2, "0")} / ${String(now.length).padStart(2, "0")}`;
+
+  const selectRelativeItem = (direction: -1 | 1, keyboard = false) => {
+    setInstant(keyboard);
+    setSelectedNowIndex((current) => (current + direction + now.length) % now.length);
+    setExpanded(true);
+  };
 
   useEffect(() => {
     if (!expanded) return;
@@ -67,6 +94,7 @@ export function CurrentlyInto() {
       <button
         type="button"
         aria-expanded={expanded}
+        aria-controls={expanded ? detailsId : undefined}
         onClick={(event) => {
           setInstant(event.detail === 0);
           setExpanded((current) => !current);
@@ -111,10 +139,30 @@ export function CurrentlyInto() {
                     type="button"
                     aria-label={`Show details for ${item.title}`}
                     aria-pressed={selected}
+                    aria-controls={expanded ? detailsId : undefined}
                     onClick={(event) => {
                       setInstant(event.detail === 0);
                       setSelectedNowIndex(index);
                       setExpanded(true);
+                    }}
+                    onKeyDown={(event) => {
+                      if (event.key === "ArrowRight") {
+                        event.preventDefault();
+                        selectRelativeItem(1, true);
+                      } else if (event.key === "ArrowLeft") {
+                        event.preventDefault();
+                        selectRelativeItem(-1, true);
+                      } else if (event.key === "Home") {
+                        event.preventDefault();
+                        setInstant(true);
+                        setSelectedNowIndex(0);
+                        setExpanded(true);
+                      } else if (event.key === "End") {
+                        event.preventDefault();
+                        setInstant(true);
+                        setSelectedNowIndex(now.length - 1);
+                        setExpanded(true);
+                      }
                     }}
                     className={`relative rounded-[4px] outline-none transition-transform active:scale-[0.975] focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--background))] motion-reduce:transform-none motion-reduce:transition-none motion-reduce:active:scale-100 ${
                       selected ? "-translate-y-1 shadow-[0_7px_18px_-9px_hsl(var(--foreground)/0.5)] ring-1 ring-[hsl(var(--accent))]/60 motion-reduce:translate-y-0" : ""
@@ -180,7 +228,7 @@ export function CurrentlyInto() {
         >
           <section
             aria-labelledby={`${detailsId}-spotlight-title`}
-            className="grid min-w-0 grid-cols-[auto_minmax(0,1fr)] gap-4 rounded-sm border border-border/50 bg-[hsl(var(--muted))]/20 p-4"
+            className="grid min-w-0 grid-cols-1 gap-4 rounded-sm border border-border/50 bg-[hsl(var(--muted))]/20 p-4 sm:grid-cols-[auto_minmax(0,1fr)]"
           >
             {selectedItem.art ? (
               <div
@@ -211,7 +259,7 @@ export function CurrentlyInto() {
                     {selectedItem.verb}
                   </p>
                   <p className="font-mono text-[10px] tabular-nums text-muted-foreground">
-                    {String(selectedNowIndex + 1).padStart(2, "0")} / {String(now.length).padStart(2, "0")}
+                    {selectedPosition}
                   </p>
                 </div>
                 <h3
@@ -235,6 +283,27 @@ export function CurrentlyInto() {
                   </p>
                 ) : null}
 
+                <dl className="mt-4 grid max-w-sm grid-cols-3 gap-2 border-t border-border/40 pt-3">
+                  <div className="min-w-0">
+                    <dt className="text-[9px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                      Medium
+                    </dt>
+                    <dd className="mt-1 truncate text-xs text-foreground">{selectedMedium}</dd>
+                  </div>
+                  <div className="min-w-0">
+                    <dt className="text-[9px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                      Source
+                    </dt>
+                    <dd className="mt-1 truncate text-xs text-foreground">{selectedSource}</dd>
+                  </div>
+                  <div className="min-w-0">
+                    <dt className="text-[9px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                      Snapshot
+                    </dt>
+                    <dd className="mt-1 truncate text-xs text-foreground">{monthOf(generatedAt)}</dd>
+                  </div>
+                </dl>
+
                 {selectedItem.href ? (
                   <a
                     href={selectedItem.href}
@@ -249,16 +318,51 @@ export function CurrentlyInto() {
               </div>
 
               <p className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-                Shelf snapshot · {monthOf(generatedAt)}
+                Public Canon snapshot · {selectedPosition}
               </p>
             </div>
           </section>
 
-          <section aria-labelledby={`${detailsId}-favourites`} className="min-w-0 sm:py-1">
+          <section aria-labelledby={`${detailsId}-shelf-list`} className="min-w-0 sm:py-1">
             <p
-              id={`${detailsId}-favourites`}
+              id={`${detailsId}-shelf-list`}
               className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground"
             >
+              Current shelf
+            </p>
+            <div className="mt-2 space-y-1.5">
+              {now.map((item, index) => {
+                const selected = selectedNowIndex === index;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    aria-current={selected ? "true" : undefined}
+                    onClick={(event) => {
+                      setInstant(event.detail === 0);
+                      setSelectedNowIndex(index);
+                    }}
+                    className={`grid min-h-11 w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-sm px-2 py-1.5 text-left outline-none transition-[background-color,transform] active:scale-[0.985] focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--background))] motion-reduce:transition-none ${
+                      selected
+                        ? "bg-[hsl(var(--accent))]/10 text-foreground"
+                        : "text-muted-foreground hover:bg-[hsl(var(--muted))]/35 hover:text-foreground"
+                    }`}
+                  >
+                    <span className="min-w-0">
+                      <span className="block truncate text-xs font-medium">{item.title}</span>
+                      <span className="block truncate text-[10px] uppercase tracking-[0.1em]">
+                        {MEDIUM_BY_VERB[item.verb] ?? item.verb}
+                      </span>
+                    </span>
+                    <span className="font-mono text-[10px] tabular-nums">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <p className="mt-5 text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
               Recent favourites
             </p>
             <ol className="mt-2 space-y-2.5">
