@@ -2,7 +2,8 @@
 
 import { Check, Copy } from "lucide-react";
 import { useCopyToClipboard } from "@/hooks/useCopyToClipboard";
-import { motion, AnimatePresence } from "framer-motion";
+import { duration, ease } from "@/lib/motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 interface CopyEmailProps {
   email: string;
@@ -12,6 +13,20 @@ interface CopyEmailProps {
 
 export function CopyEmail({ email, className = "", showEmail = true }: CopyEmailProps) {
   const { status, copy } = useCopyToClipboard();
+  const shouldReduceMotion = useReducedMotion() ?? false;
+  const iconMotion = shouldReduceMotion
+    ? {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        transition: { duration: duration.instant, ease: ease.out },
+      }
+    : {
+        initial: { opacity: 0, scale: 0.95 },
+        animate: { opacity: 1, scale: 1 },
+        exit: { opacity: 0, scale: 0.95 },
+        transition: { duration: duration.quick, ease: ease.out },
+      };
 
   return (
     <button
@@ -28,10 +43,7 @@ export function CopyEmail({ email, className = "", showEmail = true }: CopyEmail
           {status === "copied" ? (
             <motion.span
               key="check"
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.5, opacity: 0 }}
-              transition={{ duration: 0.15 }}
+              {...iconMotion}
               className="absolute inset-0 text-accent"
             >
               <Check className="w-4 h-4" aria-hidden="true" />
@@ -39,10 +51,7 @@ export function CopyEmail({ email, className = "", showEmail = true }: CopyEmail
           ) : (
             <motion.span
               key="copy"
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.5, opacity: 0 }}
-              transition={{ duration: 0.15 }}
+              {...iconMotion}
               className="absolute inset-0 opacity-50 group-hover:opacity-100 transition-opacity"
             >
               <Copy className="w-4 h-4" aria-hidden="true" />

@@ -33,3 +33,13 @@ pnpm lint
 - Prefer proof strength over freshness when choosing public projects.
 - Keep sensitive work private even if it exists locally.
 - Avoid turning private planning docs into public portfolio content.
+
+## Design And Motion Skills
+
+Use Emil Kowalski's installed skill set for interface work:
+
+- `emil-design-eng` for implementation and UI-polish decisions.
+- `apple-design` for gesture, spring, spatial, typography, material, and reduced-motion decisions.
+- `animation-vocabulary` only when naming or disambiguating a motion effect, not as an implementation guide.
+- `improve-animations` for a read-only codebase-wide motion audit and self-contained plans; it must not change source files.
+- `review-animations` for strict review of animation code or motion-related diffs.
