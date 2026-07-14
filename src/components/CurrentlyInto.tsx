@@ -67,7 +67,6 @@ export function CurrentlyInto() {
       <button
         type="button"
         aria-expanded={expanded}
-        aria-controls={detailsId}
         onClick={(event) => {
           setInstant(event.detail === 0);
           setExpanded((current) => !current);
@@ -82,7 +81,7 @@ export function CurrentlyInto() {
           <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--accent))]/80" />
           Currently into
         </span>
-        <span className="flex min-w-0 items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground/60">
+        <span className="flex min-w-0 items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
           <span className="truncate">{monthOf(generatedAt)}</span>
           <span className="hidden text-muted-foreground sm:inline">
             {expanded ? "Close shelf" : "Open shelf"}
@@ -146,7 +145,7 @@ export function CurrentlyInto() {
                   </button>
                 </div>
                 <figcaption className="mt-2 overflow-hidden" style={{ height: CAPTION_H }}>
-                  <p className="truncate text-[10px] uppercase tracking-[0.1em] text-muted-foreground/70">
+                  <p className="truncate text-[10px] uppercase tracking-[0.1em] text-muted-foreground">
                     {item.verb}
                   </p>
                   <p className="line-clamp-2 text-xs font-medium leading-snug text-foreground" title={item.title}>
@@ -211,7 +210,7 @@ export function CurrentlyInto() {
                   <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-[hsl(var(--accent))]">
                     {selectedItem.verb}
                   </p>
-                  <p className="font-mono text-[10px] tabular-nums text-muted-foreground/60">
+                  <p className="font-mono text-[10px] tabular-nums text-muted-foreground">
                     {String(selectedNowIndex + 1).padStart(2, "0")} / {String(now.length).padStart(2, "0")}
                   </p>
                 </div>
@@ -249,7 +248,7 @@ export function CurrentlyInto() {
                 ) : null}
               </div>
 
-              <p className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground/60">
+              <p className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
                 Shelf snapshot · {monthOf(generatedAt)}
               </p>
             </div>
@@ -258,7 +257,7 @@ export function CurrentlyInto() {
           <section aria-labelledby={`${detailsId}-favourites`} className="min-w-0 sm:py-1">
             <p
               id={`${detailsId}-favourites`}
-              className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground/70"
+              className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground"
             >
               Recent favourites
             </p>
@@ -274,7 +273,7 @@ export function CurrentlyInto() {
                       <span className="block truncate text-[11px] text-muted-foreground">{love.creator}</span>
                     ) : null}
                   </span>
-                  <span className="font-mono text-[10px] tabular-nums text-muted-foreground/70">
+                  <span className="font-mono text-[10px] tabular-nums text-muted-foreground">
                     {love.rating}/10
                   </span>
                 </li>
@@ -289,7 +288,7 @@ export function CurrentlyInto() {
             <div>
               <p
                 id={`${detailsId}-taste-map`}
-                className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground/70"
+                className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground"
               >
                 The wider canon
               </p>

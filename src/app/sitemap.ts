@@ -1,6 +1,5 @@
 import { MetadataRoute } from "next";
 import { getAllCaseStudySlugs } from "@/lib/caseStudies";
-import { getAllBlogSlugs } from "@/lib/sanity";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://dev.maxwellyoung.info";
@@ -8,67 +7,51 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = [
     {
       url: baseUrl,
-      lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 1,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/craft`,
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
       changeFrequency: "yearly" as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/resume`,
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.6,
     },
     {
       url: `${baseUrl}/basketcase`,
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/basketcase/privacy`,
-      lastModified: new Date(),
       changeFrequency: "yearly" as const,
       priority: 0.3,
     },
     {
       url: `${baseUrl}/basketcase/terms`,
-      lastModified: new Date(),
       changeFrequency: "yearly" as const,
       priority: 0.3,
     },
     {
       url: `${baseUrl}/basketcase/support`,
-      lastModified: new Date(),
       changeFrequency: "yearly" as const,
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.6,
-    },
-    {
       url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
       changeFrequency: "yearly" as const,
       priority: 0.3,
     },
@@ -76,7 +59,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const caseStudyRoutes = getAllCaseStudySlugs().map((slug) => ({
     url: `${baseUrl}/case-study/${slug}`,
-    lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
@@ -87,18 +69,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "the-typography-system-behind-strawhouse",
   ].map((slug) => ({
     url: `${baseUrl}/craft/essay/${slug}`,
-    lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
 
-  const blogSlugs = await getAllBlogSlugs().catch(() => []);
-  const blogRoutes = blogSlugs.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
-
-  return [...staticRoutes, ...caseStudyRoutes, ...essayRoutes, ...blogRoutes];
+  return [...staticRoutes, ...caseStudyRoutes, ...essayRoutes];
 }

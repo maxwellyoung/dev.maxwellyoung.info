@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main id="main-content" className="min-h-screen bg-background text-foreground">
       <div className="max-w-2xl mx-auto px-6 py-16 space-y-12">
         <header>
           <Link
@@ -44,7 +44,7 @@ export default function AboutPage() {
             I&apos;m Maxwell Young, a design engineer based in Auckland, New
             Zealand. I work at{" "}
             <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-            , contributing to their iOS and Android apps in React Native.
+            , contributing to product interfaces across mobile and web.
           </p>
 
           <p>

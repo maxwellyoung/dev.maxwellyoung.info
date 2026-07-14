@@ -32,11 +32,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-foreground p-4 md:p-8 overflow-x-hidden">
-      <main className="w-full max-w-2xl mx-auto overflow-x-hidden">
+      <main id="main-content" className="w-full max-w-2xl mx-auto overflow-x-hidden">
         <motion.section
           className="flex min-h-[56vh] flex-col items-start justify-center space-y-6 p-4 md:min-h-[70vh] md:space-y-8 md:p-8"
           variants={container.hero}
-          initial="hidden"
+          initial={false}
           animate="visible"
         >
           <motion.header className="w-full" variants={item.fadeUp}>
@@ -87,7 +87,7 @@ export default function Home() {
               <span className="text-border/40">·</span>
               <AnimatedLink href="https://github.com/maxwellyoung" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="https://birds.silk.cx/@maxwell" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Silk</AnimatedLink>
+              <AnimatedLink href="https://birds.silk.cx/@maxwell" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Silk profile</AnimatedLink>
             </motion.nav>
           </div>
         </motion.section>

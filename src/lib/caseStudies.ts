@@ -26,17 +26,15 @@ export interface CaseStudy {
     image?: string;
   }[];
   outcome: string;
-  metrics?: { label: string; value: string }[];
+  proofPoints?: { label: string; value: string }[];
   avoidedPatterns?: string[];
   nextIterations?: string[];
   learnings: string[];
   nextProject?: { slug: string; title: string };
 }
 
-// Silk case study unpublished for now — full draft lives in git history
-// (commit a46c00b). To publish: restore the entry here and set
-// caseStudySlug: "silk" in projects.ts.
-
+// Employer work stays at project-summary level unless publication is explicitly
+// approved. Case studies below cover independent and already-public client work.
 export const caseStudies: Record<string, CaseStudy> = {
   afterlight: {
     slug: "afterlight",
@@ -95,7 +93,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     outcome:
       "A finished 1.0 shaped around a small, offline-first loop — log the gig, keep the photos, remember the night — wrapped in a design system I'd defend line by line.",
-    metrics: [
+    proofPoints: [
       { label: "Accounts required", value: "0" },
       { label: "Data leaves device", value: "Never" },
       { label: "Design system", value: "Authored from scratch" },
@@ -124,7 +122,6 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Solo Designer & Developer",
     tools: ["Next.js 16", "Supabase", "Claude API", "Tesseract.js", "React Flow", "dagre", "Framer Motion"],
     liveUrl: "https://whakapapa.vercel.app",
-    githubUrl: "https://github.com/maxwellyoung/whakapapa",
     overview:
       "A family history app that turns documents, photos, and recorded stories into structured family records and a navigable tree.",
     challenge:
@@ -165,17 +162,17 @@ export const caseStudies: Record<string, CaseStudy> = {
           "React Flow and dagre power the tree view, but the product is broader than a chart. Stories, documents, and media stay attached to the people they relate to.",
       },
       {
-        title: "Open & Respectful",
+        title: "Private by Default",
         description:
-          "The project is open source, self-hostable, and built with Supabase row-level security for private family data.",
+          "Family records are protected with Supabase row-level security, and AI suggestions require explicit review before they can change the tree.",
       },
     ],
     outcome:
       "A working genealogy product with document ingestion, review flows, voice capture, and a collaborative tree view.",
-    metrics: [
-      { label: "Open Source", value: "MIT" },
-      { label: "AI Pipeline", value: "Doc → OCR → Claude → Tree" },
-      { label: "Cost vs Ancestry", value: "$0 vs $240/yr" },
+    proofPoints: [
+      { label: "Review gate", value: "Human approval" },
+      { label: "Source capture", value: "Documents + voice" },
+      { label: "Data model", value: "Private family records" },
     ],
     avoidedPatterns: [
       "Auto-trusting AI inserts directly into canonical records.",
@@ -244,7 +241,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     outcome:
       "A working canvas tool for sequencing, note-taking, and audio playback in one interface.",
-    metrics: [
+    proofPoints: [
       { label: "Custom tldraw Shapes", value: "3+" },
       { label: "Architecture", value: "Local-first" },
       { label: "Real-time Sync", value: "Convex" },
@@ -264,78 +261,6 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Users often want to organize music spatially once the interface makes it possible.",
     ],
     nextProject: { slug: "whakapapa", title: "Whakapapa" },
-  },
-  spark: {
-    slug: "spark",
-    title: "Spark Dashboard",
-    subtitle: "Consolidating four BI tools into one app",
-    timeline: "Nov 2022 - Apr 2023",
-    role: "UI Developer",
-    team: "Data Intelligence Team",
-    tools: ["React", "Next.js", "TypeScript", "D3.js", "PostgreSQL"],
-    overview:
-      "Internal analytics dashboard for a specialist analyst team at Spark New Zealand, replacing a fragmented reporting workflow.",
-    challenge:
-      "Analysts were working across multiple tools with inconsistent models, slow performance, and a high dependency on IT support for report changes.",
-    constraints: [
-      "Migration had to happen without breaking existing analyst workflows.",
-      "Database safety mattered as much as UI flexibility.",
-      "Legacy report logic had undocumented business assumptions.",
-    ],
-    decisionLog: [
-      {
-        problem: "Query state sharing broke with high filter counts.",
-        decision: "Used URL params for critical state plus localStorage hash references for full state.",
-        tradeoff: "More implementation complexity and some cache edge cases.",
-        impact: "Shareable links for complex views without URL explosion.",
-      },
-      {
-        problem: "Client-side rendering collapsed under large datasets.",
-        decision: "Moved heavy aggregation to backend and shipped rollups.",
-        tradeoff: "Reduced ad hoc pivot flexibility.",
-        impact: "Interactive chart latency dropped to usable levels.",
-      },
-    ],
-    approach: [
-      {
-        title: "The State Problem",
-        description:
-          "Complex query state needed to be shareable without overloading the URL. The solution combined URL parameters for critical filters with local persisted state for larger configurations.",
-      },
-      {
-        title: "The Performance Cliff",
-        description:
-          "Client-side rendering broke down on larger datasets, so aggregation moved to the backend and the client received smaller rollups instead of raw data.",
-      },
-      {
-        title: "The Migration",
-        description:
-          "Migration had to preserve existing analyst work. An import tool handled part of the old Power BI configuration, with the rest recreated manually where necessary.",
-      },
-    ],
-    outcome:
-      "The dashboard shipped to 50+ users, reduced load times, and cut down the dependency on IT for routine reporting changes.",
-    metrics: [
-      { label: "Load Time", value: "8s -> 2s" },
-      { label: "Users", value: "50+" },
-      { label: "Tools Replaced", value: "4" },
-    ],
-    avoidedPatterns: [
-      "Unlimited free-form query execution against production tables.",
-      "Big-bang migration without compatibility bridges.",
-      "Treating analyst pain as a training problem instead of product debt.",
-    ],
-    nextIterations: [
-      "Query cost previews before run to prevent accidental heavy joins.",
-      "Saved-view governance with team-level ownership and audit trails.",
-    ],
-    learnings: [
-      "A lot of performance work is about moving computation to the right place.",
-      "Migration work often takes longer than replacement UI work.",
-      "Flexible query tools need guardrails to protect shared infrastructure.",
-      "Legacy behavior often encodes business rules, even when it looks accidental.",
-    ],
-    nextProject: { slug: "afterlight", title: "Afterlight" },
   },
   "vape-quit-coach": {
     slug: "vape-quit-coach",
@@ -387,10 +312,10 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
     ],
     outcome:
-      "The app shipped on iOS and has held a 4.8-star App Store rating.",
-    metrics: [
-      { label: "App Store Rating", value: "4.8★" },
-      { label: "Solo Built", value: "100%" },
+      "The app shipped on iOS with a complete tracking, coaching, and relapse-support loop.",
+    proofPoints: [
+      { label: "Availability", value: "Live on iOS" },
+      { label: "Product scope", value: "Solo shipped" },
     ],
     avoidedPatterns: [
       "Punitive streak resets and public shame nudges.",
@@ -460,9 +385,9 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     outcome:
       "A stable, image-led portfolio that the client can update independently.",
-    metrics: [
-      { label: "Performance", value: "98+" },
-      { label: "Client Independence", value: "100%" },
+    proofPoints: [
+      { label: "Delivery", value: "Client shipped" },
+      { label: "Content model", value: "CMS managed" },
     ],
     avoidedPatterns: [
       "Decorative transitions that make the portfolio feel slower than the work deserves.",
@@ -542,11 +467,10 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     outcome:
       "A media-heavy portfolio that performs well, stays usable, and is fully managed by the client through Sanity.",
-    metrics: [
-      { label: "Lighthouse", value: "95+" },
-      { label: "Client Independence", value: "100%" },
-      { label: "Accessibility", value: "WCAG 2.1 AA" },
-      { label: "SEO", value: "Auto-generated sitemaps + JSON-LD" },
+    proofPoints: [
+      { label: "Delivery", value: "Client shipped" },
+      { label: "Content model", value: "Sanity CMS" },
+      { label: "Access", value: "Keyboard + screen reader" },
     ],
     avoidedPatterns: [
       "Autoplay-heavy transitions that distract from images.",
@@ -563,7 +487,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Accessibility decisions shape the structure of the product early, not late.",
       "Automated SEO and CMS setup reduce long-term maintenance for the client.",
     ],
-    nextProject: { slug: "spark", title: "Spark Dashboard" },
+    nextProject: { slug: "afterlight", title: "Afterlight" },
   },
 };
 

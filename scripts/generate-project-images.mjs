@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* eslint-disable no-console -- This command-line utility reports progress to the terminal. */
+
 import fs from "node:fs/promises";
 import path from "node:path";
 

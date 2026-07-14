@@ -9,6 +9,7 @@ import { SkillCategory } from "@/components/SkillCategory";
 import { AnimatedLink } from "@/components/ui/animated-link";
 import { CopyEmail } from "@/components/CopyEmail";
 import { CompanyLogoStudy } from "@/components/CompanyLogoStudy";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export default function Resume() {
   const [openSkillIndex, setOpenSkillIndex] = useState<number | null>(0);
@@ -27,7 +28,7 @@ export default function Resume() {
   };
 
   return (
-    <div className="relative w-full max-w-2xl mx-auto p-6">
+    <main id="main-content" className="relative w-full max-w-2xl mx-auto p-6">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -55,6 +56,7 @@ export default function Resume() {
             width={56}
             height={56}
             sizes="56px"
+            priority
           />
           <div className="min-w-0">
             <h1 className="text-xl font-medium text-foreground">
@@ -159,6 +161,7 @@ export default function Resume() {
           </div>
         </div>
       </section>
-    </div>
+      <SiteFooter />
+    </main>
   );
 }

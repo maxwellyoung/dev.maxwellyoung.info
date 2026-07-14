@@ -1,13 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  poweredByHeader: false,
   outputFileTracingRoot: process.cwd(),
-  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdn.sanity.io",
-      },
       {
         protocol: "https",
         hostname: "i.scdn.co",
@@ -44,8 +40,8 @@ const nextConfig = {
             value: "DENY",
           },
           {
-            key: "X-XSS-Protection",
-            value: "1; mode=block",
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
           },
           {
             key: "Referrer-Policy",
@@ -59,11 +55,14 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://*.posthog.com",
+              "script-src 'self' 'unsafe-inline'" +
+                (process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "") +
+                " https://va.vercel-scripts.com https://us-assets.i.posthog.com",
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: blob: https://cdn.sanity.io https://*.posthog.com",
+              "img-src 'self' data: blob: https://us-assets.i.posthog.com",
               "font-src 'self'",
-              "connect-src 'self' https://*.posthog.com https://*.vercel-insights.com https://cdn.sanity.io https://api.spotify.com https://api.github.com",
+              "connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com https://*.vercel-insights.com https://api.github.com",
+              "object-src 'none'",
               "frame-ancestors 'none'",
               "base-uri 'self'",
               "form-action 'self'",
@@ -81,6 +80,16 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/blog",
+        destination: "/craft",
+        permanent: true,
+      },
+      {
+        source: "/blog/:path*",
+        destination: "/craft",
+        permanent: true,
+      },
+      {
         source: "/receipt-radar",
         destination: "/basketcase",
         permanent: true,
@@ -94,6 +103,4 @@ const nextConfig = {
   },
 };
 
-import withMDX from "@next/mdx";
-const withMDXConfig = withMDX();
-export default withMDXConfig(nextConfig);
+export default nextConfig;

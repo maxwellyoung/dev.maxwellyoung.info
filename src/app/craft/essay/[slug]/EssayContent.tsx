@@ -12,7 +12,7 @@ interface EssayContentProps {
 
 export function EssayContent({ essay }: EssayContentProps) {
   return (
-    <main className="min-h-screen bg-background">
+    <main id="main-content" className="min-h-screen bg-background">
       <article className="max-w-3xl mx-auto px-6 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,7 +21,7 @@ export function EssayContent({ essay }: EssayContentProps) {
         >
           <Link
             href="/craft"
-            className="inline-flex items-center space-x-2 text-muted hover:text-foreground transition-colors mb-8 group"
+            className="inline-flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Interaction Lab</span>
@@ -29,11 +29,11 @@ export function EssayContent({ essay }: EssayContentProps) {
 
           <header className="mb-12">
             <div className="flex items-center space-x-3 mb-4">
-              <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">
+              <span className="rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-sm font-medium text-foreground">
                 {essay.category}
               </span>
               {essay.featured && (
-                <span className="bg-accent/20 text-accent px-3 py-1 rounded-full text-sm font-medium">
+                <span className="rounded-full border border-accent/40 bg-accent/15 px-3 py-1 text-sm font-medium text-foreground">
                   Featured
                 </span>
               )}
@@ -43,7 +43,7 @@ export function EssayContent({ essay }: EssayContentProps) {
               {essay.title}
             </h1>
 
-            <p className="text-xl text-muted leading-relaxed mb-6">
+            <p className="text-xl text-muted-foreground leading-relaxed mb-6">
               {essay.excerpt}
             </p>
 

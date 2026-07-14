@@ -7,11 +7,11 @@ import { CraftReferences } from "@/components/craft/CraftReferences";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Craft | Maxwell Young",
+  title: "Interaction Craft and Motion Studies",
   description:
-    "Interaction studies, motion spec, references, and essays on UI behavior.",
+    "Interaction studies, motion specifications, design references, and essays showing how Maxwell Young approaches accessible interface behavior.",
   openGraph: {
-    title: "Craft | Maxwell Young",
+    title: "Interaction Craft and Motion Studies | Maxwell Young",
     images: [
       {
         url: "/meta.png",
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
       },
     ],
     description:
-      "Interaction studies, motion spec, references, and essays on UI behavior.",
+      "Interaction studies, motion specifications, design references, and essays on accessible interface behavior.",
   },
 };
 
 export default function CraftPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main id="main-content" className="min-h-screen bg-background">
       <div className="max-w-2xl mx-auto px-6 py-16">
         <CraftHeader />
 

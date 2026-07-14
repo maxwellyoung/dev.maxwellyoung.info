@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen p-8 max-w-2xl mx-auto">
+    <main id="main-content" className="min-h-screen p-8 max-w-2xl mx-auto">
       <Link
         href="/"
         className="mb-8 inline-flex min-h-11 items-center rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
@@ -22,7 +22,7 @@ export default function PrivacyPage() {
 
       <div className="prose prose-sm prose-invert max-w-none space-y-4 text-muted-foreground">
         <p>
-          This site collects anonymous analytics via{" "}
+          This portfolio uses privacy-limited analytics from{" "}
           <a
             href="https://posthog.com"
             target="_blank"
@@ -31,27 +31,28 @@ export default function PrivacyPage() {
           >
             PostHog
           </a>{" "}
-          to understand how visitors use the site. No personal data is
-          collected, stored, or shared.
+          and Vercel Analytics to understand which public pages and project
+          links are useful. PostHog autocapture, session recording, and
+          persistent browser identifiers are disabled.
         </p>
 
         <h2 className="text-lg font-medium text-foreground mt-6 mb-2">
           What data is collected
         </h2>
         <ul className="list-disc pl-4 space-y-1">
-          <li>Page views and navigation patterns</li>
-          <li>Device type and browser (anonymized)</li>
-          <li>Approximate location (country level)</li>
+          <li>Page URL and navigation events</li>
+          <li>Browser and device category</li>
+          <li>Coarse country-level location where supplied by the analytics provider</li>
         </ul>
 
         <h2 className="text-lg font-medium text-foreground mt-6 mb-2">
           What data is not collected
         </h2>
         <ul className="list-disc pl-4 space-y-1">
-          <li>Personal information</li>
-          <li>Email addresses</li>
-          <li>IP addresses (anonymized)</li>
-          <li>Cookies for tracking</li>
+          <li>Form contents or email messages</li>
+          <li>Account, payment, or authentication data</li>
+          <li>Session recordings</li>
+          <li>Cross-site advertising profiles</li>
         </ul>
 
         <h2 className="text-lg font-medium text-foreground mt-6 mb-2">
@@ -68,7 +69,7 @@ export default function PrivacyPage() {
         </p>
 
         <p className="text-xs text-muted-foreground mt-8">
-          Last updated: February 2026
+          Last updated: July 2026
         </p>
       </div>
 

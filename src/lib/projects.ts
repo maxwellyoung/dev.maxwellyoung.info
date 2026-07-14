@@ -102,11 +102,11 @@ const projects: Project[] = [
     launchStage: "Production work",
     priority: 0,
     description:
-      "Production React Native work across mobile publishing flows, media handling, gesture-heavy UI, and platform polish.",
+      "Product interface work across Silk's mobile and web experiences.",
     longDescription:
-      "I contribute to Silk's React Native product inside a small shipping team. My work touches the surfaces that make the mobile product feel reliable in practice: publishing flows, editor behavior, media upload and playback, navigation, release hardening, and iOS / Android parity.",
-    tags: ["React Native", "TypeScript", "Expo"],
-    stack: ["React Native", "TypeScript", "Expo"],
+      "I contribute to Silk's product interfaces inside a small shipping team, focusing on clear interaction states, media-heavy workflows, cross-platform consistency, accessibility, and reliable behavior on real iOS and Android devices.",
+    tags: ["React Native", "React", "TypeScript"],
+    stack: ["React Native", "React", "TypeScript", "Expo"],
     startDate: "2025-09-01",
     links: {
       live: "https://www.silk.cx",
@@ -121,9 +121,9 @@ const projects: Project[] = [
       objectPosition: "center",
     },
     impact: [
-      "Production React Native work across iOS and Android",
-      "Shipped mobile publishing flows, media handling, gesture-heavy UI, and release polish",
-      "Contributions span navigation, editing, media handling, and platform parity",
+      "Production interface work across mobile and web",
+      "Cross-platform interaction and accessibility improvements",
+      "Real-device verification across iOS and Android",
     ],
   },
   {
@@ -215,9 +215,9 @@ const projects: Project[] = [
     },
     link: "https://vapequitcoach.com",
     impact: [
-      "Apple Watch HR data integration: 125 → 92 BPM in 13 days of quitting",
-      "$31 MRR. From $0.96/week, 7-day free trial",
-      "Science-backed: CDC/NIH recovery milestones built into the timeline",
+      "Live on the iOS App Store",
+      "Solo-designed tracking, coaching, and relapse-support flows",
+      "Privacy-conscious product with local progress tracking",
     ],
   },
   {
@@ -333,10 +333,8 @@ const projects: Project[] = [
     caseStudySlug: "whakapapa",
     links: {
       live: "https://whakapapa.vercel.app",
-      repo: "https://github.com/maxwellyoung/whakapapa",
     },
     link: "https://whakapapa.vercel.app",
-    codeLink: "https://github.com/maxwellyoung/whakapapa",
     screenshots: ["/projectImages/whakapapa-1.webp"],
     thumb: "/projectImages/whakapapa-1.webp",
     cover: {
@@ -447,10 +445,8 @@ const projects: Project[] = [
     },
     links: {
       live: "https://apps.apple.com/nz/app/id6759082896",
-      repo: "https://github.com/maxwellyoung/good-news-bad-news",
     },
     link: "https://apps.apple.com/nz/app/id6759082896",
-    codeLink: "https://github.com/maxwellyoung/good-news-bad-news",
     impact: [
       "Live on the App Store",
       "Daily pack model keeps news reading intentionally bounded",
@@ -700,10 +696,8 @@ const projects: Project[] = [
     stack: ["React", "Three.js", "WebGL"],
     links: {
       live: "https://jeremy-blake.vercel.app/",
-      repo: "https://github.com/maxwellyoung/jeremy-blake",
     },
     link: "https://jeremy-blake.vercel.app/",
-    codeLink: "https://github.com/maxwellyoung/jeremy-blake",
     screenshots: ["/projectImages/blake.webp", "/projectImages/blake2.webp"],
     thumb: "/projectImages/blake.webp",
     cover: {
@@ -741,10 +735,6 @@ export const flagshipProjects = rankedProjects.filter((project) => project.featu
 export const supportingProjects = rankedProjects.filter(
   (project) => !project.featured,
 );
-
-export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find((project) => project.slug === slug);
-}
 
 export function getProjectContextLabel(
   project: Pick<Project, "category" | "client">

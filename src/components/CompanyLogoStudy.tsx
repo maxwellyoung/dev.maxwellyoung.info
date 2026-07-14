@@ -102,7 +102,7 @@ export function CompanyLogoStudy({
             key={logo.company}
             href={logo.href}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             data-logo-source={logo.sourceHref}
             className={cn(
               "group flex min-h-[112px] items-center justify-center p-5 transition duration-500 ease-out focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:min-h-[116px]",

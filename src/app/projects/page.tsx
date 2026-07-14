@@ -33,7 +33,6 @@ const workCollapseTransition = {
 
 function ProjectRow({
   p,
-  index = 0,
   expandedProject,
   onToggleExpand,
   onCarouselOpen,
@@ -41,7 +40,6 @@ function ProjectRow({
   emphasis = "supporting",
 }: {
   p: Project;
-  index?: number;
   expandedProject: string | null;
   onToggleExpand: (name: string | null) => void;
   onCarouselOpen: () => void;
@@ -49,8 +47,6 @@ function ProjectRow({
   emphasis?: "flagship" | "supporting";
 }) {
   const isExpanded = expandedProject === p.name;
-  const isEagerLoad = emphasis === "flagship" && index < 4;
-  const panelId = `project-panel-${p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
   const isFlagship = emphasis === "flagship";
   const rowRef = React.useRef<HTMLLIElement>(null);
   const supportingMeta = [p.role, p.launchStage ?? getProjectContextLabel(p)]
@@ -71,7 +67,6 @@ function ProjectRow({
       <button
         onClick={() => onToggleExpand(isExpanded ? null : p.name)}
         aria-expanded={isExpanded}
-        aria-controls={panelId}
         className={`
           relative w-full max-w-full overflow-hidden rounded-sm border border-transparent text-left px-2 sm:px-3 ${isFlagship ? "py-3.5" : "py-2.5"}
           transition-[color,background-color,border-color,transform] duration-300 ease-out
@@ -89,7 +84,6 @@ function ProjectRow({
               <ProjectMedia
                 project={p}
                 variant="row"
-                priority={isEagerLoad}
                 sizes="(max-width: 640px) 96px, 144px"
               />
             </div>
@@ -109,7 +103,7 @@ function ProjectRow({
                 {p.description}
               </p>
               {flagshipMeta.length > 0 && (
-                <div className="mt-2 flex min-w-0 flex-wrap gap-x-3 gap-y-1 text-[0.58rem] font-medium uppercase tracking-[0.14em] text-muted-foreground/70">
+                <div className="mt-2 flex min-w-0 flex-wrap gap-x-3 gap-y-1 text-[0.58rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
                   {flagshipMeta.map((meta) => (
                     <span key={meta} className="max-w-full truncate">
                       {meta}
@@ -142,7 +136,7 @@ function ProjectRow({
               </ProjectHoverPreview>
             </div>
 
-            <span className="hidden flex-shrink-0 text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/60 sm:inline">
+            <span className="hidden flex-shrink-0 text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground sm:inline">
               {supportingMeta.join(" / ")}
             </span>
 
@@ -160,7 +154,6 @@ function ProjectRow({
       <AnimatePresence initial={false}>
         {isExpanded && (
           <motion.div
-            id={panelId}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{
@@ -223,7 +216,7 @@ function ProjectSection({
     <section className="space-y-3">
       <motion.div
         variants={item.fadeUp}
-        initial={shouldReduceMotion ? false : "hidden"}
+        initial={false}
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}
         className="flex flex-col gap-1 px-2 sm:px-3"
@@ -238,15 +231,14 @@ function ProjectSection({
 
       <motion.ul
         variants={container.list}
-        initial={shouldReduceMotion ? false : "hidden"}
+        initial={false}
         animate="visible"
         className="divide-y divide-[hsl(var(--border))]/50 overflow-x-hidden w-full max-w-full"
       >
-        {projects.map((p, index) => (
+        {projects.map((p) => (
           <ProjectRow
             key={p.name}
             p={p}
-            index={index}
             expandedProject={expandedProject}
             onToggleExpand={onToggleExpand}
             onCarouselOpen={onCarouselOpen}
@@ -282,7 +274,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
         <div className="space-y-10">
           <ProjectSection
             title={embedded ? "Flagship work" : "Selected work"}
-            description="Start here: production React Native at Silk, solo products with clear user payoffs, and client work with a visual point of view."
+            description="Start here: production interface work at Silk, solo products with clear user payoffs, and client work with a visual point of view."
             projects={flagshipProjects}
             expandedProject={expandedProject}
             onToggleExpand={setExpandedProject}
@@ -329,7 +321,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
     return content;
   }
 
-  return <main>{content}</main>;
+  return <main id="main-content">{content}</main>;
 }
 
 export default function ProjectsPage() {

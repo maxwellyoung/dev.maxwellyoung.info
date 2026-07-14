@@ -4,16 +4,16 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact a Design Engineer",
   description:
-    "Contact Maxwell Young for product engineering, mobile app, and interface systems work.",
+    "Contact Maxwell Young, an Auckland design engineer working across React Native, mobile products, web interfaces, and accessible interaction systems.",
   alternates: {
     canonical: "https://dev.maxwellyoung.info/contact",
   },
   openGraph: {
     title: "Contact Maxwell Young",
     description:
-      "Contact Maxwell Young for product engineering, mobile app, and interface systems work.",
+      "Contact Maxwell Young for React Native, mobile product, web interface, and accessible interaction-system work.",
     url: "https://dev.maxwellyoung.info/contact",
     images: [
       {
@@ -28,14 +28,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact Maxwell Young",
     description:
-      "Contact Maxwell Young for product engineering, mobile app, and interface systems work.",
+      "Contact Maxwell Young for React Native, mobile product, web interface, and accessible interaction-system work.",
     images: ["/meta.png"],
   },
 };
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen p-8 max-w-2xl mx-auto">
+    <main id="main-content" className="min-h-screen p-8 max-w-2xl mx-auto">
       <Link
         href="/"
         className="mb-8 inline-flex min-h-11 items-center rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
