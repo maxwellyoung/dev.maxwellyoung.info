@@ -26,9 +26,9 @@ const MEDIUM_BY_VERB: Record<string, string> = {
   "in rotation": "Music",
 };
 
-function monthOf(iso: string) {
+function dayOf(iso: string) {
   const d = new Date(`${iso}T00:00:00`);
-  return d.toLocaleDateString("en-NZ", { month: "long", year: "numeric" });
+  return d.toLocaleDateString("en-NZ", { day: "numeric", month: "short", year: "numeric" });
 }
 
 function destinationLabel(href: string) {
@@ -62,6 +62,7 @@ export function CurrentlyInto() {
   const selectedSource = sourceName(selectedItem?.href);
   const selectedMedium = MEDIUM_BY_VERB[selectedItem?.verb] ?? "Work";
   const selectedPosition = `${String(selectedNowIndex + 1).padStart(2, "0")} / ${String(now.length).padStart(2, "0")}`;
+  const snapshotDate = dayOf(generatedAt);
 
   const selectRelativeItem = (direction: -1 | 1, keyboard = false) => {
     setInstant(keyboard);
@@ -110,7 +111,7 @@ export function CurrentlyInto() {
           Currently into
         </span>
         <span className="flex min-w-0 items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
-          <span className="truncate">{monthOf(generatedAt)}</span>
+          <span className="truncate">Updated {snapshotDate}</span>
           <span className="hidden text-muted-foreground sm:inline">
             {expanded ? "Close shelf" : "Open shelf"}
           </span>
@@ -300,7 +301,7 @@ export function CurrentlyInto() {
                     <dt className="text-[9px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
                       Snapshot
                     </dt>
-                    <dd className="mt-1 truncate text-xs text-foreground">{monthOf(generatedAt)}</dd>
+                    <dd className="mt-1 truncate text-xs text-foreground">{snapshotDate}</dd>
                   </div>
                 </dl>
 
@@ -318,7 +319,7 @@ export function CurrentlyInto() {
               </div>
 
               <p className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-                Public Canon snapshot · {selectedPosition}
+                Public Canon export · {snapshotDate} · {selectedPosition}
               </p>
             </div>
           </section>
