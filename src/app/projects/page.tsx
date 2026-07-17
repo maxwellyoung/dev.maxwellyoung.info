@@ -274,7 +274,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
         <div className="space-y-10">
           <ProjectSection
             title={embedded ? "Flagship work" : "Selected work"}
-            description="Start here: production interface work at Silk, solo products with clear user payoffs, and client work with a visual point of view."
+            description="Production interface work, shipped mobile products, a spatial music tool, and editorial client work."
             projects={flagshipProjects}
             expandedProject={expandedProject}
             onToggleExpand={setExpandedProject}
@@ -286,7 +286,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
           {supportingProjects.length > 0 && (
             <ProjectSection
               title="Supporting work"
-              description="More shipped products, experiments, and client builds. Labels separate live work, in-development products, case studies, and shipped client projects."
+              description="Additional products, current experiments, and shipped client builds, with lifecycle labels kept explicit."
               projects={supportingProjects}
               expandedProject={expandedProject}
               onToggleExpand={setExpandedProject}

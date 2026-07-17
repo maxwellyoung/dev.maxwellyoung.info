@@ -25,7 +25,7 @@ export async function generateMetadata({
 
   if (!essay) {
     return {
-      title: "Essay Not Found | Maxwell Young",
+      title: "Essay Not Found",
       description: "This essay could not be found.",
     };
   }

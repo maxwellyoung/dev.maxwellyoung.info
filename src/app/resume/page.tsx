@@ -5,14 +5,10 @@ import { useState } from "react";
 import { resumeData } from "@/lib/resumeData";
 import { ExperienceItem } from "@/components/ExperienceItem";
 import { EducationItem } from "@/components/EducationItem";
-import { SkillCategory } from "@/components/SkillCategory";
 import { AnimatedLink } from "@/components/ui/animated-link";
-import { CopyEmail } from "@/components/CopyEmail";
-import { CompanyLogoStudy } from "@/components/CompanyLogoStudy";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export default function Resume() {
-  const [openSkillIndex, setOpenSkillIndex] = useState<number | null>(0);
   const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownload = async () => {
@@ -29,24 +25,6 @@ export default function Resume() {
 
   return (
     <main id="main-content" className="relative w-full max-w-2xl mx-auto p-6">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: "Maxwell Young",
-            jobTitle: "Design Engineer",
-            url: "https://dev.maxwellyoung.info/",
-            email: "mailto:maxwell@ninetynine.digital",
-            sameAs: [
-              "https://github.com/maxwellyoung",
-              "https://www.linkedin.com/in/maxwell-young-a55032125/",
-            ],
-          }),
-        }}
-      />
-
       <header className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row">
         <div className="flex min-w-0 items-center gap-4">
           <Image
@@ -66,6 +44,27 @@ export default function Resume() {
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
               {resumeData.profile}
             </p>
+            <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">
+              <span>{resumeData.contact.location}</span>
+              <AnimatedLink
+                href={`mailto:${resumeData.contact.email}`}
+                external
+              >
+                Email
+              </AnimatedLink>
+              <AnimatedLink
+                href={`https://${resumeData.contact.github}`}
+                external
+              >
+                GitHub
+              </AnimatedLink>
+              <AnimatedLink
+                href={`https://${resumeData.contact.linkedin}`}
+                external
+              >
+                LinkedIn
+              </AnimatedLink>
+            </div>
           </div>
         </div>
 
@@ -78,8 +77,6 @@ export default function Resume() {
           {isDownloading ? "Generating…" : "Download PDF"}
         </button>
       </header>
-
-      <CompanyLogoStudy className="hide-print mb-10" compact />
 
       <section className="mb-10" aria-labelledby="experience-heading">
         <h2
@@ -102,40 +99,34 @@ export default function Resume() {
         ))}
       </section>
 
-      <section className="mb-10" aria-labelledby="open-source-heading">
+      <section className="mb-10" aria-labelledby="selected-work-heading">
         <h2
-          id="open-source-heading"
+          id="selected-work-heading"
           className="text-xs uppercase tracking-widest text-muted-foreground mb-4"
         >
-          Open Source
+          Selected Work
         </h2>
-        {resumeData.openSourceContributions.map((contribution) => (
-          <article
-            key={contribution.href}
-            className="border-l border-border pl-4"
-          >
-            <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-baseline">
-              <h3 className="text-sm font-medium text-foreground">
-                <AnimatedLink href={contribution.href} external>
-                  {contribution.project}
-                </AnimatedLink>
-                <span className="font-normal text-muted-foreground">
-                  {" "}
-                  · {contribution.role}
-                </span>
-              </h3>
-              <p className="text-xs text-muted-foreground">
-                {contribution.date}
+        <div className="divide-y divide-border/60 border-y border-border/60">
+          {resumeData.selectedWork.map((work) => (
+            <article key={work.href} className="py-4">
+              <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-baseline">
+                <h3 className="text-sm font-medium text-foreground">
+                  <AnimatedLink href={work.href} external>
+                    {work.name}
+                  </AnimatedLink>
+                  <span className="font-normal text-muted-foreground">
+                    {" "}
+                    · {work.descriptor}
+                  </span>
+                </h3>
+                <p className="text-xs text-muted-foreground">{work.date}</p>
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {work.summary}
               </p>
-            </div>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {contribution.summary}
-            </p>
-            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-              {contribution.proof}
-            </p>
-          </article>
-        ))}
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="mb-10">
@@ -157,44 +148,15 @@ export default function Resume() {
         <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
           Skills
         </h2>
-        {resumeData.skills.map((skill, index) => (
-          <SkillCategory
-            key={`${skill.category}-${index}`}
-            category={skill.category}
-            items={skill.items}
-            compact
-            collapsible
-            expanded={openSkillIndex === index}
-            onToggle={() =>
-              setOpenSkillIndex((prev) => (prev === index ? null : index))
-            }
-          />
-        ))}
-      </section>
-
-      <section className="mb-10">
-        <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
-          Contact
-        </h2>
-        <div className="text-sm text-muted-foreground space-y-1">
-          <div className="flex items-center gap-2">
-            <AnimatedLink href={`mailto:${resumeData.contact.email}`} external>
-              {resumeData.contact.email}
-            </AnimatedLink>
-            <CopyEmail email={resumeData.contact.email} showEmail={false} />
-          </div>
-          <p>{resumeData.contact.location}</p>
-          <div className="flex gap-4 pt-2">
-            {resumeData.socials.map((social, index) => (
-              <AnimatedLink
-                key={`${social.name}-${index}`}
-                href={social.url}
-                external
-              >
-                {social.name}
-              </AnimatedLink>
-            ))}
-          </div>
+        <div className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
+          {resumeData.skills.map((skill) => (
+            <article key={skill.category}>
+              <h3 className="resume-label">{skill.category}</h3>
+              <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+                {skill.items.join(", ")}
+              </p>
+            </article>
+          ))}
         </div>
       </section>
       <SiteFooter />

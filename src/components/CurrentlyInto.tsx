@@ -194,7 +194,7 @@ export function CurrentlyInto() {
                     {item.art ? (
                       <Image
                         src={versionedArtSrc(item.art.src, artVersion)}
-                        alt=""
+                        alt={`${item.title} cover`}
                         fill
                         sizes={`${coverW}px`}
                         className="rounded-[3px] border border-border/60 object-cover"

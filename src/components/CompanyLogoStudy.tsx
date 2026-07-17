@@ -69,7 +69,7 @@ const monoLogoClass =
   "absolute inset-0 bg-foreground opacity-55 transition duration-500 ease-out group-hover:scale-[0.98] group-hover:opacity-0 motion-reduce:transition-none";
 
 const colorLogoClass =
-  "absolute inset-0 opacity-0 scale-[0.98] object-contain transition duration-500 ease-out group-hover:scale-100 group-hover:opacity-100 motion-reduce:transition-none";
+  "absolute inset-0 h-full w-full opacity-0 scale-[0.98] object-contain transition duration-500 ease-out group-hover:scale-100 group-hover:opacity-100 motion-reduce:transition-none";
 
 type CompanyLogoStudyProps = {
   className?: string;
@@ -91,9 +91,9 @@ export function CompanyLogoStudy({
     >
       <h2
         id="company-logo-study-heading"
-        className="mb-4 text-xs font-medium uppercase tracking-normal text-muted-foreground"
+        className="mb-4 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
       >
-        Experience Marks
+        Selected experience
       </h2>
 
       <div className="grid grid-cols-2 overflow-hidden rounded-sm border border-border/70 sm:grid-cols-4">
@@ -129,8 +129,9 @@ export function CompanyLogoStudy({
               ) : (
                 <Image
                   src={logo.colorSrc ?? logo.logoSrc}
-                  alt=""
-                  fill
+                  alt={`${logo.company} logo`}
+                  width={240}
+                  height={80}
                   sizes="(min-width: 640px) 25vw, 50vw"
                   className={colorLogoClass}
                 />

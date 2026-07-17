@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Basketcase | Maxwell Young",
+  title: "Basketcase",
   description:
     "Basketcase is a mobile grocery prototype that turns scanned receipts into source-labelled item history, price memory, and calmer pre-shop comparison.",
   openGraph: {

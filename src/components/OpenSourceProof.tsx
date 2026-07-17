@@ -26,10 +26,10 @@ export function OpenSourceProof() {
             id="open-source-heading"
             className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
           >
-            Open source
+            External contributions
           </h2>
           <p className="text-xs text-muted-foreground">
-            External code, review, and verification
+            Reviewed and merged outside my own repositories
           </p>
         </div>
 
@@ -40,7 +40,6 @@ export function OpenSourceProof() {
           className="group block border-y border-border/70 py-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4"
           whileHover={shouldReduceMotion ? undefined : { x: 3 }}
           transition={spring.snappy}
-          aria-label={`Read the merged ${contribution.project} pull request`}
         >
           <p className="text-[0.62rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
             {contribution.eyebrow}

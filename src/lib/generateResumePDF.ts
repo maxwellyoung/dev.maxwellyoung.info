@@ -235,21 +235,21 @@ function writeExperience(context: PdfContext) {
   }
 }
 
-function writeOpenSource(context: PdfContext) {
-  writeSectionTitle(context, "OPEN SOURCE", 4);
+function writeSelectedWork(context: PdfContext) {
+  writeSectionTitle(context, "SELECTED WORK", 4);
 
-  for (const contribution of resumeData.openSourceContributions) {
-    checkPageBreak(context, 70);
+  for (const work of resumeData.selectedWork) {
+    checkPageBreak(context, 48);
 
     setFont(context, 10, "bold");
     context.pdf.text(
-      sanitizeForPDF(`${contribution.project} - ${contribution.role}`),
+      sanitizeForPDF(`${work.name} - ${work.descriptor}`),
       context.marginLeft,
       context.y
     );
 
     setFont(context, 9, "normal", context.colors.lightGray);
-    const sanitizedDate = sanitizeForPDF(contribution.date);
+    const sanitizedDate = sanitizeForPDF(work.date);
     const dateWidth = context.pdf.getTextWidth(sanitizedDate);
     context.pdf.text(
       sanitizedDate,
@@ -261,22 +261,12 @@ function writeOpenSource(context: PdfContext) {
     setFont(context, 9, "normal", context.colors.gray);
     writeWrappedText(
       context,
-      contribution.summary,
+      work.summary,
       context.marginLeft,
       context.contentWidth,
       10
     );
-    context.y += 1;
-
-    setFont(context, 9, "normal");
-    writeWrappedText(
-      context,
-      `- ${contribution.proof}`,
-      context.marginLeft + 4,
-      context.contentWidth - 4,
-      10
-    );
-    context.y += 8;
+    context.y += 6;
   }
 }
 
@@ -315,7 +305,12 @@ function writeSkillLine(
   context.pdf.text(prefix, context.marginLeft, context.y);
 
   setFont(context, bodySize, "normal", color);
-  const lines = splitText(context, items.join(", "), context.contentWidth - prefixWidth);
+  const bodyOffset = prefixWidth + 2;
+  const lines = splitText(
+    context,
+    items.join(", "),
+    context.contentWidth - bodyOffset
+  );
 
   lines.forEach((line, index) => {
     if (index > 0) {
@@ -324,7 +319,7 @@ function writeSkillLine(
     }
     context.pdf.text(
       line,
-      context.marginLeft + prefixWidth,
+      context.marginLeft + bodyOffset,
       context.y
     );
   });
@@ -380,7 +375,7 @@ export async function generateResumePDF(): Promise<Blob> {
 
   writeHeader(context);
   writeExperience(context);
-  writeOpenSource(context);
+  writeSelectedWork(context);
   writeEducation(context);
   writeSkills(context);
   writeFooter(context);

@@ -18,13 +18,12 @@ type ResumeData = {
     metric?: string;
     summary?: string;
   }[];
-  openSourceContributions: {
-    project: string;
-    role: string;
+  selectedWork: {
+    name: string;
+    descriptor: string;
     href: string;
     date: string;
     summary: string;
-    proof: string;
   }[];
   education: {
     degree: string;
@@ -40,7 +39,7 @@ export const resumeData: ResumeData = {
   name: "Maxwell Young",
   title: "Design Engineer",
   profile:
-    "Product-minded design engineer building mobile and web interfaces with React Native and React. I focus on clear interaction states, accessible systems, and software that holds up on real devices.",
+    "Design engineer shipping mobile products and interface systems across React Native, React, and TypeScript. I work from interaction design through implementation, accessibility, performance, and real-device verification.",
   contact: {
     email: "maxwell@ninetynine.digital",
     location: "Auckland, NZ",
@@ -62,26 +61,14 @@ export const resumeData: ResumeData = {
       ],
     },
     {
-      title: "Software Research Assistant",
-      company: "Auckland University of Technology",
-      companyHref: "https://www.aut.ac.nz/",
-      date: "Nov 2025 – Jan 2026",
-      summary:
-        "Mobile research tooling for sleep-session analysis and review.",
-      responsibilities: [
-        "Built a React Native and Expo app for session review, questionnaires, and sleep-stage visualization.",
-        "Integrated mobile, backend, and model-inference workflows for research use.",
-      ],
-    },
-    {
       title: "Mobile Design Engineer",
       company: "Silk",
       companyHref: "https://www.silk.cx/",
-      date: "September 2025 – Present",
+      date: "Sep 2025 – Present",
       summary:
         "Product interface engineering across Silk's mobile and web experiences.",
       responsibilities: [
-        "Build and refine media-heavy product flows across React Native and React.",
+        "Ship and refine media-heavy product flows across React Native and React.",
         "Improve cross-platform consistency, accessibility, performance, and real-device reliability across iOS and Android.",
       ],
     },
@@ -93,8 +80,20 @@ export const resumeData: ResumeData = {
       summary:
         "Independent product and client studio for mobile apps, web products, and CMS-backed portfolio work.",
       responsibilities: [
-        "Shipped independent products including Vape Quit Coach for iOS and Liner, a spatial canvas for music with tldraw, audio playback, and Convex sync.",
+        "Take independent mobile and web products from interaction design through implementation, release, and iteration.",
         "Delivered client sites with Next.js and Sanity for Ch'lita Collins (Fashion Editor-at-Large at i-D) and artist Dayle Palfreyman, plus Shopify performance and layout stability work for Goodness Gracious.",
+      ],
+    },
+    {
+      title: "Software Research Assistant",
+      company: "Auckland University of Technology",
+      companyHref: "https://www.aut.ac.nz/",
+      date: "Nov 2025 – Jan 2026",
+      summary:
+        "Mobile research tooling for sleep-session analysis and review.",
+      responsibilities: [
+        "Built a React Native and Expo app for session review, questionnaires, and sleep-stage visualization.",
+        "Integrated mobile, backend, and model-inference workflows for research use.",
       ],
     },
     {
@@ -110,16 +109,30 @@ export const resumeData: ResumeData = {
       ],
     },
   ],
-  openSourceContributions: [
+  selectedWork: [
     {
-      project: "T3 Code",
-      role: "Contributor",
-      href: "https://github.com/pingdotgg/t3code/pull/3930",
-      date: "Jul 2026",
+      name: "Vape Quit Coach",
+      descriptor: "Solo iOS product",
+      href: "https://vapequitcoach.com",
+      date: "Live",
       summary:
-        "Fixed a mobile composer regression in T3 Code, restoring multiline input while preserving desktop keyboard behavior.",
-      proof:
-        "Added focused unit coverage and validated the interaction with Playwright and the 1,283-test web suite.",
+        "Designed, built, and shipped a React Native and Expo behavior-change app with recovery milestones, coaching flows, and relapse support.",
+    },
+    {
+      name: "Good News Bad News",
+      descriptor: "Solo iOS product",
+      href: "https://apps.apple.com/nz/app/id6759082896",
+      date: "Live",
+      summary:
+        "Built a bounded six-story news ritual with offline SQLite, a 30-day archive, and a Cloudflare Worker that curates and caches daily packs.",
+    },
+    {
+      name: "T3 Code",
+      descriptor: "Open-source contribution",
+      href: "https://github.com/pingdotgg/t3code/pull/3930",
+      date: "Merged Jul 2026",
+      summary:
+        "Fixed mobile multiline input without changing desktop keyboard behavior; added focused unit coverage and verified the 1,283-test web suite.",
     },
   ],
   education: [
@@ -127,7 +140,7 @@ export const resumeData: ResumeData = {
       degree: "B.Sc. Computer & Information Sciences",
       institution: "Auckland University of Technology",
       institutionHref: "https://www.aut.ac.nz/",
-      date: "2024 – expected 2026",
+      date: "2024 – Expected 2026",
     },
     {
       degree: "Certificate in Web Development (Level 6)",
@@ -166,7 +179,7 @@ export const resumeData: ResumeData = {
       items: ["Figma", "Design Systems", "Interaction Design", "Prototyping"],
     },
     {
-      category: "Also",
+      category: "Systems & Tools",
       items: [
         "Three.js / WebGL",
         "Accessibility (WCAG)",
