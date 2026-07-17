@@ -181,11 +181,11 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: false,
+    featured: true,
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 4,
+    priority: 1,
     description:
       "React Native iOS app for quitting vaping with coaching, recovery milestones, and relapse support.",
     longDescription:
@@ -356,11 +356,11 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
     launchStage: "In development",
-    priority: 2,
+    priority: 8,
     description:
       "Mobile receipt scanner that turns grocery receipts into item history, price memory, and calmer pre-shop comparison.",
     longDescription:
@@ -402,11 +402,11 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: false,
+    featured: true,
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 8,
+    priority: 2,
     description:
       "Expo news app that turns daily reading into a bounded six-story ritual with a mood check.",
     longDescription:
@@ -460,11 +460,11 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
     launchStage: "In development",
-    priority: 1,
+    priority: 7,
     description:
       "Local-first concert diary — Letterboxd for live music, but quieter.",
     longDescription:
@@ -547,7 +547,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "completed",
     launchStage: "Client shipped",
-    priority: 10,
+    priority: 4,
     description:
       "Portfolio for Ch'lita Collins — Fashion Editor-at-Large at i-D — built around fast image browsing and quiet editorial motion.",
     longDescription:

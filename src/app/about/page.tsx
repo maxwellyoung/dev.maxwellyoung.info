@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { AnimatedLink } from "@/components/ui/animated-link";
 
 export const metadata: Metadata = {
-  title: "About | Maxwell Young",
+  title: "About",
   description:
     "Design engineer based in Auckland, NZ. Currently at Silk, previously Spark New Zealand. B.Sc. Computer & Information Sciences at AUT.",
   openGraph: {
@@ -44,7 +44,7 @@ export default function AboutPage() {
             I&apos;m Maxwell Young, a design engineer based in Auckland, New
             Zealand. I work at{" "}
             <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-            , contributing to product interfaces across mobile and web.
+            , shipping product interfaces across mobile and web.
           </p>
 
           <p>
@@ -54,6 +54,31 @@ export default function AboutPage() {
             release music as{" "}
             <AnimatedLink href="https://music.maxwellyoung.info" external>Maxwell Young</AnimatedLink>
             .
+          </p>
+
+          <p>
+            I&apos;m most useful where interaction design and implementation
+            need to stay close together: shaping the model, building the
+            interface, and verifying the result on real devices. My public work
+            spans shipped iOS products, production React Native systems,
+            research tooling, developer tools, and image-led client sites.
+          </p>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-lg font-medium">How I work</h2>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            I prefer narrow, observable product loops over presentation-only
+            prototypes. That means explicit interaction states, accessible
+            defaults, performance checks, and enough instrumentation or
+            regression coverage to know whether a change actually held up.
+          </p>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            The strongest examples are in{" "}
+            <AnimatedLink href="/#projects">selected work</AnimatedLink> and the{" "}
+            <AnimatedLink href="/resume">resume</AnimatedLink>; experimental
+            motion and interface studies live in the{" "}
+            <AnimatedLink href="/craft">lab</AnimatedLink>.
           </p>
         </section>
 
@@ -70,7 +95,7 @@ export default function AboutPage() {
               <span className="text-foreground font-medium">
                 Mobile Design Engineer
               </span>{" "}
-              at Silk (September 2025 &ndash; Present)
+                at Silk (Sep 2025 &ndash; Present)
             </li>
             <li>
               <span className="text-foreground font-medium">
@@ -100,7 +125,7 @@ export default function AboutPage() {
               <span className="text-foreground font-medium">
                 B.Sc. Computer &amp; Information Sciences
               </span>{" "}
-              &mdash; Auckland University of Technology (2024 &ndash; expected 2026)
+              &mdash; Auckland University of Technology (2024 &ndash; Expected 2026)
             </li>
             <li>
               <span className="text-foreground font-medium">

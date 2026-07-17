@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Maxwell Young Portfolio",
+  title: "Privacy Policy",
   description:
     "Privacy policy for dev.maxwellyoung.info. Learn about what anonymous data is collected and how it is used on this portfolio site.",
 };

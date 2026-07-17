@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Resume — Maxwell Young",
+  title: "Resume",
   description:
-    "Resume for Maxwell Young, an Auckland design engineer building accessible mobile and web interfaces with React Native, React, and TypeScript.",
+    "Resume for Maxwell Young, an Auckland design engineer shipping mobile products and interface systems across React Native, React, and TypeScript.",
   alternates: {
     canonical: "https://dev.maxwellyoung.info/resume",
   },

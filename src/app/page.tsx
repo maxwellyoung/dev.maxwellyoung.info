@@ -35,33 +35,30 @@ export default function Home() {
     <div className="min-h-screen text-foreground p-4 md:p-8 overflow-x-hidden">
       <main id="main-content" className="w-full max-w-2xl mx-auto overflow-x-hidden">
         <motion.section
-          className="flex min-h-[56vh] flex-col items-start justify-center space-y-6 p-4 md:min-h-[70vh] md:space-y-8 md:p-8"
+          className="flex min-h-[54vh] flex-col items-start justify-center space-y-6 p-4 md:min-h-[58vh] md:space-y-8 md:p-8"
           variants={container.hero}
           initial={false}
           animate="visible"
         >
           <motion.header className="w-full" variants={item.fadeUp}>
-            <h1 className="text-xl text-foreground font-medium">Maxwell Young</h1>
-            <p className="text-xl font-light text-muted-foreground tracking-tight leading-tight">
-              Design Engineer
+            <h1 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl">
+              Maxwell Young
+            </h1>
+            <p className="mt-1 max-w-xl text-lg font-light leading-snug tracking-tight text-muted-foreground md:text-xl">
+              Design engineer for mobile products and interface systems.
             </p>
           </motion.header>
 
           <div className="leading-relaxed space-y-4">
-            <motion.p className="text-foreground" variants={item.fadeUp}>
-              I&apos;m a product-minded design engineer building mobile and web
-              interfaces across React Native, Expo, and Next.js. I care about
-              fast shipping, clear interaction states, motion with purpose, and
-              systems that hold up on real devices. Currently design engineering
-              at{" "}
+            <motion.p
+              className="max-w-xl text-foreground"
+              variants={item.fadeUp}
+            >
+              I design and ship React Native and web products that need to stay
+              clear, fast, and reliable on real devices. Currently at{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-              ; after hours I&apos;m building{" "}
-              <AnimatedLink href="https://liner.ninetynine.digital" external>Liner</AnimatedLink>
-              {", "}
-              <AnimatedLink href="/basketcase">Basketcase</AnimatedLink>
-              {", and "}
-              <AnimatedLink href="https://afterlight.ninetynine.digital" external>Afterlight</AnimatedLink>
-              {" "}through{" "}
+              ; independently, I take products from interaction design through
+              release at{" "}
               <TrackedActionLink
                 href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_body"
                 external
@@ -84,22 +81,20 @@ export default function Home() {
               <span className="text-border/40">·</span>
               <AnimatedLink href="/resume" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Resume</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
-              <span className="text-border/40">·</span>
               <AnimatedLink href="https://github.com/maxwellyoung" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="https://birds.silk.cx/@maxwell" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Silk profile</AnimatedLink>
+              <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
             </motion.nav>
           </div>
         </motion.section>
 
         <CompanyLogoStudy className="mb-14 px-4 md:px-8" />
 
-        <OpenSourceProof />
-
         <section id="projects">
           <ProjectsShowcase embedded />
         </section>
+
+        <OpenSourceProof />
 
         <footer className="mt-16 border-t border-[hsl(var(--border))] pt-8">
           <div className="mb-8">
