@@ -18,6 +18,14 @@ type ResumeData = {
     metric?: string;
     summary?: string;
   }[];
+  openSourceContributions: {
+    project: string;
+    role: string;
+    href: string;
+    date: string;
+    summary: string;
+    proof: string;
+  }[];
   education: {
     degree: string;
     institution: string;
@@ -100,6 +108,18 @@ export const resumeData: ResumeData = {
         "Helped replace Power BI workflows with a React and Next.js dashboard.",
         "Built interface patterns and design system components for the team.",
       ],
+    },
+  ],
+  openSourceContributions: [
+    {
+      project: "T3 Code",
+      role: "Contributor",
+      href: "https://github.com/pingdotgg/t3code/pull/3930",
+      date: "Jul 2026",
+      summary:
+        "Fixed a mobile composer regression in T3 Code, restoring multiline input while preserving desktop keyboard behavior.",
+      proof:
+        "Added focused unit coverage and validated the interaction with Playwright and the 1,283-test web suite.",
     },
   ],
   education: [

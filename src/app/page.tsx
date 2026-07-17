@@ -9,6 +9,7 @@ import { CurrentlyInto } from "@/components/CurrentlyInto";
 import { container, item } from "@/lib/motion";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 import { CompanyLogoStudy } from "@/components/CompanyLogoStudy";
+import { OpenSourceProof } from "@/components/OpenSourceProof";
 
 export default function Home() {
   const { setTheme } = useTheme();
@@ -93,6 +94,8 @@ export default function Home() {
         </motion.section>
 
         <CompanyLogoStudy className="mb-14 px-4 md:px-8" />
+
+        <OpenSourceProof />
 
         <section id="projects">
           <ProjectsShowcase embedded />

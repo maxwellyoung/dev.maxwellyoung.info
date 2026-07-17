@@ -6,6 +6,7 @@ Source for [dev.maxwellyoung.info](https://dev.maxwellyoung.info), a curated pub
 
 - Selected production, independent-product, and client work
 - Evidence-focused case studies for work that is approved for publication
+- Verified open-source contributions with direct links to merged changes
 - A browser resume with client-side PDF export
 - Interaction and motion studies
 - Responsive, keyboard-accessible light and dark themes
@@ -45,6 +46,7 @@ The privacy scan checks the public worktree for private planning artifacts, loca
 - `src/lib/projects.ts` — public project summaries
 - `src/lib/caseStudies.ts` — publishable case studies
 - `src/lib/resumeData.ts` — resume content
+- `src/lib/openSource.ts` — verified open-source proof
 - `src/app/` — routes, metadata, and product pages
 - `public/` — curated public media
 
