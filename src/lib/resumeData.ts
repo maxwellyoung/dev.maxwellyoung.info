@@ -128,11 +128,11 @@ export const resumeData: ResumeData = {
     },
     {
       name: "T3 Code",
-      descriptor: "Open-source contribution",
-      href: "https://github.com/pingdotgg/t3code/pull/3930",
-      date: "Merged Jul 2026",
+      descriptor: "Open-source contributor",
+      href: "https://github.com/pingdotgg/t3code/pull/3932",
+      date: "2 PRs merged Jul 2026",
       summary:
-        "Fixed mobile multiline input without changing desktop keyboard behavior; added focused unit coverage and verified the 1,283-test web suite.",
+        "Restored mobile multiline input and prevented persisted assistant replies from colliding across ACP runtime restarts; verified the runtime fix against 1,400 tests.",
     },
   ],
   education: [
