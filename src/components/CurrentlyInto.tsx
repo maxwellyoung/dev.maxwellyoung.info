@@ -4,6 +4,10 @@ import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { canonFeed } from "@/lib/canonFeed";
+import {
+  formatCanonExportDate,
+  formatCanonSyncDate,
+} from "@/lib/canonFormatting";
 import { GitHubPulse } from "@/components/GitHubPulse";
 
 /**
@@ -25,21 +29,6 @@ const MEDIUM_BY_VERB: Record<string, string> = {
   watching: "Film",
   "in rotation": "Music",
 };
-
-function dayOf(iso: string) {
-  const d = new Date(`${iso}T00:00:00`);
-  return d.toLocaleDateString("en-NZ", { day: "numeric", month: "short", year: "numeric" });
-}
-
-function dateTimeOf(iso: string) {
-  const d = new Date(iso);
-  return d.toLocaleDateString("en-NZ", {
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-    month: "short",
-  });
-}
 
 function destinationLabel(href: string) {
   const host = new URL(href).hostname;
@@ -76,8 +65,10 @@ export function CurrentlyInto() {
   const selectedSource = sourceName(selectedItem?.href);
   const selectedMedium = MEDIUM_BY_VERB[selectedItem?.verb] ?? "Work";
   const selectedPosition = `${String(selectedNowIndex + 1).padStart(2, "0")} / ${String(now.length).padStart(2, "0")}`;
-  const exportDate = dayOf(generatedAt);
-  const sourceSyncDate = sourceSyncedAt ? dateTimeOf(sourceSyncedAt) : exportDate;
+  const exportDate = formatCanonExportDate(generatedAt);
+  const sourceSyncDate = sourceSyncedAt
+    ? formatCanonSyncDate(sourceSyncedAt)
+    : exportDate;
   const artVersion = sourceSyncedAt ?? generatedAt;
 
   const selectRelativeItem = (direction: -1 | 1, keyboard = false) => {
