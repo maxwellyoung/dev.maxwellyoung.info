@@ -95,16 +95,16 @@ const projects: Project[] = [
     name: "Silk",
     status: "Active",
     category: "Work",
-    role: "Collaborator",
+    role: "Lead",
     featured: true,
     visibility: "public",
     lifecycle: "current",
     launchStage: "Production work",
     priority: 0,
     description:
-      "Product interface work across Silk's mobile and web experiences.",
+      "Leading day-to-day implementation and release hardening across Silk's React Native product.",
     longDescription:
-      "I contribute to Silk's product interfaces inside a small shipping team, focusing on clear interaction states, media-heavy workflows, cross-platform consistency, accessibility, and reliable behavior on real iOS and Android devices.",
+      "I lead day-to-day mobile implementation inside Silk's small shipping team, turning product direction into production React Native systems and carrying them through architecture, interaction design, performance, accessibility, regression coverage, and release hardening on real iOS and Android devices.",
     tags: ["React Native", "React", "TypeScript"],
     stack: ["React Native", "React", "TypeScript", "Expo"],
     startDate: "2025-09-01",
@@ -121,9 +121,9 @@ const projects: Project[] = [
       objectPosition: "center",
     },
     impact: [
-      "Production interface work across mobile and web",
-      "Cross-platform interaction and accessibility improvements",
-      "Real-device verification across iOS and Android",
+      "Lead day-to-day implementation across the React Native product",
+      "Own architecture, performance, accessibility, and regression hardening",
+      "Carry release candidates through real-device verification on iOS and Android",
     ],
   },
   {
@@ -402,11 +402,11 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 2,
+    priority: 7,
     description:
       "Expo news app that turns daily reading into a bounded six-story ritual with a mood check.",
     longDescription:
@@ -460,11 +460,11 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: false,
+    featured: true,
     visibility: "public",
     lifecycle: "current",
     launchStage: "In development",
-    priority: 7,
+    priority: 2,
     description:
       "Local-first concert diary — Letterboxd for live music, but quieter.",
     longDescription:

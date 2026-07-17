@@ -39,7 +39,7 @@ export const resumeData: ResumeData = {
   name: "Maxwell Young",
   title: "Design Engineer",
   profile:
-    "Design engineer shipping mobile products and interface systems across React Native, React, and TypeScript. I work from interaction design through implementation, accessibility, performance, and real-device verification.",
+    "Design engineer leading day-to-day mobile implementation at Silk and shipping independent React Native products. I work from interaction design through architecture, accessibility, performance, release hardening, and real-device verification.",
   contact: {
     email: "maxwell@ninetynine.digital",
     location: "Auckland, NZ",
@@ -48,6 +48,18 @@ export const resumeData: ResumeData = {
     linkedin: "linkedin.com/in/maxwell-young-a55032125",
   },
   experience: [
+    {
+      title: "Mobile Design Engineer",
+      company: "Silk",
+      companyHref: "https://www.silk.cx/",
+      date: "Sep 2025 – Present",
+      summary:
+        "Lead day-to-day mobile implementation and release hardening across Silk's React Native product.",
+      responsibilities: [
+        "Turn product direction into production mobile architecture, interface systems, and media-heavy flows.",
+        "Own performance, accessibility, regression coverage, and real-device reliability across iOS and Android release candidates.",
+      ],
+    },
     {
       title: "Software Research Assistant",
       company: "University of Auckland",
@@ -58,18 +70,6 @@ export const resumeData: ResumeData = {
       responsibilities: [
         "Turn research rules and source material into structured, reviewable software workflows.",
         "Build prototypes that preserve provenance and support careful human review.",
-      ],
-    },
-    {
-      title: "Mobile Design Engineer",
-      company: "Silk",
-      companyHref: "https://www.silk.cx/",
-      date: "Sep 2025 – Present",
-      summary:
-        "Product interface engineering across Silk's mobile and web experiences.",
-      responsibilities: [
-        "Ship and refine media-heavy product flows across React Native and React.",
-        "Improve cross-platform consistency, accessibility, performance, and real-device reliability across iOS and Android.",
       ],
     },
     {
@@ -119,12 +119,12 @@ export const resumeData: ResumeData = {
         "Designed, built, and shipped a React Native and Expo behavior-change app with recovery milestones, coaching flows, and relapse support.",
     },
     {
-      name: "Good News Bad News",
-      descriptor: "Solo iOS product",
-      href: "https://apps.apple.com/nz/app/id6759082896",
-      date: "Live",
+      name: "Afterlight",
+      descriptor: "Independent mobile product",
+      href: "https://afterlight.ninetynine.digital",
+      date: "In development",
       summary:
-        "Built a bounded six-story news ritual with offline SQLite, a 30-day archive, and a Cloudflare Worker that curates and caches daily packs.",
+        "Designed a local-first React Native concert diary with on-device archives for gigs, photos, and memories, plus a custom motion and visual system.",
     },
     {
       name: "T3 Code",

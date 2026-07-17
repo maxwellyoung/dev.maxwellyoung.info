@@ -44,7 +44,8 @@ export default function AboutPage() {
             I&apos;m Maxwell Young, a design engineer based in Auckland, New
             Zealand. I work at{" "}
             <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-            , shipping product interfaces across mobile and web.
+            , leading day-to-day mobile implementation and release hardening
+            across iOS and Android.
           </p>
 
           <p>
@@ -60,7 +61,7 @@ export default function AboutPage() {
             I&apos;m most useful where interaction design and implementation
             need to stay close together: shaping the model, building the
             interface, and verifying the result on real devices. My public work
-            spans shipped iOS products, production React Native systems,
+            spans mobile product leadership, shipped iOS products, production React Native systems,
             research tooling, developer tools, and image-led client sites.
           </p>
         </section>
@@ -87,15 +88,15 @@ export default function AboutPage() {
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li>
               <span className="text-foreground font-medium">
-                Software Research Assistant
+                Mobile Design Engineer
               </span>{" "}
-              at University of Auckland (Apr 2026 &ndash; Present, funded safer-medicines research)
+              at Silk (Sep 2025 &ndash; Present; mobile implementation lead)
             </li>
             <li>
               <span className="text-foreground font-medium">
-                Mobile Design Engineer
+                Software Research Assistant
               </span>{" "}
-                at Silk (Sep 2025 &ndash; Present)
+              at University of Auckland (Apr 2026 &ndash; Present, funded safer-medicines research)
             </li>
             <li>
               <span className="text-foreground font-medium">

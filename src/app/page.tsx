@@ -54,11 +54,11 @@ export default function Home() {
               className="max-w-xl text-foreground"
               variants={item.fadeUp}
             >
-              I design and ship React Native and web products that need to stay
-              clear, fast, and reliable on real devices. Currently at{" "}
+              I design and ship React Native products that need to stay clear,
+              fast, and reliable on real devices. At{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-              ; independently, I take products from interaction design through
-              release at{" "}
+              , I lead day-to-day mobile implementation and release hardening;
+              independently, I take products from interaction design through release at{" "}
               <TrackedActionLink
                 href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_body"
                 external
