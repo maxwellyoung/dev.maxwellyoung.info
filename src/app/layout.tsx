@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | Maxwell Young",
   },
   description:
-    "Design engineer shipping mobile products and interface systems across React Native, React, and TypeScript, with production work, shipped apps, and selected case studies.",
+    "Design engineer leading mobile implementation at Silk and shipping independent React Native products, interface systems, and selected case studies.",
   metadataBase: new URL("https://dev.maxwellyoung.info"),
   authors: [{ name: "Maxwell Young" }],
   creator: "Maxwell Young",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Maxwell Young — Design Engineer",
     description:
-      "Design engineer shipping mobile products and interface systems across React Native, React, and TypeScript, with production work, shipped apps, and selected case studies.",
+      "Design engineer leading mobile implementation at Silk and shipping independent React Native products, interface systems, and selected case studies.",
     url: "https://dev.maxwellyoung.info",
     siteName: "Maxwell Young",
     locale: "en_NZ",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Maxwell Young — Design Engineer",
     description:
-      "Design engineer shipping mobile products and interface systems across React Native, React, and TypeScript, with production work, shipped apps, and selected case studies.",
+      "Design engineer leading mobile implementation at Silk and shipping independent React Native products, interface systems, and selected case studies.",
     images: ["/meta.png"],
     creator: "@internetmaxwell",
   },

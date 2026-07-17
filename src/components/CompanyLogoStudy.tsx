@@ -17,6 +17,15 @@ type CompanyLogo = {
 
 const companyLogos: CompanyLogo[] = [
   {
+    company: "Silk",
+    href: "https://www.silk.cx/",
+    sourceHref: "https://www.silk.cx/silkcxlogo.svg",
+    logoSrc: "/company-logos/silk.svg",
+    logoBoxClassName: "h-8 w-full max-w-[8rem] sm:h-[2.15rem] sm:max-w-[8.5rem]",
+    hoverSurfaceClassName:
+      "hover:bg-[#151526] dark:hover:bg-[#151526]",
+  },
+  {
     company: "University of Auckland",
     href: "https://www.auckland.ac.nz/",
     sourceHref:
@@ -38,15 +47,6 @@ const companyLogos: CompanyLogo[] = [
     colorClassName: "bg-[#536972] dark:bg-[#a8b3b7]",
     hoverSurfaceClassName:
       "hover:bg-[#f3f5f4] dark:hover:bg-[#111415]",
-  },
-  {
-    company: "Silk",
-    href: "https://www.silk.cx/",
-    sourceHref: "https://www.silk.cx/silkcxlogo.svg",
-    logoSrc: "/company-logos/silk.svg",
-    logoBoxClassName: "h-8 w-full max-w-[8rem] sm:h-[2.15rem] sm:max-w-[8.5rem]",
-    hoverSurfaceClassName:
-      "hover:bg-[#151526] dark:hover:bg-[#151526]",
   },
   {
     company: "Spark New Zealand",
