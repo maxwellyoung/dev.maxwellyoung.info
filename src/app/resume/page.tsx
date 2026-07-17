@@ -102,6 +102,42 @@ export default function Resume() {
         ))}
       </section>
 
+      <section className="mb-10" aria-labelledby="open-source-heading">
+        <h2
+          id="open-source-heading"
+          className="text-xs uppercase tracking-widest text-muted-foreground mb-4"
+        >
+          Open Source
+        </h2>
+        {resumeData.openSourceContributions.map((contribution) => (
+          <article
+            key={contribution.href}
+            className="border-l border-border pl-4"
+          >
+            <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-baseline">
+              <h3 className="text-sm font-medium text-foreground">
+                <AnimatedLink href={contribution.href} external>
+                  {contribution.project}
+                </AnimatedLink>
+                <span className="font-normal text-muted-foreground">
+                  {" "}
+                  · {contribution.role}
+                </span>
+              </h3>
+              <p className="text-xs text-muted-foreground">
+                {contribution.date}
+              </p>
+            </div>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {contribution.summary}
+            </p>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              {contribution.proof}
+            </p>
+          </article>
+        ))}
+      </section>
+
       <section className="mb-10">
         <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
           Education

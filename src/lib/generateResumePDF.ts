@@ -45,10 +45,10 @@ function createPdfContext(): PdfContext {
   });
   const pageWidth = pdf.internal.pageSize.getWidth();
   const pageHeight = pdf.internal.pageSize.getHeight();
-  const marginLeft = 48;
-  const marginRight = 48;
-  const marginTop = 48;
-  const marginBottom = 48;
+  const marginLeft = 40;
+  const marginRight = 40;
+  const marginTop = 40;
+  const marginBottom = 40;
 
   return {
     pdf,
@@ -121,17 +121,17 @@ function writeSectionTitle(context: PdfContext, title: string, marginTop = 0) {
   checkPageBreak(context, 24);
   setFont(context, 11, "bold");
   context.pdf.text(title, context.marginLeft, context.y);
-  context.y += 16;
+  context.y += 14;
 }
 
 function writeHeader(context: PdfContext) {
-  setFont(context, 28, "bold");
+  setFont(context, 26, "bold");
   context.pdf.text(sanitizeForPDF(resumeData.name), context.marginLeft, context.y);
-  context.y += 28;
+  context.y += 24;
 
   setFont(context, 12, "normal", context.colors.gray);
   context.pdf.text(sanitizeForPDF(resumeData.title), context.marginLeft, context.y);
-  context.y += 20;
+  context.y += 17;
 
   setFont(context, 9, "normal", context.colors.gray);
   writeWrappedText(
@@ -139,14 +139,14 @@ function writeHeader(context: PdfContext) {
     resumeData.profile,
     context.marginLeft,
     context.contentWidth,
-    11
+    10
   );
-  context.y += 8;
+  context.y += 5;
 
   setFont(context, 9, "normal", context.colors.gray);
   const contactLine = `${resumeData.contact.email}  |  ${resumeData.contact.location}  |  ${resumeData.contact.website.replace("https://", "")}`;
   context.pdf.text(sanitizeForPDF(contactLine), context.marginLeft, context.y);
-  context.y += 22;
+  context.y += 18;
 
   context.pdf.setDrawColor(220, 220, 220);
   context.pdf.setLineWidth(0.5);
@@ -156,7 +156,7 @@ function writeHeader(context: PdfContext) {
     context.pageWidth - context.marginRight,
     context.y
   );
-  context.y += 20;
+  context.y += 14;
 }
 
 function writeExperience(context: PdfContext) {
@@ -188,7 +188,7 @@ function writeExperience(context: PdfContext) {
       context.pageWidth - context.marginRight - dateWidth,
       context.y
     );
-    context.y += 13;
+    context.y += 12;
 
     setFont(context, 9, "normal", context.colors.gray);
     context.pdf.text(
@@ -196,42 +196,87 @@ function writeExperience(context: PdfContext) {
       context.marginLeft,
       context.y
     );
-    context.y += 12;
+    context.y += 10;
 
     if (experience.summary) {
-      context.y += 2;
+      context.y += 1;
       setFont(context, 9, "normal", context.colors.gray);
       writeWrappedText(
         context,
         experience.summary,
         context.marginLeft,
         context.contentWidth,
-        11
+        10
       );
-      context.y += 2;
+      context.y += 1;
     }
 
-    context.y += 4;
+    context.y += 2;
     setFont(context, 9, "normal");
     for (const responsibility of experience.responsibilities) {
       const lines = splitText(context, `- ${responsibility}`, context.contentWidth - 8);
 
-      checkPageBreak(context, 12);
+      checkPageBreak(context, 10);
       lines.forEach((line, index) => {
         if (index > 0) {
-          checkPageBreak(context, 11);
+          checkPageBreak(context, 10);
         }
         context.pdf.text(
           index === 0 ? line : `  ${String(line).trim()}`,
           context.marginLeft + 4,
           context.y
         );
-        context.y += 11;
+        context.y += 10;
       });
-      context.y += 2;
+      context.y += 1;
     }
 
-    context.y += 10;
+    context.y += 6;
+  }
+}
+
+function writeOpenSource(context: PdfContext) {
+  writeSectionTitle(context, "OPEN SOURCE", 4);
+
+  for (const contribution of resumeData.openSourceContributions) {
+    checkPageBreak(context, 70);
+
+    setFont(context, 10, "bold");
+    context.pdf.text(
+      sanitizeForPDF(`${contribution.project} - ${contribution.role}`),
+      context.marginLeft,
+      context.y
+    );
+
+    setFont(context, 9, "normal", context.colors.lightGray);
+    const sanitizedDate = sanitizeForPDF(contribution.date);
+    const dateWidth = context.pdf.getTextWidth(sanitizedDate);
+    context.pdf.text(
+      sanitizedDate,
+      context.pageWidth - context.marginRight - dateWidth,
+      context.y
+    );
+    context.y += 14;
+
+    setFont(context, 9, "normal", context.colors.gray);
+    writeWrappedText(
+      context,
+      contribution.summary,
+      context.marginLeft,
+      context.contentWidth,
+      10
+    );
+    context.y += 1;
+
+    setFont(context, 9, "normal");
+    writeWrappedText(
+      context,
+      `- ${contribution.proof}`,
+      context.marginLeft + 4,
+      context.contentWidth - 4,
+      10
+    );
+    context.y += 8;
   }
 }
 
@@ -242,7 +287,7 @@ function writeEducation(context: PdfContext) {
     checkPageBreak(context, 40);
     setFont(context, 10, "bold");
     context.pdf.text(sanitizeForPDF(education.degree), context.marginLeft, context.y);
-    context.y += 13;
+    context.y += 12;
 
     setFont(context, 9, "normal", context.colors.gray);
     context.pdf.text(
@@ -250,7 +295,7 @@ function writeEducation(context: PdfContext) {
       context.marginLeft,
       context.y
     );
-    context.y += 16;
+    context.y += 14;
   }
 }
 
@@ -286,7 +331,7 @@ function writeSkillLine(
 }
 
 function writeSkills(context: PdfContext) {
-  writeSectionTitle(context, "SKILLS", 10);
+  writeSectionTitle(context, "SKILLS", 6);
 
   const mainSkills = resumeData.skills.filter((skill) => skill.category !== "Also");
   const alsoSkills = resumeData.skills.find((skill) => skill.category === "Also");
@@ -300,9 +345,9 @@ function writeSkills(context: PdfContext) {
       "bold",
       9,
       9,
-      11
+      10
     );
-    context.y += 13;
+    context.y += 12;
   }
 
   if (alsoSkills) {
@@ -315,7 +360,7 @@ function writeSkills(context: PdfContext) {
       "normal",
       8,
       8,
-      10
+      9
     );
   }
 }
@@ -326,15 +371,16 @@ function writeFooter(context: PdfContext) {
   context.pdf.text(
     "github.com/maxwellyoung  |  linkedin.com/in/maxwell-young-a55032125",
     context.marginLeft,
-    context.pageHeight - 30
+    context.pageHeight - 22
   );
 }
 
-async function generateResumePDF(): Promise<Blob> {
+export async function generateResumePDF(): Promise<Blob> {
   const context = createPdfContext();
 
   writeHeader(context);
   writeExperience(context);
+  writeOpenSource(context);
   writeEducation(context);
   writeSkills(context);
   writeFooter(context);
