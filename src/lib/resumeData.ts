@@ -39,7 +39,7 @@ export const resumeData: ResumeData = {
   name: "Maxwell Young",
   title: "Design Engineer",
   profile:
-    "Design engineer leading day-to-day mobile implementation at Silk and shipping independent React Native products. I work from interaction design through architecture, accessibility, performance, release hardening, and real-device verification.",
+    "Design engineer who led Silk's React Native app from its first build through launch and now leads ongoing mobile delivery. I also ship independent products from interaction design through architecture, accessibility, performance, and release.",
   contact: {
     email: "maxwell@ninetynine.digital",
     location: "Auckland, NZ",
@@ -54,10 +54,10 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.silk.cx/",
       date: "Sep 2025 – Present",
       summary:
-        "Lead day-to-day mobile implementation and release hardening across Silk's React Native product.",
+        "Silk is a platform for blogging, private archives, and multimedia moodboards. Led its React Native app from initial build through launch and now lead ongoing delivery.",
       responsibilities: [
-        "Turn product direction into production mobile architecture, interface systems, and media-heavy flows.",
-        "Own performance, accessibility, regression coverage, and real-device reliability across iOS and Android release candidates.",
+        "Built the initial mobile foundation and turned early product direction into production architecture, interface systems, and media-heavy flows.",
+        "Continue to own performance, accessibility, regression coverage, and real-device reliability across iOS and Android releases.",
       ],
     },
     {
@@ -132,7 +132,7 @@ export const resumeData: ResumeData = {
       href: "https://github.com/pingdotgg/t3code/pull/3932",
       date: "2 PRs merged Jul 2026",
       summary:
-        "Restored mobile multiline input and prevented persisted assistant replies from colliding across ACP runtime restarts; verified the runtime fix against 1,400 tests.",
+        "Contributed to a web and desktop interface for running multiple coding agents. Restored mobile multiline input and stopped new replies attaching to old messages after runtime restarts; verified the latter against 1,400 tests.",
     },
   ],
   education: [

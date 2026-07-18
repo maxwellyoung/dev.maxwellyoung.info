@@ -44,8 +44,10 @@ export default function AboutPage() {
             I&apos;m Maxwell Young, a design engineer based in Auckland, New
             Zealand. I work at{" "}
             <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-            , leading day-to-day mobile implementation and release hardening
-            across iOS and Android.
+            , a platform for blogging, private archives, and multimedia
+            moodboards. I led its React Native app from the first build through
+            launch and now lead ongoing implementation, release hardening, and
+            iteration across iOS and Android.
           </p>
 
           <p>
@@ -90,7 +92,8 @@ export default function AboutPage() {
               <span className="text-foreground font-medium">
                 Mobile Design Engineer
               </span>{" "}
-              at Silk (Sep 2025 &ndash; Present; mobile implementation lead)
+              at Silk (Sep 2025 &ndash; Present; led mobile from initial build
+              through launch and ongoing iteration)
             </li>
             <li>
               <span className="text-foreground font-medium">

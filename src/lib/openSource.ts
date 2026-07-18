@@ -21,12 +21,12 @@ export const openSourceContributions: OpenSourceContribution[] = [
     date: "Jul 2026",
     href: "https://github.com/pingdotgg/t3code/pull/3932",
     issueHref: "https://github.com/pingdotgg/t3code/issues/3791",
-    eyebrow: "T3 Code · pingdotgg/t3code · 2 merged PRs",
-    title: "Prevented persisted assistant replies from colliding after runtime restarts.",
+    eyebrow: "T3 Code · coding-agent interface · 2 merged PRs",
+    title: "Stopped new coding-agent replies from being attached to old messages after a restart.",
     summary:
-      "After fixing a mobile composer regression, traced a runtime-integrity bug to reused ACP assistant IDs. Scoped IDs per runtime, threaded the new dependency through two provider stacks, and added a cross-restart regression test.",
+      "T3 Code is a web and desktop interface for running Codex, Claude, Cursor, and other coding agents. I traced disappearing replies to reused internal IDs, fixed the runtime boundary across two providers, and added a cross-restart regression test.",
     resumeSummary:
-      "Landed two upstream T3 Code fixes: restored mobile multiline input and prevented persisted assistant replies from colliding across ACP runtime restarts; verified the latter against 1,400 tests.",
+      "Contributed to T3 Code, an interface for running multiple coding agents. Landed two upstream fixes: restored mobile multiline input and stopped new replies attaching to old messages after runtime restarts; verified the latter against 1,400 tests.",
     proof: [
       "2 merged upstream PRs",
       "Cross-runtime regression coverage",

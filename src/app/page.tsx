@@ -57,8 +57,11 @@ export default function Home() {
               I design and ship React Native products that need to stay clear,
               fast, and reliable on real devices. At{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-              , I lead day-to-day mobile implementation and release hardening;
-              independently, I take products from interaction design through release at{" "}
+              —a creative-research platform for blogging, private archives, and
+              multimedia moodboards—I led the mobile app from its first build
+              through launch and now lead its ongoing implementation and release
+              hardening. Independently, I take products from interaction design
+              through release at{" "}
               <TrackedActionLink
                 href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_body"
                 external

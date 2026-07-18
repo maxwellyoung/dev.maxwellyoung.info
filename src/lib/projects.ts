@@ -102,9 +102,9 @@ const projects: Project[] = [
     launchStage: "Production work",
     priority: 0,
     description:
-      "Leading day-to-day implementation and release hardening across Silk's React Native product.",
+      "Led Silk's React Native app from its first build through launch; now leading ongoing implementation and release hardening.",
     longDescription:
-      "I lead day-to-day mobile implementation inside Silk's small shipping team, turning product direction into production React Native systems and carrying them through architecture, interaction design, performance, accessibility, regression coverage, and release hardening on real iOS and Android devices.",
+      "Silk is a platform for blogging, private archives, and multimedia moodboards. I built and led its React Native app from the first mobile foundation through launch, turning product direction into production systems. I continue to lead architecture, interaction design, performance, accessibility, regression coverage, and release hardening across iOS and Android.",
     tags: ["React Native", "React", "TypeScript"],
     stack: ["React Native", "React", "TypeScript", "Expo"],
     startDate: "2025-09-01",
@@ -121,9 +121,9 @@ const projects: Project[] = [
       objectPosition: "center",
     },
     impact: [
-      "Lead day-to-day implementation across the React Native product",
-      "Own architecture, performance, accessibility, and regression hardening",
-      "Carry release candidates through real-device verification on iOS and Android",
+      "Built and led the mobile product from its initial React Native foundation through launch",
+      "Continue to lead architecture, performance, accessibility, and regression hardening",
+      "Carry ongoing releases through real-device verification on iOS and Android",
     ],
   },
   {
