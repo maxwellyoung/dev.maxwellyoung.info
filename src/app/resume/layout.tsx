@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Resume",
   description:
-    "Resume for Maxwell Young, an Auckland design engineer leading mobile implementation at Silk and shipping independent React Native products.",
+    "Resume for Maxwell Young, the design engineer who led Silk's React Native app from its first build through launch and ongoing delivery.",
   alternates: {
     canonical: "https://dev.maxwellyoung.info/resume",
   },
