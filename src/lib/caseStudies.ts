@@ -39,27 +39,28 @@ export const caseStudies: Record<string, CaseStudy> = {
   afterlight: {
     slug: "afterlight",
     title: "Afterlight",
-    subtitle: "A concert diary that keeps your nights to yourself",
+    subtitle: "Recover a concert history without surrendering it",
     heroImage: "/projectImages/afterlight-1.webp",
     timeline: "2025 — Present",
     role: "Solo Designer & Developer",
     tools: ["React Native", "Expo", "TypeScript", "AsyncStorage"],
     liveUrl: "https://afterlight.ninetynine.digital",
     overview:
-      "Afterlight is a concert diary — Letterboxd for live music, but quieter. You log the gig, keep the photos, write down what you remember before it fades. Everything stays on your phone: no account, no feed, no analytics.",
+      "Afterlight is a local-first concert diary with a Recovery Desk for the history people already have. It turns ticket files, incoming shares, calendars, photos, Gmail receipts, Setlist.fm attendance, and listening history into reviewable clues on-device. A clue never becomes a claimed night until the person confirms it.",
     challenge:
-      "Concert memories live scattered across camera rolls, ticket stubs, and half-remembered setlists. The obvious product to build here is social — reviews, followers, taste as performance. I wanted the opposite: a private record. The hard part was making something feel rich and alive without any of the machinery apps normally use to feel alive — no network effects, no notifications, nothing pulling you back. The app has to earn its place purely through the quality of remembering.",
+      "Concert memories are distributed across camera rolls, ticket receipts, calendar events, Wallet passes, files, setlists, and half-remembered nights. Those sources have very different confidence: a Spotify play is a hint, while a ticket and dated venue photo together are stronger evidence. The product problem was not merely importing data; it was reconciling ambiguous evidence without letting software invent attendance.",
     constraints: [
-      "Local-first for real: no accounts, no servers, no analytics. If the value isn't on the device, it doesn't exist.",
-      "A diary is for years, not sessions. The design has to age well and the data has to survive.",
+      "The canonical diary and recovery queue must work on-device; optional connected services cannot become the source of truth.",
+      "Low-confidence evidence can suggest a night but can never auto-confirm attendance.",
+      "Calendar, photo, and email access must be permission-gated, purpose-limited, and reduced to concert fields rather than retained source content.",
       "Solo build — every feature competes with finishing.",
     ],
     decisionLog: [
       {
-        problem: "Social features are the default growth engine for any logging app.",
-        decision: "Cut them entirely. No accounts, no sharing graph, no server.",
-        tradeoff: "No virality, and no effortless cloud-backup story out of the box.",
-        impact: "The promise fits in one sentence, and privacy isn't a settings page — it's the architecture.",
+        problem: "Each import source originally behaved like its own workflow, and some hints could move too close to diary creation.",
+        decision: "Put every source behind one versioned candidate model with provenance, confidence, deduplication, dismissal, editing, and explicit confirmation.",
+        tradeoff: "Every integration has to translate into the shared evidence vocabulary instead of taking a shortcut to the diary.",
+        impact: "The app can add new recovery sources without weakening the trust boundary: evidence proposes, the person decides.",
       },
       {
         problem: "Music apps default to streaming-service aesthetics — gradients, glass, glow.",
@@ -76,41 +77,47 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     approach: [
       {
-        title: "The loop is the product",
+        title: "One desk for scattered evidence",
         description:
-          "Log a gig, attach the photos, write a line about the night. The whole app is in service of a loop small enough to finish and good enough to repeat. Everything that didn't serve it got cut.",
+          "Shares, uploads, calendar scans, photo clusters, Gmail receipts, Setlist.fm attendance, and Spotify hints all land in the same Recovery Desk. Provenance survives merging, so a candidate can explain why it exists.",
+      },
+      {
+        title: "Confirmation is the write boundary",
+        description:
+          "Recovery candidates remain separate from confirmed concerts. People can review, correct, dismiss, or complete them; only completion calls the existing local concert-creation path.",
+      },
+      {
+        title: "Native reach, local core",
+        description:
+          "iOS and Android share targets, calendar and photo access, and native Gmail OAuth reach evidence where it already lives. The canonical diary and candidate queue stay on-device, while optional network lookups enrich rather than own the record.",
       },
       {
         title: "Gig poster modernism",
         description:
-          "The visual language borrows from the printed history of live music — FAC blue, true black, grain textures, type set with Swiss discipline. A strong reference makes a thousand small decisions for you.",
-      },
-      {
-        title: "Local-first as a feature",
-        description:
-          "On-device storage isn't a compromise; it's the pitch. Your concert history is yours in the most literal sense available to software: it never leaves the hardware in your pocket.",
+          "The interface borrows from the printed history of live music — FAC blue, true black, grain textures, and Swiss type discipline — with a restrained motion grammar used to clarify state.",
       },
     ],
     outcome:
-      "A finished 1.0 shaped around a small, offline-first loop — log the gig, keep the photos, remember the night — wrapped in a design system I'd defend line by line.",
+      "A shared recovery system now spans web and native entry points, with a signed iOS share extension, Android share configuration, explicit privacy disclosures, and regression coverage around evidence parsing and confirmation. The web Recovery Desk is deployed while the next native release remains in development.",
     proofPoints: [
-      { label: "Accounts required", value: "0" },
-      { label: "Data leaves device", value: "Never" },
-      { label: "Design system", value: "Authored from scratch" },
+      { label: "Recovery sources", value: "6+" },
+      { label: "Auto-confirmed nights", value: "0" },
+      { label: "Native share targets", value: "iOS + Android" },
     ],
     avoidedPatterns: [
-      "Streaks, badges, or anything that turns remembering into homework.",
-      "Cloud accounts as the price of entry.",
-      "Streaming-app aesthetics — the design borrows from posters, not players.",
+      "Treating listening history, a photo cluster, or a ticket receipt as proof of attendance.",
+      "Retaining Gmail message bodies or calendar content after extracting candidate fields.",
+      "Making a hosted database the canonical source for a private concert diary.",
     ],
     nextIterations: [
-      "Setlist capture and richer gig metadata.",
-      "An export format that treats your history as yours — plain, readable files rather than a proprietary lockbox.",
+      "Complete Google restricted-scope verification before broad Gmail recovery access.",
+      "Ship the updated native targets after same-build physical-device verification.",
+      "Expand the versioned archive into a plain, durable export and restore workflow.",
     ],
     learnings: [
-      "Cutting the network from a product removes a third of the code and half the anxiety.",
-      "A strong visual reference is a decision-making machine — Factory Records answered questions I would otherwise have litigated alone for weeks.",
-      "Local-first is a constraint that designs for you: with no server, every feature has to justify itself on the device or it doesn't ship.",
+      "Import is a trust problem before it is a parsing problem; provenance and confirmation belong in the data model.",
+      "Local-first does not mean banning the network. It means connected services can enrich the product without owning its canonical record.",
+      "Native extensions fail in platform-specific ways, so simulator compilation is not enough; the share handoff itself needs end-to-end exercise.",
     ],
     nextProject: { slug: "chlita", title: "Ch'lita" },
   },

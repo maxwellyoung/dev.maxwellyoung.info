@@ -124,7 +124,7 @@ export const resumeData: ResumeData = {
       href: "https://afterlight.ninetynine.digital",
       date: "In development",
       summary:
-        "Designed a local-first React Native concert diary with on-device archives for gigs, photos, and memories, plus a custom motion and visual system.",
+        "Designed and built a local-first React Native concert diary with a Recovery Desk that turns ticket files, shares, calendars, photos, Gmail receipts, and listening history into reviewable on-device candidates; nothing enters the diary without confirmation.",
     },
     {
       name: "T3 Code",
