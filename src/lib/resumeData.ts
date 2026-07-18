@@ -66,10 +66,10 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.auckland.ac.nz/",
       date: "Apr 2026 – Present",
       summary:
-        "Building traceable software for safer-medicines research workflows.",
+        "Own end-to-end software delivery across two medicines-safety research applications: Rx-Opt clinician decision-support and MRB-QoL 2.0 patient-reported outcomes.",
       responsibilities: [
-        "Turn research rules and source material into structured, reviewable software workflows.",
-        "Build prototypes that preserve provenance and support careful human review.",
+        "Built Python ingestion and matching that turns six stages of spreadsheet-authored rules into traceable Next.js review workflows while preserving source provenance and ambiguity.",
+        "Shipped role-aware surveys, researcher dashboards, protected review tooling, server-backed persistence, and approval-gated rule promotion with privacy and end-to-end validation built in.",
       ],
     },
     {

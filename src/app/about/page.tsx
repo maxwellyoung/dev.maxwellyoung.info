@@ -99,7 +99,9 @@ export default function AboutPage() {
               <span className="text-foreground font-medium">
                 Software Research Assistant
               </span>{" "}
-              at University of Auckland (Apr 2026 &ndash; Present, funded safer-medicines research)
+              at University of Auckland (Apr 2026 &ndash; Present; own software
+              delivery for Rx-Opt clinician decision-support and MRB-QoL
+              patient-reported outcomes research)
             </li>
             <li>
               <span className="text-foreground font-medium">

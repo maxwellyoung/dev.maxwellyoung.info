@@ -47,8 +47,8 @@ function createPdfContext(): PdfContext {
   const pageHeight = pdf.internal.pageSize.getHeight();
   const marginLeft = 40;
   const marginRight = 40;
-  const marginTop = 40;
-  const marginBottom = 40;
+  const marginTop = 32;
+  const marginBottom = 32;
 
   return {
     pdf,
@@ -231,7 +231,7 @@ function writeExperience(context: PdfContext) {
       context.y += 1;
     }
 
-    context.y += 6;
+    context.y += 5;
   }
 }
 
@@ -266,7 +266,7 @@ function writeSelectedWork(context: PdfContext) {
       context.contentWidth,
       10
     );
-    context.y += 6;
+    context.y += 5;
   }
 }
 
@@ -277,7 +277,7 @@ function writeEducation(context: PdfContext) {
     checkPageBreak(context, 40);
     setFont(context, 10, "bold");
     context.pdf.text(sanitizeForPDF(education.degree), context.marginLeft, context.y);
-    context.y += 12;
+    context.y += 10;
 
     setFont(context, 9, "normal", context.colors.gray);
     context.pdf.text(
