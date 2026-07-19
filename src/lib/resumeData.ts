@@ -129,10 +129,10 @@ export const resumeData: ResumeData = {
     {
       name: "T3 Code",
       descriptor: "Open-source contributor",
-      href: "https://github.com/pingdotgg/t3code/pull/3932",
-      date: "2 PRs merged Jul 2026",
+      href: "https://github.com/pingdotgg/t3code/pull/4112",
+      date: "3 PRs merged Jul 2026",
       summary:
-        "Contributed to a web and desktop interface for running multiple coding agents. Restored mobile multiline input and stopped new replies attaching to old messages after runtime restarts; verified the latter against 1,400 tests.",
+        "Landed three fixes across mobile input and server data integrity: multiline composition, runtime-safe message IDs, and canonical timestamps for correct cross-device ordering. The latest passed 4,756 tests.",
     },
   ],
   education: [
