@@ -19,7 +19,7 @@ export const openSourceContributions: OpenSourceContribution[] = [
     repository: "pingdotgg/t3code",
     role: "Contributor",
     date: "Ongoing",
-    href: "https://github.com/pingdotgg/t3code/pull/4112",
+    href: "https://github.com/pingdotgg/t3code/pulls?q=is%3Apr+is%3Amerged+author%3Amaxwellyoung",
     issueHref: "https://github.com/pingdotgg/t3code/issues/3983",
     eyebrow: "T3 Code · coding-agent interface · upstream contributor",
     title: "Improved mobile input and cross-device conversation reliability.",

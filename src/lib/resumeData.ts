@@ -129,7 +129,7 @@ export const resumeData: ResumeData = {
     {
       name: "T3 Code",
       descriptor: "Open-source contributor",
-      href: "https://github.com/pingdotgg/t3code/pull/4112",
+      href: "https://github.com/pingdotgg/t3code/pulls?q=is%3Apr+is%3Amerged+author%3Amaxwellyoung",
       date: "Ongoing",
       summary:
         "Contributed upstream fixes across mobile input and server data integrity, including multiline composition, runtime-safe message IDs, and reliable cross-device conversation ordering.",

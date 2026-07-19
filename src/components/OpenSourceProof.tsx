@@ -56,7 +56,7 @@ export function OpenSourceProof() {
             </div>
 
             <span className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-foreground transition-colors duration-200 group-hover:text-accent">
-              Read merged PR
+              View merged contributions
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </span>
           </div>
