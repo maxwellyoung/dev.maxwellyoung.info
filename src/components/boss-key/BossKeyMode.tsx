@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AlignLeft, BarChart3, Bold, Clipboard, Redo2, Save, Undo2 } from "lucide-react";
 import { BOSS_KEY_OPEN_EVENT, calculateForecast, getBossKeyAction, spreadsheetColumnName } from "@/lib/bossKey";
 import styles from "./BossKeyMode.module.css";
+import { formatCurrency, getWorkbookMeta, updateWorkbook, type WorkbookInputs } from "@/lib/portfolioUtilities";
 
 const engineeringForecast = calculateForecast(428_100, 5);
 const entries: Record<string, string> = {
@@ -19,12 +20,25 @@ const entries: Record<string, string> = {
 
 export function BossKeyMode() {
   const [active, setActive] = useState(false);
+  const [tab, setTab] = useState<"Forecast" | "Assumptions" | "Headcount">("Forecast");
+  const [workbook, setWorkbook] = useState<WorkbookInputs>({ growth: 5, headcount: 4, costPerHire: 100_000, baseline: 428_100 });
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const meta = getWorkbookMeta(new Date(), typeof navigator === "undefined" ? "en-NZ" : navigator.language);
+  const forecast = updateWorkbook(workbook, {});
 
   const closeRef = useRef<HTMLButtonElement>(null);
   const selectedRef = useRef<HTMLDivElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
   const restore = useRef({ title: "", overflow: "" });
   const close = useCallback(() => setActive(false), []);
+  const closeClick = (detail: number) => {
+    if (detail > 1) {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+      window.location.replace("https://www.office.com/");
+      return;
+    }
+    closeTimer.current = setTimeout(close, 220);
+  };
   const open = useCallback(() => {
     previousFocus.current = document.activeElement as HTMLElement | null;
     setActive(true);
@@ -47,10 +61,16 @@ export function BossKeyMode() {
   }, [open]);
 
   useEffect(() => {
+    const onUtilityOpen = () => close();
+    window.addEventListener("portfolio-utility:open", onUtilityOpen);
+    return () => window.removeEventListener("portfolio-utility:open", onUtilityOpen);
+  }, [close]);
+
+  useEffect(() => {
     const background = document.getElementById("site-content");
     if (active) {
       restore.current = { title: document.title, overflow: document.body.style.overflow };
-      document.title = "Q3 Operating Forecast.xlsx - Excel";
+      document.title = `${meta.filename} - Excel`;
       document.body.style.overflow = "hidden";
       background?.setAttribute("inert", "");
       background?.setAttribute("aria-hidden", "true");
@@ -74,20 +94,20 @@ export function BossKeyMode() {
       background?.removeAttribute("inert");
       background?.removeAttribute("aria-hidden");
     };
-  }, [active]);
+  }, [active, meta.filename]);
 
   return <>
 
     {active && <div className={styles.overlay} role="dialog" aria-modal="true" aria-label="Microsoft Excel spreadsheet decoy">
-      <div className={styles.titlebar}><span className={styles.appIcon}>X</span><Save size={15}/><Undo2 size={14}/><Redo2 size={14}/><span className={styles.filename}>Q3 Operating Forecast.xlsx <span>• Saved to this PC</span></span><div className={styles.windowButtons} aria-label="Window controls"><span aria-hidden="true">─</span><span aria-hidden="true">□</span><button ref={closeRef} className={styles.windowClose} onClick={close} aria-label="Close spreadsheet" title="Close"><span aria-hidden="true">×</span></button></div></div>
+      <div className={styles.titlebar}><span className={styles.appIcon}>X</span><Save size={15}/><Undo2 size={14}/><Redo2 size={14}/><span className={styles.filename}>{meta.filename} <span>• Fictional demo · {meta.date}</span></span><div className={styles.windowButtons} aria-label="Window controls"><span aria-hidden="true">─</span><span aria-hidden="true">□</span><button ref={closeRef} className={styles.windowClose} onClick={(event) => closeClick(event.detail)} aria-label="Close spreadsheet. Double click to leave site safely." title="Close"><span aria-hidden="true">×</span></button></div></div>
       <div className={styles.tabs}>{["File","Home","Insert","Page Layout","Formulas","Data","Review","View","Help"].map((tab,i)=><span key={tab} className={`${styles.tab} ${i===1?styles.tabActive:""}`}>{tab}</span>)}</div>
       <div className={styles.ribbon} aria-hidden="true"><div className={styles.group}><Clipboard className={styles.largeTool}/><small>Paste</small></div><div className={`${styles.group} ${styles.fontGroup}`}><div><select defaultValue="Aptos Narrow"><option>Aptos Narrow</option></select><select defaultValue="11"><option>11</option></select></div><div className={styles.toolRow}><Bold size={15}/><span>𝐼</span><span>U̲</span><span>▦</span></div></div><div className={styles.group}><AlignLeft size={17}/><span>≡</span><small>Wrap Text</small></div><div className={styles.group}><span className={styles.tool}>$</span><span className={styles.tool}>%</span><span>.00</span></div><div className={styles.group}><BarChart3 size={19}/><small>Conditional<br/>Formatting</small></div></div>
-      <div className={styles.formula}><div className={styles.nameBox}>E4</div><div className={styles.fx}>fx</div><div className={styles.formulaInput}>=D4*(1+5.0%)</div></div>
-      <div className={styles.sheetWrap}><div className={styles.sheet} aria-label="Q3 operating forecast worksheet">
+      <div className={styles.formula}><div className={styles.nameBox}>E4</div><div className={styles.fx}>fx</div><div className={styles.formulaInput}>=D4*(1+{workbook.growth.toFixed(1)}%) + approved headcount</div></div>
+      <div className={styles.sheetWrap}>{tab === "Forecast" ? <div className={styles.sheet} aria-label={`${meta.quarter} fictional operating forecast worksheet`}>
         <div className={styles.corner}/>{Array.from({length:14},(_,c)=><div className={styles.header} key={`h${c}`}>{spreadsheetColumnName(c)}</div>)}
-        {Array.from({length:32},(_,r)=><div key={`row-${r}`} style={{display:"contents"}}><div className={styles.rowHeader}>{r+1}</div>{Array.from({length:14},(_,c)=>{const key=`${r+1}-${c+1}`; const value=entries[key]||""; const heading=r===1&&c<7; const total=r===8&&c<7; const selected=r===3&&c===4; const spill=(r===0||r===12||r===13)&&c===0; return <div ref={selected?selectedRef:undefined} key={`${r}-${c}`} className={`${styles.cell} ${heading||total?styles.heading:""} ${c>=2&&c<=5?styles.currency:""} ${selected?styles.selected:""} ${spill?styles.spill:""}`}>{value}</div>})}</div>)}
-      </div></div>
-      <div className={styles.sheetbar}><span>＋</span><span>‹</span><span>›</span><span className={styles.sheetTab}>Forecast</span><span>Assumptions</span><span>Headcount</span></div>
+        {Array.from({length:32},(_,r)=><div key={`row-${r}`} style={{display:"contents"}}><div className={styles.rowHeader}>{r+1}</div>{Array.from({length:14},(_,c)=>{const key=`${r+1}-${c+1}`; const value=key === "4-5" ? formatCurrency(forecast.forecast, typeof navigator === "undefined" ? "en-NZ" : navigator.language) : entries[key]||""; const heading=r===1&&c<7; const total=r===8&&c<7; const selected=r===3&&c===4; const spill=(r===0||r===12||r===13)&&c===0; return <div ref={selected?selectedRef:undefined} key={`${r}-${c}`} className={`${styles.cell} ${heading||total?styles.heading:""} ${c>=2&&c<=5?styles.currency:""} ${selected?styles.selected:""} ${spill?styles.spill:""}`}>{value}</div>})}</div>)}
+      </div> : <div style={{padding:32,minWidth:620,color:"#222",background:"white",minHeight:420}}><h2>{tab}</h2><p>Fictional planning data. Edits remain in this browser session and drive the Forecast tab.</p>{tab === "Assumptions" ? <><label>Growth assumption (%)<br/><input aria-label="Growth assumption percentage" type="number" value={workbook.growth} onChange={e=>setWorkbook({...workbook,growth:Number(e.target.value)})}/></label><br/><br/><label>Baseline spend (NZD)<br/><input aria-label="Baseline spend" type="number" value={workbook.baseline} onChange={e=>setWorkbook({...workbook,baseline:Number(e.target.value)})}/></label></> : <><label>Planned headcount<br/><input aria-label="Planned headcount" type="number" min="0" value={workbook.headcount} onChange={e=>setWorkbook({...workbook,headcount:Number(e.target.value)})}/></label><br/><br/><label>Cost per additional hire (NZD)<br/><input aria-label="Cost per additional hire" type="number" value={workbook.costPerHire} onChange={e=>setWorkbook({...workbook,costPerHire:Number(e.target.value)})}/></label></>}<h3>Driven forecast: {formatCurrency(forecast.forecast, typeof navigator === "undefined" ? "en-NZ" : navigator.language)}</h3></div>}</div>
+      <div className={styles.sheetbar}><span>＋</span><span>‹</span><span>›</span>{(["Forecast","Assumptions","Headcount"] as const).map(name=><button key={name} onClick={()=>setTab(name)} className={tab===name?styles.sheetTab:""} aria-pressed={tab===name}>{name}</button>)}</div>
       <div className={styles.status}><span>Ready</span><span className={styles.statusRight}>Accessibility: Good&nbsp;&nbsp;&nbsp; 100% ◉</span></div>
     </div>}
   </>;

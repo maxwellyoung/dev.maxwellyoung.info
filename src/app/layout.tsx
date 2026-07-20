@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { CSPostHogProvider } from "./providers";
 import { PageTransitionProvider } from "@/components/providers/PageTransitionProvider";
 import { BossKeyMode } from "@/components/boss-key/BossKeyMode";
+import { UtilityShell } from "@/components/utilities/UtilityShell";
 
 export const metadata: Metadata = {
   title: {
@@ -174,6 +175,7 @@ export default function RootLayout({
           </ThemeProvider>
         </div>
         <BossKeyMode />
+        <UtilityShell />
       </body>
     </html>
   );

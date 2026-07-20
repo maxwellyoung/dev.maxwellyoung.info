@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BossKeyTrigger } from "@/components/boss-key/BossKeyTrigger";
+import { CommandHint } from "@/components/utilities/CommandHint";
 
 export function SiteFooter() {
   const links = [
@@ -24,7 +25,8 @@ export function SiteFooter() {
           </Link>
         ))}
       </div>
-      <div className="mt-2 flex justify-end">
+      <div className="mt-2 flex items-center justify-end gap-4">
+        <CommandHint />
         <BossKeyTrigger />
       </div>
     </footer>

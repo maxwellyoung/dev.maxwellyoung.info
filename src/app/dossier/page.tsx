@@ -1,0 +1,8 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { resumeData } from "@/lib/resumeData";
+import { flagshipProjects } from "@/lib/projects";
+import { PrintAction } from "./PrintAction";
+import "./dossier.css";
+export const metadata: Metadata = { title: "Dossier", description: "A print-ready public portfolio dossier for Maxwell Young." };
+export default function Dossier(){return <main className="dossier"><nav className="dossier-tools"><Link href="/">← Portfolio</Link><PrintAction /></nav><article><header><div><p>PUBLIC DOSSIER · 2026</p><h1>{resumeData.name}</h1><h2>{resumeData.title}</h2></div><address>{resumeData.contact.location}<br/>{resumeData.contact.email}<br/>{resumeData.contact.website}</address></header><p className="dossier-profile">{resumeData.profile}</p><section><h3>Experience</h3>{resumeData.experience.map(item=><div className="dossier-entry" key={`${item.company}-${item.title}`}><div><b>{item.title}</b><span>{item.company}</span></div><time>{item.date}</time><p>{item.summary}</p><ul>{item.responsibilities.map(line=><li key={line}>{line}</li>)}</ul></div>)}</section><section className="dossier-page"><h3>Flagship work</h3>{flagshipProjects.map(project=><div className="dossier-project" key={project.slug}><div><b>{project.name}</b><span>{project.launchStage || project.status}</span></div><p>{project.description}</p><ul>{project.impact?.slice(0,2).map(line=><li key={line}>{line}</li>)}</ul></div>)}</section><section><h3>Capabilities</h3><div className="dossier-skills">{resumeData.skills.map(skill=><div key={skill.category}><b>{skill.category}</b><p>{skill.items.join(" · ")}</p></div>)}</div></section><footer>Public authored portfolio data · dev.maxwellyoung.info</footer></article></main>}
