@@ -7,6 +7,7 @@ import { CSPostHogProvider } from "./providers";
 import { PageTransitionProvider } from "@/components/providers/PageTransitionProvider";
 import { BossKeyMode } from "@/components/boss-key/BossKeyMode";
 import { UtilityShell } from "@/components/utilities/UtilityShell";
+import { LabShell } from "@/components/lab/LabShell";
 
 export const metadata: Metadata = {
   title: {
@@ -176,6 +177,7 @@ export default function RootLayout({
         </div>
         <BossKeyMode />
         <UtilityShell />
+        <LabShell />
       </body>
     </html>
   );
