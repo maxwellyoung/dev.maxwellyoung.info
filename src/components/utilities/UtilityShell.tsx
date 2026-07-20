@@ -17,6 +17,7 @@ const commands: Command[] = [
   { id: "projects", label: "Projects", group: "Navigate", href: "/projects", keywords: ["work"] },
   { id: "about", label: "About", group: "Navigate", href: "/about", keywords: ["profile"] },
   { id: "dossier", label: "Print dossier", group: "Navigate", href: "/dossier", keywords: ["resume pdf"] },
+  { id: "quiz", label: "Personnel verification quiz", group: "Navigate", href: "/quiz", keywords: ["maxwell music trivia contested archive"] },
   { id: "meeting", label: "Meeting mode", group: "Present", mode: "meeting", keywords: ["presentation slides"] },
   { id: "source", label: "Selected source", group: "Inspect", mode: "source", keywords: ["code vscode public"] },
   { id: "status", label: "Delivery status", group: "Inspect", mode: "status", keywords: ["projects shipping"] },
