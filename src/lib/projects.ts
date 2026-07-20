@@ -265,6 +265,53 @@ const projects: Project[] = [
     ],
   },
   {
+    slug: "default-index",
+    name: "Default Index",
+    status: "Active",
+    category: "Experiment",
+    role: "Solo",
+    featured: false,
+    visibility: "public",
+    lifecycle: "current",
+    launchStage: "Live",
+    priority: 5.5,
+    description:
+      "Benchmark for measuring recurring defaults in model-generated frontends and testing the instructions that reduce them.",
+    longDescription:
+      "Default Index turns fuzzy frontend-quality criticism into an inspectable benchmark. The current release contains a deterministic 108-artifact calibration corpus across six briefs, three fixture profiles, and three instruction conditions, with source, desktop and mobile renders, detector evidence, uncertainty, and a blind-review queue retained behind every aggregate. The fixture results validate the benchmark machinery; they are not claims about real frontier models.",
+    tags: [
+      "React",
+      "TypeScript",
+      "Playwright",
+      "Benchmarking",
+      "Static Analysis",
+      "Research",
+    ],
+    stack: ["React", "TypeScript", "Vite", "Playwright", "Vitest"],
+    startDate: "2026-07-20",
+    screenshots: [
+      "/projectImages/default-index-lab.webp",
+      "/projectImages/default-index-corpus.webp",
+    ],
+    thumb: "/projectImages/default-index-cover.webp",
+    cover: {
+      variant: "image",
+      src: "/projectImages/default-index-cover.webp",
+      alt: "Default Index calibration release cover with a measured pattern distribution",
+      fit: "contain",
+      objectPosition: "center center",
+    },
+    links: {
+      live: "https://default-index.vercel.app",
+    },
+    link: "https://default-index.vercel.app",
+    impact: [
+      "A 108-artifact deterministic calibration proves the generation-to-analysis pipeline end to end",
+      "Every aggregate retains source, renders, detector evidence, uncertainty, and review state",
+      "An explicit fixture-only boundary keeps synthetic calibration separate from frontier-model claims",
+    ],
+  },
+  {
     slug: "holdspace",
     name: "Holdspace",
     status: "Active",
