@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BossKeyTrigger } from "@/components/boss-key/BossKeyTrigger";
 
 export function SiteFooter() {
   const links = [
@@ -22,6 +23,9 @@ export function SiteFooter() {
             {link.label}
           </Link>
         ))}
+      </div>
+      <div className="mt-2 flex justify-end">
+        <BossKeyTrigger />
       </div>
     </footer>
   );
