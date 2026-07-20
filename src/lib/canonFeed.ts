@@ -3,11 +3,8 @@
 // "currently into" card. Regenerate: bun run scripts/export-folio-feed.ts
 
 export interface CanonNowItem {
-  id: string;
   verb: string;
   title: string;
-  note: string;
-  href: string;
   creator?: string;
   year?: number;
   art?: { src: string; w: number; h: number };
@@ -21,7 +18,6 @@ export interface CanonLove {
 
 export interface CanonFeed {
   generatedAt: string;
-  sourceSyncedAt: string;
   totalWorks: number;
   regionCount: number;
   regions: string[];
@@ -31,7 +27,6 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-07-20",
-  "sourceSyncedAt": "2026-07-20T12:00:00Z",
   "totalWorks": 4061,
   "regionCount": 20,
   "regions": [
@@ -42,11 +37,8 @@ export const canonFeed: CanonFeed = {
   ],
   "now": [
     {
-      "id": "tmdb-the-paleface-1922",
       "verb": "watching",
       "title": "The Paleface",
-      "note": "A rotating watch from the current Canon snapshot.",
-      "href": "https://www.themoviedb.org/search?query=The%20Paleface%20Buster%20Keaton",
       "creator": "Buster Keaton",
       "art": {
         "src": "/canon/watched.jpg",
@@ -55,11 +47,8 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam-dave-the-diver",
       "verb": "playing",
       "title": "DAVE THE DIVER",
-      "note": "A rotating game from the current Canon snapshot.",
-      "href": "https://store.steampowered.com/app/1868140/DAVE_THE_DIVER/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -67,11 +56,8 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "openlibrary-becoming-steve-jobs",
       "verb": "reading",
       "title": "Becoming Steve Jobs: The Evolution of a Reckless Upstart into a Visionary Leader",
-      "note": "A rotating read from the current Canon snapshot.",
-      "href": "https://openlibrary.org/search?q=Becoming+Steve+Jobs",
       "creator": "Brent Schlender, Rick Tetzeli",
       "art": {
         "src": "/canon/reading.jpg",
@@ -80,12 +66,9 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic-fido-deathtoricky",
       "verb": "in rotation",
       "title": "fido",
       "creator": "deathtoricky",
-      "note": "A rotating listen from the current Canon snapshot.",
-      "href": "https://music.apple.com/us/search?term=fido%20deathtoricky",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
