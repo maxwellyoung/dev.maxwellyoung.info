@@ -87,6 +87,8 @@ export default function Home() {
               <span className="text-border/40">·</span>
               <AnimatedLink href="https://github.com/maxwellyoung" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
               <span className="text-border/40">·</span>
+              <AnimatedLink href="/os" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Maxwell OS</AnimatedLink>
+              <span className="text-border/40">·</span>
               <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
             </motion.nav>
           </div>
