@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4050,
   "regionCount": 20,
   "regions": [
-    "Hip-Hop & Alternative Sounds",
-    "Indie Adventure",
-    "Quirky Romantic Comedies",
-    "Indie & Alternative"
+    "Quirky Comedies & Coming-of-Age",
+    "Contemporary Pop & Rock",
+    "Indie Adventure & RPGs",
+    "Alternative Hip-Hop & R&B"
   ],
   "now": [
     {
