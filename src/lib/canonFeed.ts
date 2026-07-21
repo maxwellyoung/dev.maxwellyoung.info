@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4050,
   "regionCount": 20,
   "regions": [
-    "Cultural Commentary Documentaries",
-    "French New Wave & Drama",
-    "Contemporary Drama & Horror",
-    "Indie Adventure"
+    "Hip-Hop & Alternative Sounds",
+    "Indie Adventure",
+    "Quirky Romantic Comedies",
+    "Indie & Alternative"
   ],
   "now": [
     {
