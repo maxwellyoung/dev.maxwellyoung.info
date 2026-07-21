@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "fido",
-      "creator": "deathtoricky",
+      "title": "In Endless Awe & Agony",
+      "creator": "daine",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
