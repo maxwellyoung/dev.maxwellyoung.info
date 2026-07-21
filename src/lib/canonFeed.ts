@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4050,
   "regionCount": 20,
   "regions": [
-    "Cinematic Crime Dramas",
-    "Contemporary R&B Hits",
-    "Indie Adventure",
-    "Modern Alternative Sounds"
+    "Cultural Commentary Documentaries",
+    "French New Wave & Drama",
+    "Contemporary Drama & Horror",
+    "Indie Adventure"
   ],
   "now": [
     {
@@ -58,11 +58,11 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "reading",
-      "title": "Becoming Steve Jobs: The Evolution of a Reckless Upstart into a Visionary Leader",
-      "creator": "Brent Schlender, Rick Tetzeli",
+      "title": "Distributed Systems: Concepts and Design - Course Listening Edition - Slightly Abridged",
+      "creator": "George Coulouris, Jean Dollimore, Tim Kindberg, Gordon Blair",
       "art": {
         "src": "/canon/reading.jpg",
-        "w": 309,
+        "w": 360,
         "h": 360
       }
     },
