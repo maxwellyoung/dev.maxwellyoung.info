@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4048,
   "regionCount": 20,
   "regions": [
-    "Documentary Explorations",
+    "Investigative Documentaries",
+    "Artful Romantic Dramas",
     "Indie Adventure",
-    "Modern Indie Dramas",
-    "Pop & Alternative Hits"
+    "Tech & Philosophy Non-Fiction"
   ],
   "now": [
     {
