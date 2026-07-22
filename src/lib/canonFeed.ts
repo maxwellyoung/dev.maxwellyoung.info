@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4052,
   "regionCount": 20,
   "regions": [
-    "Contemporary Hip-Hop & Alternative",
-    "Indie Adventure",
-    "Musical Thrillers & Rom-Coms",
-    "Romantic Thrillers & Dramas"
+    "Dark Romantic Thrillers",
+    "Diverse Music Genres",
+    "Documentary Comedies",
+    "Tech & Society Insights"
   ],
   "now": [
     {
