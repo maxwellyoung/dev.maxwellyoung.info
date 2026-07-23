@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "alwayz be here",
-      "creator": "SkinnyBoi Cj",
+      "title": "1kiss",
+      "creator": "Maxwell Young",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
