@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4053,
   "regionCount": 20,
   "regions": [
-    "Contemporary Hip-Hop",
-    "Indie Adventure",
-    "Documentary Mysteries",
-    "Psychological Thrillers"
+    "Diverse Musical Styles",
+    "Contemporary Romantic Dramas",
+    "Indie Game Experiences",
+    "Cerebral Mysteries"
   ],
   "now": [
     {
