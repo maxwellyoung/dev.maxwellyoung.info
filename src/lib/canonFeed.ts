@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4055,
   "regionCount": 20,
   "regions": [
-    "Contemporary Hip-Hop Vibes",
-    "Intense Psychological Thrillers",
-    "Investigative Documentaries",
-    "Animated Sci-Fi Adventures"
+    "Documentary & Social Commentary",
+    "Indie Action RPGs",
+    "Musical Fantasy & Drama",
+    "Artistic Drama & Fantasy"
   ],
   "now": [
     {
