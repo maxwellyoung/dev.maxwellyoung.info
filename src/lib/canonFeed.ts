@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "1kiss",
-      "creator": "Maxwell Young",
+      "title": "Music, Fashion, Film",
+      "creator": "Charli xcx",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
