@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "Green",
-      "creator": "Lil Damn",
+      "title": "1kiss",
+      "creator": "Maxwell Young",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
