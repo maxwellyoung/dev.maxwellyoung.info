@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4058,
   "regionCount": 20,
   "regions": [
-    "French New Wave & Surrealism",
-    "Dramatic Horror & Relationship Stories",
-    "Indie Games & Casual Play",
-    "Classic Romance & Melodrama"
+    "Contemporary Dramas & Musicals",
+    "Cinematic Dramedies",
+    "Indie Adventure",
+    "Mainstream Pop & R&B"
   ],
   "now": [
     {
