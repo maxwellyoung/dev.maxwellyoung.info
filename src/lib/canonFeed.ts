@@ -68,12 +68,12 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "Rubber Soul",
-      "creator": "The Beatles",
+      "title": "Vol.2... Hard Knock Life",
+      "creator": "JAŸ-Z",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
-        "h": 360
+        "h": 355
       }
     }
   ],
