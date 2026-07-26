@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4062,
   "regionCount": 20,
   "regions": [
-    "Modern Romantic Dramas",
-    "Indie RPGs & Adventures",
-    "Experimental Hip-Hop & Pop",
-    "Action-Comedy Blockbusters"
+    "Modern Hip-Hop Fusion",
+    "Indie Action Adventures",
+    "Family-Friendly Comedies",
+    "Sci-Fi Mysteries & Comedic Fiction"
   ],
   "now": [
     {
