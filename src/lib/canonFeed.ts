@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "Hats",
-      "creator": "The Blue Nile",
+      "title": "Rubber Soul",
+      "creator": "The Beatles",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
