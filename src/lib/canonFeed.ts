@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4061,
   "regionCount": 20,
   "regions": [
-    "Modern Relationship Dramas",
-    "Heartfelt Dramedies",
-    "Narrative-Driven Indie",
-    "Blockbuster Adventures"
+    "Alternative & Indie Rock",
+    "Contemporary Hip-Hop & R&B",
+    "Indie Adventure",
+    "Classic & Art House Cinema"
   ],
   "now": [
     {
