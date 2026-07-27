@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4063,
   "regionCount": 20,
   "regions": [
-    "Alternative Hip-Hop & R&B",
-    "Dramatic Horror Comedies",
-    "Eclectic Rock & Pop",
-    "Family-Friendly Sci-Fi Adventures"
+    "Thriller Documentaries",
+    "Romantic Fantasy Dramas",
+    "Action-Adventure Comedies",
+    "Quirky Comedies & Dramas"
   ],
   "now": [
     {
