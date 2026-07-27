@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4065,
   "regionCount": 20,
   "regions": [
-    "Diverse Music Styles",
-    "Documentary Mysteries",
-    "Quirky Comedies",
-    "Indie Adventure"
+    "Eclectic Modern",
+    "Dark Comedy & Thrillers",
+    "Indie Adventure",
+    "Artistic Documentaries"
   ],
   "now": [
     {
