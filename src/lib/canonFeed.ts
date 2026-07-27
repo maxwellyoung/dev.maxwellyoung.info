@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4065,
   "regionCount": 20,
   "regions": [
-    "Psychological Thrillers",
-    "Contemporary Pop & Rock",
-    "Whimsical Comedies & Dramas",
-    "Indie Video"
+    "Diverse Music Styles",
+    "Documentary Mysteries",
+    "Quirky Comedies",
+    "Indie Adventure"
   ],
   "now": [
     {
