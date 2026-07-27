@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4062,
   "regionCount": 20,
   "regions": [
-    "Modern Hip-Hop Fusion",
-    "Indie Action Adventures",
-    "Family-Friendly Comedies",
-    "Sci-Fi Mysteries & Comedic Fiction"
+    "Alternative Hip-Hop & R&B",
+    "Dramatic Horror Comedies",
+    "Eclectic Rock & Pop",
+    "Family-Friendly Sci-Fi Adventures"
   ],
   "now": [
     {
@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "In My Lifetime",
-      "creator": "JAŸ-Z",
+      "title": "Music, Fashion, Film",
+      "creator": "Charli xcx",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
