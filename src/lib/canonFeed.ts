@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4064,
   "regionCount": 20,
   "regions": [
-    "Thriller Documentaries",
-    "Romantic Fantasy Dramas",
-    "Action-Adventure Comedies",
-    "Quirky Comedies & Dramas"
+    "Psychological Thrillers",
+    "Contemporary Pop & Rock",
+    "Whimsical Comedies & Dramas",
+    "Indie Video"
   ],
   "now": [
     {
