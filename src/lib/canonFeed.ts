@@ -48,8 +48,7 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "Balatro",
-      "creator": "LocalThunk",
+      "title": "Aimlabs",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
