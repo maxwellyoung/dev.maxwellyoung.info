@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4066,
   "regionCount": 20,
   "regions": [
-    "Eclectic Modern",
-    "Dark Comedy & Thrillers",
-    "Indie Adventure",
-    "Artistic Documentaries"
+    "Hip-Hop & Alternative Vibes",
+    "Eclectic Rock & Pop",
+    "Philosophical Non-Fiction",
+    "Indie Action Adventures"
   ],
   "now": [
     {
