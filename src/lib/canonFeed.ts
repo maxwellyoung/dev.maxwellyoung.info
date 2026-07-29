@@ -48,8 +48,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "Full Throttle Remastered",
+      "creator": "Double Fine Productions, Shiny Shoe",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
