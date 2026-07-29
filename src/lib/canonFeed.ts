@@ -58,11 +58,11 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "reading",
-      "title": "Distributed Systems: Concepts and Design - Course Listening Edition - Slightly Abridged",
-      "creator": "George Coulouris, Jean Dollimore, Tim Kindberg, Gordon Blair",
+      "title": "Unchain Your Brain: 10 Steps to Breaking the Addictions That Steal Your Life",
+      "creator": "Daniel G. Amen, David E. Smith",
       "art": {
         "src": "/canon/reading.jpg",
-        "w": 360,
+        "w": 270,
         "h": 360
       }
     },
