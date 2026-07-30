@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4068,
   "regionCount": 20,
   "regions": [
-    "Contemporary Pop Hits",
-    "Pop & Alternative Vibes",
-    "Tech & Society Insights",
-    "Indie Action Adventures"
+    "Genre-Blending Sounds",
+    "Critical Non-Fiction",
+    "Darkly Comedic Fantasies",
+    "Indie Adventure"
   ],
   "now": [
     {
