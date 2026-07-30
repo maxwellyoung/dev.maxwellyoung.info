@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "The Seams",
-      "creator": "James Ivy",
+      "title": "Carnavas",
+      "creator": "Silversun Pickups",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
