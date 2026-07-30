@@ -30,9 +30,9 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4067,
   "regionCount": 20,
   "regions": [
-    "Hip-Hop & Alternative Vibes",
-    "Eclectic Rock & Pop",
-    "Philosophical Non-Fiction",
+    "Contemporary Pop Hits",
+    "Pop & Alternative Vibes",
+    "Tech & Society Insights",
     "Indie Action Adventures"
   ],
   "now": [
@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "K-Bar",
-      "creator": "Ciarán",
+      "title": "The Seams",
+      "creator": "James Ivy",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
