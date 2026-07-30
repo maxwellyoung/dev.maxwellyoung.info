@@ -58,11 +58,11 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "reading",
-      "title": "Unchain Your Brain: 10 Steps to Breaking the Addictions That Steal Your Life",
-      "creator": "Daniel G. Amen, David E. Smith",
+      "title": "Mein Kampf",
+      "creator": "www.HitlerLibrary.org (C)Elite Minds Inc - Duplication Prohibited",
       "art": {
         "src": "/canon/reading.jpg",
-        "w": 270,
+        "w": 279,
         "h": 360
       }
     },
