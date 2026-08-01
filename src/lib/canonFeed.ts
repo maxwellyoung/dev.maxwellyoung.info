@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4071,
   "regionCount": 20,
   "regions": [
-    "Genre-Blending Sounds",
-    "Critical Non-Fiction",
-    "Darkly Comedic Fantasies",
-    "Indie Adventure"
+    "Dark Comedies & Thrillers",
+    "Crime Thrillers & Comedies",
+    "Modern Hip-Hop & R&B",
+    "Eclectic Pop & Rock"
   ],
   "now": [
     {
