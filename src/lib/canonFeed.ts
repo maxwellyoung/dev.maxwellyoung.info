@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "loveless",
-      "creator": "my bloody valentine",
+      "title": "Parachutes",
+      "creator": "Coldplay",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
