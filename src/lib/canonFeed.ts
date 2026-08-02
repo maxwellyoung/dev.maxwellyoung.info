@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4072,
   "regionCount": 20,
   "regions": [
-    "Dark Comedies & Thrillers",
-    "Crime Thrillers & Comedies",
-    "Modern Hip-Hop & R&B",
-    "Eclectic Pop & Rock"
+    "Cult Classics & Horror",
+    "Modern Drama & Thriller",
+    "Contemporary Hip-Hop & R&B",
+    "Indie Adventure"
   ],
   "now": [
     {
