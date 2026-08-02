@@ -68,7 +68,7 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "Wolfgang Amadeus Phoenix",
+      "title": "It's Never Been Like That",
       "creator": "Phoenix",
       "art": {
         "src": "/canon/rotation.jpg",
