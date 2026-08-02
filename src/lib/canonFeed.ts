@@ -38,8 +38,8 @@ export const canonFeed: CanonFeed = {
   "now": [
     {
       "verb": "watching",
-      "title": "Maddie's Secret",
-      "creator": "John Early",
+      "title": "The Paleface",
+      "creator": "Buster Keaton",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 240,
