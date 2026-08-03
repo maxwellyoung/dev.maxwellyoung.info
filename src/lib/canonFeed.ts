@@ -30,9 +30,9 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4073,
   "regionCount": 20,
   "regions": [
-    "Cult Classics & Horror",
-    "Modern Drama & Thriller",
-    "Contemporary Hip-Hop & R&B",
+    "Modern Hip-Hop & R&B",
+    "Documentary Crime & Mystery",
+    "Modern Dramas & Documentaries",
     "Indie Adventure"
   ],
   "now": [
