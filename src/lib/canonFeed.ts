@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "GIRLY POP",
-      "creator": "Bby Kell",
+      "title": "It's Never Been Like That",
+      "creator": "Phoenix",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
