@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4077,
   "regionCount": 20,
   "regions": [
-    "Classic Romantic Comedies",
-    "Thought-Provoking Documentaries",
-    "Indie Adventure",
-    "Psychological Thrillers"
+    "Rock / Pop · 1990s",
+    "Drama / Comedy · 1980s",
+    "Comedy / Drama · 2010s",
+    "Action / Indie · 2010s"
   ],
   "now": [
     {
