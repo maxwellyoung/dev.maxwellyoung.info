@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4078,
   "regionCount": 20,
   "regions": [
-    "Contemporary Hip-Hop",
+    "Dramatic Horror",
     "Indie Adventure",
-    "Classic Film Comedies",
-    "Modern Romantic Dramas"
+    "Dark Comedy & Sci-Fi",
+    "Alternative Rock Vibes"
   ],
   "now": [
     {
@@ -48,8 +48,7 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "Joe Danger",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
