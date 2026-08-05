@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4080,
   "regionCount": 20,
   "regions": [
-    "Modern Romantic Dramas",
-    "Indie Action & Adventure",
-    "Contemporary Hip-Hop & Pop",
-    "Classic Drama & Mystery"
+    "Cult Classics & Crime",
+    "Contemporary Indie",
+    "Indie Adventure",
+    "Art House & Surrealism"
   ],
   "now": [
     {
@@ -48,7 +48,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "Indiana Jones and the Great Circle",
+      "title": "Counter-Strike 2",
+      "creator": "Valve",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
