@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4079,
   "regionCount": 20,
   "regions": [
-    "Alternative & Indie Rock",
-    "Indie Adventure",
-    "Contemporary Hip-Hop & Pop",
-    "Cult Dramas & Comedies"
+    "Diverse Rock & Pop",
+    "Contemporary Hip-Hop & R&B",
+    "Quirky Indie Dramedies",
+    "Indie Action & Adventure"
   ],
   "now": [
     {
