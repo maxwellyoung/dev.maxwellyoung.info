@@ -48,8 +48,7 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "Spelunky 2",
-      "creator": "Mossmouth, BlitWorks",
+      "title": "Indiana Jones and the Great Circle",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
