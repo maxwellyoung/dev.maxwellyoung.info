@@ -28,12 +28,12 @@ export interface CanonFeed {
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-06",
   "totalWorks": 4085,
-  "regionCount": 20,
+  "regionCount": 21,
   "regions": [
-    "Cult Classics & Crime",
-    "Contemporary Indie",
-    "Indie Adventure",
-    "Art House & Surrealism"
+    "Eclectic Music Mix",
+    "Tech & Society Insights",
+    "Contemporary Hip-Hop Scene",
+    "Indie Adventure"
   ],
   "now": [
     {
