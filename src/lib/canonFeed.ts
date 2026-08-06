@@ -48,8 +48,7 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "Indiana Jones and the Great Circle",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -58,11 +57,11 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "reading",
-      "title": "Mein Kampf",
-      "creator": "www.HitlerLibrary.org (C)Elite Minds Inc - Duplication Prohibited",
+      "title": "Distributed Systems: Concepts and Design - Course Listening Edition - Slightly Abridged",
+      "creator": "George Coulouris, Jean Dollimore, Tim Kindberg, Gordon Blair",
       "art": {
         "src": "/canon/reading.jpg",
-        "w": 279,
+        "w": 360,
         "h": 360
       }
     },
