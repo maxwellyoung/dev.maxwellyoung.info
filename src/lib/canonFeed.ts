@@ -26,7 +26,7 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-08-06",
+  "generatedAt": "2026-08-07",
   "totalWorks": 4087,
   "regionCount": 21,
   "regions": [
@@ -48,8 +48,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "Spelunky 2",
+      "creator": "Mossmouth, BlitWorks",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
