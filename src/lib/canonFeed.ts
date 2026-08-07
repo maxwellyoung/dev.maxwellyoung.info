@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4088,
   "regionCount": 21,
   "regions": [
-    "Alternative & Indie Rock",
-    "Indie Games & RPGs",
-    "Dramatic Comedies & Romances",
-    "Crime & Action Thrillers"
+    "Indie Adventure",
+    "Genre-Blending",
+    "Psychological Thrillers",
+    "Experimental Documentaries"
   ],
   "now": [
     {
