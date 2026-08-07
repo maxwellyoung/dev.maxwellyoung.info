@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4088,
   "regionCount": 21,
   "regions": [
-    "Hip-Hop/Rap / Alternative · 2010s",
-    "Action / Indie · 2010s",
-    "Drama / Romance · 1980s",
-    "Drama / Comedy · 2010s"
+    "Alternative & Indie Rock",
+    "Indie Games & RPGs",
+    "Dramatic Comedies & Romances",
+    "Crime & Action Thrillers"
   ],
   "now": [
     {
