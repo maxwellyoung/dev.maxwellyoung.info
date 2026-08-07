@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4087,
   "regionCount": 21,
   "regions": [
-    "Mainstream Pop & Rock",
-    "Contemporary R&B & Hip-Hop",
-    "Indie Adventure",
-    "Psychological Horror Dramas"
+    "Classic Rock & Jazz",
+    "Romantic Dramas & Comedies",
+    "Documentary & Sci-Fi Comedy",
+    "Crime & Dark Comedy"
   ],
   "now": [
     {
