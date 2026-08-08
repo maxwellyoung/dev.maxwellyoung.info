@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4089,
   "regionCount": 21,
   "regions": [
-    "Eclectic Music Genres",
     "Indie Adventure",
-    "Thrilling Dramas & Comedies",
-    "Meta-Documentary & Narrative"
+    "Psychological Thrillers & Horror",
+    "Surreal Comedies & Fantasies",
+    "Crime & Romantic Dramas"
   ],
   "now": [
     {
