@@ -48,8 +48,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "The Jackbox Party Pack 9",
-      "creator": "Jackbox Games, Inc.",
+      "title": "TowerFall Ascension",
+      "creator": "Maddy Makes Games Inc., Extremely OK Games, Ltd.",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
