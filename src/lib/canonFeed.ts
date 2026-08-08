@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4092,
   "regionCount": 21,
   "regions": [
-    "Romantic Crime Dramas",
-    "Indie Adventure",
-    "Modern Romantic Dramas",
-    "Introspective Documentaries"
+    "Psychological Thrillers",
+    "Indie & Action",
+    "Modern Hip-Hop & R&B",
+    "Classic Film Noir"
   ],
   "now": [
     {
