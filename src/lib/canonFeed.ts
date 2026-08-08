@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4090,
   "regionCount": 21,
   "regions": [
-    "Indie Adventure",
-    "Psychological Thrillers & Horror",
-    "Surreal Comedies & Fantasies",
-    "Crime & Romantic Dramas"
+    "Romantic & Fantasy Drama",
+    "Dramatic Comedies & Thrillers",
+    "Indie Action & RPGs",
+    "Classic & Modern Drama"
   ],
   "now": [
     {
@@ -48,8 +48,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "The Jackbox Party Pack 9",
+      "creator": "Jackbox Games, Inc.",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
