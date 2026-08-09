@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4093,
   "regionCount": 21,
   "regions": [
-    "Eclectic Music Mixtures",
-    "Indie Adventure",
-    "Contemporary Hip-Hop Fusion",
-    "Drama / Comedy · 1970s"
+    "Drama / Comedy · 2000s",
+    "Rock / Pop · 2000s",
+    "Technology / Non-fiction · 2010s",
+    "Drama / Comedy · 2010s"
   ],
   "now": [
     {
