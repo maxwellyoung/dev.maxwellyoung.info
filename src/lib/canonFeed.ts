@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4092,
   "regionCount": 21,
   "regions": [
-    "Psychological Thrillers",
-    "Indie & Action",
-    "Modern Hip-Hop & R&B",
-    "Classic Film Noir"
+    "Contemporary Hip-Hop & Pop",
+    "Indie Adventure",
+    "Dark Comedies & Dramas",
+    "Classic Film Noir & Romance"
   ],
   "now": [
     {
