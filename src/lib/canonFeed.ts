@@ -58,8 +58,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "reading",
-      "title": "Concise Computer Vision: An Introduction into Theory and Algorithms - Course Listening Edition - Slightly Abridged",
-      "creator": "Reinhard Klette",
+      "title": "Distributed Systems: Concepts and Design - Course Listening Edition - Slightly Abridged",
+      "creator": "George Coulouris, Jean Dollimore, Tim Kindberg, Gordon Blair",
       "art": {
         "src": "/canon/reading.jpg",
         "w": 360,
