@@ -2,15 +2,12 @@
 
 import { useEffect } from "react";
 import { useTheme } from "next-themes";
+import Resume from "./resume/page";
 import { ProjectsShowcase } from "./projects/page";
 import { motion } from "framer-motion";
 import { AnimatedLink } from "@/components/ui/animated-link";
-import { CurrentlyInto } from "@/components/CurrentlyInto";
 import { container, item } from "@/lib/motion";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
-import { CompanyLogoStudy } from "@/components/CompanyLogoStudy";
-import { OpenSourceProof } from "@/components/OpenSourceProof";
-import { BossKeyTrigger } from "@/components/boss-key/BossKeyTrigger";
 
 export default function Home() {
   const { setTheme } = useTheme();
@@ -36,33 +33,26 @@ export default function Home() {
     <div className="min-h-screen text-foreground p-4 md:p-8 overflow-x-hidden">
       <main id="main-content" className="w-full max-w-2xl mx-auto overflow-x-hidden">
         <motion.section
-          className="flex min-h-[54vh] flex-col items-start justify-center space-y-6 p-4 md:min-h-[58vh] md:space-y-8 md:p-8"
+          className="flex min-h-[70vh] flex-col items-start justify-center space-y-8 p-4 md:p-8"
           variants={container.hero}
           initial={false}
           animate="visible"
         >
           <motion.header className="w-full" variants={item.fadeUp}>
-            <h1 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl">
-              Maxwell Young
-            </h1>
-            <p className="mt-1 max-w-xl text-lg font-light leading-snug tracking-tight text-muted-foreground md:text-xl">
-              Design engineer for mobile products and interface systems.
+            <h1 className="text-xl font-medium text-foreground">Maxwell Young</h1>
+            <p className="text-xl font-light leading-tight tracking-tight text-muted-foreground">
+              Design Engineer
             </p>
           </motion.header>
 
           <div className="leading-relaxed space-y-4">
             <motion.p
-              className="max-w-xl text-foreground"
+              className="text-foreground"
               variants={item.fadeUp}
             >
-              I design and ship React Native products that need to stay clear,
-              fast, and reliable on real devices. At{" "}
+              Design Engineer at{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-              —a creative-research platform for blogging, private archives, and
-              multimedia moodboards—I led the mobile app from its first build
-              through launch and now lead its ongoing implementation and release
-              hardening. Independently, I take products from interaction design
-              through release at{" "}
+              . I run{" "}
               <TrackedActionLink
                 href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_body"
                 external
@@ -72,63 +62,46 @@ export default function Home() {
               >
                 ninetynine digital
               </TrackedActionLink>
+              , where I&rsquo;m building{" "}
+              <AnimatedLink href="https://liner.ninetynine.digital" external>Liner</AnimatedLink>
+              . Music as{" "}
+              <AnimatedLink href="https://music.maxwellyoung.info" external>Maxwell Young</AnimatedLink>
               .
             </motion.p>
 
 
             <motion.nav
-              className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground"
+              className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground"
               variants={item.fadeUp}
               aria-label="Primary navigation"
             >
-              <AnimatedLink href="#projects" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Work</AnimatedLink>
+              <AnimatedLink href="#projects" className="text-muted-foreground hover:text-foreground">Work</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="/resume" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Resume</AnimatedLink>
+              <AnimatedLink href="#resume" className="text-muted-foreground hover:text-foreground">Resume</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="https://github.com/maxwellyoung" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
+              <AnimatedLink href="/contact" className="text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
               <span className="text-border/40">·</span>
-              <AnimatedLink href="/os" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Maxwell OS</AnimatedLink>
-              <span className="text-border/40">·</span>
-              <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
+              <AnimatedLink href="https://github.com/maxwellyoung" external className="text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
             </motion.nav>
           </div>
         </motion.section>
-
-        <CompanyLogoStudy className="mb-14 px-4 md:px-8" />
 
         <section id="projects">
           <ProjectsShowcase embedded />
         </section>
 
-        <OpenSourceProof />
+        <section id="resume">
+          <Resume embedded />
+        </section>
 
         <footer className="mt-16 border-t border-[hsl(var(--border))] pt-8">
-          <div className="mb-8">
-            <CurrentlyInto />
-          </div>
-
-          <div className="flex flex-col gap-4 border-t border-border/50 pt-5 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-muted-foreground">
-              <TrackedActionLink
-                href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_footer"
-                external
-                eventName="ninetynine_outbound_clicked"
-                eventProps={{ placement: "home_footer", source: "devfolio" }}
-                className="relative inline-block text-muted-foreground transition-colors duration-150 underline decoration-muted-foreground/30 underline-offset-2 hover:text-foreground hover:decoration-accent/60"
-              >
-                ninetynine.digital
-              </TrackedActionLink>
-              {" "}&mdash; independent studio
-            </p>
-            <div className="flex items-center gap-2">
-              <BossKeyTrigger />
-              <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center rounded-sm px-2 text-sm text-muted-foreground hover:bg-muted/30 hover:text-foreground">
-                Contact
-              </AnimatedLink>
-              <AnimatedLink href="/privacy" className="inline-flex min-h-11 items-center rounded-sm px-2 text-sm text-muted-foreground hover:bg-muted/30 hover:text-foreground">
-                Privacy
-              </AnimatedLink>
-            </div>
+          <div className="flex items-center gap-4">
+            <AnimatedLink href="/contact" className="text-xs text-muted-foreground hover:text-foreground">
+              Contact
+            </AnimatedLink>
+            <AnimatedLink href="/privacy" className="text-xs text-muted-foreground hover:text-foreground">
+              Privacy
+            </AnimatedLink>
           </div>
         </footer>
       </main>
