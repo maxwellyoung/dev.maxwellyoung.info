@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4094,
   "regionCount": 21,
   "regions": [
-    "Contemporary Drama & Horror",
-    "Indie Adventure & RPGs",
-    "Dark Comedy & Drama",
-    "Art House Drama & Romance"
+    "Indie Adventure",
+    "Indie Rock & Pop",
+    "Psychological Mysteries",
+    "Experimental Horror Comedies"
   ],
   "now": [
     {
@@ -58,8 +58,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "reading",
-      "title": "Concise Computer Vision: An Introduction into Theory and Algorithms - Course Listening Edition - Slightly Abridged",
-      "creator": "Reinhard Klette",
+      "title": "Distributed Systems: Concepts and Design - Course Listening Edition - Slightly Abridged",
+      "creator": "George Coulouris, Jean Dollimore, Tim Kindberg, Gordon Blair",
       "art": {
         "src": "/canon/reading.jpg",
         "w": 360,
