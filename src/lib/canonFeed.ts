@@ -38,8 +38,8 @@ export const canonFeed: CanonFeed = {
   "now": [
     {
       "verb": "watching",
-      "title": "Smiley Face",
-      "creator": "Gregg Araki",
+      "title": "The Paleface",
+      "creator": "Buster Keaton",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 240,
