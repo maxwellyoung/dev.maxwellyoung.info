@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4096,
   "regionCount": 21,
   "regions": [
-    "Drama / Comedy · 1970s",
-    "Action / Indie · 2010s",
-    "Documentary / Comedy · 2010s",
-    "Rock / Pop · 2000s"
+    "Indie Adventure",
+    "European Art House",
+    "Intellectual Documentaries",
+    "90s Indie Dramas"
   ],
   "now": [
     {
