@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4097,
   "regionCount": 21,
   "regions": [
-    "Hip-Hop/Rap / Alternative · 2020s",
-    "Drama / Comedy · 2010s",
-    "Comedy / Adventure · 2010s",
-    "Documentary / Crime · 2010s"
+    "Eclectic Rock & Pop",
+    "Quirky Comedy & Indie",
+    "Indie Action & RPGs",
+    "Family Animation & Comedy"
   ],
   "now": [
     {
