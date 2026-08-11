@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4096,
   "regionCount": 21,
   "regions": [
-    "Indie Adventure",
-    "European Art House",
-    "Intellectual Documentaries",
-    "90s Indie Dramas"
+    "Cult Horror Comedies",
+    "Documentary & Mystery",
+    "90s Indie Dramas",
+    "Romantic Dramedies"
   ],
   "now": [
     {
