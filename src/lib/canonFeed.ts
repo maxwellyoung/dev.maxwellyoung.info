@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4097,
   "regionCount": 21,
   "regions": [
-    "Contemporary Music Vibes",
-    "Crime Thrillers & Dark Comedies",
-    "Dramatic Romantic Thrillers",
-    "Dramatic Thrillers & Rom-Coms"
+    "Hip-Hop/Rap / Alternative · 2020s",
+    "Drama / Comedy · 2010s",
+    "Comedy / Adventure · 2010s",
+    "Documentary / Crime · 2010s"
   ],
   "now": [
     {
