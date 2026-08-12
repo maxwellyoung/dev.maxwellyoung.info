@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "$TARFACE",
-      "creator": "$TARFACE & Tyga",
+      "title": "three.one",
+      "creator": "tendai",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
