@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4115,
   "regionCount": 21,
   "regions": [
-    "Dark Comedy Dramas",
-    "Dramatic Thrillers & Romances",
-    "Eclectic Rock & Pop",
-    "Contemporary Alternative"
+    "Classic Rock & Pop",
+    "Dramatic Thrillers",
+    "Family-Friendly Adventures",
+    "Indie Adventure"
   ],
   "now": [
     {
