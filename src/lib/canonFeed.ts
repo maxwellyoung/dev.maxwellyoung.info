@@ -26,14 +26,14 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-08-12",
+  "generatedAt": "2026-08-13",
   "totalWorks": 4116,
   "regionCount": 21,
   "regions": [
-    "Eclectic Rock & Pop",
-    "Contemporary Pop Sounds",
-    "Indie RPGs",
-    "Quirky Dramedies"
+    "Whimsical Dramedies",
+    "Contemporary Hip-Hop & R&B",
+    "Indie Adventure",
+    "Quirky Comedies & Dramas"
   ],
   "now": [
     {
