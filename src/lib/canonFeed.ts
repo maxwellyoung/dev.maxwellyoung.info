@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4118,
   "regionCount": 21,
   "regions": [
-    "Eclectic Rock & Pop",
-    "Character-Driven Dramas",
-    "Contemporary Hip-Hop Fusion",
-    "Coming-of-Age Fantasies"
+    "Classic Rock & Pop Hits",
+    "Classic Romance & Drama",
+    "Contemporary R&B & Hip-Hop",
+    "Indie Action RPGs"
   ],
   "now": [
     {
