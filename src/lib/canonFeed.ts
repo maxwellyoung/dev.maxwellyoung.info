@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4116,
   "regionCount": 21,
   "regions": [
-    "Indie Rock & Alternative",
-    "Psychological Thrillers & Dramas",
-    "Surreal Dramas & Horror",
-    "Hip-Hop & Alternative"
+    "Diverse Rock & Pop",
+    "Eclectic Indie",
+    "Indie Adventure",
+    "Surreal Dark Comedies"
   ],
   "now": [
     {
