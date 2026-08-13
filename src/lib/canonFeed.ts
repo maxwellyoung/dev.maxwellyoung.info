@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4116,
   "regionCount": 21,
   "regions": [
-    "Whimsical Dramedies",
-    "Contemporary Hip-Hop & R&B",
-    "Indie Adventure",
-    "Quirky Comedies & Dramas"
+    "Rock / Pop · 1990s",
+    "Hip-Hop/Rap / Alternative · 2020s",
+    "Drama / Comedy · 2010s",
+    "Action / Indie · 2010s"
   ],
   "now": [
     {
