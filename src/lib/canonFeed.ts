@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "Chuck Timely & The Hourglass",
-      "creator": "ROLE MODEL",
+      "title": "Too High",
+      "creator": "Fimiguerrero",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
