@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4119,
   "regionCount": 21,
   "regions": [
-    "Eclectic Rock & Pop",
-    "Classic Dramas & Comedies",
-    "Contemporary Hip-Hop & Pop",
-    "Indie Action & Adventure"
+    "Hip-Hop/Rap / Alternative · 2020s",
+    "Action / Indie · 2010s",
+    "Drama / Romance · 1960s",
+    "Drama / Comedy · 1990s"
   ],
   "now": [
     {
