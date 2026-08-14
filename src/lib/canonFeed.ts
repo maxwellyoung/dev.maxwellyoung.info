@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4120,
   "regionCount": 21,
   "regions": [
-    "Hip-Hop/Rap / Alternative · 2020s",
-    "Action / Indie · 2010s",
-    "Drama / Romance · 1960s",
-    "Drama / Comedy · 1990s"
+    "Contemporary Dramatic Tales",
+    "Genre-Bending Pop Rock",
+    "Eclectic Indie Sounds",
+    "Indie Adventure"
   ],
   "now": [
     {
@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "She’s the Best",
-      "creator": "Troye Sivan",
+      "title": "Real Fruit Ice Cream",
+      "creator": "Lontalius",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
