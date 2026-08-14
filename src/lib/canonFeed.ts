@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4119,
   "regionCount": 21,
   "regions": [
-    "Classic Rock & Pop Hits",
-    "Classic Romance & Drama",
-    "Contemporary R&B & Hip-Hop",
-    "Indie Action RPGs"
+    "Eclectic Rock & Pop",
+    "Classic Dramas & Comedies",
+    "Contemporary Hip-Hop & Pop",
+    "Indie Action & Adventure"
   ],
   "now": [
     {
@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "Too High",
-      "creator": "Fimiguerrero",
+      "title": "Real Fruit Ice Cream",
+      "creator": "Lontalius",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
