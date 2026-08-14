@@ -30,9 +30,9 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4121,
   "regionCount": 21,
   "regions": [
-    "Contemporary Dramatic Tales",
-    "Genre-Bending Pop Rock",
-    "Eclectic Indie Sounds",
+    "Classic Rock & Pop",
+    "Modern Romantic Dramas",
+    "Contemporary Hip-Hop & Pop",
     "Indie Adventure"
   ],
   "now": [
