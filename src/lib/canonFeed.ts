@@ -48,8 +48,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "DEATH STRANDING DIRECTOR'S CUT",
+      "creator": "KOJIMA PRODUCTIONS",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
