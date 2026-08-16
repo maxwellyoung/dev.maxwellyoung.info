@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4113,
   "regionCount": 21,
   "regions": [
-    "Eclectic Pop & Rock",
-    "Classic Romantic Dramas",
-    "Psychological Thrillers",
-    "Contemporary Alternative Sounds"
+    "Eclectic Hip-Hop & Pop",
+    "Darkly Comic Dramas",
+    "Indie Adventure",
+    "Introspective Dramas"
   ],
   "now": [
     {
@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "Too High",
-      "creator": "Fimiguerrero",
+      "title": "It's Never Been Like That",
+      "creator": "Phoenix",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
