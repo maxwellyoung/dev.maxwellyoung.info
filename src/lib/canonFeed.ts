@@ -48,8 +48,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "playing",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "Bread & Fred",
+      "creator": "SandCastles Studio",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
