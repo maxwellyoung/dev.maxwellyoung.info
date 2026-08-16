@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "It's Never Been Like That",
-      "creator": "Phoenix",
+      "title": "Too High",
+      "creator": "Fimiguerrero",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
