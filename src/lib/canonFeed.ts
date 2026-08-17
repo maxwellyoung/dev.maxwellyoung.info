@@ -38,8 +38,8 @@ export const canonFeed: CanonFeed = {
   "now": [
     {
       "verb": "watching",
-      "title": "The Invite",
-      "creator": "Olivia Wilde",
+      "title": "Liza: A Truly Terrific Absolutely True Story",
+      "creator": "Bruce David Klein",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 240,
