@@ -31,9 +31,9 @@ export const canonFeed: CanonFeed = {
   "regionCount": 21,
   "regions": [
     "Rock / Pop · 1990s",
-    "Hip-Hop/Rap / Alternative · 2020s",
+    "Drama / Comedy · 2010s",
     "Action / Indie · 2010s",
-    "Drama / Comedy · 2010s"
+    "Hip-Hop/Rap / Alternative · 2020s"
   ],
   "now": [
     {
