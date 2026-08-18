@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4117,
   "regionCount": 21,
   "regions": [
-    "Genre-Blending Pop Hits",
-    "Romantic Dark Comedies",
-    "Eclectic Urban Beats",
-    "Documentary Portraits"
+    "Rock / Pop · 1990s",
+    "Drama / Comedy · 2010s",
+    "Action / Indie · 2010s",
+    "Hip-Hop/Rap / Alternative · 2020s"
   ],
   "now": [
     {
