@@ -58,11 +58,11 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "reading",
-      "title": "The Aeneid (Unb)",
-      "creator": "Virgil",
+      "title": "Measure What Matters: How Google, Bono, and the Gates Foundation Rock the World with OKRs (Unabridged)",
+      "creator": "John Doerr",
       "art": {
         "src": "/canon/reading.jpg",
-        "w": 333,
+        "w": 360,
         "h": 360
       }
     },
