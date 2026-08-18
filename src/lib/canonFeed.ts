@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "333",
-      "creator": "Tinashe",
+      "title": "Real Fruit Ice Cream",
+      "creator": "Lontalius",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
