@@ -100,9 +100,9 @@ export const caseStudies: Record<string, CaseStudy> = {
     outcome:
       "A shared recovery system now spans web and native entry points, with a signed iOS share extension, Android share configuration, explicit privacy disclosures, and regression coverage around evidence parsing and confirmation. The web Recovery Desk is deployed while the next native release remains in development.",
     proofPoints: [
-      { label: "Recovery sources", value: "6+" },
-      { label: "Auto-confirmed nights", value: "0" },
-      { label: "Native share targets", value: "iOS + Android" },
+      { label: "Platforms", value: "Web + iOS + Android" },
+      { label: "Diary writes", value: "User-confirmed only" },
+      { label: "Canonical data", value: "On-device" },
     ],
     avoidedPatterns: [
       "Treating listening history, a photo cluster, or a ticket receipt as proof of attendance.",
@@ -251,9 +251,9 @@ export const caseStudies: Record<string, CaseStudy> = {
     outcome:
       "A working canvas tool for sequencing, note-taking, and audio playback in one interface.",
     proofPoints: [
-      { label: "Custom tldraw Shapes", value: "3+" },
+      { label: "Platforms", value: "Web + iOS" },
       { label: "Architecture", value: "Local-first" },
-      { label: "Real-time Sync", value: "Convex" },
+      { label: "Sync", value: "Convex" },
     ],
     avoidedPatterns: [
       "Treating tracks as files in a folder rather than objects in a composition workspace.",

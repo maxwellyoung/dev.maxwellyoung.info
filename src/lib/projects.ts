@@ -9,15 +9,12 @@ type Role =
   | "Studio Collaboration"
   | "Research Assistant";
 type Category =
-  | "Client"
-  | "Personal"
-  | "Studio"
-  | "Experiment"
-  | "Work"
-  | "School"
-  | "studio"
+  | "work"
   | "personal"
-  | "research";
+  | "studio"
+  | "experiment"
+  | "research"
+  | "school";
 type Visibility = "public" | "parked" | "private";
 type Lifecycle = "current" | "completed" | "archived" | "sensitive";
 type LaunchStage = "Live" | "In development" | "Case study" | "Client shipped" | "Production work";
@@ -27,15 +24,6 @@ interface BuildLogEntry {
   whatWorks: string[];
   nextMilestone?: string;
   openQuestion?: string;
-}
-
-interface Metrics {
-  lighthouseMobile?: number;
-  lcpMs?: number;
-  cls?: number;
-  bundleKB?: number;
-  ocrAccuracyPct?: number;
-  scraperRefreshMin?: number;
 }
 
 interface Links {
@@ -82,7 +70,6 @@ export interface Project {
   thumb?: string;
   cover?: ProjectCover;
   impact?: string[];
-  metrics?: Metrics;
   buildLog?: BuildLogEntry[];
   caseStudySlug?: string;
   link?: string;
@@ -94,7 +81,7 @@ const projects: Project[] = [
     slug: "silk",
     name: "Silk",
     status: "Active",
-    category: "Work",
+    category: "work",
     role: "Lead",
     featured: true,
     visibility: "public",
@@ -102,9 +89,9 @@ const projects: Project[] = [
     launchStage: "Production work",
     priority: 0,
     description:
-      "Led Silk's React Native app from its first build through launch; now leading ongoing implementation and release hardening.",
+      "Silk's React Native app for iOS and Android — mobile lead from the first build through launch and every release since.",
     longDescription:
-      "Silk is a platform for blogging, private archives, and multimedia moodboards. I built and led its React Native app from the first mobile foundation through launch, turning product direction into production systems. I continue to lead architecture, interaction design, performance, accessibility, regression coverage, and release hardening across iOS and Android.",
+      "Silk is a platform for blogging, private archives, and multimedia moodboards. I built its mobile app from the first React Native foundation to launch, and I still own it: architecture, interaction design, performance, and accessibility, with every release checked on real devices before it ships.",
     tags: ["React Native", "React", "TypeScript"],
     stack: ["React Native", "React", "TypeScript", "Expo"],
     startDate: "2025-09-01",
@@ -121,9 +108,9 @@ const projects: Project[] = [
       objectPosition: "center",
     },
     impact: [
-      "Built and led the mobile product from its initial React Native foundation through launch",
-      "Continue to lead architecture, performance, accessibility, and regression hardening",
-      "Carry ongoing releases through real-device verification on iOS and Android",
+      "Built the mobile app from zero to launch as mobile lead",
+      "Own architecture, performance, and accessibility across iOS and Android",
+      "Every release verified on real devices before it ships",
     ],
   },
   {
@@ -224,15 +211,15 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 3.2,
+    priority: 5,
     description:
-      "Deterministic static scanner for agent skills, packages, extensions, repositories, and CI workflows.",
+      "Static scanner that checks agent skills, packages, extensions, and CI workflows before you run them.",
     longDescription:
-      "SkillScan is an evidence-first security tool for reviewing agent skills, MCP servers, npm packages, VS Code extensions, GitHub Actions, repositories, and pasted code before running them locally. Twenty-nine deterministic checks surface risky shell, network, filesystem, credential, package-hook, CI-permission, and prompt-injection patterns with severity, snippets, and remediation notes.",
+      "SkillScan reviews agent skills, MCP servers, npm packages, VS Code extensions, GitHub Actions, repositories, and pasted code before you run them locally. Its checks surface risky shell, network, filesystem, credential, package-hook, CI-permission, and prompt-injection patterns, and every finding points at the file and line that triggered it.",
     tags: [
       "Next.js",
       "TypeScript",
@@ -260,9 +247,9 @@ const projects: Project[] = [
     link: "https://skillscan-rouge.vercel.app",
     codeLink: "https://github.com/maxwellyoung/skillscan",
     impact: [
-      "29 deterministic checks exercised against 13 committed malicious fixtures",
-      "A 300-file local corpus tunes false positives without replacing manual review",
-      "Scans packages, extensions, repositories, workflows, and direct code with file-level evidence",
+      "Every finding carries a file, line, snippet, and fix note",
+      "Verdicts stay explicit about what static analysis cannot prove",
+      "One engine covers packages, extensions, repositories, workflows, and pasted code",
     ],
     caseStudySlug: "skillscan",
   },
@@ -270,17 +257,17 @@ const projects: Project[] = [
     slug: "default-index",
     name: "Default Index",
     status: "Active",
-    category: "Experiment",
+    category: "experiment",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 3.3,
+    priority: 6,
     description:
-      "Benchmark for measuring recurring defaults in model-generated frontends and testing the instructions that reduce them.",
+      "Benchmark that measures recurring design defaults in model-generated frontends.",
     longDescription:
-      "Default Index turns fuzzy frontend-quality criticism into an inspectable benchmark. The current release contains a deterministic 108-artifact calibration corpus across six briefs, three fixture profiles, and three instruction conditions, with source, desktop and mobile renders, detector evidence, uncertainty, and a blind-review queue retained behind every aggregate. The fixture results validate the benchmark machinery; they are not claims about real frontier models.",
+      "Default Index turns 'AI frontends all look the same' into something measurable. Fixed briefs, preserved source and renders, rule-based detectors, and a blind-review queue sit behind every chart, so any disagreement has an artifact to look at. The current release is a synthetic calibration corpus that proves the pipeline; it makes no claims about real models yet.",
     tags: [
       "React",
       "TypeScript",
@@ -308,9 +295,9 @@ const projects: Project[] = [
     },
     link: "https://default-index.vercel.app",
     impact: [
-      "A 108-artifact deterministic calibration proves the generation-to-analysis pipeline end to end",
-      "Every aggregate retains source, renders, detector evidence, uncertainty, and review state",
-      "An explicit fixture-only boundary keeps synthetic calibration separate from frontier-model claims",
+      "Every chart links back to the source and renders that produced it",
+      "Fixed briefs and blind review replace screenshot arguments",
+      "Calibration corpus is labelled synthetic — no model claims until real runs land",
     ],
     caseStudySlug: "default-index",
   },
@@ -324,7 +311,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 6,
+    priority: 7,
     description:
       "Native iOS queue for keeping one item in focus while the rest waits in the background.",
     longDescription:
@@ -362,7 +349,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "current",
     launchStage: "In development",
-    priority: 7,
+    priority: 9,
     description:
       "Family-history workspace that turns documents, photos, and voice notes into reviewed family records.",
     longDescription:
@@ -410,7 +397,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "current",
     launchStage: "In development",
-    priority: 8,
+    priority: 10,
     description:
       "Mobile receipt scanner that turns grocery receipts into item history, price memory, and calmer pre-shop comparison.",
     longDescription:
@@ -456,7 +443,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 7,
+    priority: 8,
     description:
       "Expo news app that turns daily reading into a bounded six-story ritual with a mood check.",
     longDescription:
@@ -510,11 +497,11 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
     launchStage: "In development",
-    priority: 2,
+    priority: 4,
     description:
       "Local-first concert diary that rebuilds your history from evidence, then asks before remembering.",
     longDescription:
@@ -560,7 +547,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 9,
+    priority: 11,
     description:
       "Swipe-to-learn spaced repetition for code — master a codebase by doomscrolling through it.",
     longDescription:
@@ -601,7 +588,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "completed",
     launchStage: "Client shipped",
-    priority: 4,
+    priority: 2,
     description:
       "Portfolio for Ch'lita Collins — Fashion Editor-at-Large at i-D — built around fast image browsing and quiet editorial motion.",
     longDescription:
@@ -696,7 +683,7 @@ const projects: Project[] = [
     category: "studio",
     role: "Frontend",
     featured: false,
-    visibility: "public",
+    visibility: "parked",
     lifecycle: "completed",
     launchStage: "Client shipped",
     priority: 13,
@@ -738,7 +725,7 @@ const projects: Project[] = [
     category: "personal",
     role: "Solo",
     featured: false,
-    visibility: "public",
+    visibility: "parked",
     lifecycle: "archived",
     launchStage: "Case study",
     priority: 14,
@@ -793,16 +780,16 @@ export const supportingProjects = rankedProjects.filter(
 export function getProjectContextLabel(
   project: Pick<Project, "category" | "client">
 ): string {
-  if (project.category === "Work" || project.category === "research") {
+  if (project.category === "work" || project.category === "research") {
     return "Work";
   }
-  if (project.category === "School") {
+  if (project.category === "school") {
     return "School R&D";
   }
-  if (project.category === "personal" || project.category === "Personal") {
+  if (project.category === "personal") {
     return "Personal Product";
   }
-  if (project.client || project.category === "studio" || project.category === "Studio") {
+  if (project.client || project.category === "studio") {
     return "Client Work";
   }
   return "Experiment";
