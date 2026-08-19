@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4120,
   "regionCount": 21,
   "regions": [
-    "Drama / Comedy · 2010s",
-    "Drama / Romance · 1950s",
-    "Drama / Comedy · 2000s",
-    "Adventure / Action · 2010s"
+    "Timeless Rock Anthems",
+    "Darkly Comedic Dramas",
+    "Character-Driven Dramas",
+    "Eclectic Indie Sounds"
   ],
   "now": [
     {
@@ -68,8 +68,8 @@ export const canonFeed: CanonFeed = {
     },
     {
       "verb": "in rotation",
-      "title": "ephemera",
-      "creator": "amil raja",
+      "title": "Too High",
+      "creator": "Fimiguerrero",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
