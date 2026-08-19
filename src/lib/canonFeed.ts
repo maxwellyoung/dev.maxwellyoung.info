@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4120,
   "regionCount": 21,
   "regions": [
-    "Timeless Rock Anthems",
-    "Darkly Comedic Dramas",
-    "Character-Driven Dramas",
-    "Eclectic Indie Sounds"
+    "Surreal Dramedies & Fantasies",
+    "Classic Crime & Romance",
+    "Indie Action RPGs",
+    "Cult Classics & Thrillers"
   ],
   "now": [
     {
