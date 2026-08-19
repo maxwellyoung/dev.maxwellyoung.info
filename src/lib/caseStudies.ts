@@ -40,7 +40,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     slug: "afterlight",
     title: "Afterlight",
     subtitle: "Recover a concert history without surrendering it",
-    heroImage: "/projectImages/afterlight-1.webp",
+    heroImage: "/projectImages/afterlight-cover-2.webp",
     timeline: "2025 — Present",
     role: "Solo Designer & Developer",
     tools: ["React Native", "Expo", "TypeScript", "AsyncStorage"],
@@ -125,6 +125,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     slug: "whakapapa",
     title: "Whakapapa",
     subtitle: "Family history software built around source material",
+    heroImage: "/projectImages/whakapapa-cover-2.webp",
     timeline: "2025 — Present",
     role: "Solo Designer & Developer",
     tools: ["Next.js 16", "Supabase", "Claude API", "Tesseract.js", "React Flow", "dagre", "Framer Motion"],
@@ -202,6 +203,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     slug: "liner",
     title: "Liner",
     subtitle: "A canvas-based workspace for music",
+    heroImage: "/projectImages/liner-cover-2.webp",
     timeline: "2025 — Present",
     role: "Solo Designer & Developer",
     tools: ["Next.js", "tldraw", "Convex", "Clerk", "Zustand", "Tailwind CSS"],
@@ -273,7 +275,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     slug: "vape-quit-coach",
     title: "Vape Quit Coach",
     subtitle: "An iOS app for quitting vaping",
-    heroImage: "/projectImages/vqc-1.webp",
+    heroImage: "/projectImages/vqc-cover-2.webp",
     timeline: "2024 — Present",
     role: "Solo Designer & Developer",
     tools: ["React Native", "Expo", "TypeScript"],
@@ -411,6 +413,183 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Performance is a design choice. A slow portfolio undermines the work it's showing.",
     ],
     nextProject: { slug: "liner", title: "Liner" },
+  },
+  skillscan: {
+    slug: "skillscan",
+    title: "SkillScan",
+    subtitle: "Inspect the agent tools before they inspect your machine",
+    heroImage: "/projectImages/skillscan-cover.webp",
+    timeline: "2026 — Present",
+    role: "Solo Designer & Developer",
+    team: "Independent",
+    tools: ["Next.js", "TypeScript", "Node.js", "Static Analysis", "Vercel"],
+    liveUrl: "https://skillscan-rouge.vercel.app",
+    githubUrl: "https://github.com/maxwellyoung/skillscan",
+    overview:
+      "SkillScan is an evidence-first static scanner for agent skills, MCP servers, npm packages, VS Code extensions, GitHub Actions, repositories, and pasted code. It gives each finding a severity, source location, snippet, and remediation note, then turns the combined evidence into a plain-language install verdict. The product is deliberately deterministic: its claims can be traced to visible rules and committed fixtures rather than an opaque model judgment.",
+    challenge:
+      "Agent tooling crosses unusually powerful trust boundaries. A useful skill may ask for shell, filesystem, network, and credential access—the same capabilities a malicious package needs. Simple keyword matching produces noise, while a reassuring score can imply more certainty than static analysis earns. The product had to surface dangerous combinations quickly without turning a first-pass scan into a safety badge.",
+    constraints: [
+      "Every public claim must be reproducible from code, tests, fixtures, or the returned scan evidence.",
+      "The scanner cannot execute untrusted artifacts as part of analysis.",
+      "A clear result must still communicate static analysis limits and preserve the manual-review gate.",
+      "Submitted source should not become a retained application dataset; sensitive work needs a local path.",
+    ],
+    decisionLog: [
+      {
+        problem: "A model-generated verdict would be flexible but difficult to reproduce or audit.",
+        decision: "Built a deterministic rule engine whose findings retain category, severity, file, line, snippet, and remediation.",
+        tradeoff: "Novel attacks require new rules, and intent cannot be inferred as freely as it could be with a model.",
+        impact: "A developer can inspect why a score changed and test the exact behavior locally.",
+      },
+      {
+        problem: "Package and extension metadata alone can look benign while executable artifacts contain the actual risk.",
+        decision: "Fetch and unpack supported npm and OpenVSX artifacts, then scan their relevant source and manifest files.",
+        tradeoff: "Artifact limits and provider availability can make a scan partial.",
+        impact: "Results describe the code being installed, with explicit warnings when evidence is incomplete.",
+      },
+      {
+        problem: "A numeric score can accidentally read as permission to install.",
+        decision: "Pair the score with Block install, Manual review, or Looks clear, plus an explicit explanation of what a clear result cannot prove.",
+        tradeoff: "The interface is more cautious than scanners that optimize for a simple green badge.",
+        impact: "The product keeps the human decision visible at the moment of highest confidence.",
+      },
+    ],
+    approach: [
+      {
+        title: "Model capabilities, not product labels",
+        description:
+          "Rules focus on consequential behavior—secret access, outbound requests, shell execution, destructive commands, persistence, filesystem reach, unsafe package hooks, and CI permissions—so the same engine can inspect several artifact types.",
+      },
+      {
+        title: "Preserve evidence through the pipeline",
+        description:
+          "Repository and registry adapters normalize files into one scanner input. Findings keep their origin and the API reports partial fetches rather than silently treating missing files as clean.",
+      },
+      {
+        title: "Tune both sides of the error",
+        description:
+          "Thirteen committed malicious fixtures exercise known hostile combinations. A separate 300-file local corpus catches rules that punish ordinary application and documentation code.",
+      },
+      {
+        title: "Make the cautious path the usable path",
+        description:
+          "The web interface accepts a URL or direct source, returns a quick verdict, and keeps detailed categories expandable. The same scanner is available through the repository and a reusable Codex skill for local-first review.",
+      },
+    ],
+    outcome:
+      "SkillScan now runs 29 deterministic checks across direct code, agent skills, repositories, package artifacts, extensions, and CI workflows. Its 13 adversarial tests pass, its public method and privacy boundary are visible in the product, and every result keeps manual review in the loop.",
+    proofPoints: [
+      { label: "Deterministic checks", value: "29" },
+      { label: "Malicious fixtures", value: "13 / 13" },
+      { label: "False-positive corpus", value: "300 files" },
+    ],
+    avoidedPatterns: [
+      "Calling a clean static result proof that an artifact is safe.",
+      "Hiding evidence behind a single proprietary risk score.",
+      "Executing untrusted packages in order to decide whether they are trustworthy.",
+      "Sending local source to a model when deterministic analysis can run first.",
+    ],
+    nextIterations: [
+      "Export machine-readable findings for CI and code-review workflows.",
+      "Expand the real-incident corpus and measure rule precision over time.",
+      "Improve branch, monorepo, minified-code, and dependency-chain coverage.",
+    ],
+    learnings: [
+      "The most useful scanner output is not a score; it is a short path from suspicion to source evidence.",
+      "False-positive work is part of the security model because noisy tools teach people to ignore them.",
+      "Partial evidence must be a first-class result state, not a footnote.",
+      "A product can be decisive about dangerous behavior while staying honest about what it cannot prove.",
+    ],
+    nextProject: { slug: "default-index", title: "Default Index" },
+  },
+  "default-index": {
+    slug: "default-index",
+    title: "Default Index",
+    subtitle: "Turn frontend taste arguments into an inspectable benchmark",
+    heroImage: "/projectImages/default-index-cover.webp",
+    timeline: "2026 — Present",
+    role: "Solo Designer & Researcher",
+    team: "Independent",
+    tools: ["React", "TypeScript", "Vite", "Playwright", "Vitest"],
+    liveUrl: "https://default-index.vercel.app",
+    overview:
+      "Default Index is a technical investigation into recurring design patterns in model-generated frontends and the instructions that may reduce them. It replaces screenshot-level taste claims with a registered protocol, artifact capture, rule-based detectors, uncertainty, and blind review. The current public release is a deterministic calibration corpus: 108 artifacts prove that the measurement system works end to end, but they are not presented as findings about frontier models.",
+    challenge:
+      "Critiques of generated interfaces often collapse into a familiar but weak claim: everything looks the same. Without fixed briefs, preserved source, comparable render conditions, explicit detectors, and human review, that claim cannot distinguish a model default from a prompt effect, framework convention, or evaluator preference. The investigation needed a way to make design-pattern evidence inspectable before spending compute on provider comparisons.",
+    constraints: [
+      "Fixture calibration must remain visibly separate from claims about real models or providers.",
+      "Every aggregate needs a path back to source, desktop and mobile renders, detector evidence, and review state.",
+      "Design-pattern detectors are proxies with uncertainty, not objective measurements of interface quality.",
+      "Provider runs and their cost remain gated until the protocol and smoke tests justify them.",
+    ],
+    decisionLog: [
+      {
+        problem: "Starting with live model runs would spend compute before the analysis pipeline had been calibrated.",
+        decision: "Created deterministic fixture profiles and ran every condition through the complete generation-to-analysis system first.",
+        tradeoff: "The first release validates the apparatus rather than answering the headline model question.",
+        impact: "Pipeline failures and misleading detectors can be corrected before expensive evidence is collected.",
+      },
+      {
+        problem: "A pattern count without retained artifacts is impossible to challenge.",
+        decision: "Keep source, responsive renders, detector evidence, uncertainty, and blind-review state behind every aggregate.",
+        tradeoff: "The corpus is heavier and the interface must support drill-down as well as summary.",
+        impact: "A reader can move from a chart to the exact artifact that produced it.",
+      },
+      {
+        problem: "One interface could not serve overview, detector debugging, and artifact comparison equally well.",
+        decision: "Built three complementary surfaces: Observatory for the release view, Lab for pattern analysis, and Corpus for artifact inspection.",
+        tradeoff: "The product has a steeper information architecture than a single dashboard.",
+        impact: "Each mode answers a distinct question without discarding the shared evidence model.",
+      },
+    ],
+    approach: [
+      {
+        title: "Register the comparison",
+        description:
+          "Six briefs, three fixture profiles, and three instruction conditions define the calibration matrix. Stable identifiers and manifests keep conditions comparable instead of relying on hand-picked screenshots.",
+      },
+      {
+        title: "Capture the full artifact",
+        description:
+          "Each run retains source plus desktop and mobile renders. Playwright standardizes capture so responsive behavior can be inspected alongside the code that produced it.",
+      },
+      {
+        title: "Detect patterns with uncertainty",
+        description:
+          "Static and visual detectors record their evidence rather than emitting unexplained labels. Ambiguous cases can enter a blind-review queue instead of being forced into a confident aggregate.",
+      },
+      {
+        title: "Separate calibration from claims",
+        description:
+          "The product labels the current corpus as synthetic fixture evidence throughout the method and interface. Real provider findings remain a future, separately gated phase.",
+      },
+    ],
+    outcome:
+      "The calibration release contains 108 deterministic artifacts across six briefs, three fixture profiles, and three instruction conditions. It demonstrates the complete measurement, rendering, detection, aggregation, and review pipeline while keeping the central frontier-model question explicitly unanswered.",
+    proofPoints: [
+      { label: "Calibration artifacts", value: "108" },
+      { label: "Registered briefs", value: "6" },
+      { label: "Evidence surfaces", value: "3" },
+    ],
+    avoidedPatterns: [
+      "Treating synthetic fixtures as evidence about current frontier models.",
+      "Publishing pattern percentages without the artifacts and detector evidence behind them.",
+      "Using visual taste as if it were a context-free quality metric.",
+      "Spending provider compute before validating the protocol and failure modes.",
+    ],
+    nextIterations: [
+      "Run a minimal provider smoke test only after compute and credentials are explicitly approved.",
+      "Calibrate detector thresholds against blinded human review.",
+      "Publish real-model comparisons as a new evidence layer, not a rewrite of the fixture release.",
+    ],
+    learnings: [
+      "A benchmark is a product: its state labels, drill-down paths, and uncertainty language shape what readers believe.",
+      "Calibration can be a meaningful release when it proves the method and refuses the headline claim.",
+      "Design-pattern criticism becomes more useful when every disagreement has an artifact to inspect.",
+      "Security and design research share a discipline: preserve evidence, expose limits, and keep the human judgment visible.",
+    ],
+    nextProject: { slug: "skillscan", title: "SkillScan" },
   },
   dayle: {
     slug: "dayle",

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AnimatedLink } from "@/components/ui/animated-link";
@@ -36,7 +37,23 @@ export default function AboutPage() {
           >
             &larr; Back
           </Link>
-          <h1 className="text-3xl font-medium mt-8 mb-4">About</h1>
+          <div className="mt-8 flex items-end justify-between gap-6">
+            <div>
+              <p className="mb-2 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                Auckland, Aotearoa
+              </p>
+              <h1 className="text-3xl font-medium">About</h1>
+            </div>
+            <Image
+              src="/profile_work.webp"
+              alt="Maxwell Young"
+              width={112}
+              height={112}
+              sizes="112px"
+              priority
+              className="h-24 w-24 flex-shrink-0 rounded-sm object-cover ring-1 ring-inset ring-border sm:h-28 sm:w-28"
+            />
+          </div>
         </header>
 
         <section className="space-y-4 leading-relaxed text-muted-foreground">

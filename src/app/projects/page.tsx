@@ -80,11 +80,11 @@ function ProjectRow({
         />
         {isFlagship ? (
           <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
-            <div className="relative h-20 w-24 sm:h-24 sm:w-36 flex-shrink-0 overflow-hidden rounded-sm ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:ring-[hsl(var(--accent))]/45 group-hover:shadow-[0_14px_32px_rgba(0,0,0,0.08)] dark:group-hover:shadow-[0_14px_32px_rgba(0,0,0,0.25)]">
+            <div className="relative h-[5.5rem] w-28 sm:h-28 sm:w-44 flex-shrink-0 overflow-hidden rounded-sm ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:ring-[hsl(var(--accent))]/45 group-hover:shadow-[0_14px_32px_rgba(0,0,0,0.08)] dark:group-hover:shadow-[0_14px_32px_rgba(0,0,0,0.25)]">
               <ProjectMedia
                 project={p}
                 variant="row"
-                sizes="(max-width: 640px) 96px, 144px"
+                sizes="(max-width: 640px) 112px, 176px"
               />
             </div>
 
@@ -123,6 +123,13 @@ function ProjectRow({
           </div>
         ) : (
           <div className="flex items-center gap-3 w-full overflow-hidden">
+            <div
+              aria-hidden="true"
+              className="relative h-11 w-14 flex-shrink-0 overflow-hidden rounded-sm bg-muted ring-1 ring-inset ring-[hsl(var(--border))] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:ring-[hsl(var(--accent))]/35"
+            >
+              <ProjectMedia project={p} variant="row" sizes="56px" />
+            </div>
+
             <div className="min-w-0 flex-1 overflow-hidden">
               <ProjectHoverPreview project={p}>
                 <div className="flex min-w-0 cursor-pointer items-baseline gap-3">
@@ -274,7 +281,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
         <div className="space-y-10">
           <ProjectSection
             title={embedded ? "Flagship work" : "Selected work"}
-            description="Production interface work, shipped mobile products, a spatial music tool, and editorial client work."
+            description="Production products, interface systems, and agentic technical investigations with inspectable evidence."
             projects={flagshipProjects}
             expandedProject={expandedProject}
             onToggleExpand={setExpandedProject}
@@ -298,7 +305,10 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
       </div>
 
       <Dialog open={isCarouselOpen} onOpenChange={setIsCarouselOpen}>
-        <DialogContent className="max-w-none w-screen h-screen p-0">
+        <DialogContent
+          hideCloseButton
+          className="max-w-none w-screen h-screen p-0"
+        >
           <VisuallyHidden.Root>
             <DialogTitle>
               {selectedProject?.name ?? "Project"} Screenshots
