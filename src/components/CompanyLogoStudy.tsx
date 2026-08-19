@@ -13,6 +13,9 @@ type CompanyLogo = {
   colorMode?: "image" | "mask";
   colorClassName?: string;
   hoverSurfaceClassName: string;
+  // Logos that only read on a light surface skip the color reveal in dark
+  // mode; hover brightens the mono mark on a subtle lift instead.
+  darkHoverMono?: boolean;
 };
 
 const companyLogos: CompanyLogo[] = [
@@ -33,7 +36,8 @@ const companyLogos: CompanyLogo[] = [
     logoSrc: "/company-logos/university-of-auckland.svg",
     logoBoxClassName: "h-10 w-full max-w-[11.5rem] sm:h-11 sm:max-w-[12rem]",
     hoverSurfaceClassName:
-      "hover:bg-[#f6f7ff] dark:hover:bg-[#f6f7ff]",
+      "hover:bg-[#f6f7ff] dark:hover:bg-white/[0.04]",
+    darkHoverMono: true,
   },
   {
     company: "Auckland University of Technology",
@@ -56,7 +60,8 @@ const companyLogos: CompanyLogo[] = [
     logoSrc: "/company-logos/spark.svg",
     logoBoxClassName: "h-10 w-full max-w-[8.75rem] sm:h-11 sm:max-w-[9rem]",
     hoverSurfaceClassName:
-      "hover:bg-[#fbf7ff] dark:hover:bg-[#fbf7ff]",
+      "hover:bg-[#fbf7ff] dark:hover:bg-white/[0.04]",
+    darkHoverMono: true,
   },
 ];
 
@@ -120,10 +125,21 @@ export function CompanyLogoStudy({
                 logo.logoBoxClassName
               )}
             >
-              <span className={monoLogoClass} style={maskStyle(logo.logoSrc)} />
+              <span
+                className={cn(
+                  monoLogoClass,
+                  logo.darkHoverMono &&
+                    "dark:group-hover:scale-100 dark:group-hover:opacity-90"
+                )}
+                style={maskStyle(logo.logoSrc)}
+              />
               {logo.colorMode === "mask" ? (
                 <span
-                  className={cn(colorLogoClass, logo.colorClassName)}
+                  className={cn(
+                    colorLogoClass,
+                    logo.colorClassName,
+                    logo.darkHoverMono && "dark:hidden"
+                  )}
                   style={maskStyle(logo.logoSrc)}
                 />
               ) : (
@@ -133,7 +149,10 @@ export function CompanyLogoStudy({
                   width={240}
                   height={80}
                   sizes="(min-width: 640px) 25vw, 50vw"
-                  className={colorLogoClass}
+                  className={cn(
+                    colorLogoClass,
+                    logo.darkHoverMono && "dark:hidden"
+                  )}
                 />
               )}
             </span>
