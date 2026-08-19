@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4123,
   "regionCount": 21,
   "regions": [
-    "Eclectic Music Mix",
-    "Romantic Comedies",
-    "Family-Friendly Fantasies",
-    "Action-Adventure Comedies"
+    "Eclectic Rock Vibes",
+    "Genre-Blending Pop",
+    "Open-World Adventures",
+    "Psychological Thrillers"
   ],
   "now": [
     {
