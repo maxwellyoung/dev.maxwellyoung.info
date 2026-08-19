@@ -8,7 +8,7 @@ import { EducationItem } from "@/components/EducationItem";
 import { AnimatedLink } from "@/components/ui/animated-link";
 import { SiteFooter } from "@/components/SiteFooter";
 
-export default function Resume() {
+export default function Resume({ embedded = false }: { embedded?: boolean }) {
   const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownload = async () => {
@@ -23,8 +23,8 @@ export default function Resume() {
     }
   };
 
-  return (
-    <main id="main-content" className="relative w-full max-w-2xl mx-auto p-6">
+  const content = (
+    <>
       <header className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row">
         <div className="flex min-w-0 items-center gap-4">
           <Image
@@ -37,9 +37,15 @@ export default function Resume() {
             priority
           />
           <div className="min-w-0">
-            <h1 className="text-xl font-medium text-foreground">
-              {resumeData.name}
-            </h1>
+            {embedded ? (
+              <h2 className="text-xl font-medium text-foreground">
+                {resumeData.name}
+              </h2>
+            ) : (
+              <h1 className="text-xl font-medium text-foreground">
+                {resumeData.name}
+              </h1>
+            )}
             <p className="text-sm text-muted-foreground">{resumeData.title}</p>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
               {resumeData.profile}
@@ -159,6 +165,16 @@ export default function Resume() {
           ))}
         </div>
       </section>
+    </>
+  );
+
+  if (embedded) {
+    return <div className="relative w-full max-w-2xl mx-auto p-6">{content}</div>;
+  }
+
+  return (
+    <main id="main-content" className="relative w-full max-w-2xl mx-auto p-6">
+      {content}
       <SiteFooter />
     </main>
   );
