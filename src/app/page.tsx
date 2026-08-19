@@ -1,8 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
-import { useTheme } from "next-themes";
-import { ProjectsShowcase } from "./projects/page";
+import { ProjectsShowcase } from "@/components/ProjectsShowcase";
 import { motion } from "framer-motion";
 import { AnimatedLink } from "@/components/ui/animated-link";
 import { CurrentlyInto } from "@/components/CurrentlyInto";
@@ -12,25 +10,6 @@ import { CompanyLogoStudy } from "@/components/CompanyLogoStudy";
 import { OpenSourceProof } from "@/components/OpenSourceProof";
 
 export default function Home() {
-  const { setTheme } = useTheme();
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    requestAnimationFrame(() => {
-      setTheme(mediaQuery.matches ? "dark" : "light");
-    });
-    const onChange = (e: MediaQueryListEvent) => setTheme(e.matches ? "dark" : "light");
-    try {
-      mediaQuery.addEventListener("change", onChange);
-      return () => mediaQuery.removeEventListener("change", onChange);
-    } catch {
-      // @ts-ignore Safari <14 fallback
-      mediaQuery.addListener(onChange);
-      // @ts-ignore
-      return () => mediaQuery.removeListener(onChange);
-    }
-  }, [setTheme]);
-
   return (
     <div className="min-h-screen text-foreground p-4 md:p-8 overflow-x-hidden">
       <main id="main-content" className="w-full max-w-2xl mx-auto overflow-x-hidden">
@@ -54,14 +33,12 @@ export default function Home() {
               className="max-w-xl text-foreground"
               variants={item.fadeUp}
             >
-              I design and ship React Native products that need to stay clear,
-              fast, and reliable on real devices. At{" "}
-              <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
-              —a creative-research platform for blogging, private archives, and
-              multimedia moodboards—I led the mobile app from its first build
-              through launch and now lead its ongoing implementation and release
-              hardening. Independently, I take products from interaction design
-              through release at{" "}
+              I&apos;m most useful where interaction design and implementation
+              stay close together: shaping the model, building the interface,
+              and verifying it on real devices. At{" "}
+              <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>{" "}
+              I lead the React Native app — first build through launch and
+              every release since. Independently, I ship my own apps through{" "}
               <TrackedActionLink
                 href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_body"
                 external
