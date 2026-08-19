@@ -38,8 +38,8 @@ export const canonFeed: CanonFeed = {
   "now": [
     {
       "verb": "watching",
-      "title": "Power Ballad",
-      "creator": "John Carney",
+      "title": "The Invite",
+      "creator": "Olivia Wilde",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 240,
