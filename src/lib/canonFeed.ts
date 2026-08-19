@@ -30,10 +30,10 @@ export const canonFeed: CanonFeed = {
   "totalWorks": 4123,
   "regionCount": 21,
   "regions": [
-    "Surreal Dramedies & Fantasies",
-    "Classic Crime & Romance",
-    "Indie Action RPGs",
-    "Cult Classics & Thrillers"
+    "Eclectic Music Mix",
+    "Romantic Comedies",
+    "Family-Friendly Fantasies",
+    "Action-Adventure Comedies"
   ],
   "now": [
     {
