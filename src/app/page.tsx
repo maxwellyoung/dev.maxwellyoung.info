@@ -8,6 +8,7 @@ import { container, item } from "@/lib/motion";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 import { CompanyLogoStudy } from "@/components/CompanyLogoStudy";
 import { OpenSourceProof } from "@/components/OpenSourceProof";
+import { BossKeyTrigger } from "@/components/boss-key/BossKeyTrigger";
 
 export default function Home() {
   return (
@@ -63,6 +64,8 @@ export default function Home() {
               <span className="text-border/40">·</span>
               <AnimatedLink href="https://github.com/maxwellyoung" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
               <span className="text-border/40">·</span>
+              <AnimatedLink href="/os" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Maxwell OS</AnimatedLink>
+              <span className="text-border/40">·</span>
               <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
             </motion.nav>
           </div>
@@ -95,6 +98,7 @@ export default function Home() {
               {" "}&mdash; independent studio
             </p>
             <div className="flex items-center gap-2">
+              <BossKeyTrigger />
               <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center rounded-sm px-2 text-sm text-muted-foreground hover:bg-muted/30 hover:text-foreground">
                 Contact
               </AnimatedLink>

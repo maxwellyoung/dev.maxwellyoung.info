@@ -1,0 +1,6 @@
+import test from "node:test";import assert from "node:assert/strict";import {questions,resultFor,scoreAnswers,selectQuestions} from "./personnelQuiz";
+test("pool is sourced and within brief",()=>{assert.equal(questions.length,20);assert.ok(questions.every(q=>q.source.href.startsWith("http")))});
+test("selection is deterministic, sized, and unique",()=>{const a=selectQuestions(42);assert.deepEqual(a,selectQuestions(42));assert.equal(a.length,11);assert.equal(new Set(a.map(q=>q.id)).size,11)});
+test("repeat sessions vary and retain crossover",()=>{const a=selectQuestions(42),b=selectQuestions(43);assert.notDeepEqual(a.map(q=>q.id),b.map(q=>q.id));assert.equal(a.filter(q=>q.round==="crossover").length,2)});
+test("scoring counts only exact answers",()=>{const qs=selectQuestions(8);const answers=Object.fromEntries(qs.map(q=>[q.id,q.answer]));assert.equal(scoreAnswers(qs,answers),11);answers[qs[0].id]=99;assert.equal(scoreAnswers(qs,answers),10)});
+test("result boundaries map to institutional personalities",()=>{assert.equal(resultFor(0).title,"Unverified Lobby Visitor");assert.equal(resultFor(4).title,"Catalog Desk Operative");assert.equal(resultFor(7).title,"Cross-Department Liaison");assert.equal(resultFor(9).title,"Senior Personnel Archivist");assert.equal(resultFor(11).title,"Maxwell Professional Doppelgänger")});

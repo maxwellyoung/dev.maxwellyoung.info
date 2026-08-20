@@ -1,0 +1,59 @@
+.trigger { min-height:44px; border:0; background:transparent; color:hsl(var(--muted-foreground)); display:inline-flex; align-items:center; gap:6px; padding:0 8px; font:inherit; font-size:12px; opacity:.42; transition:opacity .2s,color .2s; cursor:pointer; }
+.trigger:hover,.trigger:focus-visible { opacity:1; color:hsl(var(--foreground)); }
+.trigger:focus-visible { outline:2px solid hsl(var(--accent)); outline-offset:2px; border-radius:2px; }
+.overlay { position:fixed; inset:0; z-index:2147483647; background:#fff; color:#202020; font-family:"Segoe UI",Arial,sans-serif; font-size:12px; display:flex; flex-direction:column; overflow:hidden; isolation:isolate; }
+.titlebar { min-height:34px; background:#107c41; color:#fff; display:flex; align-items:center; padding-left:10px; gap:12px; }
+.appIcon { font-weight:700; font-size:18px; }
+.filename { flex:1; text-align:center; font-size:12px; }
+.windowButtons { align-self:stretch; display:flex; align-items:center; gap:0; margin-left:auto; }
+.windowButtons>span,.windowClose { width:46px; height:100%; display:grid; place-items:center; }
+.windowClose { border:0; border-radius:0; padding:0; background:transparent; color:#fff; font:20px/1 "Segoe UI",sans-serif; cursor:default; }
+.windowClose:hover,.windowClose:focus-visible { background:#c42b1c; outline:0; }
+.tabs { min-height:32px; background:#107c41; color:#fff; display:flex; align-items:end; gap:2px; padding-left:9px; white-space:nowrap; }
+.tab { padding:7px 13px 6px; }
+.tabActive { background:#fff; color:#107c41; font-weight:600; }
+.ribbon { min-height:92px; border-bottom:1px solid #c8c8c8; display:flex; align-items:stretch; padding:6px 10px 7px; background:#fafafa; gap:0; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+.group { min-width:76px; display:flex; gap:7px; align-items:center; justify-content:center; padding:3px 13px; border-right:1px solid #ddd; }
+.group small { font-size:11px; line-height:1.15; text-align:center; }
+.largeTool { width:25px; height:25px; color:#555; }
+.fontGroup { min-width:240px; display:block; }
+.fontGroup>div:first-child { display:grid; grid-template-columns:1fr 48px; gap:2px; }
+.fontGroup select { height:25px; border:1px solid #bbb; background:#fff; font:12px "Segoe UI",sans-serif; min-width:0; }
+.toolRow { display:flex; align-items:center; gap:20px; padding:11px 8px 0; font-size:14px; }
+.tool { padding:5px 7px; border-radius:2px; background:#f1f1f1; }
+.formula { min-height:30px; display:flex; align-items:center; border-bottom:1px solid #c9c9c9; background:#fff; }
+.nameBox { width:82px; border-right:1px solid #ccc; padding:6px 9px; }
+.fx { width:36px; text-align:center; font-style:italic; color:#666; }
+.formulaInput { padding:6px; border-left:1px solid #ddd; flex:1; }
+.sheetWrap { flex:1; overflow:auto; background:#fff; overscroll-behavior:contain; }
+.sheet { display:grid; grid-template-columns:42px repeat(14,106px); grid-template-rows:24px repeat(32,24px); min-width:1526px; }
+.cell,.header,.rowHeader { box-sizing:border-box; border-right:1px solid #d9d9d9; border-bottom:1px solid #d9d9d9; padding:4px 7px; white-space:nowrap; overflow:hidden; background:#fff; }
+.header,.rowHeader { background:#f3f3f3; text-align:center; color:#555; padding:4px; }
+.corner { background:#eee; border-right:1px solid #ccc; border-bottom:1px solid #ccc; }
+.heading { background:#e2f0d9; font-weight:600; border-bottom-color:#a8c89b; }
+.currency { text-align:right; font-variant-numeric:tabular-nums; }
+.selected { position:relative; overflow:visible; outline:2px solid #107c41; outline-offset:-2px; z-index:3; }
+.selected::after { content:""; position:absolute; width:5px; height:5px; right:-1px; bottom:-1px; background:#107c41; }
+.spill { overflow:visible; position:relative; z-index:2; font-weight:600; }
+.sheetbar { min-height:35px; border-top:1px solid #ccc; display:flex; align-items:center; gap:20px; padding:0 12px; background:#f7f7f7; white-space:nowrap; overflow:hidden; }
+.sheetTab { color:#107c41; font-weight:600; border-bottom:3px solid #107c41; align-self:stretch; display:flex; align-items:center; padding:0 14px; }
+.status { min-height:24px; background:#107c41; color:#fff; display:flex; align-items:center; padding:0 12px; }
+.statusRight { margin-left:auto; }
+@media (max-width:600px) {
+  .titlebar { padding-left:7px; gap:8px; }
+  .filename span { display:none; }
+  .windowButtons>span { display:none; }
+  .windowClose { width:48px; }
+  .tabs { overflow:hidden; }
+  .tab { padding-inline:10px; }
+  .tab:nth-child(n+6) { display:none; }
+  .ribbon { min-height:74px; padding:4px; overflow:hidden; }
+  .group { min-width:61px; padding:2px 8px; }
+  .fontGroup { min-width:170px; }
+  .toolRow { gap:14px; padding-top:7px; }
+  .group:nth-child(n+4) { display:none; }
+  .sheet { grid-template-columns:38px repeat(14,94px); min-width:1354px; }
+  .formula { flex:none; }
+  .sheetbar { gap:14px; padding-inline:8px; }
+  .statusRight { display:none; }
+}
