@@ -157,25 +157,30 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans overflow-x-hidden min-h-screen">
-        <a
-          href="#main-content"
-          className="sr-only fixed left-4 top-4 z-[100] rounded-sm bg-background px-4 py-2 text-foreground shadow-lg focus:not-sr-only focus:outline-none focus:ring-2 focus:ring-accent"
-        >
-          Skip to main content
-        </a>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <CSPostHogProvider>
-            <PageTransitionProvider>
-              <div className="relative z-10">{children}</div>
-            </PageTransitionProvider>
-            {shouldLoadVercelAnalytics && <Analytics />}
-          </CSPostHogProvider>
-        </ThemeProvider>
+        <div id="site-content">
+          <a
+            href="#main-content"
+            className="sr-only fixed left-4 top-4 z-[100] rounded-sm bg-background px-4 py-2 text-foreground shadow-lg focus:not-sr-only focus:outline-none focus:ring-2 focus:ring-accent"
+          >
+            Skip to main content
+          </a>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <CSPostHogProvider>
+              <PageTransitionProvider>
+                <div className="relative z-10">{children}</div>
+              </PageTransitionProvider>
+              {shouldLoadVercelAnalytics && <Analytics />}
+            </CSPostHogProvider>
+          </ThemeProvider>
+        </div>
+        <BossKeyMode />
+        <UtilityShell />
+        <LabShell />
       </body>
     </html>
   );

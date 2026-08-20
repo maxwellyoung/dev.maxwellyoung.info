@@ -3,10 +3,13 @@
 // "currently into" card. Regenerate: bun run scripts/export-folio-feed.ts
 
 export interface CanonNowItem {
+  id: string;
   verb: string;
   title: string;
   creator?: string;
   year?: number;
+  note?: string;
+  href?: string;
   art?: { src: string; w: number; h: number };
 }
 
@@ -18,6 +21,7 @@ export interface CanonLove {
 
 export interface CanonFeed {
   generatedAt: string;
+  sourceSyncedAt: string;
   totalWorks: number;
   regionCount: number;
   regions: string[];
@@ -51,6 +55,7 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
+      "id": "steam:730",
       "verb": "playing",
       "title": "Counter-Strike 2",
       "creator": "Valve",
