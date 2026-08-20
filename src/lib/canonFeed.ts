@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-20",
-  "sourceSyncedAt": "2026-08-20T08:07:59.139Z",
+  "sourceSyncedAt": "2026-08-20T08:38:54.944Z",
   "totalWorks": 4125,
   "regionCount": 21,
   "regions": [
@@ -55,12 +55,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:730",
+      "id": "steam:1850570",
       "verb": "playing",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "DEATH STRANDING DIRECTOR'S CUT",
+      "creator": "KOJIMA PRODUCTIONS",
       "note": "This is the game I’m playing now.",
-      "href": "https://store.steampowered.com/app/730/",
+      "href": "https://store.steampowered.com/app/1850570/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
