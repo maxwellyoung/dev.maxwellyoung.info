@@ -9,15 +9,12 @@ type Role =
   | "Studio Collaboration"
   | "Research Assistant";
 type Category =
-  | "Client"
-  | "Personal"
-  | "Studio"
-  | "Experiment"
-  | "Work"
-  | "School"
-  | "studio"
+  | "work"
   | "personal"
-  | "research";
+  | "studio"
+  | "experiment"
+  | "research"
+  | "school";
 type Visibility = "public" | "parked" | "private";
 type Lifecycle = "current" | "completed" | "archived" | "sensitive";
 type LaunchStage = "Live" | "In development" | "Case study" | "Client shipped" | "Production work";
@@ -27,15 +24,6 @@ interface BuildLogEntry {
   whatWorks: string[];
   nextMilestone?: string;
   openQuestion?: string;
-}
-
-interface Metrics {
-  lighthouseMobile?: number;
-  lcpMs?: number;
-  cls?: number;
-  bundleKB?: number;
-  ocrAccuracyPct?: number;
-  scraperRefreshMin?: number;
 }
 
 interface Links {
@@ -82,7 +70,6 @@ export interface Project {
   thumb?: string;
   cover?: ProjectCover;
   impact?: string[];
-  metrics?: Metrics;
   buildLog?: BuildLogEntry[];
   caseStudySlug?: string;
   link?: string;
@@ -94,7 +81,7 @@ const projects: Project[] = [
     slug: "silk",
     name: "Silk",
     status: "Active",
-    category: "Work",
+    category: "work",
     role: "Lead",
     featured: true,
     visibility: "public",
@@ -102,9 +89,9 @@ const projects: Project[] = [
     launchStage: "Production work",
     priority: 0,
     description:
-      "Led Silk's React Native app from its first build through launch; now leading ongoing implementation and release hardening.",
+      "Silk's React Native app for iOS and Android — mobile lead from the first build through launch and every release since.",
     longDescription:
-      "Silk is a platform for blogging, private archives, and multimedia moodboards. I built and led its React Native app from the first mobile foundation through launch, turning product direction into production systems. I continue to lead architecture, interaction design, performance, accessibility, regression coverage, and release hardening across iOS and Android.",
+      "Silk is a platform for blogging, private archives, and multimedia moodboards. I built its mobile app from the first React Native foundation to launch, and I still own it: architecture, interaction design, performance, and accessibility, with every release checked on real devices before it ships.",
     tags: ["React Native", "React", "TypeScript"],
     stack: ["React Native", "React", "TypeScript", "Expo"],
     startDate: "2025-09-01",
@@ -121,9 +108,9 @@ const projects: Project[] = [
       objectPosition: "center",
     },
     impact: [
-      "Built and led the mobile product from its initial React Native foundation through launch",
-      "Continue to lead architecture, performance, accessibility, and regression hardening",
-      "Carry ongoing releases through real-device verification on iOS and Android",
+      "Built the mobile app from zero to launch as mobile lead",
+      "Own architecture, performance, and accessibility across iOS and Android",
+      "Every release verified on real devices before it ships",
     ],
   },
   {
@@ -158,14 +145,14 @@ const projects: Project[] = [
     },
     link: "https://liner.ninetynine.digital",
     screenshots: [
-      "/projectImages/liner-1.webp",
+      "/projectImages/liner-cover-2.webp",
       "/projectImages/liner-3.webp",
     ],
-    thumb: "/projectImages/liner-1.webp",
+    thumb: "/projectImages/liner-cover-2.webp",
     cover: {
       variant: "image",
-      src: "/projectImages/liner-1.webp",
-      alt: "Liner landing page — See the songs. Shape the release.",
+      src: "/projectImages/liner-cover-2.webp",
+      alt: "Liner landing page showing a spatial music workspace",
       objectPosition: "center center",
     },
     impact: [
@@ -203,12 +190,10 @@ const projects: Project[] = [
     ],
     thumb: "/projectImages/vqc-1.webp",
     cover: {
-      variant: "device",
-      src: "/projectImages/vqc-1.webp",
-      alt: "Vape Quit Coach app screen",
-      kicker: "Behavior-change mobile app",
-      summary: "Coaching, recovery timelines, relapse support",
-      tone: "teal",
+      variant: "image",
+      src: "/projectImages/vqc-cover-2.webp",
+      alt: "Vape Quit Coach product page showing the app and its first-week recovery plan",
+      objectPosition: "center center",
     },
     links: {
       live: "https://vapequitcoach.com",
@@ -232,9 +217,9 @@ const projects: Project[] = [
     launchStage: "Live",
     priority: 5,
     description:
-      "Static security scanner for Claude Code skills and MCP servers.",
+      "Static scanner that checks agent skills, packages, extensions, and CI workflows before you run them.",
     longDescription:
-      "SkillScan is a developer security tool for reviewing Claude Code skills, MCP servers, GitHub repositories, and pasted code before running them locally. It uses deterministic static checks to surface risky shell, network, filesystem, credential, and prompt-injection patterns with severity, snippets, and remediation notes.",
+      "SkillScan reviews agent skills, MCP servers, npm packages, VS Code extensions, GitHub Actions, repositories, and pasted code before you run them locally. Its checks surface risky shell, network, filesystem, credential, package-hook, CI-permission, and prompt-injection patterns, and every finding points at the file and line that triggered it.",
     tags: [
       "Next.js",
       "TypeScript",
@@ -244,12 +229,15 @@ const projects: Project[] = [
     ],
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     startDate: "2026-01-01",
-    screenshots: ["/projectImages/skillscan-1.webp"],
-    thumb: "/projectImages/skillscan-1.webp",
+    screenshots: [
+      "/projectImages/skillscan-cover.webp",
+      "/projectImages/skillscan-result.webp",
+    ],
+    thumb: "/projectImages/skillscan-cover.webp",
     cover: {
       variant: "image",
-      src: "/projectImages/skillscan-1.webp",
-      alt: "SkillScan security scanner interface",
+      src: "/projectImages/skillscan-cover.webp",
+      alt: "SkillScan scanner with a pasted-code input and inspectable validation evidence",
       objectPosition: "center center",
     },
     links: {
@@ -259,10 +247,59 @@ const projects: Project[] = [
     link: "https://skillscan-rouge.vercel.app",
     codeLink: "https://github.com/maxwellyoung/skillscan",
     impact: [
-      "Pattern-based checks for shell execution, network access, filesystem access, credentials, and prompt injection",
-      "GitHub URL and direct-code scanning with severity, snippets, and remediation notes",
-      "A focused developer-tool UI for first-pass supply-chain review",
+      "Every finding carries a file, line, snippet, and fix note",
+      "Verdicts stay explicit about what static analysis cannot prove",
+      "One engine covers packages, extensions, repositories, workflows, and pasted code",
     ],
+    caseStudySlug: "skillscan",
+  },
+  {
+    slug: "default-index",
+    name: "Default Index",
+    status: "Active",
+    category: "experiment",
+    role: "Solo",
+    featured: false,
+    visibility: "public",
+    lifecycle: "current",
+    launchStage: "Live",
+    priority: 6,
+    description:
+      "Benchmark that measures recurring design defaults in model-generated frontends.",
+    longDescription:
+      "Default Index turns 'AI frontends all look the same' into something measurable. Fixed briefs, preserved source and renders, rule-based detectors, and a blind-review queue sit behind every chart, so any disagreement has an artifact to look at. The current release is a synthetic calibration corpus that proves the pipeline; it makes no claims about real models yet.",
+    tags: [
+      "React",
+      "TypeScript",
+      "Playwright",
+      "Benchmarking",
+      "Static Analysis",
+      "Research",
+    ],
+    stack: ["React", "TypeScript", "Vite", "Playwright", "Vitest"],
+    startDate: "2026-07-20",
+    screenshots: [
+      "/projectImages/default-index-lab.webp",
+      "/projectImages/default-index-corpus.webp",
+    ],
+    thumb: "/projectImages/default-index-cover.webp",
+    cover: {
+      variant: "image",
+      src: "/projectImages/default-index-cover.webp",
+      alt: "Default Index calibration release cover with a measured pattern distribution",
+      fit: "contain",
+      objectPosition: "center center",
+    },
+    links: {
+      live: "https://default-index.vercel.app",
+    },
+    link: "https://default-index.vercel.app",
+    impact: [
+      "Every chart links back to the source and renders that produced it",
+      "Fixed briefs and blind review replace screenshot arguments",
+      "Calibration corpus is labelled synthetic — no model claims until real runs land",
+    ],
+    caseStudySlug: "default-index",
   },
   {
     slug: "holdspace",
@@ -274,7 +311,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 6,
+    priority: 7,
     description:
       "Native iOS queue for keeping one item in focus while the rest waits in the background.",
     longDescription:
@@ -312,7 +349,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "current",
     launchStage: "In development",
-    priority: 7,
+    priority: 9,
     description:
       "Family-history workspace that turns documents, photos, and voice notes into reviewed family records.",
     longDescription:
@@ -335,12 +372,12 @@ const projects: Project[] = [
       live: "https://whakapapa.vercel.app",
     },
     link: "https://whakapapa.vercel.app",
-    screenshots: ["/projectImages/whakapapa-1.webp"],
-    thumb: "/projectImages/whakapapa-1.webp",
+    screenshots: ["/projectImages/whakapapa-cover-2.webp"],
+    thumb: "/projectImages/whakapapa-cover-2.webp",
     cover: {
       variant: "image",
-      src: "/projectImages/whakapapa-1.webp",
-      alt: "Whakapapa family-history homepage",
+      src: "/projectImages/whakapapa-cover-2.webp",
+      alt: "Whakapapa homepage showing a family tree and story-led archive",
       objectPosition: "center center",
     },
     impact: [
@@ -360,7 +397,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "current",
     launchStage: "In development",
-    priority: 8,
+    priority: 10,
     description:
       "Mobile receipt scanner that turns grocery receipts into item history, price memory, and calmer pre-shop comparison.",
     longDescription:
@@ -406,7 +443,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 7,
+    priority: 8,
     description:
       "Expo news app that turns daily reading into a bounded six-story ritual with a mood check.",
     longDescription:
@@ -460,11 +497,11 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
     launchStage: "In development",
-    priority: 2,
+    priority: 4,
     description:
       "Local-first concert diary that rebuilds your history from evidence, then asks before remembering.",
     longDescription:
@@ -484,17 +521,15 @@ const projects: Project[] = [
     },
     link: "https://afterlight.ninetynine.digital",
     screenshots: [
-      "/projectImages/afterlight-1.webp",
-      "/projectImages/afterlight-2.webp",
+      "/projectImages/afterlight-diary-v2.webp",
+      "/projectImages/afterlight-detail-v2.webp",
     ],
-    thumb: "/projectImages/afterlight-1.webp",
+    thumb: "/projectImages/afterlight-diary-v2.webp",
     cover: {
-      variant: "device",
-      src: "/projectImages/afterlight-1.webp",
-      alt: "Afterlight concert diary screen",
-      kicker: "Private concert recovery",
-      summary: "Many evidence sources, one explicit confirmation gate",
-      tone: "slate",
+      variant: "image",
+      src: "/projectImages/afterlight-cover-2.webp",
+      alt: "Afterlight product page showing the concert diary on a phone",
+      objectPosition: "center center",
     },
     impact: [
       "One candidate model reconciles shares, ticket files, calendars, photos, email receipts, Setlist.fm, and listening hints",
@@ -512,7 +547,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 9,
+    priority: 11,
     description:
       "Swipe-to-learn spaced repetition for code — master a codebase by doomscrolling through it.",
     longDescription:
@@ -553,7 +588,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "completed",
     launchStage: "Client shipped",
-    priority: 4,
+    priority: 2,
     description:
       "Portfolio for Ch'lita Collins — Fashion Editor-at-Large at i-D — built around fast image browsing and quiet editorial motion.",
     longDescription:
@@ -648,7 +683,7 @@ const projects: Project[] = [
     category: "studio",
     role: "Frontend",
     featured: false,
-    visibility: "public",
+    visibility: "parked",
     lifecycle: "completed",
     launchStage: "Client shipped",
     priority: 13,
@@ -690,7 +725,7 @@ const projects: Project[] = [
     category: "personal",
     role: "Solo",
     featured: false,
-    visibility: "public",
+    visibility: "parked",
     lifecycle: "archived",
     launchStage: "Case study",
     priority: 14,
@@ -745,16 +780,16 @@ export const supportingProjects = rankedProjects.filter(
 export function getProjectContextLabel(
   project: Pick<Project, "category" | "client">
 ): string {
-  if (project.category === "Work" || project.category === "research") {
+  if (project.category === "work" || project.category === "research") {
     return "Work";
   }
-  if (project.category === "School") {
+  if (project.category === "school") {
     return "School R&D";
   }
-  if (project.category === "personal" || project.category === "Personal") {
+  if (project.category === "personal") {
     return "Personal Product";
   }
-  if (project.client || project.category === "studio" || project.category === "Studio") {
+  if (project.client || project.category === "studio") {
     return "Client Work";
   }
   return "Experiment";

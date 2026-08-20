@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AnimatedLink } from "@/components/ui/animated-link";
@@ -36,7 +37,23 @@ export default function AboutPage() {
           >
             &larr; Back
           </Link>
-          <h1 className="text-3xl font-medium mt-8 mb-4">About</h1>
+          <div className="mt-8 flex items-end justify-between gap-6">
+            <div>
+              <p className="mb-2 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                Auckland, Aotearoa
+              </p>
+              <h1 className="text-3xl font-medium">About</h1>
+            </div>
+            <Image
+              src="/profile_work.webp"
+              alt="Maxwell Young"
+              width={112}
+              height={112}
+              sizes="112px"
+              priority
+              className="h-24 w-24 flex-shrink-0 rounded-sm object-cover ring-1 ring-inset ring-border sm:h-28 sm:w-28"
+            />
+          </div>
         </header>
 
         <section className="space-y-4 leading-relaxed text-muted-foreground">
@@ -45,9 +62,8 @@ export default function AboutPage() {
             Zealand. I work at{" "}
             <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
             , a platform for blogging, private archives, and multimedia
-            moodboards. I led its React Native app from the first build through
-            launch and now lead ongoing implementation, release hardening, and
-            iteration across iOS and Android.
+            moodboards, where I look after the mobile app across iOS and
+            Android.
           </p>
 
           <p>
@@ -60,21 +76,21 @@ export default function AboutPage() {
           </p>
 
           <p>
-            I&apos;m most useful where interaction design and implementation
-            need to stay close together: shaping the model, building the
-            interface, and verifying the result on real devices. My public work
-            spans mobile product leadership, shipped iOS products, production React Native systems,
-            research tooling, developer tools, and image-led client sites.
+            The work I publish spans mobile product leadership, shipped iOS
+            apps, research tooling, and image-led client sites. Across all of
+            it I care about the same things: a clear model, an interface that
+            shows it honestly, and checking the result where people actually
+            use it.
           </p>
         </section>
 
         <section className="space-y-4">
           <h2 className="text-lg font-medium">How I work</h2>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            I prefer narrow, observable product loops over presentation-only
-            prototypes. That means explicit interaction states, accessible
-            defaults, performance checks, and enough instrumentation or
-            regression coverage to know whether a change actually held up.
+            I build in small, checkable steps: explicit interaction states,
+            accessible defaults, and enough tests or instrumentation to know
+            whether a change held up. I&apos;d rather ship a narrow thing that
+            works than a broad demo that doesn&apos;t.
           </p>
           <p className="text-sm leading-relaxed text-muted-foreground">
             The strongest examples are in{" "}

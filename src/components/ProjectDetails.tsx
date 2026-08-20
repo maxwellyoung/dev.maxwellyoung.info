@@ -22,7 +22,11 @@ export function ProjectDetails({
   onCarouselOpen,
 }: ProjectDetailsProps) {
   const [loadedImage, setLoadedImage] = useState<string | null>(null);
-  const currentImage = project?.screenshots?.[0] ?? null;
+  const currentImage =
+    project?.cover?.src ??
+    project?.thumb ??
+    project?.screenshots?.[0] ??
+    null;
   const imageLoaded = loadedImage === currentImage;
   const hasMedia = Boolean(
     project?.cover || project?.thumb || project?.screenshots?.length,

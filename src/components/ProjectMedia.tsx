@@ -259,6 +259,14 @@ export function ProjectMedia({
   const imageSrc = cover?.src ?? project.thumb ?? project.screenshots?.[0];
   const imageAlt = cover?.alt ?? `${project.name} preview`;
   const imageFit = cover?.fit ?? "cover";
+  const mediaSources = [
+    cover?.src,
+    ...(project.screenshots ?? []),
+    project.thumb,
+  ].filter(
+    (source, index, sources): source is string =>
+      Boolean(source) && sources.indexOf(source) === index,
+  );
 
   if (cover?.variant === "concept") {
     return <ProjectConceptCover project={project} variant={variant} />;
@@ -270,27 +278,107 @@ export function ProjectMedia({
 
   if (cover?.variant === "device") {
     const tone = toneClasses[cover.tone ?? "slate"];
+    const stagedSources = mediaSources.slice(
+      0,
+      variant === "detail" ? 3 : variant === "hover" ? 2 : 1,
+    );
+    const hasSequence = stagedSources.length > 1;
 
     return (
       <div className={`absolute inset-0 overflow-hidden ${tone.surface}`}>
         <div className={`absolute inset-0 ${tone.glow}`} />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-black/20" />
 
-        <div className={`relative flex h-full items-center justify-center ${variant === "row" ? "p-1.5" : "p-4 sm:p-6"}`}>
-          <div className={
-            variant === "row"
-              ? "relative h-full w-auto aspect-[9/16] overflow-hidden rounded-[0.7rem] border border-white/12 bg-black shadow-[0_12px_28px_rgba(0,0,0,0.35)]"
-              : "relative h-full max-h-full w-[42%] min-w-[7rem] max-w-[13rem] overflow-hidden rounded-[1.6rem] border border-white/12 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.45)]"
-          }>
-            <div className={variant === "row" ? "absolute inset-x-1/2 top-1 z-10 h-1.5 w-6 -translate-x-1/2 rounded-full bg-black/80" : "absolute inset-x-1/2 top-2 z-10 h-5 w-20 -translate-x-1/2 rounded-full bg-black/80"} />
+        <div
+          className={`relative flex h-full items-center justify-center ${
+            variant === "row" ? "p-1.5" : "p-3 sm:p-5"
+          } ${hasSequence ? "-space-x-3 sm:-space-x-5" : ""}`}
+        >
+          {stagedSources.map((source, index) => {
+            const isLead = index === 0;
+            const sequenceTransform =
+              stagedSources.length === 3
+                ? index === 1
+                  ? "-rotate-[5deg] scale-[0.88]"
+                  : index === 2
+                    ? "rotate-[5deg] scale-[0.88]"
+                    : "z-10"
+                : index === 1
+                  ? "rotate-[4deg] scale-[0.92]"
+                  : "z-10 -rotate-[2deg]";
+
+            return (
+              <div
+                key={source}
+                className={`relative h-full w-auto aspect-[9/19.5] overflow-hidden border border-white/12 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.45)] ${
+                  variant === "row"
+                    ? "rounded-[0.7rem]"
+                    : "max-h-full rounded-[1.35rem] sm:rounded-[1.6rem]"
+                } ${hasSequence ? sequenceTransform : ""}`}
+              >
+                <div
+                  className={
+                    variant === "row"
+                      ? "absolute inset-x-1/2 top-1 z-10 h-1.5 w-6 -translate-x-1/2 rounded-full bg-black/80"
+                      : "absolute inset-x-1/2 top-1.5 z-10 h-3 w-12 -translate-x-1/2 rounded-full bg-black/80 sm:top-2 sm:h-4 sm:w-16"
+                  }
+                />
+                <ProjectImageCover
+                  src={source}
+                  alt={isLead ? imageAlt : `${project.name} screen ${index + 1}`}
+                  objectPosition={
+                    isLead
+                      ? cover.objectPosition ?? "center top"
+                      : "center top"
+                  }
+                  sizes={sizes}
+                  priority={priority && isLead}
+                  className="object-cover"
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === "detail" && mediaSources.length > 1) {
+    const [leadSource, ...supportingSources] = mediaSources.slice(0, 3);
+
+    return (
+      <div className="absolute inset-0 bg-neutral-950 p-1.5 sm:p-2">
+        <div className="grid h-full grid-cols-[minmax(0,1.45fr)_minmax(5.5rem,0.72fr)] gap-1.5 sm:gap-2">
+          <div className="relative min-w-0 overflow-hidden rounded-[0.2rem] bg-neutral-900">
             <ProjectImageCover
-              src={imageSrc}
+              src={leadSource}
               alt={imageAlt}
-              objectPosition={cover.objectPosition ?? "center top"}
+              objectPosition={cover?.objectPosition}
               sizes={sizes}
               priority={priority}
-              className="object-cover"
+              className={
+                imageFit === "contain" ? "object-contain p-2" : "object-cover"
+              }
             />
+          </div>
+          <div
+            className={`grid min-w-0 gap-1.5 sm:gap-2 ${
+              supportingSources.length > 1 ? "grid-rows-2" : ""
+            }`}
+          >
+            {supportingSources.map((source, index) => (
+              <div
+                key={source}
+                className="relative min-h-0 overflow-hidden rounded-[0.2rem] border border-white/10 bg-neutral-900"
+              >
+                <ProjectImageCover
+                  src={source}
+                  alt={`${project.name} screenshot ${index + 2}`}
+                  sizes={sizes}
+                  className="object-contain p-1"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

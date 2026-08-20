@@ -69,7 +69,10 @@ export const metadata: Metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0E0E0E",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FCFCFC" },
+    { media: "(prefers-color-scheme: dark)", color: "#0E0E0E" },
+  ],
 };
 
 const generalSans = localFont({
@@ -163,8 +166,8 @@ export default function RootLayout({
           </a>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
-            enableSystem={false}
+            defaultTheme="system"
+            enableSystem
             disableTransitionOnChange
           >
             <CSPostHogProvider>
