@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-21",
-  "sourceSyncedAt": "2026-08-21T01:08:35.968Z",
+  "sourceSyncedAt": "2026-08-21T01:39:35.587Z",
   "totalWorks": 4126,
   "regionCount": 21,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:araabmuzik--electronic-dream-deluxe-edition",
+      "id": "applemusic:james-ivy--the-seams",
       "verb": "in rotation",
-      "title": "Electronic Dream",
-      "creator": "araabMUZIK",
+      "title": "The Seams",
+      "creator": "James Ivy",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=Electronic%20Dream%20(Deluxe%20Edition)%20araabMUZIK%202011",
+      "href": "https://music.apple.com/nz/search?term=The%20Seams%20James%20Ivy%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
