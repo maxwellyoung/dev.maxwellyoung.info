@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-23",
-  "sourceSyncedAt": "2026-08-23T16:58:07.621Z",
+  "sourceSyncedAt": "2026-08-23T17:29:04.838Z",
   "totalWorks": 4137,
   "regionCount": 21,
   "regions": [
