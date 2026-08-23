@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-23",
-  "sourceSyncedAt": "2026-08-23T06:09:28.193Z",
+  "sourceSyncedAt": "2026-08-23T06:40:15.763Z",
   "totalWorks": 4135,
   "regionCount": 21,
   "regions": [
@@ -55,12 +55,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:1850570",
+      "id": "steam:1850960",
       "verb": "playing",
-      "title": "DEATH STRANDING DIRECTOR'S CUT",
-      "creator": "KOJIMA PRODUCTIONS",
+      "title": "The Jackbox Party Pack 9",
+      "creator": "Jackbox Games, Inc.",
       "note": "This is the game I’m playing now.",
-      "href": "https://store.steampowered.com/app/1850570/",
+      "href": "https://store.steampowered.com/app/1850960/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
