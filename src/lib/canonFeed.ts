@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-23",
-  "sourceSyncedAt": "2026-08-23T10:16:53.688Z",
+  "sourceSyncedAt": "2026-08-23T10:47:51.268Z",
   "totalWorks": 4135,
   "regionCount": 21,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:phantogram--voices",
+      "id": "applemusic:mary-mccaslin--things-we-said-today-the-best-of",
       "verb": "in rotation",
-      "title": "Voices",
-      "creator": "Phantogram",
+      "title": "Things We Said Today: The Best Of",
+      "creator": "Mary McCaslin",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=Voices%20Phantogram%202014",
+      "href": "https://music.apple.com/nz/search?term=Things%20We%20Said%20Today%3A%20The%20Best%20Of%20Mary%20McCaslin%201992",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
