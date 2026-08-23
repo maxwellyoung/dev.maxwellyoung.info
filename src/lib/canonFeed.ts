@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-23",
-  "sourceSyncedAt": "2026-08-23T09:46:02.981Z",
+  "sourceSyncedAt": "2026-08-23T10:16:53.688Z",
   "totalWorks": 4135,
   "regionCount": 21,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:the-police--reggatta-de-blanc-remastered-2003",
+      "id": "applemusic:phantogram--voices",
       "verb": "in rotation",
-      "title": "Reggatta De Blanc",
-      "creator": "The Police",
+      "title": "Voices",
+      "creator": "Phantogram",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=Reggatta%20De%20Blanc%20(Remastered%202003)%20The%20Police%201979",
+      "href": "https://music.apple.com/nz/search?term=Voices%20Phantogram%202014",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
