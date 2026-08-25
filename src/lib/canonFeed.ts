@@ -31,14 +31,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-25",
-  "sourceSyncedAt": "2026-08-25T00:21:59.528Z",
+  "sourceSyncedAt": "2026-08-25T00:52:58.975Z",
   "totalWorks": 4162,
   "regionCount": 21,
   "regions": [
-    "Eclectic Hip-Hop & Alternative",
+    "Eclectic Hip-Hop Fusion",
     "Indie Adventure",
-    "Documentary & Real-Life Stories",
-    "Surreal Comedies & Dramas"
+    "Documentary Dramas & Biographies",
+    "Surrealist Comedy & Drama"
   ],
   "now": [
     {
@@ -55,12 +55,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:1850570",
+      "id": "steam:730",
       "verb": "playing",
-      "title": "DEATH STRANDING DIRECTOR'S CUT",
-      "creator": "KOJIMA PRODUCTIONS",
+      "title": "Counter-Strike 2",
+      "creator": "Valve",
       "note": "This is the game I’m playing now.",
-      "href": "https://store.steampowered.com/app/1850570/",
+      "href": "https://store.steampowered.com/app/730/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -68,12 +68,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "abs:05c3c678-1f23-4c0a-aa32-1efdf10a1ef2",
+      "id": "abs:a7a1396d-44e6-4837-b716-03176eaa5e1e",
       "verb": "reading",
-      "title": "Unchain Your Brain: 10 Steps to Breaking the Addictions That Steal Your Life",
-      "creator": "Daniel G. Amen, David E. Smith",
-      "note": "I’m reading this now — 22% through.",
-      "href": "https://openlibrary.org/search?q=Unchain%20Your%20Brain%3A%2010%20Steps%20to%20Breaking%20the%20Addictions%20That%20Steal%20Your%20Life%20Daniel%20G.%20Amen%2C%20David%20E.%20Smith%202010",
+      "title": "Measure What Matters: How Google, Bono, and the Gates Foundation Rock the World with OKRs (Unabridged)",
+      "creator": "John Doerr",
+      "note": "I’m reading this now — 8% through.",
+      "href": "https://openlibrary.org/search?q=Measure%20What%20Matters%3A%20How%20Google%2C%20Bono%2C%20and%20the%20Gates%20Foundation%20Rock%20the%20World%20with%20OKRs%20(Unabridged)%20John%20Doerr%202018",
       "art": {
         "src": "/canon/reading.jpg",
         "w": 360,
