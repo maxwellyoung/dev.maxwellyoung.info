@@ -30,15 +30,15 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-08-24",
-  "sourceSyncedAt": "2026-08-24T23:50:39.323Z",
+  "generatedAt": "2026-08-25",
+  "sourceSyncedAt": "2026-08-25T00:21:59.528Z",
   "totalWorks": 4162,
   "regionCount": 21,
   "regions": [
-    "Thrilling Crime Dramas",
-    "Eclectic Comedic Dramas",
-    "Thrilling Romantic Dramas",
-    "Diverse Modern"
+    "Eclectic Hip-Hop & Alternative",
+    "Indie Adventure",
+    "Documentary & Real-Life Stories",
+    "Surreal Comedies & Dramas"
   ],
   "now": [
     {
