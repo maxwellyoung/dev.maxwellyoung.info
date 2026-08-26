@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-26",
-  "sourceSyncedAt": "2026-08-26T02:56:47.822Z",
+  "sourceSyncedAt": "2026-08-26T03:28:39.669Z",
   "totalWorks": 4228,
   "regionCount": 22,
   "regions": [
@@ -55,11 +55,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:1533420",
+      "id": "steam:851670",
       "verb": "playing",
-      "title": "Neon White",
+      "title": "LUMINES REMASTERED",
+      "creator": "Resonair",
       "note": "This is the game I’m playing now.",
-      "href": "https://store.steampowered.com/app/1533420/",
+      "href": "https://store.steampowered.com/app/851670/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
