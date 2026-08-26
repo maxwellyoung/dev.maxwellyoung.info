@@ -31,14 +31,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-26",
-  "sourceSyncedAt": "2026-08-26T02:23:02.043Z",
+  "sourceSyncedAt": "2026-08-26T02:56:47.822Z",
   "totalWorks": 4228,
   "regionCount": 22,
   "regions": [
-    "Contemporary Pop & Rock",
-    "Eclectic Modern",
-    "Dramatic Fantasy",
-    "New Wave & Art"
+    "Alternative & Indie",
+    "Hip-Hop & Alternative Fusion",
+    "Indie Dramedy & Romance",
+    "Dramatic Crime Stories"
   ],
   "now": [
     {
@@ -55,12 +55,11 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:730",
+      "id": "steam:1533420",
       "verb": "playing",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "Neon White",
       "note": "This is the game I’m playing now.",
-      "href": "https://store.steampowered.com/app/730/",
+      "href": "https://store.steampowered.com/app/1533420/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
