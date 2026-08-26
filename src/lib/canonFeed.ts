@@ -31,14 +31,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-26",
-  "sourceSyncedAt": "2026-08-26T13:41:30.157Z",
+  "sourceSyncedAt": "2026-08-26T14:12:54.985Z",
   "totalWorks": 4230,
   "regionCount": 22,
   "regions": [
-    "Eclectic Indie",
-    "Romantic Dramas & Thrillers",
-    "Classic Drama & Romance",
-    "Cult Classics & Music"
+    "Contemporary Dramas",
+    "Modern Hip-Hop",
+    "Quirky Romantic Dramas",
+    "Introspective Documentaries"
   ],
   "now": [
     {
