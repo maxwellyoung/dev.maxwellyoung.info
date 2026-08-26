@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-26",
-  "sourceSyncedAt": "2026-08-26T07:27:03.369Z",
+  "sourceSyncedAt": "2026-08-26T07:58:26.202Z",
   "totalWorks": 4229,
   "regionCount": 22,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:a-good-year--play",
+      "id": "applemusic:nate-sib--reborn",
       "verb": "in rotation",
-      "title": "Play",
-      "creator": "A Good Year",
+      "title": "Reborn",
+      "creator": "Nate Sib",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=Play%20A%20Good%20Year%202026",
+      "href": "https://music.apple.com/nz/search?term=Reborn%20Nate%20Sib%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
