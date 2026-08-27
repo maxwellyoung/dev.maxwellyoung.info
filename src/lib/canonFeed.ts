@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-27",
-  "sourceSyncedAt": "2026-08-27T06:50:46.321Z",
+  "sourceSyncedAt": "2026-08-27T07:21:35.382Z",
   "totalWorks": 4232,
   "regionCount": 22,
   "regions": [
@@ -55,12 +55,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:730",
+      "id": "steam:2677660",
       "verb": "playing",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "Indiana Jones and the Great Circle",
+      "creator": "MachineGames",
       "note": "This is the game I’m playing now.",
-      "href": "https://store.steampowered.com/app/730/",
+      "href": "https://store.steampowered.com/app/2677660/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
