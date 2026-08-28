@@ -31,14 +31,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-28",
-  "sourceSyncedAt": "2026-08-28T17:28:18.409Z",
+  "sourceSyncedAt": "2026-08-28T17:59:52.266Z",
   "totalWorks": 4237,
   "regionCount": 22,
   "regions": [
-    "Contemporary Hip-Hop",
-    "Thought-Provoking Non-Fiction",
-    "Dark Comedies & Thrillers",
-    "Romantic Dramas & Thrillers"
+    "Genre-Bending Music Hits",
+    "Documentary Storytelling",
+    "Classic American Dramas",
+    "Intense Psychological Dramas"
   ],
   "now": [
     {
@@ -68,12 +68,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "abs:a7a1396d-44e6-4837-b716-03176eaa5e1e",
+      "id": "abs:d2b73170-0356-49ba-acc8-f366ec3f5cfd",
       "verb": "reading",
-      "title": "Measure What Matters: How Google, Bono, and the Gates Foundation Rock the World with OKRs (Unabridged)",
-      "creator": "John Doerr",
-      "note": "I’m reading this now — 8% through.",
-      "href": "https://openlibrary.org/search?q=Measure%20What%20Matters%3A%20How%20Google%2C%20Bono%2C%20and%20the%20Gates%20Foundation%20Rock%20the%20World%20with%20OKRs%20(Unabridged)%20John%20Doerr%202018",
+      "title": "Becoming Steve Jobs: The Evolution of a Reckless Upstart into a Visionary Leader",
+      "creator": "Brent Schlender, Rick Tetzeli",
+      "note": "I’m reading this now — 13% through.",
+      "href": "https://openlibrary.org/search?q=Becoming%20Steve%20Jobs%3A%20The%20Evolution%20of%20a%20Reckless%20Upstart%20into%20a%20Visionary%20Leader%20Brent%20Schlender%2C%20Rick%20Tetzeli%202015",
       "art": {
         "src": "/canon/reading.jpg",
         "w": 360,
