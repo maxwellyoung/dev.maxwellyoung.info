@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-30",
-  "sourceSyncedAt": "2026-08-30T05:27:34.306Z",
+  "sourceSyncedAt": "2026-08-30T05:58:21.569Z",
   "totalWorks": 4242,
   "regionCount": 22,
   "regions": [
@@ -81,16 +81,16 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:split-enz--time-and-tide",
+      "id": "applemusic:split-enz--true-colours-40th-anniversary-edition",
       "verb": "in rotation",
-      "title": "Time and Tide",
+      "title": "True Colours (40th Anniversary Edition)",
       "creator": "Split Enz",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=Time%20and%20Tide%20Split%20Enz%201982",
+      "href": "https://music.apple.com/nz/search?term=True%20Colours%20(40th%20Anniversary%20Edition)%20Split%20Enz%201980",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
-        "h": 320
+        "h": 360
       }
     }
   ],
