@@ -31,14 +31,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-31",
-  "sourceSyncedAt": "2026-08-31T04:05:05.628Z",
+  "sourceSyncedAt": "2026-08-31T04:36:08.504Z",
   "totalWorks": 4253,
   "regionCount": 22,
   "regions": [
-    "Genre-Bending",
-    "Eclectic Hip-Hop Fusion",
-    "Dark Comedy Fantasies",
-    "Golden Age Film Noir"
+    "Eclectic Modern",
+    "Thriller & Horror",
+    "Whimsical Dramedy",
+    "Documentary & Society"
   ],
   "now": [
     {
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:brandon-flowers--thrasher",
+      "id": "applemusic:dion--runaround-sue",
       "verb": "in rotation",
-      "title": "THRASHER",
-      "creator": "Brandon Flowers",
+      "title": "Runaround Sue",
+      "creator": "Dion",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=THRASHER%20Brandon%20Flowers%202026",
+      "href": "https://music.apple.com/nz/search?term=Runaround%20Sue%20Dion%201961",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
