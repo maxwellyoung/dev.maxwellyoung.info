@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-31",
-  "sourceSyncedAt": "2026-08-31T03:03:23.735Z",
+  "sourceSyncedAt": "2026-08-31T03:34:15.141Z",
   "totalWorks": 4252,
   "regionCount": 22,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:kuru--backstage-hologram",
+      "id": "applemusic:the-blue-nile--peace-at-last-deluxe-version",
       "verb": "in rotation",
-      "title": "Backstage hologram",
-      "creator": "kuru",
+      "title": "Peace at Last",
+      "creator": "The Blue Nile",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=Backstage%20hologram%20kuru%202026",
+      "href": "https://music.apple.com/nz/search?term=Peace%20at%20Last%20(Deluxe%20Version)%20The%20Blue%20Nile%201996",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
