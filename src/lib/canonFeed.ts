@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-08-31",
-  "sourceSyncedAt": "2026-08-31T06:40:24.119Z",
+  "sourceSyncedAt": "2026-08-31T07:11:16.807Z",
   "totalWorks": 4263,
   "regionCount": 22,
   "regions": [
@@ -55,12 +55,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:2677660",
+      "id": "steam:1850960",
       "verb": "playing",
-      "title": "Indiana Jones and the Great Circle",
-      "creator": "MachineGames",
+      "title": "The Jackbox Party Pack 9",
+      "creator": "Jackbox Games, Inc.",
       "note": "This is the game I’m playing now.",
-      "href": "https://store.steampowered.com/app/2677660/",
+      "href": "https://store.steampowered.com/app/1850960/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
