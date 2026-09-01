@@ -31,14 +31,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-01",
-  "sourceSyncedAt": "2026-09-01T18:10:36.992Z",
+  "sourceSyncedAt": "2026-09-01T18:41:43.707Z",
   "totalWorks": 4278,
   "regionCount": 22,
   "regions": [
-    "Eclectic Rock & Pop",
-    "Contemporary Hip-Hop & R&B",
-    "Surreal Horror & Sci-Fi",
-    "Classic Romantic Dramas"
+    "Classic American Dramas",
+    "Indie Adventure",
+    "Diverse Modern",
+    "Genre-Bending Hip-Hop"
   ],
   "now": [
     {
@@ -55,12 +55,11 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:1850960",
+      "id": "steam:2367820",
       "verb": "playing",
-      "title": "The Jackbox Party Pack 9",
-      "creator": "Jackbox Games, Inc.",
+      "title": "despelote",
       "note": "This is the game I’m playing now.",
-      "href": "https://store.steampowered.com/app/1850960/",
+      "href": "https://store.steampowered.com/app/2367820/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
