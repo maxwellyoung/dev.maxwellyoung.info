@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-01",
-  "sourceSyncedAt": "2026-09-01T03:46:23.884Z",
+  "sourceSyncedAt": "2026-09-01T04:17:13.511Z",
   "totalWorks": 4268,
   "regionCount": 22,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:eduardo-mateo--el-tartamudo",
+      "id": "applemusic:emmylou-harris--wrecking-ball",
       "verb": "in rotation",
-      "title": "El Tartamudo",
-      "creator": "Eduardo Mateo",
+      "title": "Wrecking Ball",
+      "creator": "Emmylou Harris",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=El%20Tartamudo%20Eduardo%20Mateo%202015",
+      "href": "https://music.apple.com/nz/search?term=Wrecking%20Ball%20Emmylou%20Harris%201995",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
