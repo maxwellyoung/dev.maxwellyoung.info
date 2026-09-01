@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-01",
-  "sourceSyncedAt": "2026-09-01T18:41:43.707Z",
+  "sourceSyncedAt": "2026-09-01T19:12:39.691Z",
   "totalWorks": 4278,
   "regionCount": 22,
   "regions": [
@@ -58,6 +58,7 @@ export const canonFeed: CanonFeed = {
       "id": "steam:2367820",
       "verb": "playing",
       "title": "despelote",
+      "creator": "Julián Cordero, Sebastian Valbuena",
       "note": "This is the game I’m playing now.",
       "href": "https://store.steampowered.com/app/2367820/",
       "art": {
