@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-03",
-  "sourceSyncedAt": "2026-09-03T15:28:57.055Z",
+  "sourceSyncedAt": "2026-09-03T15:59:55.829Z",
   "totalWorks": 4279,
   "regionCount": 22,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:everything-but-the-girl--the-language-of-life-deluxe-edition",
+      "id": "applemusic:elliot-vincent--love-montage-ep",
       "verb": "in rotation",
-      "title": "The Language of Life",
-      "creator": "Everything But the Girl",
+      "title": "Love Montage",
+      "creator": "Elliot Vincent",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=The%20Language%20of%20Life%20(Deluxe%20Edition)%20Everything%20But%20the%20Girl%201990",
+      "href": "https://music.apple.com/nz/search?term=Love%20Montage%20-%20EP%20Elliot%20Vincent%202025",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
