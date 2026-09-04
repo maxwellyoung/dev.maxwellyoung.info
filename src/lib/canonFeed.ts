@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-04",
-  "sourceSyncedAt": "2026-09-04T04:23:16.172Z",
+  "sourceSyncedAt": "2026-09-04T04:54:05.255Z",
   "totalWorks": 4283,
   "regionCount": 22,
   "regions": [
@@ -81,16 +81,16 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:elliot-vincent--love-montage-ep",
+      "id": "applemusic:smog--supper",
       "verb": "in rotation",
-      "title": "Love Montage",
-      "creator": "Elliot Vincent",
+      "title": "Supper",
+      "creator": "Smog",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=Love%20Montage%20-%20EP%20Elliot%20Vincent%202025",
+      "href": "https://music.apple.com/nz/search?term=Supper%20Smog%202003",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
-        "h": 360
+        "h": 356
       }
     }
   ],
