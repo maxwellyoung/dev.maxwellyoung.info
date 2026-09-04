@@ -31,14 +31,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-04",
-  "sourceSyncedAt": "2026-09-04T05:55:59.590Z",
+  "sourceSyncedAt": "2026-09-04T06:27:02.437Z",
   "totalWorks": 4285,
   "regionCount": 22,
   "regions": [
-    "Modern Hip-Hop & Alternative",
-    "Indie Action & Adventure",
-    "Classic Romantic Dramas",
-    "Contemporary Dramas & Mysteries"
+    "Eclectic Pop & Rock",
+    "Contemporary Hip-Hop & Pop",
+    "Classic Film Noir",
+    "Heartfelt Dramas"
   ],
   "now": [
     {
@@ -47,12 +47,7 @@ export const canonFeed: CanonFeed = {
       "title": "The Invite",
       "creator": "Olivia Wilde",
       "note": "I’m watching this now — 6% through.",
-      "href": "https://www.themoviedb.org/movie/950028",
-      "art": {
-        "src": "/canon/watched.jpg",
-        "w": 240,
-        "h": 360
-      }
+      "href": "https://www.themoviedb.org/movie/950028"
     },
     {
       "id": "steam:2367820",
