@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-04",
-  "sourceSyncedAt": "2026-09-04T08:31:48.038Z",
+  "sourceSyncedAt": "2026-09-04T11:06:11.746Z",
   "totalWorks": 4285,
   "regionCount": 22,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:karrahbooo--not-da-2",
+      "id": "applemusic:elliot-vincent--love-montage-ep",
       "verb": "in rotation",
-      "title": "NOT DA 2",
-      "creator": "KARRAHBOOO",
+      "title": "Love Montage",
+      "creator": "Elliot Vincent",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=NOT%20DA%202%20KARRAHBOOO%202026",
+      "href": "https://music.apple.com/nz/search?term=Love%20Montage%20-%20EP%20Elliot%20Vincent%202025",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
