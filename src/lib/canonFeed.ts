@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-04",
-  "sourceSyncedAt": "2026-09-04T06:27:02.437Z",
+  "sourceSyncedAt": "2026-09-04T06:59:08.869Z",
   "totalWorks": 4285,
   "regionCount": 22,
   "regions": [
@@ -47,7 +47,12 @@ export const canonFeed: CanonFeed = {
       "title": "The Invite",
       "creator": "Olivia Wilde",
       "note": "I’m watching this now — 6% through.",
-      "href": "https://www.themoviedb.org/movie/950028"
+      "href": "https://www.themoviedb.org/movie/950028",
+      "art": {
+        "src": "/canon/watched.jpg",
+        "w": 240,
+        "h": 360
+      }
     },
     {
       "id": "steam:2367820",
