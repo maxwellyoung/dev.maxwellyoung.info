@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-04",
-  "sourceSyncedAt": "2026-09-04T11:06:11.746Z",
+  "sourceSyncedAt": "2026-09-04T14:42:13.267Z",
   "totalWorks": 4285,
   "regionCount": 22,
   "regions": [
@@ -55,12 +55,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:2367820",
+      "id": "steam:730",
       "verb": "playing",
-      "title": "despelote",
-      "creator": "Julián Cordero, Sebastian Valbuena",
+      "title": "Counter-Strike 2",
+      "creator": "Valve",
       "note": "This is the game I’m playing now.",
-      "href": "https://store.steampowered.com/app/2367820/",
+      "href": "https://store.steampowered.com/app/730/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
