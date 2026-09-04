@@ -46,3 +46,7 @@ squirrel.toml
 # local test artifacts
 .playwright-mcp/
 /skillscan-product-pass.png
+
+# tool caches and local QA captures
+/.fallow/
+/artifacts/

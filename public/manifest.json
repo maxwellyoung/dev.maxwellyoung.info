@@ -25,7 +25,7 @@
   "shortcuts": [
     {
       "name": "Projects",
-      "url": "/projects",
+      "url": "/#projects",
       "description": "View my work"
     },
     {

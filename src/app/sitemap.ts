@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { getAllCaseStudySlugs } from "@/lib/caseStudies";
+import { getAllEssaySlugs } from "@/lib/essays";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://dev.maxwellyoung.info";
@@ -36,6 +37,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     },
     {
+      url: `${baseUrl}/os`,
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/quiz`,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    },
+    {
       url: `${baseUrl}/basketcase`,
       changeFrequency: "monthly" as const,
       priority: 0.5,
@@ -68,11 +79,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  const essayRoutes = [
-    "the-invisible-details-of-interaction-design",
-    "motion-grammar-for-humane-interfaces",
-    "the-typography-system-behind-strawhouse",
-  ].map((slug) => ({
+  const essayRoutes = getAllEssaySlugs().map((slug) => ({
     url: `${baseUrl}/craft/essay/${slug}`,
     changeFrequency: "monthly" as const,
     priority: 0.6,
