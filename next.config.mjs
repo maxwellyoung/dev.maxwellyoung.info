@@ -18,15 +18,7 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: [
       "@radix-ui/react-dialog",
-      "@radix-ui/react-label",
-      "@radix-ui/react-scroll-area",
-      "@radix-ui/react-select",
-      "@radix-ui/react-separator",
-      "@radix-ui/react-slot",
-      "@radix-ui/react-switch",
-      "@radix-ui/react-tabs",
-      "@radix-ui/react-toggle",
-      "@radix-ui/react-toggle-group",
+      "@radix-ui/react-visually-hidden",
       "lucide-react",
       "framer-motion",
     ],

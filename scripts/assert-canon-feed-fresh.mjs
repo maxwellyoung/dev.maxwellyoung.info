@@ -5,6 +5,9 @@ import { readFileSync } from "node:fs";
 const FEED_PATH = "src/lib/canonFeed.ts";
 const DAY_MS = 24 * 60 * 60 * 1000;
 const maxAgeDays = Number.parseInt(process.env.CANON_FEED_MAX_AGE_DAYS ?? "2", 10);
+// A stale feed is a warning by default: the Canon cron on the mini can stall, and
+// that must not block deploying unrelated code. Set CANON_FEED_STRICT=1 to fail.
+const strict = process.env.CANON_FEED_STRICT === "1";
 
 function fail(message) {
   console.error(`[canon:fresh] ${message}`);
@@ -37,10 +40,12 @@ if (Number.isNaN(now.getTime())) {
 const ageDays = Math.max(0, Math.floor((now.getTime() - syncedDate.getTime()) / DAY_MS));
 
 if (ageDays > maxAgeDays) {
-  fail(
+  const message =
     `${FEED_PATH} source data is ${ageDays} days old (synced ${freshnessDate}). ` +
-      "Regenerate it with `bun run scripts/export-folio-feed.ts` from the Canon repo.",
-  );
+    "Regenerate it with `bun run scripts/export-folio-feed.ts` from the Canon repo.";
+  if (strict) fail(message);
+  console.warn(`[canon:fresh] WARNING: ${message}`);
+  process.exit(0);
 }
 
 process.stdout.write(`[canon:fresh] ${FEED_PATH} source synced ${freshnessDate}; age ${ageDays}d <= ${maxAgeDays}d.\n`);

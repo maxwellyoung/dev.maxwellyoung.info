@@ -58,7 +58,9 @@ export const metadata: Metadata = {
     creator: "@internetmaxwell",
   },
   alternates: {
-    canonical: "https://dev.maxwellyoung.info",
+    // "./" resolves to the current route, so every page canonicalises to itself
+    // unless it sets its own. A fixed URL here made every page claim the homepage.
+    canonical: "./",
   },
   robots: {
     index: true,

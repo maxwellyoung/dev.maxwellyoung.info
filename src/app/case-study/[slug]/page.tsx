@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import {
   getCaseStudy,
   getAllCaseStudySlugs,
@@ -64,6 +65,10 @@ export async function generateMetadata({
 export default async function CaseStudyPage({ params }: PageProps) {
   const { slug } = await params;
   const study = getCaseStudy(slug);
+
+  if (!study) {
+    notFound();
+  }
 
   const structuredData = study
     ? {
