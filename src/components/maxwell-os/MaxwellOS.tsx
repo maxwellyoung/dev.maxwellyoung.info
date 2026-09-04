@@ -1,23 +1,186 @@
 "use client";
-import {FormEvent,useEffect,useReducer,useRef,useState} from "react";
-import {ADVENTURE_GRAPH,AntState,AppId,OFFICE_GRAPH,antEscalation,antPosition,parseCommand,windowReducer,initialOSState} from "@/lib/maxwellOS";
+// The Maxwell OS shell: desktop, windows, taskbar, Start menu, persistence.
+// Rendered client-only (see MaxwellOSLoader) so the saved session can be read
+// synchronously during the first render instead of after a hydration flash.
+import { useCallback, useEffect, useReducer, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import Link from "next/link";
+import { defaultPrefs, initialOSState, schemeById, topWindow, wallpaperById, windowReducer, type AppId, type OSPrefs, type OSState, type OSWindow, type WindowPayload } from "@/lib/maxwellOS";
 import styles from "./MaxwellOS.module.css";
+import { About, Browser, Files, Help, Notepad, Settings, Terminal, Trash } from "./apps";
+import { Ants, Mines, Snake, Story } from "./games";
 
-const apps:{id:AppId;title:string;icon:string}[]=[{id:"files",title:"My Computer",icon:"PC"},{id:"about",title:"About Maxwell",icon:"MY"},{id:"browser",title:"Internet",icon:"WWW"},{id:"notes",title:"Notepad",icon:"TXT"},{id:"terminal",title:"MS-DOS Prompt",icon:"C:"},{id:"mines",title:"Minesweeper",icon:"*"},{id:"snake",title:"Snake",icon:"S"},{id:"adventure",title:"Elsewhere",icon:"MOON"},{id:"office",title:"The Office",icon:"DOOR"},{id:"trash",title:"Recycle Bin",icon:"BIN"}];
-function PixelIcon({name,small=false}:{name:string;small?:boolean}){return <span aria-hidden className={`${styles.pixelIcon} ${small?styles.pixelIconSmall:""}`} data-icon={name}><i/></span>}
-export default function MaxwellOS(){const [os,dispatch]=useReducer(windowReducer,initialOSState);const[start,setStart]=useState(false);const[menu,setMenu]=useState<{x:number;y:number}|null>(null);const[ants,setAnts]=useState<AntState>({active:false,count:0,generation:0});const[clock,setClock]=useState("");const open=(id:AppId)=>{const a=apps.find(x=>x.id===id)!;dispatch({type:"open",app:id,title:a.title});setStart(false)};
-useEffect(()=>{const tick=()=>setClock(new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}));tick();const id=setInterval(tick,1000);return()=>clearInterval(id)},[]);
-useEffect(()=>{if(!ants.active)return;const id=setInterval(()=>setAnts(s=>({...s,count:antEscalation(s.count)})),3500);return()=>clearInterval(id)},[ants.active]);
-useEffect(()=>()=>{document.title="Maxwell Young"},[]);
-useEffect(()=>{const key=(event:KeyboardEvent)=>{if(event.key!=="Escape")return;const top=[...os.windows].filter(w=>!w.minimized).sort((a,b)=>b.z-a.z)[0];if(top)dispatch({type:"close",id:top.id});else location.assign("/")};addEventListener("keydown",key);return()=>removeEventListener("keydown",key)},[os.windows]);
-return <main className={styles.os} onClick={()=>menu&&setMenu(null)} onContextMenu={e=>{e.preventDefault();setMenu({x:e.clientX,y:e.clientY})}}><div className={styles.wallmark}>MAXWELL<br/><span>PROFESSIONAL</span></div><div className={styles.icons}>{apps.filter(a=>["files","about","browser","adventure","office","trash"].includes(a.id)).map(a=><button key={a.id} onDoubleClick={()=>open(a.id)} onClick={()=>{}}><PixelIcon name={a.icon}/><span>{a.title}</span></button>)}</div>
-{os.windows.map(w=>!w.minimized&&<section key={w.id} className={`${styles.window} ${w.maximized?styles.max:""}`} style={w.maximized?{zIndex:w.z}:{left:w.x,top:w.y,width:w.width,height:w.height,zIndex:w.z}} onMouseDown={()=>dispatch({type:"focus",id:w.id})}><header><PixelIcon name={apps.find(a=>a.id===w.app)?.icon||"?"} small/><strong>{w.title}</strong><div><button aria-label="Minimize" onClick={()=>dispatch({type:"minimize",id:w.id})}>_</button><button aria-label="Maximize" onClick={()=>dispatch({type:"maximize",id:w.id})}>□</button><button aria-label="Close" onClick={()=>dispatch({type:"close",id:w.id})}>×</button></div></header><nav className={styles.menuBar}>File&nbsp;&nbsp; Edit&nbsp;&nbsp; View&nbsp;&nbsp; Help</nav><div className={styles.content}><App id={w.app} open={open} release={()=>setAnts(s=>({active:true,count:Math.min(80,s.count+28),generation:s.generation}))}/></div></section>)}
-{ants.active&&<Ants count={ants.count} generation={ants.generation} clear={()=>setAnts(s=>({active:false,count:0,generation:s.generation+1}))}/>} {menu&&<div className={styles.context} style={{left:menu.x,top:menu.y}}><button onClick={()=>open("files")}>Open</button><button onClick={()=>open("settings")}>Properties</button><hr/><button onClick={()=>setMenu(null)}>Refresh</button></div>}
-<div className={styles.taskbar}><button className={styles.start} onClick={()=>setStart(!start)}><i>▦</i> Start</button>{os.windows.map(w=><button key={w.id} className={styles.task} onClick={()=>dispatch({type:"focus",id:w.id})}>{w.title}</button>)}<div className={`${styles.tray} ${ants.active?styles.trayAlert:""}`}>{ants.active?`⚠ ANTS ${ants.count}`:"VOL"}　{clock}</div></div>{start&&<div className={styles.startMenu}><aside>MAXWELL <b>OS</b></aside><div>{apps.map(a=><button key={a.id} onClick={()=>open(a.id)}><PixelIcon name={a.icon} small/>{a.title}<span>›</span></button>)}<hr/><Link href="/">⏻ Shut Down...</Link></div></div>}</main>}
-function App({id,open,release}:{id:AppId;open:(x:AppId)=>void;release:()=>void}){if(id==="terminal")return <Terminal open={open} release={release}/>;if(id==="adventure")return <Story kind="adventure"/>;if(id==="office")return <Story kind="office"/>;if(id==="mines")return <Mines/>;if(id==="snake")return <Snake/>;if(id==="notes")return <textarea className={styles.notes} defaultValue={"NOTES.TXT\n\nMake useful things.\nLeave one strange door unlocked."}/>;if(id==="browser")return <div className={styles.browser}><div>Address <input value="https://world.wide.web/local" readOnly/><button>Go</button></div><article><h1>Welcome to the Internet</h1><p>This copy is cached locally. The modem is resting.</p><a onClick={()=>open("about")}>Visit Maxwell&apos;s home page</a><br/><a href="/quiz">Run personnel verification quiz</a></article></div>;if(id==="files")return <div className={styles.explorer}><aside>📁 Desktop<br/>　📁 Projects<br/>　📁 Documents<br/>　📁 Games<br/>　🗑 Recycle Bin</aside><div>{apps.slice(1,7).map(a=><button key={a.id} onDoubleClick={()=>open(a.id)}><b>{a.icon}</b>{a.title}</button>)}</div></div>;if(id==="trash")return <div className={styles.empty}><b>🗑️</b><p>1 object</p><button onClick={release}>DO NOT CLICK</button><small>final_final_v7_REAL.txt</small></div>;if(id==="settings")return <div className={styles.panel}><h3>Display Properties</h3><fieldset><legend>Appearance</legend><p>Scheme: Maxwell Standard</p><p>Desktop: Corporate Teal</p></fieldset><button>OK</button> <button>Cancel</button></div>;if(id==="help")return <div className={styles.panel}><h2>Maxwell OS Help</h2><p>Double-click desktop icons. Use Start for programs. Right-click the desktop for options.</p><p>If ants appear, use the vacuum. Escape always returns to the portfolio.</p></div>;return <div className={styles.about}><b>MY</b><h1>Maxwell Young</h1><p>Design engineer for products and interface systems.</p><hr/><p>Maxwell OS Professional<br/>Version 1.0.1999</p></div>}
-function Terminal({open,release}:{open:(x:AppId)=>void;release:()=>void}){const[lines,setLines]=useState(["Maxwell OS [Version 1.0.1999]","(C) Maxwell Systems. All rights reserved.",""]);const[q,setQ]=useState("");function go(e:FormEvent){e.preventDefault();const r=parseCommand(q,new Date().toString());if(r.clear)setLines([]);else setLines(x=>[...x,`C:\\MAXWELL>${q}`,r.output]);if(r.open)open(r.open);if(r.vacuum)release();setQ("")}return <div className={styles.terminal} onClick={()=>document.getElementById("cmd")?.focus()}>{lines.map((l,i)=><div key={i}>{l}</div>)}<form onSubmit={go}>C:\MAXWELL&gt;<input id="cmd" value={q} onChange={e=>setQ(e.target.value)} autoFocus/></form></div>}
-function Story({kind}:{kind:"adventure"|"office"}){const graph=kind==="adventure"?ADVENTURE_GRAPH:OFFICE_GRAPH;const[node,setNode]=useState(kind==="adventure"?"dock":"lobby");const[selected,setSelected]=useState(0);const n=graph[node];const choose=(to:string)=>{setNode(to);setSelected(0)};if(kind==="office")return <div className={styles.office}><div className={styles.officeNo}>ROOM {Object.keys(graph).indexOf(node)+301}</div><h1>{n.ending||"This is a story about a person named You."}</h1><p>{n.text}</p><div className={styles.officeChoices}>{n.choices.map((c,i)=><button key={c.to} onClick={()=>choose(c.to)}><u>{i+1}</u> {c.label}<span>CONTINUE ›</span></button>)}</div><small>NARRATOR STATUS: OBSERVING</small></div>;return <div className={styles.adventure}><div className={styles.scene}><div className={styles.skyPixels}/><div className={styles.moon}>☾</div><div className={styles.beam}/><div className={styles.cliffs}/><div className={styles.sea}/><div className={styles.lighthouse}><i/><b/></div><div className={styles.oracle}><em>ORACLE</em><i/><b>TYPE<br/>KINDLY</b></div><div className={styles.dock}/><p>{n.text}</p></div><section className={styles.commandArea}><strong>ACTIONS</strong><div className={styles.verbs}>{["LOOK AT","WALK TO","TALK TO","USE"].map((v,i)=><button className={selected===i?styles.selected:""} onClick={()=>setSelected(i)} key={v}>{v}</button>)}</div><strong>SCENE TARGETS / INVENTORY</strong><div className={styles.choices}>{n.choices.map(c=><button key={c.to} onClick={()=>choose(c.to)}>{c.label}<span>›</span></button>)}{n.ending&&<button onClick={()=>choose("dock")}>Play again <span>↻</span></button>}</div></section></div>}
-function Mines(){const[cells,setCells]=useState(()=>Array.from({length:81},(_,i)=>({mine:[7,14,25,42,66,73,78].includes(i),open:false})));const[dead,setDead]=useState(false);return <div className={styles.mines}><div className={styles.counter}>007 <button onClick={()=>{setDead(false);setCells(cells.map(x=>({...x,open:false})))}}>🙂</button> 999</div><div className={styles.grid}>{cells.map((c,i)=><button key={i} className={c.open?styles.open:""} onClick={()=>{if(c.mine)setDead(true);setCells(x=>x.map((v,j)=>j===i?{...v,open:true}:v))}}>{c.open?(c.mine?"💣":((i*7)%4||"")):""}</button>)}</div>{dead&&<b>Mine encountered. Your paperwork survives.</b>}</div>}
-function Snake(){return <div className={styles.snake}><div className={styles.snakeBoard}>◆ ◆ ◆ ◆　<span>●</span></div><p>SNAKE.EXE</p><button>NEW GAME</button><p>Use arrow keys. Imagine it is moving very carefully.</p></div>}
-function Ants({count,generation,clear}:{count:number;generation:number;clear:()=>void}){const ref=useRef<HTMLDivElement>(null);const[pointer,setPointer]=useState({x:50,y:50});return <div ref={ref} key={generation} className={styles.infestation} onPointerMove={e=>setPointer({x:e.clientX/innerWidth*100,y:e.clientY/innerHeight*100})}>{Array.from({length:count},(_,i)=>{const p=antPosition(i,count);const flee=Math.hypot(p.x-pointer.x,p.y-pointer.y)<12;return <i className={`${styles.ant} ${styles[p.origin]} ${flee?styles.flee:""}`} key={i} style={{left:`${p.x}%`,top:`${p.y}%`,animationDelay:`-${i%7}s`,"--turn":`${i*47}deg`} as React.CSSProperties}><b/><span/><em/></i>})}<section className={styles.antDialog} role="alertdialog" aria-label="Ant infestation detected"><header>System Protection</header><div><strong>⚠</strong><p><b>Ant infestation detected</b><br/>Activity: {count<45?"local cluster":count<70?"spreading across chrome":"system-wide"}<br/><small>Source: final_final_v7_REAL.txt</small></p></div><footer><button onClick={clear}>Vacuum and clean up</button></footer></section></div>}
+export type AppMeta = { id: AppId; title: string; icon: string; size?: { width: number; height: number } };
+export const apps: AppMeta[] = [
+  { id: "files", title: "My Computer", icon: "PC", size: { width: 760, height: 520 } },
+  { id: "about", title: "About Maxwell", icon: "MY", size: { width: 560, height: 480 } },
+  { id: "browser", title: "Internet", icon: "WWW", size: { width: 720, height: 560 } },
+  { id: "notes", title: "Notepad", icon: "TXT", size: { width: 640, height: 520 } },
+  { id: "terminal", title: "MS-DOS Prompt", icon: "C:", size: { width: 680, height: 440 } },
+  { id: "mines", title: "Minesweeper", icon: "*", size: { width: 420, height: 500 } },
+  { id: "snake", title: "Snake", icon: "S", size: { width: 460, height: 560 } },
+  { id: "adventure", title: "Elsewhere", icon: "MOON", size: { width: 900, height: 620 } },
+  { id: "office", title: "The Office", icon: "DOOR", size: { width: 820, height: 600 } },
+  { id: "settings", title: "Display Properties", icon: "CFG", size: { width: 520, height: 540 } },
+  { id: "help", title: "Help", icon: "?", size: { width: 560, height: 480 } },
+  { id: "trash", title: "Recycle Bin", icon: "BIN", size: { width: 420, height: 380 } },
+];
+const DESKTOP_ICONS: AppId[] = ["files", "about", "browser", "terminal", "adventure", "office", "trash"];
+
+export type OSApi = {
+  open: (id: AppId, payload?: WindowPayload, title?: string) => void;
+  close: (id: string) => void;
+  release: () => void;
+  exit: () => void;
+  prefs: OSPrefs;
+  setPrefs: (prefs: OSPrefs) => void;
+};
+
+export function PixelIcon({ name, small = false }: { name: string; small?: boolean }) {
+  return <span aria-hidden className={`${styles.pixelIcon} ${small ? styles.pixelIconSmall : ""}`} data-icon={name}><i /></span>;
+}
+
+const STORAGE = "maxwell-os:v2";
+type Session = { os: OSState; prefs: OSPrefs };
+function loadSession(): Session {
+  try {
+    const raw = localStorage.getItem(STORAGE);
+    if (raw) {
+      const saved = JSON.parse(raw) as Partial<Session>;
+      const os = saved.os ? windowReducer(initialOSState, { type: "hydrate", state: saved.os, viewport: { width: innerWidth, height: innerHeight } }) : initialOSState;
+      return { os, prefs: { ...defaultPrefs, ...saved.prefs } };
+    }
+  } catch {}
+  return { os: initialOSState, prefs: defaultPrefs };
+}
+
+export default function MaxwellOS() {
+  const session = useRef<Session | null>(null);
+  const boot = () => (session.current ??= loadSession());
+  const [os, dispatch] = useReducer(windowReducer, undefined, () => boot().os);
+  const [prefs, setPrefs] = useState<OSPrefs>(() => boot().prefs);
+  const [start, setStart] = useState(false);
+  const [menu, setMenu] = useState<{ x: number; y: number } | null>(null);
+  const [ants, setAnts] = useState({ active: false, count: 0, generation: 0 });
+  const [clock, setClock] = useState("");
+  const top = topWindow(os);
+
+  const open = useCallback((id: AppId, payload?: WindowPayload, title?: string) => {
+    const meta = apps.find((a) => a.id === id)!;
+    dispatch({ type: "open", app: id, title: title ?? meta.title, payload, size: meta.size });
+    setStart(false);
+    setMenu(null);
+  }, []);
+  const api: OSApi = {
+    open,
+    close: (id) => dispatch({ type: "close", id }),
+    release: () => setAnts((s) => ({ active: true, count: Math.max(s.count, 18), generation: s.generation })),
+    exit: () => location.assign("/"),
+    prefs,
+    setPrefs,
+  };
+
+  useEffect(() => { try { localStorage.setItem(STORAGE, JSON.stringify({ os, prefs })); } catch {} }, [os, prefs]);
+  useEffect(() => { const tick = () => setClock(new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })); tick(); const id = setInterval(tick, 1000); return () => clearInterval(id); }, []);
+  useEffect(() => { if (!ants.active) return; const id = setInterval(() => setAnts((s) => ({ ...s, count: Math.min(80, s.count + 12) })), 3500); return () => clearInterval(id); }, [ants.active]);
+  useEffect(() => {
+    const key = (event: KeyboardEvent) => {
+      const editing = /INPUT|TEXTAREA/.test((event.target as HTMLElement)?.tagName ?? "");
+      if (event.key === "Tab" && (event.altKey || event.ctrlKey)) { event.preventDefault(); dispatch({ type: "cycle", direction: event.shiftKey ? -1 : 1 }); return; }
+      if (event.key !== "Escape") return;
+      if (start || menu) { setStart(false); setMenu(null); return; }
+      if (editing) { (event.target as HTMLElement).blur(); return; }
+      const current = topWindow(os);
+      if (current) dispatch({ type: "close", id: current.id }); else location.assign("/");
+    };
+    addEventListener("keydown", key);
+    return () => removeEventListener("keydown", key);
+  }, [os, start, menu]);
+
+  const scheme = schemeById(prefs.scheme);
+  const wallpaper = wallpaperById(prefs.wallpaper);
+  const rootStyle = { "--os-desktop": scheme.desktop, "--os-face": scheme.face, "--os-title-a": scheme.titleA, "--os-title-b": scheme.titleB, "--os-text": scheme.text, "--os-link": scheme.link, backgroundImage: wallpaper.css } as React.CSSProperties;
+  const openIcon = (id: AppId) => (event: React.MouseEvent) => { if (matchMedia("(hover: none)").matches || event.detail >= 2) open(id); };
+
+  return (
+    <main className={styles.os} style={rootStyle} onClick={() => { if (menu) setMenu(null); if (start) setStart(false); }} onContextMenu={(e) => { if ((e.target as HTMLElement).closest(`.${styles.window}`)) return; e.preventDefault(); setMenu({ x: e.clientX, y: e.clientY }); }}>
+      <div className={styles.wallmark}>MAXWELL<br /><span>PROFESSIONAL</span></div>
+      <div className={styles.icons}>
+        {DESKTOP_ICONS.map((id) => { const a = apps.find((x) => x.id === id)!; return <button key={id} onClick={openIcon(id)} onKeyDown={(e) => e.key === "Enter" && open(id)}><PixelIcon name={a.icon} /><span>{a.title}</span></button>; })}
+      </div>
+      {os.windows.map((w) => !w.minimized && (
+        <WindowFrame key={w.id} w={w} active={top?.id === w.id} dispatch={dispatch} icon={apps.find((a) => a.id === w.app)?.icon ?? "?"}>
+          <App w={w} api={api} />
+        </WindowFrame>
+      ))}
+      {ants.active && <Ants count={ants.count} generation={ants.generation} clear={() => setAnts((s) => ({ active: false, count: 0, generation: s.generation + 1 }))} />}
+      {menu && <div className={styles.context} style={{ left: Math.min(menu.x, innerWidth - 160), top: Math.min(menu.y, innerHeight - 160) }}><button onClick={() => open("files")}>Open</button><button onClick={() => open("terminal")}>Command Prompt</button><hr /><button onClick={() => open("settings")}>Properties</button><button onClick={() => setMenu(null)}>Refresh</button></div>}
+      <div className={styles.taskbar}>
+        <button className={`${styles.start} ${start ? styles.startOpen : ""}`} aria-expanded={start} onClick={(e) => { e.stopPropagation(); setStart(!start); }}><i>▦</i> Start</button>
+        {os.windows.map((w) => <button key={w.id} className={`${styles.task} ${top?.id === w.id && !w.minimized ? styles.taskActive : ""}`} onClick={() => dispatch(top?.id === w.id && !w.minimized ? { type: "minimize", id: w.id } : { type: "focus", id: w.id })}><PixelIcon name={apps.find((a) => a.id === w.app)?.icon ?? "?"} small />{w.title}</button>)}
+        <div className={`${styles.tray} ${ants.active ? styles.trayAlert : ""}`}>{ants.active ? `⚠ ANTS ${ants.count}` : "VOL"}　{clock}</div>
+      </div>
+      {start && (
+        <div className={styles.startMenu} onClick={(e) => e.stopPropagation()}>
+          <aside>MAXWELL <b>OS</b></aside>
+          <div>
+            {apps.filter((a) => !["settings", "help"].includes(a.id)).map((a) => <button key={a.id} onClick={() => open(a.id)}><PixelIcon name={a.icon} small />{a.title}<span>›</span></button>)}
+            <hr />
+            <button onClick={() => open("settings")}><PixelIcon name="CFG" small />Settings<span>›</span></button>
+            <button onClick={() => open("help")}><PixelIcon name="?" small />Help<span>›</span></button>
+            <hr />
+            <Link href="/"><PixelIcon name="OFF" small />Shut Down...</Link>
+          </div>
+        </div>
+      )}
+    </main>
+  );
+}
+
+type Drag = { mode: "move" | "resize"; startX: number; startY: number; x: number; y: number; width: number; height: number };
+
+function WindowFrame({ w, active, dispatch, icon, children }: { w: OSWindow; active: boolean; dispatch: React.Dispatch<Parameters<typeof windowReducer>[1]>; icon: string; children: React.ReactNode }) {
+  const drag = useRef<Drag | null>(null);
+  const begin = (mode: Drag["mode"], e: ReactPointerEvent<HTMLElement>) => {
+    if (w.maximized || (e.target as HTMLElement).closest("button")) return;
+    if (e.button !== 0) return;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    drag.current = { mode, startX: e.clientX, startY: e.clientY, x: w.x, y: w.y, width: w.width, height: w.height };
+  };
+  const track = (e: ReactPointerEvent<HTMLElement>) => {
+    const d = drag.current;
+    if (!d) return;
+    const dx = e.clientX - d.startX, dy = e.clientY - d.startY;
+    if (d.mode === "move") dispatch({ type: "move", id: w.id, x: Math.min(innerWidth - 80, d.x + dx), y: Math.min(innerHeight - 90, d.y + dy) });
+    else dispatch({ type: "resize", id: w.id, width: d.width + dx, height: d.height + dy });
+  };
+  const end = () => { drag.current = null; };
+  const frame = w.maximized ? { zIndex: w.z } : { left: w.x, top: w.y, width: w.width, height: w.height, zIndex: w.z };
+  return (
+    <section className={`${styles.window} ${w.maximized ? styles.max : ""} ${active ? "" : styles.inactive}`} style={frame} onPointerDownCapture={() => !active && dispatch({ type: "focus", id: w.id })} aria-label={w.title}>
+      <header onPointerDown={(e) => begin("move", e)} onPointerMove={track} onPointerUp={end} onPointerCancel={end} onDoubleClick={() => dispatch({ type: "maximize", id: w.id })}>
+        <PixelIcon name={icon} small /><strong>{w.title}</strong>
+        <div><button aria-label="Minimize" onClick={() => dispatch({ type: "minimize", id: w.id })}>_</button><button aria-label={w.maximized ? "Restore" : "Maximize"} onClick={() => dispatch({ type: "maximize", id: w.id })}>{w.maximized ? "❐" : "□"}</button><button aria-label="Close" onClick={() => dispatch({ type: "close", id: w.id })}>×</button></div>
+      </header>
+      <div className={styles.content}>{children}</div>
+      {!w.maximized && <i className={styles.resizer} aria-hidden onPointerDown={(e) => begin("resize", e)} onPointerMove={track} onPointerUp={end} onPointerCancel={end} />}
+    </section>
+  );
+}
+
+function App({ w, api }: { w: OSWindow; api: OSApi }) {
+  const path = w.payload?.path;
+  switch (w.app) {
+    case "files": return <Files key={path?.join("/") ?? ""} api={api} path={path} />;
+    case "notes": return <Notepad api={api} path={path} />;
+    case "terminal": return <Terminal api={api} />;
+    case "settings": return <Settings api={api} windowId={w.id} />;
+    case "browser": return <Browser api={api} />;
+    case "about": return <About />;
+    case "help": return <Help />;
+    case "trash": return <Trash api={api} />;
+    case "mines": return <Mines />;
+    case "snake": return <Snake />;
+    case "adventure": return <Story kind="adventure" />;
+    case "office": return <Story kind="office" />;
+  }
+}
