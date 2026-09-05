@@ -30,15 +30,15 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-09-04",
-  "sourceSyncedAt": "2026-09-04T23:56:39.854Z",
+  "generatedAt": "2026-09-05",
+  "sourceSyncedAt": "2026-09-05T00:27:40.935Z",
   "totalWorks": 4286,
   "regionCount": 22,
   "regions": [
-    "Eclectic Pop & Rock",
-    "Contemporary Hip-Hop & Pop",
-    "Classic Film Noir",
-    "Heartfelt Dramas"
+    "Modern Hip-Hop & Pop",
+    "Introspective Dramas & Thrillers",
+    "Contemporary Dramedy",
+    "Character-Driven Dramas"
   ],
   "now": [
     {
