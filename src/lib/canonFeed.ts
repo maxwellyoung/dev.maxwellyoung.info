@@ -31,14 +31,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-05",
-  "sourceSyncedAt": "2026-09-05T19:21:54.733Z",
+  "sourceSyncedAt": "2026-09-05T19:53:25.114Z",
   "totalWorks": 4292,
   "regionCount": 22,
   "regions": [
-    "Indie Rock Essentials",
-    "Contemporary Hip-Hop Fusion",
-    "Fantasy Family",
-    "90s Indie Dramas"
+    "Indie & Alternative Vibes",
+    "Surrealist Sci-Fi Classics",
+    "Musical Comedies & Dramedies",
+    "Romantic Comedies & Dramas"
   ],
   "now": [
     {
