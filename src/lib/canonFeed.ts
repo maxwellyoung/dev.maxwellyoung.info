@@ -31,14 +31,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-06",
-  "sourceSyncedAt": "2026-09-06T20:40:56.459Z",
+  "sourceSyncedAt": "2026-09-06T21:12:07.913Z",
   "totalWorks": 4301,
   "regionCount": 22,
   "regions": [
-    "Psychological Horror & Satire",
-    "Tech & Cultural Commentary",
-    "Meta-Narratives & Dark Humor",
-    "Contemporary Hip-Hop & R&B"
+    "Contemporary Hip-Hop Fusion",
+    "Classic Dramedy & Romance",
+    "Surreal Romantic Dramas",
+    "Hip-Hop & Electronic Vibes"
   ],
   "now": [
     {
