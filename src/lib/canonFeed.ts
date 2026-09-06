@@ -31,14 +31,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-06",
-  "sourceSyncedAt": "2026-09-06T09:48:56.934Z",
+  "sourceSyncedAt": "2026-09-06T10:19:45.124Z",
   "totalWorks": 4295,
   "regionCount": 22,
   "regions": [
-    "Contemporary Hip-Hop Fusion",
-    "Music Documentaries",
-    "Dark Comedies & Thrillers",
-    "Experimental Documentaries"
+    "Eclectic Hip-Hop Fusion",
+    "Contemporary Indie Rock",
+    "Tech & Society Critique",
+    "Classic International Cinema"
   ],
   "now": [
     {
