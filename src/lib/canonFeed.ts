@@ -31,14 +31,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-08",
-  "sourceSyncedAt": "2026-09-08T03:33:42.366Z",
+  "sourceSyncedAt": "2026-09-08T04:04:46.872Z",
   "totalWorks": 4307,
   "regionCount": 22,
   "regions": [
-    "Genre-Blending Pop-Rock",
-    "Romantic Comedies",
-    "Eclectic Indie Soundscapes",
-    "Indie Adventure"
+    "Modern Hip-Hop & Alternative",
+    "Artful Dramas",
+    "Psychological Thrillers",
+    "Thought-Provoking Documentaries"
   ],
   "now": [
     {
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:arthur-russell--love-is-overtaking-me-redux",
+      "id": "applemusic:ade-la--prima",
       "verb": "in rotation",
-      "title": "Love Is Overtaking Me (Redux)",
-      "creator": "Arthur Russell",
+      "title": "PRIMA",
+      "creator": "ADÉLA",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=Love%20Is%20Overtaking%20Me%20(Redux)%20Arthur%20Russell%202026",
+      "href": "https://music.apple.com/nz/search?term=PRIMA%20AD%C3%89LA%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
