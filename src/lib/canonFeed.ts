@@ -30,15 +30,15 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-09-07",
-  "sourceSyncedAt": "2026-09-07T23:57:56.421Z",
+  "generatedAt": "2026-09-08",
+  "sourceSyncedAt": "2026-09-08T02:31:55.587Z",
   "totalWorks": 4306,
   "regionCount": 22,
   "regions": [
-    "Indie Pop & Alternative",
-    "Romantic Comedies & Melodrama",
-    "Cult Classics & Noir",
-    "Literary & Social Commentaries"
+    "Genre-Blending Pop-Rock",
+    "Romantic Comedies",
+    "Eclectic Indie Soundscapes",
+    "Indie Adventure"
   ],
   "now": [
     {
