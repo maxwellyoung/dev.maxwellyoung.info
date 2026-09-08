@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-08",
-  "sourceSyncedAt": "2026-09-08T14:22:47.033Z",
+  "sourceSyncedAt": "2026-09-08T14:53:40.805Z",
   "totalWorks": 4319,
   "regionCount": 22,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:arthur-russell--love-is-overtaking-me-redux",
+      "id": "applemusic:the-pastels--truckload-of-trouble",
       "verb": "in rotation",
-      "title": "Love Is Overtaking Me (Redux)",
-      "creator": "Arthur Russell",
+      "title": "Truckload of Trouble",
+      "creator": "The Pastels",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=Love%20Is%20Overtaking%20Me%20(Redux)%20Arthur%20Russell%202026",
+      "href": "https://music.apple.com/nz/search?term=Truckload%20of%20Trouble%20The%20Pastels%201993",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
