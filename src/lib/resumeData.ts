@@ -37,9 +37,9 @@ type ResumeData = {
 
 export const resumeData: ResumeData = {
   name: "Maxwell Young",
-  title: "Design Engineer",
+  title: "Product Engineer",
   profile:
-    "Design engineer who led Silk's React Native app from its first build through launch and now leads ongoing mobile delivery. I also ship independent products from interaction design through architecture, accessibility, performance, and release.",
+    "Product engineer working across mobile apps and research software. Led Silk's React Native app from its first build through launch and ongoing delivery across iOS and Android. Combine interaction design with architecture, performance, accessibility, and regression testing.",
   contact: {
     email: "maxwell@ninetynine.digital",
     location: "Auckland, NZ",
@@ -57,7 +57,7 @@ export const resumeData: ResumeData = {
         "Silk is a platform for blogging, private archives, and multimedia moodboards. Led its React Native app from initial build through launch and now lead ongoing delivery.",
       responsibilities: [
         "Built the initial mobile foundation and turned early product direction into production architecture, interface systems, and media-heavy flows.",
-        "Continue to own performance, accessibility, regression coverage, and real-device reliability across iOS and Android releases.",
+        "Own performance, accessibility, and release reliability across iOS and Android, using regression coverage and real-device checks to validate changes.",
       ],
     },
     {
@@ -119,12 +119,12 @@ export const resumeData: ResumeData = {
         "Designed, built, and shipped a React Native and Expo behavior-change app with recovery milestones, coaching flows, and relapse support.",
     },
     {
-      name: "Afterlight",
-      descriptor: "Independent mobile product",
-      href: "https://afterlight.ninetynine.digital",
-      date: "In development",
+      name: "Ch'lita",
+      descriptor: "Shipped client website",
+      href: "https://chlita.com",
+      date: "Live",
       summary:
-        "Designed and built a local-first React Native concert diary with a Recovery Desk that turns ticket files, shares, calendars, photos, Gmail receipts, and listening history into reviewable on-device candidates; nothing enters the diary without confirmation.",
+        "Built a Next.js and Sanity portfolio for Ch'lita Collins, Fashion Editor-at-Large at i-D, with fast image browsing and editorial motion.",
     },
     {
       name: "T3 Code",
@@ -137,7 +137,7 @@ export const resumeData: ResumeData = {
   ],
   education: [
     {
-      degree: "B.Sc. Computer & Information Sciences",
+      degree: "Bachelor of Computer and Information Sciences",
       institution: "Auckland University of Technology",
       institutionHref: "https://www.aut.ac.nz/",
       date: "2024 – Expected 2026",

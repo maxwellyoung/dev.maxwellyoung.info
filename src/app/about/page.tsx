@@ -7,17 +7,17 @@ import { AnimatedLink } from "@/components/ui/animated-link";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Design engineer based in Auckland, NZ. Currently at Silk, previously Spark New Zealand. B.Sc. Computer & Information Sciences at AUT.",
+    "Product engineer based in Auckland, NZ, working across mobile apps and research software. Completing a Bachelor of Computer and Information Sciences at AUT.",
   openGraph: {
     title: "About | Maxwell Young",
     description:
-      "Design engineer based in Auckland, NZ. Currently at Silk, previously Spark New Zealand.",
+      "Product engineer based in Auckland, NZ, working across mobile apps and research software.",
     images: [
       {
         url: "/meta.png",
         width: 1200,
         height: 630,
-        alt: "Maxwell Young - Design Engineer",
+        alt: "Maxwell Young - Product Engineer",
       },
     ],
   },
@@ -58,7 +58,7 @@ export default function AboutPage() {
 
         <section className="space-y-4 leading-relaxed text-muted-foreground">
           <p>
-            I&apos;m Maxwell Young, a design engineer based in Auckland, New
+            I&apos;m Maxwell Young, a product engineer based in Auckland, New
             Zealand. I work at{" "}
             <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>
             , a platform for blogging, private archives, and multimedia
@@ -145,7 +145,7 @@ export default function AboutPage() {
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li>
               <span className="text-foreground font-medium">
-                B.Sc. Computer &amp; Information Sciences
+                Bachelor of Computer and Information Sciences
               </span>{" "}
               &mdash; Auckland University of Technology (2024 &ndash; Expected 2026)
             </li>

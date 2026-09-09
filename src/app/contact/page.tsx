@@ -4,9 +4,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 
 export const metadata: Metadata = {
-  title: "Contact a Design Engineer",
+  title: "Contact a Product Engineer",
   description:
-    "Contact Maxwell Young, an Auckland design engineer working across React Native, mobile products, web interfaces, and accessible interaction systems.",
+    "Contact Maxwell Young, an Auckland product engineer working across React Native, mobile products, web interfaces, and accessible interaction systems.",
   alternates: {
     canonical: "https://dev.maxwellyoung.info/contact",
   },

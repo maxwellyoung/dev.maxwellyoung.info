@@ -89,9 +89,9 @@ const projects: Project[] = [
     launchStage: "Production work",
     priority: 0,
     description:
-      "Silk's React Native app for iOS and Android — mobile lead from the first build through launch and every release since.",
+      "Mobile lead for Silk's iOS and Android app, from first build through launch, performance work, and ongoing releases.",
     longDescription:
-      "Silk is a platform for blogging, private archives, and multimedia moodboards. I built its mobile app from the first React Native foundation to launch, and I still own it: architecture, interaction design, performance, and accessibility, with every release checked on real devices before it ships.",
+      "Silk is a platform for blogging, private archives, and multimedia moodboards. I led its React Native app from the first build through launch and continue to own mobile delivery across iOS and Android. My work connects architecture and interaction design with performance, accessibility, regression coverage, and real-device verification.",
     tags: ["React Native", "React", "TypeScript"],
     stack: ["React Native", "React", "TypeScript", "Expo"],
     startDate: "2025-09-01",
@@ -110,7 +110,7 @@ const projects: Project[] = [
     impact: [
       "Built the mobile app from zero to launch as mobile lead",
       "Own architecture, performance, and accessibility across iOS and Android",
-      "Every release verified on real devices before it ships",
+      "Validate mobile changes with regression coverage and real-device checks",
     ],
   },
   {
@@ -119,7 +119,7 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: true,
+    featured: false,
     visibility: "public",
     lifecycle: "current",
     launchStage: "In development",

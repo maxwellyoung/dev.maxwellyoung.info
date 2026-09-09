@@ -25,7 +25,7 @@ export default function Home() {
               Maxwell Young
             </h1>
             <p className="mt-1 max-w-xl text-lg font-light leading-snug tracking-tight text-muted-foreground md:text-xl">
-              Design engineer for mobile products and interface systems.
+              Product engineer focused on mobile experiences.
             </p>
           </motion.header>
 
@@ -34,12 +34,13 @@ export default function Home() {
               className="max-w-xl text-foreground"
               variants={item.fadeUp}
             >
-              I&apos;m most useful where interaction design and implementation
-              stay close together: shaping the model, building the interface,
-              and verifying it on real devices. At{" "}
+              I build and maintain production apps, with a focus on interaction
+              design, performance, and reliability. At{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>{" "}
-              I lead the React Native app — first build through launch and
-              every release since. Independently, I ship my own apps through{" "}
+              I lead React Native development across iOS and Android, from the
+              first build through launch and ongoing releases. I also build
+              research software at the University of Auckland and ship
+              independent apps through{" "}
               <TrackedActionLink
                 href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_body"
                 external
