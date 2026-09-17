@@ -340,6 +340,47 @@ const projects: Project[] = [
     ],
   },
   {
+    slug: "playback",
+    name: "Playback",
+    status: "Active",
+    category: "personal",
+    role: "Solo",
+    featured: false,
+    visibility: "public",
+    lifecycle: "current",
+    launchStage: "In development",
+    priority: 7,
+    description:
+      "Native macOS app for shooting lipsync, dance, and music video takes locked to the original track.",
+    longDescription:
+      "Playback records camera video against a song and exports it with the original audio lined up by timestamp. Instead of pressing play and record together, it schedules the track and reads camera frames on the system host clock, so every take knows exactly where it sits in the song. That turns a set of takes into a synced multicam session: a cut editor switches between them on the beat, loop mode records reps of a section hands-free, and a half-speed mode retimes slowed performances back to full speed. Lyrics are typed by hand, timed with on-device speech recognition, nudged, and exported as captions.",
+    tags: ["Swift", "SwiftUI", "macOS", "AVFoundation", "Video", "Audio"],
+    stack: ["Swift", "SwiftUI", "AVFoundation", "Speech", "MusicUnderstanding", "XCTest"],
+    startDate: "2026-09-01",
+    cover: {
+      variant: "concept",
+      kicker: "Native macOS app",
+      summary: "Record takes locked to the track, then cut between them on the beat",
+      tone: "amber",
+    },
+    impact: [
+      "Takes align to the track on the system host clock, not by pressing play and record together",
+      "Multi-take cut editor over one song timeline with beat-snapped switching",
+      "36 automated tests against synthesized video and audio cover export alignment, retiming, and cut resolution",
+    ],
+    buildLog: [
+      {
+        date: "2026-09-17",
+        whatWorks: [
+          "Synced export, loop takes, half-speed retiming, multi-take cut editor, and lyric captions",
+          "Export, editor, and alignment logic verified by automated tests",
+        ],
+        nextMilestone: "First real shoot and a demo clip made with the app",
+        openQuestion: "How well speech recognition times lyrics on dense vocal mixes",
+      },
+    ],
+  },
+  {
     slug: "whakapapa",
     name: "Whakapapa",
     status: "Active",
