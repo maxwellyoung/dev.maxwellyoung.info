@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Github, FileText } from "lucide-react";
+import { ArrowUpRight, Github, FileText, Play } from "lucide-react";
 import {
   Project,
   getProjectContextLabel,
@@ -150,6 +150,18 @@ export function ProjectDetails({
           )}
 
           <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+            {project.links?.video && (
+              <a
+                href={project.links.video}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex min-h-10 items-center justify-center rounded-sm border border-accent/20 bg-accent/10 px-3 text-sm font-medium text-accent transition-colors duration-200 hover:bg-accent/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
+              >
+                <Play className="mr-1.5 h-3.5 w-3.5" />
+                Watch feature
+                <ArrowUpRight className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            )}
             {project.caseStudySlug && (
               <Link
                 href={`/case-study/${project.caseStudySlug}`}

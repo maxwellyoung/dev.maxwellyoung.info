@@ -280,7 +280,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
         <div className="space-y-10">
           <ProjectSection
             title="Selected work"
-            description="A production mobile app, shipped client work, and my own products on the App Store."
+            description="A production mobile app, shipped client work, and independent products."
             projects={flagshipProjects}
             expandedProject={expandedProject}
             onToggleExpand={setExpandedProject}

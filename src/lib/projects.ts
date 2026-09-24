@@ -619,17 +619,20 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: false,
+    featured: true,
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 8,
+    priority: 3,
     description:
-      "Fabric mod that puts T3 Code inside Minecraft — send a prompt, keep playing, and get pinged when the agent finishes or needs you.",
+      "T3 Code inside Minecraft, featured in a Theo video and my most-starred GitHub project.",
     longDescription:
-      "T3 Craft connects Minecraft Java to T3 Code the same way T3's mobile app does. An in-game panel lists threads from every paired machine and renders the conversation as Markdown, with approvals on Y/N and agent questions answered with the number keys. Updates stream over T3's RPC WebSocket and fall back to polling, so a turn can run while you mine and one toast tells you when it's done. Threads can also appear as villagers whose name tags show what they're waiting on; right-click one to open it. A loopback MCP server lets local agents see and build in the world, gated behind an explicit opt-in, and installed on a server the mod runs a shared village every player can see. Open source with tagged releases.",
+      "T3 Craft connects Minecraft Java to T3 Code the same way T3's mobile app does. An in-game panel lists threads from every paired machine and renders the conversation as Markdown, with approvals on Y/N and agent questions answered with the number keys. Updates stream over T3's RPC WebSocket and fall back to polling, so a turn can run while you mine and one toast tells you when it's done. Threads can also appear as villagers whose name tags show what they're waiting on; right-click one to open it. A loopback MCP server lets local agents see and build in the world, gated behind an explicit opt-in, and installed on a server the mod runs a shared village every player can see. Theo showed Max's demo in his video Anthropic Actually Fixed Opus. Open source with tagged releases.",
     tags: ["Java", "Minecraft", "Fabric", "MCP", "AI agents"],
     stack: ["Java 25", "Fabric", "WebSocket RPC", "MCP", "Gradle"],
+    links: {
+      video: "https://www.youtube.com/watch?v=jgGyX7MPPVg&t=1637s",
+    },
     link: "https://github.com/maxwellyoung/t3craft/releases/latest",
     codeLink: "https://github.com/maxwellyoung/t3craft",
     screenshots: [
@@ -649,7 +652,9 @@ const projects: Project[] = [
       tone: "forest",
     },
     impact: [
-      "Speaks T3's own client protocol: pairing, the orchestration API, and live RPC streams",
+      "15 GitHub stars as of September 2026, my most-starred public repo",
+      "Featured in Theo's Anthropic Actually Fixed Opus",
+      "Speaks T3's client protocol: pairing, orchestration, and live RPC streams",
       "Threads from several machines in one sidebar, each action routed to the machine that owns it",
       "One notification per event, and approvals answered without leaving the game",
       "Local agents can build in the world through an opt-in MCP server",
