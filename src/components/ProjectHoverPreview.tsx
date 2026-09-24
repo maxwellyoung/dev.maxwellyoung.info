@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ProjectMedia } from "@/components/ProjectMedia";
 import type { Project } from "@/lib/projects";
 
@@ -16,9 +16,8 @@ export function ProjectHoverPreview({
 }: ProjectHoverPreviewProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [canHoverPreview, setCanHoverPreview] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const containerRef = useRef<HTMLDivElement>(null);
-  const previewRef = useRef<HTMLDivElement>(null);
+  const [previewPosition, setPreviewPosition] = useState({ x: 0, y: 0 });
+  const shouldReduceMotion = useReducedMotion() ?? false;
 
   const hasPreview = Boolean(project.cover || project.thumb || project.screenshots?.[0]);
 
@@ -36,38 +35,22 @@ export function ProjectHoverPreview({
     return () => hoverQuery.removeEventListener("change", syncHoverCapability);
   }, []);
 
-  useEffect(() => {
-    if (!isHovered || !hasPreview || !canHoverPreview) return;
+  const showPreview = (e: React.MouseEvent<HTMLDivElement>) => {
+    const previewWidth = 280;
+    const previewHeight = 180;
+    const margin = 20;
+    const x = e.clientX + margin + previewWidth <= window.innerWidth - margin
+      ? e.clientX + margin
+      : e.clientX - previewWidth - margin;
+    const y = Math.max(
+      margin,
+      Math.min(e.clientY - previewHeight / 2, window.innerHeight - previewHeight - margin),
+    );
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return;
-
-      const rect = containerRef.current.getBoundingClientRect();
-      const previewWidth = 280;
-      const previewHeight = 180;
-      const offset = 20;
-
-      // Calculate position relative to viewport
-      let x = e.clientX + offset;
-      let y = e.clientY - previewHeight / 2;
-
-      // Keep preview within viewport bounds
-      if (x + previewWidth > window.innerWidth - 20) {
-        x = e.clientX - previewWidth - offset;
-      }
-      if (y < 20) {
-        y = 20;
-      }
-      if (y + previewHeight > window.innerHeight - 20) {
-        y = window.innerHeight - previewHeight - 20;
-      }
-
-      setMousePosition({ x, y });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [isHovered, hasPreview, canHoverPreview]);
+    // Place it before mounting so the first frame never appears at the origin.
+    setPreviewPosition({ x, y });
+    setIsHovered(true);
+  };
 
   if (!hasPreview || !canHoverPreview) {
     return <>{children}</>;
@@ -75,8 +58,7 @@ export function ProjectHoverPreview({
 
   return (
     <div
-      ref={containerRef}
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={showPreview}
       onMouseLeave={() => setIsHovered(false)}
       className="relative"
     >
@@ -85,15 +67,17 @@ export function ProjectHoverPreview({
       <AnimatePresence>
         {isHovered && (
           <motion.div
-            ref={previewRef}
-            initial={{ opacity: 0, scale: 0.95 }}
+            aria-hidden="true"
+            initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.22, ease: [0.25, 0.1, 0.25, 1] }}
+            exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.95 }}
+            transition={shouldReduceMotion
+              ? { duration: 0.1 }
+              : { duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
             className="fixed z-50 pointer-events-none"
             style={{
-              left: mousePosition.x,
-              top: mousePosition.y,
+              left: previewPosition.x,
+              top: previewPosition.y,
             }}
           >
             <div className="relative h-[180px] w-[280px] overflow-hidden rounded-sm border border-[hsl(var(--border))] bg-[hsl(var(--background))] shadow-2xl">

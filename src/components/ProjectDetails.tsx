@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Github, FileText, Play } from "lucide-react";
 import {
@@ -21,13 +19,6 @@ export function ProjectDetails({
   project,
   onCarouselOpen,
 }: ProjectDetailsProps) {
-  const [loadedImage, setLoadedImage] = useState<string | null>(null);
-  const currentImage =
-    project?.cover?.src ??
-    project?.thumb ??
-    project?.screenshots?.[0] ??
-    null;
-  const imageLoaded = loadedImage === currentImage;
   const hasMedia = Boolean(
     project?.cover || project?.thumb || project?.screenshots?.length,
   );
@@ -52,24 +43,11 @@ export function ProjectDetails({
                   aria-label={`Open ${project.name} screenshots`}
                 >
                   <div className="relative w-full aspect-[16/9] overflow-hidden rounded-sm ring-1 ring-[hsl(var(--border))] bg-[hsl(var(--muted))] transition-[box-shadow,--tw-ring-color] [transition-duration:180ms] [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:ring-[hsl(var(--accent))]/45 group-hover:shadow-lg motion-reduce:transition-none">
-                    {!imageLoaded && currentImage && (
-                      <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-[hsl(var(--muted))] via-[hsl(var(--muted))]/50 to-[hsl(var(--muted))]" />
-                    )}
                     <ProjectMedia
                       project={project}
                       variant="detail"
                       sizes="(max-width: 1024px) 100vw, 66vw"
                     />
-                    {currentImage && (
-                      <Image
-                        src={currentImage}
-                        alt=""
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 66vw"
-                        className="opacity-0 pointer-events-none"
-                        onLoad={() => setLoadedImage(currentImage)}
-                      />
-                    )}
                   </div>
                 </button>
               ) : (
