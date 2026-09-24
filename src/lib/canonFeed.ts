@@ -30,8 +30,8 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-09-23",
-  "sourceSyncedAt": "2026-09-23T23:30:00.706Z",
+  "generatedAt": "2026-09-24",
+  "sourceSyncedAt": "2026-09-24T01:30:00.747Z",
   "totalWorks": 4393,
   "regionCount": 22,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:second-six--computer-single",
+      "id": "applemusic:kim-petras--detour-rare-n-deluxe",
       "verb": "in rotation",
-      "title": "Computer",
-      "creator": "Second Six",
+      "title": "Detour (Rare N' Deluxe)",
+      "creator": "Kim Petras",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=Computer%20-%20Single%20Second%20Six%202026",
+      "href": "https://music.apple.com/nz/search?term=Detour%20(Rare%20N'%20Deluxe)%20Kim%20Petras%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
