@@ -30,8 +30,8 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-09-25",
-  "sourceSyncedAt": "2026-09-25T20:41:02.220Z",
+  "generatedAt": "2026-09-26",
+  "sourceSyncedAt": "2026-09-26T03:31:06.529Z",
   "totalWorks": 4397,
   "regionCount": 22,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:2hollis--pirouette",
+      "id": "applemusic:kuru--blink2-point-click-single",
       "verb": "in rotation",
-      "title": "Pirouette",
-      "creator": "2hollis",
+      "title": "Blink2 / point&Click",
+      "creator": "kuru",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=Pirouette%202hollis%202026",
+      "href": "https://music.apple.com/nz/search?term=Blink2%20%2F%20point%26Click%20-%20Single%20kuru%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
