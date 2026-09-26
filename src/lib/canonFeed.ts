@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-26",
-  "sourceSyncedAt": "2026-09-26T04:02:05.410Z",
+  "sourceSyncedAt": "2026-09-26T16:57:30.844Z",
   "totalWorks": 4397,
   "regionCount": 22,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:2hollis--pirouette",
+      "id": "applemusic:kim-petras--detour-rare-n-deluxe",
       "verb": "in rotation",
-      "title": "Pirouette",
-      "creator": "2hollis",
+      "title": "Detour (Rare N' Deluxe)",
+      "creator": "Kim Petras",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=Pirouette%202hollis%202026",
+      "href": "https://music.apple.com/nz/search?term=Detour%20(Rare%20N'%20Deluxe)%20Kim%20Petras%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
