@@ -31,14 +31,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-27",
-  "sourceSyncedAt": "2026-09-27T15:15:11.635Z",
+  "sourceSyncedAt": "2026-09-27T15:46:31.456Z",
   "totalWorks": 4400,
   "regionCount": 22,
   "regions": [
-    "Contemporary Hip-Hop & R&B",
-    "Quirky Romantic Comedies",
-    "Classic Romantic Thrillers",
-    "Dark Comedy & Thrillers"
+    "Classic Rock & Pop",
+    "Contemporary R&B & Hip-Hop",
+    "Classic Comedy Dramas",
+    "Experimental Documentary"
   ],
   "now": [
     {
