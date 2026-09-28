@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-28",
-  "sourceSyncedAt": "2026-09-28T19:09:43.972Z",
+  "sourceSyncedAt": "2026-09-28T20:11:43.128Z",
   "totalWorks": 4400,
   "regionCount": 22,
   "regions": [
@@ -55,12 +55,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:1003590",
+      "id": "steam:418530",
       "verb": "playing",
-      "title": "Tetris® Effect: Connected",
-      "creator": "Monstars Inc., Resonair, Stage Games",
+      "title": "Spelunky 2",
+      "creator": "Mossmouth, BlitWorks",
       "note": "This is the game I’m playing now.",
-      "href": "https://store.steampowered.com/app/1003590/",
+      "href": "https://store.steampowered.com/app/418530/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
