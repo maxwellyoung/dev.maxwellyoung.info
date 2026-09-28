@@ -30,8 +30,8 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-09-27",
-  "sourceSyncedAt": "2026-09-27T20:25:39.528Z",
+  "generatedAt": "2026-09-28",
+  "sourceSyncedAt": "2026-09-28T08:18:47.901Z",
   "totalWorks": 4400,
   "regionCount": 22,
   "regions": [
@@ -55,12 +55,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:730",
+      "id": "steam:418530",
       "verb": "playing",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "Spelunky 2",
+      "creator": "Mossmouth, BlitWorks",
       "note": "This is the game I’m playing now.",
-      "href": "https://store.steampowered.com/app/730/",
+      "href": "https://store.steampowered.com/app/418530/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
