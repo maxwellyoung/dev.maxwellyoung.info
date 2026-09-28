@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-28",
-  "sourceSyncedAt": "2026-09-28T20:42:43.111Z",
+  "sourceSyncedAt": "2026-09-28T23:48:34.028Z",
   "totalWorks": 4400,
   "regionCount": 22,
   "regions": [
@@ -55,12 +55,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:2379780",
+      "id": "steam:504230",
       "verb": "playing",
-      "title": "Balatro",
-      "creator": "LocalThunk",
+      "title": "Celeste",
+      "creator": "Maddy Makes Games Inc., Extremely OK Games, Ltd.",
       "note": "This is the game I’m playing now.",
-      "href": "https://store.steampowered.com/app/2379780/",
+      "href": "https://store.steampowered.com/app/504230/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
