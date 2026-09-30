@@ -6,6 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://dev.maxwellyoung.info";
 
   const staticRoutes = [
+    { url: `${baseUrl}/apps`, changeFrequency: "monthly" as const, priority: 0.8 },
     {
       url: baseUrl,
       changeFrequency: "weekly" as const,

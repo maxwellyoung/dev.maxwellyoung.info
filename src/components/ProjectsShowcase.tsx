@@ -7,7 +7,8 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Carousel from "@/components/Carousel";
 import {
   Project,
-  flagshipProjects,
+  independentApps,
+  selectedWorkProjects,
   getProjectContextLabel,
   rankedProjects,
   supportingProjects,
@@ -280,8 +281,19 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
         <div className="space-y-10">
           <ProjectSection
             title="Selected work"
-            description="A production mobile app, shipped client work, and independent products."
-            projects={flagshipProjects}
+            description="Production mobile engineering and shipped client work."
+            projects={selectedWorkProjects}
+            expandedProject={expandedProject}
+            onToggleExpand={setExpandedProject}
+            onCarouselOpen={handleCarouselOpen}
+            shouldReduceMotion={shouldReduceMotion}
+            emphasis="flagship"
+          />
+
+          <ProjectSection
+            title="Independent apps"
+            description="Five apps available on the iPhone App Store. Open a project for the interface, product decisions, and store link."
+            projects={independentApps}
             expandedProject={expandedProject}
             onToggleExpand={setExpandedProject}
             onCarouselOpen={handleCarouselOpen}

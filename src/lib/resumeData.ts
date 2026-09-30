@@ -116,7 +116,7 @@ export const resumeData: ResumeData = {
       href: "https://vapequitcoach.com",
       date: "Live",
       summary:
-        "Designed, built, and shipped a React Native and Expo behavior-change app with recovery milestones, coaching flows, and relapse support.",
+        "Designed, built, and shipped a React Native and Expo iPhone app with quit tracking, reflection tools, breathing exercises, and online AI coaching.",
     },
     {
       name: "Ch'lita",

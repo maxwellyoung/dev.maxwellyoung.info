@@ -46,7 +46,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     tools: ["React Native", "Expo", "TypeScript", "AsyncStorage"],
     liveUrl: "https://afterlight.ninetynine.digital",
     overview:
-      "Afterlight is a local-first concert diary with a Recovery Desk for the history people already have. It turns ticket files, incoming shares, calendars, photos, Gmail receipts, Setlist.fm attendance, and listening history into reviewable clues on-device. A clue never becomes a claimed night until the person confirms it.",
+      "Afterlight is available on the iPhone App Store as a concert diary. This case study describes the broader Recovery Desk under development, rather than claiming its advanced native integrations are included in that published build. It turns ticket files, incoming shares, calendars, photos, Gmail receipts, Setlist.fm attendance, and listening history into reviewable clues on-device. A clue never becomes a claimed night until the person confirms it.",
     challenge:
       "Concert memories are distributed across camera rolls, ticket receipts, calendar events, Wallet passes, files, setlists, and half-remembered nights. Those sources have very different confidence: a Spotify play is a hint, while a ticket and dated venue photo together are stronger evidence. The product problem was not merely importing data; it was reconciling ambiguous evidence without letting software invent attendance.",
     constraints: [
@@ -98,9 +98,10 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
     ],
     outcome:
-      "A shared recovery system now spans web and native entry points, with a signed iOS share extension, Android share configuration, explicit privacy disclosures, and regression coverage around evidence parsing and confirmation. The web Recovery Desk is deployed while the next native release remains in development.",
+      "The concert diary is published on the iPhone App Store. The newer recovery system has local implementations across web and native entry points and regression coverage around evidence parsing and confirmation. Advanced native integrations and improved portable backups remain in development; their inclusion in the published app has not been established.",
     proofPoints: [
-      { label: "Platforms", value: "Web + iOS + Android" },
+      { label: "Published", value: "iPhone App Store" },
+      { label: "Recovery work", value: "In development" },
       { label: "Diary writes", value: "User-confirmed only" },
       { label: "Canonical data", value: "On-device" },
     ],
@@ -286,7 +287,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Many quitting apps rely on brittle streak systems and punitive framing. The goal here was to build something calmer and more usable during difficult moments.",
     constraints: [
       "Behavior change support had to avoid shame mechanics and relapse punishment loops.",
-      "The app needed to be effective in high-stress, low-attention moments.",
+      "Support screens needed short, readable actions for high-stress, low-attention moments.",
       "Solo development required disciplined scope and clear UX priorities.",
     ],
     decisionLog: [
@@ -294,13 +295,13 @@ export const caseStudies: Record<string, CaseStudy> = {
         problem: "Streak systems create brittle motivation and anxiety.",
         decision: "Shifted progress framing from perfect streaks to identity and trend signals.",
         tradeoff: "Less instantly gamified feedback.",
-        impact: "More resilient long-term engagement after setbacks.",
+        impact: "The interface keeps reflection and support reachable after setbacks; engagement effects have not been measured.",
       },
       {
         problem: "Craving moments are noisy and emotionally charged.",
         decision: "Used calm, low-stimulus intervention screens with short actions.",
         tradeoff: "Less visual spectacle during key moments.",
-        impact: "Lower cognitive load when users need support most.",
+        impact: "Short actions and restrained visual density are the design choice; no clinical efficacy is claimed.",
       },
     ],
     approach: [
@@ -321,7 +322,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
     ],
     outcome:
-      "The app shipped on iOS with a complete tracking, coaching, and relapse-support loop.",
+      "The app is available on the iPhone App Store with quit tracking, reflection, breathing, and online AI coaching. These tools provide practical support; they do not establish clinical efficacy or a biological recovery schedule.",
     proofPoints: [
       { label: "Availability", value: "Live on iOS" },
       { label: "Product scope", value: "Solo shipped" },

@@ -174,9 +174,9 @@ const projects: Project[] = [
     launchStage: "Live",
     priority: 1,
     description:
-      "React Native iOS app for quitting vaping with coaching, recovery milestones, and relapse support.",
+      "iPhone support for quitting vaping: track progress, reflect on triggers, and reach an AI coach.",
     longDescription:
-      "Vape Quit Coach is a solo-built iOS app for quitting vaping. It combines recovery timelines, coaching flows, Apple Watch heart-rate context, and support tools for relapse-prone moments. I designed, built, shipped, and monetized the product end-to-end in React Native and Expo.",
+      "Vape Quit Coach is a solo-built iPhone app with quit tracking, journaling, breathing exercises, and online AI coaching. I designed and shipped the product in React Native and Expo. Its guidance supports reflection and coping; it does not measure biological recovery or replace professional care. Coaching uses external AI services rather than staying entirely on-device.",
     tags: ["React Native", "Expo", "Behavior Design", "Mobile App"],
     stack: ["React Native", "Expo", "TypeScript"],
     startDate: "2024-01-01",
@@ -192,17 +192,17 @@ const projects: Project[] = [
     cover: {
       variant: "image",
       src: "/projectImages/vqc-cover-2.webp",
-      alt: "Vape Quit Coach product page showing the app and its first-week recovery plan",
+      alt: "Vape Quit Coach product page and iPhone interface",
       objectPosition: "center center",
     },
     links: {
-      live: "https://vapequitcoach.com",
+      live: "https://apps.apple.com/nz/app/vape-quit-coach/id6754863295",
     },
-    link: "https://vapequitcoach.com",
+    link: "https://apps.apple.com/nz/app/vape-quit-coach/id6754863295",
     impact: [
       "Live on the iOS App Store",
       "Solo-designed tracking, coaching, and relapse-support flows",
-      "Privacy-conscious product with local progress tracking",
+      "Local progress tracking with separately processed online AI coaching",
     ],
   },
   {
@@ -315,7 +315,7 @@ const projects: Project[] = [
     description:
       "Native iOS queue for keeping one item in focus while the rest waits in the background.",
     longDescription:
-      "Holdspace is a native SwiftUI app for a lightweight personal queue. It keeps one current item in focus, supports quick gesture actions, and stores everything on-device, with widgets and a share extension planned around the same private queue model.",
+      "Holdspace is a native SwiftUI app for a lightweight personal queue. One item stays in focus while saved items wait; gesture actions move them through the queue. Queue records stay on-device. Website link previews and links you choose to open can contact external sites.",
     tags: ["Swift", "SwiftUI", "iOS", "SwiftData", "Native"],
     stack: ["Swift", "SwiftUI", "SwiftData", "WidgetKit", "Live Activities"],
     startDate: "2025-01-01",
@@ -334,8 +334,8 @@ const projects: Project[] = [
     },
     link: "https://apps.apple.com/nz/app/holdspace/id6758010909",
     impact: [
-      "Privacy-first: no accounts, no analytics, all data stays on-device",
-      "One-at-a-time UX reduces overwhelm vs traditional list apps",
+      "On-device queue records; website previews can make network requests",
+      "One current item, with a waiting queue instead of an endless task list",
       "Native SwiftUI with physics-based motion and haptics",
     ],
   },
@@ -445,9 +445,9 @@ const projects: Project[] = [
     launchStage: "Live",
     priority: 10,
     description:
-      "Expo news app that turns daily reading into a bounded six-story ritual with a mood check.",
+      "A finite daily news pack that pairs positive and difficult stories, then asks how the reading felt.",
     longDescription:
-      "Good News Bad News is a React Native and Expo app for balanced daily news. It pairs a swipeable six-story pack with source links, a post-read balance check, offline caching, and a 30-day archive. A Cloudflare Worker curates daily packs from RSS sources with Workers AI and caches them in KV.",
+      "Good News Bad News is a React Native and Expo app with a finite daily pack, publisher links, a post-read balance check, and a local reading archive. A Cloudflare Worker selects and summarizes RSS material with Workers AI. Positive and difficult stories provide emotional contrast; the selection is not a promise of comprehensive coverage, political balance, or verified reporting.",
     tags: [
       "React Native",
       "Expo",
@@ -488,7 +488,7 @@ const projects: Project[] = [
       "Live on the App Store",
       "Daily pack model keeps news reading intentionally bounded",
       "Cloudflare Worker fetches RSS sources, curates with Workers AI, and caches packs in KV",
-      "Offline-first mobile UX with local SQLite storage and a 30-day archive",
+      "Local reading history and balance checks, with network requests for news packs",
     ],
   },
   {
@@ -500,12 +500,12 @@ const projects: Project[] = [
     featured: false,
     visibility: "public",
     lifecycle: "current",
-    launchStage: "In development",
+    launchStage: "Live",
     priority: 4,
     description:
-      "Local-first concert diary that rebuilds your history from evidence, then asks before remembering.",
+      "An iPhone concert diary for recording the nights, notes, and memories you want to keep.",
     longDescription:
-      "Afterlight keeps its canonical concert diary and recovery candidates on-device. Its Recovery Desk reduces ticket files, incoming shares, calendars, photos, Gmail receipts, Setlist.fm attendance, and listening history into reviewable clues; no source can assert attendance or write to the diary without confirmation. Optional connected features sit outside that private core.",
+      "Afterlight is a concert diary available on the iPhone App Store, built in React Native and Expo. Its interface brings concert records and personal reflections together. A broader Recovery Desk and improved portable backups are being developed separately; those next-release capabilities are not represented here as included in the current App Store build.",
     tags: [
       "React Native",
       "Expo",
@@ -517,9 +517,9 @@ const projects: Project[] = [
     startDate: "2025-11-01",
     caseStudySlug: "afterlight",
     links: {
-      live: "https://afterlight.ninetynine.digital",
+      live: "https://apps.apple.com/nz/app/afterlight-concert-diary/id6755545440",
     },
-    link: "https://afterlight.ninetynine.digital",
+    link: "https://apps.apple.com/nz/app/afterlight-concert-diary/id6755545440",
     screenshots: [
       "/projectImages/afterlight-diary-v2.webp",
       "/projectImages/afterlight-detail-v2.webp",
@@ -532,9 +532,9 @@ const projects: Project[] = [
       objectPosition: "center center",
     },
     impact: [
-      "One candidate model reconciles shares, ticket files, calendars, photos, email receipts, Setlist.fm, and listening hints",
-      "Attendance is never inferred as fact: every candidate stays local until it is reviewed and confirmed",
-      "Native iOS and Android share targets feed the same recovery workflow as the web and in-app sources",
+      "Available on the iPhone App Store",
+      "Concert records and reflections in a concert-poster-inspired interface",
+      "Recovery and backup improvements remain separate from the published build",
     ],
   },
   {
@@ -549,10 +549,10 @@ const projects: Project[] = [
     launchStage: "Live",
     priority: 11,
     description:
-      "Swipe-to-learn spaced repetition for code — master a codebase by doomscrolling through it.",
+      "A swipeable code-review feed with GitHub imports, prompts, and progress tracking.",
     longDescription:
-      "doomscroll turns the doomscroll reflex into a learning loop. It serves bite-size code cards in a swipeable feed with streaks and spaced repetition, so the muscle memory of scrolling feeds becomes a way to absorb a codebase. Built with React Native and Expo, designed around dark space, floating code, and one-glyph iconography.",
-    tags: ["React Native", "Expo", "Spaced Repetition", "Developer Tools"],
+      "doomscroll presents code as a swipeable review feed with progress tracking. GitHub imports bring repository material into the app. Cards and prompts are generated with on-device rules, not a remote AI model. The interface supports deliberate review; it does not promise mastery or measure learning effectiveness.",
+    tags: ["React Native", "Expo", "Code Review", "Developer Tools"],
     stack: ["React Native", "Expo", "TypeScript"],
     startDate: "2026-02-01",
     screenshots: [
@@ -565,7 +565,7 @@ const projects: Project[] = [
       src: "/projectImages/doomscroll-2.webp",
       alt: "doomscroll swipe-to-learn card feed",
       kicker: "Swipe-to-learn for code",
-      summary: "Spaced repetition disguised as a feed",
+      summary: "Code review in a swipeable feed",
       tone: "teal",
     },
     links: {
@@ -574,7 +574,7 @@ const projects: Project[] = [
     link: "https://apps.apple.com/nz/app/id6759310735",
     impact: [
       "Live on the App Store",
-      "Swipe-first card feed with streaks and spaced repetition",
+      "Swipe-first card feed with review progress",
       "Interaction design built on a strict motion grammar — springs, not decorations",
     ],
   },
@@ -855,8 +855,12 @@ export const rankedProjects = projects
 
 export const flagshipProjects = rankedProjects.filter((project) => project.featured);
 
+const appSlugs = new Set(["vape-quit-coach", "afterlight", "holdspace", "good-news-bad-news", "doomscroll"]);
+
+export const independentApps = rankedProjects.filter((project) => appSlugs.has(project.slug));
+export const selectedWorkProjects = flagshipProjects.filter((project) => !appSlugs.has(project.slug));
 export const supportingProjects = rankedProjects.filter(
-  (project) => !project.featured,
+  (project) => !project.featured && !appSlugs.has(project.slug),
 );
 
 export function getProjectContextLabel(
