@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-09-30",
-  "sourceSyncedAt": "2026-09-30T02:35:47.614Z",
+  "sourceSyncedAt": "2026-09-30T08:50:54.680Z",
   "totalWorks": 4401,
   "regionCount": 22,
   "regions": [
@@ -55,12 +55,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:1003590",
+      "id": "steam:730",
       "verb": "playing",
-      "title": "Tetris® Effect: Connected",
-      "creator": "Monstars Inc., Resonair, Stage Games",
+      "title": "Counter-Strike 2",
+      "creator": "Valve",
       "note": "This is the game I’m playing now.",
-      "href": "https://store.steampowered.com/app/1003590/",
+      "href": "https://store.steampowered.com/app/730/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
