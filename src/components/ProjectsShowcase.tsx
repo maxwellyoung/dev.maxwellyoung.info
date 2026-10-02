@@ -281,7 +281,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
         <div className="space-y-10">
           <ProjectSection
             title="Selected work"
-            description="Production mobile engineering and shipped client work."
+            description="Production engineering, independent products, and shipped client work."
             projects={selectedWorkProjects}
             expandedProject={expandedProject}
             onToggleExpand={setExpandedProject}
