@@ -31,14 +31,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-02",
-  "sourceSyncedAt": "2026-10-02T12:47:17.059Z",
+  "sourceSyncedAt": "2026-10-02T13:18:42.476Z",
   "totalWorks": 4408,
   "regionCount": 22,
   "regions": [
-    "Darkly Whimsical",
-    "Contemporary Hip-Hop",
-    "Eclectic Pop & Rock",
-    "Romantic Sci-Fi Comedies"
+    "Alternative & Indie Rock",
+    "Modern Hip-Hop & R&B",
+    "Character-Driven Dramas",
+    "Music Documentaries"
   ],
   "now": [
     {
