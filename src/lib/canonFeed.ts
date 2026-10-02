@@ -30,15 +30,15 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-10-01",
-  "sourceSyncedAt": "2026-10-01T20:39:33.241Z",
+  "generatedAt": "2026-10-02",
+  "sourceSyncedAt": "2026-10-02T03:58:32.852Z",
   "totalWorks": 4405,
   "regionCount": 22,
   "regions": [
-    "Hip-Hop & R&B",
-    "Alternative Rock & Pop",
-    "Contemporary Fiction & Memoirs",
-    "Cult Dramas & Thrillers"
+    "Contemporary Hip-Hop & Pop",
+    "Psychological Thrillers & Dramas",
+    "Quirky Dramedy & Romance",
+    "Tech & Society Commentary"
   ],
   "now": [
     {
