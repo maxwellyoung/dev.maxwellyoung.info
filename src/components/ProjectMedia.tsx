@@ -140,6 +140,7 @@ const conceptFrames = {
   whakapapa: ["SCAN", "EXTRACT", "REVIEW"],
   basketcase: ["CAPTURE", "NORMALIZE", "COMPARE"],
   liner: ["CANVAS", "AUDIO", "SYNC"],
+  playback: ["COUNT", "TAKE", "CUT"],
   "good-news-bad-news": ["GOOD", "BAD", "CHECK"],
 } as const;
 
@@ -194,9 +195,13 @@ function ProjectConceptCover({
                     <div className="h-1.5 w-2/3 rounded-full bg-white/15" />
                   </>
                 )}
-                <p className={`font-medium text-white/75 ${isCompact ? "text-[0.42rem] leading-none tracking-[0.08em]" : "mt-auto text-[0.55rem] tracking-[0.14em]"}`}>
-                  {isCompact ? frame.slice(0, 3) : `${index + 1}. ${frame}`}
-                </p>
+                {isCompact ? (
+                  <div className="h-1 w-full rounded-full bg-white/30" />
+                ) : (
+                  <p className="mt-auto text-[0.55rem] font-medium tracking-[0.14em] text-white/75">
+                    {`${index + 1}. ${frame}`}
+                  </p>
+                )}
               </div>
             ))}
           </div>
