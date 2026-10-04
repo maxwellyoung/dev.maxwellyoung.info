@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-04",
-  "sourceSyncedAt": "2026-10-04T20:53:44.186Z",
+  "sourceSyncedAt": "2026-10-04T23:30:06.893Z",
   "totalWorks": 4411,
   "regionCount": 22,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:drake--habibti-fomo",
+      "id": "applemusic:jim-legxacy--black-british-music-2025",
       "verb": "in rotation",
-      "title": "HABIBTI (FOMO)",
-      "creator": "Drake",
+      "title": "black british music (2025)",
+      "creator": "Jim Legxacy",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=HABIBTI%20(FOMO)%20Drake%202026",
+      "href": "https://music.apple.com/nz/search?term=black%20british%20music%20(2025)%20Jim%20Legxacy%202025",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
