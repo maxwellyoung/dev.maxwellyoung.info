@@ -31,7 +31,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-04",
-  "sourceSyncedAt": "2026-10-04T02:13:45.872Z",
+  "sourceSyncedAt": "2026-10-04T10:01:38.285Z",
   "totalWorks": 4411,
   "regionCount": 22,
   "regions": [
@@ -81,12 +81,12 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:the-beatles--rubber-soul-super-deluxe",
+      "id": "applemusic:drake--habibti-fomo",
       "verb": "in rotation",
-      "title": "Rubber Soul (Super Deluxe)",
-      "creator": "The Beatles",
+      "title": "HABIBTI (FOMO)",
+      "creator": "Drake",
       "note": "This is what I’m listening to right now.",
-      "href": "https://music.apple.com/nz/search?term=Rubber%20Soul%20(Super%20Deluxe)%20The%20Beatles%202026",
+      "href": "https://music.apple.com/nz/search?term=HABIBTI%20(FOMO)%20Drake%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
