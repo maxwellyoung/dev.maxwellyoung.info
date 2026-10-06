@@ -13,6 +13,7 @@ import {
   getProjectContextLabel,
   rankedProjects,
   supportingProjects,
+  personalToolProjects,
 } from "@/lib/projects";
 import { ProjectDetails } from "@/components/ProjectDetails";
 import { ChevronDown } from "lucide-react";
@@ -45,10 +46,11 @@ function ProjectRow({
   onToggleExpand: (name: string | null) => void;
   onCarouselOpen: () => void;
   shouldReduceMotion: boolean;
-  emphasis?: "flagship" | "supporting";
+  emphasis?: "flagship" | "supporting" | "personal-tool";
 }) {
   const isExpanded = expandedProject === p.name;
   const isFlagship = emphasis === "flagship";
+  const isPersonalTool = emphasis === "personal-tool";
   const rowRef = React.useRef<HTMLLIElement>(null);
   const supportingMeta = [p.role, p.launchStage ?? getProjectContextLabel(p)]
     .filter((value): value is string => Boolean(value))
@@ -133,11 +135,11 @@ function ProjectRow({
 
             <div className="min-w-0 flex-1 overflow-hidden">
               <ProjectHoverPreview project={p}>
-                <div className="flex min-w-0 cursor-pointer items-baseline gap-3">
-                  <h3 className="flex-shrink-0 text-sm font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
+                <div className={isPersonalTool ? "min-w-0 cursor-pointer" : "flex min-w-0 cursor-pointer items-baseline gap-3"}>
+                  <h3 className={`${isPersonalTool ? "" : "flex-shrink-0 "}text-sm font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent`}>
                     {p.name}
                   </h3>
-                  <p className="hidden min-w-0 truncate text-xs text-muted-foreground sm:block">
+                  <p className={isPersonalTool ? "mt-1 text-xs leading-relaxed text-muted-foreground" : "hidden min-w-0 truncate text-xs text-muted-foreground sm:block"}>
                     {p.description}
                   </p>
                 </div>
@@ -214,6 +216,7 @@ interface ProjectsShowcaseProps {
 }
 
 function ProjectSection({
+  id,
   title,
   description,
   projects,
@@ -223,6 +226,7 @@ function ProjectSection({
   shouldReduceMotion,
   emphasis = "supporting",
 }: {
+  id?: string;
   title: string;
   description: string;
   projects: Project[];
@@ -230,10 +234,10 @@ function ProjectSection({
   onToggleExpand: (name: string | null) => void;
   onCarouselOpen: () => void;
   shouldReduceMotion: boolean;
-  emphasis?: "flagship" | "supporting";
+  emphasis?: "flagship" | "supporting" | "personal-tool";
 }) {
   return (
-    <section className="space-y-3">
+    <section id={id} className="space-y-3 scroll-mt-6">
       <motion.div
         variants={item.fadeUp}
         initial={false}
@@ -312,6 +316,18 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
             onCarouselOpen={handleCarouselOpen}
             shouldReduceMotion={shouldReduceMotion}
             emphasis="flagship"
+          />
+
+          <ProjectSection
+            id="personal-tools"
+            title="Personal tools"
+            description="Small tools I build around how I work and study."
+            projects={personalToolProjects}
+            expandedProject={expandedProject}
+            onToggleExpand={setExpandedProject}
+            onCarouselOpen={handleCarouselOpen}
+            shouldReduceMotion={shouldReduceMotion}
+            emphasis="personal-tool"
           />
 
           {supportingProjects.length > 0 && (

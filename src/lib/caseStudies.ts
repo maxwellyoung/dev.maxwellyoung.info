@@ -8,6 +8,7 @@ export interface CaseStudy {
   timeline: string;
   role: string;
   team?: string;
+  credits?: { text: string; links: { label: string; href: string }[] };
   tools: string[];
   liveUrl?: string;
   githubUrl?: string;
@@ -36,6 +37,47 @@ export interface CaseStudy {
 // Employer work stays at project-summary level unless publication is explicitly
 // approved. Case studies below cover independent and already-public client work.
 export const caseStudies: Record<string, CaseStudy> = {
+  "second-brain": {
+    slug: "second-brain",
+    title: "Second Brain",
+    subtitle: "Keep the source close to the study session",
+    heroImage: "/projectImages/second-brain-sources.png",
+    timeline: "Personal tool · ongoing",
+    role: "Designer & Developer",
+    tools: ["TypeScript", "React", "Vite", "Local storage"],
+    overview: "I designed and built Second Brain as a private workspace for studying. It connects source documents, a daily plan, and practice, with a learning history that can be exported and restored. The screenshots show the current local development UI with authored sample notes and a fictional course, rather than real course material or student records.",
+    challenge: "A note app can hold information without helping me use it. I wanted to move from what needs attention today, to the source that explains it, to a short practice session without losing the context between those steps.",
+    approach: [
+      { title: "Read with the source in view", description: "The library opens source text inside the workspace. Reading and practice keep their source identity, so an explanation can be checked against the material behind it.", image: "/projectImages/second-brain-sources.png" },
+      { title: "Plan around the next deadline", description: "The local build brings upcoming work and review needs into a daily view. Practice scheduling considers prior attempts and future assessment dates; it does not treat practice as a completed assessment.", image: "/projectImages/second-brain-today.png" },
+      { title: "Keep learning history portable", description: "Practice attempts use a validated learning ledger. Imports merge records rather than blindly replacing the current history, and export provides a backup outside browser storage." },
+    ],
+    outcome: "A personal study workspace I can keep refining around my own use. The source reader and learning ledger have direct implementation and test evidence. The newer adaptive work is local development, and the answer-generation audit is unfinished; this case study does not claim a released tutoring service or verified learning outcomes.",
+    proofPoints: [{ label: "Delivery", value: "Private personal tool" }, { label: "Screenshot data", value: "Authored synthetic fixtures" }],
+    learnings: ["Reading and practice work better when the original source remains easy to open.", "A completed practice attempt and a completed assessment need separate records.", "A browser-stored history needs validation and a portable backup."],
+    nextProject: { slug: "autobahn-extensions", title: "Autobahn extensions" },
+  },
+  "autobahn-extensions": {
+    slug: "autobahn-extensions",
+    title: "Autobahn extensions",
+    subtitle: "From a markdown plan to work I can review",
+    heroImage: "/projectImages/autobahn-review.png",
+    timeline: "Private extensions · ongoing",
+    role: "Extensions & workflow design",
+    credits: { text: "Original Autobahn by Eli Rousso / Rams · MIT licensed", links: [{ label: "Eli Rousso", href: "https://elirousso.com" }, { label: "Original Autobahn", href: "https://github.com/rams-design/autobahn" }] },
+    tools: ["JavaScript", "Node.js", "Python", "Markdown"],
+    overview: "My extensions to Autobahn, originally created by Eli Rousso / Rams. I built on its MIT-licensed markdown-backed board for my own agent-assisted workflow, adding bounded dispatch, review evidence, and contribution records. The original tool is at github.com/rams-design/autobahn; my extensions remain private. Images use the actual local UI with synthetic workspace and run records, with no workers or client systems connected.",
+    challenge: "A planned task, an agent run, a passed check, and a merged change are different events. I needed the interface to preserve those differences so a busy board could not imply that the work was finished or ready to ship.",
+    approach: [
+      { title: "Keep planning readable", description: "The board retains Autobahn's markdown-first foundation. My backlog extensions add explicit next actions and distinguish active work, blocked work, and items waiting for review.", image: "/projectImages/autobahn-backlog.png" },
+      { title: "Bring evidence into the review", description: "The review view brings the recorded stages, reports, check results, and final diff together. Missing or stale evidence remains visible, and a recorded acceptance is not presented as proof that a particular person approved it.", image: "/projectImages/autobahn-review.png" },
+      { title: "Record contributions carefully", description: "The journal distinguishes open work, submitted reviews, reported completions, and merged changes. Its export retains categories and flags incomplete source coverage rather than turning every record into a shipped result." },
+    ],
+    outcome: "A private extension of an existing tool, used to make my workflow easier to inspect. Evidence interpretation and journal behavior have regression tests. New pacing and workspace changes remain in development. The screenshot run records are fictional demonstrations of the UI, not real model executions or shipped client work.",
+    proofPoints: [{ label: "Foundation", value: "Autobahn by Eli Rousso / Rams · MIT" }, { label: "My contribution", value: "Workflow and review extensions" }],
+    learnings: ["The planned state of a ticket should not stand in for execution evidence.", "Check results, review decisions, and publication need separate meanings.", "Contribution records are more useful when missing coverage is explicit."],
+    nextProject: { slug: "liner", title: "Liner" },
+  },
   afterlight: {
     slug: "afterlight",
     title: "Afterlight",

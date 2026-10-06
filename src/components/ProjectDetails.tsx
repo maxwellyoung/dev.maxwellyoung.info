@@ -85,6 +85,19 @@ export function ProjectDetails({
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             {project.longDescription || project.description}
           </p>
+          {project.mediaCaption && (
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{project.mediaCaption}</p>
+          )}
+          {project.attribution && (
+            <div className="mt-3 border-l border-border/60 pl-3 text-xs leading-relaxed text-muted-foreground">
+              <p>{project.attribution.text}</p>
+              <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1">
+                {project.attribution.links.map(link => (
+                  <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">{link.label}</a>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="mt-4 grid overflow-hidden rounded-sm border border-[hsl(var(--border))] text-xs sm:grid-cols-2">
             <div className="bg-[hsl(var(--muted))]/20 px-3 py-2.5 sm:border-r sm:border-[hsl(var(--border))]">

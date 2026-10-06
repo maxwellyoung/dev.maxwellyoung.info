@@ -105,6 +105,16 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
               <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
                 {study.subtitle}
               </p>
+              {study.credits && (
+                <div className="mt-4 border-l border-border/60 pl-3 text-sm leading-relaxed text-muted-foreground">
+                  <p>{study.credits.text}</p>
+                  <div className="flex flex-wrap gap-x-4">
+                    {study.credits.links.map(link => (
+                      <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">{link.label}</a>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
                 <div className="flex min-h-8 items-center gap-2">

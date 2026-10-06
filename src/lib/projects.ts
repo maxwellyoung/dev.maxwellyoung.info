@@ -8,6 +8,7 @@ type Role =
   | "Frontend"
   | "Studio Collaboration"
   | "Research Assistant"
+  | "Fork & extensions"
   | "Designer & Developer";
 type Category =
   | "work"
@@ -18,7 +19,7 @@ type Category =
   | "school";
 type Visibility = "public" | "parked" | "private";
 type Lifecycle = "current" | "completed" | "archived" | "sensitive";
-type LaunchStage = "Live" | "In development" | "Case study" | "Client shipped" | "Production work" | "Research software";
+type LaunchStage = "Live" | "In development" | "Case study" | "Client shipped" | "Production work" | "Research software" | "Private tool" | "Private extensions" | "Local extension";
 
 interface BuildLogEntry {
   date: string;
@@ -73,6 +74,9 @@ export interface Project {
   cover?: ProjectCover;
   impact?: string[];
   proof?: { label: string; text: string; href?: string };
+  collection?: "personal-tools";
+  mediaCaption?: string;
+  attribution?: { text: string; links: { label: string; href: string }[] };
   buildLog?: BuildLogEntry[];
   caseStudySlug?: string;
   link?: string;
@@ -80,6 +84,72 @@ export interface Project {
 }
 
 const projects: Project[] = [
+  {
+    slug: "second-brain",
+    name: "Second Brain",
+    status: "Active",
+    category: "personal",
+    collection: "personal-tools",
+    role: "Solo",
+    visibility: "public",
+    lifecycle: "current",
+    launchStage: "Private tool",
+    priority: 4.1,
+    description: "Study notes, source-backed reading, and practice in one workspace.",
+    longDescription: "Second Brain is my private study workspace. I designed and built it to bring source documents, study plans, and practice together rather than keeping them in separate tabs. The reader keeps the original evidence close to the explanation, while an exportable learning history records practice attempts. The current local build adds deadline-aware practice. Answer-generation and adaptive features are still being tested; this is a personal tool rather than a public service.",
+    tags: ["TypeScript", "React", "Study tools"],
+    stack: ["TypeScript", "React", "Vite"],
+    screenshots: ["/projectImages/second-brain-sources.png", "/projectImages/second-brain-today.png"],
+    thumb: "/projectImages/second-brain-sources.png",
+    cover: { variant: "image", src: "/projectImages/second-brain-sources.png", alt: "Second Brain source reader in a local build, showing authored sample notes and a fictional course", fit: "contain" },
+    mediaCaption: "Local development build with authored sample notes and a fictional course. No course or student records are shown.",
+    caseStudySlug: "second-brain",
+    impact: ["Designed and built a personal study workspace", "Source reading and practice share the same context", "Validated learning-history import and export"],
+  },
+  {
+    slug: "autobahn-extensions",
+    name: "Autobahn extensions",
+    status: "Active",
+    category: "personal",
+    collection: "personal-tools",
+    role: "Fork & extensions",
+    visibility: "public",
+    lifecycle: "current",
+    launchStage: "Private extensions",
+    priority: 4.2,
+    description: "My extensions to Autobahn, originally created by Eli Rousso / Rams.",
+    longDescription: "I extended Autobahn for my own agent-assisted workflow, connecting markdown tasks with bounded dispatch, review, and a contribution journal. The interface keeps planned work separate from recorded execution: a ticket, a completed run, a review, and a merged change each mean something different. Evidence freshness is visible before a decision. My extensions are private; new pacing and workspace changes are still in development.",
+    tags: ["JavaScript", "Python", "Workflow tools"],
+    stack: ["JavaScript", "Node.js", "Python"],
+    attribution: { text: "My extensions to Autobahn, originally created by Eli Rousso / Rams. Upstream is MIT licensed.", links: [{ label: "Eli Rousso", href: "https://elirousso.com" }, { label: "Original Autobahn", href: "https://github.com/rams-design/autobahn" }] },
+    screenshots: ["/projectImages/autobahn-review.png", "/projectImages/autobahn-backlog.png"],
+    thumb: "/projectImages/autobahn-review.png",
+    cover: { variant: "image", src: "/projectImages/autobahn-review.png", alt: "Autobahn review interface with synthetic task and run records; no workers are connected", fit: "contain" },
+    mediaCaption: "Actual local UI with synthetic workspace and run records. No workers or live client systems are connected.",
+    caseStudySlug: "autobahn-extensions",
+    impact: ["Extended an existing MIT-licensed tool", "Separate plans, execution evidence, and review decisions", "Keep contribution records and source freshness visible"],
+  },
+  {
+    slug: "epub-compressor",
+    name: "EPUB Compressor",
+    status: "Completed",
+    category: "personal",
+    collection: "personal-tools",
+    role: "Solo",
+    visibility: "public",
+    lifecycle: "current",
+    launchStage: "Local extension",
+    priority: 4.3,
+    description: "A small Raycast tool for shrinking EPUBs while keeping the original file.",
+    longDescription: "EPUB Compressor takes files selected in Finder or a Raycast file picker, recompresses their images, and writes a separate compressed EPUB. The core uses pure JavaScript ZIP and image handling, preserving the archive structure and rewriting references when an image format changes. Synthetic tests check the manifest, local references, transparency, and original-file preservation. It is a local extension; it has not been published to the Raycast Store.",
+    tags: ["TypeScript", "Raycast", "EPUB"],
+    stack: ["TypeScript", "Node.js", "Raycast"],
+    screenshots: ["/projectImages/epub-compression-check.png"],
+    thumb: "/projectImages/epub-compression-check.png",
+    cover: { variant: "image", src: "/projectImages/epub-compression-check.png", alt: "Actual compression-core test results on a synthetic EPUB; this is a test report rather than the Raycast interface", fit: "contain" },
+    mediaCaption: "Actual compression-core test output on a synthetic EPUB. This report is not a Raycast UI capture or a Store release.",
+    impact: ["Non-destructive output beside the original EPUB", "Pure JavaScript compression core", "Synthetic tests cover ZIP structure and rewritten references"],
+  },
   {
     slug: "silk",
     name: "Silk",
@@ -889,13 +959,15 @@ const appSlugs = new Set(["vape-quit-coach", "afterlight", "holdspace", "good-ne
 
 export const independentApps = rankedProjects.filter((project) => appSlugs.has(project.slug));
 export const selectedWorkProjects = flagshipProjects.filter((project) => !appSlugs.has(project.slug));
+export const personalToolProjects = rankedProjects.filter((project) => project.collection === "personal-tools");
 export const supportingProjects = rankedProjects.filter(
-  (project) => !project.featured && !appSlugs.has(project.slug),
+  (project) => !project.featured && !appSlugs.has(project.slug) && project.collection !== "personal-tools",
 );
 
 export function getProjectContextLabel(
-  project: Pick<Project, "category" | "client">
+  project: Pick<Project, "category" | "client" | "collection">
 ): string {
+  if (project.collection === "personal-tools") return "Personal tool";
   if (project.category === "work" || project.category === "research") {
     return "Work";
   }

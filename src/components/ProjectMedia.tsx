@@ -37,7 +37,7 @@ const toneClasses = {
 } as const;
 
 interface ProjectMediaProps {
-  project: Pick<Project, "slug" | "name" | "description" | "screenshots" | "thumb" | "cover" | "tags">;
+  project: Pick<Project, "slug" | "name" | "description" | "screenshots" | "thumb" | "cover" | "tags" | "collection">;
   variant: ProjectMediaVariant;
   priority?: boolean;
   sizes?: string;
@@ -345,7 +345,7 @@ export function ProjectMedia({
     );
   }
 
-  if (variant === "detail" && mediaSources.length > 1) {
+  if (variant === "detail" && mediaSources.length > 1 && project.collection !== "personal-tools") {
     const [leadSource, ...supportingSources] = mediaSources.slice(0, 3);
 
     return (
