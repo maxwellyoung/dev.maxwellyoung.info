@@ -342,7 +342,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     learnings: [
       "Health products need a different interaction model than productivity tools.",
       "Low-stimulus support flows matter more than high-energy motivation during cravings.",
-      "Solo work makes the product tradeoffs easier to see because no one else is making them for you.",
+      "Working solo meant carrying the product from interaction design through implementation.",
     ],
     nextProject: { slug: "dayle", title: "Dayle Palfreyman" },
   },

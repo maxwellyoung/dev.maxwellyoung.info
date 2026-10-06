@@ -273,7 +273,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
             transition={spring.gentle}
           >
             <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-8">
-              Decision Log
+              How it works
             </h2>
             <div className="space-y-6">
               {study.decisionLog.map((entry, i) => (
@@ -290,9 +290,6 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                     Decision
                   </p>
                   <p className="text-foreground mb-4">{entry.decision}</p>
-                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">
-                    Tradeoff
-                  </p>
                   <p className="text-muted-foreground">{entry.tradeoff}</p>
                   {entry.impact && (
                     <>

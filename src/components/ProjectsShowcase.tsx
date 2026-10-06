@@ -165,7 +165,7 @@ function ProjectRow({
           <p className="mt-1 max-w-lg text-xs leading-relaxed text-muted-foreground">{p.proof.text}</p>
           {p.proof.href ? (
             <Link href={p.proof.href} className="mt-1 inline-flex min-h-11 items-center text-xs underline decoration-border underline-offset-4 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-              {p.proof.href.startsWith("/case-study/") ? "Read the decisions and tradeoffs" : p.proof.href === "/resume" ? "Research role and responsibilities" : "See the native app on Google Play"} <span aria-hidden="true" className="ml-1">↗</span>
+              {p.proof.href.startsWith("/case-study/") ? "View the case study" : p.proof.href === "/resume" ? "Research role and responsibilities" : "See the native app on Google Play"} <span aria-hidden="true" className="ml-1">↗</span>
             </Link>
           ) : null}
         </div>

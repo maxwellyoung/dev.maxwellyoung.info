@@ -66,10 +66,10 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.auckland.ac.nz/",
       date: "Apr 2026 – Present",
       summary:
-        "Validate medicines-safety data and simplify research workflows for Rx-Opt clinician decision-support and MRB-QoL 2.0 patient-reported outcomes.",
+        "Design and build research applications end to end, from the user experience through to implementation, including Rx-Opt and MRB-QoL 2.0.",
       responsibilities: [
-        "Check data quality and review ingested rules, keeping source provenance and ambiguity visible to the research team.",
-        "Make review and outcomes workflows simple to use through clear interfaces. The projects support role-aware questionnaires, researcher dashboards, protected persistence, and approval-gated rule promotion.",
+        "Own UX and interface design, application architecture, frontend and backend implementation, and testing in collaboration with researchers.",
+        "Build clinician assessment and review workflows, patient questionnaires, and researcher dashboards. Validate data and keep source provenance visible within the applications.",
       ],
     },
     {
