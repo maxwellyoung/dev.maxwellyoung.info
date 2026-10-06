@@ -1,80 +1,221 @@
 "use client";
-// Productivity apps: My Computer, Notepad, MS-DOS Prompt, Display Properties,
-// Internet, About, Help, Recycle Bin.
+// The five Maxwell OS apps. Each one reads the same data as the portfolio:
+// Read me, Work (projects), Apps (shipped iPhone apps), Shelf (Canon), Terminal.
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { FILESYSTEM, SCHEMES, WALLPAPERS, displayPath, runCommand, traverse, type FileNode, type OSPrefs } from "@/lib/maxwellOS";
+import { ArrowUpRight, ChevronLeft } from "lucide-react";
+import { displayPath, runCommand } from "@/lib/maxwellOS";
+import { independentApps, rankedProjects, type Project } from "@/lib/projects";
 import { resumeData } from "@/lib/resumeData";
-import { flagshipProjects } from "@/lib/projects";
-import { essays } from "@/lib/essays";
+import { canonFeed } from "@/lib/canonFeed";
+import { canonMediumName, canonShelfItems, canonSourceName } from "@/lib/canonShelf";
+import { formatCanonExportDate } from "@/lib/canonFormatting";
 import styles from "./MaxwellOS.module.css";
 import type { OSApi } from "./MaxwellOS";
 
-const isTouch = () => matchMedia("(hover: none)").matches;
+const appSlugs = new Set(independentApps.map((p) => p.slug));
+/** Everything in the portfolio that isn't one of the shipped iPhone apps. */
+export const workProjects = rankedProjects.filter((p) => !appSlugs.has(p.slug));
 
-function openNode(api: OSApi, path: string[], node: FileNode, setCwd?: (p: string[]) => void) {
-  if (node.kind === "folder") return setCwd ? setCwd(path) : api.open("files", { path });
-  if (node.app) return api.open(node.app);
-  api.open("notes", { path }, `${node.name} - Notepad`);
+/** App Store icons exist for some apps; the rest use their first screenshot. */
+export function appIconSrc(slug: string): string | undefined {
+  return ({ "vape-quit-coach": "/projectImages/vqc-icon.png", afterlight: "/projectImages/afterlight-icon.png" } as Record<string, string>)[slug];
 }
 
-function FolderTree({ node, path, cwd, onPick, depth = 0 }: { node: FileNode; path: string[]; cwd: string[]; onPick: (p: string[]) => void; depth?: number }) {
-  const folders = (node.children ?? []).filter((c) => c.kind === "folder");
-  const here = cwd.join("/") === path.join("/");
+// ---------------------------------------------------------------- Read me
+export function ReadMe({ api }: { api: OSApi }) {
+  const r = resumeData;
+  const go = (id: "work" | "apps" | "shelf" | "terminal") => (e: React.MouseEvent) => api.open(id, undefined, { keyboard: e.detail === 0 });
+  const rows = [
+    { id: "work" as const, name: "Work", text: "Silk, research software, Liner, T3 Craft, and the rest." },
+    { id: "apps" as const, name: "Apps", text: `The ${independentApps.length} iPhone apps I've designed, built and shipped myself.` },
+    { id: "shelf" as const, name: "Shelf", text: "What I'm watching, playing and listening to, from Canon." },
+    { id: "terminal" as const, name: "Terminal", text: "For people who would rather type." },
+  ];
   return (
-    <>
-      <button className={`${styles.treeItem} ${here ? styles.treeActive : ""}`} style={{ paddingLeft: 8 + depth * 14 }} onClick={() => onPick(path)} aria-current={here ? "location" : undefined}><i className={styles.folderIcon} />{node.name}</button>
-      {depth < 2 && folders.map((f) => <FolderTree key={f.name} node={f} path={[...path, f.name]} cwd={cwd} onPick={onPick} depth={depth + 1} />)}
-    </>
+    <article className={styles.readme}>
+      <h1>Hi, I&apos;m Maxwell.</h1>
+      <p>This is my portfolio laid out like the computer I work on. Nothing here is filler: the projects, apps and shelf are read from the same data as the main site.</p>
+      <p>I&apos;m a product engineer in Auckland. I lead React Native at Silk, design and build research applications at the University of Auckland, and ship my own iPhone apps through ninetynine digital. I make music too, so some of what I build is for that: Liner for songs and releases, Playback for performance takes.</p>
+      <ul className={styles.launchList}>
+        {rows.map((row) => (
+          <li key={row.id}>
+            <button type="button" onClick={go(row.id)}><b>{row.name}</b><span>{row.text}</span></button>
+          </li>
+        ))}
+      </ul>
+      <p className={styles.readmeLinks}>
+        <Link href="/resume">Resume</Link>
+        <a href={`https://${r.contact.github}`} target="_blank" rel="noreferrer">GitHub</a>
+        <a href={`mailto:${r.contact.email}`}>{r.contact.email}</a>
+      </p>
+    </article>
   );
 }
 
-export function Files({ api, path }: { api: OSApi; path?: string[] }) {
-  const [cwd, setCwd] = useState<string[]>(() => (path && traverse(path)?.kind === "folder" ? path : []));
-  const [selected, setSelected] = useState<string | null>(null);
-  const node = traverse(cwd) ?? FILESYSTEM;
-  const items = node.children ?? [];
-  const up = () => { setCwd(cwd.slice(0, -1)); setSelected(null); };
-  const go = (p: string[]) => { setCwd(p); setSelected(null); };
-  const keys = (e: KeyboardEvent) => { if (e.key === "Backspace" && cwd.length) { e.preventDefault(); up(); } };
+// ---------------------------------------------------------------- Work and Apps
+function projectMeta(p: Project) {
+  // The homepage's metadata grammar: role only when it isn't Solo, then stage, then main tool.
+  return [p.role === "Solo" ? undefined : p.role, p.launchStage, p.stack?.[0] ?? p.tags?.[0]].filter(Boolean).join(" · ");
+}
+
+function linkLabel(href: string) {
+  const host = new URL(href, "https://dev.maxwellyoung.info").hostname;
+  if (host === "apps.apple.com") return "App Store";
+  if (host === "play.google.com") return "Google Play";
+  if (host === "github.com") return "GitHub";
+  if (host.endsWith("youtube.com")) return "Watch";
+  return "Visit";
+}
+
+function projectLinks(p: Project) {
+  const links: { label: string; href: string; internal?: boolean }[] = [];
+  if (p.caseStudySlug) links.push({ label: "Case study", href: `/case-study/${p.caseStudySlug}`, internal: true });
+  const live = p.links?.live ?? p.link;
+  const source = p.codeLink ?? p.links?.repo;
+  if (live && live !== source) links.push({ label: linkLabel(live), href: live });
+  if (source) links.push({ label: "Source", href: source });
+  if (p.links?.video) links.push({ label: "Watch demo", href: p.links.video });
+  return links;
+}
+
+function Catalog({ projects, slug, kind }: { projects: Project[]; slug?: string; kind: "work" | "apps" }) {
+  const [selected, setSelected] = useState(() => (projects.some((p) => p.slug === slug) ? slug! : projects[0].slug));
+  // On phones the list and the detail are separate screens.
+  const [showDetail, setShowDetail] = useState(Boolean(slug));
+  const [prevSlug, setPrevSlug] = useState(slug);
+  if (slug !== prevSlug) {
+    setPrevSlug(slug);
+    if (slug && projects.some((p) => p.slug === slug)) { setSelected(slug); setShowDetail(true); }
+  }
+  const detail = useRef<HTMLDivElement>(null);
+  useEffect(() => { detail.current?.scrollTo({ top: 0 }); }, [selected]);
+  const p = projects.find((x) => x.slug === selected) ?? projects[0];
+  const keys = (e: KeyboardEvent<HTMLUListElement>) => {
+    if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+    e.preventDefault();
+    const i = projects.findIndex((x) => x.slug === selected);
+    const next = projects[(i + (e.key === "ArrowDown" ? 1 : -1) + projects.length) % projects.length];
+    setSelected(next.slug);
+    e.currentTarget.querySelector<HTMLElement>(`[data-slug="${next.slug}"]`)?.focus();
+  };
   return (
-    <div className={styles.explorer} onKeyDown={keys}>
-      <div className={styles.addressBar}><button onClick={up} disabled={!cwd.length} aria-label="Up one level">⬆ Up</button><span>Address</span><input readOnly value={displayPath(cwd)} aria-label="Address" /></div>
-      <div className={styles.explorerBody}>
-        <aside className={styles.tree}><FolderTree node={FILESYSTEM} path={[]} cwd={cwd} onPick={go} /></aside>
-        <div className={styles.fileGrid} role="list">
-          {items.length === 0 && <p className={styles.emptyFolder}>This folder is empty.</p>}
-          {items.map((item) => {
-            const p = [...cwd, item.name];
-            const act = () => openNode(api, p, item, go);
-            return <button key={item.name} role="listitem" className={selected === item.name ? styles.fileSelected : ""} onClick={(e) => { setSelected(item.name); if (isTouch() || e.detail >= 2) act(); }} onKeyDown={(e) => e.key === "Enter" && act()}><i className={item.kind === "folder" ? styles.folderIcon : item.app ? styles.exeIcon : styles.fileIcon} /><span>{item.name}</span></button>;
-          })}
-        </div>
+    <div className={`${styles.catalog} ${showDetail ? styles.catalogDetail : ""}`}>
+      <ul className={styles.catalogList} onKeyDown={keys} aria-label={kind === "work" ? "Projects" : "Apps"}>
+        {projects.map((x) => (
+          <li key={x.slug}>
+            <button type="button" data-slug={x.slug} aria-current={x.slug === p.slug ? "true" : undefined} tabIndex={x.slug === p.slug ? 0 : -1} onClick={() => { setSelected(x.slug); setShowDetail(true); }}>
+              {kind === "apps" && <span className={styles.appIcon}><Image src={appIconSrc(x.slug) ?? x.thumb ?? ""} alt="" fill sizes="40px" /></span>}
+              <span className={styles.rowText}><b>{x.name}</b><small>{kind === "apps" ? x.launchStage : projectMeta(x)}</small></span>
+            </button>
+          </li>
+        ))}
+      </ul>
+      <div ref={detail} className={styles.catalogBody}>
+        <button type="button" className={styles.back} onClick={() => setShowDetail(false)}><ChevronLeft size={16} aria-hidden />{kind === "work" ? "Work" : "Apps"}</button>
+        {kind === "work" ? <WorkDetail p={p} /> : <AppDetail p={p} />}
       </div>
-      <footer className={styles.statusBar}><span>{items.length} object{items.length === 1 ? "" : "s"}</span><span>{selected ? (traverse([...cwd, selected])?.content ?? "").split("\n")[0].slice(0, 60) : <><i className={styles.hintMouse}>Double-click to open. Backspace goes up.</i><i className={styles.hintTouch}>Tap to open.</i></>}</span></footer>
     </div>
   );
 }
 
-export function Notepad({ api, path }: { api: OSApi; path?: string[] }) {
-  const node = path ? traverse(path) : null;
-  const text = node?.content ?? "NOTES.TXT\n\nMake useful things.\nLeave one strange door unlocked.\n\nOpen any .txt from My Computer to read it here.";
-  const [dirty, setDirty] = useState(false);
-  const href = node?.href;
+function Links({ p }: { p: Project }) {
+  const links = projectLinks(p);
+  if (!links.length) return null;
   return (
-    <div className={styles.notepad}>
-      <div className={styles.menuBar}>
-        <button onClick={() => api.open("files", { path: path?.slice(0, -1) ?? [] })}>File</button>
-        {href && (href.startsWith("/") ? <Link href={href}>Open in portfolio ↗</Link> : <a href={href} target="_blank" rel="noreferrer">Open link ↗</a>)}
-        <span>{dirty ? "Edited (not saved: pretend disk)" : node ? "Read-only copy" : "Untitled"}</span>
+    <p className={styles.links}>
+      {links.map((l) => l.internal ? <Link key={l.href} href={l.href}>{l.label}</Link> : <a key={l.href} href={l.href} target="_blank" rel="noreferrer">{l.label}<ArrowUpRight size={13} aria-hidden /></a>)}
+    </p>
+  );
+}
+
+function WorkDetail({ p }: { p: Project }) {
+  const src = p.cover?.src ?? p.thumb;
+  const contain = p.cover?.fit === "contain" || p.cover?.variant === "device";
+  return (
+    <article className={styles.detail}>
+      {src && (
+        <figure className={`${styles.cover} ${contain ? styles.coverContain : ""}`}>
+          <Image key={src} src={src} alt={p.cover?.alt ?? p.name} fill sizes="(max-width: 640px) 100vw, 600px" style={{ objectFit: contain ? "contain" : "cover", objectPosition: p.cover?.objectPosition }} />
+        </figure>
+      )}
+      <h2>{p.name}</h2>
+      <p className={styles.meta}>{projectMeta(p)}</p>
+      <p>{p.longDescription ?? p.description}</p>
+      {p.impact?.length ? <ul className={styles.impact}>{p.impact.map((i) => <li key={i}>{i}</li>)}</ul> : null}
+      <Links p={p} />
+    </article>
+  );
+}
+
+function AppDetail({ p }: { p: Project }) {
+  const shots = p.screenshots?.length ? p.screenshots : p.thumb ? [p.thumb] : [];
+  return (
+    <article className={styles.detail}>
+      <header className={styles.appHeader}>
+        <span className={`${styles.appIcon} ${styles.appIconLarge}`}><Image src={appIconSrc(p.slug) ?? p.thumb ?? ""} alt="" fill sizes="72px" /></span>
+        <div><h2>{p.name}</h2><p className={styles.meta}>{[p.launchStage, p.stack?.[0]].filter(Boolean).join(" · ")}</p></div>
+      </header>
+      <p>{p.description}</p>
+      <div className={styles.shots} tabIndex={0} aria-label={`${p.name} screenshots`}>
+        {shots.map((src, i) => <span key={src} className={styles.shot}><Image src={src} alt={`${p.name} screenshot ${i + 1}`} fill sizes="180px" /></span>)}
       </div>
-      <textarea key={path?.join("/") ?? "blank"} className={styles.notes} defaultValue={text} spellCheck={false} onChange={() => setDirty(true)} aria-label={node?.name ?? "Notepad"} />
+      {p.longDescription && <p>{p.longDescription}</p>}
+      <Links p={p} />
+    </article>
+  );
+}
+
+export const WorkApp = ({ slug }: { slug?: string }) => <Catalog projects={workProjects} slug={slug} kind="work" />;
+export const AppsApp = ({ slug }: { slug?: string }) => <Catalog projects={independentApps} slug={slug} kind="apps" />;
+
+// ---------------------------------------------------------------- Shelf
+const VERB: Record<string, string> = { watched: "Watched", watching: "Watching", playing: "Playing", reading: "Reading", "in rotation": "In rotation", catalogued: "From the catalog" };
+
+export function Shelf() {
+  const items = canonShelfItems(canonFeed.now);
+  const sources = [...new Set(items.map((i) => canonSourceName(i)))].join(", ");
+  return (
+    <div className={styles.shelf}>
+      <p className={styles.shelfIntro}>
+        Pulled from Canon, my catalog of {canonFeed.totalWorks.toLocaleString("en-NZ")} films, shows, games, books and albums.
+        Lately I lean toward {listify(canonFeed.regions.map((r) => r.toLowerCase()))}.
+      </p>
+      <ul className={styles.covers}>
+        {items.map((item) => {
+          const body = (
+            <>
+              <span className={styles.coverArt} style={{ aspectRatio: item.art ? `${item.art.w} / ${item.art.h}` : "2 / 3" }}>
+                {item.art ? <Image src={`${item.art.src}?v=${encodeURIComponent(canonFeed.generatedAt)}`} alt={`${item.title} cover`} fill sizes="160px" /> : <span>{item.title}</span>}
+              </span>
+              <small>{VERB[item.verb] ?? item.verb} · {canonMediumName(item)}</small>
+              <b>{item.title}</b>
+              {item.creator && <span>{item.creator}</span>}
+            </>
+          );
+          return <li key={item.id}>{item.href ? <a href={item.href} target="_blank" rel="noreferrer">{body}</a> : body}</li>;
+        })}
+      </ul>
+      {canonFeed.loves.length > 0 && (
+        <section className={styles.loves}>
+          <h3>Rated 10 out of 10, recently</h3>
+          <ul>{canonFeed.loves.map((l) => <li key={l.title}><b>{l.title}</b>{l.creator && <span>{l.creator}</span>}</li>)}</ul>
+        </section>
+      )}
+      <p className={styles.footnote}>Snapshot {formatCanonExportDate(canonFeed.generatedAt)}{sources ? ` · via ${sources}` : ""}</p>
     </div>
   );
 }
 
+function listify(words: string[]) {
+  if (words.length < 2) return words.join("");
+  return `${words.slice(0, -1).join(", ")} and ${words.at(-1)}`;
+}
+
+// ---------------------------------------------------------------- Terminal
 export function Terminal({ api }: { api: OSApi }) {
-  const [lines, setLines] = useState<string[]>(["Maxwell OS [Version 2.0]", "(C) Maxwell Systems. Type help to begin.", ""]);
+  const [lines, setLines] = useState<string[]>(["Maxwell OS. The files here are the portfolio.", "Type help, or try: open liner", ""]);
   const [cwd, setCwd] = useState<string[]>([]);
   const [q, setQ] = useState("");
   const [history, setHistory] = useState<string[]>([]);
@@ -82,112 +223,32 @@ export function Terminal({ api }: { api: OSApi }) {
   const scroller = useRef<HTMLDivElement>(null);
   const input = useRef<HTMLInputElement>(null);
   useEffect(() => { scroller.current?.scrollTo({ top: scroller.current.scrollHeight }); }, [lines]);
-  const prompt = `${displayPath(cwd)}>`;
+  const prompt = `guest@maxwell ${displayPath(cwd)} %`;
   function go(e: FormEvent) {
     e.preventDefault();
-    const r = runCommand(q, { cwd, now: new Date().toString() });
-    setLines((x) => (r.clear ? [] : [...x, `${prompt}${q}`, ...(r.output ? r.output.split("\n") : [])]));
+    const r = runCommand(q, { cwd, now: new Date().toLocaleString("en-NZ", { timeZone: "Pacific/Auckland", dateStyle: "full", timeStyle: "short" }) + " in Auckland" });
+    setLines((x) => (r.clear ? [] : [...x, `${prompt} ${q}`, ...(r.output ? r.output.split("\n") : [])]));
     if (q.trim()) setHistory((h) => [q, ...h].slice(0, 50));
     setCursor(-1);
     if (r.cwd) setCwd(r.cwd);
     if (r.exit) api.exit();
-    if (r.vacuum) api.release();
-    if (r.open) api.open(r.open, r.openFile ? { path: r.openFile } : undefined, r.open === "notes" && r.openFile ? `${r.openFile.at(-1)} - Notepad` : undefined);
+    if (r.open) api.open(r.open, r.payload, { keyboard: true });
     setQ("");
   }
   const keys = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-      e.preventDefault();
-      const next = Math.max(-1, Math.min(history.length - 1, cursor + (e.key === "ArrowUp" ? 1 : -1)));
-      setCursor(next);
-      setQ(next === -1 ? "" : history[next]);
-    }
+    if (e.key !== "ArrowUp" && e.key !== "ArrowDown") return;
+    e.preventDefault();
+    const next = Math.max(-1, Math.min(history.length - 1, cursor + (e.key === "ArrowUp" ? 1 : -1)));
+    setCursor(next);
+    setQ(next === -1 ? "" : history[next]);
   };
   return (
-    <div ref={scroller} className={styles.terminal} onClick={() => input.current?.focus()}>
-      {lines.map((l, i) => <div key={i}>{l || " "}</div>)}
-      <form onSubmit={go}>{prompt}<input ref={input} value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={keys} autoFocus spellCheck={false} autoCapitalize="off" autoComplete="off" aria-label="Command" /></form>
+    <div ref={scroller} className={styles.terminal} onClick={() => { if (!getSelection()?.toString()) input.current?.focus(); }}>
+      {lines.map((l, i) => <div key={i}>{l || " "}</div>)}
+      <form onSubmit={go}>
+        <label htmlFor="os-terminal-input">{prompt}</label>
+        <input id="os-terminal-input" ref={input} value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={keys} autoFocus spellCheck={false} autoCapitalize="off" autoComplete="off" autoCorrect="off" enterKeyHint="go" />
+      </form>
     </div>
   );
-}
-
-export function Settings({ api, windowId }: { api: OSApi; windowId: string }) {
-  const original = useRef<OSPrefs>(api.prefs);
-  const [tab, setTab] = useState<"background" | "appearance">("background");
-  const update = (patch: Partial<OSPrefs>) => api.setPrefs({ ...api.prefs, ...patch });
-  const done = () => api.close(windowId);
-  const cancel = () => { api.setPrefs(original.current); done(); };
-  return (
-    <div className={styles.settings}>
-      <div className={styles.tabs} role="tablist">
-        <button role="tab" aria-selected={tab === "background"} className={tab === "background" ? styles.tabActive : ""} onClick={() => setTab("background")}>Background</button>
-        <button role="tab" aria-selected={tab === "appearance"} className={tab === "appearance" ? styles.tabActive : ""} onClick={() => setTab("appearance")}>Appearance</button>
-      </div>
-      <div className={styles.tabPanel}>
-        <div className={styles.monitor}><div className={styles.monitorScreen} style={{ background: `${WALLPAPERS.find((w) => w.id === api.prefs.wallpaper)?.css === "none" ? "" : WALLPAPERS.find((w) => w.id === api.prefs.wallpaper)?.css + ", "}${SCHEMES.find((s) => s.id === api.prefs.scheme)?.desktop}` }}><i style={{ background: `linear-gradient(90deg, ${SCHEMES.find((s) => s.id === api.prefs.scheme)?.titleA}, ${SCHEMES.find((s) => s.id === api.prefs.scheme)?.titleB})` }} /></div></div>
-        {tab === "background" ? (
-          <fieldset><legend>Wallpaper</legend>{WALLPAPERS.map((w) => <label key={w.id}><input type="radio" name="wallpaper" checked={api.prefs.wallpaper === w.id} onChange={() => update({ wallpaper: w.id })} />{w.name}</label>)}</fieldset>
-        ) : (
-          <fieldset><legend>Scheme</legend>{SCHEMES.map((s) => <label key={s.id}><input type="radio" name="scheme" checked={api.prefs.scheme === s.id} onChange={() => update({ scheme: s.id })} /><i style={{ background: s.desktop }} />{s.name}</label>)}</fieldset>
-        )}
-      </div>
-      <footer className={styles.dialogButtons}><button onClick={done}>OK</button><button onClick={cancel}>Cancel</button><button onClick={() => (original.current = api.prefs)}>Apply</button></footer>
-    </div>
-  );
-}
-
-export function Browser({ api }: { api: OSApi }) {
-  return (
-    <div className={styles.browser}>
-      <div className={styles.addressBar}><button disabled>◀</button><button disabled>▶</button><span>Address</span><input value="https://world.wide.web/maxwell/" readOnly aria-label="Address" /><button>Go</button></div>
-      <article>
-        <h1>Welcome to the Internet</h1>
-        <p>This copy is cached locally. The modem is resting. These links leave the computer:</p>
-        <ul>
-          <li><Link href="/">dev.maxwellyoung.info</Link> — the portfolio this computer lives inside</li>
-          <li><Link href="/resume">Resume</Link> · <Link href="/craft">Craft</Link> · <Link href="/contact">Contact</Link></li>
-          {flagshipProjects.map((p) => <li key={p.slug}>{p.caseStudySlug ? <Link href={`/case-study/${p.caseStudySlug}`}>{p.name} case study</Link> : <a href={p.links?.live ?? p.link ?? "/"} target="_blank" rel="noreferrer">{p.name}</a>} — {p.description}</li>)}
-          {essays.map((e) => <li key={e.slug}><Link href={`/craft/essay/${e.slug}`}>{e.title}</Link></li>)}
-          <li><Link href="/quiz">Run personnel verification quiz</Link></li>
-        </ul>
-        <p><a onClick={() => api.open("about")}>About the author</a></p>
-      </article>
-    </div>
-  );
-}
-
-export function About() {
-  const r = resumeData;
-  return (
-    <div className={styles.about}>
-      <b>MY</b>
-      <h1>{r.name}</h1>
-      <p className={styles.aboutTitle}>{r.title} · {r.contact.location}</p>
-      <p>{r.profile}</p>
-      <p><a href={`https://${r.contact.github}`} target="_blank" rel="noreferrer">{r.contact.github}</a><br /><a href={`https://${r.contact.linkedin}`} target="_blank" rel="noreferrer">{r.contact.linkedin}</a><br /><a href={`mailto:${r.contact.email}`}>{r.contact.email}</a></p>
-      <hr />
-      <p><small>Maxwell OS Professional · Version 2.0<br />One reducer, one file system, twenty-two unit tests, no cloud.</small></p>
-    </div>
-  );
-}
-
-export function Help() {
-  return (
-    <div className={styles.panel}>
-      <h2>Maxwell OS Help</h2>
-      <p>Double-click desktop icons (tap on touch screens). Drag title bars to move windows, drag the bottom-right corner to resize, double-click a title bar to maximize.</p>
-      <dl className={styles.shortcuts}>
-        <dt>Alt+Tab / Ctrl+Tab</dt><dd>Switch windows</dd>
-        <dt>Escape</dt><dd>Close the front window, or return to the portfolio when none are open</dd>
-        <dt>Backspace</dt><dd>Up one folder in My Computer</dd>
-        <dt>↑ / ↓ in MS-DOS Prompt</dt><dd>Command history</dd>
-        <dt>Right-click</dt><dd>Desktop menu; flags in Minesweeper</dd>
-      </dl>
-      <p>Your windows and Display Properties are remembered on this device only. If ants appear, use the vacuum.</p>
-    </div>
-  );
-}
-
-export function Trash({ api }: { api: OSApi }) {
-  return <div className={styles.empty}><b>🗑️</b><p>1 object</p><button onClick={api.release}>DO NOT CLICK</button><small>final_final_v7_REAL.txt</small></div>;
 }
