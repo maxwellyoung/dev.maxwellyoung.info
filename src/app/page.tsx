@@ -29,7 +29,7 @@ export default function Home() {
             </p>
           </motion.header>
 
-          <div className="leading-relaxed space-y-4">
+          <div className="leading-relaxed space-y-6">
             <motion.p
               className="max-w-xl text-foreground"
               variants={item.fadeUp}
@@ -55,20 +55,15 @@ export default function Home() {
 
 
             <motion.nav
-              className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground"
+              className="flex flex-wrap items-center gap-x-5 gap-y-0 text-sm text-muted-foreground"
               variants={item.fadeUp}
               aria-label="Primary navigation"
             >
               <AnimatedLink href="#projects" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Work</AnimatedLink>
-              <span className="text-border/40">·</span>
               <AnimatedLink href="/apps" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Apps</AnimatedLink>
-              <span className="text-border/40">·</span>
               <AnimatedLink href="/resume" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Resume</AnimatedLink>
-              <span className="text-border/40">·</span>
               <AnimatedLink href="https://github.com/maxwellyoung" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
-              <span className="text-border/40">·</span>
               <AnimatedLink href="/os" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Maxwell OS</AnimatedLink>
-              <span className="text-border/40">·</span>
               <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
             </motion.nav>
           </div>
