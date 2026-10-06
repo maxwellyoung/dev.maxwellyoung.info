@@ -1,33 +1,120 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { initialOSState, windowReducer, runCommand, parseCommand, traverse, resolvePath, formatTree, FILESYSTEM, followStory, OFFICE_GRAPH, ADVENTURE_GRAPH, antReducer, antEscalation, antPosition, snakeStep, newSnake, snakeTick, turnSnake, placeFood, safeRestore, topWindow, SCHEMES, WALLPAPERS, schemeById } from "./maxwellOS";
+import { initialOSState, windowReducer, runCommand, traverse, resolvePath, formatTree, FILESYSTEM, topWindow, MENU_BAR, MIN_WINDOW } from "./maxwellOS";
 import { rankedProjects } from "./projects";
 import { essays } from "./essays";
 
-test("window manager opens, focuses, moves, minimizes, maximizes and closes", () => { let s = windowReducer(initialOSState, { type: "open", app: "files", title: "Explorer" }); assert.equal(s.windows.length, 1); s = windowReducer(s, { type: "move", id: s.windows[0].id, x: -4, y: 22 }); assert.equal(s.windows[0].x, 0); s = windowReducer(s, { type: "resize", id: s.windows[0].id, width: 10, height: 10 }); assert.equal(s.windows[0].width, 320); s = windowReducer(s, { type: "minimize", id: s.windows[0].id }); assert.equal(s.windows[0].minimized, true); s = windowReducer(s, { type: "maximize", id: s.windows[0].id }); assert.equal(s.windows[0].maximized, true); s = windowReducer(s, { type: "close", id: s.windows[0].id }); assert.equal(s.windows.length, 0); });
-test("opening an existing app focuses rather than duplicates", () => { let s = windowReducer(initialOSState, { type: "open", app: "notes", title: "Notes" }); s = windowReducer(s, { type: "open", app: "notes", title: "Notes" }); assert.equal(s.windows.length, 1); assert.equal(s.windows[0].z, 3); });
-test("files opened in Notepad get their own window per path", () => { let s = windowReducer(initialOSState, { type: "open", app: "notes", title: "A", payload: { path: ["Documents", "RESUME.txt"] } }); s = windowReducer(s, { type: "open", app: "notes", title: "B", payload: { path: ["Projects", "README.txt"] } }); s = windowReducer(s, { type: "open", app: "notes", title: "A", payload: { path: ["Documents", "RESUME.txt"] } }); assert.equal(s.windows.length, 2); assert.equal(topWindow(s)?.title, "A"); });
-test("cycle brings the next window forward, shift-cycle the last", () => { let s = initialOSState; for (const app of ["files", "notes", "terminal"] as const) s = windowReducer(s, { type: "open", app, title: app }); assert.equal(topWindow(s)?.app, "terminal"); s = windowReducer(s, { type: "cycle" }); assert.equal(topWindow(s)?.app, "notes"); s = windowReducer(s, { type: "cycle", direction: -1 }); assert.equal(topWindow(s)?.app, "files"); });
-test("hydrate clamps saved windows into the viewport and keeps z order sane", () => { const saved = { windows: [{ id: "files", app: "files" as const, title: "x", x: 5000, y: 5000, width: 100, height: 100, z: 9, minimized: false, maximized: false }], nextZ: 3 }; const s = windowReducer(initialOSState, { type: "hydrate", state: saved, viewport: { width: 1000, height: 700 } }); assert.equal(s.windows[0].x, 920); assert.equal(s.windows[0].y, 580); assert.equal(s.windows[0].width, 320); assert.equal(s.nextZ, 10); });
+const open = (app: "readme" | "work" | "apps" | "shelf" | "terminal", payload?: { slug?: string }) => ({ type: "open" as const, app, title: app, payload });
 
-test("filesystem is built from the real portfolio", () => { const projects = traverse(["Projects"]); assert.ok(projects?.children); for (const p of rankedProjects) { const folder = projects!.children!.find((c) => c.name === p.name.replace(/['`’]/g, "").replace(/[^a-z0-9-]/gi, "-").toLowerCase()); assert.ok(folder?.children?.some((f) => f.name === "README.txt"), `missing folder for ${p.name}`); } assert.ok(traverse(["Documents", "RESUME.txt"])?.content?.includes("EXPERIENCE")); assert.equal(traverse(["Documents", "Essays"])?.children?.length, essays.length); assert.equal(traverse(["Games", "mines.exe"])?.app, "mines"); assert.ok((traverse(["Now"])?.children?.length ?? 0) >= 4); });
-test("filesystem traverses case-insensitively without escaping tree", () => { assert.equal(traverse(["documents"])?.kind, "folder"); assert.equal(traverse(["nope"]), null); assert.equal(traverse(["Documents", "RESUME.txt", "deeper"]), null); });
-test("resolvePath handles relative, absolute and parent segments", () => { assert.deepEqual(resolvePath(["Documents"], ".."), []); assert.deepEqual(resolvePath(["Documents"], "..\\Games"), ["Games"]); assert.deepEqual(resolvePath(["Documents"], "/Projects"), ["Projects"]); assert.deepEqual(resolvePath(["Documents", "Essays"], "../../.."), []); assert.deepEqual(resolvePath([], "documents/essays"), ["Documents", "Essays"]); });
-test("tree renders nested folders", () => { const out = formatTree(FILESYSTEM); assert.match(out, /Projects\//); assert.match(out, /RESUME\.txt/); });
+test("window manager opens, moves, resizes, maximizes and closes", () => {
+  let s = windowReducer(initialOSState, open("work"));
+  assert.equal(s.windows.length, 1);
+  s = windowReducer(s, { type: "move", id: "work", x: -4, y: 0 });
+  assert.equal(s.windows[0].x, 0);
+  assert.equal(s.windows[0].y, MENU_BAR, "windows never slide under the menu bar");
+  s = windowReducer(s, { type: "resize", id: "work", width: 10, height: 10 });
+  assert.equal(s.windows[0].width, MIN_WINDOW.width);
+  s = windowReducer(s, { type: "maximize", id: "work" });
+  assert.equal(s.windows[0].maximized, true);
+  s = windowReducer(s, { type: "close", id: "work" });
+  assert.equal(s.windows.length, 0);
+});
 
-test("terminal navigates and reads the file system", () => { assert.deepEqual(runCommand("cd Documents", { cwd: [] }).cwd, ["Documents"]); assert.match(runCommand("ls", { cwd: ["Documents"] }).output, /RESUME\.txt/); assert.match(runCommand("cat RESUME.txt", { cwd: ["Documents"] }).output, /EXPERIENCE/); assert.match(runCommand("cd nowhere", { cwd: [] }).output, /Not a folder/); assert.match(runCommand("pwd", { cwd: ["Games"] }).output, /C:\\MAXWELL\\GAMES/); });
-test("terminal opens apps and files", () => { assert.equal(runCommand("open mines", { cwd: [] }).open, "mines"); const r = runCommand("open Games/snake.exe", { cwd: [] }); assert.equal(r.open, "snake"); const f = runCommand("open RESUME.txt", { cwd: ["Documents"] }); assert.equal(f.open, "notes"); assert.deepEqual(f.openFile, ["Documents", "RESUME.txt"]); const d = runCommand("open Projects", { cwd: [] }); assert.equal(d.open, "files"); });
-test("terminal parser allowlists apps and handles utilities", () => { assert.equal(parseCommand("date", "NOW").output, "NOW"); assert.equal(parseCommand("clear").clear, true); assert.match(parseCommand("rm -rf").output, /not found/); assert.equal(parseCommand("vacuum").vacuum, true); assert.equal(parseCommand("echo hi there").output, "hi there"); assert.match(parseCommand("knock knock knock").output, /door/); });
+test("new windows fit inside a small viewport", () => {
+  const s = windowReducer(initialOSState, { ...open("work"), size: { width: 900, height: 700 }, viewport: { width: 1000, height: 600 } });
+  const w = s.windows[0];
+  assert.ok(w.x + w.width <= 1000);
+  assert.ok(w.y + w.height <= 600);
+});
 
-test("story graphs follow valid branches and reject invalid choices", () => { assert.equal(followStory(OFFICE_GRAPH, "lobby", 0), "meeting"); assert.equal(followStory(ADVENTURE_GRAPH, "dock", 99), null); });
-test("ant reducer caps swarm and cleanup invalidates generation", () => { let s = { active: false, count: 0, generation: 0 }; s = antReducer(s, { type: "release", amount: 999 }); assert.equal(s.count, 80); s = antReducer(s, { type: "clear" }); assert.deepEqual(s, { active: false, count: 0, generation: 1 }); });
-test("ant infestation escalates in bounded waves", () => { assert.equal(antEscalation(28, 1), 40); assert.equal(antEscalation(76, 1), 80); assert.equal(antEscalation(80, 9), 80); });
-test("early ants cluster around the deleted file and recycle bin", () => { const first = Array.from({ length: 24 }, (_, i) => antPosition(i, 80)); assert.ok(first.filter((p) => p.origin !== "roaming").length >= 18); assert.ok(first.some((p) => p.origin === "file")); assert.ok(first.some((p) => p.origin === "bin")); assert.ok(antPosition(70, 80).origin === "roaming"); });
+test("opening an existing app focuses it and retargets its selection", () => {
+  let s = windowReducer(initialOSState, open("work", { slug: "silk" }));
+  s = windowReducer(s, open("terminal"));
+  s = windowReducer(s, open("work", { slug: "liner" }));
+  assert.equal(s.windows.length, 2);
+  assert.equal(topWindow(s)?.app, "work");
+  assert.equal(topWindow(s)?.payload?.slug, "liner");
+});
 
-test("snake wraps and detects itself", () => { assert.deepEqual(snakeStep([{ x: 0, y: 0 }], { x: -1, y: 0 }, 12).body[0], { x: 11, y: 0 }); assert.equal(snakeStep([{ x: 1, y: 0 }, { x: 0, y: 0 }], { x: -1, y: 0 }).hit, true); });
-test("snake eats, grows, scores, and never reverses", () => { const fixed = () => 0; let s = newSnake(fixed); s = { ...s, food: { x: 9, y: 8 } }; s = snakeTick(s, fixed); assert.equal(s.score, 10); assert.equal(s.body.length, 4); assert.ok(!s.body.some((p) => p.x === s.food.x && p.y === s.food.y)); assert.deepEqual(turnSnake(s, { x: -1, y: 0 }).dir, { x: 1, y: 0 }); assert.deepEqual(turnSnake(s, { x: 0, y: 1 }).dir, { x: 0, y: 1 }); const food = placeFood([{ x: 0, y: 0 }], 2, fixed); assert.notDeepEqual(food, { x: 0, y: 0 }); });
-test("snake dies on itself and stays dead", () => { let s = newSnake(() => 0.99); s = { ...s, body: [{ x: 5, y: 5 }, { x: 6, y: 5 }, { x: 6, y: 6 }, { x: 5, y: 6 }, { x: 4, y: 6 }], dir: { x: 0, y: 1 } }; s = snakeTick(s); assert.equal(s.dead, true); assert.equal(snakeTick(s).dead, true); });
+test("cycle brings the next window forward, shift-cycle the last", () => {
+  let s = initialOSState;
+  for (const app of ["readme", "work", "terminal"] as const) s = windowReducer(s, open(app));
+  s = windowReducer(s, { type: "cycle" });
+  assert.equal(topWindow(s)?.app, "work");
+  s = windowReducer(s, { type: "cycle", direction: -1 });
+  assert.equal(topWindow(s)?.app, "readme");
+});
 
-test("display schemes and wallpapers resolve with fallbacks", () => { assert.ok(SCHEMES.length >= 4); assert.ok(WALLPAPERS.some((w) => w.id === "none")); assert.equal(schemeById("nope").id, "standard"); });
-test("safe restore clears lifecycle residue", () => { assert.deepEqual(safeRestore({ title: "x", scrollX: 2, scrollY: 3 }), { title: "x", scrollX: 2, scrollY: 3, active: false, ants: 0, timers: 0 }); });
-test("re-opening My Computer with a new path retargets the existing window", () => { let s = windowReducer(initialOSState, { type: "open", app: "files", title: "My Computer", payload: { path: ["Games"] } }); s = windowReducer(s, { type: "open", app: "files", title: "My Computer", payload: { path: ["Now"] } }); assert.equal(s.windows.length, 1); assert.deepEqual(s.windows[0].payload?.path, ["Now"]); assert.equal(runCommand("exit", { cwd: [] }).exit, true); });
+test("hydrate clamps saved windows and drops apps that no longer exist", () => {
+  const saved = {
+    windows: [
+      { id: "work", app: "work" as const, title: "x", x: 5000, y: 5000, width: 100, height: 100, z: 9, maximized: false },
+      { id: "snake", app: "snake", title: "Snake", x: 0, y: 0, width: 400, height: 400, z: 4, maximized: false },
+    ],
+    nextZ: 3,
+  } as unknown as Parameters<typeof windowReducer>[0];
+  const s = windowReducer(initialOSState, { type: "hydrate", state: saved, viewport: { width: 1000, height: 700 } });
+  assert.equal(s.windows.length, 1);
+  assert.equal(s.windows[0].x, 880);
+  assert.equal(s.windows[0].y, 580);
+  assert.equal(s.windows[0].width, MIN_WINDOW.width);
+  assert.equal(s.nextZ, 10);
+});
+
+test("filesystem is built from the real portfolio and nothing else", () => {
+  const projects = traverse(["Projects"]);
+  assert.equal(projects?.children?.length, rankedProjects.length);
+  for (const p of rankedProjects) assert.ok(projects!.children!.some((f) => f.slug === p.slug), `missing folder for ${p.name}`);
+  assert.ok(traverse(["Documents", "RESUME.txt"])?.content?.includes("EXPERIENCE"));
+  assert.equal(traverse(["Documents", "Essays"])?.children?.length, essays.length);
+  assert.ok(traverse(["Now", "about-this-folder.txt"])?.content?.includes("Canon"));
+  assert.equal(traverse(["Games"]), null);
+});
+
+test("filesystem traverses case-insensitively without escaping the tree", () => {
+  assert.equal(traverse(["documents"])?.kind, "folder");
+  assert.equal(traverse(["nope"]), null);
+  assert.equal(traverse(["Documents", "RESUME.txt", "deeper"]), null);
+});
+
+test("resolvePath handles relative, absolute and parent segments", () => {
+  assert.deepEqual(resolvePath(["Documents"], ".."), []);
+  assert.deepEqual(resolvePath(["Documents"], "../Projects"), ["Projects"]);
+  assert.deepEqual(resolvePath(["Documents"], "/Now"), ["Now"]);
+  assert.deepEqual(resolvePath(["Documents", "Essays"], "../../.."), []);
+  assert.deepEqual(resolvePath([], "documents/essays"), ["Documents", "Essays"]);
+});
+
+test("tree renders nested folders", () => {
+  const out = formatTree(FILESYSTEM);
+  assert.match(out, /Projects\//);
+  assert.match(out, /RESUME\.txt/);
+});
+
+test("terminal navigates and reads the file system", () => {
+  assert.deepEqual(runCommand("cd Documents", { cwd: [] }).cwd, ["Documents"]);
+  assert.match(runCommand("ls", { cwd: ["Documents"] }).output, /RESUME\.txt/);
+  assert.match(runCommand("cat RESUME.txt", { cwd: ["Documents"] }).output, /EXPERIENCE/);
+  assert.match(runCommand("cd nowhere", { cwd: [] }).output, /not a folder/);
+  assert.equal(runCommand("pwd", { cwd: ["Projects", "liner"] }).output, "~/Projects/liner");
+});
+
+test("terminal opens apps and jumps to projects in the right app", () => {
+  assert.equal(runCommand("open shelf", { cwd: [] }).open, "shelf");
+  const work = runCommand("open liner", { cwd: [] });
+  assert.equal(work.open, "work");
+  assert.equal(work.payload?.slug, "liner");
+  const app = runCommand("open Projects/vape-quit-coach", { cwd: [] });
+  assert.equal(app.open, "apps");
+  assert.equal(app.payload?.slug, "vape-quit-coach");
+  assert.match(runCommand("open nothing-here", { cwd: [] }).output, /not found/);
+});
+
+test("terminal allowlists commands and handles utilities", () => {
+  assert.equal(runCommand("date", { cwd: [], now: "NOW" }).output, "NOW");
+  assert.equal(runCommand("clear", { cwd: [] }).clear, true);
+  assert.match(runCommand("rm -rf /", { cwd: [] }).output, /command not found/);
+  assert.equal(runCommand("echo hi there", { cwd: [] }).output, "hi there");
+  assert.match(runCommand("now", { cwd: [] }).output, /Canon/);
+  assert.equal(runCommand("exit", { cwd: [] }).exit, true);
+});
