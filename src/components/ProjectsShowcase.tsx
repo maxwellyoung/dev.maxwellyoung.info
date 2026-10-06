@@ -10,10 +10,8 @@ import {
   Project,
   independentApps,
   selectedWorkProjects,
-  getProjectContextLabel,
   rankedProjects,
   supportingProjects,
-  personalToolProjects,
 } from "@/lib/projects";
 import { ProjectDetails } from "@/components/ProjectDetails";
 import { ChevronDown } from "lucide-react";
@@ -46,20 +44,20 @@ function ProjectRow({
   onToggleExpand: (name: string | null) => void;
   onCarouselOpen: () => void;
   shouldReduceMotion: boolean;
-  emphasis?: "flagship" | "supporting" | "personal-tool";
+  emphasis?: "flagship" | "supporting";
 }) {
   const isExpanded = expandedProject === p.name;
   const isFlagship = emphasis === "flagship";
-  const isPersonalTool = emphasis === "personal-tool";
   const rowRef = React.useRef<HTMLLIElement>(null);
-  const supportingMeta = [p.role, p.launchStage ?? getProjectContextLabel(p)]
-    .filter((value): value is string => Boolean(value))
-    .slice(0, 2);
-  const flagshipMeta = [
-    p.role,
-    p.launchStage ?? getProjectContextLabel(p),
+  // One metadata grammar for every row. "Solo" is the default, so only a
+  // different role (Lead, Designer & Developer) earns a place.
+  const meta = [
+    p.role === "Solo" ? undefined : p.role,
+    p.launchStage,
     p.stack?.[0] ?? p.tags?.[0],
-  ].filter((value): value is string => Boolean(value));
+  ]
+    .filter((value): value is string => Boolean(value))
+    .join(" · ");
 
   return (
     <motion.li
@@ -94,9 +92,6 @@ function ProjectRow({
             <div className="min-w-0 flex-1 overflow-hidden">
               <ProjectHoverPreview project={p}>
                 <div className="cursor-pointer">
-                  <p className="mb-0.5 truncate text-[0.62rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                    {getProjectContextLabel(p)}
-                  </p>
                   <h3 className="break-words text-base sm:text-lg font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
                     {p.name}
                   </h3>
@@ -105,14 +100,10 @@ function ProjectRow({
               <p className="mt-1 line-clamp-2 break-words text-sm leading-relaxed text-muted-foreground">
                 {p.description}
               </p>
-              {flagshipMeta.length > 0 && (
-                <div className="mt-2 flex min-w-0 flex-wrap gap-x-3 gap-y-1 text-[0.58rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-                  {flagshipMeta.map((meta) => (
-                    <span key={meta} className="max-w-full truncate">
-                      {meta}
-                    </span>
-                  ))}
-                </div>
+              {meta && (
+                <p className="mt-2 truncate text-xs text-muted-foreground">
+                  {meta}
+                </p>
               )}
             </div>
 
@@ -135,19 +126,19 @@ function ProjectRow({
 
             <div className="min-w-0 flex-1 overflow-hidden">
               <ProjectHoverPreview project={p}>
-                <div className={isPersonalTool ? "min-w-0 cursor-pointer" : "flex min-w-0 cursor-pointer items-baseline gap-3"}>
-                  <h3 className={`${isPersonalTool ? "" : "flex-shrink-0 "}text-sm font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent`}>
+                <div className="flex min-w-0 cursor-pointer items-baseline gap-3">
+                  <h3 className="flex-shrink-0 text-sm font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
                     {p.name}
                   </h3>
-                  <p className={isPersonalTool ? "mt-1 text-xs leading-relaxed text-muted-foreground" : "hidden min-w-0 truncate text-xs text-muted-foreground sm:block"}>
+                  <p className="hidden min-w-0 truncate text-xs text-muted-foreground sm:block">
                     {p.description}
                   </p>
                 </div>
               </ProjectHoverPreview>
             </div>
 
-            <span className="hidden flex-shrink-0 text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground sm:inline">
-              {supportingMeta.join(" / ")}
+            <span className="hidden flex-shrink-0 text-xs text-muted-foreground sm:inline">
+              {p.launchStage}
             </span>
 
             <motion.div
@@ -234,7 +225,7 @@ function ProjectSection({
   onToggleExpand: (name: string | null) => void;
   onCarouselOpen: () => void;
   shouldReduceMotion: boolean;
-  emphasis?: "flagship" | "supporting" | "personal-tool";
+  emphasis?: "flagship" | "supporting";
 }) {
   return (
     <section id={id} className="space-y-3 scroll-mt-6">
@@ -318,22 +309,11 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
             emphasis="flagship"
           />
 
-          <ProjectSection
-            id="personal-tools"
-            title="Personal tools"
-            description="Small tools I build around how I work and study."
-            projects={personalToolProjects}
-            expandedProject={expandedProject}
-            onToggleExpand={setExpandedProject}
-            onCarouselOpen={handleCarouselOpen}
-            shouldReduceMotion={shouldReduceMotion}
-            emphasis="personal-tool"
-          />
-
           {supportingProjects.length > 0 && (
             <ProjectSection
-              title="More work"
-              description="Products in development, experiments, and earlier client builds."
+              id="other-work"
+              title="Other work"
+              description="Live experiments, products in development, and earlier client builds."
               projects={supportingProjects}
               expandedProject={expandedProject}
               onToggleExpand={setExpandedProject}

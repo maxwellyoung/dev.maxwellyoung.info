@@ -1,16 +1,22 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { personalToolProjects, selectedWorkProjects, supportingProjects, independentApps } from "./projects";
+import { rankedProjects, selectedWorkProjects, supportingProjects, independentApps } from "./projects";
 import { getCaseStudy } from "./caseStudies";
 
-test("personal tools are a curated collection without duplicate placement", () => {
-  assert.deepEqual(personalToolProjects.map(project => project.slug), ["second-brain", "autobahn-extensions", "epub-compressor"]);
-  const otherSlugs = new Set([...selectedWorkProjects, ...supportingProjects, ...independentApps].map(project => project.slug));
-  assert.ok(personalToolProjects.every(project => !otherSlugs.has(project.slug)));
+test("each public project appears in exactly one homepage list", () => {
+  const placed = [...selectedWorkProjects, ...independentApps, ...supportingProjects].map(project => project.slug);
+  assert.equal(new Set(placed).size, placed.length);
+  assert.deepEqual([...placed].sort(), rankedProjects.map(project => project.slug).sort());
 });
 
-test("private tool entries expose proof and boundaries without private source links", () => {
-  for (const project of personalToolProjects) {
+test("only Second Brain remains listed from the personal tools, inside Other work", () => {
+  const listedTools = rankedProjects.filter(project => project.collection === "personal-tools");
+  assert.deepEqual(listedTools.map(project => project.slug), ["second-brain"]);
+  assert.ok(supportingProjects.some(project => project.slug === "second-brain"));
+});
+
+test("listed private tools expose proof and boundaries without private source links", () => {
+  for (const project of rankedProjects.filter(project => project.collection === "personal-tools")) {
     assert.ok(project.screenshots?.length);
     assert.ok(project.mediaCaption);
     assert.notEqual(project.launchStage, "Live");
@@ -21,13 +27,10 @@ test("private tool entries expose proof and boundaries without private source li
   }
 });
 
-test("Autobahn retains original-author attribution without implying a joint team", () => {
-  const project = personalToolProjects.find(project => project.slug === "autobahn-extensions")!;
-  assert.match(project.description, /originally created by Eli Rousso \/ Rams/);
-  assert.equal(project.role, "Fork & extensions");
-  assert.equal(project.attribution?.links[1].href, "https://github.com/rams-design/autobahn");
+test("Autobahn case study retains original-author attribution without implying a joint team", () => {
   const study = getCaseStudy("autobahn-extensions")!;
   assert.ok(study.credits);
+  assert.match(study.credits.text, /Eli Rousso \/ Rams/);
   assert.equal(study.team, undefined);
   assert.equal(study.githubUrl, undefined);
 });
