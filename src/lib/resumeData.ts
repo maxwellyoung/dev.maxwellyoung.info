@@ -66,10 +66,10 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.auckland.ac.nz/",
       date: "Apr 2026 – Present",
       summary:
-        "Own end-to-end software delivery across two medicines-safety research applications: Rx-Opt clinician decision-support and MRB-QoL 2.0 patient-reported outcomes.",
+        "Validate medicines-safety data and simplify research workflows for Rx-Opt clinician decision-support and MRB-QoL 2.0 patient-reported outcomes.",
       responsibilities: [
-        "Built Python ingestion and matching that turns six stages of spreadsheet-authored rules into traceable Next.js review workflows while preserving source provenance and ambiguity.",
-        "Shipped role-aware surveys, researcher dashboards, protected review tooling, server-backed persistence, and approval-gated rule promotion with privacy and end-to-end validation built in.",
+        "Check data quality and review ingested rules, keeping source provenance and ambiguity visible to the research team.",
+        "Make review and outcomes workflows simple to use through clear interfaces. The projects support role-aware questionnaires, researcher dashboards, protected persistence, and approval-gated rule promotion.",
       ],
     },
     {
@@ -171,7 +171,6 @@ export const resumeData: ResumeData = {
         "Convex",
         "Supabase",
         "Prisma",
-        "Python",
       ],
     },
     {

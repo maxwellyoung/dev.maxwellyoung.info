@@ -5,9 +5,11 @@ import { useEffect, useId, useRef, useState } from "react";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { canonFeed } from "@/lib/canonFeed";
 import {
+  formatCanonActivityDate,
   formatCanonExportDate,
   formatCanonSyncDate,
 } from "@/lib/canonFormatting";
+import { canonShelfItems, canonSourceName, canonSyncState, canonMediumName } from "@/lib/canonShelf";
 import { GitHubPulse } from "@/components/GitHubPulse";
 
 /**
@@ -23,13 +25,6 @@ import { GitHubPulse } from "@/components/GitHubPulse";
 const SHELF_H = 104; // display height of the tallest cover, px
 const CAPTION_H = 64; // reserved caption height — equal figure heights keep the shelf baseline true
 
-const MEDIUM_BY_VERB: Record<string, string> = {
-  playing: "Game",
-  reading: "Book",
-  watching: "Film",
-  "in rotation": "Music",
-};
-
 function destinationLabel(href: string) {
   const host = new URL(href).hostname;
   if (host.endsWith("steampowered.com")) return "Open on Steam";
@@ -39,37 +34,38 @@ function destinationLabel(href: string) {
   return "Open source";
 }
 
-function sourceName(href?: string) {
-  if (!href) return "No public source";
-
-  const host = new URL(href).hostname;
-  if (host.endsWith("steampowered.com")) return "Steam";
-  if (host.endsWith("themoviedb.org")) return "TMDB";
-  if (host.endsWith("openlibrary.org")) return "Open Library";
-  if (host.endsWith("music.apple.com")) return "Apple Music";
-  return host.replace(/^www\./, "");
-}
-
 function versionedArtSrc(src: string, version: string) {
   return `${src}?v=${encodeURIComponent(version)}`;
 }
 
 export function CurrentlyInto() {
-  const { now, regions, totalWorks, generatedAt, sourceSyncedAt } = canonFeed;
+  const { regions, totalWorks, generatedAt } = canonFeed;
+  const [asOf, setAsOf] = useState<number | undefined>(undefined);
+  useEffect(() => {
+    const update = () => setAsOf(Date.now());
+    update();
+    const timer = window.setInterval(update, 60_000);
+    return () => window.clearInterval(timer);
+  }, []);
+  // Static HTML can outlive the snapshot. Current claims wait for the browser
+  // clock; dated history and neutral catalog material remain useful without JS.
+  const now = canonShelfItems(canonFeed.now, asOf ?? Date.parse(`${generatedAt}T00:00:00Z`), asOf !== undefined);
   const [expanded, setExpanded] = useState(false);
   const [instant, setInstant] = useState(false);
   const [selectedNowIndex, setSelectedNowIndex] = useState(0);
   const detailsId = useId();
   const cardRef = useRef<HTMLDivElement>(null);
-  const selectedItem = now[selectedNowIndex] ?? now[0];
-  const selectedSource = sourceName(selectedItem?.href);
-  const selectedMedium = MEDIUM_BY_VERB[selectedItem?.verb] ?? "Work";
-  const selectedPosition = `${String(selectedNowIndex + 1).padStart(2, "0")} / ${String(now.length).padStart(2, "0")}`;
+  const effectiveSelectedIndex = Math.min(selectedNowIndex, Math.max(0, now.length - 1));
+  const selectedItem = now[effectiveSelectedIndex];
+  const selectedSource = canonSourceName(selectedItem);
+  const selectedMedium = canonMediumName(selectedItem);
+  const selectedPosition = `${String(effectiveSelectedIndex + 1).padStart(2, "0")} / ${String(now.length).padStart(2, "0")}`;
   const exportDate = formatCanonExportDate(generatedAt);
-  const sourceSyncDate = sourceSyncedAt
-    ? formatCanonSyncDate(sourceSyncedAt)
-    : exportDate;
-  const artVersion = sourceSyncedAt ?? generatedAt;
+  const activityDate = selectedItem?.activityAt ? formatCanonActivityDate(selectedItem.activityAt) : "Unknown";
+  const importTimestamp = selectedItem?.syncedAt ?? selectedItem?.importAttemptAt;
+  const importDate = importTimestamp ? formatCanonSyncDate(importTimestamp) : "Unknown";
+  const importState = selectedItem ? canonSyncState(selectedItem, asOf) : "Import date unknown";
+  const artVersion = generatedAt;
 
   const selectRelativeItem = (direction: -1 | 1, keyboard = false) => {
     setInstant(keyboard);
@@ -115,10 +111,10 @@ export function CurrentlyInto() {
       >
         <span className="flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
           <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--accent))]/80" />
-          Currently into
+          {now.some((item) => ["watching", "playing", "reading", "in rotation"].includes(item.verb)) ? "Currently into" : "From the catalog"}
         </span>
         <span className="flex min-w-0 items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
-          <span className="truncate">Synced {sourceSyncDate}</span>
+          <span className="truncate">Exported {exportDate}</span>
           <span className="hidden text-muted-foreground sm:inline">
             {expanded ? "Close shelf" : "Open shelf"}
           </span>
@@ -135,11 +131,11 @@ export function CurrentlyInto() {
 
       <div className="mt-4 flex flex-col gap-6 sm:flex-row sm:items-stretch">
         {/* the shelf — covers share a true baseline, each at natural aspect */}
-        <div className="flex items-end gap-3" aria-label="Current media shelf">
+        <div className="flex items-end gap-3" aria-label="Canon media shelf">
           {now.map((item, index) => {
             const coverW = item.art ? Math.round((SHELF_H * item.art.w) / item.art.h) : 88;
             const colW = Math.max(coverW, 76);
-            const selected = expanded && selectedNowIndex === index;
+            const selected = expanded && effectiveSelectedIndex === index;
             return (
               <figure key={`${item.verb}-${item.title}`} className="min-w-0" style={{ width: colW }}>
                 <div className="flex items-end" style={{ height: SHELF_H }}>
@@ -176,8 +172,9 @@ export function CurrentlyInto() {
                       selected ? "-translate-y-1 shadow-[0_7px_18px_-9px_hsl(var(--foreground)/0.5)] ring-1 ring-[hsl(var(--accent))]/60 motion-reduce:translate-y-0" : ""
                     }`}
                     style={{
-                      height: SHELF_H,
+                      aspectRatio: `${coverW} / ${SHELF_H}`,
                       width: coverW,
+                      maxWidth: "100%",
                       transitionDuration: instant ? "0ms" : "150ms",
                       transitionTimingFunction: "cubic-bezier(0.23, 1, 0.32, 1)",
                     }}
@@ -302,13 +299,13 @@ export function CurrentlyInto() {
                     <dt className="text-[9px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
                       Source
                     </dt>
-                    <dd className="mt-1 truncate text-xs text-foreground">{selectedSource}</dd>
+                    <dd className="mt-1 break-words text-xs text-foreground">{selectedSource}</dd>
                   </div>
                   <div className="min-w-0">
                     <dt className="text-[9px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
-                      Snapshot
+                      Activity
                     </dt>
-                    <dd className="mt-1 truncate text-xs text-foreground">{sourceSyncDate}</dd>
+                    <dd className="mt-1 truncate text-xs text-foreground">{activityDate}</dd>
                   </div>
                 </dl>
 
@@ -326,7 +323,7 @@ export function CurrentlyInto() {
               </div>
 
               <p className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-                Canon synced · {sourceSyncDate} · {selectedPosition}
+                {importState} · {importDate} · {selectedPosition}
               </p>
             </div>
           </section>
@@ -336,11 +333,11 @@ export function CurrentlyInto() {
               id={`${detailsId}-shelf-list`}
               className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground"
             >
-              Current shelf
+              Catalog shelf
             </p>
             <div className="mt-2 space-y-1.5">
               {now.map((item, index) => {
-                const selected = selectedNowIndex === index;
+                const selected = effectiveSelectedIndex === index;
                 return (
                   <button
                     key={item.id}
@@ -359,7 +356,7 @@ export function CurrentlyInto() {
                     <span className="min-w-0">
                       <span className="block truncate text-xs font-medium">{item.title}</span>
                       <span className="block truncate text-[10px] uppercase tracking-[0.1em]">
-                        {MEDIUM_BY_VERB[item.verb] ?? item.verb}
+                        {canonMediumName(item)}
                       </span>
                     </span>
                     <span className="font-mono text-[10px] tabular-nums">
@@ -371,7 +368,7 @@ export function CurrentlyInto() {
             </div>
 
             <p className="mt-5 text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-              Recent favourites
+              Rated favourites
             </p>
             <ol className="mt-2 space-y-2.5">
               {canonFeed.loves.map((love) => (

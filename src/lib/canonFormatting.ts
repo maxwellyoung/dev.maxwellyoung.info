@@ -1,6 +1,7 @@
 const CANON_TIME_ZONE = "Pacific/Auckland";
 
 export function formatCanonExportDate(isoDate: string) {
+  if (!Number.isFinite(Date.parse(`${isoDate}T00:00:00Z`))) return "Unknown";
   return new Intl.DateTimeFormat("en-NZ", {
     day: "numeric",
     month: "short",
@@ -10,6 +11,7 @@ export function formatCanonExportDate(isoDate: string) {
 }
 
 export function formatCanonSyncDate(isoDateTime: string) {
+  if (!Number.isFinite(Date.parse(isoDateTime))) return "Unknown";
   return new Intl.DateTimeFormat("en-NZ", {
     day: "numeric",
     hour: "numeric",
@@ -17,4 +19,9 @@ export function formatCanonSyncDate(isoDateTime: string) {
     month: "short",
     timeZone: CANON_TIME_ZONE,
   }).format(new Date(isoDateTime));
+}
+
+export function formatCanonActivityDate(isoDateTime: string) {
+  if (!Number.isFinite(Date.parse(isoDateTime))) return "Unknown";
+  return new Intl.DateTimeFormat("en-NZ", { day: "numeric", month: "short", year: "numeric", timeZone: CANON_TIME_ZONE }).format(new Date(isoDateTime));
 }

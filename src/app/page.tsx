@@ -39,7 +39,7 @@ export default function Home() {
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>{" "}
               I lead React Native development across iOS and Android, from the
               first build through launch and ongoing releases. I also build
-              research software at the University of Auckland and ship
+              medicines-safety research software at the University of Auckland and ship
               independent apps through{" "}
               <TrackedActionLink
                 href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_body"

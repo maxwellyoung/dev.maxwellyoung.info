@@ -353,6 +353,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     heroImage: "/projectImages/chlita-1.webp",
     timeline: "2024",
     role: "Designer & Developer",
+    team: "Solo",
     tools: ["Next.js", "Sanity CMS", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://chlita.com",
     // githubUrl intentionally omitted

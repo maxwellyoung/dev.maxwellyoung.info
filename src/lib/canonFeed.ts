@@ -5,11 +5,17 @@
 export interface CanonNowItem {
   id: string;
   verb: string;
+  medium?: string;
   title: string;
   creator?: string;
   year?: number;
   note?: string;
   href?: string;
+  evidenceSource?: string;
+  activityAt?: string;
+  syncedAt?: string | null;
+  importAttemptAt?: string | null;
+  syncStatus?: "ok" | "error" | "unknown" | "stale";
   art?: { src: string; w: number; h: number };
 }
 
@@ -21,7 +27,7 @@ export interface CanonLove {
 
 export interface CanonFeed {
   generatedAt: string;
-  sourceSyncedAt: string;
+  sourceSyncedAt: string | null;
   totalWorks: number;
   regionCount: number;
   regions: string[];

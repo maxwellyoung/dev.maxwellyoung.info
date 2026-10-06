@@ -1,3 +1,4 @@
+import { AucklandTimeZone } from "@/components/AucklandTimeZone";
 import { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -91,7 +92,7 @@ export default function ContactPage() {
 
         <div>
           <h2 className="text-sm font-medium text-foreground mb-2">Location</h2>
-          <p>Auckland, New Zealand &mdash; NZST (UTC+12)</p>
+          <p>Auckland, New Zealand &mdash; <AucklandTimeZone /></p>
         </div>
 
         <p className="text-sm">

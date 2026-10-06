@@ -162,21 +162,23 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                 ))}
               </div>
 
-              <div className="mt-8 grid overflow-hidden rounded-sm border border-[hsl(var(--border))] sm:grid-cols-3">
+              <div className={`mt-8 grid overflow-hidden rounded-sm border border-[hsl(var(--border))] ${study.team ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
                 <div className="bg-[hsl(var(--card))]/40 p-3 sm:border-r sm:border-[hsl(var(--border))]">
                   <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
                     Ownership
                   </p>
                   <p className="text-sm text-foreground">{study.role}</p>
                 </div>
-                <div className="border-t border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3 sm:border-t-0 sm:border-r">
-                  <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-                    Team
-                  </p>
-                  <p className="text-sm text-foreground">
-                    {study.team || "Solo / small team"}
-                  </p>
-                </div>
+                {study.team ? (
+                  <div className="border-t border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3 sm:border-t-0 sm:border-r">
+                    <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                      Team
+                    </p>
+                    <p className="text-sm text-foreground">
+                      {study.team}
+                    </p>
+                  </div>
+                ) : null}
                 <div className="border-t border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3 sm:border-t-0">
                   <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
                     Primary proof

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -94,7 +95,7 @@ function ProjectRow({
                   <p className="mb-0.5 truncate text-[0.62rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                     {getProjectContextLabel(p)}
                   </p>
-                  <h3 className="truncate break-words text-base sm:text-lg font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
+                  <h3 className="break-words text-base sm:text-lg font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
                     {p.name}
                   </h3>
                 </div>
@@ -157,6 +158,18 @@ function ProjectRow({
           </div>
         )}
       </button>
+
+      {isFlagship && p.proof ? (
+        <div className="mb-2 ml-2 border-l border-border/60 py-1 pl-3 sm:ml-3">
+          <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground">{p.proof.label}</p>
+          <p className="mt-1 max-w-lg text-xs leading-relaxed text-muted-foreground">{p.proof.text}</p>
+          {p.proof.href ? (
+            <Link href={p.proof.href} className="mt-1 inline-flex min-h-11 items-center text-xs underline decoration-border underline-offset-4 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+              {p.proof.href.startsWith("/case-study/") ? "Read the decisions and tradeoffs" : p.proof.href === "/resume" ? "Research role and responsibilities" : "See the native app on Google Play"} <span aria-hidden="true" className="ml-1">↗</span>
+            </Link>
+          ) : null}
+        </div>
+      ) : null}
 
       <AnimatePresence initial={false}>
         {isExpanded && (

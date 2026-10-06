@@ -7,7 +7,8 @@ type Role =
   | "Collaborator"
   | "Frontend"
   | "Studio Collaboration"
-  | "Research Assistant";
+  | "Research Assistant"
+  | "Designer & Developer";
 type Category =
   | "work"
   | "personal"
@@ -17,7 +18,7 @@ type Category =
   | "school";
 type Visibility = "public" | "parked" | "private";
 type Lifecycle = "current" | "completed" | "archived" | "sensitive";
-type LaunchStage = "Live" | "In development" | "Case study" | "Client shipped" | "Production work";
+type LaunchStage = "Live" | "In development" | "Case study" | "Client shipped" | "Production work" | "Research software";
 
 interface BuildLogEntry {
   date: string;
@@ -36,6 +37,7 @@ type ProjectCoverVariant = "image" | "device" | "brand" | "concept";
 type ProjectCoverTone = "slate" | "teal" | "amber" | "forest" | "plum";
 
 interface ProjectCover {
+  platform?: "android" | "ios";
   variant?: ProjectCoverVariant;
   src?: string;
   alt?: string;
@@ -70,6 +72,7 @@ export interface Project {
   thumb?: string;
   cover?: ProjectCover;
   impact?: string[];
+  proof?: { label: string; text: string; href?: string };
   buildLog?: BuildLogEntry[];
   caseStudySlug?: string;
   link?: string;
@@ -99,18 +102,47 @@ const projects: Project[] = [
       live: "https://www.silk.cx",
     },
     link: "https://www.silk.cx",
-    screenshots: ["/projectImages/silk-1.webp"],
-    thumb: "/projectImages/silk-1.webp",
+    screenshots: ["/projectImages/silk-mobile-profile.png", "/projectImages/silk-mobile-webs.png"],
+    thumb: "/projectImages/silk-mobile-profile.png",
     cover: {
-      variant: "image",
-      src: "/projectImages/silk-1.webp",
-      alt: "Silk landing page screenshot",
-      objectPosition: "center",
+      variant: "device",
+      platform: "android",
+      src: "/projectImages/silk-mobile-profile.png",
+      alt: "Silk native Android profile, from its public Google Play listing",
+      objectPosition: "center top",
+      tone: "slate",
     },
+    proof: { label: "Mobile delivery", text: "Architecture, media-heavy interactions, performance and accessibility across iOS and Android.", href: "https://play.google.com/store/apps/details?id=cx.silk.mobile" },
     impact: [
       "Built the mobile app from zero to launch as mobile lead",
       "Own architecture, performance, and accessibility across iOS and Android",
       "Validate mobile changes with regression coverage and real-device checks",
+    ],
+  },
+  {
+    slug: "medicines-safety",
+    name: "Medicines-safety research",
+    status: "Active",
+    category: "research",
+    role: "Research Assistant",
+    featured: true,
+    visibility: "public",
+    lifecycle: "current",
+    launchStage: "Research software",
+    priority: 1,
+    description: "Research software at the University of Auckland: clinician decision-support and patient-reported outcomes.",
+    longDescription: "My focus as a software research assistant is validating data and making medicines-safety research workflows simple to use. Rx-Opt supports clinician decision-making: spreadsheet-authored rules move through ingestion and matching into source review, with provenance and ambiguity retained before approval-gated rule promotion. MRB-QoL 2.0 supports patient-reported outcomes through role-aware questionnaires and researcher dashboards. The diagram shows the workflows without patient records or clinical rule content.",
+    startDate: "2026-04-01",
+    tags: ["TypeScript", "Next.js", "Research Software"],
+    stack: ["TypeScript", "Next.js", "React"],
+    screenshots: ["/projectImages/medicines-safety-workflow.svg"],
+    thumb: "/projectImages/medicines-safety-workflow.svg",
+    cover: { variant: "image", src: "/projectImages/medicines-safety-workflow.svg", alt: "Schematic of Rx-Opt source review and MRB-QoL research workflows; no patient data", fit: "contain" },
+    proof: { label: "Data validation & UX", text: "My focus is checking data and making review workflows simple to use. Rx-Opt retains source provenance and ambiguity through reviewer sign-off and operator approval.", href: "/resume" },
+    impact: [
+      "Data validation and clear UX for medicines-safety research workflows",
+      "Rx-Opt source review retains provenance and ambiguity through approval-gated promotion",
+      "MRB-QoL 2.0 connects role-aware questionnaires with researcher dashboards",
     ],
   },
   {
@@ -123,7 +155,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 1,
+    priority: 2,
     description:
       "A visual workspace for organizing songs and planning releases.",
     longDescription:
@@ -153,6 +185,7 @@ const projects: Project[] = [
       alt: "Liner public release-demo board with songs, frames, references, and notes",
       objectPosition: "center center",
     },
+    proof: { label: "A concrete tradeoff", text: "Metadata and canvas saves can fail separately. Liner reports both and offers an export backup when local saving fails.", href: "/case-study/liner" },
     impact: [
       "Solo-designed and built web workspace for songs and releases",
       "Custom canvas with frames, notes, and audio playback",

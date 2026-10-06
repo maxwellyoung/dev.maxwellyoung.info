@@ -1,51 +1,24 @@
 #!/usr/bin/env node
-
 import { readFileSync } from "node:fs";
+import { feedFreshnessProblems } from "./canon-freshness.mjs";
 
 const FEED_PATH = "src/lib/canonFeed.ts";
-const DAY_MS = 24 * 60 * 60 * 1000;
-const maxAgeDays = Number.parseInt(process.env.CANON_FEED_MAX_AGE_DAYS ?? "2", 10);
-// A stale feed is a warning by default: the Canon cron on the mini can stall, and
-// that must not block deploying unrelated code. Set CANON_FEED_STRICT=1 to fail.
+const maxAgeDays = Number(process.env.CANON_FEED_MAX_AGE_DAYS ?? "2");
 const strict = process.env.CANON_FEED_STRICT === "1";
-
-function fail(message) {
-  console.error(`[canon:fresh] ${message}`);
-  process.exit(1);
-}
-
-if (!Number.isFinite(maxAgeDays) || maxAgeDays < 0) {
-  fail("CANON_FEED_MAX_AGE_DAYS must be a non-negative integer.");
-}
-
+function fail(message) { console.error(`[canon:fresh] ${message}`); process.exit(1); }
+if (!Number.isInteger(maxAgeDays) || maxAgeDays < 0) fail("CANON_FEED_MAX_AGE_DAYS must be a non-negative integer.");
 const source = readFileSync(FEED_PATH, "utf8");
-const sourceSyncedAt = source.match(/"sourceSyncedAt":\s*"([^"]+)"/)?.[1];
-const generatedAt = source.match(/"generatedAt":\s*"(\d{4}-\d{2}-\d{2})"/)?.[1];
-const freshnessDate = sourceSyncedAt ?? (generatedAt ? `${generatedAt}T12:00:00Z` : null);
-
-if (!freshnessDate) {
-  fail(`Could not find sourceSyncedAt or generatedAt in ${FEED_PATH}.`);
-}
-
-const syncedDate = new Date(freshnessDate);
-if (Number.isNaN(syncedDate.getTime())) {
-  fail(`Invalid Canon freshness date: ${freshnessDate}.`);
-}
-
-const now = process.env.CANON_FEED_NOW ? new Date(process.env.CANON_FEED_NOW) : new Date();
-if (Number.isNaN(now.getTime())) {
-  fail(`Invalid CANON_FEED_NOW date: ${process.env.CANON_FEED_NOW}.`);
-}
-
-const ageDays = Math.max(0, Math.floor((now.getTime() - syncedDate.getTime()) / DAY_MS));
-
-if (ageDays > maxAgeDays) {
-  const message =
-    `${FEED_PATH} source data is ${ageDays} days old (synced ${freshnessDate}). ` +
-    "Regenerate it with `bun run scripts/export-folio-feed.ts` from the Canon repo.";
+const payload = source.match(/export const canonFeed:\s*CanonFeed\s*=\s*([\s\S]*);\s*$/)?.[1];
+if (!payload) fail(`Could not read the exported snapshot in ${FEED_PATH}.`);
+let feed;
+try { feed = JSON.parse(payload); } catch { fail(`Invalid exported snapshot in ${FEED_PATH}.`); }
+const now = process.env.CANON_FEED_NOW ? Date.parse(process.env.CANON_FEED_NOW) : Date.now();
+if (!Number.isFinite(now)) fail("Invalid CANON_FEED_NOW date.");
+const problems = feedFreshnessProblems(feed, now, maxAgeDays);
+if (problems.length) {
+  const message = problems.join(" ") + " Regenerate with bun run scripts/export-folio-feed.ts from Canon.";
   if (strict) fail(message);
   console.warn(`[canon:fresh] WARNING: ${message}`);
-  process.exit(0);
+} else {
+  process.stdout.write(`[canon:fresh] Snapshot provenance passed the freshness check (maximum import age ${maxAgeDays}d).\n`);
 }
-
-process.stdout.write(`[canon:fresh] ${FEED_PATH} source synced ${freshnessDate}; age ${ageDays}d <= ${maxAgeDays}d.\n`);

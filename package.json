@@ -12,7 +12,7 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint .",
-    "test": "node --import tsx --test src/**/*.test.ts",
+    "test": "node --import tsx --test src/**/*.test.ts scripts/*.test.mjs",
     "privacy:scan": "node scripts/privacy-scan.mjs",
     "canon:fresh": "node scripts/assert-canon-feed-fresh.mjs",
     "fallow": "npx --yes fallow",

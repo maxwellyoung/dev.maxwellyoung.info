@@ -310,19 +310,21 @@ export function ProjectMedia({
             return (
               <div
                 key={source}
-                className={`relative h-full w-auto aspect-[9/19.5] overflow-hidden border border-white/12 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.45)] ${
+                className={`relative h-full w-auto ${cover.platform === "android" ? "aspect-[1/2]" : "aspect-[9/19.5]"} overflow-hidden border border-white/12 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.45)] ${
                   variant === "row"
                     ? "rounded-[0.7rem]"
                     : "max-h-full rounded-[1.35rem] sm:rounded-[1.6rem]"
                 } ${hasSequence ? sequenceTransform : ""}`}
               >
-                <div
-                  className={
-                    variant === "row"
-                      ? "absolute inset-x-1/2 top-1 z-10 h-1.5 w-6 -translate-x-1/2 rounded-full bg-black/80"
-                      : "absolute inset-x-1/2 top-1.5 z-10 h-3 w-12 -translate-x-1/2 rounded-full bg-black/80 sm:top-2 sm:h-4 sm:w-16"
-                  }
-                />
+                {cover.platform !== "android" ? (
+                  <div
+                    className={
+                      variant === "row"
+                        ? "absolute inset-x-1/2 top-1 z-10 h-1.5 w-6 -translate-x-1/2 rounded-full bg-black/80"
+                        : "absolute inset-x-1/2 top-1.5 z-10 h-3 w-12 -translate-x-1/2 rounded-full bg-black/80 sm:top-2 sm:h-4 sm:w-16"
+                    }
+                  />
+                ) : null}
                 <ProjectImageCover
                   src={source}
                   alt={isLead ? imageAlt : `${project.name} screen ${index + 1}`}

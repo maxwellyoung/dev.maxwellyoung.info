@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+<title id="title">Medicines-safety research workflows</title><desc id="desc">Rx-Opt: spreadsheet rules, source review, reviewer sign-off and operator approval. MRB-QoL 2.0: patient questionnaires and researcher dashboards. Schematic only, with no patient data.</desc>
+<rect width="960" height="600" fill="#f4f4f1"/><g font-family="Arial, sans-serif" fill="#252522">
+<text x="56" y="68" font-size="18" letter-spacing="3">MEDICINES-SAFETY RESEARCH</text><path d="M56 95H904" stroke="#c8c8c0"/>
+<text x="56" y="145" font-size="28">Rx-Opt</text><text x="56" y="177" font-size="18" fill="#696961">Clinician decision-support · source review</text>
+<g fill="none" stroke="#b4b4aa"><rect x="56" y="214" width="240" height="120" rx="6"/><rect x="360" y="214" width="240" height="120" rx="6"/><rect x="664" y="214" width="240" height="120" rx="6"/><path d="M296 274h64m-12-8 12 8-12 8M600 274h64m-12-8 12 8-12 8"/></g>
+<text x="80" y="250" font-size="20">Spreadsheet rules</text><text x="80" y="288" font-size="17" fill="#696961">Ingestion + matching</text><text x="384" y="250" font-size="20">Source review</text><text x="384" y="288" font-size="17" fill="#696961">Provenance + ambiguity</text><text x="688" y="250" font-size="20">Rule promotion</text><text x="688" y="284" font-size="17" fill="#696961">Reviewer sign-off</text><text x="688" y="310" font-size="17" fill="#696961">Operator approval</text>
+<path d="M56 376H904" stroke="#c8c8c0"/><text x="56" y="428" font-size="28">MRB-QoL 2.0</text><text x="56" y="461" font-size="18" fill="#696961">Patient-reported outcomes</text><text x="56" y="503" font-size="20">Questionnaires → Researcher dashboards</text><text x="56" y="553" font-size="15" fill="#696961">Workflow schematic · no patient records or clinical rule content</text>
+</g></svg>
