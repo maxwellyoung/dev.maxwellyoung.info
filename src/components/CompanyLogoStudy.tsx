@@ -96,13 +96,13 @@ export function CompanyLogoStudy({
     >
       <h2
         id="company-logo-study-heading"
-        className="mb-4 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
+        className="mb-4 text-sm font-medium text-muted-foreground"
       >
         Selected experience
       </h2>
 
-      <div className="grid grid-cols-2 overflow-hidden rounded-sm border border-border/70 sm:grid-cols-4">
-        {companyLogos.map((logo, index) => (
+      <div className="grid grid-cols-2 sm:grid-cols-4">
+        {companyLogos.map((logo) => (
           <a
             key={logo.company}
             href={logo.href}
@@ -111,10 +111,8 @@ export function CompanyLogoStudy({
             data-logo-source={logo.sourceHref}
             className={cn(
               "group flex min-h-[112px] items-center justify-center p-5 transition duration-500 ease-out focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:min-h-[116px]",
-              logo.hoverSurfaceClassName,
-              index % 2 === 0 && "border-r border-border/70",
-              index < 2 && "border-b border-border/70 sm:border-b-0",
-              index < companyLogos.length - 1 && "sm:border-r sm:border-border/70"
+              "rounded-md",
+              logo.hoverSurfaceClassName
             )}
             aria-label={`${logo.company} website`}
           >

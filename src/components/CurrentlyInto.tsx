@@ -91,9 +91,8 @@ export function CurrentlyInto() {
   return (
     <div
       ref={cardRef}
-      className="group relative overflow-hidden rounded-sm border border-[hsl(var(--border))]/70 bg-[hsl(var(--background))]/50 p-4 transition-colors duration-300 hover:border-[hsl(var(--accent))]/30 hover:bg-[hsl(var(--muted))]/25"
+      className="relative overflow-hidden p-4"
     >
-      <span className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-[hsl(var(--accent))]/60 transition-transform duration-500 ease-out group-hover:scale-x-100" />
 
       <button
         type="button"
@@ -109,11 +108,10 @@ export function CurrentlyInto() {
           transitionTimingFunction: "cubic-bezier(0.23, 1, 0.32, 1)",
         }}
       >
-        <span className="flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-          <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--accent))]/80" />
+        <span className="text-sm font-medium text-muted-foreground">
           {now.some((item) => ["watching", "playing", "reading", "in rotation"].includes(item.verb)) ? "Currently into" : "From the catalog"}
         </span>
-        <span className="flex min-w-0 items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+        <span className="flex min-w-0 items-center gap-2 text-xs text-muted-foreground">
           <span className="truncate">Exported {exportDate}</span>
           <span className="hidden text-muted-foreground sm:inline">
             {expanded ? "Close shelf" : "Open shelf"}
