@@ -94,7 +94,7 @@ const projects: Project[] = [
     visibility: "public",
     lifecycle: "current",
     launchStage: "Private tool",
-    priority: 4.1,
+    priority: 8.5,
     description: "Study notes, source-backed reading, and practice in one workspace.",
     longDescription: "Second Brain is my private study workspace. I designed and built it to bring source documents, study plans, and practice together rather than keeping them in separate tabs. The reader keeps the original evidence close to the explanation, while an exportable learning history records practice attempts. The current local build adds deadline-aware practice. Answer-generation and adaptive features are still being tested; this is a personal tool rather than a public service.",
     tags: ["TypeScript", "React", "Study tools"],
@@ -113,7 +113,7 @@ const projects: Project[] = [
     category: "personal",
     collection: "personal-tools",
     role: "Fork & extensions",
-    visibility: "public",
+    visibility: "parked",
     lifecycle: "current",
     launchStage: "Private extensions",
     priority: 4.2,
@@ -136,7 +136,7 @@ const projects: Project[] = [
     category: "personal",
     collection: "personal-tools",
     role: "Solo",
-    visibility: "public",
+    visibility: "parked",
     lifecycle: "current",
     launchStage: "Local extension",
     priority: 4.3,
@@ -959,9 +959,8 @@ const appSlugs = new Set(["vape-quit-coach", "afterlight", "holdspace", "good-ne
 
 export const independentApps = rankedProjects.filter((project) => appSlugs.has(project.slug));
 export const selectedWorkProjects = flagshipProjects.filter((project) => !appSlugs.has(project.slug));
-export const personalToolProjects = rankedProjects.filter((project) => project.collection === "personal-tools");
 export const supportingProjects = rankedProjects.filter(
-  (project) => !project.featured && !appSlugs.has(project.slug) && project.collection !== "personal-tools",
+  (project) => !project.featured && !appSlugs.has(project.slug),
 );
 
 export function getProjectContextLabel(
