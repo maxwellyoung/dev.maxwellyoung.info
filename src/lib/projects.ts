@@ -118,7 +118,7 @@ const projects: Project[] = [
     launchStage: "Private extensions",
     priority: 4.2,
     description: "My extensions to Autobahn, originally created by Eli Rousso / Rams.",
-    longDescription: "I extended Autobahn for my own agent-assisted workflow, connecting markdown tasks with bounded dispatch, review, and a contribution journal. The interface keeps planned work separate from recorded execution: a ticket, a completed run, a review, and a merged change each mean something different. Evidence freshness is visible before a decision. My extensions are private; new pacing and workspace changes are still in development.",
+    longDescription: "I extended Autobahn for my own agent-assisted workflow, connecting markdown tasks with bounded dispatch, review, and a contribution journal. The interface keeps planned work separate from recorded execution: a ticket, a completed run, a review, and a merged change each mean something different. Evidence freshness is visible before a decision. My extensions are private. Further pacing work remains in development.",
     tags: ["JavaScript", "Python", "Workflow tools"],
     stack: ["JavaScript", "Node.js", "Python"],
     attribution: { text: "My extensions to Autobahn, originally created by Eli Rousso / Rams. Upstream is MIT licensed.", links: [{ label: "Eli Rousso", href: "https://elirousso.com" }, { label: "Original Autobahn", href: "https://github.com/rams-design/autobahn" }] },
