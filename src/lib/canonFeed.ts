@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-06",
-  "sourceSyncedAt": "2026-10-06T02:27:06.523Z",
+  "sourceSyncedAt": "2026-10-06T02:58:22.918Z",
   "totalWorks": 4414,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-06T00:00:00.000Z",
-      "syncedAt": "2026-10-06T02:27:14.021Z",
-      "importAttemptAt": "2026-10-06T02:27:14.021Z",
+      "syncedAt": "2026-10-06T02:58:29.052Z",
+      "importAttemptAt": "2026-10-06T02:58:29.052Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1248832",
       "art": {
@@ -68,18 +68,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:730",
+      "id": "steam:2379780",
       "verb": "playing",
       "medium": "game",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "Balatro",
+      "creator": "LocalThunk",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-04T22:15:49.000Z",
-      "syncedAt": "2026-10-06T02:27:06.876Z",
-      "importAttemptAt": "2026-10-06T02:27:06.876Z",
+      "activityAt": "2026-10-06T02:46:33.000Z",
+      "syncedAt": "2026-10-06T02:58:23.311Z",
+      "importAttemptAt": "2026-10-06T02:58:23.311Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/730/",
+      "href": "https://store.steampowered.com/app/2379780/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jim Legxacy",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-06T02:27:06.504Z",
-      "syncedAt": "2026-10-06T02:27:06.523Z",
-      "importAttemptAt": "2026-10-06T02:27:06.523Z",
+      "activityAt": "2026-10-06T02:58:22.894Z",
+      "syncedAt": "2026-10-06T02:58:22.918Z",
+      "importAttemptAt": "2026-10-06T02:58:22.918Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=black%20british%20music%20(2025)%20Jim%20Legxacy%202025",
       "art": {
