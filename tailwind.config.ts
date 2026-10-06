@@ -9,6 +9,9 @@ const config = {
     "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
+  // Hover styles only on devices that can hover, so taps on phones don't
+  // leave rows stuck in their hover state.
+  future: { hoverOnlyWhenSupported: true },
 
   theme: {
     container: {

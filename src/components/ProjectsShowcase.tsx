@@ -69,19 +69,15 @@ function ProjectRow({
         onClick={() => onToggleExpand(isExpanded ? null : p.name)}
         aria-expanded={isExpanded}
         className={`
-          relative w-full max-w-full overflow-hidden rounded-sm border border-transparent text-left px-2 sm:px-3 ${isFlagship ? "py-3.5" : "py-2.5"}
-          transition-[color,background-color,border-color,transform] duration-300 ease-out
-          hover:border-border/70 hover:bg-[hsl(var(--muted))]/35 active:scale-[0.99]
+          relative w-full max-w-full overflow-hidden rounded-md text-left px-2 sm:px-3 ${isFlagship ? "py-3.5" : "py-2.5"}
+          transition-[background-color,transform] duration-150 ease-out
+          hover:bg-[hsl(var(--muted))]/40 active:scale-[0.99]
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
         `}
       >
-        <span
-          aria-hidden="true"
-          className="absolute inset-y-2 left-0 w-px origin-top scale-y-0 bg-accent/70 transition-transform duration-300 ease-out group-hover:scale-y-100"
-        />
         {isFlagship ? (
           <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
-            <div className="relative h-[5.5rem] w-28 sm:h-28 sm:w-44 flex-shrink-0 overflow-hidden rounded-sm ring-1 ring-inset ring-[hsl(var(--border))] bg-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:ring-[hsl(var(--accent))]/45 group-hover:shadow-[0_14px_32px_rgba(0,0,0,0.08)] dark:group-hover:shadow-[0_14px_32px_rgba(0,0,0,0.25)]">
+            <div className="relative h-[5.5rem] w-28 sm:h-28 sm:w-44 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted">
               <ProjectMedia
                 project={p}
                 variant="row"
@@ -92,7 +88,7 @@ function ProjectRow({
             <div className="min-w-0 flex-1 overflow-hidden">
               <ProjectHoverPreview project={p}>
                 <div className="cursor-pointer">
-                  <h3 className="break-words text-base sm:text-lg font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
+                  <h3 className="break-words text-base sm:text-lg font-medium leading-tight text-foreground">
                     {p.name}
                   </h3>
                 </div>
@@ -119,7 +115,7 @@ function ProjectRow({
           <div className="flex items-center gap-3 w-full overflow-hidden">
             <div
               aria-hidden="true"
-              className="relative h-11 w-14 flex-shrink-0 overflow-hidden rounded-sm bg-muted ring-1 ring-inset ring-[hsl(var(--border))] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:ring-[hsl(var(--accent))]/35"
+              className="relative h-11 w-14 flex-shrink-0 overflow-hidden rounded-md bg-muted ring-1 ring-inset ring-[hsl(var(--border))]"
             >
               <ProjectMedia project={p} variant="row" sizes="56px" />
             </div>
@@ -127,7 +123,7 @@ function ProjectRow({
             <div className="min-w-0 flex-1 overflow-hidden">
               <ProjectHoverPreview project={p}>
                 <div className="flex min-w-0 cursor-pointer items-baseline gap-3">
-                  <h3 className="flex-shrink-0 text-sm font-medium leading-tight text-foreground transition-colors duration-300 group-hover:text-accent">
+                  <h3 className="flex-shrink-0 text-sm font-medium leading-tight text-foreground">
                     {p.name}
                   </h3>
                   <p className="hidden min-w-0 truncate text-xs text-muted-foreground sm:block">
@@ -151,18 +147,6 @@ function ProjectRow({
           </div>
         )}
       </button>
-
-      {isFlagship && p.proof ? (
-        <div className="mb-2 ml-2 border-l border-border/60 py-1 pl-3 sm:ml-3">
-          <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground">{p.proof.label}</p>
-          <p className="mt-1 max-w-lg text-xs leading-relaxed text-muted-foreground">{p.proof.text}</p>
-          {p.proof.href ? (
-            <Link href={p.proof.href} className="mt-1 inline-flex min-h-11 items-center text-xs underline decoration-border underline-offset-4 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-              {p.proof.href.startsWith("/case-study/") ? "View the case study" : p.proof.href === "/resume" ? "Research role and responsibilities" : "See the native app on Google Play"} <span aria-hidden="true" className="ml-1">↗</span>
-            </Link>
-          ) : null}
-        </div>
-      ) : null}
 
       <AnimatePresence initial={false}>
         {isExpanded && (
@@ -194,6 +178,17 @@ function ProjectRow({
             }}
             className="px-1 pb-5 overflow-hidden"
           >
+            {p.proof ? (
+              <div className="mb-4 ml-1 border-l border-border/60 py-1 pl-3 sm:ml-2">
+                <p className="text-xs font-medium text-foreground">{p.proof.label}</p>
+                <p className="mt-1 max-w-lg text-xs leading-relaxed text-muted-foreground">{p.proof.text}</p>
+                {p.proof.href ? (
+                  <Link href={p.proof.href} className="mt-1 inline-flex min-h-11 items-center text-xs underline decoration-border underline-offset-4 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                    {p.proof.href.startsWith("/case-study/") ? "View the case study" : p.proof.href === "/resume" ? "Research role and responsibilities" : "See the native app on Google Play"} <span aria-hidden="true" className="ml-1">↗</span>
+                  </Link>
+                ) : null}
+              </div>
+            ) : null}
             <ProjectDetails project={p} onCarouselOpen={onCarouselOpen} />
           </motion.div>
         )}
@@ -209,7 +204,6 @@ interface ProjectsShowcaseProps {
 function ProjectSection({
   id,
   title,
-  description,
   projects,
   expandedProject,
   onToggleExpand,
@@ -219,7 +213,6 @@ function ProjectSection({
 }: {
   id?: string;
   title: string;
-  description: string;
   projects: Project[];
   expandedProject: string | null;
   onToggleExpand: (name: string | null) => void;
@@ -234,14 +227,11 @@ function ProjectSection({
         initial={false}
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}
-        className="flex flex-col gap-1 px-2 sm:px-3"
+        className="px-2 sm:px-3"
       >
-        <h2 className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+        <h2 className="text-sm font-medium text-muted-foreground">
           {title}
         </h2>
-        <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
-          {description}
-        </p>
       </motion.div>
 
       <motion.ul
@@ -289,7 +279,6 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
         <div className="space-y-10">
           <ProjectSection
             title="Selected work"
-            description="Production engineering, independent products, and shipped client work."
             projects={selectedWorkProjects}
             expandedProject={expandedProject}
             onToggleExpand={setExpandedProject}
@@ -300,7 +289,6 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
 
           <ProjectSection
             title="Independent apps"
-            description="Five apps available on the iPhone App Store. Open a project for the interface, product decisions, and store link."
             projects={independentApps}
             expandedProject={expandedProject}
             onToggleExpand={setExpandedProject}
@@ -313,7 +301,6 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
             <ProjectSection
               id="other-work"
               title="Other work"
-              description="Live experiments, products in development, and earlier client builds."
               projects={supportingProjects}
               expandedProject={expandedProject}
               onToggleExpand={setExpandedProject}

@@ -96,7 +96,7 @@ export function CompanyLogoStudy({
     >
       <h2
         id="company-logo-study-heading"
-        className="mb-4 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
+        className="mb-4 text-sm font-medium text-muted-foreground"
       >
         Selected experience
       </h2>
