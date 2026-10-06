@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-06",
-  "sourceSyncedAt": "2026-10-06T10:17:43.741Z",
+  "sourceSyncedAt": "2026-10-06T10:49:03.633Z",
   "totalWorks": 4414,
   "regionCount": 22,
   "regions": [
@@ -48,22 +48,21 @@ export const canonFeed: CanonFeed = {
   ],
   "now": [
     {
-      "id": "letterboxd:digger-2026",
-      "verb": "watched",
-      "medium": "movie",
-      "title": "Digger",
-      "creator": "Alejandro G. Iñárritu",
-      "year": 2026,
-      "note": "A dated finish recorded in Canon.",
-      "evidenceSource": "letterboxd",
-      "activityAt": "2026-10-06T00:00:00.000Z",
-      "syncedAt": "2026-10-06T10:17:50.501Z",
-      "importAttemptAt": "2026-10-06T10:17:50.501Z",
+      "id": "jellyfin:b5c3bb0e89eb7511fea3376737e8cbe0",
+      "verb": "watching",
+      "medium": "show",
+      "title": "Tires",
+      "creator": "Netflix",
+      "note": "Recent watching activity.",
+      "evidenceSource": "jellyfin",
+      "activityAt": "2026-10-06T09:59:07.297Z",
+      "syncedAt": "2026-10-06T10:49:04.270Z",
+      "importAttemptAt": "2026-10-06T10:49:04.270Z",
       "syncStatus": "ok",
-      "href": "https://www.themoviedb.org/movie/1248832",
+      "href": "https://www.themoviedb.org/tv/247522",
       "art": {
         "src": "/canon/watched.jpg",
-        "w": 240,
+        "w": 245,
         "h": 360
       }
     },
@@ -76,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-06T07:38:16.000Z",
-      "syncedAt": "2026-10-06T10:17:44.137Z",
-      "importAttemptAt": "2026-10-06T10:17:44.137Z",
+      "syncedAt": "2026-10-06T10:49:03.723Z",
+      "importAttemptAt": "2026-10-06T10:49:03.723Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jim Legxacy",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-06T10:17:43.715Z",
-      "syncedAt": "2026-10-06T10:17:43.741Z",
-      "importAttemptAt": "2026-10-06T10:17:43.741Z",
+      "activityAt": "2026-10-06T10:49:03.593Z",
+      "syncedAt": "2026-10-06T10:49:03.633Z",
+      "importAttemptAt": "2026-10-06T10:49:03.633Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=black%20british%20music%20(2025)%20Jim%20Legxacy%202025",
       "art": {
