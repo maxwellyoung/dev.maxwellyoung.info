@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-07",
-  "sourceSyncedAt": "2026-10-07T20:42:59.471Z",
+  "sourceSyncedAt": "2026-10-07T21:17:10.536Z",
   "totalWorks": 4416,
   "regionCount": 22,
   "regions": [
-    "Contemporary Urban",
-    "Fantasy-Infused Dramas",
-    "Offbeat Comedic Adventures",
-    "Quirky Comedic Dramas"
+    "Mainstream Pop & Rock",
+    "Hip-Hop & Alternative Beats",
+    "Character-Driven Dramas",
+    "Dark Comedies & Thrillers"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-06T19:17:53.955Z",
-      "syncedAt": "2026-10-07T20:43:02.387Z",
-      "importAttemptAt": "2026-10-07T20:43:02.387Z",
+      "syncedAt": "2026-10-07T21:17:12.064Z",
+      "importAttemptAt": "2026-10-07T21:17:12.064Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/247522",
       "art": {
@@ -74,9 +74,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-07T08:20:22.000Z",
-      "syncedAt": "2026-10-07T20:43:00.704Z",
-      "importAttemptAt": "2026-10-07T20:43:00.704Z",
+      "activityAt": "2026-10-07T21:06:34.000Z",
+      "syncedAt": "2026-10-07T21:17:11.154Z",
+      "importAttemptAt": "2026-10-07T21:17:11.154Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "James Eichman",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-07T20:42:59.443Z",
-      "syncedAt": "2026-10-07T20:42:59.471Z",
-      "importAttemptAt": "2026-10-07T20:42:59.471Z",
+      "activityAt": "2026-10-07T21:17:10.439Z",
+      "syncedAt": "2026-10-07T21:17:10.536Z",
+      "importAttemptAt": "2026-10-07T21:17:10.536Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=St.%20Catherine%20Street%20James%20Eichman%202026",
       "art": {
