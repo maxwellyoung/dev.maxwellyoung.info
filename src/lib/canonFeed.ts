@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-07",
-  "sourceSyncedAt": "2026-10-07T05:03:58.677Z",
+  "sourceSyncedAt": "2026-10-07T05:35:19.965Z",
   "totalWorks": 4415,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-06T19:17:53.955Z",
-      "syncedAt": "2026-10-07T05:03:59.445Z",
-      "importAttemptAt": "2026-10-07T05:03:59.445Z",
+      "syncedAt": "2026-10-07T05:35:20.778Z",
+      "importAttemptAt": "2026-10-07T05:35:20.778Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/247522",
       "art": {
@@ -74,9 +74,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-07T04:59:24.000Z",
-      "syncedAt": "2026-10-07T05:03:58.766Z",
-      "importAttemptAt": "2026-10-07T05:03:58.766Z",
+      "activityAt": "2026-10-07T05:29:25.000Z",
+      "syncedAt": "2026-10-07T05:35:20.377Z",
+      "importAttemptAt": "2026-10-07T05:35:20.377Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jim Legxacy",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-07T05:03:58.653Z",
-      "syncedAt": "2026-10-07T05:03:58.677Z",
-      "importAttemptAt": "2026-10-07T05:03:58.677Z",
+      "activityAt": "2026-10-07T05:35:19.941Z",
+      "syncedAt": "2026-10-07T05:35:19.965Z",
+      "importAttemptAt": "2026-10-07T05:35:19.965Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=black%20british%20music%20(2025)%20Jim%20Legxacy%202025",
       "art": {
