@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-08",
-  "sourceSyncedAt": "2026-10-08T19:13:19.487Z",
+  "sourceSyncedAt": "2026-10-08T19:44:34.000Z",
   "totalWorks": 4417,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-06T19:17:53.955Z",
-      "syncedAt": "2026-10-08T19:13:20.868Z",
-      "importAttemptAt": "2026-10-08T19:13:20.868Z",
+      "syncedAt": "2026-10-08T19:44:35.394Z",
+      "importAttemptAt": "2026-10-08T19:44:35.394Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/247522",
       "art": {
@@ -74,9 +74,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-07T21:53:39.000Z",
-      "syncedAt": "2026-10-08T19:13:19.966Z",
-      "importAttemptAt": "2026-10-08T19:13:19.966Z",
+      "activityAt": "2026-10-08T19:32:29.000Z",
+      "syncedAt": "2026-10-08T19:44:34.204Z",
+      "importAttemptAt": "2026-10-08T19:44:34.204Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Quadeca",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-08T19:13:19.450Z",
-      "syncedAt": "2026-10-08T19:13:19.487Z",
-      "importAttemptAt": "2026-10-08T19:13:19.487Z",
+      "activityAt": "2026-10-08T19:44:33.951Z",
+      "syncedAt": "2026-10-08T19:44:34.000Z",
+      "importAttemptAt": "2026-10-08T19:44:34.000Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Life%201%20Quadeca%202026",
       "art": {
