@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-08",
-  "sourceSyncedAt": "2026-10-08T04:04:58.754Z",
+  "sourceSyncedAt": "2026-10-08T04:36:17.775Z",
   "totalWorks": 4416,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-06T19:17:53.955Z",
-      "syncedAt": "2026-10-08T04:05:00.086Z",
-      "importAttemptAt": "2026-10-08T04:05:00.086Z",
+      "syncedAt": "2026-10-08T04:36:18.813Z",
+      "importAttemptAt": "2026-10-08T04:36:18.813Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/247522",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-07T21:53:39.000Z",
-      "syncedAt": "2026-10-08T04:04:59.188Z",
-      "importAttemptAt": "2026-10-08T04:04:59.188Z",
+      "syncedAt": "2026-10-08T04:36:17.811Z",
+      "importAttemptAt": "2026-10-08T04:36:17.811Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "James Eichman",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-08T04:04:58.732Z",
-      "syncedAt": "2026-10-08T04:04:58.754Z",
-      "importAttemptAt": "2026-10-08T04:04:58.754Z",
+      "activityAt": "2026-10-08T04:36:17.753Z",
+      "syncedAt": "2026-10-08T04:36:17.775Z",
+      "importAttemptAt": "2026-10-08T04:36:17.775Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=St.%20Catherine%20Street%20James%20Eichman%202026",
       "art": {
