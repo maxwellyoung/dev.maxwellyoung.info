@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-09",
-  "sourceSyncedAt": "2026-10-09T15:21:12.546Z",
+  "sourceSyncedAt": "2026-10-09T15:52:36.783Z",
   "totalWorks": 4419,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-06T19:17:53.955Z",
-      "syncedAt": "2026-10-09T15:21:13.801Z",
-      "importAttemptAt": "2026-10-09T15:21:13.801Z",
+      "syncedAt": "2026-10-09T15:52:38.463Z",
+      "importAttemptAt": "2026-10-09T15:52:38.463Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/247522",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-09T10:50:37.000Z",
-      "syncedAt": "2026-10-09T15:21:12.546Z",
-      "importAttemptAt": "2026-10-09T15:21:12.546Z",
+      "syncedAt": "2026-10-09T15:52:37.406Z",
+      "importAttemptAt": "2026-10-09T15:52:37.406Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Frou Frou",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-09T15:21:12.780Z",
-      "syncedAt": "2026-10-09T15:21:12.797Z",
-      "importAttemptAt": "2026-10-09T15:21:12.797Z",
+      "activityAt": "2026-10-09T15:52:36.764Z",
+      "syncedAt": "2026-10-09T15:52:36.783Z",
+      "importAttemptAt": "2026-10-09T15:52:36.783Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Details%20Frou%20Frou%202002",
       "art": {
