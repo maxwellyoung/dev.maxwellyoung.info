@@ -9,13 +9,14 @@ import { TrackedActionLink } from "@/components/TrackedActionLink";
 import { CompanyLogoStudy } from "@/components/CompanyLogoStudy";
 import { OpenSourceProof } from "@/components/OpenSourceProof";
 import { BossKeyTrigger } from "@/components/boss-key/BossKeyTrigger";
+import { InteractionStudies } from "@/components/craft/InteractionStudies";
 
 export default function Home() {
   return (
     <div className="min-h-screen text-foreground p-4 md:p-8 overflow-x-hidden">
       <main id="main-content" className="w-full max-w-2xl mx-auto overflow-x-hidden">
         <motion.section
-          className="flex min-h-[54vh] flex-col items-start justify-center space-y-6 p-4 md:min-h-[58vh] md:space-y-8 md:p-8"
+          className="flex flex-col items-start space-y-6 px-4 py-12 md:space-y-8 md:px-8 md:py-16"
           variants={container.hero}
           initial={false}
           animate="visible"
@@ -25,22 +26,21 @@ export default function Home() {
               Maxwell Young
             </h1>
             <p className="mt-1 max-w-xl text-lg font-light leading-snug tracking-tight text-muted-foreground md:text-xl">
-              Product engineer focused on mobile experiences.
+              Product engineer and designer.
             </p>
           </motion.header>
 
-          <div className="leading-relaxed space-y-6">
+          <div className="leading-relaxed space-y-3">
             <motion.p
               className="max-w-xl text-foreground"
               variants={item.fadeUp}
             >
-              I build and maintain production apps, with a focus on interaction
-              design, performance, and reliability. At{" "}
+              I design and build web, mobile, and backend software. At{" "}
               <AnimatedLink href="https://www.silk.cx" external>Silk</AnimatedLink>{" "}
-              I lead React Native development across iOS and Android, from the
-              first build through launch and ongoing releases. I also design and build
-              research applications end to end at the University of Auckland and ship
-              independent apps through{" "}
+              I lead the React Native app across iOS and Android, from the
+              first build through launch and ongoing releases. I design and build
+              research applications end to end at the University of Auckland,
+              alongside independent apps and client work through{" "}
               <TrackedActionLink
                 href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_body"
                 external
@@ -60,19 +60,31 @@ export default function Home() {
               aria-label="Primary navigation"
             >
               <AnimatedLink href="#projects" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Work</AnimatedLink>
-              <AnimatedLink href="/apps" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Apps</AnimatedLink>
+              <AnimatedLink href="/craft" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Craft</AnimatedLink>
               <AnimatedLink href="/resume" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Resume</AnimatedLink>
+              <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
+            </motion.nav>
+            <motion.nav
+              className="flex flex-wrap items-center gap-x-5 text-xs text-muted-foreground"
+              variants={item.fadeUp}
+              aria-label="More links"
+            >
+              <AnimatedLink href="/apps" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Apps</AnimatedLink>
               <AnimatedLink href="https://github.com/maxwellyoung" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
               <AnimatedLink href="/os" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Maxwell OS</AnimatedLink>
-              <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
             </motion.nav>
           </div>
         </motion.section>
 
-        <CompanyLogoStudy className="mb-14 px-4 md:px-8" />
+        <div className="px-4 pb-8 md:px-8">
+          <InteractionStudies compact />
+        </div>
 
         <section id="projects">
-          <ProjectsShowcase embedded />
+          <ProjectsShowcase
+            embedded
+            afterSelectedWork={<CompanyLogoStudy />}
+          />
         </section>
 
         <OpenSourceProof />

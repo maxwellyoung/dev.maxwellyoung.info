@@ -9,6 +9,25 @@ test("each public project appears in exactly one homepage list", () => {
   assert.deepEqual([...placed].sort(), rankedProjects.map(project => project.slug).sort());
 });
 
+test("the first view features mobile leadership, client delivery, and research ownership", () => {
+  assert.deepEqual(selectedWorkProjects.map(project => project.slug), ["silk", "chlita", "medicines-safety"]);
+  assert.equal(selectedWorkProjects[0].role, "Mobile lead");
+  assert.equal(selectedWorkProjects[1].role, "Solo Designer & Developer");
+  assert.equal(selectedWorkProjects[2].role, "Designer & Developer");
+  for (const slug of ["liner", "t3craft"]) {
+    assert.ok(supportingProjects.some(project => project.slug === slug));
+  }
+});
+
+test("Ch'lita's concise case study retains solo ownership and client publishing", () => {
+  const study = getCaseStudy("chlita")!;
+  assert.equal(study.role, "Solo Designer & Developer");
+  assert.equal(study.presentation, "concise");
+  assert.equal(study.liveUrl, "https://chlita.com");
+  assert.match(study.approach[0].description, /Sanity/);
+  assert.ok(study.decisionLog?.every(decision => decision.tradeoff));
+});
+
 test("only Second Brain remains listed from the personal tools, inside Other work", () => {
   const listedTools = rankedProjects.filter(project => project.collection === "personal-tools");
   assert.deepEqual(listedTools.map(project => project.slug), ["second-brain"]);

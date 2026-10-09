@@ -15,11 +15,12 @@ import { spring } from "@/lib/motion";
 interface CarouselProps {
   images: string[];
   onClose: () => void;
+  imageLabel?: string;
 }
 
 const DRAG_THRESHOLD = 150;
 
-export default function Carousel({ images, onClose }: CarouselProps) {
+export default function Carousel({ images, onClose, imageLabel = "Project" }: CarouselProps) {
   const shouldReduceMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [isDark, setIsDark] = useState(true);
@@ -82,7 +83,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
     return () => document.removeEventListener("keydown", handleKeyPress);
   }, [index, images.length, onClose]);
 
-  const buttonClasses = `absolute top-1/2 -translate-y-1/2 z-20 hidden h-10 w-10 items-center justify-center rounded-full transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:flex ${
+  const buttonClasses = `absolute top-1/2 -translate-y-1/2 z-20 hidden h-11 w-11 items-center justify-center rounded-full transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:flex ${
     isDark ? "bg-white/10 hover:bg-white/20" : "bg-black/10 hover:bg-black/20"
   }`;
   const iconClasses = `h-6 w-6 ${isDark ? "text-white" : "text-black"}`;
@@ -122,7 +123,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
       <div className="absolute inset-0 z-0">
         <Image
           src={images[index]}
-          alt="Background"
+          alt=""
           fill
           className="blur-xl scale-110 object-cover"
           sizes="100vw"
@@ -161,7 +162,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
           >
             <Image
               src={images[index]}
-              alt={`Screenshot ${index + 1}`}
+              alt={`${imageLabel}, screenshot ${index + 1} of ${images.length}`}
               fill
               className="pointer-events-none object-contain p-3 sm:p-8"
               sizes="100vw"
@@ -170,13 +171,20 @@ export default function Carousel({ images, onClose }: CarouselProps) {
         </AnimatePresence>
       </motion.div>
 
-      <div className="absolute bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 z-20 flex -translate-x-1/2 space-x-2">
+      <div className={`absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-20 max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-lg px-2 ${isDark ? "bg-black/60 text-white" : "bg-white/80 text-black"}`}>
+        <p className="pt-2 text-center text-xs tabular-nums" aria-live="polite" aria-atomic="true">
+          {index + 1} / {images.length}
+        </p>
+        <div className="flex overflow-x-auto" role="group" aria-label="Choose screenshot">
         {images.map((_, i) => (
           <button
             key={i}
             onClick={() => setIndex(i)}
             aria-label={`Go to image ${i + 1}`}
-            className={`h-2 w-2 rounded-full transition-all duration-200 hover:scale-125 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
+            aria-current={i === index ? "true" : undefined}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
+          >
+            <span aria-hidden="true" className={`h-2 w-2 rounded-full transition-colors duration-200 ${
               i === index
                 ? isDark
                   ? "bg-white"
@@ -184,9 +192,10 @@ export default function Carousel({ images, onClose }: CarouselProps) {
                 : isDark
                 ? "bg-white/30 hover:bg-white/50"
                 : "bg-black/30 hover:bg-black/50"
-            }`}
-          />
+            }`} />
+          </button>
         ))}
+        </div>
       </div>
 
       <AnimatePresence>

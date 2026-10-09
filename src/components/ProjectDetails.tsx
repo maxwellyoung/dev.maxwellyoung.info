@@ -12,7 +12,7 @@ import { ProjectMedia } from "@/components/ProjectMedia";
 
 interface ProjectDetailsProps {
   project: Project | null;
-  onCarouselOpen: () => void;
+  onCarouselOpen: (opener: HTMLButtonElement) => void;
 }
 
 export function ProjectDetails({
@@ -39,7 +39,7 @@ export function ProjectDetails({
                 <button
                   type="button"
                   className="relative w-full cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm"
-                  onClick={onCarouselOpen}
+                  onClick={(event) => onCarouselOpen(event.currentTarget)}
                   aria-label={`Open ${project.name} screenshots`}
                 >
                   <div className="relative w-full aspect-[16/9] overflow-hidden rounded-sm ring-1 ring-[hsl(var(--border))] bg-[hsl(var(--muted))] transition-[box-shadow,--tw-ring-color] [transition-duration:180ms] [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:ring-[hsl(var(--accent))]/45 group-hover:shadow-lg motion-reduce:transition-none">

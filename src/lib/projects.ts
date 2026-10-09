@@ -4,6 +4,8 @@ type Status = "Completed" | "WIP" | "Planned" | "Active";
 type Role =
   | "Solo"
   | "Lead"
+  | "Mobile lead"
+  | "Solo Designer & Developer"
   | "Collaborator"
   | "Frontend"
   | "Studio Collaboration"
@@ -155,7 +157,7 @@ const projects: Project[] = [
     name: "Silk",
     status: "Active",
     category: "work",
-    role: "Lead",
+    role: "Mobile lead",
     featured: true,
     visibility: "public",
     lifecycle: "current",
@@ -765,7 +767,7 @@ const projects: Project[] = [
     name: "Ch'lita",
     status: "Completed",
     category: "studio",
-    role: "Solo",
+    role: "Solo Designer & Developer",
     featured: true,
     visibility: "public",
     lifecycle: "completed",
@@ -774,7 +776,7 @@ const projects: Project[] = [
     description:
       "Portfolio for Ch'lita Collins — Fashion Editor-at-Large at i-D — built around fast image browsing and quiet editorial motion.",
     longDescription:
-      "Built for Ch'lita Collins, Fashion Editor-at-Large at i-D and stylist to Rosalía and The Dare. An image-led portfolio that keeps the work in front: Sanity for authoring, responsive image handling, and restrained motion so new editorial work ships without touching code.",
+      "I designed and built the portfolio for Ch'lita Collins, Fashion Editor-at-Large at i-D and stylist to Rosalía and The Dare. An image-led portfolio that keeps the work in front: Sanity for authoring, responsive image handling, and restrained motion so new editorial work ships without touching code.",
     tags: ["Next.js", "Sanity CMS", "Fashion", "Art Direction", "i-D"],
     stack: ["Next.js", "TypeScript", "Sanity", "Framer Motion", "Vercel"],
     client: "Ch'lita — Fashion Editor-at-Large, i-D",
@@ -958,9 +960,13 @@ export const flagshipProjects = rankedProjects.filter((project) => project.featu
 const appSlugs = new Set(["vape-quit-coach", "afterlight", "holdspace", "good-news-bad-news", "doomscroll"]);
 
 export const independentApps = rankedProjects.filter((project) => appSlugs.has(project.slug));
-export const selectedWorkProjects = flagshipProjects.filter((project) => !appSlugs.has(project.slug));
+// A small first view; the complete public catalog remains in the lists below.
+const selectedSlugs = ["silk", "chlita", "medicines-safety"];
+export const selectedWorkProjects = selectedSlugs.flatMap((slug) =>
+  rankedProjects.filter((project) => project.slug === slug),
+);
 export const supportingProjects = rankedProjects.filter(
-  (project) => !project.featured && !appSlugs.has(project.slug),
+  (project) => !selectedSlugs.includes(project.slug) && !appSlugs.has(project.slug),
 );
 
 export function getProjectContextLabel(
