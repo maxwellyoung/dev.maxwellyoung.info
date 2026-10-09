@@ -42,17 +42,16 @@ function ProjectRow({
   p: Project;
   expandedProject: string | null;
   onToggleExpand: (name: string | null) => void;
-  onCarouselOpen: () => void;
+  onCarouselOpen: (opener: HTMLButtonElement) => void;
   shouldReduceMotion: boolean;
   emphasis?: "flagship" | "supporting";
 }) {
   const isExpanded = expandedProject === p.name;
   const isFlagship = emphasis === "flagship";
   const rowRef = React.useRef<HTMLLIElement>(null);
-  // One metadata grammar for every row. "Solo" is the default, so only a
-  // different role (Lead, Designer & Developer) earns a place.
+  // Keep ownership and delivery readable at every width.
   const meta = [
-    p.role === "Solo" ? undefined : p.role,
+    p.role,
     p.launchStage,
     p.stack?.[0] ?? p.tags?.[0],
   ]
@@ -76,12 +75,12 @@ function ProjectRow({
         `}
       >
         {isFlagship ? (
-          <div className="flex items-center gap-3 sm:gap-4 w-full overflow-hidden">
-            <div className="relative h-[5.5rem] w-28 sm:h-28 sm:w-44 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted">
+          <div className="flex flex-wrap items-center gap-3 sm:flex-nowrap sm:gap-4 w-full">
+            <div className="relative aspect-[11/7] w-full sm:aspect-auto sm:h-28 sm:w-44 flex-shrink-0 overflow-hidden rounded-md ring-1 ring-inset ring-[hsl(var(--border))] bg-muted">
               <ProjectMedia
                 project={p}
                 variant="row"
-                sizes="(max-width: 640px) 112px, 176px"
+                sizes="(max-width: 640px) calc(100vw - 80px), 176px"
               />
             </div>
 
@@ -93,11 +92,11 @@ function ProjectRow({
                   </h3>
                 </div>
               </ProjectHoverPreview>
-              <p className="mt-1 line-clamp-2 break-words text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-1 break-words text-sm leading-relaxed text-muted-foreground">
                 {p.description}
               </p>
               {meta && (
-                <p className="mt-2 truncate text-xs text-muted-foreground">
+                <p className="mt-2 break-words text-xs leading-relaxed text-muted-foreground">
                   {meta}
                 </p>
               )}
@@ -122,20 +121,17 @@ function ProjectRow({
 
             <div className="min-w-0 flex-1 overflow-hidden">
               <ProjectHoverPreview project={p}>
-                <div className="flex min-w-0 cursor-pointer items-baseline gap-3">
-                  <h3 className="flex-shrink-0 text-sm font-medium leading-tight text-foreground">
+                <div className="min-w-0 cursor-pointer">
+                  <h3 className="break-words text-sm font-medium leading-tight text-foreground">
                     {p.name}
                   </h3>
-                  <p className="hidden min-w-0 truncate text-xs text-muted-foreground sm:block">
+                  <p className="mt-1 break-words text-xs leading-relaxed text-muted-foreground">
                     {p.description}
                   </p>
+                  <p className="mt-1 break-words text-[11px] leading-relaxed text-muted-foreground">{meta}</p>
                 </div>
               </ProjectHoverPreview>
             </div>
-
-            <span className="hidden flex-shrink-0 text-xs text-muted-foreground sm:inline">
-              {p.launchStage}
-            </span>
 
             <motion.div
               animate={{ rotate: isExpanded ? 180 : 0 }}
@@ -170,6 +166,9 @@ function ProjectRow({
                 "height" in definition &&
                 definition.height === "auto"
               ) {
+                // A modal hides this row; its drawer must not move the page
+                // while the user is viewing a gallery.
+                if (rowRef.current?.closest('[aria-hidden="true"]')) return;
                 rowRef.current?.scrollIntoView({
                   block: "nearest",
                   behavior: shouldReduceMotion ? "auto" : "smooth",
@@ -181,7 +180,7 @@ function ProjectRow({
             {p.proof ? (
               <div className="mb-4 ml-1 border-l border-border/60 py-1 pl-3 sm:ml-2">
                 <p className="text-xs font-medium text-foreground">{p.proof.label}</p>
-                <p className="mt-1 max-w-lg text-xs leading-relaxed text-muted-foreground">{p.proof.text}</p>
+                {!isFlagship ? <p className="mt-1 max-w-lg text-xs leading-relaxed text-muted-foreground">{p.proof.text}</p> : null}
                 {p.proof.href ? (
                   <Link href={p.proof.href} className="mt-1 inline-flex min-h-11 items-center text-xs underline decoration-border underline-offset-4 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
                     {p.proof.href.startsWith("/case-study/") ? "View the case study" : p.proof.href === "/resume" ? "Research role and responsibilities" : "See the native app on Google Play"} <span aria-hidden="true" className="ml-1">↗</span>
@@ -199,6 +198,7 @@ function ProjectRow({
 
 interface ProjectsShowcaseProps {
   embedded?: boolean;
+  afterSelectedWork?: React.ReactNode;
 }
 
 function ProjectSection({
@@ -216,7 +216,7 @@ function ProjectSection({
   projects: Project[];
   expandedProject: string | null;
   onToggleExpand: (name: string | null) => void;
-  onCarouselOpen: () => void;
+  onCarouselOpen: (opener: HTMLButtonElement) => void;
   shouldReduceMotion: boolean;
   emphasis?: "flagship" | "supporting";
 }) {
@@ -256,16 +256,24 @@ function ProjectSection({
   );
 }
 
-export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
+export function ProjectsShowcase({ embedded = false, afterSelectedWork }: ProjectsShowcaseProps) {
   const shouldReduceMotion = useReducedMotion() ?? false;
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
+  const galleryOpener = React.useRef<HTMLButtonElement | null>(null);
+  const galleryScroll = React.useRef({ left: 0, top: 0 });
 
   const selectedProject: Project | null = expandedProject
     ? rankedProjects.find((p) => p.name === expandedProject) || null
     : null;
 
-  const handleCarouselOpen = () => setIsCarouselOpen(true);
+  const handleCarouselOpen = (opener: HTMLButtonElement) => {
+    galleryOpener.current = opener;
+    galleryScroll.current = { left: window.scrollX, top: window.scrollY };
+    // Stop any drawer scroll already in flight before locking the body.
+    window.scrollTo({ ...galleryScroll.current, behavior: "instant" });
+    setIsCarouselOpen(true);
+  };
 
   const content = (
     <div className={embedded ? "" : "min-h-screen text-foreground font-sans"}>
@@ -286,6 +294,8 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
             shouldReduceMotion={shouldReduceMotion}
             emphasis="flagship"
           />
+
+          {afterSelectedWork}
 
           <ProjectSection
             title="Independent apps"
@@ -314,7 +324,14 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
       <Dialog open={isCarouselOpen} onOpenChange={setIsCarouselOpen}>
         <DialogContent
           hideCloseButton
-          className="max-w-none w-screen h-screen p-0"
+          className="max-w-none w-screen h-[100dvh] border-0 p-0 rounded-none sm:rounded-none"
+          onCloseAutoFocus={(event) => {
+            if (galleryOpener.current?.isConnected) {
+              event.preventDefault();
+              galleryOpener.current.focus({ preventScroll: true });
+              window.scrollTo({ ...galleryScroll.current, behavior: "instant" });
+            }
+          }}
         >
           <VisuallyHidden.Root>
             <DialogTitle>
@@ -324,6 +341,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
           {selectedProject?.screenshots && (
             <Carousel
               images={selectedProject.screenshots}
+              imageLabel={selectedProject.name}
               onClose={() => setIsCarouselOpen(false)}
             />
           )}

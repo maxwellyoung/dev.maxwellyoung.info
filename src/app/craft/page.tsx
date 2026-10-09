@@ -32,9 +32,9 @@ export default function CraftPage() {
         <CraftHeader />
 
         <div className="space-y-20 mt-16">
+          <InteractionStudies />
           <MotionSpec />
           <CraftReferences />
-          <InteractionStudies />
           <DesignEssays />
         </div>
 

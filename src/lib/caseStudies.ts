@@ -3,6 +3,7 @@
 export interface CaseStudy {
   slug: string;
   title: string;
+  presentation?: "concise";
   subtitle: string;
   heroImage?: string;
   timeline: string;
@@ -391,18 +392,18 @@ export const caseStudies: Record<string, CaseStudy> = {
   chlita: {
     slug: "chlita",
     title: "Ch'lita",
+    presentation: "concise",
     subtitle: "A portfolio for i-D's Fashion Editor-at-Large",
     heroImage: "/projectImages/chlita-1.webp",
     timeline: "2024",
-    role: "Designer & Developer",
-    team: "Solo",
+    role: "Solo Designer & Developer",
     tools: ["Next.js", "Sanity CMS", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://chlita.com",
     // githubUrl intentionally omitted
     overview:
-      "Portfolio for Ch'lita Collins — Fashion Editor-at-Large at i-D, and stylist whose work spans Rosalía, The Dare, Tom Guinness and Oliver Hadlee Pearch. Built around editorial image presentation and simple CMS updates, so the work stays in front.",
+      "I designed and developed this portfolio for Ch'lita Collins, Fashion Editor-at-Large at i-D. Her styling work leads the page; a restrained interface supports image browsing on desktop and mobile.",
     challenge:
-      "The site needed to support strong image presentation without adding visual clutter or creating layout instability.",
+      "Present the styling work clearly and give the client a straightforward way to publish new projects.",
     constraints: [
       "The styling work needed to lead; the interface could not compete with image rhythm or art direction.",
       "The client needed a CMS workflow that did not require developer support for routine updates.",
@@ -413,52 +414,27 @@ export const caseStudies: Record<string, CaseStudy> = {
         problem: "Portfolio sites often over-design the frame around the work.",
         decision: "Kept the interface sparse and made image sequencing the primary design material.",
         tradeoff: "Fewer decorative brand moments in the surrounding UI.",
-        impact: "The styling work remains the first thing visitors notice.",
       },
       {
         problem: "Manual portfolio updates create a maintenance bottleneck.",
         decision: "Modeled the work in Sanity so image sets and project details can be managed independently.",
         tradeoff: "More setup work up front than hardcoded pages.",
-        impact: "The site can evolve with new work without recurring developer involvement.",
       },
     ],
     approach: [
       {
-        title: "Subtractive Design",
+        title: "Sanity authoring",
         description:
-          "The interface was kept deliberately spare so the styling work remained the focus.",
-      },
-      {
-        title: "Image-First Architecture",
-        description:
-          "The image system was tuned for stable layout, responsive cropping, and good performance.",
-      },
-      {
-        title: "CMS for Independence",
-        description:
-          "Sanity was set up so the client could manage portfolio content without developer involvement.",
+          "The client can manage project details and image sets in Sanity. New editorial work can be added without changing the site code; the same responsive image treatment carries it across screen sizes.",
       },
     ],
     outcome:
-      "A stable, image-led portfolio that the client can update independently.",
+      "A live, image-led portfolio at chlita.com, with responsive image handling and quiet editorial motion.",
     proofPoints: [
       { label: "Delivery", value: "Client shipped" },
       { label: "Content model", value: "CMS managed" },
     ],
-    avoidedPatterns: [
-      "Decorative transitions that make the portfolio feel slower than the work deserves.",
-      "Hardcoded project pages that make every update a developer task.",
-      "Over-cropped responsive images that undermine the styling context.",
-    ],
-    nextIterations: [
-      "Richer editorial grouping for campaigns and press features.",
-      "A lighter upload review flow for checking crops before publishing.",
-    ],
-    learnings: [
-      "Restraint is harder than addition. Every feature you don't add is a decision.",
-      "The best client work happens when you understand their craft, not just their requirements.",
-      "Performance is a design choice. A slow portfolio undermines the work it's showing.",
-    ],
+    learnings: [],
     nextProject: { slug: "liner", title: "Liner" },
   },
   skillscan: {

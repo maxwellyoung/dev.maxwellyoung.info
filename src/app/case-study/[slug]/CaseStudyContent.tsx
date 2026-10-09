@@ -77,6 +77,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
   }
 
   const hasHeroImage = Boolean(study.heroImage);
+  const concise = study.presentation === "concise";
 
   return (
     <main id="main-content" className="min-h-screen">
@@ -247,13 +248,18 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           transition={spring.gentle}
         >
           <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">
-            The Challenge
+            {concise ? "Requirements" : "The Challenge"}
           </h2>
           <p className="text-lg leading-relaxed">{study.challenge}</p>
+          {concise && study.constraints?.length ? (
+            <ul className="mt-5 space-y-3 text-muted-foreground">
+              {study.constraints.map((constraint) => <li key={constraint} className="flex gap-3"><span aria-hidden="true" className="text-accent">•</span><span>{constraint}</span></li>)}
+            </ul>
+          ) : null}
         </motion.div>
 
         {/* Constraints */}
-        {study.constraints && study.constraints.length > 0 && (
+        {!concise && study.constraints && study.constraints.length > 0 && (
           <motion.div
             initial={false}
             whileInView={{ opacity: 1, y: 0 }}
@@ -283,7 +289,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
             transition={spring.gentle}
           >
             <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-8">
-              How it works
+              {concise ? "Decisions & tradeoffs" : "How it works"}
             </h2>
             <div className="space-y-6">
               {study.decisionLog.map((entry, i) => (
@@ -300,6 +306,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                     Decision
                   </p>
                   <p className="text-foreground mb-4">{entry.decision}</p>
+                  {concise ? <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Tradeoff</p> : null}
                   <p className="text-muted-foreground">{entry.tradeoff}</p>
                   {entry.impact && (
                     <>
@@ -328,14 +335,14 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           transition={spring.gentle}
         >
           <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-8">
-            Approach
+            {concise ? "Client publishing" : "Approach"}
           </h2>
           <div className="space-y-12">
             {study.approach.map((step, i) => (
               <div key={i} className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="text-lg font-medium mb-2">
-                    {i + 1}. {step.title}
+                    {concise ? step.title : `${i + 1}. ${step.title}`}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
                     {step.description}
@@ -365,7 +372,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           transition={spring.gentle}
         >
           <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">
-            Outcome
+            {concise ? "Shipped result" : "Outcome"}
           </h2>
           <p className="text-lg leading-relaxed mb-8">{study.outcome}</p>
 
@@ -394,6 +401,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
         </motion.div>
 
         {/* Learnings */}
+        {study.learnings.length > 0 ? (
         <motion.div
           initial={false}
           whileInView={{ opacity: 1, y: 0 }}
@@ -412,6 +420,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
             ))}
           </ul>
         </motion.div>
+        ) : null}
 
         {/* Anti-patterns avoided */}
         {study.avoidedPatterns && study.avoidedPatterns.length > 0 && (

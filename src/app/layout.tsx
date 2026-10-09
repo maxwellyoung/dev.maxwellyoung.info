@@ -11,11 +11,11 @@ import { LabShell } from "@/components/lab/LabShell";
 
 export const metadata: Metadata = {
   title: {
-    default: "Maxwell Young — Product Engineer",
+    default: "Maxwell Young — Product Engineer and Designer",
     template: "%s | Maxwell Young",
   },
   description:
-    "Product engineer building mobile apps and research software, with a focus on interaction design, performance, and reliability.",
+    "Product engineer and designer building web, mobile, and backend software, with a focus on interaction design, performance, and reliability.",
   metadataBase: new URL("https://dev.maxwellyoung.info"),
   authors: [{ name: "Maxwell Young" }],
   creator: "Maxwell Young",
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "Maxwell Young — Product Engineer",
+    title: "Maxwell Young — Product Engineer and Designer",
     description:
-      "Product engineer building mobile apps and research software, with a focus on interaction design, performance, and reliability.",
+      "Product engineer and designer building web, mobile, and backend software, with a focus on interaction design, performance, and reliability.",
     url: "https://dev.maxwellyoung.info",
     siteName: "Maxwell Young",
     locale: "en_NZ",
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Maxwell Young — Product Engineer",
+    title: "Maxwell Young — Product Engineer and Designer",
     description:
-      "Product engineer building mobile apps and research software, with a focus on interaction design, performance, and reliability.",
+      "Product engineer and designer building web, mobile, and backend software, with a focus on interaction design, performance, and reliability.",
     images: ["/meta.png"],
     creator: "@internetmaxwell",
   },
@@ -113,7 +113,7 @@ export default function RootLayout({
     "@type": "Person",
     "@id": "https://dev.maxwellyoung.info/#person",
     name: "Maxwell Young",
-    jobTitle: "Product Engineer",
+    jobTitle: "Product Engineer and Designer",
     url: "https://dev.maxwellyoung.info/",
     email: "maxwell@ninetynine.digital",
     knowsAbout: [

@@ -1,25 +1,29 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { Heart, Download, Share, Play, Pause, Mail, Link2, Bookmark, MessageCircle } from "lucide-react";
 import { duration, tap } from "@/lib/motion";
 
-export function InteractionStudies() {
+export function InteractionStudies({ compact = false }: { compact?: boolean }) {
   return (
-    <section className="space-y-10">
+    <section className={compact ? "space-y-5" : "space-y-10"} aria-label="Interaction studies">
       <div>
-        <h2 className="text-xl font-medium mb-2">Interaction Studies</h2>
+        <div className="flex flex-wrap items-center justify-between gap-x-4">
+          <h2 className={compact ? "text-sm font-medium" : "text-xl font-medium mb-2"}>Interaction Studies</h2>
+          {compact ? <Link href="/craft" className="inline-flex min-h-11 items-center text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground">Explore Craft ↗</Link> : null}
+        </div>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-prose">
-          Feedback, state transitions, and motion behavior. Patterns meant for
-          product work, not demos.
+          Small interactive prototypes for feedback, state, and motion.
+          {compact ? " Try the controls." : " Download, sharing, and playback are simulated here."}
         </p>
       </div>
 
-      <div className="space-y-10">
+      <div className={compact ? "grid grid-cols-2 gap-4 sm:gap-6" : "space-y-10"}>
         <LikeButtonStudy />
-        <DownloadProgressStudy />
-        <ShareMenuStudy />
+        {!compact ? <DownloadProgressStudy /> : null}
+        {!compact ? <ShareMenuStudy /> : null}
         <PlaybackControlStudy />
       </div>
     </section>
@@ -41,7 +45,7 @@ function Study({
         <h3 className="text-sm font-medium text-foreground">{title}</h3>
         <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{note}</p>
       </div>
-      <div className="py-8 flex items-center justify-center border-t border-[hsl(var(--border))]/50">
+      <div className="py-5 flex items-center justify-center border-t border-[hsl(var(--border))]/50">
         {children}
       </div>
     </div>
@@ -50,19 +54,18 @@ function Study({
 
 function LikeButtonStudy() {
   const [isLiked, setIsLiked] = useState(false);
-  const [count, setCount] = useState(42);
+  const count = isLiked ? 43 : 42;
   const shouldReduceMotion = useReducedMotion() ?? false;
 
   return (
     <Study
       title="Like Button"
-      note="Scale feedback with color transition and particle burst. Spring physics reward engagement."
+      note="A small response to a tap, with a count that follows the state."
     >
       <motion.button
         type="button"
         onClick={() => {
-          setIsLiked(!isLiked);
-          setCount(isLiked ? count - 1 : count + 1);
+          setIsLiked((liked) => !liked);
         }}
         whileTap={shouldReduceMotion ? undefined : tap.deep}
         className="group flex min-h-11 min-w-11 items-center space-x-2 rounded-md px-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
@@ -76,7 +79,7 @@ function LikeButtonStudy() {
         >
           <Heart
             className={`h-6 w-6 transition-colors duration-200 ${
-              isLiked ? "fill-accent text-accent" : "text-muted"
+              isLiked ? "fill-accent text-accent" : "text-muted-foreground"
             }`}
             aria-hidden="true"
           />
@@ -107,27 +110,32 @@ function DownloadProgressStudy() {
   const [progress, setProgress] = useState(0);
   const [isDownloading, setIsDownloading] = useState(false);
   const shouldReduceMotion = useReducedMotion() ?? false;
+  const downloadTimer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const completionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => {
+    if (downloadTimer.current) clearInterval(downloadTimer.current);
+    if (completionTimer.current) clearTimeout(completionTimer.current);
+  }, []);
 
   const startDownload = () => {
     setIsDownloading(true);
     setProgress(0);
 
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => setIsDownloading(false), 500);
-          return 100;
-        }
-        return Math.min(100, prev + Math.random() * 15);
-      });
+    let next = 0;
+    downloadTimer.current = setInterval(() => {
+      next = Math.min(100, next + 12);
+      setProgress(next);
+      if (next === 100) {
+        if (downloadTimer.current) clearInterval(downloadTimer.current);
+        completionTimer.current = setTimeout(() => setIsDownloading(false), 500);
+      }
     }, 200);
   };
 
   return (
     <Study
       title="Download Progress"
-      note="Button morphs to show progress with a fluid fill. State changes stay connected so the system feels legible."
+      note="Simulated progress keeps the action and its completion in the same control."
     >
       <motion.button
         type="button"
@@ -165,6 +173,8 @@ function DownloadProgressStudy() {
 
 function ShareMenuStudy() {
   const [isOpen, setIsOpen] = useState(false);
+  const [selection, setSelection] = useState<string | null>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
   const shouldReduceMotion = useReducedMotion() ?? false;
 
   const menuItems = [
@@ -177,11 +187,18 @@ function ShareMenuStudy() {
   return (
     <Study
       title="Share Menu"
-      note="Staggered spring reveals build rhythm without shouting — each item earns its own moment."
+      note="A staggered reveal with selectable demo actions and keyboard dismissal."
     >
-      <div className="relative">
+      <div className="relative" onKeyDown={(event) => {
+        if (event.key === "Escape" && isOpen) {
+          event.stopPropagation();
+          setIsOpen(false);
+          trigger.current?.focus();
+        }
+      }}>
         <motion.button
           type="button"
+          ref={trigger}
           onClick={() => setIsOpen(!isOpen)}
           whileTap={shouldReduceMotion ? undefined : tap.deep}
           className="min-h-11 min-w-11 rounded-full border border-accent/20 bg-accent/10 p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
@@ -201,6 +218,8 @@ function ShareMenuStudy() {
                 ? { duration: 0.1 }
                 : { duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
               className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 origin-bottom bg-card border border-border rounded-lg p-2 min-w-[140px]"
+              role="group"
+              aria-label="Demo share actions"
             >
               {menuItems.map((item) => {
                 const Icon = item.icon;
@@ -208,6 +227,11 @@ function ShareMenuStudy() {
                   <motion.button
                     type="button"
                     key={item.label}
+                    onClick={() => {
+                      setSelection(item.label);
+                      setIsOpen(false);
+                      trigger.current?.focus();
+                    }}
                     initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -8 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{
@@ -226,6 +250,9 @@ function ShareMenuStudy() {
             </motion.div>
           )}
         </AnimatePresence>
+        <span role="status" className="absolute left-1/2 top-full mt-2 w-48 -translate-x-1/2 text-center text-xs text-muted-foreground">
+          {selection ? `Demo: ${selection} selected` : ""}
+        </span>
       </div>
     </Study>
   );
@@ -256,12 +283,15 @@ function PlaybackControlStudy() {
   return (
     <Study
       title="Playback Control"
-      note="Play morphs to pause with layered transitions. Progress advances smoothly to hold the sense of continuity."
+      note="Play and pause share one control while simulated progress advances."
     >
       <div className="flex items-center space-x-4 w-full max-w-md">
         <motion.button
           type="button"
-          onClick={() => setIsPlaying(!isPlaying)}
+          onClick={() => {
+            if (currentTime >= trackDuration) setCurrentTime(0);
+            setIsPlaying((playing) => !playing);
+          }}
           whileTap={shouldReduceMotion ? undefined : tap.deep}
           className="relative min-h-11 min-w-11 overflow-hidden rounded-full border border-accent/20 bg-accent/10 p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           aria-label={isPlaying ? "Pause" : "Play"}
