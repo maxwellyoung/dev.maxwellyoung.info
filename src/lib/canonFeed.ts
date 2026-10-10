@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-10",
-  "sourceSyncedAt": "2026-10-10T10:08:09.728Z",
+  "sourceSyncedAt": "2026-10-10T10:39:20.831Z",
   "totalWorks": 4420,
   "regionCount": 22,
   "regions": [
@@ -48,21 +48,22 @@ export const canonFeed: CanonFeed = {
   ],
   "now": [
     {
-      "id": "jellyfin:b5c3bb0e89eb7511fea3376737e8cbe0",
-      "verb": "watching",
-      "medium": "show",
-      "title": "Tires",
-      "creator": "Netflix",
-      "note": "Recent watching activity.",
+      "id": "letterboxd:roadrunner-a-film-about-anthony-bourdain-2021",
+      "verb": "watched",
+      "medium": "movie",
+      "title": "Roadrunner: A Film About Anthony Bourdain",
+      "creator": "Morgan Neville",
+      "year": 2021,
+      "note": "A dated finish recorded in Canon.",
       "evidenceSource": "jellyfin",
-      "activityAt": "2026-10-06T19:17:53.955Z",
-      "syncedAt": "2026-10-10T10:08:10.499Z",
-      "importAttemptAt": "2026-10-10T10:08:10.499Z",
+      "activityAt": "2026-10-10T09:30:20.185Z",
+      "syncedAt": "2026-10-10T10:39:21.689Z",
+      "importAttemptAt": "2026-10-10T10:39:21.689Z",
       "syncStatus": "ok",
-      "href": "https://www.themoviedb.org/tv/247522",
+      "href": "https://www.themoviedb.org/movie/642732",
       "art": {
         "src": "/canon/watched.jpg",
-        "w": 245,
+        "w": 240,
         "h": 360
       }
     },
@@ -75,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-09T10:50:37.000Z",
-      "syncedAt": "2026-10-10T10:08:09.728Z",
-      "importAttemptAt": "2026-10-10T10:08:09.728Z",
+      "syncedAt": "2026-10-10T10:39:20.831Z",
+      "importAttemptAt": "2026-10-10T10:39:20.831Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Cameron Winter",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-10T10:08:09.797Z",
-      "syncedAt": "2026-10-10T10:08:09.841Z",
-      "importAttemptAt": "2026-10-10T10:08:09.841Z",
+      "activityAt": "2026-10-10T10:39:21.304Z",
+      "syncedAt": "2026-10-10T10:39:21.337Z",
+      "importAttemptAt": "2026-10-10T10:39:21.337Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Live%20at%20Carnegie%20Hall%20Cameron%20Winter%202026",
       "art": {
