@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-10",
-  "sourceSyncedAt": "2026-10-10T04:55:09.582Z",
+  "sourceSyncedAt": "2026-10-10T05:26:42.258Z",
   "totalWorks": 4420,
   "regionCount": 22,
   "regions": [
-    "Contemporary Hip-Hop",
-    "Dark Comedies & Horror",
-    "Counterculture Classics",
-    "Romantic Dramas & Comedies"
+    "Genre-Bending Hip-Hop",
+    "Meta Comedy",
+    "Surrealist Comedies",
+    "Dark Comedy & Thrillers"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-06T19:17:53.955Z",
-      "syncedAt": "2026-10-10T04:55:10.418Z",
-      "importAttemptAt": "2026-10-10T04:55:10.418Z",
+      "syncedAt": "2026-10-10T05:26:43.087Z",
+      "importAttemptAt": "2026-10-10T05:26:43.087Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/247522",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-09T10:50:37.000Z",
-      "syncedAt": "2026-10-10T04:55:09.996Z",
-      "importAttemptAt": "2026-10-10T04:55:09.996Z",
+      "syncedAt": "2026-10-10T05:26:42.761Z",
+      "importAttemptAt": "2026-10-10T05:26:42.761Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Cameron Winter",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-10T04:55:09.560Z",
-      "syncedAt": "2026-10-10T04:55:09.582Z",
-      "importAttemptAt": "2026-10-10T04:55:09.582Z",
+      "activityAt": "2026-10-10T05:26:42.238Z",
+      "syncedAt": "2026-10-10T05:26:42.258Z",
+      "importAttemptAt": "2026-10-10T05:26:42.258Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Live%20at%20Carnegie%20Hall%20Cameron%20Winter%202026",
       "art": {
