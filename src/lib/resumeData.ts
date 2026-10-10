@@ -111,12 +111,12 @@ export const resumeData: ResumeData = {
   ],
   selectedWork: [
     {
-      name: "Vape Quit Coach",
-      descriptor: "Solo iOS product",
-      href: "https://vapequitcoach.com",
-      date: "Live",
+      name: "SkillScan",
+      descriptor: "Published developer tool",
+      href: "https://skillscan.ninetynine.digital",
+      date: "Live · npm 0.1.0",
       summary:
-        "Designed, built, and shipped a React Native and Expo iPhone app with quit tracking, reflection tools, breathing exercises, and online AI coaching.",
+        "Designed and shipped a static security scanner as a web app, npm CLI, and GitHub Action, with source-linked findings, SARIF reports, bounded artifact inspection, and explicit partial-scan handling.",
     },
     {
       name: "Ch'lita",

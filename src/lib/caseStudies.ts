@@ -470,10 +470,10 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Solo Designer & Developer",
     team: "Independent",
     tools: ["Next.js", "TypeScript", "Node.js", "Static Analysis", "Vercel"],
-    liveUrl: "https://skillscan-rouge.vercel.app",
+    liveUrl: "https://skillscan.ninetynine.digital",
     githubUrl: "https://github.com/maxwellyoung/skillscan",
     overview:
-      "SkillScan is an evidence-first static scanner for agent skills, MCP servers, npm packages, VS Code extensions, GitHub Actions, repositories, and pasted code. It gives each finding a severity, source location, snippet, and remediation note, then turns the combined evidence into a plain-language install verdict. The product is deliberately deterministic: its claims can be traced to visible rules and committed fixtures rather than an opaque model judgment.",
+      "I designed and built SkillScan as a static scanner for agent skills, MCP servers, npm packages, VS Code extensions, repositories, and pasted code. One TypeScript engine powers a public web app, a published npm CLI, and a GitHub Action. Every finding includes severity, source location, a snippet, and remediation. JSON and SARIF exports let the same evidence travel into CI and code review.",
     challenge:
       "Agent tooling crosses unusually powerful trust boundaries. A useful skill may ask for shell, filesystem, network, and credential access—the same capabilities a malicious package needs. Simple keyword matching produces noise, while a reassuring score can imply more certainty than static analysis earns. The product had to surface dangerous combinations quickly without turning a first-pass scan into a safety badge.",
     constraints: [
@@ -491,9 +491,9 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
       {
         problem: "Package and extension metadata alone can look benign while executable artifacts contain the actual risk.",
-        decision: "Fetch and unpack supported npm and OpenVSX artifacts, then scan their relevant source and manifest files.",
+        decision: "Validate each fetch destination and redirect, bound downloads and decompression, and prioritize manifests and executable entrypoints before file caps. Inspect text by content rather than extension.",
         tradeoff: "Artifact limits and provider availability can make a scan partial.",
-        impact: "Results describe the code being installed, with explicit warnings when evidence is incomplete.",
+        impact: "Archive padding, disguised scripts, unsafe redirects, and decompression limits have regression coverage. Missing evidence forces review instead of a clean result.",
       },
       {
         problem: "A numeric score can accidentally read as permission to install.",
@@ -516,20 +516,20 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         title: "Tune both sides of the error",
         description:
-          "Thirteen committed malicious fixtures exercise known hostile combinations. A separate 300-file local corpus catches rules that punish ordinary application and documentation code.",
+          "The release passes 54 regression tests and blocks all 13 committed malicious fixtures. Benign controls check ordinary runtime names, lockfiles, and documentation; these are regression results, not a real-world detection rate.",
       },
       {
         title: "Make the cautious path the usable path",
         description:
-          "The web interface accepts a URL or direct source, returns a quick verdict, and keeps detailed categories expandable. The same scanner is available through the repository and a reusable Codex skill for local-first review.",
+          "The web interface accepts a URL or pasted source. The published npm CLI scans local files without uploading them, and the GitHub Action shares its exit codes and reports. Explicit exclusions are disclosed; incomplete scans exit with a distinct status even when no finding threshold is selected.",
       },
     ],
     outcome:
-      "SkillScan now runs 29 deterministic checks across direct code, agent skills, repositories, package artifacts, extensions, and CI workflows. Its 13 adversarial tests pass, its public method and privacy boundary are visible in the product, and every result keeps manual review in the loop.",
+      "SkillScan is live at skillscan.ninetynine.digital, with @maxwellyoung/skillscan 0.1.0 published to npm and a GitHub Action tested against the public package. Hosted CI passes the 54-test regression suite, CLI packaging checks, and web build. The same 29 checks power each entry point, and a partial scan cannot produce a clean verdict. Static rules still miss unfamiliar patterns and do not certify an artifact as safe.",
     proofPoints: [
       { label: "Deterministic checks", value: "29" },
       { label: "Malicious fixtures", value: "13 / 13" },
-      { label: "False-positive corpus", value: "300 files" },
+      { label: "Regression tests", value: "54 / 54" },
     ],
     avoidedPatterns: [
       "Calling a clean static result proof that an artifact is safe.",
@@ -538,9 +538,9 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Sending local source to a model when deterministic analysis can run first.",
     ],
     nextIterations: [
-      "Export machine-readable findings for CI and code-review workflows.",
-      "Expand the real-incident corpus and measure rule precision over time.",
-      "Improve branch, monorepo, minified-code, and dependency-chain coverage.",
+      "Expand the real-incident corpus and measure precision beyond synthetic fixtures.",
+      "Improve minified-code and transitive-dependency coverage.",
+      "Evaluate shared rate limits for larger public deployments.",
     ],
     learnings: [
       "The most useful scanner output is not a score; it is a short path from suspicion to source evidence.",

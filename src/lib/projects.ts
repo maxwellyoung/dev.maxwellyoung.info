@@ -311,15 +311,15 @@ const projects: Project[] = [
     status: "Active",
     category: "personal",
     role: "Solo",
-    featured: false,
+    featured: true,
     visibility: "public",
     lifecycle: "current",
     launchStage: "Live",
-    priority: 5,
+    priority: 3.5,
     description:
-      "Static scanner that checks agent skills, packages, extensions, and CI workflows before you run them.",
+      "Security scanner for agent tools, npm packages, and VS Code extensions, shipped as a web app, npm CLI, and GitHub Action.",
     longDescription:
-      "SkillScan reviews agent skills, MCP servers, npm packages, VS Code extensions, GitHub Actions, repositories, and pasted code before you run them locally. Its checks surface risky shell, network, filesystem, credential, package-hook, CI-permission, and prompt-injection patterns, and every finding points at the file and line that triggered it.",
+      "I designed and built SkillScan to inspect agent skills, MCP servers, npm packages, VS Code extensions, and repositories before installation. One deterministic TypeScript engine powers the web app, the published @maxwellyoung/skillscan CLI, and a GitHub Action. Findings include the source file, line, snippet, and suggested fix; JSON and SARIF reports fit into code review. Fetches and archive extraction are bounded, and incomplete scans require review rather than returning a clean verdict. It is static analysis, not a guarantee that code is safe.",
     tags: [
       "Next.js",
       "TypeScript",
@@ -327,7 +327,7 @@ const projects: Project[] = [
       "Static Analysis",
       "Developer Tools",
     ],
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    stack: ["TypeScript", "Node.js", "Next.js", "GitHub Actions", "SARIF"],
     startDate: "2026-01-01",
     screenshots: [
       "/projectImages/skillscan-cover.webp",
@@ -341,15 +341,20 @@ const projects: Project[] = [
       objectPosition: "center center",
     },
     links: {
-      live: "https://skillscan-rouge.vercel.app",
+      live: "https://skillscan.ninetynine.digital",
       repo: "https://github.com/maxwellyoung/skillscan",
     },
-    link: "https://skillscan-rouge.vercel.app",
+    link: "https://skillscan.ninetynine.digital",
     codeLink: "https://github.com/maxwellyoung/skillscan",
+    proof: {
+      label: "Published developer tool",
+      text: "npm CLI, web scanner, and GitHub Action share one engine. The release passes 54 regression tests and blocks all 13 malicious fixtures.",
+      href: "/case-study/skillscan",
+    },
     impact: [
-      "Every finding carries a file, line, snippet, and fix note",
-      "Verdicts stay explicit about what static analysis cannot prove",
-      "One engine covers packages, extensions, repositories, workflows, and pasted code",
+      "Published npm CLI and GitHub Action with JSON and SARIF reports",
+      "Bounded remote fetches and archive extraction; incomplete scans require review",
+      "29 deterministic checks with file, line, snippet, and remediation evidence",
     ],
     caseStudySlug: "skillscan",
   },
@@ -725,7 +730,7 @@ const projects: Project[] = [
     launchStage: "Live",
     priority: 3,
     description:
-      "T3 Code inside Minecraft, featured in a Theo video and my most-starred GitHub project.",
+      "A released Minecraft mod for managing coding agents across machines, answering approvals, and reviewing checkpoint diffs in game.",
     longDescription:
       "T3 Craft connects Minecraft Java to T3 Code the same way T3's mobile app does. An in-game panel lists threads from every paired machine and renders the conversation as Markdown, with approvals on Y/N and agent questions answered with the number keys. Updates stream over T3's RPC WebSocket and fall back to polling, so a turn can run while you mine and one toast tells you when it's done. Threads can also appear as villagers whose name tags show what they're waiting on; right-click one to open it. A loopback MCP server lets local agents see and build in the world, gated behind an explicit opt-in, and installed on a server the mod runs a shared village every player can see. Theo showed Max's demo in his video Anthropic Actually Fixed Opus. Open source with tagged releases.",
     tags: ["Java", "Minecraft", "Fabric", "MCP", "AI agents"],
@@ -752,7 +757,7 @@ const projects: Project[] = [
       tone: "forest",
     },
     impact: [
-      "15 GitHub stars as of September 2026, my most-starred public repo",
+      "Published Fabric mod with activity history and numbered checkpoint review",
       "Featured in Theo's Anthropic Actually Fixed Opus",
       "Speaks T3's client protocol: pairing, orchestration, and live RPC streams",
       "Threads from several machines in one sidebar, each action routed to the machine that owns it",
