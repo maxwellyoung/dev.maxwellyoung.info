@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-10",
-  "sourceSyncedAt": "2026-10-10T11:41:59.593Z",
+  "sourceSyncedAt": "2026-10-10T12:13:15.890Z",
   "totalWorks": 4420,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-10T09:30:20.185Z",
-      "syncedAt": "2026-10-10T11:42:00.741Z",
-      "importAttemptAt": "2026-10-10T11:42:00.741Z",
+      "syncedAt": "2026-10-10T12:13:16.681Z",
+      "importAttemptAt": "2026-10-10T12:13:16.681Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/642732",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-09T10:50:37.000Z",
-      "syncedAt": "2026-10-10T11:41:59.593Z",
-      "importAttemptAt": "2026-10-10T11:41:59.593Z",
+      "syncedAt": "2026-10-10T12:13:16.249Z",
+      "importAttemptAt": "2026-10-10T12:13:16.249Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Cameron Winter",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-10T11:41:59.769Z",
-      "syncedAt": "2026-10-10T11:41:59.805Z",
-      "importAttemptAt": "2026-10-10T11:41:59.805Z",
+      "activityAt": "2026-10-10T12:13:15.867Z",
+      "syncedAt": "2026-10-10T12:13:15.890Z",
+      "importAttemptAt": "2026-10-10T12:13:15.890Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Live%20at%20Carnegie%20Hall%20Cameron%20Winter%202026",
       "art": {
