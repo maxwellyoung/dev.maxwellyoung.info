@@ -9,10 +9,11 @@ test("each public project appears in exactly one homepage list", () => {
   assert.deepEqual([...placed].sort(), rankedProjects.map(project => project.slug).sort());
 });
 
-test("only Second Brain remains listed from the personal tools, inside Other work", () => {
+test("only Second Brain and Margin are listed from the personal tools, inside Other work", () => {
   const listedTools = rankedProjects.filter(project => project.collection === "personal-tools");
-  assert.deepEqual(listedTools.map(project => project.slug), ["second-brain"]);
+  assert.deepEqual(listedTools.map(project => project.slug).sort(), ["margin", "second-brain"]);
   assert.ok(supportingProjects.some(project => project.slug === "second-brain"));
+  assert.ok(supportingProjects.some(project => project.slug === "margin"));
 });
 
 test("listed private tools expose proof and boundaries without private source links", () => {
