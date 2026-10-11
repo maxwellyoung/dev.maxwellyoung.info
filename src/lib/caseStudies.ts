@@ -45,8 +45,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     timeline: "Personal tool · ongoing",
     role: "Designer & Developer",
     tools: ["TypeScript", "React", "Vite", "Local storage"],
-    overview: "I designed and built Second Brain as a private workspace for studying. It connects source documents, a daily plan, and practice, with a learning history that can be exported and restored. The screenshots show the current local development UI with authored sample notes and a fictional course, rather than real course material or student records.",
-    challenge: "A note app can hold information without helping me use it. I wanted to move from what needs attention today, to the source that explains it, to a short practice session without losing the context between those steps.",
+    overview: "I built Second Brain for my own studying. It's a private workspace where the source documents, a plan for today and a few minutes of practice sit side by side, and everything I've learned can be exported and restored. The screenshots use authored sample notes and a fictional course, not real course material or student records.",
+    challenge: "A note app is good at holding things and bad at helping me use them. What I wanted was a short path from \"what needs my attention today\" to the source that explains it, then straight into practice, without losing my place between those steps.",
     approach: [
       { title: "Read with the source in view", description: "The library opens source text inside the workspace. Reading and practice keep their source identity, so an explanation can be checked against the material behind it.", image: "/projectImages/second-brain-sources.png" },
       { title: "Plan around the next deadline", description: "The local build brings upcoming work and review needs into a daily view. Practice scheduling considers prior attempts and future assessment dates; it does not treat practice as a completed assessment.", image: "/projectImages/second-brain-today.png" },
@@ -109,8 +109,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Extensions & workflow design",
     credits: { text: "Original Autobahn by Eli Rousso / Rams · MIT licensed", links: [{ label: "Eli Rousso", href: "https://elirousso.com" }, { label: "Original Autobahn", href: "https://github.com/rams-design/autobahn" }] },
     tools: ["JavaScript", "Node.js", "Python", "Markdown", "T3 Code", "MCP"],
-    overview: "My extensions to Autobahn, originally created by Eli Rousso / Rams. Its MIT-licensed board keeps work as plain markdown cards. I have extended it into the control room for my agent-assisted work: cards become bounded agent runs on whichever of my machines has room, every run comes back with its own evidence, and the home screen starts with the one thing that actually needs me. My extensions are private. Images use the actual local UI with a synthetic board and a simulated fleet; no real runs, workers or client systems are shown.",
-    challenge: "Once several agents run at the same time on more than one machine, the hard part stops being starting work. It becomes knowing what is really happening: which run is working, which is stuck, which is waiting on me, whether there is budget left, and whether a finished run actually proved anything. A busy board can easily imply progress that hasn't happened.",
+    overview: "Autobahn is Eli Rousso's (Rams) MIT-licensed board that keeps work as plain markdown cards, and I've built my agent workflow on top of it. My private extensions turn it into a control room: a card becomes a bounded agent run on whichever of my machines has room, every run comes back with its own evidence, and the home screen opens on the one thing that actually needs me. The images use the real local UI with a synthetic board and a simulated fleet; no real runs, workers or client systems are shown.",
+    challenge: "Once I had several agents running at once across more than one machine, starting work stopped being the hard part. Knowing what was really happening was: which run is working, which is stuck, which is waiting on me, whether there's budget left, and whether a finished run actually proved anything. A busy board can look like progress when nothing has happened.",
     constraints: [
       "The board stays a readable markdown file I can edit by hand.",
       "Nothing is pushed, merged or written to an issue tracker without a second, explicit confirmation.",
@@ -145,10 +145,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Solo Designer & Developer",
     tools: ["React Native", "Expo", "TypeScript", "AsyncStorage"],
     liveUrl: "https://afterlight.ninetynine.digital",
-    overview:
-      "Afterlight is available on the iPhone App Store as a concert diary. This case study describes the broader Recovery Desk under development, rather than claiming its advanced native integrations are included in that published build. It turns ticket files, incoming shares, calendars, photos, Gmail receipts, Setlist.fm attendance, and listening history into reviewable clues on-device. A clue never becomes a claimed night until the person confirms it.",
-    challenge:
-      "Concert memories are distributed across camera rolls, ticket receipts, calendar events, Wallet passes, files, setlists, and half-remembered nights. Those sources have very different confidence: a Spotify play is a hint, while a ticket and dated venue photo together are stronger evidence. The product problem was not merely importing data; it was reconciling ambiguous evidence without letting software invent attendance.",
+    overview: "Afterlight is my concert diary, available on the iPhone App Store. This case study is about the Recovery Desk I'm building on top of it, not the published build, which doesn't include these native integrations yet. It reads ticket files, shares, calendars, photos, Gmail receipts, Setlist.fm attendance and listening history on the device and turns them into clues to review. A clue never becomes a night you were at until you confirm it.",
+    challenge: "Concert memories end up scattered across camera rolls, ticket receipts, calendar events, Wallet passes, files, setlists and half-remembered nights, and those sources deserve very different trust: a Spotify play is a hint, while a ticket plus a dated photo at the venue is strong evidence. So the real problem wasn't importing data. It was reconciling messy evidence without letting software invent that someone was there.",
     constraints: [
       "The canonical diary and recovery queue must work on-device; optional connected services cannot become the source of truth.",
       "Low-confidence evidence can suggest a night but can never auto-confirm attendance.",
@@ -231,10 +229,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Solo Designer & Developer",
     tools: ["Next.js 16", "Supabase", "Claude API", "Tesseract.js", "React Flow", "dagre", "Framer Motion"],
     liveUrl: "https://whakapapa.vercel.app",
-    overview:
-      "A family history app that turns documents, photos, and recorded stories into structured family records and a navigable tree.",
-    challenge:
-      "Most genealogy tools are expensive, rigid, and centered on manual data entry. The goal here was to make source capture and review easier without asking users to trust raw AI output.",
+    overview: "I'm building Whakapapa as a family history app that starts from the source material families actually have, the documents, photos and recorded stories, and turns it into structured records and a tree you can explore.",
+    challenge: "Most genealogy tools are expensive, rigid and built around typing everything in by hand. I wanted capturing and reviewing sources to be the easy part, without ever asking anyone to trust raw AI output about their family.",
     constraints: [
       "Trust is fragile with family history data, so AI output must stay reviewable and reversible.",
       "Many source artifacts are low quality scans and handwritten notes.",
@@ -318,10 +314,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Clerk",
     ],
     liveUrl: "https://liner.ninetynine.digital",
-    overview:
-      "Liner is a visual workspace for organizing songs and planning releases. I designed and built it around the work between making music and putting it out: collecting demos, keeping references and feedback nearby, trying track orders, and deciding what belongs to the record. This case study covers the web app. The pictured release board is a public demo; its notes and alternate tracks are illustrative.",
-    challenge:
-      "A record takes shape across audio files, playlists, lyric scraps, references, and conversations. A folder keeps the files together, but does not show how the songs relate or which decisions are still open. Liner gives that material a shared visual space, with listening and editing close at hand.",
+    overview: "Liner is a visual workspace for the part of making music nobody designs for: the stretch between finishing songs and putting them out. I built it around how a record actually comes together, collecting demos, keeping references and feedback nearby, trying track orders and deciding what belongs on it. This case study covers the web app; the release board pictured is a public demo, and its notes and alternate tracks are illustrative.",
+    challenge: "A record takes shape across audio files, playlists, lyric scraps, references and conversations. A folder keeps the files together but can't show how the songs relate or which decisions are still open. I wanted one shared visual space for all of it, with listening and editing close at hand.",
     constraints: [
       "Canvas selection, pan, zoom, text editing, and playback share the same workspace and need clear interaction boundaries.",
       "Local work needs its own save status; a successful metadata write must not hide a failed canvas write.",
@@ -384,10 +378,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Solo Designer & Developer",
     tools: ["React Native", "Expo", "TypeScript"],
     liveUrl: "https://vapequitcoach.com",
-    overview:
-      "An iOS app for smoking cessation built around tracking, coaching, and support during cravings and setbacks.",
-    challenge:
-      "Many quitting apps rely on brittle streak systems and punitive framing. The goal here was to build something calmer and more usable during difficult moments.",
+    overview: "Vape Quit Coach is an iOS app I designed and built to help people quit vaping, built around tracking, coaching and support for the moments that matter most: cravings and setbacks.",
+    challenge: "A lot of quitting apps lean on brittle streaks and punishing framing, which feels worst exactly when someone slips. I wanted something calmer that's still easy to use in a hard moment.",
     constraints: [
       "Behavior change support had to avoid shame mechanics and relapse punishment loops.",
       "Support screens needed short, readable actions for high-stress, low-attention moments.",
@@ -457,10 +449,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     tools: ["Next.js", "Sanity CMS", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://chlita.com",
     // githubUrl intentionally omitted
-    overview:
-      "Portfolio for Ch'lita Collins — Fashion Editor-at-Large at i-D, and stylist whose work spans Rosalía, The Dare, Tom Guinness and Oliver Hadlee Pearch. Built around editorial image presentation and simple CMS updates, so the work stays in front.",
-    challenge:
-      "The site needed to support strong image presentation without adding visual clutter or creating layout instability.",
+    overview: "I designed and built the portfolio for Ch'lita Collins, Fashion Editor-at-Large at i-D and a stylist whose work spans Rosalía, The Dare, Tom Guinness and Oliver Hadlee Pearch. Everything about it is in service of keeping her work in front: editorial image presentation, and a simple CMS so she can update it herself.",
+    challenge: "Her images needed to be shown with real presence, without visual clutter and without layouts jumping around while they load.",
     constraints: [
       "The styling work needed to lead; the interface could not compete with image rhythm or art direction.",
       "The client needed a CMS workflow that did not require developer support for routine updates.",
@@ -530,10 +520,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     tools: ["Next.js", "TypeScript", "Node.js", "Static Analysis", "Vercel"],
     liveUrl: "https://skillscan.ninetynine.digital",
     githubUrl: "https://github.com/maxwellyoung/skillscan",
-    overview:
-      "I designed and built SkillScan as a static scanner for agent skills, MCP servers, npm packages, VS Code extensions, repositories, and pasted code. One TypeScript engine powers a public web app, a published npm CLI, and a GitHub Action. Every finding includes severity, source location, a snippet, and remediation. JSON and SARIF exports let the same evidence travel into CI and code review.",
-    challenge:
-      "Agent tooling crosses unusually powerful trust boundaries. A useful skill may ask for shell, filesystem, network, and credential access—the same capabilities a malicious package needs. Simple keyword matching produces noise, while a reassuring score can imply more certainty than static analysis earns. The product had to surface dangerous combinations quickly without turning a first-pass scan into a safety badge.",
+    overview: "SkillScan answers the question every agent tool should raise before you install it: what can this actually do on my machine? It's a static scanner I designed and built for agent skills, MCP servers, npm packages, VS Code extensions, repositories and pasted code. One TypeScript engine powers a public web app, a published npm CLI and a GitHub Action, and every finding comes with a severity, its location in the source, a snippet and a fix. JSON and SARIF exports let the same evidence travel into CI and code review.",
+    challenge: "Agent tools sit across unusually powerful trust boundaries. A genuinely useful skill might ask for shell, filesystem, network and credential access, which is exactly what a malicious package wants too. Keyword matching drowns you in noise, and a reassuring score claims more certainty than static analysis can earn. It had to surface the dangerous combinations fast, without turning a first-pass scan into a safety badge.",
     constraints: [
       "Every public claim must be reproducible from code, tests, fixtures, or the returned scan evidence.",
       "The scanner cannot execute untrusted artifacts as part of analysis.",
@@ -618,10 +606,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     team: "Independent",
     tools: ["React", "TypeScript", "Vite", "Playwright", "Vitest"],
     liveUrl: "https://default-index.vercel.app",
-    overview:
-      "Default Index is a technical investigation into recurring design patterns in model-generated frontends and the instructions that may reduce them. It replaces screenshot-level taste claims with a registered protocol, artifact capture, rule-based detectors, uncertainty, and blind review. The current public release is a deterministic calibration corpus: 108 artifacts prove that the measurement system works end to end, but they are not presented as findings about frontier models.",
-    challenge:
-      "Critiques of generated interfaces often collapse into a familiar but weak claim: everything looks the same. Without fixed briefs, preserved source, comparable render conditions, explicit detectors, and human review, that claim cannot distinguish a model default from a prompt effect, framework convention, or evaluator preference. The investigation needed a way to make design-pattern evidence inspectable before spending compute on provider comparisons.",
+    overview: "Default Index tests a claim that's everywhere right now: that AI-generated frontends all look the same. It's a technical investigation into recurring design patterns in model-generated interfaces, and into the instructions that might reduce them, built on a registered protocol, captured artifacts, rule-based detectors, stated uncertainty and blind review. The current public release is a deterministic calibration corpus: 108 artifacts that prove the measurement works end to end, deliberately not presented as findings about frontier models.",
+    challenge: "\"Everything looks the same\" is easy to say and hard to prove. Without fixed briefs, preserved source, comparable rendering, explicit detectors and human review, you can't tell a model's default from the prompt, a framework convention or the reviewer's own taste. I needed design-pattern evidence people could inspect before spending money on comparing providers.",
     constraints: [
       "Fixture calibration must remain visibly separate from claims about real models or providers.",
       "Every aggregate needs a path back to source, desktop and mobile renders, detector evidence, and review state.",
@@ -711,10 +697,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     liveUrl: "https://dayle.vercel.app",
     // githubUrl intentionally omitted
-    overview:
-      "A portfolio for installation artist Dayle Palfreyman with a full-screen gallery, simple navigation, and Sanity CMS.",
-    challenge:
-      "The site needed to present artwork clearly without introducing too much interface noise, while still being manageable by the client.",
+    overview: "I designed and built the portfolio for installation artist Dayle Palfreyman: a full-screen gallery, simple navigation, and Sanity CMS so the site stays easy for her to run.",
+    challenge: "The work needed to be shown clearly with as little interface in the way as possible, while staying simple enough for Dayle to manage herself.",
     constraints: [
       "Visual restraint was non-negotiable: the site could not compete with artworks.",
       "Client autonomy required robust CMS patterns over one-off hardcoded pages.",
