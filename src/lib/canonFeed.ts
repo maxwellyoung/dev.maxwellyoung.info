@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-11",
-  "sourceSyncedAt": "2026-10-11T03:20:40.720Z",
+  "sourceSyncedAt": "2026-10-11T03:51:54.172Z",
   "totalWorks": 4420,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-10T09:30:20.185Z",
-      "syncedAt": "2026-10-11T03:20:42.083Z",
-      "importAttemptAt": "2026-10-11T03:20:42.083Z",
+      "syncedAt": "2026-10-11T03:51:55.050Z",
+      "importAttemptAt": "2026-10-11T03:51:55.050Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/642732",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-11T02:52:20.000Z",
-      "syncedAt": "2026-10-11T03:20:41.693Z",
-      "importAttemptAt": "2026-10-11T03:20:41.693Z",
+      "activityAt": "2026-10-11T03:42:33.000Z",
+      "syncedAt": "2026-10-11T03:51:54.579Z",
+      "importAttemptAt": "2026-10-11T03:51:54.579Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Cameron Winter",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-11T03:20:40.696Z",
-      "syncedAt": "2026-10-11T03:20:40.720Z",
-      "importAttemptAt": "2026-10-11T03:20:40.720Z",
+      "activityAt": "2026-10-11T03:51:54.152Z",
+      "syncedAt": "2026-10-11T03:51:54.172Z",
+      "importAttemptAt": "2026-10-11T03:51:54.172Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Live%20at%20Carnegie%20Hall%20Cameron%20Winter%202026",
       "art": {
