@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-11",
-  "sourceSyncedAt": "2026-10-11T02:49:21.439Z",
+  "sourceSyncedAt": "2026-10-11T03:20:40.720Z",
   "totalWorks": 4420,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-10T09:30:20.185Z",
-      "syncedAt": "2026-10-11T02:49:22.433Z",
-      "importAttemptAt": "2026-10-11T02:49:22.433Z",
+      "syncedAt": "2026-10-11T03:20:42.083Z",
+      "importAttemptAt": "2026-10-11T03:20:42.083Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/642732",
       "art": {
@@ -68,18 +68,23 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:3280350",
+      "id": "steam:730",
       "verb": "playing",
       "medium": "game",
-      "title": "DEATH STRANDING 2: ON THE BEACH",
-      "creator": "KOJIMA PRODUCTIONS, Nixxes Software ",
+      "title": "Counter-Strike 2",
+      "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-11T00:38:54.000Z",
-      "syncedAt": "2026-10-11T02:49:22.021Z",
-      "importAttemptAt": "2026-10-11T02:49:22.021Z",
+      "activityAt": "2026-10-11T02:52:20.000Z",
+      "syncedAt": "2026-10-11T03:20:41.693Z",
+      "importAttemptAt": "2026-10-11T03:20:41.693Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/3280350/"
+      "href": "https://store.steampowered.com/app/730/",
+      "art": {
+        "src": "/canon/playing.jpg",
+        "w": 240,
+        "h": 360
+      }
     },
     {
       "id": "applemusic:cameron-winter--live-at-carnegie-hall",
@@ -89,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Cameron Winter",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-11T02:49:21.419Z",
-      "syncedAt": "2026-10-11T02:49:21.439Z",
-      "importAttemptAt": "2026-10-11T02:49:21.439Z",
+      "activityAt": "2026-10-11T03:20:40.696Z",
+      "syncedAt": "2026-10-11T03:20:40.720Z",
+      "importAttemptAt": "2026-10-11T03:20:40.720Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Live%20at%20Carnegie%20Hall%20Cameron%20Winter%202026",
       "art": {
