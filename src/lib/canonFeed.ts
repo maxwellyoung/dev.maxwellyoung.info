@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-12",
-  "sourceSyncedAt": "2026-10-12T10:39:06.017Z",
+  "sourceSyncedAt": "2026-10-12T11:10:24.361Z",
   "totalWorks": 4433,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-10T09:30:20.185Z",
-      "syncedAt": "2026-10-12T10:39:07.308Z",
-      "importAttemptAt": "2026-10-12T10:39:07.308Z",
+      "syncedAt": "2026-10-12T11:10:25.379Z",
+      "importAttemptAt": "2026-10-12T11:10:25.379Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/642732",
       "art": {
@@ -68,18 +68,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:730",
+      "id": "steam:12140",
       "verb": "playing",
       "medium": "game",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "Max Payne",
+      "creator": "Remedy Entertainment",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-11T05:37:28.000Z",
-      "syncedAt": "2026-10-12T10:39:06.496Z",
-      "importAttemptAt": "2026-10-12T10:39:06.496Z",
+      "activityAt": "2026-10-12T10:55:18.000Z",
+      "syncedAt": "2026-10-12T11:10:24.361Z",
+      "importAttemptAt": "2026-10-12T11:10:24.361Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/730/",
+      "href": "https://store.steampowered.com/app/12140/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Maxwell Young",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-12T10:39:05.993Z",
-      "syncedAt": "2026-10-12T10:39:06.017Z",
-      "importAttemptAt": "2026-10-12T10:39:06.017Z",
+      "activityAt": "2026-10-12T11:10:24.464Z",
+      "syncedAt": "2026-10-12T11:10:24.500Z",
+      "importAttemptAt": "2026-10-12T11:10:24.500Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Freewheelin'%20-%20Single%20Maxwell%20Young%202024",
       "art": {
