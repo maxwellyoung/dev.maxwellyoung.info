@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-12",
-  "sourceSyncedAt": "2026-10-12T08:33:48.047Z",
+  "sourceSyncedAt": "2026-10-12T09:05:16.093Z",
   "totalWorks": 4433,
   "regionCount": 22,
   "regions": [
-    "Eclectic Music Vibes",
-    "Intimate Psychological Thrillers",
-    "Mystery & Psychological Drama",
-    "Whimsical Family Tales"
+    "Intimate Drama & Romance",
+    "Psychological Thrillers",
+    "Quirky Romantic Comedies",
+    "Family-Friendly Animation"
   ],
   "now": [
     {
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-10T09:30:20.185Z",
-      "syncedAt": "2026-10-12T08:33:49.073Z",
-      "importAttemptAt": "2026-10-12T08:33:49.073Z",
+      "syncedAt": "2026-10-12T09:05:17.023Z",
+      "importAttemptAt": "2026-10-12T09:05:17.023Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/642732",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-11T05:37:28.000Z",
-      "syncedAt": "2026-10-12T08:33:48.047Z",
-      "importAttemptAt": "2026-10-12T08:33:48.047Z",
+      "syncedAt": "2026-10-12T09:05:16.093Z",
+      "importAttemptAt": "2026-10-12T09:05:16.093Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Maxwell Young",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-12T08:33:48.450Z",
-      "syncedAt": "2026-10-12T08:33:48.473Z",
-      "importAttemptAt": "2026-10-12T08:33:48.473Z",
+      "activityAt": "2026-10-12T09:05:16.388Z",
+      "syncedAt": "2026-10-12T09:05:16.410Z",
+      "importAttemptAt": "2026-10-12T09:05:16.410Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Freewheelin'%20-%20Single%20Maxwell%20Young%202024",
       "art": {
