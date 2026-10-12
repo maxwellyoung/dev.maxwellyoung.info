@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-12",
-  "sourceSyncedAt": "2026-10-12T12:12:56.502Z",
+  "sourceSyncedAt": "2026-10-12T12:44:13.217Z",
   "totalWorks": 4433,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-10T09:30:20.185Z",
-      "syncedAt": "2026-10-12T12:12:57.791Z",
-      "importAttemptAt": "2026-10-12T12:12:57.791Z",
+      "syncedAt": "2026-10-12T12:44:14.219Z",
+      "importAttemptAt": "2026-10-12T12:44:14.219Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/642732",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-12T10:55:18.000Z",
-      "syncedAt": "2026-10-12T12:12:56.919Z",
-      "importAttemptAt": "2026-10-12T12:12:56.919Z",
+      "syncedAt": "2026-10-12T12:44:13.217Z",
+      "importAttemptAt": "2026-10-12T12:44:13.217Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/12140/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Maxwell Young",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-12T12:12:56.481Z",
-      "syncedAt": "2026-10-12T12:12:56.502Z",
-      "importAttemptAt": "2026-10-12T12:12:56.502Z",
+      "activityAt": "2026-10-12T12:44:13.573Z",
+      "syncedAt": "2026-10-12T12:44:13.605Z",
+      "importAttemptAt": "2026-10-12T12:44:13.605Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Freewheelin'%20-%20Single%20Maxwell%20Young%202024",
       "art": {
