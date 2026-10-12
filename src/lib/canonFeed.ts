@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-12",
-  "sourceSyncedAt": "2026-10-12T22:10:27.054Z",
+  "sourceSyncedAt": "2026-10-12T22:41:43.599Z",
   "totalWorks": 4433,
   "regionCount": 22,
   "regions": [
@@ -57,31 +57,12 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-10T09:30:20.185Z",
-      "syncedAt": "2026-10-12T22:10:28.331Z",
-      "importAttemptAt": "2026-10-12T22:10:28.331Z",
+      "syncedAt": "2026-10-12T22:41:44.384Z",
+      "importAttemptAt": "2026-10-12T22:41:44.384Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/642732",
       "art": {
         "src": "/canon/watched.jpg",
-        "w": 240,
-        "h": 360
-      }
-    },
-    {
-      "id": "steam:12140",
-      "verb": "playing",
-      "medium": "game",
-      "title": "Max Payne",
-      "creator": "Remedy Entertainment",
-      "note": "Recent game activity.",
-      "evidenceSource": "steam",
-      "activityAt": "2026-10-12T10:55:18.000Z",
-      "syncedAt": "2026-10-12T22:10:27.539Z",
-      "importAttemptAt": "2026-10-12T22:10:27.539Z",
-      "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/12140/",
-      "art": {
-        "src": "/canon/playing.jpg",
         "w": 240,
         "h": 360
       }
@@ -94,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "The Blue Nile",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-12T22:10:27.036Z",
-      "syncedAt": "2026-10-12T22:10:27.054Z",
-      "importAttemptAt": "2026-10-12T22:10:27.054Z",
+      "activityAt": "2026-10-12T22:41:43.577Z",
+      "syncedAt": "2026-10-12T22:41:43.599Z",
+      "importAttemptAt": "2026-10-12T22:41:43.599Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Hats%20(Deluxe%20Version)%20The%20Blue%20Nile%202012",
       "art": {
