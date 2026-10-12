@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-12",
-  "sourceSyncedAt": "2026-10-12T23:12:31.290Z",
+  "sourceSyncedAt": "2026-10-12T23:43:44.922Z",
   "totalWorks": 4434,
   "regionCount": 22,
   "regions": [
-    "Intimate Drama & Romance",
-    "Psychological Thrillers",
-    "Quirky Romantic Comedies",
-    "Family-Friendly Animation"
+    "Psychological Thrillers & Horror",
+    "Crime & Dark Comedy Thrillers",
+    "Genre-Blending Modern Sounds",
+    "Experimental & Surreal Cinema"
   ],
   "now": [
     {
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-10T09:30:20.185Z",
-      "syncedAt": "2026-10-12T23:12:32.093Z",
-      "importAttemptAt": "2026-10-12T23:12:32.093Z",
+      "syncedAt": "2026-10-12T23:43:46.000Z",
+      "importAttemptAt": "2026-10-12T23:43:46.000Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/642732",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-12T10:55:18.000Z",
-      "syncedAt": "2026-10-12T23:12:31.730Z",
-      "importAttemptAt": "2026-10-12T23:12:31.730Z",
+      "syncedAt": "2026-10-12T23:43:45.781Z",
+      "importAttemptAt": "2026-10-12T23:43:45.781Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/12140/",
       "art": {
@@ -95,8 +95,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
       "activityAt": "2026-10-12T23:12:31.269Z",
-      "syncedAt": "2026-10-12T23:12:31.290Z",
-      "importAttemptAt": "2026-10-12T23:12:31.290Z",
+      "syncedAt": "2026-10-12T23:43:44.922Z",
+      "importAttemptAt": "2026-10-12T23:43:44.922Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Hats%20(Deluxe%20Version)%20The%20Blue%20Nile%202012",
       "art": {
