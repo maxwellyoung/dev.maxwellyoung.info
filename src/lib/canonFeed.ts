@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-12",
-  "sourceSyncedAt": "2026-10-12T12:44:13.217Z",
+  "sourceSyncedAt": "2026-10-12T13:15:30.834Z",
   "totalWorks": 4433,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-10T09:30:20.185Z",
-      "syncedAt": "2026-10-12T12:44:14.219Z",
-      "importAttemptAt": "2026-10-12T12:44:14.219Z",
+      "syncedAt": "2026-10-12T13:15:31.475Z",
+      "importAttemptAt": "2026-10-12T13:15:31.475Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/642732",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-12T10:55:18.000Z",
-      "syncedAt": "2026-10-12T12:44:13.217Z",
-      "importAttemptAt": "2026-10-12T12:44:13.217Z",
+      "syncedAt": "2026-10-12T13:15:31.147Z",
+      "importAttemptAt": "2026-10-12T13:15:31.147Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/12140/",
       "art": {
@@ -87,18 +87,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:maxwell-young--freewheelin-single",
+      "id": "applemusic:the-blue-nile--hats-deluxe-version",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Freewheelin'",
-      "creator": "Maxwell Young",
+      "title": "Hats",
+      "creator": "The Blue Nile",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-12T12:44:13.573Z",
-      "syncedAt": "2026-10-12T12:44:13.605Z",
-      "importAttemptAt": "2026-10-12T12:44:13.605Z",
+      "activityAt": "2026-10-12T13:15:30.814Z",
+      "syncedAt": "2026-10-12T13:15:30.834Z",
+      "importAttemptAt": "2026-10-12T13:15:30.834Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Freewheelin'%20-%20Single%20Maxwell%20Young%202024",
+      "href": "https://music.apple.com/nz/search?term=Hats%20(Deluxe%20Version)%20The%20Blue%20Nile%202012",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
