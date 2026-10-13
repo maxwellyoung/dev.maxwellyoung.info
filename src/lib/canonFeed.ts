@@ -36,8 +36,8 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-10-12",
-  "sourceSyncedAt": "2026-10-12T23:43:44.922Z",
+  "generatedAt": "2026-10-13",
+  "sourceSyncedAt": "2026-10-13T00:14:49.750Z",
   "totalWorks": 4434,
   "regionCount": 22,
   "regions": [
@@ -48,19 +48,19 @@ export const canonFeed: CanonFeed = {
   ],
   "now": [
     {
-      "id": "letterboxd:roadrunner-a-film-about-anthony-bourdain-2021",
+      "id": "letterboxd:the-social-reckoning-2026",
       "verb": "watched",
       "medium": "movie",
-      "title": "Roadrunner: A Film About Anthony Bourdain",
-      "creator": "Morgan Neville",
-      "year": 2021,
+      "title": "The Social Reckoning",
+      "creator": "Aaron Sorkin",
+      "year": 2026,
       "note": "A dated finish recorded in Canon.",
-      "evidenceSource": "jellyfin",
-      "activityAt": "2026-10-10T09:30:20.185Z",
-      "syncedAt": "2026-10-12T23:43:46.000Z",
-      "importAttemptAt": "2026-10-12T23:43:46.000Z",
+      "evidenceSource": "letterboxd",
+      "activityAt": "2026-10-13T00:00:00.000Z",
+      "syncedAt": "2026-10-13T00:14:58.666Z",
+      "importAttemptAt": "2026-10-13T00:14:58.666Z",
       "syncStatus": "ok",
-      "href": "https://www.themoviedb.org/movie/642732",
+      "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 240,
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-12T10:55:18.000Z",
-      "syncedAt": "2026-10-12T23:43:45.781Z",
-      "importAttemptAt": "2026-10-12T23:43:45.781Z",
+      "syncedAt": "2026-10-13T00:14:50.006Z",
+      "importAttemptAt": "2026-10-13T00:14:50.006Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/12140/",
       "art": {
@@ -95,8 +95,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
       "activityAt": "2026-10-12T23:12:31.269Z",
-      "syncedAt": "2026-10-12T23:43:44.922Z",
-      "importAttemptAt": "2026-10-12T23:43:44.922Z",
+      "syncedAt": "2026-10-13T00:14:49.750Z",
+      "importAttemptAt": "2026-10-13T00:14:49.750Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Hats%20(Deluxe%20Version)%20The%20Blue%20Nile%202012",
       "art": {
