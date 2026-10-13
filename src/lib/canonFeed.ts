@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-13",
-  "sourceSyncedAt": "2026-10-13T05:58:00.790Z",
+  "sourceSyncedAt": "2026-10-13T06:29:18.251Z",
   "totalWorks": 4434,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-13T05:58:06.526Z",
-      "importAttemptAt": "2026-10-13T05:58:06.526Z",
+      "syncedAt": "2026-10-13T06:29:34.268Z",
+      "importAttemptAt": "2026-10-13T06:29:34.268Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
@@ -68,23 +68,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:1055540",
+      "id": "steam:3280350",
       "verb": "playing",
       "medium": "game",
-      "title": "A Short Hike",
-      "creator": "adamgryu",
+      "title": "DEATH STRANDING 2: ON THE BEACH",
+      "creator": "KOJIMA PRODUCTIONS, Nixxes Software ",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-13T05:22:39.000Z",
-      "syncedAt": "2026-10-13T05:58:00.940Z",
-      "importAttemptAt": "2026-10-13T05:58:00.940Z",
+      "activityAt": "2026-10-13T06:22:53.000Z",
+      "syncedAt": "2026-10-13T06:29:18.251Z",
+      "importAttemptAt": "2026-10-13T06:29:18.251Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/1055540/",
-      "art": {
-        "src": "/canon/playing.jpg",
-        "w": 240,
-        "h": 360
-      }
+      "href": "https://store.steampowered.com/app/3280350/"
     },
     {
       "id": "applemusic:the-blue-nile--hats-deluxe-version",
@@ -94,9 +89,9 @@ export const canonFeed: CanonFeed = {
       "creator": "The Blue Nile",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-13T05:58:00.741Z",
-      "syncedAt": "2026-10-13T05:58:00.790Z",
-      "importAttemptAt": "2026-10-13T05:58:00.790Z",
+      "activityAt": "2026-10-13T06:29:18.404Z",
+      "syncedAt": "2026-10-13T06:29:18.458Z",
+      "importAttemptAt": "2026-10-13T06:29:18.458Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Hats%20(Deluxe%20Version)%20The%20Blue%20Nile%202012",
       "art": {
