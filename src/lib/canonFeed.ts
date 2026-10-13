@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-13",
-  "sourceSyncedAt": "2026-10-13T04:55:31.415Z",
+  "sourceSyncedAt": "2026-10-13T05:26:45.552Z",
   "totalWorks": 4434,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-13T04:55:38.324Z",
-      "importAttemptAt": "2026-10-13T04:55:38.324Z",
+      "syncedAt": "2026-10-13T05:26:51.837Z",
+      "importAttemptAt": "2026-10-13T05:26:51.837Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
@@ -68,18 +68,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:12140",
+      "id": "steam:1055540",
       "verb": "playing",
       "medium": "game",
-      "title": "Max Payne",
-      "creator": "Remedy Entertainment",
+      "title": "A Short Hike",
+      "creator": "adamgryu",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-12T10:55:18.000Z",
-      "syncedAt": "2026-10-13T04:55:31.698Z",
-      "importAttemptAt": "2026-10-13T04:55:31.698Z",
+      "activityAt": "2026-10-13T05:10:08.000Z",
+      "syncedAt": "2026-10-13T05:26:45.911Z",
+      "importAttemptAt": "2026-10-13T05:26:45.911Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/12140/",
+      "href": "https://store.steampowered.com/app/1055540/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "The Blue Nile",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-13T04:55:31.392Z",
-      "syncedAt": "2026-10-13T04:55:31.415Z",
-      "importAttemptAt": "2026-10-13T04:55:31.415Z",
+      "activityAt": "2026-10-13T05:26:45.531Z",
+      "syncedAt": "2026-10-13T05:26:45.552Z",
+      "importAttemptAt": "2026-10-13T05:26:45.552Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Hats%20(Deluxe%20Version)%20The%20Blue%20Nile%202012",
       "art": {
