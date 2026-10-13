@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-13",
-  "sourceSyncedAt": "2026-10-13T07:01:00.212Z",
+  "sourceSyncedAt": "2026-10-13T07:32:18.913Z",
   "totalWorks": 4434,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-13T07:01:06.317Z",
-      "importAttemptAt": "2026-10-13T07:01:06.317Z",
+      "syncedAt": "2026-10-13T07:32:24.737Z",
+      "importAttemptAt": "2026-10-13T07:32:24.737Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
@@ -72,11 +72,12 @@ export const canonFeed: CanonFeed = {
       "verb": "playing",
       "medium": "game",
       "title": "Kentucky Route Zero",
+      "creator": "Cardboard Computer",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-13T06:53:58.000Z",
-      "syncedAt": "2026-10-13T07:01:00.277Z",
-      "importAttemptAt": "2026-10-13T07:01:00.277Z",
+      "activityAt": "2026-10-13T07:08:53.000Z",
+      "syncedAt": "2026-10-13T07:32:18.913Z",
+      "importAttemptAt": "2026-10-13T07:32:18.913Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/231200/",
       "art": {
@@ -93,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "The Blue Nile",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-13T07:01:00.192Z",
-      "syncedAt": "2026-10-13T07:01:00.212Z",
-      "importAttemptAt": "2026-10-13T07:01:00.212Z",
+      "activityAt": "2026-10-13T07:32:19.415Z",
+      "syncedAt": "2026-10-13T07:32:19.466Z",
+      "importAttemptAt": "2026-10-13T07:32:19.466Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Hats%20(Deluxe%20Version)%20The%20Blue%20Nile%202012",
       "art": {
