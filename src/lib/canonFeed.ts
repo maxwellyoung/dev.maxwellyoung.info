@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-14",
-  "sourceSyncedAt": "2026-10-14T12:51:09.288Z",
+  "sourceSyncedAt": "2026-10-14T13:22:26.789Z",
   "totalWorks": 4434,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-14T12:51:15.709Z",
-      "importAttemptAt": "2026-10-14T12:51:15.709Z",
+      "syncedAt": "2026-10-14T13:22:33.587Z",
+      "importAttemptAt": "2026-10-14T13:22:33.587Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "KONAMI",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-14T12:23:41.000Z",
-      "syncedAt": "2026-10-14T12:51:09.887Z",
-      "importAttemptAt": "2026-10-14T12:51:09.887Z",
+      "activityAt": "2026-10-14T12:51:11.000Z",
+      "syncedAt": "2026-10-14T13:22:27.280Z",
+      "importAttemptAt": "2026-10-14T13:22:27.280Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2417610/",
       "art": {
@@ -87,18 +87,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:tom-waits--rain-dogs-2023-remaster",
+      "id": "applemusic:the-blue-nile--hats-deluxe-version",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Rain Dogs (2023 Remaster)",
-      "creator": "Tom Waits",
+      "title": "Hats",
+      "creator": "The Blue Nile",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-14T12:51:09.273Z",
-      "syncedAt": "2026-10-14T12:51:09.288Z",
-      "importAttemptAt": "2026-10-14T12:51:09.288Z",
+      "activityAt": "2026-10-14T13:22:26.773Z",
+      "syncedAt": "2026-10-14T13:22:26.789Z",
+      "importAttemptAt": "2026-10-14T13:22:26.789Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Rain%20Dogs%20(2023%20Remaster)%20Tom%20Waits%201985",
+      "href": "https://music.apple.com/nz/search?term=Hats%20(Deluxe%20Version)%20The%20Blue%20Nile%202012",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
