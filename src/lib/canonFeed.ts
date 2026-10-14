@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-14",
-  "sourceSyncedAt": "2026-10-14T07:35:04.577Z",
+  "sourceSyncedAt": "2026-10-14T08:06:23.775Z",
   "totalWorks": 4434,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-14T07:35:13.303Z",
-      "importAttemptAt": "2026-10-14T07:35:13.303Z",
+      "syncedAt": "2026-10-14T08:06:30.381Z",
+      "importAttemptAt": "2026-10-14T08:06:30.381Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
@@ -68,18 +68,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:6860",
+      "id": "steam:2379780",
       "verb": "playing",
       "medium": "game",
-      "title": "Hitman: Blood Money",
-      "creator": "Io-Interactive A/S",
+      "title": "Balatro",
+      "creator": "LocalThunk",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-14T07:27:58.000Z",
-      "syncedAt": "2026-10-14T07:35:04.577Z",
-      "importAttemptAt": "2026-10-14T07:35:04.577Z",
+      "activityAt": "2026-10-14T07:56:12.000Z",
+      "syncedAt": "2026-10-14T08:06:24.398Z",
+      "importAttemptAt": "2026-10-14T08:06:24.398Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/6860/",
+      "href": "https://store.steampowered.com/app/2379780/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Tom Waits",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-14T07:35:04.896Z",
-      "syncedAt": "2026-10-14T07:35:04.936Z",
-      "importAttemptAt": "2026-10-14T07:35:04.936Z",
+      "activityAt": "2026-10-14T08:06:23.751Z",
+      "syncedAt": "2026-10-14T08:06:23.775Z",
+      "importAttemptAt": "2026-10-14T08:06:23.775Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Rain%20Dogs%20(2023%20Remaster)%20Tom%20Waits%201985",
       "art": {
