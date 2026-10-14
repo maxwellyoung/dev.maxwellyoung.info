@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-14",
-  "sourceSyncedAt": "2026-10-14T02:21:53.272Z",
+  "sourceSyncedAt": "2026-10-14T02:53:22.414Z",
   "totalWorks": 4434,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-14T02:22:03.658Z",
-      "importAttemptAt": "2026-10-14T02:22:03.658Z",
+      "syncedAt": "2026-10-14T02:53:30.282Z",
+      "importAttemptAt": "2026-10-14T02:53:30.282Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
@@ -68,23 +68,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:2417610",
+      "id": "steam:2492670",
       "verb": "playing",
       "medium": "game",
-      "title": "METAL GEAR SOLID Δ: SNAKE EATER",
+      "title": "METAL GEAR SOLID 4: Guns of the Patriots - Master Collection Version",
       "creator": "KONAMI",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-14T01:45:11.000Z",
-      "syncedAt": "2026-10-14T02:21:53.272Z",
-      "importAttemptAt": "2026-10-14T02:21:53.272Z",
+      "activityAt": "2026-10-14T02:36:14.000Z",
+      "syncedAt": "2026-10-14T02:53:22.567Z",
+      "importAttemptAt": "2026-10-14T02:53:22.567Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/2417610/",
-      "art": {
-        "src": "/canon/playing.jpg",
-        "w": 240,
-        "h": 360
-      }
+      "href": "https://store.steampowered.com/app/2492670/"
     },
     {
       "id": "applemusic:tom-waits--rain-dogs-2023-remaster",
@@ -94,9 +89,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Tom Waits",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-14T02:21:53.286Z",
-      "syncedAt": "2026-10-14T02:21:53.650Z",
-      "importAttemptAt": "2026-10-14T02:21:53.650Z",
+      "activityAt": "2026-10-14T02:53:22.394Z",
+      "syncedAt": "2026-10-14T02:53:22.414Z",
+      "importAttemptAt": "2026-10-14T02:53:22.414Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Rain%20Dogs%20(2023%20Remaster)%20Tom%20Waits%201985",
       "art": {
