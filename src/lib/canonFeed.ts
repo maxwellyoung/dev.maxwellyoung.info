@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-15",
-  "sourceSyncedAt": "2026-10-15T23:16:18.816Z",
+  "sourceSyncedAt": "2026-10-15T23:47:31.934Z",
   "totalWorks": 4437,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-15T23:16:24.227Z",
-      "importAttemptAt": "2026-10-15T23:16:24.227Z",
+      "syncedAt": "2026-10-15T23:47:37.512Z",
+      "importAttemptAt": "2026-10-15T23:47:37.512Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-15T21:14:16.000Z",
-      "syncedAt": "2026-10-15T23:16:18.816Z",
-      "importAttemptAt": "2026-10-15T23:16:18.816Z",
+      "syncedAt": "2026-10-15T23:47:31.934Z",
+      "importAttemptAt": "2026-10-15T23:47:31.934Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/12140/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Dpat",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-15T23:16:18.974Z",
-      "syncedAt": "2026-10-15T23:16:19.025Z",
-      "importAttemptAt": "2026-10-15T23:16:19.025Z",
+      "activityAt": "2026-10-15T23:47:31.995Z",
+      "syncedAt": "2026-10-15T23:47:32.018Z",
+      "importAttemptAt": "2026-10-15T23:47:32.018Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=days%20of%20heaven%20-%20Single%20Dpat%202026",
       "art": {
