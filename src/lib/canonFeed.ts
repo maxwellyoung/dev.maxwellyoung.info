@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-15",
-  "sourceSyncedAt": "2026-10-15T20:39:58.400Z",
+  "sourceSyncedAt": "2026-10-15T21:11:11.056Z",
   "totalWorks": 4437,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-15T20:40:04.270Z",
-      "importAttemptAt": "2026-10-15T20:40:04.270Z",
+      "syncedAt": "2026-10-15T21:11:18.421Z",
+      "importAttemptAt": "2026-10-15T21:11:18.421Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Remedy Entertainment",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-15T20:13:48.000Z",
-      "syncedAt": "2026-10-15T20:39:58.400Z",
-      "importAttemptAt": "2026-10-15T20:39:58.400Z",
+      "activityAt": "2026-10-15T21:05:31.000Z",
+      "syncedAt": "2026-10-15T21:11:11.056Z",
+      "importAttemptAt": "2026-10-15T21:11:11.056Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/12140/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Dpat",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-15T20:39:58.401Z",
-      "syncedAt": "2026-10-15T20:39:58.409Z",
-      "importAttemptAt": "2026-10-15T20:39:58.409Z",
+      "activityAt": "2026-10-15T21:11:11.324Z",
+      "syncedAt": "2026-10-15T21:11:11.374Z",
+      "importAttemptAt": "2026-10-15T21:11:11.374Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=days%20of%20heaven%20-%20Single%20Dpat%202026",
       "art": {
