@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-15",
-  "sourceSyncedAt": "2026-10-15T09:42:51.260Z",
+  "sourceSyncedAt": "2026-10-15T10:14:09.174Z",
   "totalWorks": 4434,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-15T09:42:58.263Z",
-      "importAttemptAt": "2026-10-15T09:42:58.263Z",
+      "syncedAt": "2026-10-15T10:14:15.702Z",
+      "importAttemptAt": "2026-10-15T10:14:15.702Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-15T03:10:42.000Z",
-      "syncedAt": "2026-10-15T09:42:51.260Z",
-      "importAttemptAt": "2026-10-15T09:42:51.260Z",
+      "syncedAt": "2026-10-15T10:14:09.174Z",
+      "importAttemptAt": "2026-10-15T10:14:09.174Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2417610/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "The Blue Nile",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-15T09:42:51.606Z",
-      "syncedAt": "2026-10-15T09:42:51.627Z",
-      "importAttemptAt": "2026-10-15T09:42:51.627Z",
+      "activityAt": "2026-10-15T10:14:09.255Z",
+      "syncedAt": "2026-10-15T10:14:09.293Z",
+      "importAttemptAt": "2026-10-15T10:14:09.293Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Hats%20(Deluxe%20Version)%20The%20Blue%20Nile%202012",
       "art": {
