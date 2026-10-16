@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-16",
-  "sourceSyncedAt": "2026-10-16T05:32:15.480Z",
+  "sourceSyncedAt": "2026-10-16T06:03:32.115Z",
   "totalWorks": 4440,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-16T05:32:22.910Z",
-      "importAttemptAt": "2026-10-16T05:32:22.910Z",
+      "syncedAt": "2026-10-16T06:03:40.018Z",
+      "importAttemptAt": "2026-10-16T06:03:40.018Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-16T05:05:47.000Z",
-      "syncedAt": "2026-10-16T05:32:15.499Z",
-      "importAttemptAt": "2026-10-16T05:32:15.499Z",
+      "activityAt": "2026-10-16T05:35:48.000Z",
+      "syncedAt": "2026-10-16T06:03:32.191Z",
+      "importAttemptAt": "2026-10-16T06:03:32.191Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Big Thief",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-16T05:32:15.453Z",
-      "syncedAt": "2026-10-16T05:32:15.480Z",
-      "importAttemptAt": "2026-10-16T05:32:15.480Z",
+      "activityAt": "2026-10-16T06:03:32.088Z",
+      "syncedAt": "2026-10-16T06:03:32.115Z",
+      "importAttemptAt": "2026-10-16T06:03:32.115Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Incomprehensible%20(Live%20at%203Arena%2C%20Dublin%2C%20Ireland%20April%2029%202026)%20-%20Single%20Big%20Thief%202026",
       "art": {
