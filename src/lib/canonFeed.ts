@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-16",
-  "sourceSyncedAt": "2026-10-16T02:24:01.507Z",
+  "sourceSyncedAt": "2026-10-16T02:55:32.402Z",
   "totalWorks": 4438,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-16T02:24:22.052Z",
-      "importAttemptAt": "2026-10-16T02:24:22.052Z",
+      "syncedAt": "2026-10-16T02:55:39.305Z",
+      "importAttemptAt": "2026-10-16T02:55:39.305Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-16T02:06:47.000Z",
-      "syncedAt": "2026-10-16T02:24:01.861Z",
-      "importAttemptAt": "2026-10-16T02:24:01.861Z",
+      "activityAt": "2026-10-16T02:53:04.000Z",
+      "syncedAt": "2026-10-16T02:55:32.402Z",
+      "importAttemptAt": "2026-10-16T02:55:32.402Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Arthur Fiedler, André Gauthier, The Philadelphia Orchestra, Eugene Ormandy, David Bowie, Boston Pops Orchestra, Leo Litwin, Samuel Lipman & Martin Hoherman",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-16T02:24:01.462Z",
-      "syncedAt": "2026-10-16T02:24:01.507Z",
-      "importAttemptAt": "2026-10-16T02:24:01.507Z",
+      "activityAt": "2026-10-16T02:55:32.402Z",
+      "syncedAt": "2026-10-16T02:55:32.426Z",
+      "importAttemptAt": "2026-10-16T02:55:32.426Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Prokofiev%3A%20Peter%20and%20the%20Wolf%20Arthur%20Fiedler%2C%20Andr%C3%A9%20Gauthier%2C%20The%20Philadelphia%20Orchestra%2C%20Eugene%20Ormandy%2C%20David%20Bowie%2C%20Boston%20Pops%20Orchestra%2C%20Leo%20Litwin%2C%20Samuel%20Lipman%20%26%20Martin%20Hoherman%201978",
       "art": {
