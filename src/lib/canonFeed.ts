@@ -36,8 +36,8 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-10-15",
-  "sourceSyncedAt": "2026-10-15T23:47:31.934Z",
+  "generatedAt": "2026-10-16",
+  "sourceSyncedAt": "2026-10-16T00:18:45.062Z",
   "totalWorks": 4437,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-15T23:47:37.512Z",
-      "importAttemptAt": "2026-10-15T23:47:37.512Z",
+      "syncedAt": "2026-10-16T00:18:52.765Z",
+      "importAttemptAt": "2026-10-16T00:18:52.765Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
@@ -68,18 +68,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:12140",
+      "id": "steam:730",
       "verb": "playing",
       "medium": "game",
-      "title": "Max Payne",
-      "creator": "Remedy Entertainment",
+      "title": "Counter-Strike 2",
+      "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-15T21:14:16.000Z",
-      "syncedAt": "2026-10-15T23:47:31.934Z",
-      "importAttemptAt": "2026-10-15T23:47:31.934Z",
+      "activityAt": "2026-10-16T00:14:32.000Z",
+      "syncedAt": "2026-10-16T00:18:45.062Z",
+      "importAttemptAt": "2026-10-16T00:18:45.062Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/12140/",
+      "href": "https://store.steampowered.com/app/730/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Dpat",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-15T23:47:31.995Z",
-      "syncedAt": "2026-10-15T23:47:32.018Z",
-      "importAttemptAt": "2026-10-15T23:47:32.018Z",
+      "activityAt": "2026-10-16T00:18:45.110Z",
+      "syncedAt": "2026-10-16T00:18:45.159Z",
+      "importAttemptAt": "2026-10-16T00:18:45.159Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=days%20of%20heaven%20-%20Single%20Dpat%202026",
       "art": {
