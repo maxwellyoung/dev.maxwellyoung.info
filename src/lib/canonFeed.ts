@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-16",
-  "sourceSyncedAt": "2026-10-16T03:58:10.109Z",
+  "sourceSyncedAt": "2026-10-16T04:29:38.311Z",
   "totalWorks": 4440,
   "regionCount": 22,
   "regions": [
-    "Eclectic Pop & Rock",
-    "Contemporary Hip-Hop Fusion",
-    "Romantic Comedic Dramas",
-    "Tech & Society Insights"
+    "Contemporary Alternative",
+    "Modern Hip-Hop & R&B",
+    "Contemporary Drama & Horror",
+    "Technology & Society"
   ],
   "now": [
     {
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-16T03:58:16.245Z",
-      "importAttemptAt": "2026-10-16T03:58:16.245Z",
+      "syncedAt": "2026-10-16T04:29:46.131Z",
+      "importAttemptAt": "2026-10-16T04:29:46.131Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1281331",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-16T03:57:25.000Z",
-      "syncedAt": "2026-10-16T03:58:10.109Z",
-      "importAttemptAt": "2026-10-16T03:58:10.109Z",
+      "activityAt": "2026-10-16T04:27:26.000Z",
+      "syncedAt": "2026-10-16T04:29:38.311Z",
+      "importAttemptAt": "2026-10-16T04:29:38.311Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Big Thief",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-16T03:58:10.392Z",
-      "syncedAt": "2026-10-16T03:58:10.421Z",
-      "importAttemptAt": "2026-10-16T03:58:10.421Z",
+      "activityAt": "2026-10-16T04:29:38.524Z",
+      "syncedAt": "2026-10-16T04:29:38.537Z",
+      "importAttemptAt": "2026-10-16T04:29:38.537Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Incomprehensible%20(Live%20at%203Arena%2C%20Dublin%2C%20Ireland%20April%2029%202026)%20-%20Single%20Big%20Thief%202026",
       "art": {
