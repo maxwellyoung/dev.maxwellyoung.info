@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-17",
-  "sourceSyncedAt": "2026-10-17T20:43:15.769Z",
+  "sourceSyncedAt": "2026-10-17T21:14:30.774Z",
   "totalWorks": 4443,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-17T20:43:22.306Z",
-      "importAttemptAt": "2026-10-17T20:43:22.306Z",
+      "syncedAt": "2026-10-17T21:14:37.949Z",
+      "importAttemptAt": "2026-10-17T21:14:37.949Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1204680",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-16T06:27:50.000Z",
-      "syncedAt": "2026-10-17T20:43:15.769Z",
-      "importAttemptAt": "2026-10-17T20:43:15.769Z",
+      "syncedAt": "2026-10-17T21:14:30.810Z",
+      "importAttemptAt": "2026-10-17T21:14:30.810Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -87,18 +87,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:elio--autonomy",
+      "id": "applemusic:tom-waits--rain-dogs-2023-remaster",
       "verb": "in rotation",
       "medium": "music",
-      "title": "autonomy+",
-      "creator": "ELIO",
+      "title": "Rain Dogs (2023 Remaster)",
+      "creator": "Tom Waits",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-17T20:43:15.888Z",
-      "syncedAt": "2026-10-17T20:43:15.912Z",
-      "importAttemptAt": "2026-10-17T20:43:15.912Z",
+      "activityAt": "2026-10-17T21:14:30.748Z",
+      "syncedAt": "2026-10-17T21:14:30.774Z",
+      "importAttemptAt": "2026-10-17T21:14:30.774Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=autonomy%2B%20ELIO%202026",
+      "href": "https://music.apple.com/nz/search?term=Rain%20Dogs%20(2023%20Remaster)%20Tom%20Waits%201985",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
