@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-17",
-  "sourceSyncedAt": "2026-10-17T12:24:12.907Z",
+  "sourceSyncedAt": "2026-10-17T12:55:29.568Z",
   "totalWorks": 4442,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-17T12:24:20.115Z",
-      "importAttemptAt": "2026-10-17T12:24:20.115Z",
+      "syncedAt": "2026-10-17T12:55:36.492Z",
+      "importAttemptAt": "2026-10-17T12:55:36.492Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1204680",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-16T06:27:50.000Z",
-      "syncedAt": "2026-10-17T12:24:13.286Z",
-      "importAttemptAt": "2026-10-17T12:24:13.286Z",
+      "syncedAt": "2026-10-17T12:55:29.603Z",
+      "importAttemptAt": "2026-10-17T12:55:29.603Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "The Caretaker",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-17T12:24:12.884Z",
-      "syncedAt": "2026-10-17T12:24:12.907Z",
-      "importAttemptAt": "2026-10-17T12:24:12.907Z",
+      "activityAt": "2026-10-17T12:55:29.547Z",
+      "syncedAt": "2026-10-17T12:55:29.568Z",
+      "importAttemptAt": "2026-10-17T12:55:29.568Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Everywhere%20at%20the%20End%20of%20Time%20(Stage%206)%20The%20Caretaker%202019",
       "art": {
