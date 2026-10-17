@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-17",
-  "sourceSyncedAt": "2026-10-17T21:45:47.484Z",
+  "sourceSyncedAt": "2026-10-17T22:17:02.220Z",
   "totalWorks": 4443,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-17T21:45:54.638Z",
-      "importAttemptAt": "2026-10-17T21:45:54.638Z",
+      "syncedAt": "2026-10-17T22:17:09.349Z",
+      "importAttemptAt": "2026-10-17T22:17:09.349Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1204680",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-16T06:27:50.000Z",
-      "syncedAt": "2026-10-17T21:45:47.484Z",
-      "importAttemptAt": "2026-10-17T21:45:47.484Z",
+      "activityAt": "2026-10-17T22:13:20.000Z",
+      "syncedAt": "2026-10-17T22:17:02.464Z",
+      "importAttemptAt": "2026-10-17T22:17:02.464Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Tom Waits",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-17T21:45:47.710Z",
-      "syncedAt": "2026-10-17T21:45:47.732Z",
-      "importAttemptAt": "2026-10-17T21:45:47.732Z",
+      "activityAt": "2026-10-17T22:17:02.196Z",
+      "syncedAt": "2026-10-17T22:17:02.220Z",
+      "importAttemptAt": "2026-10-17T22:17:02.220Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Rain%20Dogs%20(2023%20Remaster)%20Tom%20Waits%201985",
       "art": {
