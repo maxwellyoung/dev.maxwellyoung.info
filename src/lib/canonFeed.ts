@@ -37,30 +37,29 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-17",
-  "sourceSyncedAt": "2026-10-17T02:55:54.570Z",
+  "sourceSyncedAt": "2026-10-17T03:27:21.509Z",
   "totalWorks": 4441,
   "regionCount": 22,
   "regions": [
-    "Contemporary Alternative",
-    "Modern Hip-Hop & R&B",
-    "Contemporary Drama & Horror",
-    "Technology & Society"
+    "Contemporary Hip-Hop/Rap",
+    "Romantic Dramedies",
+    "Soulful Rock & Pop",
+    "Introspective Thrillers"
   ],
   "now": [
     {
-      "id": "letterboxd:the-social-reckoning-2026",
+      "id": "letterboxd:coyote-vs-acme-2026",
       "verb": "watched",
       "medium": "movie",
-      "title": "The Social Reckoning",
-      "creator": "Aaron Sorkin",
+      "title": "Coyote vs. Acme",
       "year": 2026,
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-17T02:56:02.716Z",
-      "importAttemptAt": "2026-10-17T02:56:02.716Z",
+      "syncedAt": "2026-10-17T03:27:29.419Z",
+      "importAttemptAt": "2026-10-17T03:27:29.419Z",
       "syncStatus": "ok",
-      "href": "https://www.themoviedb.org/movie/1281331",
+      "href": "https://www.themoviedb.org/movie/1204680",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 240,
@@ -76,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-16T06:27:50.000Z",
-      "syncedAt": "2026-10-17T02:55:54.640Z",
-      "importAttemptAt": "2026-10-17T02:55:54.640Z",
+      "syncedAt": "2026-10-17T03:27:21.755Z",
+      "importAttemptAt": "2026-10-17T03:27:21.755Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Big Thief",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-17T02:55:54.550Z",
-      "syncedAt": "2026-10-17T02:55:54.570Z",
-      "importAttemptAt": "2026-10-17T02:55:54.570Z",
+      "activityAt": "2026-10-17T03:27:21.464Z",
+      "syncedAt": "2026-10-17T03:27:21.509Z",
+      "importAttemptAt": "2026-10-17T03:27:21.509Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Incomprehensible%20(Live%20at%203Arena%2C%20Dublin%2C%20Ireland%20April%2029%202026)%20-%20Single%20Big%20Thief%202026",
       "art": {
