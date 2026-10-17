@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-17",
-  "sourceSyncedAt": "2026-10-17T03:58:41.137Z",
+  "sourceSyncedAt": "2026-10-17T04:30:11.863Z",
   "totalWorks": 4442,
   "regionCount": 22,
   "regions": [
-    "Contemporary Hip-Hop/Rap",
-    "Romantic Dramedies",
-    "Soulful Rock & Pop",
-    "Introspective Thrillers"
+    "Modern Hip-Hop & R&B",
+    "Classic Comedies & Dramas",
+    "Dark Comedies & Thrillers",
+    "Romantic Thrillers & Dramas"
   ],
   "now": [
     {
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-17T03:58:47.494Z",
-      "importAttemptAt": "2026-10-17T03:58:47.494Z",
+      "syncedAt": "2026-10-17T04:30:20.952Z",
+      "importAttemptAt": "2026-10-17T04:30:20.952Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1204680",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-16T06:27:50.000Z",
-      "syncedAt": "2026-10-17T03:58:41.387Z",
-      "importAttemptAt": "2026-10-17T03:58:41.387Z",
+      "syncedAt": "2026-10-17T04:30:11.863Z",
+      "importAttemptAt": "2026-10-17T04:30:11.863Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "The Caretaker",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-17T03:58:41.093Z",
-      "syncedAt": "2026-10-17T03:58:41.137Z",
-      "importAttemptAt": "2026-10-17T03:58:41.137Z",
+      "activityAt": "2026-10-17T04:30:11.876Z",
+      "syncedAt": "2026-10-17T04:30:11.887Z",
+      "importAttemptAt": "2026-10-17T04:30:11.887Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Everywhere%20at%20the%20End%20of%20Time%20(Stage%206)%20The%20Caretaker%202019",
       "art": {
