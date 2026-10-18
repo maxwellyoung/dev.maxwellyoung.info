@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-18",
-  "sourceSyncedAt": "2026-10-18T22:48:16.399Z",
+  "sourceSyncedAt": "2026-10-18T23:19:32.524Z",
   "totalWorks": 4442,
   "regionCount": 22,
   "regions": [
@@ -48,22 +48,21 @@ export const canonFeed: CanonFeed = {
   ],
   "now": [
     {
-      "id": "letterboxd:coyote-vs-acme-2026",
-      "verb": "watched",
-      "medium": "movie",
-      "title": "Coyote vs. Acme",
-      "creator": "Dave Green",
-      "year": 2026,
-      "note": "A dated finish recorded in Canon.",
-      "evidenceSource": "letterboxd",
-      "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-18T22:48:22.557Z",
-      "importAttemptAt": "2026-10-18T22:48:22.557Z",
+      "id": "jellyfin:b5c3bb0e89eb7511fea3376737e8cbe0",
+      "verb": "watching",
+      "medium": "show",
+      "title": "Tires",
+      "creator": "Netflix",
+      "note": "Recent watching activity.",
+      "evidenceSource": "jellyfin",
+      "activityAt": "2026-10-18T22:41:13.862Z",
+      "syncedAt": "2026-10-18T23:19:33.484Z",
+      "importAttemptAt": "2026-10-18T23:19:33.484Z",
       "syncStatus": "ok",
-      "href": "https://www.themoviedb.org/movie/1204680",
+      "href": "https://www.themoviedb.org/tv/247522",
       "art": {
         "src": "/canon/watched.jpg",
-        "w": 240,
+        "w": 245,
         "h": 360
       }
     },
@@ -76,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-18T06:19:19.000Z",
-      "syncedAt": "2026-10-18T22:48:16.499Z",
-      "importAttemptAt": "2026-10-18T22:48:16.499Z",
+      "syncedAt": "2026-10-18T23:19:32.767Z",
+      "importAttemptAt": "2026-10-18T23:19:32.767Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Trey Songz",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-18T22:48:16.378Z",
-      "syncedAt": "2026-10-18T22:48:16.399Z",
-      "importAttemptAt": "2026-10-18T22:48:16.399Z",
+      "activityAt": "2026-10-18T23:19:32.489Z",
+      "syncedAt": "2026-10-18T23:19:32.524Z",
+      "importAttemptAt": "2026-10-18T23:19:32.524Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ready%20(Deluxe)%20Trey%20Songz%202009",
       "art": {
