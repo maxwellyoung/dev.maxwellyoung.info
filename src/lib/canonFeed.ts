@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-18",
-  "sourceSyncedAt": "2026-10-18T01:24:41.603Z",
+  "sourceSyncedAt": "2026-10-18T01:55:58.573Z",
   "totalWorks": 4443,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-18T01:24:48.690Z",
-      "importAttemptAt": "2026-10-18T01:24:48.690Z",
+      "syncedAt": "2026-10-18T01:56:05.632Z",
+      "importAttemptAt": "2026-10-18T01:56:05.632Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1204680",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-17T23:55:13.000Z",
-      "syncedAt": "2026-10-18T01:24:41.603Z",
-      "importAttemptAt": "2026-10-18T01:24:41.603Z",
+      "syncedAt": "2026-10-18T01:55:58.573Z",
+      "importAttemptAt": "2026-10-18T01:55:58.573Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -87,18 +87,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:drake--scorpion",
+      "id": "applemusic:maxwell-young--sneakin-drinks-into-bars-single",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Scorpion",
-      "creator": "Drake",
+      "title": "Sneakin Drinks into Bars",
+      "creator": "Maxwell Young",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-18T01:24:42.112Z",
-      "syncedAt": "2026-10-18T01:24:42.162Z",
-      "importAttemptAt": "2026-10-18T01:24:42.162Z",
+      "activityAt": "2026-10-18T01:55:58.997Z",
+      "syncedAt": "2026-10-18T01:55:59.021Z",
+      "importAttemptAt": "2026-10-18T01:55:59.021Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Scorpion%20Drake%202018",
+      "href": "https://music.apple.com/nz/search?term=Sneakin%20Drinks%20into%20Bars%20-%20Single%20Maxwell%20Young%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
