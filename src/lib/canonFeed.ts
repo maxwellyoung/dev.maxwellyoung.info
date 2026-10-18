@@ -36,8 +36,8 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-10-17",
-  "sourceSyncedAt": "2026-10-17T23:50:49.911Z",
+  "generatedAt": "2026-10-18",
+  "sourceSyncedAt": "2026-10-18T00:22:11.338Z",
   "totalWorks": 4443,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-17T23:50:57.941Z",
-      "importAttemptAt": "2026-10-17T23:50:57.941Z",
+      "syncedAt": "2026-10-18T00:22:18.575Z",
+      "importAttemptAt": "2026-10-18T00:22:18.575Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1204680",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-17T23:43:20.000Z",
-      "syncedAt": "2026-10-17T23:50:50.246Z",
-      "importAttemptAt": "2026-10-17T23:50:50.246Z",
+      "activityAt": "2026-10-17T23:55:13.000Z",
+      "syncedAt": "2026-10-18T00:22:11.338Z",
+      "importAttemptAt": "2026-10-18T00:22:11.338Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -87,18 +87,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:tom-waits--rain-dogs-2023-remaster",
+      "id": "applemusic:drake--scorpion",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Rain Dogs (2023 Remaster)",
-      "creator": "Tom Waits",
+      "title": "Scorpion",
+      "creator": "Drake",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-17T23:50:49.864Z",
-      "syncedAt": "2026-10-17T23:50:49.911Z",
-      "importAttemptAt": "2026-10-17T23:50:49.911Z",
+      "activityAt": "2026-10-18T00:22:11.713Z",
+      "syncedAt": "2026-10-18T00:22:11.768Z",
+      "importAttemptAt": "2026-10-18T00:22:11.768Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Rain%20Dogs%20(2023%20Remaster)%20Tom%20Waits%201985",
+      "href": "https://music.apple.com/nz/search?term=Scorpion%20Drake%202018",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
