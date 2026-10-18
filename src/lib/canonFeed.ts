@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-18",
-  "sourceSyncedAt": "2026-10-18T06:06:19.427Z",
+  "sourceSyncedAt": "2026-10-18T06:37:39.361Z",
   "totalWorks": 4443,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-13T00:00:00.000Z",
-      "syncedAt": "2026-10-18T06:06:25.533Z",
-      "importAttemptAt": "2026-10-18T06:06:25.533Z",
+      "syncedAt": "2026-10-18T06:37:46.510Z",
+      "importAttemptAt": "2026-10-18T06:37:46.510Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1204680",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-18T05:41:34.000Z",
-      "syncedAt": "2026-10-18T06:06:19.556Z",
-      "importAttemptAt": "2026-10-18T06:06:19.556Z",
+      "activityAt": "2026-10-18T06:19:19.000Z",
+      "syncedAt": "2026-10-18T06:37:39.495Z",
+      "importAttemptAt": "2026-10-18T06:37:39.495Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -87,18 +87,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:maxwell-young--sneakin-drinks-into-bars-single",
+      "id": "applemusic:trey-songz--ready-deluxe",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Sneakin Drinks into Bars",
-      "creator": "Maxwell Young",
+      "title": "Ready",
+      "creator": "Trey Songz",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-18T06:06:19.388Z",
-      "syncedAt": "2026-10-18T06:06:19.427Z",
-      "importAttemptAt": "2026-10-18T06:06:19.427Z",
+      "activityAt": "2026-10-18T06:37:39.334Z",
+      "syncedAt": "2026-10-18T06:37:39.361Z",
+      "importAttemptAt": "2026-10-18T06:37:39.361Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Sneakin%20Drinks%20into%20Bars%20-%20Single%20Maxwell%20Young%202026",
+      "href": "https://music.apple.com/nz/search?term=Ready%20(Deluxe)%20Trey%20Songz%202009",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
