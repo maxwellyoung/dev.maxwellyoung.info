@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-19",
-  "sourceSyncedAt": "2026-10-19T09:15:58.049Z",
+  "sourceSyncedAt": "2026-10-19T09:47:14.905Z",
   "totalWorks": 4456,
   "regionCount": 22,
   "regions": [
@@ -48,21 +48,22 @@ export const canonFeed: CanonFeed = {
   ],
   "now": [
     {
-      "id": "jellyfin:b5c3bb0e89eb7511fea3376737e8cbe0",
-      "verb": "watching",
-      "medium": "show",
-      "title": "Tires",
-      "creator": "Netflix",
-      "note": "Recent watching activity.",
+      "id": "letterboxd:breaking-the-waves-1996",
+      "verb": "watched",
+      "medium": "movie",
+      "title": "Breaking the Waves",
+      "creator": "Lars von Trier",
+      "year": 1996,
+      "note": "A dated finish recorded in Canon.",
       "evidenceSource": "jellyfin",
-      "activityAt": "2026-10-19T08:51:27.735Z",
-      "syncedAt": "2026-10-19T09:15:58.946Z",
-      "importAttemptAt": "2026-10-19T09:15:58.946Z",
+      "activityAt": "2026-10-19T02:14:10.302Z",
+      "syncedAt": "2026-10-19T09:47:16.249Z",
+      "importAttemptAt": "2026-10-19T09:47:16.249Z",
       "syncStatus": "ok",
-      "href": "https://www.themoviedb.org/tv/247522",
+      "href": "https://www.themoviedb.org/movie/145",
       "art": {
         "src": "/canon/watched.jpg",
-        "w": 245,
+        "w": 240,
         "h": 360
       }
     },
@@ -75,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-19T08:18:47.000Z",
-      "syncedAt": "2026-10-19T09:15:58.407Z",
-      "importAttemptAt": "2026-10-19T09:15:58.407Z",
+      "syncedAt": "2026-10-19T09:47:15.810Z",
+      "importAttemptAt": "2026-10-19T09:47:15.810Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/1868140/",
       "art": {
@@ -93,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Trey Songz",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-19T09:15:58.024Z",
-      "syncedAt": "2026-10-19T09:15:58.049Z",
-      "importAttemptAt": "2026-10-19T09:15:58.049Z",
+      "activityAt": "2026-10-19T09:47:14.880Z",
+      "syncedAt": "2026-10-19T09:47:14.905Z",
+      "importAttemptAt": "2026-10-19T09:47:14.905Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ready%20(Deluxe)%20Trey%20Songz%202009",
       "art": {
