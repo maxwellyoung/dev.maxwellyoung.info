@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-19",
-  "sourceSyncedAt": "2026-10-19T08:13:00.554Z",
+  "sourceSyncedAt": "2026-10-19T08:44:32.903Z",
   "totalWorks": 4456,
   "regionCount": 22,
   "regions": [
-    "Darkly Humorous Thrillers",
-    "Classic American Dramas",
-    "Contemporary Indie Sounds",
-    "Diverse Musical Influences"
+    "Hip-Hop & Alternative Vibes",
+    "Contemporary Drama & Romance",
+    "Cult Classics & Thrillers",
+    "Surreal Drama & Fantasy"
   ],
   "now": [
     {
@@ -55,9 +55,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Netflix",
       "note": "Recent watching activity.",
       "evidenceSource": "jellyfin",
-      "activityAt": "2026-10-19T05:13:14.538Z",
-      "syncedAt": "2026-10-19T08:13:01.522Z",
-      "importAttemptAt": "2026-10-19T08:13:01.522Z",
+      "activityAt": "2026-10-19T08:27:51.216Z",
+      "syncedAt": "2026-10-19T08:44:34.239Z",
+      "importAttemptAt": "2026-10-19T08:44:34.239Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/247522",
       "art": {
@@ -67,18 +67,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:730",
+      "id": "steam:1868140",
       "verb": "playing",
       "medium": "game",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "DAVE THE DIVER",
+      "creator": "MINTROCKET",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-19T07:20:21.000Z",
-      "syncedAt": "2026-10-19T08:13:00.554Z",
-      "importAttemptAt": "2026-10-19T08:13:00.554Z",
+      "activityAt": "2026-10-19T08:18:47.000Z",
+      "syncedAt": "2026-10-19T08:44:33.616Z",
+      "importAttemptAt": "2026-10-19T08:44:33.616Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/730/",
+      "href": "https://store.steampowered.com/app/1868140/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Trey Songz",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-19T08:13:00.554Z",
-      "syncedAt": "2026-10-19T08:13:00.582Z",
-      "importAttemptAt": "2026-10-19T08:13:00.582Z",
+      "activityAt": "2026-10-19T08:44:32.877Z",
+      "syncedAt": "2026-10-19T08:44:32.903Z",
+      "importAttemptAt": "2026-10-19T08:44:32.903Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ready%20(Deluxe)%20Trey%20Songz%202009",
       "art": {
