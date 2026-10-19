@@ -1,0 +1,78 @@
+<!doctype html>
+<!--
+  Source for public/meta.png, the default Open Graph / Twitter card.
+  Mirrors the homepage hero so the share card reads as the site itself.
+  Regenerate with: node scripts/og/render-meta-card.mjs
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: "General Sans";
+        src: url("../../public/fonts/GeneralSans-Variable.woff2") format("woff2");
+        font-weight: 200 700;
+      }
+      * { margin: 0; box-sizing: border-box; }
+      html, body { width: 1200px; height: 630px; }
+      body {
+        background: #fcfcfc;
+        color: #121212;
+        font-family: "General Sans", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        padding: 96px 104px 80px;
+        display: flex;
+        flex-direction: column;
+      }
+      h1 {
+        font-size: 84px;
+        font-weight: 500;
+        letter-spacing: -0.035em;
+        line-height: 1;
+      }
+      .role {
+        margin-top: 18px;
+        font-size: 40px;
+        font-weight: 300;
+        letter-spacing: -0.02em;
+        color: #404040;
+      }
+      .foot {
+        margin-top: auto;
+        padding-top: 36px;
+        border-top: 1px solid #e6e6e6;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logos { display: flex; align-items: center; gap: 48px; }
+      /* Same treatment as CompanyLogoStudy: each logo is a foreground-coloured mask. */
+      .logos span {
+        display: block;
+        background: #121212;
+        opacity: 0.55;
+        -webkit-mask: var(--src) center / contain no-repeat;
+        mask: var(--src) center / contain no-repeat;
+      }
+      .url {
+        font-size: 24px;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        color: #6b6b6b;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Maxwell Young</h1>
+    <p class="role">Product engineer focused on mobile experiences.</p>
+    <div class="foot">
+      <div class="logos">
+        <span style="--src: url(../../public/company-logos/silk.svg); width: 120px; height: 40px"></span>
+        <span style="--src: url(../../public/company-logos/university-of-auckland.svg); width: 132px; height: 50px"></span>
+        <span style="--src: url(../../public/company-logos/aut.svg); width: 72px; height: 56px"></span>
+        <span style="--src: url(../../public/company-logos/spark.svg); width: 112px; height: 38px"></span>
+      </div>
+      <span class="url">dev.maxwellyoung.info</span>
+    </div>
+  </body>
+</html>
