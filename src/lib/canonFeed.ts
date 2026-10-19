@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-19",
-  "sourceSyncedAt": "2026-10-19T07:10:10.627Z",
+  "sourceSyncedAt": "2026-10-19T07:41:40.972Z",
   "totalWorks": 4455,
   "regionCount": 22,
   "regions": [
-    "Eclectic Rock & Pop",
-    "Contemporary R&B & Hip-Hop",
-    "Quirky Comedies & Fantasies",
-    "Thought-Provoking Documentaries"
+    "Darkly Humorous Thrillers",
+    "Classic American Dramas",
+    "Contemporary Indie Sounds",
+    "Diverse Musical Influences"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T04:45:54.096Z",
-      "syncedAt": "2026-10-19T07:10:11.896Z",
-      "importAttemptAt": "2026-10-19T07:10:11.896Z",
+      "syncedAt": "2026-10-19T07:41:42.136Z",
+      "importAttemptAt": "2026-10-19T07:41:42.136Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/247522",
       "art": {
@@ -74,9 +74,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-19T07:00:09.000Z",
-      "syncedAt": "2026-10-19T07:10:10.627Z",
-      "importAttemptAt": "2026-10-19T07:10:10.627Z",
+      "activityAt": "2026-10-19T07:20:21.000Z",
+      "syncedAt": "2026-10-19T07:41:40.972Z",
+      "importAttemptAt": "2026-10-19T07:41:40.972Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Trey Songz",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-19T07:10:10.893Z",
-      "syncedAt": "2026-10-19T07:10:10.929Z",
-      "importAttemptAt": "2026-10-19T07:10:10.929Z",
+      "activityAt": "2026-10-19T07:41:41.471Z",
+      "syncedAt": "2026-10-19T07:41:41.495Z",
+      "importAttemptAt": "2026-10-19T07:41:41.495Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ready%20(Deluxe)%20Trey%20Songz%202009",
       "art": {
