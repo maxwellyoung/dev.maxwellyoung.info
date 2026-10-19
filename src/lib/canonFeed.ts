@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-19",
-  "sourceSyncedAt": "2026-10-19T21:18:29.492Z",
+  "sourceSyncedAt": "2026-10-19T21:50:07.185Z",
   "totalWorks": 4458,
   "regionCount": 22,
   "regions": [
-    "Classic Romantic Comedies",
-    "Contemporary Hip-Hop Fusion",
-    "Modern Hip-Hop Vibes",
-    "Thought-Provoking Documentaries"
+    "Timeless Romantic Dramas",
+    "Innovative Hip-Hop Sounds",
+    "Introspective Documentaries",
+    "Dark Crime Thrillers"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-19T21:18:30.468Z",
-      "importAttemptAt": "2026-10-19T21:18:30.468Z",
+      "syncedAt": "2026-10-19T21:50:08.955Z",
+      "importAttemptAt": "2026-10-19T21:50:08.955Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-19T08:18:47.000Z",
-      "syncedAt": "2026-10-19T21:18:29.492Z",
-      "importAttemptAt": "2026-10-19T21:18:29.492Z",
+      "syncedAt": "2026-10-19T21:50:07.185Z",
+      "importAttemptAt": "2026-10-19T21:50:07.185Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/1868140/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Merges",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-19T21:18:29.589Z",
-      "syncedAt": "2026-10-19T21:18:29.629Z",
-      "importAttemptAt": "2026-10-19T21:18:29.629Z",
+      "activityAt": "2026-10-19T21:50:07.628Z",
+      "syncedAt": "2026-10-19T21:50:07.647Z",
+      "importAttemptAt": "2026-10-19T21:50:07.647Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Another%20State%20-%20Single%20Merges%202026",
       "art": {
