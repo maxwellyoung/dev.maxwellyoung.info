@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-19",
-  "sourceSyncedAt": "2026-10-19T21:50:07.185Z",
+  "sourceSyncedAt": "2026-10-19T22:21:22.095Z",
   "totalWorks": 4458,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-19T21:50:08.955Z",
-      "importAttemptAt": "2026-10-19T21:50:08.955Z",
+      "syncedAt": "2026-10-19T22:21:23.454Z",
+      "importAttemptAt": "2026-10-19T22:21:23.454Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-19T08:18:47.000Z",
-      "syncedAt": "2026-10-19T21:50:07.185Z",
-      "importAttemptAt": "2026-10-19T21:50:07.185Z",
+      "syncedAt": "2026-10-19T22:21:22.095Z",
+      "importAttemptAt": "2026-10-19T22:21:22.095Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/1868140/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Merges",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-19T21:50:07.628Z",
-      "syncedAt": "2026-10-19T21:50:07.647Z",
-      "importAttemptAt": "2026-10-19T21:50:07.647Z",
+      "activityAt": "2026-10-19T22:21:22.332Z",
+      "syncedAt": "2026-10-19T22:21:22.366Z",
+      "importAttemptAt": "2026-10-19T22:21:22.366Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Another%20State%20-%20Single%20Merges%202026",
       "art": {
