@@ -37,32 +37,33 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-19",
-  "sourceSyncedAt": "2026-10-19T01:56:20.274Z",
+  "sourceSyncedAt": "2026-10-19T02:27:52.400Z",
   "totalWorks": 4455,
   "regionCount": 22,
   "regions": [
-    "Diverse Music Scenes",
-    "Eclectic Music Genres",
-    "Psychological Thrillers",
-    "War & Sci-Fi Epics"
+    "Genre-Bending Dramas",
+    "Classic Crime Dramas",
+    "Modern Hip-Hop & R&B",
+    "Diverse Music Scene"
   ],
   "now": [
     {
-      "id": "jellyfin:b5c3bb0e89eb7511fea3376737e8cbe0",
-      "verb": "watching",
-      "medium": "show",
-      "title": "Tires",
-      "creator": "Netflix",
-      "note": "Recent watching activity.",
+      "id": "letterboxd:breaking-the-waves-1996",
+      "verb": "watched",
+      "medium": "movie",
+      "title": "Breaking the Waves",
+      "creator": "Lars von Trier",
+      "year": 1996,
+      "note": "A dated finish recorded in Canon.",
       "evidenceSource": "jellyfin",
-      "activityAt": "2026-10-18T23:59:39.862Z",
-      "syncedAt": "2026-10-19T01:56:21.412Z",
-      "importAttemptAt": "2026-10-19T01:56:21.412Z",
+      "activityAt": "2026-10-19T02:14:10.302Z",
+      "syncedAt": "2026-10-19T02:27:53.811Z",
+      "importAttemptAt": "2026-10-19T02:27:53.811Z",
       "syncStatus": "ok",
-      "href": "https://www.themoviedb.org/tv/247522",
+      "href": "https://www.themoviedb.org/movie/145",
       "art": {
         "src": "/canon/watched.jpg",
-        "w": 245,
+        "w": 240,
         "h": 360
       }
     },
@@ -75,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-18T06:19:19.000Z",
-      "syncedAt": "2026-10-19T01:56:20.274Z",
-      "importAttemptAt": "2026-10-19T01:56:20.274Z",
+      "syncedAt": "2026-10-19T02:27:52.692Z",
+      "importAttemptAt": "2026-10-19T02:27:52.692Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Trey Songz",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-19T01:56:20.686Z",
-      "syncedAt": "2026-10-19T01:56:20.710Z",
-      "importAttemptAt": "2026-10-19T01:56:20.710Z",
+      "activityAt": "2026-10-19T02:27:52.338Z",
+      "syncedAt": "2026-10-19T02:27:52.400Z",
+      "importAttemptAt": "2026-10-19T02:27:52.400Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ready%20(Deluxe)%20Trey%20Songz%202009",
       "art": {
@@ -107,6 +108,11 @@ export const canonFeed: CanonFeed = {
   ],
   "loves": [
     {
+      "title": "Breaking the Waves",
+      "creator": "Lars von Trier",
+      "rating": 10
+    },
+    {
       "title": "Maddie's Secret",
       "creator": "John Early",
       "rating": 10
@@ -114,11 +120,6 @@ export const canonFeed: CanonFeed = {
     {
       "title": "Dick",
       "creator": "Andrew Fleming",
-      "rating": 10
-    },
-    {
-      "title": "The Odyssey",
-      "creator": "Christopher Nolan",
       "rating": 10
     }
   ]
