@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-19",
-  "sourceSyncedAt": "2026-10-19T14:28:59.587Z",
+  "sourceSyncedAt": "2026-10-19T15:00:20.093Z",
   "totalWorks": 4456,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 17% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T10:20:35.923Z",
-      "syncedAt": "2026-10-19T14:29:00.549Z",
-      "importAttemptAt": "2026-10-19T14:29:00.549Z",
+      "syncedAt": "2026-10-19T15:00:21.203Z",
+      "importAttemptAt": "2026-10-19T15:00:21.203Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-19T08:18:47.000Z",
-      "syncedAt": "2026-10-19T14:28:59.806Z",
-      "importAttemptAt": "2026-10-19T14:28:59.806Z",
+      "syncedAt": "2026-10-19T15:00:20.093Z",
+      "importAttemptAt": "2026-10-19T15:00:20.093Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/1868140/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Trey Songz",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-19T14:28:59.562Z",
-      "syncedAt": "2026-10-19T14:28:59.587Z",
-      "importAttemptAt": "2026-10-19T14:28:59.587Z",
+      "activityAt": "2026-10-19T15:00:20.371Z",
+      "syncedAt": "2026-10-19T15:00:20.408Z",
+      "importAttemptAt": "2026-10-19T15:00:20.408Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ready%20(Deluxe)%20Trey%20Songz%202009",
       "art": {
