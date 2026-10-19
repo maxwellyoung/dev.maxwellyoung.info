@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-19",
-  "sourceSyncedAt": "2026-10-19T08:44:32.903Z",
+  "sourceSyncedAt": "2026-10-19T09:15:58.049Z",
   "totalWorks": 4456,
   "regionCount": 22,
   "regions": [
@@ -55,9 +55,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Netflix",
       "note": "Recent watching activity.",
       "evidenceSource": "jellyfin",
-      "activityAt": "2026-10-19T08:27:51.216Z",
-      "syncedAt": "2026-10-19T08:44:34.239Z",
-      "importAttemptAt": "2026-10-19T08:44:34.239Z",
+      "activityAt": "2026-10-19T08:51:27.735Z",
+      "syncedAt": "2026-10-19T09:15:58.946Z",
+      "importAttemptAt": "2026-10-19T09:15:58.946Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/247522",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-19T08:18:47.000Z",
-      "syncedAt": "2026-10-19T08:44:33.616Z",
-      "importAttemptAt": "2026-10-19T08:44:33.616Z",
+      "syncedAt": "2026-10-19T09:15:58.407Z",
+      "importAttemptAt": "2026-10-19T09:15:58.407Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/1868140/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Trey Songz",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-19T08:44:32.877Z",
-      "syncedAt": "2026-10-19T08:44:32.903Z",
-      "importAttemptAt": "2026-10-19T08:44:32.903Z",
+      "activityAt": "2026-10-19T09:15:58.024Z",
+      "syncedAt": "2026-10-19T09:15:58.049Z",
+      "importAttemptAt": "2026-10-19T09:15:58.049Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ready%20(Deluxe)%20Trey%20Songz%202009",
       "art": {
