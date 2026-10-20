@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-20",
-  "sourceSyncedAt": "2026-10-20T07:16:29.745Z",
+  "sourceSyncedAt": "2026-10-20T07:47:45.884Z",
   "totalWorks": 4462,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-20T07:16:31.069Z",
-      "importAttemptAt": "2026-10-20T07:16:31.069Z",
+      "syncedAt": "2026-10-20T07:47:47.365Z",
+      "importAttemptAt": "2026-10-20T07:47:47.365Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-19T08:18:47.000Z",
-      "syncedAt": "2026-10-20T07:16:30.806Z",
-      "importAttemptAt": "2026-10-20T07:16:30.806Z",
+      "syncedAt": "2026-10-20T07:47:46.421Z",
+      "importAttemptAt": "2026-10-20T07:47:46.421Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/1868140/",
       "art": {
@@ -86,18 +86,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:chris-brown--x-expanded-edition",
+      "id": "applemusic:drake--scorpion",
       "verb": "in rotation",
       "medium": "music",
-      "title": "X",
-      "creator": "Chris Brown",
+      "title": "Scorpion",
+      "creator": "Drake",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-20T07:16:29.724Z",
-      "syncedAt": "2026-10-20T07:16:29.745Z",
-      "importAttemptAt": "2026-10-20T07:16:29.745Z",
+      "activityAt": "2026-10-20T07:47:45.863Z",
+      "syncedAt": "2026-10-20T07:47:45.884Z",
+      "importAttemptAt": "2026-10-20T07:47:45.884Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=X%20(Expanded%20Edition)%20Chris%20Brown%202014",
+      "href": "https://music.apple.com/nz/search?term=Scorpion%20Drake%202018",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
