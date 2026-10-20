@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-20",
-  "sourceSyncedAt": "2026-10-20T20:51:45.526Z",
+  "sourceSyncedAt": "2026-10-20T21:23:29.738Z",
   "totalWorks": 4464,
   "regionCount": 22,
   "regions": [
-    "Romantic Psychological Thrillers",
-    "Diverse Music Genres",
-    "Eclectic Hip-Hop Vibes",
-    "Fantasy Comedies"
+    "Surrealist Sci-Fi Adventures",
+    "Hip-Hop/Rap / Alternative · 2020s",
+    "Indie Rock & Soul",
+    "Artistic Family Dramas"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-20T20:51:46.637Z",
-      "importAttemptAt": "2026-10-20T20:51:46.637Z",
+      "syncedAt": "2026-10-20T21:23:31.000Z",
+      "importAttemptAt": "2026-10-20T21:23:31.000Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-19T08:18:47.000Z",
-      "syncedAt": "2026-10-20T20:51:45.691Z",
-      "importAttemptAt": "2026-10-20T20:51:45.691Z",
+      "syncedAt": "2026-10-20T21:23:30.065Z",
+      "importAttemptAt": "2026-10-20T21:23:30.065Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/1868140/",
       "art": {
@@ -86,18 +86,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:drake--scorpion",
+      "id": "applemusic:crowded-house--crowded-house-deluxe-edition",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Scorpion",
-      "creator": "Drake",
+      "title": "Crowded House",
+      "creator": "Crowded House",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-20T20:51:45.499Z",
-      "syncedAt": "2026-10-20T20:51:45.526Z",
-      "importAttemptAt": "2026-10-20T20:51:45.526Z",
+      "activityAt": "2026-10-20T21:23:29.666Z",
+      "syncedAt": "2026-10-20T21:23:29.738Z",
+      "importAttemptAt": "2026-10-20T21:23:29.738Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Scorpion%20Drake%202018",
+      "href": "https://music.apple.com/nz/search?term=Crowded%20House%20(Deluxe%20Edition)%20Crowded%20House%201986",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
