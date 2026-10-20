@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-20",
-  "sourceSyncedAt": "2026-10-20T05:10:35.862Z",
+  "sourceSyncedAt": "2026-10-20T05:42:05.813Z",
   "totalWorks": 4462,
   "regionCount": 22,
   "regions": [
-    "Intimate Character Dramas",
-    "Trendy Hip-Hop & Pop",
-    "Contemporary Pop & Rock",
-    "Blockbuster Sci-Fi Adventures"
+    "Whimsical Fantasy Comedies",
+    "Dark Comedic Thrillers",
+    "Heartfelt Family Dramas",
+    "Innovative Hip-Hop Sounds"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-20T05:10:37.032Z",
-      "importAttemptAt": "2026-10-20T05:10:37.032Z",
+      "syncedAt": "2026-10-20T05:42:06.853Z",
+      "importAttemptAt": "2026-10-20T05:42:06.853Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-19T08:18:47.000Z",
-      "syncedAt": "2026-10-20T05:10:35.862Z",
-      "importAttemptAt": "2026-10-20T05:10:35.862Z",
+      "syncedAt": "2026-10-20T05:42:06.578Z",
+      "importAttemptAt": "2026-10-20T05:42:06.578Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/1868140/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Chris Brown",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-20T05:10:36.335Z",
-      "syncedAt": "2026-10-20T05:10:36.358Z",
-      "importAttemptAt": "2026-10-20T05:10:36.358Z",
+      "activityAt": "2026-10-20T05:42:05.790Z",
+      "syncedAt": "2026-10-20T05:42:05.813Z",
+      "importAttemptAt": "2026-10-20T05:42:05.813Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=X%20(Expanded%20Edition)%20Chris%20Brown%202014",
       "art": {
