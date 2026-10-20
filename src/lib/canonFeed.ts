@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-20",
-  "sourceSyncedAt": "2026-10-20T11:27:35.371Z",
+  "sourceSyncedAt": "2026-10-20T11:59:13.699Z",
   "totalWorks": 4463,
   "regionCount": 22,
   "regions": [
-    "Quirky Romantic Dramas",
-    "Indie Action & Adventure",
-    "Contemporary Hip-Hop & R&B",
-    "Indie Rock & Pop"
+    "Romantic Psychological Thrillers",
+    "Diverse Music Genres",
+    "Eclectic Hip-Hop Vibes",
+    "Fantasy Comedies"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-20T11:27:36.283Z",
-      "importAttemptAt": "2026-10-20T11:27:36.283Z",
+      "syncedAt": "2026-10-20T11:59:15.174Z",
+      "importAttemptAt": "2026-10-20T11:59:15.174Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-19T08:18:47.000Z",
-      "syncedAt": "2026-10-20T11:27:35.371Z",
-      "importAttemptAt": "2026-10-20T11:27:35.371Z",
+      "syncedAt": "2026-10-20T11:59:14.455Z",
+      "importAttemptAt": "2026-10-20T11:59:14.455Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/1868140/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Crowded House",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-20T11:27:35.371Z",
-      "syncedAt": "2026-10-20T11:27:35.394Z",
-      "importAttemptAt": "2026-10-20T11:27:35.394Z",
+      "activityAt": "2026-10-20T11:59:13.678Z",
+      "syncedAt": "2026-10-20T11:59:13.699Z",
+      "importAttemptAt": "2026-10-20T11:59:13.699Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Crowded%20House%20(Deluxe%20Edition)%20Crowded%20House%201986",
       "art": {
