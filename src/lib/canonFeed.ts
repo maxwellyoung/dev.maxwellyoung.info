@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-20",
-  "sourceSyncedAt": "2026-10-20T03:36:29.994Z",
+  "sourceSyncedAt": "2026-10-20T04:07:48.399Z",
   "totalWorks": 4461,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-20T03:36:31.386Z",
-      "importAttemptAt": "2026-10-20T03:36:31.386Z",
+      "syncedAt": "2026-10-20T04:07:49.854Z",
+      "importAttemptAt": "2026-10-20T04:07:49.854Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-19T08:18:47.000Z",
-      "syncedAt": "2026-10-20T03:36:29.994Z",
-      "importAttemptAt": "2026-10-20T03:36:29.994Z",
+      "syncedAt": "2026-10-20T04:07:48.646Z",
+      "importAttemptAt": "2026-10-20T04:07:48.646Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/1868140/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Chris Brown",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-20T03:36:30.009Z",
-      "syncedAt": "2026-10-20T03:36:30.061Z",
-      "importAttemptAt": "2026-10-20T03:36:30.061Z",
+      "activityAt": "2026-10-20T04:07:48.369Z",
+      "syncedAt": "2026-10-20T04:07:48.399Z",
+      "importAttemptAt": "2026-10-20T04:07:48.399Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=X%20(Expanded%20Edition)%20Chris%20Brown%202014",
       "art": {
