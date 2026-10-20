@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-20",
-  "sourceSyncedAt": "2026-10-20T07:47:45.884Z",
+  "sourceSyncedAt": "2026-10-20T08:19:00.425Z",
   "totalWorks": 4462,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-20T07:47:47.365Z",
-      "importAttemptAt": "2026-10-20T07:47:47.365Z",
+      "syncedAt": "2026-10-20T08:19:01.492Z",
+      "importAttemptAt": "2026-10-20T08:19:01.492Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-19T08:18:47.000Z",
-      "syncedAt": "2026-10-20T07:47:46.421Z",
-      "importAttemptAt": "2026-10-20T07:47:46.421Z",
+      "syncedAt": "2026-10-20T08:19:00.425Z",
+      "importAttemptAt": "2026-10-20T08:19:00.425Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/1868140/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Drake",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-20T07:47:45.863Z",
-      "syncedAt": "2026-10-20T07:47:45.884Z",
-      "importAttemptAt": "2026-10-20T07:47:45.884Z",
+      "activityAt": "2026-10-20T08:19:00.600Z",
+      "syncedAt": "2026-10-20T08:19:00.616Z",
+      "importAttemptAt": "2026-10-20T08:19:00.616Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Scorpion%20Drake%202018",
       "art": {
