@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-21",
-  "sourceSyncedAt": "2026-10-21T19:20:10.860Z",
+  "sourceSyncedAt": "2026-10-21T19:51:30.960Z",
   "totalWorks": 4465,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-21T19:20:12.396Z",
-      "importAttemptAt": "2026-10-21T19:20:12.396Z",
+      "syncedAt": "2026-10-21T19:51:33.940Z",
+      "importAttemptAt": "2026-10-21T19:51:33.940Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-19T08:18:47.000Z",
-      "syncedAt": "2026-10-21T19:20:11.148Z",
-      "importAttemptAt": "2026-10-21T19:20:11.148Z",
+      "syncedAt": "2026-10-21T19:51:30.960Z",
+      "importAttemptAt": "2026-10-21T19:51:30.960Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/1868140/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Crowded House",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-21T19:20:10.815Z",
-      "syncedAt": "2026-10-21T19:20:10.860Z",
-      "importAttemptAt": "2026-10-21T19:20:10.860Z",
+      "activityAt": "2026-10-21T19:51:31.423Z",
+      "syncedAt": "2026-10-21T19:51:31.436Z",
+      "importAttemptAt": "2026-10-21T19:51:31.436Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Crowded%20House%20(Deluxe%20Edition)%20Crowded%20House%201986",
       "art": {
