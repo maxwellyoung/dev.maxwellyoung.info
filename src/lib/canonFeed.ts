@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-22",
-  "sourceSyncedAt": "2026-10-22T13:09:09.769Z",
+  "sourceSyncedAt": "2026-10-22T13:40:51.499Z",
   "totalWorks": 4471,
   "regionCount": 22,
   "regions": [
-    "Eclectic Hip-Hop Fusion",
-    "Contemporary Psychological Thrillers",
-    "Cult & Experimental Cinema",
-    "Classic Romantic Dramas"
+    "Contemporary R&B & Hip-Hop",
+    "Classic Rock & Pop Hits",
+    "Indie Adventure",
+    "Surrealist Comedies & Dramas"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-22T13:09:11.023Z",
-      "importAttemptAt": "2026-10-22T13:09:11.023Z",
+      "syncedAt": "2026-10-22T13:40:53.828Z",
+      "importAttemptAt": "2026-10-22T13:40:53.828Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-22T13:09:09.769Z",
-      "importAttemptAt": "2026-10-22T13:09:09.769Z",
+      "syncedAt": "2026-10-22T13:40:51.499Z",
+      "importAttemptAt": "2026-10-22T13:40:51.499Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Wells*",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-22T13:09:09.778Z",
-      "syncedAt": "2026-10-22T13:09:09.789Z",
-      "importAttemptAt": "2026-10-22T13:09:09.789Z",
+      "activityAt": "2026-10-22T13:40:51.614Z",
+      "syncedAt": "2026-10-22T13:40:51.625Z",
+      "importAttemptAt": "2026-10-22T13:40:51.625Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Water%2C%20Shelter%2C%20Oxygen%20-%20Single%20Wells*%202026",
       "art": {
