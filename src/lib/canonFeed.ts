@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-22",
-  "sourceSyncedAt": "2026-10-22T06:50:40.874Z",
+  "sourceSyncedAt": "2026-10-22T07:22:18.265Z",
   "totalWorks": 4467,
   "regionCount": 22,
   "regions": [
-    "Contemporary R&B & Hip-Hop",
-    "Mainstream Pop & Rock",
-    "Classic Dramas & Rom-Coms",
-    "Music-Driven Dramas"
+    "Diverse Music Genres",
+    "Hip-Hop & Alternative Beats",
+    "Character-Driven Dramas",
+    "Tech & Culture Non-Fiction"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-22T06:50:42.260Z",
-      "importAttemptAt": "2026-10-22T06:50:42.260Z",
+      "syncedAt": "2026-10-22T07:22:19.487Z",
+      "importAttemptAt": "2026-10-22T07:22:19.487Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -67,18 +67,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:1868140",
+      "id": "steam:730",
       "verb": "playing",
       "medium": "game",
-      "title": "DAVE THE DIVER",
-      "creator": "MINTROCKET",
+      "title": "Counter-Strike 2",
+      "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-19T08:18:47.000Z",
-      "syncedAt": "2026-10-22T06:50:41.419Z",
-      "importAttemptAt": "2026-10-22T06:50:41.419Z",
+      "activityAt": "2026-10-22T07:04:52.000Z",
+      "syncedAt": "2026-10-22T07:22:18.502Z",
+      "importAttemptAt": "2026-10-22T07:22:18.502Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/1868140/",
+      "href": "https://store.steampowered.com/app/730/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Sk8star",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-22T06:50:40.856Z",
-      "syncedAt": "2026-10-22T06:50:40.874Z",
-      "importAttemptAt": "2026-10-22T06:50:40.874Z",
+      "activityAt": "2026-10-22T07:22:18.227Z",
+      "syncedAt": "2026-10-22T07:22:18.265Z",
+      "importAttemptAt": "2026-10-22T07:22:18.265Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Designer%20Junkie%20Sk8star%202026",
       "art": {
