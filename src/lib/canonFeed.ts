@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-22",
-  "sourceSyncedAt": "2026-10-22T22:04:14.674Z",
+  "sourceSyncedAt": "2026-10-22T22:35:55.652Z",
   "totalWorks": 4477,
   "regionCount": 22,
   "regions": [
-    "Artistic Horror & Dramas",
-    "Contemporary Alternative & Hip-Hop",
-    "Eclectic Music Scene",
-    "Action-Packed Sci-Fi Adventures"
+    "Dramatic Thrillers",
+    "Modern Hip-Hop Vibes",
+    "Classic Romance Dramas",
+    "Eclectic Pop Rock"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-22T22:04:16.277Z",
-      "importAttemptAt": "2026-10-22T22:04:16.277Z",
+      "syncedAt": "2026-10-22T22:35:57.128Z",
+      "importAttemptAt": "2026-10-22T22:35:57.128Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-22T22:04:14.674Z",
-      "importAttemptAt": "2026-10-22T22:04:14.674Z",
+      "syncedAt": "2026-10-22T22:35:55.699Z",
+      "importAttemptAt": "2026-10-22T22:35:55.699Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "brakence",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-22T22:04:14.917Z",
-      "syncedAt": "2026-10-22T22:04:14.937Z",
-      "importAttemptAt": "2026-10-22T22:04:14.937Z",
+      "activityAt": "2026-10-22T22:35:55.612Z",
+      "syncedAt": "2026-10-22T22:35:55.652Z",
+      "importAttemptAt": "2026-10-22T22:35:55.652Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=marroW%20brakence%202026",
       "art": {
