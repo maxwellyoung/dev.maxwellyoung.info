@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-22",
-  "sourceSyncedAt": "2026-10-22T23:07:16.409Z",
+  "sourceSyncedAt": "2026-10-22T23:38:36.531Z",
   "totalWorks": 4477,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-22T23:07:17.931Z",
-      "importAttemptAt": "2026-10-22T23:07:17.931Z",
+      "syncedAt": "2026-10-22T23:38:38.351Z",
+      "importAttemptAt": "2026-10-22T23:38:38.351Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-22T23:07:16.409Z",
-      "importAttemptAt": "2026-10-22T23:07:16.409Z",
+      "syncedAt": "2026-10-22T23:38:36.951Z",
+      "importAttemptAt": "2026-10-22T23:38:36.951Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "John Mayer",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-22T23:07:16.444Z",
-      "syncedAt": "2026-10-22T23:07:16.475Z",
-      "importAttemptAt": "2026-10-22T23:07:16.475Z",
+      "activityAt": "2026-10-22T23:38:36.510Z",
+      "syncedAt": "2026-10-22T23:38:36.531Z",
+      "importAttemptAt": "2026-10-22T23:38:36.531Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Tom%20and%20Jerry%20-%20Single%20John%20Mayer%202026",
       "art": {
