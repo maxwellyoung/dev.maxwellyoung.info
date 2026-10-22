@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-22",
-  "sourceSyncedAt": "2026-10-22T20:30:02.228Z",
+  "sourceSyncedAt": "2026-10-22T21:01:27.891Z",
   "totalWorks": 4472,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-22T20:30:03.841Z",
-      "importAttemptAt": "2026-10-22T20:30:03.841Z",
+      "syncedAt": "2026-10-22T21:01:29.596Z",
+      "importAttemptAt": "2026-10-22T21:01:29.596Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-22T20:30:02.228Z",
-      "importAttemptAt": "2026-10-22T20:30:02.228Z",
+      "syncedAt": "2026-10-22T21:01:27.931Z",
+      "importAttemptAt": "2026-10-22T21:01:27.931Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -86,18 +86,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:wells--water-shelter-oxygen-single",
+      "id": "applemusic:sk8star--designer-junkie",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Water, Shelter, Oxygen",
-      "creator": "Wells*",
+      "title": "Designer Junkie",
+      "creator": "Sk8star",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-22T20:30:02.724Z",
-      "syncedAt": "2026-10-22T20:30:02.744Z",
-      "importAttemptAt": "2026-10-22T20:30:02.744Z",
+      "activityAt": "2026-10-22T21:01:27.876Z",
+      "syncedAt": "2026-10-22T21:01:27.891Z",
+      "importAttemptAt": "2026-10-22T21:01:27.891Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Water%2C%20Shelter%2C%20Oxygen%20-%20Single%20Wells*%202026",
+      "href": "https://music.apple.com/nz/search?term=Designer%20Junkie%20Sk8star%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
