@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-22",
-  "sourceSyncedAt": "2026-10-22T10:31:03.237Z",
+  "sourceSyncedAt": "2026-10-22T11:02:59.429Z",
   "totalWorks": 4468,
   "regionCount": 22,
   "regions": [
-    "Diverse Music Genres",
-    "Contemporary R&B & Hip-Hop",
-    "Modern Relationship Dramas",
-    "Cultural Critique & Tech"
+    "Classic & Art House Cinema",
+    "Hip-Hop & Alternative Beats",
+    "Action & Sci-Fi Thrillers",
+    "Contemporary Pop & Alternative"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-22T10:31:05.313Z",
-      "importAttemptAt": "2026-10-22T10:31:05.313Z",
+      "syncedAt": "2026-10-22T11:03:00.920Z",
+      "importAttemptAt": "2026-10-22T11:03:00.920Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-22T10:31:03.652Z",
-      "importAttemptAt": "2026-10-22T10:31:03.652Z",
+      "syncedAt": "2026-10-22T11:02:59.633Z",
+      "importAttemptAt": "2026-10-22T11:02:59.633Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Sk8star",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-22T10:31:03.222Z",
-      "syncedAt": "2026-10-22T10:31:03.237Z",
-      "importAttemptAt": "2026-10-22T10:31:03.237Z",
+      "activityAt": "2026-10-22T11:02:59.397Z",
+      "syncedAt": "2026-10-22T11:02:59.429Z",
+      "importAttemptAt": "2026-10-22T11:02:59.429Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Designer%20Junkie%20Sk8star%202026",
       "art": {
