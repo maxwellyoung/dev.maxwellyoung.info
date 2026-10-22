@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-22",
-  "sourceSyncedAt": "2026-10-22T07:22:18.265Z",
+  "sourceSyncedAt": "2026-10-22T07:53:42.223Z",
   "totalWorks": 4467,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-22T07:22:19.487Z",
-      "importAttemptAt": "2026-10-22T07:22:19.487Z",
+      "syncedAt": "2026-10-22T07:53:43.476Z",
+      "importAttemptAt": "2026-10-22T07:53:43.476Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -74,9 +74,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-22T07:04:52.000Z",
-      "syncedAt": "2026-10-22T07:22:18.502Z",
-      "importAttemptAt": "2026-10-22T07:22:18.502Z",
+      "activityAt": "2026-10-22T07:34:53.000Z",
+      "syncedAt": "2026-10-22T07:53:42.263Z",
+      "importAttemptAt": "2026-10-22T07:53:42.263Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Sk8star",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-22T07:22:18.227Z",
-      "syncedAt": "2026-10-22T07:22:18.265Z",
-      "importAttemptAt": "2026-10-22T07:22:18.265Z",
+      "activityAt": "2026-10-22T07:53:42.211Z",
+      "syncedAt": "2026-10-22T07:53:42.223Z",
+      "importAttemptAt": "2026-10-22T07:53:42.223Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Designer%20Junkie%20Sk8star%202026",
       "art": {
