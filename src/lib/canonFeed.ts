@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-22",
-  "sourceSyncedAt": "2026-10-22T16:49:26.151Z",
+  "sourceSyncedAt": "2026-10-22T17:20:50.240Z",
   "totalWorks": 4471,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-22T16:49:27.381Z",
-      "importAttemptAt": "2026-10-22T16:49:27.381Z",
+      "syncedAt": "2026-10-22T17:20:51.576Z",
+      "importAttemptAt": "2026-10-22T17:20:51.576Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-22T16:49:26.151Z",
-      "importAttemptAt": "2026-10-22T16:49:26.151Z",
+      "syncedAt": "2026-10-22T17:20:50.289Z",
+      "importAttemptAt": "2026-10-22T17:20:50.289Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Wells*",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-22T16:49:26.263Z",
-      "syncedAt": "2026-10-22T16:49:26.296Z",
-      "importAttemptAt": "2026-10-22T16:49:26.296Z",
+      "activityAt": "2026-10-22T17:20:50.217Z",
+      "syncedAt": "2026-10-22T17:20:50.240Z",
+      "importAttemptAt": "2026-10-22T17:20:50.240Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Water%2C%20Shelter%2C%20Oxygen%20-%20Single%20Wells*%202026",
       "art": {
