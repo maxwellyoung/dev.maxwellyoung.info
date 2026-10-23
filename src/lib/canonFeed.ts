@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-23",
-  "sourceSyncedAt": "2026-10-23T09:34:38.841Z",
+  "sourceSyncedAt": "2026-10-23T10:05:58.590Z",
   "totalWorks": 4478,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 50% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-23T08:48:39.010Z",
-      "syncedAt": "2026-10-23T09:34:40.213Z",
-      "importAttemptAt": "2026-10-23T09:34:40.213Z",
+      "syncedAt": "2026-10-23T10:06:00.886Z",
+      "importAttemptAt": "2026-10-23T10:06:00.886Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-23T09:34:38.937Z",
-      "importAttemptAt": "2026-10-23T09:34:38.937Z",
+      "syncedAt": "2026-10-23T10:05:59.433Z",
+      "importAttemptAt": "2026-10-23T10:05:59.433Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "brakence",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-23T09:34:38.829Z",
-      "syncedAt": "2026-10-23T09:34:38.841Z",
-      "importAttemptAt": "2026-10-23T09:34:38.841Z",
+      "activityAt": "2026-10-23T10:05:58.577Z",
+      "syncedAt": "2026-10-23T10:05:58.590Z",
+      "importAttemptAt": "2026-10-23T10:05:58.590Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=marroW%20brakence%202026",
       "art": {
