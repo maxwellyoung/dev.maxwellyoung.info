@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-23",
-  "sourceSyncedAt": "2026-10-23T10:05:58.590Z",
+  "sourceSyncedAt": "2026-10-23T10:37:17.074Z",
   "totalWorks": 4478,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 50% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-23T08:48:39.010Z",
-      "syncedAt": "2026-10-23T10:06:00.886Z",
-      "importAttemptAt": "2026-10-23T10:06:00.886Z",
+      "syncedAt": "2026-10-23T10:37:18.764Z",
+      "importAttemptAt": "2026-10-23T10:37:18.764Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-23T10:05:59.433Z",
-      "importAttemptAt": "2026-10-23T10:05:59.433Z",
+      "syncedAt": "2026-10-23T10:37:17.074Z",
+      "importAttemptAt": "2026-10-23T10:37:17.074Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -86,18 +86,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:brakence--marrow",
+      "id": "applemusic:drake--care-package",
       "verb": "in rotation",
       "medium": "music",
-      "title": "marroW",
-      "creator": "brakence",
+      "title": "Care Package",
+      "creator": "Drake",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-23T10:05:58.577Z",
-      "syncedAt": "2026-10-23T10:05:58.590Z",
-      "importAttemptAt": "2026-10-23T10:05:58.590Z",
+      "activityAt": "2026-10-23T10:37:17.120Z",
+      "syncedAt": "2026-10-23T10:37:17.171Z",
+      "importAttemptAt": "2026-10-23T10:37:17.171Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=marroW%20brakence%202026",
+      "href": "https://music.apple.com/nz/search?term=Care%20Package%20Drake%202019",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
