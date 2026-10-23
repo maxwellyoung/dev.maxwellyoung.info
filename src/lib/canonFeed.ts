@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-23",
-  "sourceSyncedAt": "2026-10-23T05:54:41.887Z",
+  "sourceSyncedAt": "2026-10-23T06:26:07.700Z",
   "totalWorks": 4477,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-23T05:54:43.034Z",
-      "importAttemptAt": "2026-10-23T05:54:43.034Z",
+      "syncedAt": "2026-10-23T06:26:09.384Z",
+      "importAttemptAt": "2026-10-23T06:26:09.384Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-23T05:54:41.887Z",
-      "importAttemptAt": "2026-10-23T05:54:41.887Z",
+      "syncedAt": "2026-10-23T06:26:07.700Z",
+      "importAttemptAt": "2026-10-23T06:26:07.700Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -86,18 +86,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:john-mayer--tom-and-jerry-single",
+      "id": "applemusic:sk8star--designer-junkie",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Tom and Jerry",
-      "creator": "John Mayer",
+      "title": "Designer Junkie",
+      "creator": "Sk8star",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-23T05:54:41.892Z",
-      "syncedAt": "2026-10-23T05:54:41.904Z",
-      "importAttemptAt": "2026-10-23T05:54:41.904Z",
+      "activityAt": "2026-10-23T06:26:07.700Z",
+      "syncedAt": "2026-10-23T06:26:07.739Z",
+      "importAttemptAt": "2026-10-23T06:26:07.739Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Tom%20and%20Jerry%20-%20Single%20John%20Mayer%202026",
+      "href": "https://music.apple.com/nz/search?term=Designer%20Junkie%20Sk8star%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
