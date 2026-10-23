@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-23",
-  "sourceSyncedAt": "2026-10-23T06:57:29.887Z",
+  "sourceSyncedAt": "2026-10-23T07:29:06.465Z",
   "totalWorks": 4478,
   "regionCount": 22,
   "regions": [
-    "Dramatic Thrillers",
-    "Modern Hip-Hop Vibes",
-    "Classic Romance Dramas",
-    "Eclectic Pop Rock"
+    "Dark Dramas & Thrillers",
+    "Classic Hollywood Dramas",
+    "Hip-Hop & Alternative Vibes",
+    "Sci-Fi & Fantasy Adventures"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 33% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-19T20:42:05.855Z",
-      "syncedAt": "2026-10-23T06:57:31.307Z",
-      "importAttemptAt": "2026-10-23T06:57:31.307Z",
+      "syncedAt": "2026-10-23T07:29:07.566Z",
+      "importAttemptAt": "2026-10-23T07:29:07.566Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-23T06:57:29.887Z",
-      "importAttemptAt": "2026-10-23T06:57:29.887Z",
+      "syncedAt": "2026-10-23T07:29:06.533Z",
+      "importAttemptAt": "2026-10-23T07:29:06.533Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -86,18 +86,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:drake--care-package",
+      "id": "applemusic:brakence--marrow",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Care Package",
-      "creator": "Drake",
+      "title": "marroW",
+      "creator": "brakence",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-23T06:57:30.043Z",
-      "syncedAt": "2026-10-23T06:57:30.093Z",
-      "importAttemptAt": "2026-10-23T06:57:30.093Z",
+      "activityAt": "2026-10-23T07:29:06.413Z",
+      "syncedAt": "2026-10-23T07:29:06.465Z",
+      "importAttemptAt": "2026-10-23T07:29:06.465Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Care%20Package%20Drake%202019",
+      "href": "https://music.apple.com/nz/search?term=marroW%20brakence%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
