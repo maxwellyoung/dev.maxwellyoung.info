@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-24",
-  "sourceSyncedAt": "2026-10-24T00:38:42.707Z",
+  "sourceSyncedAt": "2026-10-24T01:10:19.200Z",
   "totalWorks": 4496,
   "regionCount": 22,
   "regions": [
-    "Contemporary Hip-Hop & Pop",
-    "Diverse Music Genres",
-    "Dramatic Crime Narratives",
-    "Surrealist Drama & Mystery"
+    "Classic Dramas & Thrillers",
+    "Surrealist Fantasies",
+    "Contemporary Hip-Hop & R&B",
+    "Neo-Noir & Thrillers"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 50% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-23T08:48:39.010Z",
-      "syncedAt": "2026-10-24T00:38:44.581Z",
-      "importAttemptAt": "2026-10-24T00:38:44.581Z",
+      "syncedAt": "2026-10-24T01:10:21.625Z",
+      "importAttemptAt": "2026-10-24T01:10:21.625Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-24T00:38:43.718Z",
-      "importAttemptAt": "2026-10-24T00:38:43.718Z",
+      "syncedAt": "2026-10-24T01:10:19.200Z",
+      "importAttemptAt": "2026-10-24T01:10:19.200Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Drake",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-24T00:38:42.679Z",
-      "syncedAt": "2026-10-24T00:38:42.707Z",
-      "importAttemptAt": "2026-10-24T00:38:42.707Z",
+      "activityAt": "2026-10-24T01:10:19.581Z",
+      "syncedAt": "2026-10-24T01:10:19.593Z",
+      "importAttemptAt": "2026-10-24T01:10:19.593Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Care%20Package%20Drake%202019",
       "art": {
