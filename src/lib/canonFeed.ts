@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-24",
-  "sourceSyncedAt": "2026-10-24T05:52:06.378Z",
+  "sourceSyncedAt": "2026-10-24T06:23:23.431Z",
   "totalWorks": 4496,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 50% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-23T08:48:39.010Z",
-      "syncedAt": "2026-10-24T05:52:08.238Z",
-      "importAttemptAt": "2026-10-24T05:52:08.238Z",
+      "syncedAt": "2026-10-24T06:23:25.184Z",
+      "importAttemptAt": "2026-10-24T06:23:25.184Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-24T05:52:06.648Z",
-      "importAttemptAt": "2026-10-24T05:52:06.648Z",
+      "syncedAt": "2026-10-24T06:23:23.787Z",
+      "importAttemptAt": "2026-10-24T06:23:23.787Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Drake",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-24T05:52:06.366Z",
-      "syncedAt": "2026-10-24T05:52:06.378Z",
-      "importAttemptAt": "2026-10-24T05:52:06.378Z",
+      "activityAt": "2026-10-24T06:23:23.419Z",
+      "syncedAt": "2026-10-24T06:23:23.431Z",
+      "importAttemptAt": "2026-10-24T06:23:23.431Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Care%20Package%20Drake%202019",
       "art": {
