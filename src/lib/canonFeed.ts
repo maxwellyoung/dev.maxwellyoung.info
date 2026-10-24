@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-24",
-  "sourceSyncedAt": "2026-10-24T08:28:38.561Z",
+  "sourceSyncedAt": "2026-10-24T08:59:55.474Z",
   "totalWorks": 4496,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 50% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-23T08:48:39.010Z",
-      "syncedAt": "2026-10-24T08:28:39.915Z",
-      "importAttemptAt": "2026-10-24T08:28:39.915Z",
+      "syncedAt": "2026-10-24T08:59:57.463Z",
+      "importAttemptAt": "2026-10-24T08:59:57.463Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-24T08:28:39.048Z",
-      "importAttemptAt": "2026-10-24T08:28:39.048Z",
+      "syncedAt": "2026-10-24T08:59:55.474Z",
+      "importAttemptAt": "2026-10-24T08:59:55.474Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -86,18 +86,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:drake--care-package",
+      "id": "applemusic:sk8star--designer-junkie",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Care Package",
-      "creator": "Drake",
+      "title": "Designer Junkie",
+      "creator": "Sk8star",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-24T08:28:38.539Z",
-      "syncedAt": "2026-10-24T08:28:38.561Z",
-      "importAttemptAt": "2026-10-24T08:28:38.561Z",
+      "activityAt": "2026-10-24T08:59:55.776Z",
+      "syncedAt": "2026-10-24T08:59:55.802Z",
+      "importAttemptAt": "2026-10-24T08:59:55.802Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Care%20Package%20Drake%202019",
+      "href": "https://music.apple.com/nz/search?term=Designer%20Junkie%20Sk8star%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
