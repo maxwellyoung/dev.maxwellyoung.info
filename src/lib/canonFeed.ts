@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-25",
-  "sourceSyncedAt": "2026-10-25T23:11:40.879Z",
+  "sourceSyncedAt": "2026-10-25T23:43:21.133Z",
   "totalWorks": 4498,
   "regionCount": 22,
   "regions": [
-    "Alternative Rock Hits",
-    "Eclectic Modern Sounds",
-    "Contemporary Dramas",
-    "Cult Classic Comedies"
+    "Rock & Alternative Classics",
+    "Hip-Hop & Alternative Vibes",
+    "Dark Comedy & Thrillers",
+    "Romantic Dramas & Fantasies"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 50% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-23T08:48:39.010Z",
-      "syncedAt": "2026-10-25T23:11:42.563Z",
-      "importAttemptAt": "2026-10-25T23:11:42.563Z",
+      "syncedAt": "2026-10-25T23:43:22.394Z",
+      "importAttemptAt": "2026-10-25T23:43:22.394Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-25T23:11:40.879Z",
-      "importAttemptAt": "2026-10-25T23:11:40.879Z",
+      "syncedAt": "2026-10-25T23:43:21.839Z",
+      "importAttemptAt": "2026-10-25T23:43:21.839Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -86,18 +86,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:jean-yves-thibaudet--debussy-complete-works-for-solo-piano-vol-2-images-etudes",
+      "id": "applemusic:neil-young--after-the-gold-rush",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Debussy: Complete Works for Solo Piano Vol. 2 - Images, Etudes",
-      "creator": "Jean-Yves Thibaudet",
+      "title": "After the Gold Rush",
+      "creator": "Neil Young",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-25T23:11:41.247Z",
-      "syncedAt": "2026-10-25T23:11:41.281Z",
-      "importAttemptAt": "2026-10-25T23:11:41.281Z",
+      "activityAt": "2026-10-25T23:43:21.110Z",
+      "syncedAt": "2026-10-25T23:43:21.133Z",
+      "importAttemptAt": "2026-10-25T23:43:21.133Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Debussy%3A%20Complete%20Works%20for%20Solo%20Piano%20Vol.%202%20-%20Images%2C%20Etudes%20Jean-Yves%20Thibaudet%202000",
+      "href": "https://music.apple.com/nz/search?term=After%20the%20Gold%20Rush%20Neil%20Young%201970",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
