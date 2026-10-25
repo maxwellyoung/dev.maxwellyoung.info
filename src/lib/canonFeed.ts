@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-25",
-  "sourceSyncedAt": "2026-10-25T00:13:21.805Z",
+  "sourceSyncedAt": "2026-10-25T00:44:40.713Z",
   "totalWorks": 4496,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 50% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-23T08:48:39.010Z",
-      "syncedAt": "2026-10-25T00:13:23.536Z",
-      "importAttemptAt": "2026-10-25T00:13:23.536Z",
+      "syncedAt": "2026-10-25T00:44:42.267Z",
+      "importAttemptAt": "2026-10-25T00:44:42.267Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-25T00:13:21.805Z",
-      "importAttemptAt": "2026-10-25T00:13:21.805Z",
+      "syncedAt": "2026-10-25T00:44:40.713Z",
+      "importAttemptAt": "2026-10-25T00:44:40.713Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Sk8star",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-25T00:13:22.034Z",
-      "syncedAt": "2026-10-25T00:13:22.070Z",
-      "importAttemptAt": "2026-10-25T00:13:22.070Z",
+      "activityAt": "2026-10-25T00:44:41.354Z",
+      "syncedAt": "2026-10-25T00:44:41.395Z",
+      "importAttemptAt": "2026-10-25T00:44:41.395Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Designer%20Junkie%20Sk8star%202026",
       "art": {
