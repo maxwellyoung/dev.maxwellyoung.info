@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-25",
-  "sourceSyncedAt": "2026-10-25T05:26:43.520Z",
+  "sourceSyncedAt": "2026-10-25T05:58:00.186Z",
   "totalWorks": 4497,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 50% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-10-23T08:48:39.010Z",
-      "syncedAt": "2026-10-25T05:26:44.573Z",
-      "importAttemptAt": "2026-10-25T05:26:44.573Z",
+      "syncedAt": "2026-10-25T05:58:01.352Z",
+      "importAttemptAt": "2026-10-25T05:58:01.352Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-25T05:26:43.789Z",
-      "importAttemptAt": "2026-10-25T05:26:43.789Z",
+      "syncedAt": "2026-10-25T05:58:00.524Z",
+      "importAttemptAt": "2026-10-25T05:58:00.524Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jean-Yves Thibaudet",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-25T05:26:43.499Z",
-      "syncedAt": "2026-10-25T05:26:43.520Z",
-      "importAttemptAt": "2026-10-25T05:26:43.520Z",
+      "activityAt": "2026-10-25T05:58:00.095Z",
+      "syncedAt": "2026-10-25T05:58:00.186Z",
+      "importAttemptAt": "2026-10-25T05:58:00.186Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Debussy%3A%20Complete%20Works%20for%20Solo%20Piano%20Vol.%202%20-%20Images%2C%20Etudes%20Jean-Yves%20Thibaudet%202000",
       "art": {
