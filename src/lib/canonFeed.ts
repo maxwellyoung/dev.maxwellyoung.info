@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-26",
-  "sourceSyncedAt": "2026-10-26T19:10:46.876Z",
+  "sourceSyncedAt": "2026-10-26T19:42:28.684Z",
   "totalWorks": 5832,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-10-26T19:10:55.748Z",
-      "importAttemptAt": "2026-10-26T19:10:55.748Z",
+      "syncedAt": "2026-10-26T19:42:35.314Z",
+      "importAttemptAt": "2026-10-26T19:42:35.314Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-26T19:10:47.115Z",
-      "importAttemptAt": "2026-10-26T19:10:47.115Z",
+      "syncedAt": "2026-10-26T19:42:28.726Z",
+      "importAttemptAt": "2026-10-26T19:42:28.726Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Neil Young",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-26T19:10:46.864Z",
-      "syncedAt": "2026-10-26T19:10:46.876Z",
-      "importAttemptAt": "2026-10-26T19:10:46.876Z",
+      "activityAt": "2026-10-26T19:42:28.647Z",
+      "syncedAt": "2026-10-26T19:42:28.684Z",
+      "importAttemptAt": "2026-10-26T19:42:28.684Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=After%20the%20Gold%20Rush%20Neil%20Young%201970",
       "art": {
