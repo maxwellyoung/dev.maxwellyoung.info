@@ -17,7 +17,7 @@ export function EducationItem({
         <span className="resume-label transition-colors duration-300 group-hover:text-foreground">
           {degree}
         </span>
-        <span className="text-xs font-normal text-muted-foreground font-inter">
+        <span className="shrink-0 whitespace-nowrap text-xs font-normal text-muted-foreground font-inter">
           {date}
         </span>
       </div>
