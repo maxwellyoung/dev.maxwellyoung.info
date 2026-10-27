@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-27",
-  "sourceSyncedAt": "2026-10-27T11:09:14.975Z",
+  "sourceSyncedAt": "2026-10-27T11:41:09.825Z",
   "totalWorks": 5833,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-10-27T11:09:20.408Z",
-      "importAttemptAt": "2026-10-27T11:09:20.408Z",
+      "syncedAt": "2026-10-27T11:41:16.776Z",
+      "importAttemptAt": "2026-10-27T11:41:16.776Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -68,18 +68,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:730",
+      "id": "steam:12140",
       "verb": "playing",
       "medium": "game",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "Max Payne",
+      "creator": "Remedy Entertainment",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-27T11:09:15.131Z",
-      "importAttemptAt": "2026-10-27T11:09:15.131Z",
+      "activityAt": "2026-10-27T11:26:31.000Z",
+      "syncedAt": "2026-10-27T11:41:10.132Z",
+      "importAttemptAt": "2026-10-27T11:41:10.132Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/730/",
+      "href": "https://store.steampowered.com/app/12140/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Prefab Sprout",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-27T11:09:14.953Z",
-      "syncedAt": "2026-10-27T11:09:14.975Z",
-      "importAttemptAt": "2026-10-27T11:09:14.975Z",
+      "activityAt": "2026-10-27T11:41:09.779Z",
+      "syncedAt": "2026-10-27T11:41:09.825Z",
+      "importAttemptAt": "2026-10-27T11:41:09.825Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=From%20Langley%20Park%20to%20Memphis%20Prefab%20Sprout%201988",
       "art": {
