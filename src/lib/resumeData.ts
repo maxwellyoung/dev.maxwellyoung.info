@@ -54,7 +54,7 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.silk.cx/",
       date: "Sep 2025 – Present",
       summary:
-        "Silk is a platform for blogging, private archives, and multimedia moodboards. Led its React Native app from initial build through its Google Play launch and now lead ongoing iOS and Android delivery.",
+        "Silk is a platform for blogging, private archives, and moodboards. Led its React Native app from first build to Google Play launch.",
       responsibilities: [
         "Built the initial mobile foundation and turned early product direction into production architecture, interface systems, and media-heavy flows.",
         "Own performance, accessibility, and release reliability across iOS and Android, using regression coverage and real-device checks to validate changes.",
@@ -66,7 +66,7 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.auckland.ac.nz/",
       date: "Apr 2026 – Present",
       summary:
-        "Design and build research applications end to end, from the user experience through to implementation, including Rx-Opt and MRB-QoL 2.0.",
+        "Design and build research applications end to end, including Rx-Opt and MRB-QoL 2.0.",
       responsibilities: [
         "Own UX and interface design, application architecture, frontend and backend implementation, and testing in collaboration with researchers.",
         "Build clinician assessment and review workflows, patient questionnaires, and researcher dashboards. Validate data and keep source provenance visible within the applications.",
@@ -111,20 +111,20 @@ export const resumeData: ResumeData = {
   ],
   selectedWork: [
     {
+      name: "Margin",
+      descriptor: "Native macOS app",
+      href: "https://dev.maxwellyoung.info/case-study/margin",
+      date: "Signed releases · v1.2",
+      summary:
+        "Built a local-first Mac capture app in Swift and Python with on-device meeting transcription and an MCP server for coding agents.",
+    },
+    {
       name: "SkillScan",
-      descriptor: "Published developer tool",
+      descriptor: "Open-source developer tool",
       href: "https://skillscan.ninetynine.digital",
       date: "Live · npm 0.1.0",
       summary:
-        "Designed and shipped a static security scanner for Claude Code skills and MCP servers as a web app, npm CLI, and GitHub Action, with 29 detection rules, source-linked findings, SARIF reports, and explicit partial-scan handling.",
-    },
-    {
-      name: "T3 Code",
-      descriptor: "Open-source contributor",
-      href: "https://github.com/pingdotgg/t3code/pulls?q=is%3Apr+is%3Amerged+author%3Amaxwellyoung",
-      date: "13 merged PRs",
-      summary:
-        "Merged 13 upstream fixes to T3 Code (30k+ GitHub stars) across its server, web client, and mobile app.",
+        "Static security scanner for Claude Code skills and MCP servers, shipped as a web app, npm CLI, and GitHub Action with 29 rules.",
     },
     {
       name: "Liner",
@@ -133,6 +133,14 @@ export const resumeData: ResumeData = {
       date: "Live",
       summary:
         "Designed and built a local-first canvas for sequencing unfinished music, with Playwright end-to-end tests.",
+    },
+    {
+      name: "T3 Code",
+      descriptor: "Open-source contributor",
+      href: "https://github.com/pingdotgg/t3code/pulls?q=is%3Apr+is%3Amerged+author%3Amaxwellyoung",
+      date: "13 merged PRs",
+      summary:
+        "Merged 13 upstream fixes to T3 Code (30k+ GitHub stars) across its server, web client, and mobile app.",
     },
   ],
   education: [
