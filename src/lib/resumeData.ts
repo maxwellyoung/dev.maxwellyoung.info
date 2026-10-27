@@ -39,7 +39,7 @@ export const resumeData: ResumeData = {
   name: "Maxwell Young",
   title: "Product Engineer",
   profile:
-    "Product engineer working across mobile apps and research software. Led Silk's React Native app from its first build through launch and ongoing delivery across iOS and Android. Combine interaction design with architecture, performance, accessibility, and regression testing.",
+    "Product engineer working across mobile apps and research software. Led Silk's React Native app from its first build to its Google Play launch, and designed and shipped five iPhone apps of my own. Combine interaction design with architecture, performance, accessibility, and regression testing.",
   contact: {
     email: "maxwell@ninetynine.digital",
     location: "Auckland, NZ",
@@ -54,7 +54,7 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.silk.cx/",
       date: "Sep 2025 – Present",
       summary:
-        "Silk is a platform for blogging, private archives, and multimedia moodboards. Led its React Native app from initial build through launch and now lead ongoing delivery.",
+        "Silk is a platform for blogging, private archives, and multimedia moodboards. Led its React Native app from initial build through its Google Play launch and now lead ongoing iOS and Android delivery.",
       responsibilities: [
         "Built the initial mobile foundation and turned early product direction into production architecture, interface systems, and media-heavy flows.",
         "Own performance, accessibility, and release reliability across iOS and Android, using regression coverage and real-device checks to validate changes.",
@@ -80,7 +80,7 @@ export const resumeData: ResumeData = {
       summary:
         "Independent product and client studio for mobile apps, web products, and CMS-backed portfolio work.",
       responsibilities: [
-        "Take independent mobile and web products from interaction design through implementation, release, and iteration.",
+        "Shipped five iPhone apps to the App Store with React Native, Expo, and SwiftUI, including Vape Quit Coach.",
         "Delivered client sites with Next.js and Sanity for Ch'lita Collins (Fashion Editor-at-Large at i-D) and artist Dayle Palfreyman, plus Shopify performance and layout stability work for Goodness Gracious.",
       ],
     },
@@ -116,31 +116,31 @@ export const resumeData: ResumeData = {
       href: "https://skillscan.ninetynine.digital",
       date: "Live · npm 0.1.0",
       summary:
-        "Designed and shipped a static security scanner as a web app, npm CLI, and GitHub Action, with source-linked findings, SARIF reports, bounded artifact inspection, and explicit partial-scan handling.",
-    },
-    {
-      name: "Ch'lita",
-      descriptor: "Shipped client website",
-      href: "https://chlita.com",
-      date: "Live",
-      summary:
-        "Built a Next.js and Sanity portfolio for Ch'lita Collins, Fashion Editor-at-Large at i-D, with fast image browsing and editorial motion.",
+        "Designed and shipped a static security scanner for Claude Code skills and MCP servers as a web app, npm CLI, and GitHub Action, with 29 detection rules, source-linked findings, SARIF reports, and explicit partial-scan handling.",
     },
     {
       name: "T3 Code",
       descriptor: "Open-source contributor",
       href: "https://github.com/pingdotgg/t3code/pulls?q=is%3Apr+is%3Amerged+author%3Amaxwellyoung",
-      date: "Ongoing",
+      date: "13 merged PRs",
       summary:
-        "Contributed upstream fixes across mobile input and server data integrity, including multiline composition, runtime-safe message IDs, and reliable cross-device conversation ordering.",
+        "Merged 13 upstream fixes to T3 Code (30k+ GitHub stars) across its server, web client, and mobile app.",
+    },
+    {
+      name: "Liner",
+      descriptor: "Independent web product",
+      href: "https://liner.ninetynine.digital",
+      date: "Live",
+      summary:
+        "Designed and built a local-first canvas for sequencing unfinished music, with Playwright end-to-end tests.",
     },
   ],
   education: [
     {
-      degree: "Bachelor of Computer and Information Sciences",
+      degree: "Bachelor of Computer and Information Sciences (Software Development and Data Science)",
       institution: "Auckland University of Technology",
       institutionHref: "https://www.aut.ac.nz/",
-      date: "2024 – Expected 2026",
+      date: "2024 – Nov 2026",
     },
     {
       degree: "Certificate in Web Development (Level 6)",
@@ -167,6 +167,7 @@ export const resumeData: ResumeData = {
       category: "Backend & Data",
       items: [
         "Node.js",
+        "Python",
         "PostgreSQL",
         "Convex",
         "Supabase",
