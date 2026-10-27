@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-27",
-  "sourceSyncedAt": "2026-10-27T05:20:29.336Z",
+  "sourceSyncedAt": "2026-10-27T05:52:27.268Z",
   "totalWorks": 5833,
   "regionCount": 22,
   "regions": [
-    "Innovative Pop & Rap",
-    "Modern Hip-Hop & R&B",
-    "Intimate Dramas & Rom-Coms",
-    "Contemporary Rock & Soul"
+    "Genre-Blending Alternative",
+    "Eclectic Hip-Hop Mix",
+    "Indie Rock & Pop",
+    "Indie Adventure"
   ],
   "now": [
     {
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-10-27T05:20:36.222Z",
-      "importAttemptAt": "2026-10-27T05:20:36.222Z",
+      "syncedAt": "2026-10-27T05:52:32.870Z",
+      "importAttemptAt": "2026-10-27T05:52:32.870Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-27T05:20:29.336Z",
-      "importAttemptAt": "2026-10-27T05:20:29.336Z",
+      "syncedAt": "2026-10-27T05:52:27.422Z",
+      "importAttemptAt": "2026-10-27T05:52:27.422Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Brat Star",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-27T05:20:29.345Z",
-      "syncedAt": "2026-10-27T05:20:29.351Z",
-      "importAttemptAt": "2026-10-27T05:20:29.351Z",
+      "activityAt": "2026-10-27T05:52:27.252Z",
+      "syncedAt": "2026-10-27T05:52:27.268Z",
+      "importAttemptAt": "2026-10-27T05:52:27.268Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Southern%20Ontario%20Gothic%20Brat%20Star%202026",
       "art": {
