@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-27",
-  "sourceSyncedAt": "2026-10-27T07:59:17.235Z",
+  "sourceSyncedAt": "2026-10-27T08:30:54.660Z",
   "totalWorks": 5833,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-10-27T07:59:22.899Z",
-      "importAttemptAt": "2026-10-27T07:59:22.899Z",
+      "syncedAt": "2026-10-27T08:31:01.794Z",
+      "importAttemptAt": "2026-10-27T08:31:01.794Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-27T07:59:17.480Z",
-      "importAttemptAt": "2026-10-27T07:59:17.480Z",
+      "syncedAt": "2026-10-27T08:30:55.237Z",
+      "importAttemptAt": "2026-10-27T08:30:55.237Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Brat Star",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-27T07:59:17.173Z",
-      "syncedAt": "2026-10-27T07:59:17.235Z",
-      "importAttemptAt": "2026-10-27T07:59:17.235Z",
+      "activityAt": "2026-10-27T08:30:54.645Z",
+      "syncedAt": "2026-10-27T08:30:54.660Z",
+      "importAttemptAt": "2026-10-27T08:30:54.660Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Southern%20Ontario%20Gothic%20Brat%20Star%202026",
       "art": {
