@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-27",
-  "sourceSyncedAt": "2026-10-27T10:37:30.106Z",
+  "sourceSyncedAt": "2026-10-27T11:09:14.975Z",
   "totalWorks": 5833,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-10-27T10:37:36.837Z",
-      "importAttemptAt": "2026-10-27T10:37:36.837Z",
+      "syncedAt": "2026-10-27T11:09:20.408Z",
+      "importAttemptAt": "2026-10-27T11:09:20.408Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-22T09:51:13.000Z",
-      "syncedAt": "2026-10-27T10:37:30.258Z",
-      "importAttemptAt": "2026-10-27T10:37:30.258Z",
+      "syncedAt": "2026-10-27T11:09:15.131Z",
+      "importAttemptAt": "2026-10-27T11:09:15.131Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -87,18 +87,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:brat-star--southern-ontario-gothic",
+      "id": "applemusic:prefab-sprout--from-langley-park-to-memphis",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Southern Ontario Gothic",
-      "creator": "Brat Star",
+      "title": "From Langley Park to Memphis",
+      "creator": "Prefab Sprout",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-27T10:37:30.084Z",
-      "syncedAt": "2026-10-27T10:37:30.106Z",
-      "importAttemptAt": "2026-10-27T10:37:30.106Z",
+      "activityAt": "2026-10-27T11:09:14.953Z",
+      "syncedAt": "2026-10-27T11:09:14.975Z",
+      "importAttemptAt": "2026-10-27T11:09:14.975Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Southern%20Ontario%20Gothic%20Brat%20Star%202026",
+      "href": "https://music.apple.com/nz/search?term=From%20Langley%20Park%20to%20Memphis%20Prefab%20Sprout%201988",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
