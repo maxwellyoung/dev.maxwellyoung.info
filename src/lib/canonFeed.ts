@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-28",
-  "sourceSyncedAt": "2026-10-28T00:21:24.052Z",
+  "sourceSyncedAt": "2026-10-28T00:53:06.754Z",
   "totalWorks": 5833,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-10-28T00:21:30.015Z",
-      "importAttemptAt": "2026-10-28T00:21:30.015Z",
+      "syncedAt": "2026-10-28T00:53:12.949Z",
+      "importAttemptAt": "2026-10-28T00:53:12.949Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Remedy Entertainment",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-28T00:10:35.000Z",
-      "syncedAt": "2026-10-28T00:21:24.497Z",
-      "importAttemptAt": "2026-10-28T00:21:24.497Z",
+      "activityAt": "2026-10-28T00:52:10.000Z",
+      "syncedAt": "2026-10-28T00:53:06.754Z",
+      "importAttemptAt": "2026-10-28T00:53:06.754Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/12140/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Prefab Sprout",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-28T00:21:24.028Z",
-      "syncedAt": "2026-10-28T00:21:24.052Z",
-      "importAttemptAt": "2026-10-28T00:21:24.052Z",
+      "activityAt": "2026-10-28T00:53:07.175Z",
+      "syncedAt": "2026-10-28T00:53:07.216Z",
+      "importAttemptAt": "2026-10-28T00:53:07.216Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=From%20Langley%20Park%20to%20Memphis%20Prefab%20Sprout%201988",
       "art": {
