@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-30",
-  "sourceSyncedAt": "2026-10-30T02:35:26.664Z",
+  "sourceSyncedAt": "2026-10-30T03:07:15.095Z",
   "totalWorks": 5835,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-10-30T02:35:33.362Z",
-      "importAttemptAt": "2026-10-30T02:35:33.362Z",
+      "syncedAt": "2026-10-30T03:07:23.540Z",
+      "importAttemptAt": "2026-10-30T03:07:23.540Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-10-30T02:16:01.000Z",
-      "syncedAt": "2026-10-30T02:35:26.664Z",
-      "importAttemptAt": "2026-10-30T02:35:26.664Z",
+      "activityAt": "2026-10-30T02:46:02.000Z",
+      "syncedAt": "2026-10-30T03:07:15.729Z",
+      "importAttemptAt": "2026-10-30T03:07:15.729Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jack Johnson",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-30T02:35:26.693Z",
-      "syncedAt": "2026-10-30T02:35:26.777Z",
-      "importAttemptAt": "2026-10-30T02:35:26.777Z",
+      "activityAt": "2026-10-30T03:07:15.072Z",
+      "syncedAt": "2026-10-30T03:07:15.095Z",
+      "importAttemptAt": "2026-10-30T03:07:15.095Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Jack%20Johnson%20and%20Friends%3A%20Sing-A-Longs%20and%20Lullabies%20for%20the%20Film%20Curious%20George%20Jack%20Johnson%202005",
       "art": {
