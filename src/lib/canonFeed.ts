@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-30",
-  "sourceSyncedAt": "2026-10-30T13:42:25.896Z",
+  "sourceSyncedAt": "2026-10-30T14:14:09.421Z",
   "totalWorks": 5836,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-10-30T13:42:35.047Z",
-      "importAttemptAt": "2026-10-30T13:42:35.047Z",
+      "syncedAt": "2026-10-30T14:14:18.641Z",
+      "importAttemptAt": "2026-10-30T14:14:18.641Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-30T08:38:34.000Z",
-      "syncedAt": "2026-10-30T13:42:26.077Z",
-      "importAttemptAt": "2026-10-30T13:42:26.077Z",
+      "syncedAt": "2026-10-30T14:14:10.148Z",
+      "importAttemptAt": "2026-10-30T14:14:10.148Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jack Johnson",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-30T13:42:25.853Z",
-      "syncedAt": "2026-10-30T13:42:25.896Z",
-      "importAttemptAt": "2026-10-30T13:42:25.896Z",
+      "activityAt": "2026-10-30T14:14:09.403Z",
+      "syncedAt": "2026-10-30T14:14:09.421Z",
+      "importAttemptAt": "2026-10-30T14:14:09.421Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Jack%20Johnson%20and%20Friends%3A%20Sing-A-Longs%20and%20Lullabies%20for%20the%20Film%20Curious%20George%20Jack%20Johnson%202005",
       "art": {
