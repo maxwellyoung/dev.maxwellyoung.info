@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-30",
-  "sourceSyncedAt": "2026-10-30T00:26:47.326Z",
+  "sourceSyncedAt": "2026-10-30T00:58:57.005Z",
   "totalWorks": 5835,
   "regionCount": 22,
   "regions": [
-    "Alternative Pop & R&B",
-    "Modern Hip-Hop Fusion",
-    "Indie Rock & Alternative",
-    "Indie Adventure"
+    "Eclectic Modern Beats",
+    "Contemporary Hip-Hop Vibes",
+    "Indie Adventure",
+    "Soulful Rock & Pop"
   ],
   "now": [
     {
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-10-30T00:26:53.549Z",
-      "importAttemptAt": "2026-10-30T00:26:53.549Z",
+      "syncedAt": "2026-10-30T00:59:12.597Z",
+      "importAttemptAt": "2026-10-30T00:59:12.597Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-28T12:38:19.000Z",
-      "syncedAt": "2026-10-30T00:26:47.326Z",
-      "importAttemptAt": "2026-10-30T00:26:47.326Z",
+      "syncedAt": "2026-10-30T00:58:57.005Z",
+      "importAttemptAt": "2026-10-30T00:58:57.005Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "9lives",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-30T00:26:47.797Z",
-      "syncedAt": "2026-10-30T00:26:47.955Z",
-      "importAttemptAt": "2026-10-30T00:26:47.955Z",
+      "activityAt": "2026-10-30T00:58:57.531Z",
+      "syncedAt": "2026-10-30T00:58:58.222Z",
+      "importAttemptAt": "2026-10-30T00:58:58.222Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=9%20-%20EP%209lives%202026",
       "art": {
