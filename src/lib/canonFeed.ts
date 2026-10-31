@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-10-31",
-  "sourceSyncedAt": "2026-10-31T18:47:24.966Z",
+  "sourceSyncedAt": "2026-10-31T19:18:57.646Z",
   "totalWorks": 5840,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-10-31T18:47:30.964Z",
-      "importAttemptAt": "2026-10-31T18:47:30.964Z",
+      "syncedAt": "2026-10-31T19:19:03.121Z",
+      "importAttemptAt": "2026-10-31T19:19:03.121Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-10-30T08:38:34.000Z",
-      "syncedAt": "2026-10-31T18:47:24.966Z",
-      "importAttemptAt": "2026-10-31T18:47:24.966Z",
+      "syncedAt": "2026-10-31T19:18:57.646Z",
+      "importAttemptAt": "2026-10-31T19:18:57.646Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Nate Sib & The Kid LAROI",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-10-31T18:47:25.404Z",
-      "syncedAt": "2026-10-31T18:47:25.447Z",
-      "importAttemptAt": "2026-10-31T18:47:25.447Z",
+      "activityAt": "2026-10-31T19:18:57.749Z",
+      "syncedAt": "2026-10-31T19:18:57.792Z",
+      "importAttemptAt": "2026-10-31T19:18:57.792Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Face%20Card%20(The%20Kid%20LAROI%20Remix)%20-%20Single%20Nate%20Sib%20%26%20The%20Kid%20LAROI%202026",
       "art": {
