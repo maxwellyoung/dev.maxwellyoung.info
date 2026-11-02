@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-02",
-  "sourceSyncedAt": "2026-11-02T09:18:29.098Z",
+  "sourceSyncedAt": "2026-11-02T09:50:24.710Z",
   "totalWorks": 5840,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-02T09:18:36.375Z",
-      "importAttemptAt": "2026-11-02T09:18:36.375Z",
+      "syncedAt": "2026-11-02T09:50:31.584Z",
+      "importAttemptAt": "2026-11-02T09:50:31.584Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-01T10:37:38.000Z",
-      "syncedAt": "2026-11-02T09:18:29.401Z",
-      "importAttemptAt": "2026-11-02T09:18:29.401Z",
+      "syncedAt": "2026-11-02T09:50:24.817Z",
+      "importAttemptAt": "2026-11-02T09:50:24.817Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Maxwell Young",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-02T09:18:29.078Z",
-      "syncedAt": "2026-11-02T09:18:29.098Z",
-      "importAttemptAt": "2026-11-02T09:18:29.098Z",
+      "activityAt": "2026-11-02T09:50:24.675Z",
+      "syncedAt": "2026-11-02T09:50:24.710Z",
+      "importAttemptAt": "2026-11-02T09:50:24.710Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=1kiss%20-%20Single%20Maxwell%20Young%202026",
       "art": {
