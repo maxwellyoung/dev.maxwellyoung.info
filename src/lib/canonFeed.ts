@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-02",
-  "sourceSyncedAt": "2026-11-02T05:03:50.656Z",
+  "sourceSyncedAt": "2026-11-02T05:35:31.270Z",
   "totalWorks": 5840,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-02T05:03:57.411Z",
-      "importAttemptAt": "2026-11-02T05:03:57.411Z",
+      "syncedAt": "2026-11-02T05:35:41.228Z",
+      "importAttemptAt": "2026-11-02T05:35:41.228Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-01T10:37:38.000Z",
-      "syncedAt": "2026-11-02T05:03:50.795Z",
-      "importAttemptAt": "2026-11-02T05:03:50.795Z",
+      "syncedAt": "2026-11-02T05:35:31.270Z",
+      "importAttemptAt": "2026-11-02T05:35:31.270Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -87,18 +87,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:nate-sib-the-kid-laroi--face-card-the-kid-laroi-remix-single",
+      "id": "applemusic:maxwell-young--1kiss-single",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Face Card (The Kid LAROI Remix)",
-      "creator": "Nate Sib & The Kid LAROI",
+      "title": "1kiss",
+      "creator": "Maxwell Young",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-02T05:03:50.642Z",
-      "syncedAt": "2026-11-02T05:03:50.656Z",
-      "importAttemptAt": "2026-11-02T05:03:50.656Z",
+      "activityAt": "2026-11-02T05:35:31.270Z",
+      "syncedAt": "2026-11-02T05:35:31.400Z",
+      "importAttemptAt": "2026-11-02T05:35:31.400Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Face%20Card%20(The%20Kid%20LAROI%20Remix)%20-%20Single%20Nate%20Sib%20%26%20The%20Kid%20LAROI%202026",
+      "href": "https://music.apple.com/nz/search?term=1kiss%20-%20Single%20Maxwell%20Young%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
