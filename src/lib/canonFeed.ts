@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-03",
-  "sourceSyncedAt": "2026-11-03T20:44:09.367Z",
+  "sourceSyncedAt": "2026-11-03T21:15:56.598Z",
   "totalWorks": 5840,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-03T20:44:18.615Z",
-      "importAttemptAt": "2026-11-03T20:44:18.615Z",
+      "syncedAt": "2026-11-03T21:16:04.854Z",
+      "importAttemptAt": "2026-11-03T21:16:04.854Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-01T10:37:38.000Z",
-      "syncedAt": "2026-11-03T20:44:09.913Z",
-      "importAttemptAt": "2026-11-03T20:44:09.913Z",
+      "syncedAt": "2026-11-03T21:15:56.664Z",
+      "importAttemptAt": "2026-11-03T21:15:56.664Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -87,18 +87,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:maxwell-young--1kiss-single",
+      "id": "applemusic:maxwell-young--sneakin-drinks-into-bars-single",
       "verb": "in rotation",
       "medium": "music",
-      "title": "1kiss",
+      "title": "Sneakin Drinks into Bars",
       "creator": "Maxwell Young",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-03T20:44:09.354Z",
-      "syncedAt": "2026-11-03T20:44:09.367Z",
-      "importAttemptAt": "2026-11-03T20:44:09.367Z",
+      "activityAt": "2026-11-03T21:15:56.584Z",
+      "syncedAt": "2026-11-03T21:15:56.598Z",
+      "importAttemptAt": "2026-11-03T21:15:56.598Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=1kiss%20-%20Single%20Maxwell%20Young%202026",
+      "href": "https://music.apple.com/nz/search?term=Sneakin%20Drinks%20into%20Bars%20-%20Single%20Maxwell%20Young%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
