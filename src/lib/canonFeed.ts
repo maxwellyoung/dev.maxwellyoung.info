@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-04",
-  "sourceSyncedAt": "2026-11-04T07:18:57.382Z",
+  "sourceSyncedAt": "2026-11-04T07:50:55.981Z",
   "totalWorks": 5842,
   "regionCount": 22,
   "regions": [
-    "Contemporary Alternative",
-    "Eclectic Hip-Hop & Pop",
-    "Quirky Comedic Dramas",
-    "Rock & Pop Classics"
+    "Modern Hip-Hop Landscape",
+    "Genre-Blending Rock Anthems",
+    "Contemporary Indie Rock",
+    "Indie Adventure"
   ],
   "now": [
     {
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-04T07:19:04.281Z",
-      "importAttemptAt": "2026-11-04T07:19:04.281Z",
+      "syncedAt": "2026-11-04T07:51:01.493Z",
+      "importAttemptAt": "2026-11-04T07:51:01.493Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-04T05:54:40.000Z",
-      "syncedAt": "2026-11-04T07:18:57.382Z",
-      "importAttemptAt": "2026-11-04T07:18:57.382Z",
+      "activityAt": "2026-11-04T07:50:47.000Z",
+      "syncedAt": "2026-11-04T07:50:55.981Z",
+      "importAttemptAt": "2026-11-04T07:50:55.981Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jadakiss",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-04T07:18:57.463Z",
-      "syncedAt": "2026-11-04T07:18:57.514Z",
-      "importAttemptAt": "2026-11-04T07:18:57.514Z",
+      "activityAt": "2026-11-04T07:50:56.097Z",
+      "syncedAt": "2026-11-04T07:50:56.115Z",
+      "importAttemptAt": "2026-11-04T07:50:56.115Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Kiss%20Of%20Death%20Jadakiss%202004",
       "art": {
