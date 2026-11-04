@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-04",
-  "sourceSyncedAt": "2026-11-04T05:42:58.861Z",
+  "sourceSyncedAt": "2026-11-04T06:15:26.252Z",
   "totalWorks": 5841,
   "regionCount": 22,
   "regions": [
-    "Contemporary Hip-Hop",
-    "Eclectic Pop Fusion",
-    "90s Alternative Rock",
-    "Intimate Melodrama"
+    "Contemporary Alternative",
+    "Eclectic Hip-Hop & Pop",
+    "Quirky Comedic Dramas",
+    "Rock & Pop Classics"
   ],
   "now": [
     {
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-04T05:43:06.263Z",
-      "importAttemptAt": "2026-11-04T05:43:06.263Z",
+      "syncedAt": "2026-11-04T06:15:35.706Z",
+      "importAttemptAt": "2026-11-04T06:15:35.706Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-04T05:33:04.000Z",
-      "syncedAt": "2026-11-04T05:42:59.218Z",
-      "importAttemptAt": "2026-11-04T05:42:59.218Z",
+      "activityAt": "2026-11-04T05:54:40.000Z",
+      "syncedAt": "2026-11-04T06:15:26.252Z",
+      "importAttemptAt": "2026-11-04T06:15:26.252Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Chris Brown",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-04T05:42:58.849Z",
-      "syncedAt": "2026-11-04T05:42:58.861Z",
-      "importAttemptAt": "2026-11-04T05:42:58.861Z",
+      "activityAt": "2026-11-04T06:15:26.339Z",
+      "syncedAt": "2026-11-04T06:15:26.352Z",
+      "importAttemptAt": "2026-11-04T06:15:26.352Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=X%20(Expanded%20Edition)%20Chris%20Brown%202014",
       "art": {
