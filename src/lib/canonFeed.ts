@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-04",
-  "sourceSyncedAt": "2026-11-04T13:40:57.690Z",
+  "sourceSyncedAt": "2026-11-04T14:12:44.240Z",
   "totalWorks": 5842,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-04T13:41:05.094Z",
-      "importAttemptAt": "2026-11-04T13:41:05.094Z",
+      "syncedAt": "2026-11-04T14:12:52.694Z",
+      "importAttemptAt": "2026-11-04T14:12:52.694Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-04T11:07:25.000Z",
-      "syncedAt": "2026-11-04T13:40:57.690Z",
-      "importAttemptAt": "2026-11-04T13:40:57.690Z",
+      "syncedAt": "2026-11-04T14:12:44.240Z",
+      "importAttemptAt": "2026-11-04T14:12:44.240Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jadakiss",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-04T13:40:57.883Z",
-      "syncedAt": "2026-11-04T13:40:57.906Z",
-      "importAttemptAt": "2026-11-04T13:40:57.906Z",
+      "activityAt": "2026-11-04T14:12:44.345Z",
+      "syncedAt": "2026-11-04T14:12:44.391Z",
+      "importAttemptAt": "2026-11-04T14:12:44.391Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Kiss%20Of%20Death%20Jadakiss%202004",
       "art": {
