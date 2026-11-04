@@ -36,8 +36,8 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-11-03",
-  "sourceSyncedAt": "2026-11-03T23:54:25.036Z",
+  "generatedAt": "2026-11-04",
+  "sourceSyncedAt": "2026-11-04T00:26:09.337Z",
   "totalWorks": 5840,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-03T23:54:33.262Z",
-      "importAttemptAt": "2026-11-03T23:54:33.262Z",
+      "syncedAt": "2026-11-04T00:26:16.727Z",
+      "importAttemptAt": "2026-11-04T00:26:16.727Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-01T10:37:38.000Z",
-      "syncedAt": "2026-11-03T23:54:25.036Z",
-      "importAttemptAt": "2026-11-03T23:54:25.036Z",
+      "syncedAt": "2026-11-04T00:26:09.398Z",
+      "importAttemptAt": "2026-11-04T00:26:09.398Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Maxwell Young",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-03T23:54:25.472Z",
-      "syncedAt": "2026-11-03T23:54:25.486Z",
-      "importAttemptAt": "2026-11-03T23:54:25.486Z",
+      "activityAt": "2026-11-04T00:26:09.314Z",
+      "syncedAt": "2026-11-04T00:26:09.337Z",
+      "importAttemptAt": "2026-11-04T00:26:09.337Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Sneakin%20Drinks%20into%20Bars%20-%20Single%20Maxwell%20Young%202026",
       "art": {
