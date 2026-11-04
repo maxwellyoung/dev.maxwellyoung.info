@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-04",
-  "sourceSyncedAt": "2026-11-04T11:02:03.400Z",
+  "sourceSyncedAt": "2026-11-04T11:33:59.448Z",
   "totalWorks": 5842,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-04T11:02:09.936Z",
-      "importAttemptAt": "2026-11-04T11:02:09.936Z",
+      "syncedAt": "2026-11-04T11:34:06.371Z",
+      "importAttemptAt": "2026-11-04T11:34:06.371Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-04T10:52:07.000Z",
-      "syncedAt": "2026-11-04T11:02:04.036Z",
-      "importAttemptAt": "2026-11-04T11:02:04.036Z",
+      "activityAt": "2026-11-04T11:07:25.000Z",
+      "syncedAt": "2026-11-04T11:33:59.448Z",
+      "importAttemptAt": "2026-11-04T11:33:59.448Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jadakiss",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-04T11:02:03.385Z",
-      "syncedAt": "2026-11-04T11:02:03.400Z",
-      "importAttemptAt": "2026-11-04T11:02:03.400Z",
+      "activityAt": "2026-11-04T11:33:59.502Z",
+      "syncedAt": "2026-11-04T11:33:59.539Z",
+      "importAttemptAt": "2026-11-04T11:33:59.539Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Kiss%20Of%20Death%20Jadakiss%202004",
       "art": {
