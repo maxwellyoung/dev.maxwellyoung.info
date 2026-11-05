@@ -22,15 +22,15 @@ export const openSourceContributions: OpenSourceContribution[] = [
     href: "https://github.com/pingdotgg/t3code/pulls?q=is%3Apr+is%3Amerged+author%3Amaxwellyoung",
     issueHref: "https://github.com/pingdotgg/t3code/issues/3983",
     eyebrow: "T3 Code · coding-agent interface · upstream contributor",
-    title: "Improved mobile input and cross-device conversation reliability.",
+    title: "Merged fixes across agent permissions, secret handling, and client and server reliability.",
     summary:
-      "T3 Code is a web and desktop interface for running Codex, Claude, Cursor, and other coding agents. I contribute focused fixes across the mobile composer and server data-integrity boundaries, with regression coverage for message identity, ordering, and client clock skew.",
+      "T3 Code is a web and desktop interface for running Codex, Claude, Cursor, and other coding agents. My merged fixes make Plan mode ask before writes in Auto and Full access, disable executable capabilities in Claude metadata generation, preserve inline provider secrets on redacted saves, and keep PR links through reconnects. Earlier fixes covered mobile input and message ordering. Each change ships with regression tests.",
     resumeSummary:
-      "Contributed upstream fixes across mobile input and server data integrity, including multiline composition, runtime-safe message IDs, and reliable cross-device conversation ordering.",
+      "Contributed upstream fixes across agent permissions, provider secret handling, and client and server reliability, including Plan mode write approvals and redacted secret saves.",
     proof: [
       "Merged upstream",
       "Regression coverage",
-      "Mobile and server fixes",
+      "Server, web, and mobile fixes",
     ],
     stack: ["TypeScript", "Effect", "React", "Vitest", "Playwright"],
   },
