@@ -54,7 +54,7 @@ export const resumeData: ResumeData = {
       companyHref: "https://www.silk.cx/",
       date: "Sep 2025 – Present",
       summary:
-        "Silk is a platform for blogging, private archives, and moodboards. Led its React Native app from first build to Google Play launch.",
+        "Silk is a platform for blogging, private archives, and moodboards.",
       responsibilities: [
         "Built the initial mobile foundation, interface systems, and media-heavy flows. Own performance, accessibility, and release reliability across iOS and Android, validated with regression coverage and real-device checks.",
         "Also ship in Silk's TypeScript API: distributed rate limiting, account authentication, and feed and chat performance.",
@@ -124,7 +124,7 @@ export const resumeData: ResumeData = {
       href: "https://skillscan.ninetynine.digital",
       date: "Live · npm 0.1.0",
       summary:
-        "Static security scanner for Claude Code skills and MCP servers, shipped as a web app, npm CLI, and GitHub Action with 29 rules.",
+        "Static security scanner for agent skills, MCP servers, npm packages, and VS Code extensions, shipped as a web app, npm CLI, and GitHub Action with 29 deterministic checks.",
     },
     {
       name: "Liner",
