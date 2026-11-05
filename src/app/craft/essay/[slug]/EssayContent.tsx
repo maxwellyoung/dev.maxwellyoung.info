@@ -14,7 +14,7 @@ export function EssayContent({ essay }: EssayContentProps) {
     <main id="main-content" className="min-h-screen bg-background">
       <article className="max-w-3xl mx-auto px-6 py-12">
         {/* A CSS entrance, so the essay is visible without JS and honours reduced motion. */}
-        <div className="animate-in fade-in slide-in-from-bottom-5 duration-[600ms] ease-brand">
+        <div className="animate-in fade-in slide-in-from-bottom-5 duration-500 ease-brand">
           <Link
             href="/craft"
             className="inline-flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors mb-8 group"
