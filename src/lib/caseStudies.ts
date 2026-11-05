@@ -369,7 +369,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     timeline: "2024 — Present",
     role: "Solo Designer & Developer",
     tools: ["React Native", "Expo", "TypeScript"],
-    liveUrl: "https://vapequitcoach.com",
+    liveUrl: "https://apps.apple.com/nz/app/vape-quit-coach/id6754863295",
     overview: "Vape Quit Coach is an iOS app I designed and built to help people quit vaping, built around tracking, coaching and support for the moments that matter most: cravings and setbacks.",
     challenge: "A lot of quitting apps lean on brittle streaks and punishing framing, which feels worst exactly when someone slips. I wanted something calmer that's still easy to use in a hard moment.",
     constraints: [
