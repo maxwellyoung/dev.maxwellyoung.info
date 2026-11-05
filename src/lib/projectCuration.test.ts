@@ -16,13 +16,19 @@ test("only Second Brain and Margin are listed from the personal tools, inside Ot
   assert.ok(supportingProjects.some(project => project.slug === "margin"));
 });
 
-test("listed private tools expose proof and boundaries without private source links", () => {
+test("personal tools expose proof without private source links", () => {
   for (const project of rankedProjects.filter(project => project.collection === "personal-tools")) {
     assert.ok(project.screenshots?.length);
     assert.ok(project.mediaCaption);
-    assert.notEqual(project.launchStage, "Live");
     assert.equal(project.codeLink, undefined);
-    assert.equal(project.link, undefined);
+    if (project.slug === "margin") {
+      assert.equal(project.launchStage, "Live");
+      assert.equal(project.link, "https://margin.maxwellyoung.info");
+      assert.equal(getCaseStudy("margin")?.liveUrl, project.link);
+    } else {
+      assert.notEqual(project.launchStage, "Live");
+      assert.equal(project.link, undefined);
+    }
     const copy = JSON.stringify(project);
     assert.doesNotMatch(copy, /github\.com\/maxwellyoung\/(?:uni-brain|autobahn|epub-compressor)|tailnet|100\.\d+\.\d+\.\d+|\/Users\//i);
   }
