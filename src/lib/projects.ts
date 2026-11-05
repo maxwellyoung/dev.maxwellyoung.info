@@ -188,7 +188,7 @@ const projects: Project[] = [
     description:
       "Mobile lead for Silk's iOS and Android app, from first build through launch, performance work, and ongoing releases.",
     longDescription:
-      "Silk is a platform for blogging, private archives, and multimedia moodboards. I led its React Native app from the first build through launch and continue to own mobile delivery across iOS and Android. My work connects architecture and interaction design with performance, accessibility, regression coverage, and real-device verification.",
+      "Silk is a platform for blogging, private archives, and multimedia moodboards, and I'm its mobile lead.",
     tags: ["React Native", "React", "TypeScript"],
     stack: ["React Native", "React", "TypeScript", "Expo"],
     startDate: "2025-09-01",
