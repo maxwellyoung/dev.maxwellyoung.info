@@ -17,12 +17,6 @@ interface CaseStudyContentProps {
   study: CaseStudy | undefined;
 }
 
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: spring.gentle,
-};
-
 export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
   const [showAnnotations, setShowAnnotations] = useState(false);
 
@@ -82,7 +76,8 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
     <main id="main-content" className="min-h-screen">
       {/* Hero */}
       <section className="relative px-6 py-16 md:py-20">
-        <motion.div {...fadeIn} className="mx-auto max-w-5xl">
+        {/* CSS entrances, so the hero is visible without JS and honours reduced motion. */}
+        <div className="mx-auto max-w-5xl animate-in fade-in slide-in-from-bottom-5 duration-500 ease-brand">
           <Link
             href="/#projects"
             className="mb-10 inline-flex min-h-11 items-center gap-2 rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
@@ -203,11 +198,8 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
             </div>
 
             {hasHeroImage && study.heroImage && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.985 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={spring.gentle}
-                className="relative aspect-[4/3] overflow-hidden rounded-sm border border-[hsl(var(--border))] bg-[hsl(var(--muted))] shadow-[0_18px_60px_rgba(0,0,0,0.06)] dark:shadow-[0_18px_60px_rgba(0,0,0,0.28)] sm:aspect-video lg:mt-1"
+              <div
+                className="animate-in fade-in zoom-in-[0.985] duration-500 ease-brand relative aspect-[4/3] overflow-hidden rounded-sm border border-[hsl(var(--border))] bg-[hsl(var(--muted))] shadow-[0_18px_60px_rgba(0,0,0,0.06)] dark:shadow-[0_18px_60px_rgba(0,0,0,0.28)] sm:aspect-video lg:mt-1"
               >
                 <Image
                   src={study.heroImage}
@@ -218,10 +210,10 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                   quality={75}
                   priority
                 />
-              </motion.div>
+              </div>
             )}
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Content */}

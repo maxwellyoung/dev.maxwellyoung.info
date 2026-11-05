@@ -1,9 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import Link from "next/link";
-import { type Essay, essays } from "@/lib/essays";
+import { type Essay, essays, splitEssayBlocks } from "@/lib/essays";
 import { SiteFooter } from "@/components/SiteFooter";
 
 interface EssayContentProps {
@@ -14,11 +13,8 @@ export function EssayContent({ essay }: EssayContentProps) {
   return (
     <main id="main-content" className="min-h-screen bg-background">
       <article className="max-w-3xl mx-auto px-6 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
-        >
+        {/* A CSS entrance, so the essay is visible without JS and honours reduced motion. */}
+        <div className="animate-in fade-in slide-in-from-bottom-5 duration-[600ms] ease-brand">
           <Link
             href="/craft"
             className="inline-flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors mb-8 group"
@@ -66,7 +62,7 @@ export function EssayContent({ essay }: EssayContentProps) {
           </header>
 
           <div className="prose prose-lg dark:prose-invert max-w-none">
-            {essay.content.split("\n\n").map((paragraph, index) => {
+            {splitEssayBlocks(essay.content).map((paragraph, index) => {
               // Handle markdown headers
               if (paragraph.startsWith("## ")) {
                 return (
@@ -162,7 +158,7 @@ export function EssayContent({ essay }: EssayContentProps) {
           </footer>
 
           <SiteFooter />
-        </motion.div>
+        </div>
       </article>
     </main>
   );

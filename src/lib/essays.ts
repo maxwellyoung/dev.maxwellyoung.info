@@ -9,21 +9,22 @@ export interface Essay {
   content: string;
 }
 
-export const essays: Essay[] = [
+type EssaySource = Omit<Essay, "readTime">;
+
+const essaySources: EssaySource[] = [
   {
     title: "The Invisible Details of Interaction Design",
     slug: "the-invisible-details-of-interaction-design",
     excerpt:
       "Why great interfaces borrow from thousands of years of physical intuition, and how spring physics can make digital feel tangible.",
     date: "2026-01-29",
-    readTime: "8 min",
     category: "Motion Design",
     featured: true,
     content: `There's a moment in every great interface where you stop thinking about the interface itself.
 The button doesn't feel like a button—it feels like pressing something real. The animation
 doesn't feel like code—it feels like physics.
 
-This is what Rauno Felber calls "invisible details of interaction design." The spring
+This is what Rauno Freiberg calls "invisible details of interaction design." The spring
 tension that makes a button feel satisfying to press. The momentum that makes scrolling
 feel connected to your finger. The way a modal appears not with a fade, but with the
 gentle elasticity of something being placed in the world.
@@ -71,7 +72,6 @@ engineering isn't a problem to solve—it's where the craft lives.`,
     excerpt:
       "Building a consistent language of movement that guides users naturally through digital spaces without overwhelming them.",
     date: "2026-01-28",
-    readTime: "6 min",
     category: "Design Systems",
     featured: false,
     content: `Every interface speaks in motion. The question is whether it's speaking clearly.
@@ -102,7 +102,6 @@ The goal isn't to impress. It's to disappear into the experience, making complex
     excerpt:
       "How editorial typography principles can transform a gallery website from corporate to intimate, making art feel considered rather than commercialized.",
     date: "2026-01-27",
-    readTime: "4 min",
     category: "Typography",
     featured: false,
     content: `Most gallery websites feel like catalogs. Clinical. Corporate. They present art as product
@@ -131,6 +130,40 @@ This isn't about showing off type skills. It's about using typography to create 
 right emotional context for experiencing art.`,
   },
 ];
+
+const WORDS_PER_MINUTE = 220;
+
+/** Read time from the text itself, so the label can't drift from the essay. */
+export function readTimeFor(content: string): string {
+  const words = content.split(/\s+/).filter(Boolean).length;
+  return `${Math.max(1, Math.round(words / WORDS_PER_MINUTE))} min`;
+}
+
+export const essays: Essay[] = essaySources.map((essay) => ({
+  ...essay,
+  readTime: readTimeFor(essay.content),
+}));
+
+/**
+ * Split essay text into blocks on blank lines, keeping a fenced code block whole
+ * even when the code itself contains a blank line.
+ */
+export function splitEssayBlocks(content: string): string[] {
+  const blocks: string[] = [];
+  let current: string[] = [];
+  let inFence = false;
+  for (const line of content.split("\n")) {
+    if (line.trimStart().startsWith("```")) inFence = !inFence;
+    if (!inFence && line.trim() === "") {
+      if (current.length) blocks.push(current.join("\n"));
+      current = [];
+      continue;
+    }
+    current.push(line);
+  }
+  if (current.length) blocks.push(current.join("\n"));
+  return blocks;
+}
 
 export function getEssay(slug: string): Essay | undefined {
   return essays.find((essay) => essay.slug === slug);
