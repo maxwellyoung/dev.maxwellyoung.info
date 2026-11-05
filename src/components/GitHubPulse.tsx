@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { Github } from "lucide-react";
 
 interface Pulse {
-  events: { type: string; repo: string; date: string }[];
+  events: { type: string; repo: string; date: string; refType?: string }[];
 }
 
 const VERB: Record<string, string> = {
@@ -17,10 +17,26 @@ const VERB: Record<string, string> = {
   Issues: "touched issues on",
 };
 
+// GitHub reports a new branch or tag as a CreateEvent too; only a repository is "created".
+const CREATE_VERB: Record<string, string> = {
+  branch: "created a branch on",
+  tag: "tagged",
+};
+
+function verbFor(e: Pulse["events"][number]): string {
+  if (e.type === "Create" && e.refType && CREATE_VERB[e.refType]) return CREATE_VERB[e.refType];
+  return VERB[e.type] || e.type.toLowerCase();
+}
+
 async function fetchPulse(username: string): Promise<Pulse> {
   const res = await fetch(`https://api.github.com/users/${username}/events/public?per_page=10`);
   if (!res.ok) throw new Error("github unavailable");
-  const events = (await res.json()) as { type: string; repo?: { name?: string }; created_at: string }[];
+  const events = (await res.json()) as {
+    type: string;
+    repo?: { name?: string };
+    payload?: { ref_type?: string };
+    created_at: string;
+  }[];
   const seen = new Set<string>();
   const distinct: Pulse["events"] = [];
   for (const e of events) {
@@ -31,6 +47,7 @@ async function fetchPulse(username: string): Promise<Pulse> {
     distinct.push({
       type: e.type.replace("Event", ""),
       repo,
+      refType: e.payload?.ref_type,
       date: new Date(e.created_at).toLocaleDateString("en-NZ", { day: "numeric", month: "short" }),
     });
     if (distinct.length >= 2) break;
@@ -58,7 +75,7 @@ export function GitHubPulse({ username = "maxwellyoung" }: { username?: string }
             e.repo ? (
               <li key={`${e.type}-${e.repo}`} className="flex min-w-0 items-baseline gap-2 text-xs text-muted-foreground">
                 <span className="truncate">
-                  {VERB[e.type] || e.type.toLowerCase()}{" "}
+                  {verbFor(e)}{" "}
                   <a
                     href={`https://github.com/${username}/${e.repo}`}
                     target="_blank"
