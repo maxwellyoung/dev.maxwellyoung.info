@@ -104,13 +104,16 @@
   transition: background-color 150ms ease-out, transform 150ms var(--os-ease);
 }
 .icon:active { transform: scale(0.97); }
-.icon[aria-current] > span:last-child { font-weight: 500; }
+/* The open-app dot sits outside the flow, so opening a window doesn't push the icons below it. */
+.icon[aria-current] > span:last-child { position: relative; font-weight: 500; }
 .icon[aria-current] > span:last-child::after {
   content: "";
-  display: block;
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 3px);
   width: 4px;
   height: 4px;
-  margin: 3px auto 0;
+  margin-left: -2px;
   border-radius: 50%;
   background: currentColor;
   opacity: 0.5;
@@ -333,7 +336,8 @@
   box-shadow: inset 0 0 0 1px var(--os-line);
 }
 .coverContain { padding: 0; }
-.impact { margin: 16px 0; padding-left: 18px; color: var(--os-muted); }
+/* The base styles strip list markers; restore them so the indented items read as a list. */
+.impact { margin: 16px 0; padding-left: 18px; list-style: disc; color: var(--os-muted); }
 .impact li { margin: 4px 0; }
 .links { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 20px !important; font-size: 13px; }
 .appIcon {

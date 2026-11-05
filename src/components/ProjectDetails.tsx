@@ -74,7 +74,7 @@ export function ProjectDetails({
               <span
                 className={`shrink-0 rounded-sm border px-2 py-0.5 text-xs ${
                   isActiveStatus(project)
-                    ? "border-accent/20 bg-accent/10 text-accent"
+                    ? "border-accent/20 bg-accent/5 text-accent"
                     : "border-border/70 bg-[hsl(var(--muted))]/60 text-muted-foreground"
                 }`}
               >
