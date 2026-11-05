@@ -56,15 +56,16 @@ const confidentSpring = { stiffness: 200, damping: 25, mass: 1 }
 This isn't just technical configuration—it's emotional configuration. The spring values
 become part of your design language, as important as your color palette or typography scale.
 
-## The Craft is in the Details
+## Where This Shows Up Here
 
-Linear's success isn't because it's a better project tracker. It's because every interaction
-feels considered. The way tasks slide into place. The gentle bounce when you complete something.
-The momentum when you scroll through a long list.
+On this site's project list, the chevron turns on the snappy spring (stiffness 500,
+damping 35): it answers the click and settles without a wobble. The row itself opens on a
+timed curve instead, 300ms for height and 200ms for opacity, and it closes faster than it
+opens, in 220ms, because leaving should cost less than arriving. With reduced motion on,
+both drop to zero.
 
-These details don't exist in Figma mockups. They emerge from design engineers who care about
-how things feel, not just how they look. Who understand that the gap between design and
-engineering isn't a problem to solve—it's where the craft lives.`,
+None of that shows up in a mockup. It only exists once the interface runs, which is why I
+tune it in code, with the thing in my hand, rather than describing it and handing it off.`,
   },
   {
     title: "Motion Grammar for Humane Interfaces",
@@ -82,11 +83,17 @@ through digital spaces.
 
 ## Establishing Rhythm
 
-Good motion grammar starts with rhythm. Fast transitions for immediate feedback (100-200ms).
-Medium transitions for state changes (300-500ms). Slow transitions for major shifts (500ms+).
+Good motion grammar starts with rhythm. Fast transitions for immediate feedback (100–180ms).
+Medium transitions for state changes (220–320ms). Slow transitions for major shifts (350–500ms).
 
 But rhythm alone isn't enough. You need personality. The specific spring configurations
 that make your interface feel like yours.
+
+On this site that grammar lives in one file: duration tokens of 100, 150, 250 and 400ms for
+everyday work, 600ms kept for rare large moves, and six named springs. A button press uses
+snappy; content arriving as you scroll uses gentle. When a new component needs motion,
+it picks a token instead of inventing a number, which is most of what keeps the site
+sounding like one voice.
 
 ## Three Principles
 
@@ -104,7 +111,10 @@ The goal isn't to impress. It's to disappear into the experience, making complex
     date: "2026-01-27",
     category: "Typography",
     featured: false,
-    content: `Most gallery websites feel like catalogs. Clinical. Corporate. They present art as product
+    content: `Strawhouse is a gallery site I designed that hasn't launched, so there's no public link
+yet. This note is about its type system, not a finished product.
+
+Most gallery websites feel like catalogs. Clinical. Corporate. They present art as product
 rather than experience.
 
 For Strawhouse Gallery, I wanted something different. An editorial approach that makes

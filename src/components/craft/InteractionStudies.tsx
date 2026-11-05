@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Heart, Download, Share, Play, Pause, Mail, Link2, Bookmark, MessageCircle } from "lucide-react";
 import { duration, tap } from "@/lib/motion";
 
@@ -56,7 +56,7 @@ function LikeButtonStudy() {
   return (
     <Study
       title="Like Button"
-      note="Scale feedback with color transition and particle burst. Spring physics reward engagement."
+      note="Scale feedback with a color transition and a ring pulse. Spring physics reward engagement."
     >
       <motion.button
         type="button"
@@ -166,6 +166,17 @@ function DownloadProgressStudy() {
 function ShareMenuStudy() {
   const [isOpen, setIsOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion() ?? false;
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const closeOnOutside = (event: PointerEvent) => {
+      if (!wrapperRef.current?.contains(event.target as Node)) setIsOpen(false);
+    };
+    document.addEventListener("pointerdown", closeOnOutside);
+    return () => document.removeEventListener("pointerdown", closeOnOutside);
+  }, [isOpen]);
 
   const menuItems = [
     { icon: Mail, label: "Email", delay: 0 },
@@ -179,8 +190,17 @@ function ShareMenuStudy() {
       title="Share Menu"
       note="Staggered spring reveals build rhythm without shouting — each item earns its own moment."
     >
-      <div className="relative">
+      <div
+        ref={wrapperRef}
+        className="relative"
+        onKeyDown={(event) => {
+          if (event.key !== "Escape" || !isOpen) return;
+          setIsOpen(false);
+          triggerRef.current?.focus();
+        }}
+      >
         <motion.button
+          ref={triggerRef}
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           whileTap={shouldReduceMotion ? undefined : tap.deep}
@@ -231,6 +251,12 @@ function ShareMenuStudy() {
   );
 }
 
+/** Progress is counted in tenths of a second; show it as m:ss. */
+function formatTenths(tenths: number): string {
+  const seconds = Math.floor(tenths / 10);
+  return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
+}
+
 function PlaybackControlStudy() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -261,7 +287,10 @@ function PlaybackControlStudy() {
       <div className="flex items-center space-x-4 w-full max-w-md">
         <motion.button
           type="button"
-          onClick={() => setIsPlaying(!isPlaying)}
+          onClick={() => {
+            if (!isPlaying && currentTime >= trackDuration) setCurrentTime(0);
+            setIsPlaying(!isPlaying);
+          }}
           whileTap={shouldReduceMotion ? undefined : tap.deep}
           className="relative min-h-11 min-w-11 overflow-hidden rounded-full border border-accent/20 bg-accent/10 p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           aria-label={isPlaying ? "Pause" : "Play"}
@@ -290,14 +319,8 @@ function PlaybackControlStudy() {
             />
           </div>
           <div className="flex justify-between text-xs text-muted-foreground">
-            <span>
-              {Math.floor(currentTime / 10)}:
-              {(currentTime % 10).toString().padStart(2, "0")}
-            </span>
-            <span>
-              {Math.floor(trackDuration / 10)}:
-              {(trackDuration % 10).toString().padStart(2, "0")}
-            </span>
+            <span>{formatTenths(currentTime)}</span>
+            <span>{formatTenths(trackDuration)}</span>
           </div>
         </div>
       </div>
