@@ -26,7 +26,7 @@ export default function Resume() {
   return (
     <main id="main-content" className="relative w-full max-w-2xl mx-auto p-6">
       <header className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row">
-        <div className="flex min-w-0 items-center gap-4">
+        <div className="flex min-w-0 items-start gap-4">
           <Image
             className="flex-shrink-0 rounded-full"
             src="/profile_work.webp"
@@ -44,7 +44,7 @@ export default function Resume() {
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
               {resumeData.profile}
             </p>
-            <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">
+            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground [&_a]:inline-flex [&_a]:min-h-6 [&_a]:items-center">
               <span>{resumeData.contact.location}</span>
               <AnimatedLink
                 href={`mailto:${resumeData.contact.email}`}
@@ -152,7 +152,7 @@ export default function Resume() {
           {resumeData.skills.map((skill) => (
             <article key={skill.category}>
               <h3 className="resume-label">{skill.category}</h3>
-              <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {skill.items.join(", ")}
               </p>
             </article>

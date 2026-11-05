@@ -27,7 +27,6 @@ function sanitizeForPDF(text: string): string {
     .replace(/→/g, "->")
     .replace(/←/g, "<-")
     .replace(/★/g, "*")
-    .replace(/–/g, "-")
     .replace(/—/g, " - ")
     .replace(/'/g, "'")
     .replace(/'/g, "'")
@@ -116,6 +115,27 @@ function writeWrappedText(
   }
 }
 
+/** Draw segments on one line, separated by a middle dot, linking those with a url. */
+function writeLinkedLine(
+  context: PdfContext,
+  segments: { text: string; url?: string }[],
+  x: number,
+  y: number
+) {
+  const separator = "  ·  ";
+  let cursor = x;
+  segments.forEach((segment, index) => {
+    const text = sanitizeForPDF(segment.text);
+    if (segment.url) context.pdf.textWithLink(text, cursor, y, { url: segment.url });
+    else context.pdf.text(text, cursor, y);
+    cursor += context.pdf.getTextWidth(text);
+    if (index < segments.length - 1) {
+      context.pdf.text(separator, cursor, y);
+      cursor += context.pdf.getTextWidth(separator);
+    }
+  });
+}
+
 function writeSectionTitle(context: PdfContext, title: string, marginTop = 0) {
   context.y += marginTop;
   checkPageBreak(context, 24);
@@ -144,8 +164,11 @@ function writeHeader(context: PdfContext) {
   context.y += 5;
 
   setFont(context, 9, "normal", context.colors.gray);
-  const contactLine = `${resumeData.contact.email}  |  ${resumeData.contact.location}  |  ${resumeData.contact.website.replace("https://", "")}`;
-  context.pdf.text(sanitizeForPDF(contactLine), context.marginLeft, context.y);
+  writeLinkedLine(context, [
+    { text: resumeData.contact.email, url: `mailto:${resumeData.contact.email}` },
+    { text: resumeData.contact.location },
+    { text: resumeData.contact.website, url: `https://${resumeData.contact.website}` },
+  ], context.marginLeft, context.y);
   context.y += 18;
 
   context.pdf.setDrawColor(220, 220, 220);
@@ -242,11 +265,11 @@ function writeSelectedWork(context: PdfContext) {
     checkPageBreak(context, 48);
 
     setFont(context, 10, "bold");
-    context.pdf.text(
-      sanitizeForPDF(`${work.name} - ${work.descriptor}`),
-      context.marginLeft,
-      context.y
-    );
+    // The project name links to its live proof, as it does on the web page.
+    context.pdf.textWithLink(sanitizeForPDF(work.name), context.marginLeft, context.y, { url: work.href });
+    const nameWidth = context.pdf.getTextWidth(sanitizeForPDF(work.name));
+    setFont(context, 10, "normal", context.colors.gray);
+    context.pdf.text(sanitizeForPDF(` · ${work.descriptor}`), context.marginLeft + nameWidth, context.y);
 
     setFont(context, 9, "normal", context.colors.lightGray);
     const sanitizedDate = sanitizeForPDF(work.date);
@@ -363,11 +386,10 @@ function writeSkills(context: PdfContext) {
 function writeFooter(context: PdfContext) {
   context.pdf.setFontSize(7);
   context.pdf.setTextColor(180, 180, 180);
-  context.pdf.text(
-    "github.com/maxwellyoung  |  linkedin.com/in/maxwell-young-a55032125",
-    context.marginLeft,
-    context.pageHeight - 22
-  );
+  writeLinkedLine(context, [
+    { text: resumeData.contact.github, url: `https://${resumeData.contact.github}` },
+    { text: resumeData.contact.linkedin, url: `https://${resumeData.contact.linkedin}` },
+  ], context.marginLeft, context.pageHeight - 22);
 }
 
 export async function generateResumePDF(): Promise<Blob> {
