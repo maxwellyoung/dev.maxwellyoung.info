@@ -3,7 +3,7 @@ import { essays } from "@/lib/essays";
 
 export function DesignEssays() {
   return (
-    <section className="space-y-6">
+    <section id="essays" className="scroll-mt-8 space-y-6">
       <h2 className="text-xl font-medium">Essays</h2>
       <ul className="divide-y divide-[hsl(var(--border))]/50">
         {essays.map((essay) => (

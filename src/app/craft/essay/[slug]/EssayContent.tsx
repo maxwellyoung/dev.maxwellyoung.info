@@ -17,10 +17,10 @@ export function EssayContent({ essay }: EssayContentProps) {
         <div className="animate-in fade-in slide-in-from-bottom-5 duration-[600ms] ease-brand">
           <Link
             href="/craft"
-            className="inline-flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors mb-8 group"
+            className="inline-flex min-h-11 items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors mb-8 group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span>Back to Interaction Lab</span>
+            <span>Back to Craft</span>
           </Link>
 
           <header className="mb-12">
@@ -35,7 +35,7 @@ export function EssayContent({ essay }: EssayContentProps) {
               )}
             </div>
 
-            <h1 className="font-display text-4xl md:text-5xl font-light mb-6 leading-tight">
+            <h1 className="font-display text-4xl md:text-5xl md:leading-tight font-light mb-6 leading-tight">
               {essay.title}
             </h1>
 
@@ -136,7 +136,7 @@ export function EssayContent({ essay }: EssayContentProps) {
                     <li key={e.slug}>
                       <Link
                         href={`/craft/essay/${e.slug}`}
-                        className="group flex items-center justify-between text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        className="group flex min-h-11 items-center justify-between text-sm text-muted-foreground hover:text-foreground transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                       >
                         <span>{e.title}</span>
                         <span className="text-xs text-muted-foreground">{e.readTime}</span>
@@ -149,8 +149,8 @@ export function EssayContent({ essay }: EssayContentProps) {
 
           <footer className="mt-8 pt-8 border-t border-border/50">
             <Link
-              href="/craft"
-              className="inline-flex items-center space-x-2 text-accent hover:text-accent/80 transition-colors group"
+              href="/craft#essays"
+              className="inline-flex min-h-11 items-center space-x-2 text-accent hover:text-accent/80 transition-colors group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span>Back to all essays</span>
