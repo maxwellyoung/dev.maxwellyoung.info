@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-05",
-  "sourceSyncedAt": "2026-11-05T08:45:26.078Z",
+  "sourceSyncedAt": "2026-11-05T09:17:08.967Z",
   "totalWorks": 5842,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-05T08:45:33.420Z",
-      "importAttemptAt": "2026-11-05T08:45:33.420Z",
+      "syncedAt": "2026-11-05T09:17:15.574Z",
+      "importAttemptAt": "2026-11-05T09:17:15.574Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -68,22 +68,22 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:730",
+      "id": "steam:2988580",
       "verb": "playing",
       "medium": "game",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "Yakuza 0 Director's Cut",
+      "creator": "RGG Studio",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-04T11:07:25.000Z",
-      "syncedAt": "2026-11-05T08:45:26.405Z",
-      "importAttemptAt": "2026-11-05T08:45:26.405Z",
+      "activityAt": "2026-11-05T09:16:48.000Z",
+      "syncedAt": "2026-11-05T09:17:09.209Z",
+      "importAttemptAt": "2026-11-05T09:17:09.209Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/730/",
+      "href": "https://store.steampowered.com/app/2988580/",
       "art": {
         "src": "/canon/playing.jpg",
-        "w": 240,
-        "h": 360
+        "w": 116,
+        "h": 116
       }
     },
     {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jadakiss",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-05T08:45:26.060Z",
-      "syncedAt": "2026-11-05T08:45:26.078Z",
-      "importAttemptAt": "2026-11-05T08:45:26.078Z",
+      "activityAt": "2026-11-05T09:17:08.945Z",
+      "syncedAt": "2026-11-05T09:17:08.967Z",
+      "importAttemptAt": "2026-11-05T09:17:08.967Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Kiss%20Of%20Death%20Jadakiss%202004",
       "art": {
