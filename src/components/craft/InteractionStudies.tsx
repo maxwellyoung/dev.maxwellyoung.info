@@ -76,7 +76,7 @@ function LikeButtonStudy() {
         >
           <Heart
             className={`h-6 w-6 transition-colors duration-200 ${
-              isLiked ? "fill-accent text-accent" : "text-muted"
+              isLiked ? "fill-accent text-accent" : "text-muted-foreground"
             }`}
             aria-hidden="true"
           />

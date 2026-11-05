@@ -131,19 +131,19 @@ export default function BasketcasePage() {
 
             <dl className="mt-10 grid gap-0 overflow-hidden rounded-md border border-[#071321]/12 text-sm sm:grid-cols-3">
               <div className="border-b border-[#071321]/12 p-3 sm:border-b-0 sm:border-r">
-                <dt className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/45">
+                <dt className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/65">
                   Stage
                 </dt>
                 <dd className="mt-1 text-[#071321]">In development</dd>
               </div>
               <div className="border-b border-[#071321]/12 p-3 sm:border-b-0 sm:border-r">
-                <dt className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/45">
+                <dt className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/65">
                   Role
                 </dt>
                 <dd className="mt-1 text-[#071321]">Solo product</dd>
               </div>
               <div className="p-3">
-                <dt className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/45">
+                <dt className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/65">
                   Stack
                 </dt>
                 <dd className="mt-1 text-[#071321]">React Native / OCR</dd>
@@ -192,14 +192,14 @@ export default function BasketcasePage() {
                 key={item.label}
                 className="grid gap-2 border-b border-[#071321]/10 p-5 last:border-b-0 sm:grid-cols-[10rem_1fr]"
               >
-                <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/45">
+                <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/65">
                   {item.label}
                 </p>
                 <p className="text-sm leading-6 text-[#071321]/72">{item.value}</p>
               </div>
             ))}
             <div className="grid gap-2 border-t border-[#071321]/10 p-5 sm:grid-cols-[10rem_1fr]">
-              <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/45">
+              <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/65">
                 Privacy stance
               </p>
               <p className="flex gap-2 text-sm leading-6 text-[#071321]/72">

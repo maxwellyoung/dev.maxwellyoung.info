@@ -106,7 +106,7 @@ function ProjectRow({
             <motion.div
               animate={{ rotate: isExpanded ? 180 : 0 }}
               transition={shouldReduceMotion ? { duration: 0 } : spring.snappy}
-              className="flex-shrink-0 text-muted-foreground/50 group-hover:text-muted-foreground transition-colors"
+              className="flex-shrink-0 text-muted-foreground/70 dark:text-muted-foreground/50 group-hover:text-muted-foreground transition-colors"
             >
               <ChevronDown className="h-4 w-4" />
             </motion.div>
@@ -140,7 +140,7 @@ function ProjectRow({
             <motion.div
               animate={{ rotate: isExpanded ? 180 : 0 }}
               transition={shouldReduceMotion ? { duration: 0 } : spring.snappy}
-              className="flex-shrink-0 text-muted-foreground/50 group-hover:text-muted-foreground transition-colors"
+              className="flex-shrink-0 text-muted-foreground/70 dark:text-muted-foreground/50 group-hover:text-muted-foreground transition-colors"
             >
               <ChevronDown className="h-4 w-4" />
             </motion.div>

@@ -51,7 +51,7 @@ export function OpenSourceProof() {
               </div>
               <ArrowUpRight
                 aria-hidden="true"
-                className="mt-1 h-4 w-4 flex-shrink-0 text-muted-foreground/50 transition-[color,transform] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-muted-foreground"
+                className="mt-1 h-4 w-4 flex-shrink-0 text-muted-foreground/70 dark:text-muted-foreground/50 transition-[color,transform] duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-muted-foreground"
               />
               <span className="sr-only">View merged contributions (opens in a new tab)</span>
             </a>
