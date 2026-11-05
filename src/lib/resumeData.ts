@@ -39,7 +39,7 @@ export const resumeData: ResumeData = {
   name: "Maxwell Young",
   title: "Product Engineer",
   profile:
-    "Product engineer working across mobile apps and research software. Led Silk's React Native app from its first build to its Google Play launch and ship backend work in its TypeScript API. Designed and shipped five iPhone apps of my own. Combine interaction design with architecture, performance, accessibility, and regression testing.",
+    "Product engineer working across mobile apps and research software. Led Silk's React Native app from its first build to its Google Play launch, and also ship backend work in its TypeScript API. Designed and shipped five iPhone apps of my own. Combine interaction design with architecture, performance, accessibility, and regression testing.",
   contact: {
     email: "maxwell@ninetynine.digital",
     location: "Auckland, NZ",
