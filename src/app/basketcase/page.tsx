@@ -76,7 +76,7 @@ export default function BasketcasePage() {
         <header className="flex flex-wrap items-center justify-between gap-4 border-b border-[#071321]/10 pb-5 text-sm">
           <Link
             href="/#projects"
-            className="text-[#071321]/65 transition-colors hover:text-[#071321]"
+            className="inline-flex min-h-11 items-center text-[#071321]/65 transition-colors hover:text-[#071321]"
           >
             Maxwell Young / projects
           </Link>
@@ -84,13 +84,13 @@ export default function BasketcasePage() {
             className="flex items-center gap-4 text-[#071321]/60"
             aria-label="Basketcase pages"
           >
-            <Link className="transition-colors hover:text-[#071321]" href="/basketcase/privacy">
+            <Link className="inline-flex min-h-11 items-center transition-colors hover:text-[#071321]" href="/basketcase/privacy">
               Privacy
             </Link>
-            <Link className="transition-colors hover:text-[#071321]" href="/basketcase/terms">
+            <Link className="inline-flex min-h-11 items-center transition-colors hover:text-[#071321]" href="/basketcase/terms">
               Terms
             </Link>
-            <Link className="transition-colors hover:text-[#071321]" href="/basketcase/support">
+            <Link className="inline-flex min-h-11 items-center transition-colors hover:text-[#071321]" href="/basketcase/support">
               Support
             </Link>
           </nav>
@@ -182,7 +182,7 @@ export default function BasketcasePage() {
           <div>
             <ReceiptText className="h-6 w-6 text-[#1177d5]" />
             <h2 className="mt-4 max-w-sm font-display text-3xl font-light tracking-tight sm:text-4xl">
-              A sharper public story than a receipt scanner.
+              Why it&apos;s built this way.
             </h2>
           </div>
 
@@ -214,16 +214,16 @@ export default function BasketcasePage() {
         <footer className="flex flex-col gap-4 border-t border-[#071321]/10 py-8 text-sm text-[#071321]/60 sm:flex-row sm:items-center sm:justify-between">
           <p>Built through ninetynine digital.</p>
           <div className="flex flex-wrap gap-x-4 gap-y-2">
-            <Link className="transition-colors hover:text-[#071321]" href="/basketcase/privacy">
+            <Link className="inline-flex min-h-11 items-center transition-colors hover:text-[#071321]" href="/basketcase/privacy">
               Privacy
             </Link>
-            <Link className="transition-colors hover:text-[#071321]" href="/basketcase/terms">
+            <Link className="inline-flex min-h-11 items-center transition-colors hover:text-[#071321]" href="/basketcase/terms">
               Terms
             </Link>
-            <Link className="transition-colors hover:text-[#071321]" href="/basketcase/support">
+            <Link className="inline-flex min-h-11 items-center transition-colors hover:text-[#071321]" href="/basketcase/support">
               Support
             </Link>
-            <Link className="transition-colors hover:text-[#071321]" href="/#projects">
+            <Link className="inline-flex min-h-11 items-center transition-colors hover:text-[#071321]" href="/#projects">
               Back to work
             </Link>
           </div>

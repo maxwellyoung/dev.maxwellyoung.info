@@ -71,11 +71,11 @@ export default function BasketcasePrivacyPage() {
       <LegalSection title="Contact">
         <p>
           Privacy requests:{" "}
-          <a className="text-foreground underline underline-offset-2" href="mailto:privacy@basketcase.app">
-            privacy@basketcase.app
+          <a className="text-foreground underline underline-offset-2" href="mailto:maxwell@ninetynine.digital">
+            maxwell@ninetynine.digital
           </a>
         </p>
-        <p className="text-xs">Last updated: June 2026</p>
+        <p className="text-xs">Last updated: November 2026</p>
       </LegalSection>
     </BasketcaseLegalLayout>
   );

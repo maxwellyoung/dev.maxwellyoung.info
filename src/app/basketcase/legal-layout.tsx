@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { SiteFooter } from "@/components/SiteFooter";
 
 interface BasketcaseLegalLayoutProps {
   eyebrow: string;
@@ -20,18 +19,18 @@ export function BasketcaseLegalLayout({
         <div className="flex flex-wrap items-center justify-between gap-4">
           <Link
             href="/basketcase"
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+            className="inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             Basketcase
           </Link>
           <nav className="flex items-center gap-4 text-sm text-muted-foreground">
-            <Link className="transition-colors hover:text-foreground" href="/basketcase/privacy">
-              Basketcase privacy
+            <Link className="inline-flex min-h-11 items-center transition-colors hover:text-foreground" href="/basketcase/privacy">
+              Privacy
             </Link>
-            <Link className="transition-colors hover:text-foreground" href="/basketcase/terms">
+            <Link className="inline-flex min-h-11 items-center transition-colors hover:text-foreground" href="/basketcase/terms">
               Terms
             </Link>
-            <Link className="transition-colors hover:text-foreground" href="/basketcase/support">
+            <Link className="inline-flex min-h-11 items-center transition-colors hover:text-foreground" href="/basketcase/support">
               Support
             </Link>
           </nav>
@@ -53,7 +52,12 @@ export function BasketcaseLegalLayout({
           {children}
         </div>
 
-        <SiteFooter />
+        <footer className="mt-16 flex flex-col gap-2 border-t border-border/50 pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>Basketcase is built by Maxwell Young through ninetynine digital.</p>
+          <Link className="inline-flex min-h-11 items-center transition-colors hover:text-foreground" href="/#projects">
+            Back to work
+          </Link>
+        </footer>
       </div>
     </main>
   );

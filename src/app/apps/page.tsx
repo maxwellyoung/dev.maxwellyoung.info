@@ -100,7 +100,7 @@ export default function AppsPage() {
             );
           })}
         </div>
-        <aside className="mt-16 border-t border-border pt-7 text-sm leading-relaxed text-muted-foreground">React Native and Expo support four of these apps; Holdspace uses native SwiftUI. Product scope, network use, and privacy boundaries differ by app. Availability is described here for iPhone.</aside>
+        <aside className="mt-16 border-t border-border pt-7 text-sm leading-relaxed text-muted-foreground">React Native and Expo support four of these apps; Holdspace uses native SwiftUI.</aside>
       </div>
       <SiteFooter />
     </main>
