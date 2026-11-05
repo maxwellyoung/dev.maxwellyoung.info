@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-05",
-  "sourceSyncedAt": "2026-11-05T23:20:40.822Z",
+  "sourceSyncedAt": "2026-11-05T23:54:08.249Z",
   "totalWorks": 5843,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-05T23:20:54.570Z",
-      "importAttemptAt": "2026-11-05T23:20:54.570Z",
+      "syncedAt": "2026-11-05T23:54:18.150Z",
+      "importAttemptAt": "2026-11-05T23:54:18.150Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-05T23:20:40.898Z",
-      "importAttemptAt": "2026-11-05T23:20:40.898Z",
+      "syncedAt": "2026-11-05T23:54:08.346Z",
+      "importAttemptAt": "2026-11-05T23:54:08.346Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Fine",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-05T23:20:40.804Z",
-      "syncedAt": "2026-11-05T23:20:40.822Z",
-      "importAttemptAt": "2026-11-05T23:20:40.822Z",
+      "activityAt": "2026-11-05T23:54:08.200Z",
+      "syncedAt": "2026-11-05T23:54:08.249Z",
+      "importAttemptAt": "2026-11-05T23:54:08.249Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Jazz%20dreams%20Fine%202026",
       "art": {
