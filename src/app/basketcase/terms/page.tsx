@@ -67,11 +67,11 @@ export default function BasketcaseTermsPage() {
       <LegalSection title="Contact">
         <p>
           Questions about these terms:{" "}
-          <a className="text-foreground underline underline-offset-2" href="mailto:support@basketcase.app">
-            support@basketcase.app
+          <a className="text-foreground underline underline-offset-2" href="mailto:maxwell@ninetynine.digital">
+            maxwell@ninetynine.digital
           </a>
         </p>
-        <p className="text-xs">Last updated: June 2026</p>
+        <p className="text-xs">Last updated: November 2026</p>
       </LegalSection>
     </BasketcaseLegalLayout>
   );

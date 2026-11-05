@@ -633,7 +633,7 @@ const projects: Project[] = [
     description:
       "An iPhone concert diary for recording the nights, notes, and memories you want to keep.",
     longDescription:
-      "Afterlight is a concert diary available on the iPhone App Store, built in React Native and Expo. Its interface brings concert records and personal reflections together. A broader Recovery Desk and improved portable backups are being developed separately; those next-release capabilities are not represented here as included in the current App Store build.",
+      "Afterlight is a concert diary on the iPhone App Store, built in React Native and Expo. It keeps a record of each concert alongside your own notes about the night. A way to find past concerts from your tickets, calendar and photos, plus better backups, is in development for a later release.",
     tags: [
       "React Native",
       "Expo",

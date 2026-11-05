@@ -31,15 +31,9 @@ export default function BasketcaseSupportPage() {
 
       <LegalSection title="Contact">
         <p>
-          Support and app questions:{" "}
-          <a className="text-foreground underline underline-offset-2" href="mailto:support@basketcase.app">
-            support@basketcase.app
-          </a>
-        </p>
-        <p>
-          Privacy-specific requests:{" "}
-          <a className="text-foreground underline underline-offset-2" href="mailto:privacy@basketcase.app">
-            privacy@basketcase.app
+          Support, app and privacy questions:{" "}
+          <a className="text-foreground underline underline-offset-2" href="mailto:maxwell@ninetynine.digital">
+            maxwell@ninetynine.digital
           </a>
         </p>
       </LegalSection>
