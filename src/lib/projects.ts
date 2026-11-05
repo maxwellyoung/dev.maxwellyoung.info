@@ -208,7 +208,7 @@ const projects: Project[] = [
     },
     proof: { label: "Mobile delivery", text: "Architecture, media-heavy interactions, performance and accessibility across iOS and Android.", href: "https://play.google.com/store/apps/details?id=cx.silk.mobile" },
     impact: [
-      "Built the mobile app from zero to launch as mobile lead",
+      "Also ship backend work in Silk's TypeScript API: rate limiting, authentication, and feed performance",
       "Own architecture, performance, and accessibility across iOS and Android",
       "Validate mobile changes with regression coverage and real-device checks",
     ],
@@ -234,7 +234,6 @@ const projects: Project[] = [
     cover: { variant: "image", src: "/projectImages/medicines-safety-workflow.svg", alt: "Schematic of Rx-Opt source review and MRB-QoL research workflows; no patient data", fit: "contain" },
     proof: { label: "Design & development", text: "I take research applications from UX and interface design through implementation and testing, working with researchers to turn their requirements into usable software.", href: "/resume" },
     impact: [
-      "Design and build research applications end to end",
       "Develop clinician-facing assessment and source-review workflows for Rx-Opt",
       "Build patient questionnaires and researcher dashboards for MRB-QoL 2.0",
     ],
@@ -756,7 +755,7 @@ const projects: Project[] = [
     description:
       "A released Minecraft mod for managing coding agents across machines, answering approvals, and reviewing checkpoint diffs in game.",
     longDescription:
-      "T3 Craft connects Minecraft Java to T3 Code the same way T3's mobile app does. An in-game panel lists threads from every paired machine and renders the conversation as Markdown, with approvals on Y/N and agent questions answered with the number keys. Updates stream over T3's RPC WebSocket and fall back to polling, so a turn can run while you mine and one toast tells you when it's done. Threads can also appear as villagers whose name tags show what they're waiting on; right-click one to open it. A loopback MCP server lets local agents see and build in the world, gated behind an explicit opt-in, and installed on a server the mod runs a shared village every player can see. Theo showed Max's demo in his video Anthropic Actually Fixed Opus. Open source with tagged releases.",
+      "T3 Craft connects Minecraft Java to T3 Code the same way T3's mobile app does. An in-game panel lists threads from every paired machine and renders the conversation as Markdown, with approvals on Y/N and agent questions answered with the number keys. Updates stream over T3's RPC WebSocket and fall back to polling, so a turn can run while you mine and one toast tells you when it's done. Threads can also appear as villagers whose name tags show what they're waiting on; right-click one to open it. A loopback MCP server lets local agents see and build in the world, gated behind an explicit opt-in, and installed on a server the mod runs a shared village every player can see. Theo showed Max's demo in his video “Anthropic Actually Fixed Opus”. Open source with tagged releases.",
     tags: ["Java", "Minecraft", "Fabric", "MCP", "AI agents"],
     stack: ["Java 25", "Fabric", "WebSocket RPC", "MCP", "Gradle"],
     links: {
@@ -782,7 +781,7 @@ const projects: Project[] = [
     },
     impact: [
       "Published Fabric mod with activity history and numbered checkpoint review",
-      "Featured in Theo's Anthropic Actually Fixed Opus",
+      "Featured in Theo's video “Anthropic Actually Fixed Opus”",
       "Speaks T3's client protocol: pairing, orchestration, and live RPC streams",
       "Threads from several machines in one sidebar, each action routed to the machine that owns it",
       "One notification per event, and approvals answered without leaving the game",
