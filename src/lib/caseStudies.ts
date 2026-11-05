@@ -31,7 +31,6 @@ export interface CaseStudy {
   avoidedPatterns?: string[];
   nextIterations?: string[];
   learnings: string[];
-  nextProject?: { slug: string; title: string };
 }
 
 // Employer work stays at project-summary level unless publication is explicitly
@@ -55,7 +54,6 @@ export const caseStudies: Record<string, CaseStudy> = {
     outcome: "A personal study workspace I can keep refining around my own use. The source reader and learning ledger have direct implementation and test evidence. The newer adaptive work is local development, and the answer-generation audit is unfinished; this case study does not claim a released tutoring service or verified learning outcomes.",
     proofPoints: [{ label: "Delivery", value: "Private personal tool" }, { label: "Screenshot data", value: "Authored synthetic fixtures" }],
     learnings: ["Reading and practice work better when the original source remains easy to open.", "A completed practice attempt and a completed assessment need separate records.", "A browser-stored history needs validation and a portable backup."],
-    nextProject: { slug: "margin", title: "Margin" },
   },
   "margin": {
     slug: "margin",
@@ -90,7 +88,6 @@ export const caseStudies: Record<string, CaseStudy> = {
     avoidedPatterns: ["Setup decisions before the first save", "Treating cloud upload as Mac receipt", "Replacing original evidence with generated prose", "Silent agent writes"],
     nextIterations: ["Complete physical voice, transfer and interruption acceptance on current builds", "Observe two people completing first-use tasks without coaching"],
     learnings: ["A transfer is complete when the receiver acknowledges it.", "Installation and model availability are part of the product experience.", "A rebuildable index and recoverable processing state protect the original evidence."],
-    nextProject: { slug: "autobahn-extensions", title: "Autobahn extensions" },
   },
   "autobahn-extensions": {
     slug: "autobahn-extensions",
@@ -122,11 +119,10 @@ export const caseStudies: Record<string, CaseStudy> = {
       { title: "Guardrails that run themselves", description: "Hourly off-machine snapshots of unpushed work, a weekly friction review that turns repeated annoyances into fixes, and reusable sweep recipes for maintenance across a codebase." },
     ],
     outcome: "A private extension of an existing open-source tool that now coordinates agent work across up to three machines and is in daily use. The web UI has 460 passing tests, with a separate Python runtime suite. The screenshots are a synthetic board and simulated fleet, not real model executions or shipped client work.",
-    proofPoints: [{ label: "Foundation", value: "Autobahn by Eli Rousso / Rams · MIT" }, { label: "My contribution", value: "Dispatch, review, pacing and safety extensions" }, { label: "Screenshot data", value: "Synthetic board, simulated machines" }],
+    proofPoints: [{ label: "My contribution", value: "Dispatch, review, pacing and safety extensions" }, { label: "Foundation", value: "Autobahn by Eli Rousso / Rams · MIT" }, { label: "Screenshot data", value: "Synthetic board, simulated machines" }],
     avoidedPatterns: ["Agents pushing or posting without a second confirmation", "A green check standing in for proof of the actual change", "Dashboards that list everything and recommend nothing"],
     nextIterations: ["Sharper replay of completion proof inside Review", "Pacing that learns per model rather than per provider"],
     learnings: ["The planned state of a ticket should not stand in for execution evidence.", "Most agent failures are environment problems; say why a run stopped in plain words.", "A home screen earns trust by recommending one thing, not by showing everything."],
-    nextProject: { slug: "liner", title: "Liner" },
   },
   afterlight: {
     slug: "afterlight",
@@ -210,14 +206,13 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Local-first does not mean banning the network. It means connected services can enrich the product without owning its canonical record.",
       "Native extensions fail in platform-specific ways, so simulator compilation is not enough; the share handoff itself needs end-to-end exercise.",
     ],
-    nextProject: { slug: "chlita", title: "Ch'lita" },
   },
   whakapapa: {
     slug: "whakapapa",
     title: "Whakapapa",
     subtitle: "Family history software built around source material",
     heroImage: "/projectImages/whakapapa-cover-2.webp",
-    timeline: "2025 — Present",
+    timeline: "2025 — Present · in development",
     role: "Solo Designer & Developer",
     tools: ["Next.js 16", "Supabase", "Claude API", "Tesseract.js", "React Flow", "dagre", "Framer Motion"],
     liveUrl: "https://whakapapa.vercel.app",
@@ -233,39 +228,40 @@ export const caseStudies: Record<string, CaseStudy> = {
         problem: "AI extraction can hallucinate relationships.",
         decision: "Added a suggestion queue with explicit human approval before writing to the tree.",
         tradeoff: "Slightly slower ingestion versus fully automatic sync.",
-        impact: "Higher confidence in accepted data and fewer correction loops.",
+        impact: "Nothing an extraction suggests reaches the tree until someone approves it.",
       },
       {
         problem: "Genealogy tools often bury stories under forms.",
         decision: "Made voice capture and story context first-class alongside people and dates.",
         tradeoff: "More schema complexity and moderation edge cases.",
-        impact: "Richer family context and stronger emotional retention.",
+        impact: "A recorded story sits beside the people and dates it mentions, not in a notes field.",
       },
     ],
     approach: [
       {
-        title: "AI Extraction Pipeline",
+        title: "Extract, then review",
         description:
           "Users scan or upload documents, OCR extracts text, and an LLM returns candidate people, dates, places, and relationships for review before anything is written to the tree.",
       },
       {
-        title: "Voice-First Story Capture",
+        title: "Capture stories by voice",
         description:
           "The app includes voice recording and transcription so spoken stories can sit alongside documents and photos.",
       },
       {
-        title: "Living Tree, Not Dead Database",
+        title: "Keep stories on the tree",
+        image: "/projectImages/whakapapa-1.webp",
         description:
           "React Flow and dagre power the tree view, but the product is broader than a chart. Stories, documents, and media stay attached to the people they relate to.",
       },
       {
-        title: "Private by Default",
+        title: "Private by default",
         description:
           "Family records are protected with Supabase row-level security, and AI suggestions require explicit review before they can change the tree.",
       },
     ],
     outcome:
-      "A working genealogy product with document ingestion, review flows, voice capture, and a collaborative tree view.",
+      "In development: a working prototype with document ingestion, a review queue, voice capture and a tree view. It hasn't been released.",
     proofPoints: [
       { label: "Review gate", value: "Human approval" },
       { label: "Source capture", value: "Documents + voice" },
@@ -286,7 +282,6 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Source material and context matter as much as entity extraction.",
       "Supabase and Next.js made the solo build manageable without a separate backend service.",
     ],
-    nextProject: { slug: "vape-quit-coach", title: "Vape Quit Coach" },
   },
   liner: {
     slug: "liner",
@@ -359,7 +354,6 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Local-first work needs honest failure states as well as a happy-path save indicator.",
       "The strongest demonstration is a real musical decision, with the songs and context visible.",
     ],
-    nextProject: { slug: "whakapapa", title: "Whakapapa" },
   },
   "vape-quit-coach": {
     slug: "vape-quit-coach",
@@ -393,17 +387,17 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     approach: [
       {
-        title: "Behavioral Architecture",
+        title: "Work with triggers, not just streaks",
         description:
           "The product focuses on triggers, replacement habits, and support patterns rather than only on streak counting.",
       },
       {
-        title: "Progress as Identity",
+        title: "Keep progress after a setback",
         description:
           "Progress is tracked in a way that still reflects forward movement after setbacks instead of resetting everything to zero.",
       },
       {
-        title: "Liminal Design",
+        title: "Calm screens for hard moments",
         description:
           "Intervention screens are intentionally low-stimulus so they stay usable during cravings and stress.",
       },
@@ -428,13 +422,12 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Low-stimulus support flows matter more than high-energy motivation during cravings.",
       "Working solo meant carrying the product from interaction design through implementation.",
     ],
-    nextProject: { slug: "dayle", title: "Dayle Palfreyman" },
   },
   chlita: {
     slug: "chlita",
     title: "Ch'lita",
     subtitle: "A portfolio for i-D's Fashion Editor-at-Large",
-    heroImage: "/projectImages/chlita-1.webp",
+    heroImage: "/projectImages/chlita-3.webp",
     timeline: "2024",
     role: "Designer & Developer",
     team: "Solo",
@@ -453,28 +446,28 @@ export const caseStudies: Record<string, CaseStudy> = {
         problem: "Portfolio sites often over-design the frame around the work.",
         decision: "Kept the interface sparse and made image sequencing the primary design material.",
         tradeoff: "Fewer decorative brand moments in the surrounding UI.",
-        impact: "The styling work remains the first thing visitors notice.",
+        impact: "The interface stays at the edges, and the image sequence carries each page.",
       },
       {
         problem: "Manual portfolio updates create a maintenance bottleneck.",
         decision: "Modeled the work in Sanity so image sets and project details can be managed independently.",
         tradeoff: "More setup work up front than hardcoded pages.",
-        impact: "The site can evolve with new work without recurring developer involvement.",
+        impact: "Image sets and project details are updated in Sanity, without a code change.",
       },
     ],
     approach: [
       {
-        title: "Subtractive Design",
+        title: "Keep the frame quiet",
         description:
           "The interface was kept deliberately spare so the styling work remained the focus.",
       },
       {
-        title: "Image-First Architecture",
+        title: "Build around the images",
         description:
           "The image system was tuned for stable layout, responsive cropping, and good performance.",
       },
       {
-        title: "CMS for Independence",
+        title: "Let her run it",
         description:
           "Sanity was set up so the client could manage portfolio content without developer involvement.",
       },
@@ -495,11 +488,10 @@ export const caseStudies: Record<string, CaseStudy> = {
       "A lighter upload review flow for checking crops before publishing.",
     ],
     learnings: [
-      "Restraint is harder than addition. Every feature you don't add is a decision.",
-      "The best client work happens when you understand their craft, not just their requirements.",
-      "Performance is a design choice. A slow portfolio undermines the work it's showing.",
+      "Most of the design work was deciding what to leave out.",
+      "Understanding how she works mattered more than a list of requirements.",
+      "A slow portfolio undermines the work it shows, so image performance was part of the design.",
     ],
-    nextProject: { slug: "liner", title: "Liner" },
   },
   skillscan: {
     slug: "skillscan",
@@ -548,6 +540,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
       {
         title: "Preserve evidence through the pipeline",
+        image: "/projectImages/skillscan-result.webp",
         description:
           "Repository and registry adapters normalize files into one scanner input. Findings keep their origin and the API reports partial fetches rather than silently treating missing files as clean.",
       },
@@ -586,7 +579,6 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Partial evidence must be a first-class result state, not a footnote.",
       "A product can be decisive about dangerous behavior while staying honest about what it cannot prove.",
     ],
-    nextProject: { slug: "default-index", title: "Default Index" },
   },
   "default-index": {
     slug: "default-index",
@@ -634,6 +626,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
       {
         title: "Capture the full artifact",
+        image: "/projectImages/default-index-lab.webp",
         description:
           "Each run retains source plus desktop and mobile renders. Playwright standardizes capture so responsive behavior can be inspected alongside the code that produced it.",
       },
@@ -672,7 +665,6 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Design-pattern criticism becomes more useful when every disagreement has an artifact to inspect.",
       "Security and design research share a discipline: preserve evidence, expose limits, and keep the human judgment visible.",
     ],
-    nextProject: { slug: "skillscan", title: "SkillScan" },
   },
   dayle: {
     slug: "dayle",
@@ -687,6 +679,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Tailwind CSS",
       "TypeScript",
     ],
+    heroImage: "/projectImages/dayle-1.webp",
     liveUrl: "https://dayle.vercel.app",
     // githubUrl intentionally omitted
     overview: "I designed and built the portfolio for installation artist Dayle Palfreyman: a full-screen gallery, simple navigation, and Sanity CMS so the site stays easy for her to run.",
@@ -701,39 +694,39 @@ export const caseStudies: Record<string, CaseStudy> = {
         problem: "Portfolio templates encourage UI chrome over artwork presence.",
         decision: "Adopted full-screen, vertically snapping gallery with minimal persistent chrome.",
         tradeoff: "Less conventional page structure for some users.",
-        impact: "Stronger immersion and clearer artwork-first hierarchy.",
+        impact: "Each artwork fills the screen, and navigation stays at the edges.",
       },
       {
         problem: "Rich motion can quickly become distracting in art contexts.",
         decision: "Constrained motion vocabulary to subtle spring-driven transitions.",
         tradeoff: "Lower novelty and fewer visual flourishes.",
-        impact: "Consistent tone with reduced cognitive interference.",
+        impact: "Motion is limited to the move between gallery and detail.",
       },
     ],
     approach: [
       {
-        title: "Full-Screen Immersive Gallery",
+        title: "A full-screen gallery",
         description:
           "The homepage uses a vertically snapping gallery where each artwork fills the viewport and opens into a detail view with supporting media and metadata.",
       },
       {
-        title: "Motion with Restraint",
+        title: "Restrained motion",
         description:
           "Motion is limited to a small set of transitions between gallery and detail views, with reduced-motion support included from the start.",
       },
       {
-        title: "Accessibility as Foundation",
+        title: "Accessibility from the start",
         description:
           "The site includes keyboard navigation, focus management, accessible artwork metadata, and screen-reader support across the gallery flow.",
       },
       {
-        title: "CMS-Driven Independence",
+        title: "A CMS she can run",
         description:
           "Sanity handles artworks, exhibitions, writing, and site settings so the client can manage the site without code changes.",
       },
     ],
     outcome:
-      "A media-heavy portfolio that performs well, stays usable, and is fully managed by the client through Sanity.",
+      "A media-heavy portfolio that Dayle updates herself through Sanity.",
     proofPoints: [
       { label: "Delivery", value: "Client shipped" },
       { label: "Content model", value: "Sanity CMS" },
@@ -754,7 +747,6 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Accessibility decisions shape the structure of the product early, not late.",
       "Automated SEO and CMS setup reduce long-term maintenance for the client.",
     ],
-    nextProject: { slug: "afterlight", title: "Afterlight" },
   },
 };
 

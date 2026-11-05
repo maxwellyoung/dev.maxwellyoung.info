@@ -3,12 +3,13 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Github, Calendar, Tag } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Calendar } from "lucide-react";
 import { AnimatedLink } from "@/components/ui/animated-link";
-import { type CaseStudy, caseStudies } from "@/lib/caseStudies";
+import { type CaseStudy } from "@/lib/caseStudies";
+import { nextCaseStudy, relatedCaseStudies } from "@/lib/caseStudyOrder";
 import { spring } from "@/lib/motion";
 import { SiteFooter } from "@/components/SiteFooter";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { capture } from "@/lib/analytics";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 
@@ -18,26 +19,6 @@ interface CaseStudyContentProps {
 }
 
 export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
-  const [showAnnotations, setShowAnnotations] = useState(false);
-
-  useEffect(() => {
-    const handleToggle = (event: Event) => {
-      const custom = event as CustomEvent<{ enabled?: boolean }>;
-      if (typeof custom.detail?.enabled === "boolean") {
-        setShowAnnotations(custom.detail.enabled);
-      }
-    };
-    window.addEventListener(
-      "toggle-case-study-annotations",
-      handleToggle as EventListener
-    );
-    return () =>
-      window.removeEventListener(
-        "toggle-case-study-annotations",
-        handleToggle as EventListener
-      );
-  }, []);
-
   useEffect(() => {
     if (!study) return;
     capture("case_study_viewed", {
@@ -71,6 +52,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
   }
 
   const hasHeroImage = Boolean(study.heroImage);
+  const next = nextCaseStudy(slug);
 
   return (
     <main id="main-content" className="min-h-screen">
@@ -115,10 +97,6 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                 <div className="flex min-h-8 items-center gap-2">
                   <Calendar className="w-4 h-4" />
                   {study.timeline}
-                </div>
-                <div className="flex min-h-8 items-center gap-2">
-                  <Tag className="w-4 h-4" />
-                  {study.role}
                 </div>
                 {study.liveUrl && (
                   <a
@@ -169,14 +147,14 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
 
               <div className={`mt-8 grid overflow-hidden rounded-sm border border-[hsl(var(--border))] ${study.team ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
                 <div className="bg-[hsl(var(--card))]/40 p-3 sm:border-r sm:border-[hsl(var(--border))]">
-                  <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                  <p className="mb-1 text-xs uppercase tracking-wider text-muted-foreground">
                     Ownership
                   </p>
                   <p className="text-sm text-foreground">{study.role}</p>
                 </div>
                 {study.team ? (
                   <div className="border-t border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3 sm:border-t-0 sm:border-r">
-                    <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                    <p className="mb-1 text-xs uppercase tracking-wider text-muted-foreground">
                       Team
                     </p>
                     <p className="text-sm text-foreground">
@@ -185,27 +163,30 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                   </div>
                 ) : null}
                 <div className="border-t border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3 sm:border-t-0">
-                  <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                  <p className="mb-1 text-xs uppercase tracking-wider text-muted-foreground">
                     Primary proof
                   </p>
-                  <p className="line-clamp-2 text-sm text-foreground">
-                    {study.proofPoints?.[0]?.value
-                      ? study.proofPoints[0].value
-                      : study.outcome}
-                  </p>
+                  {study.proofPoints?.[0] ? (
+                    <p className="text-sm text-foreground">
+                      <span className="text-muted-foreground">{study.proofPoints[0].label}: </span>
+                      {study.proofPoints[0].value}
+                    </p>
+                  ) : (
+                    <p className="line-clamp-2 text-sm text-foreground">{study.outcome}</p>
+                  )}
                 </div>
               </div>
             </div>
 
             {hasHeroImage && study.heroImage && (
               <div
-                className="animate-in fade-in zoom-in-[0.985] duration-500 ease-brand relative aspect-[4/3] overflow-hidden rounded-sm border border-[hsl(var(--border))] bg-[hsl(var(--muted))] shadow-[0_18px_60px_rgba(0,0,0,0.06)] dark:shadow-[0_18px_60px_rgba(0,0,0,0.28)] sm:aspect-video lg:mt-1"
+                className="animate-in fade-in zoom-in-[0.985] duration-500 ease-brand relative aspect-video overflow-hidden rounded-sm border border-[hsl(var(--border))] bg-[hsl(var(--muted))] shadow-[0_18px_60px_rgba(0,0,0,0.06)] dark:shadow-[0_18px_60px_rgba(0,0,0,0.28)] lg:mt-1"
               >
                 <Image
                   src={study.heroImage}
                   alt={study.title}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 1024px) 100vw, 440px"
                   quality={75}
                   priority
@@ -292,6 +273,9 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                     Decision
                   </p>
                   <p className="text-foreground mb-4">{entry.decision}</p>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">
+                    Tradeoff
+                  </p>
                   <p className="text-muted-foreground">{entry.tradeoff}</p>
                   {entry.impact && (
                     <>
@@ -300,11 +284,6 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                       </p>
                       <p className="text-muted-foreground">{entry.impact}</p>
                     </>
-                  )}
-                  {showAnnotations && (
-                    <p className="mt-4 text-xs text-accent">
-                      Annotation: This decision balances product clarity and implementation cost.
-                    </p>
                   )}
                 </div>
               ))}
@@ -339,7 +318,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                       src={step.image}
                       alt={step.title}
                       fill
-                      className="object-cover"
+                      className="object-contain"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
@@ -366,13 +345,13 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
               <h3 className="mb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
                 Proof points
               </h3>
-              <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
+              <div className={`grid gap-3 sm:gap-4 ${study.proofPoints.length % 2 === 0 ? "sm:grid-cols-2" : "sm:grid-cols-3"}`}>
                 {study.proofPoints.map((point) => (
                   <div
                     key={point.label}
                     className="p-4 rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 text-center"
                   >
-                    <p className="text-2xl font-medium text-accent">
+                    <p className={point.value.length <= 8 ? "text-2xl font-medium text-accent" : "text-base font-medium text-foreground"}>
                       {point.value}
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">
@@ -414,7 +393,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
             transition={spring.gentle}
           >
             <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">
-              Anti-Patterns Avoided
+              Anti-patterns avoided
             </h2>
             <ul className="space-y-3">
               {study.avoidedPatterns.map((pattern, i) => (
@@ -436,7 +415,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
             transition={spring.gentle}
           >
             <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">
-              Next Iterations
+              Next iterations
             </h2>
             <ul className="space-y-3">
               {study.nextIterations.map((item, i) => (
@@ -457,14 +436,11 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           className="rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-6"
         >
           <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
-            Get In Touch
+            Get in touch
           </p>
-          <h2 className="text-xl font-medium mb-3">
-            If you want to talk about similar work, email me.
+          <h2 className="text-xl font-medium mb-5">
+            Want to talk about similar work?
           </h2>
-          <p className="text-muted-foreground leading-relaxed mb-5">
-            Contact is the simplest place to start.
-          </p>
           <div className="flex flex-wrap items-center gap-4">
             <TrackedActionLink
               href="/contact"
@@ -478,7 +454,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
         </motion.div>
 
         {/* Next project */}
-        {study.nextProject && (
+        {next && (
           <motion.div
             initial={false}
             whileInView={{ opacity: 1, y: 0 }}
@@ -490,10 +466,10 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
               Next project
             </p>
             <Link
-              href={`/case-study/${study.nextProject.slug}`}
-              className="group inline-flex items-center gap-2 text-lg font-medium hover:text-accent transition-colors"
+              href={`/case-study/${next.slug}`}
+              className="group inline-flex min-h-11 items-center gap-2 text-lg font-medium hover:text-accent transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
-              {study.nextProject.title}
+              {next.title}
               <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -511,14 +487,11 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
             More case studies
           </p>
           <ul className="space-y-2">
-            {Object.values(caseStudies)
-              .filter((cs) => cs.slug !== slug)
-              .slice(0, 4)
-              .map((cs) => (
+            {relatedCaseStudies(slug).map((cs) => (
                 <li key={cs.slug}>
                   <Link
                     href={`/case-study/${cs.slug}`}
-                    className="group flex items-center justify-between text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="group flex min-h-11 items-center justify-between gap-4 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                   >
                     <span>{cs.title}</span>
                     <span className="text-xs text-muted-foreground">{cs.role}</span>
@@ -529,7 +502,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           <div className="mt-4">
             <Link
               href="/#projects"
-              className="text-sm text-muted-foreground hover:text-accent transition-colors"
+              className="inline-flex min-h-11 items-center text-sm text-muted-foreground hover:text-accent transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               View all projects
             </Link>
