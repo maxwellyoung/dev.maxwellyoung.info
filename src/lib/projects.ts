@@ -118,7 +118,7 @@ const projects: Project[] = [
     launchStage: "Live",
     priority: 8.2,
     description: "A Mac capture tool that turns ideas, bugs and meetings into context agents can read.",
-    longDescription: "Margin is the capture layer of my agent workflow. A global shortcut opens a small panel for a note, bug, link or meeting recording; everything lands in an Inbox, with a suggested project when Margin is confident. Meetings are transcribed on the Mac, notes typed during a call stay anchored to that moment, each project shows what keeps coming up across its sources, and a ledger tracks predictions from saved videos. Coding agents read all of it through a read-only MCP server and CLI. The signed Mac app is available from its public product page. A native iPhone capture companion is in beta preparation; its installation link will appear there when available.",
+    longDescription: "Margin joins a native Mac capture panel, a local library and an iPhone writing canvas. Original notes and recordings stay accessible while the Mac transcribes and selected-folder transfer catches up. A read-only MCP server and CLI give agents source-linked context. The Mac app has a public download; iPhone beta availability remains pending.",
     link: "https://margin.maxwellyoung.info",
     links: { live: "https://margin.maxwellyoung.info" },
     tags: ["Swift", "SwiftUI", "Python", "Agent tools"],
