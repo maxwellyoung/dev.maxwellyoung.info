@@ -37,13 +37,13 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-05",
-  "sourceSyncedAt": "2026-11-05T21:39:06.860Z",
+  "sourceSyncedAt": "2026-11-05T22:14:00.721Z",
   "totalWorks": 5843,
   "regionCount": 22,
   "regions": [
-    "Modern Hip-Hop Landscape",
-    "Genre-Blending Rock Anthems",
-    "Contemporary Indie Rock",
+    "Eclectic Hip-Hop Vibes",
+    "Intimate Dramas & Thrillers",
+    "Melodic Indie Rock",
     "Indie Adventure"
   ],
   "now": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-05T21:39:17.081Z",
-      "importAttemptAt": "2026-11-05T21:39:17.081Z",
+      "syncedAt": "2026-11-05T22:14:07.444Z",
+      "importAttemptAt": "2026-11-05T22:14:07.444Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-05T21:39:06.860Z",
-      "importAttemptAt": "2026-11-05T21:39:06.860Z",
+      "syncedAt": "2026-11-05T22:14:01.020Z",
+      "importAttemptAt": "2026-11-05T22:14:01.020Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Fine",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-05T21:39:06.862Z",
-      "syncedAt": "2026-11-05T21:39:06.910Z",
-      "importAttemptAt": "2026-11-05T21:39:06.910Z",
+      "activityAt": "2026-11-05T22:14:00.699Z",
+      "syncedAt": "2026-11-05T22:14:00.721Z",
+      "importAttemptAt": "2026-11-05T22:14:00.721Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Jazz%20dreams%20Fine%202026",
       "art": {
