@@ -39,7 +39,7 @@ export const resumeData: ResumeData = {
   name: "Maxwell Young",
   title: "Product Engineer",
   profile:
-    "Product engineer working across mobile apps and research software. Led Silk's React Native app from its first build to its Google Play launch, and designed and shipped five iPhone apps of my own. Combine interaction design with architecture, performance, accessibility, and regression testing.",
+    "Product engineer working across mobile apps and research software. Led Silk's React Native app from its first build to its Google Play launch and ship backend work in its TypeScript API. Designed and shipped five iPhone apps of my own. Combine interaction design with architecture, performance, accessibility, and regression testing.",
   contact: {
     email: "maxwell@ninetynine.digital",
     location: "Auckland, NZ",
@@ -56,8 +56,8 @@ export const resumeData: ResumeData = {
       summary:
         "Silk is a platform for blogging, private archives, and moodboards. Led its React Native app from first build to Google Play launch.",
       responsibilities: [
-        "Built the initial mobile foundation and turned early product direction into production architecture, interface systems, and media-heavy flows.",
-        "Own performance, accessibility, and release reliability across iOS and Android, using regression coverage and real-device checks to validate changes.",
+        "Built the initial mobile foundation, interface systems, and media-heavy flows. Own performance, accessibility, and release reliability across iOS and Android, validated with regression coverage and real-device checks.",
+        "Also ship in Silk's TypeScript API: distributed rate limiting, account authentication, and feed and chat performance.",
       ],
     },
     {
@@ -138,9 +138,9 @@ export const resumeData: ResumeData = {
       name: "T3 Code",
       descriptor: "Open-source contributor",
       href: "https://github.com/pingdotgg/t3code/pulls?q=is%3Apr+is%3Amerged+author%3Amaxwellyoung",
-      date: "13 merged PRs",
+      date: "Ongoing",
       summary:
-        "Merged 13 upstream fixes to T3 Code (30k+ GitHub stars) across its server, web client, and mobile app.",
+        "Merged upstream fixes to T3 Code (40k+ GitHub stars) across agent permissions, provider secret handling, and client and server reliability.",
     },
   ],
   education: [
