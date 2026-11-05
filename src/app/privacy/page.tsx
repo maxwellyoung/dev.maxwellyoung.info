@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main id="main-content" className="min-h-screen p-8 max-w-2xl mx-auto">
+    <main id="main-content" className="min-h-screen bg-background text-foreground">
+      <div className="max-w-2xl mx-auto px-6 py-16">
       <Link
         href="/"
         className="mb-8 inline-flex min-h-11 items-center rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
@@ -18,7 +19,7 @@ export default function PrivacyPage() {
         ← Back
       </Link>
 
-      <h1 className="text-2xl font-medium mb-6">Privacy Policy</h1>
+      <h1 className="text-3xl font-medium mb-6">Privacy Policy</h1>
 
       <div className="prose prose-sm prose-invert max-w-none space-y-4 text-muted-foreground">
         <p>
@@ -74,6 +75,7 @@ export default function PrivacyPage() {
       </div>
 
       <SiteFooter />
+      </div>
     </main>
   );
 }

@@ -69,7 +69,7 @@ function ProjectRow({
         onClick={() => onToggleExpand(isExpanded ? null : p.name)}
         aria-expanded={isExpanded}
         className={`
-          relative w-full max-w-full overflow-hidden rounded-md text-left px-2 sm:px-3 ${isFlagship ? "py-3.5" : "py-2.5"}
+          relative w-full max-w-full overflow-hidden rounded-md text-left px-2 md:px-3 ${isFlagship ? "py-3.5" : "py-2.5"}
           transition-[background-color,transform] duration-150 ease-out
           hover:bg-[hsl(var(--muted))]/40 active:scale-[0.99]
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
@@ -93,11 +93,11 @@ function ProjectRow({
                   </h3>
                 </div>
               </ProjectHoverPreview>
-              <p className="mt-1 line-clamp-2 break-words text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-1 break-words sm:line-clamp-2 text-sm leading-relaxed text-muted-foreground">
                 {p.description}
               </p>
               {meta && (
-                <p className="mt-2 truncate text-xs text-muted-foreground">
+                <p className="mt-2 text-xs text-muted-foreground sm:truncate">
                   {meta}
                 </p>
               )}
@@ -126,6 +126,7 @@ function ProjectRow({
                   <h3 className="flex-shrink-0 text-sm font-medium leading-tight text-foreground">
                     {p.name}
                   </h3>
+                  <span className="text-xs text-muted-foreground sm:hidden">{p.launchStage}</span>
                   <p className="hidden min-w-0 truncate text-xs text-muted-foreground sm:block">
                     {p.description}
                   </p>
@@ -183,9 +184,7 @@ function ProjectRow({
                 <p className="text-xs font-medium text-foreground">{p.proof.label}</p>
                 <p className="mt-1 max-w-lg text-xs leading-relaxed text-muted-foreground">{p.proof.text}</p>
                 {p.proof.href ? (
-                  <Link href={p.proof.href} className="mt-1 inline-flex min-h-11 items-center text-xs underline decoration-border underline-offset-4 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-                    {p.proof.href.startsWith("/case-study/") ? "View the case study" : p.proof.href === "/resume" ? "Research role and responsibilities" : "See the native app on Google Play"} <span aria-hidden="true" className="ml-1">↗</span>
-                  </Link>
+                  <ProofLink href={p.proof.href} />
                 ) : null}
               </div>
             ) : null}
@@ -194,6 +193,35 @@ function ProjectRow({
         )}
       </AnimatePresence>
     </motion.li>
+  );
+}
+
+const proofLinkClass =
+  "mt-1 inline-flex min-h-11 items-center text-xs underline decoration-border underline-offset-4 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent";
+
+function proofLinkLabel(href: string): string {
+  if (href.startsWith("/case-study/")) return "View the case study";
+  if (href === "/resume") return "Research role and responsibilities";
+  const host = new URL(href).hostname;
+  if (host === "play.google.com") return "See the native app on Google Play";
+  if (host === "apps.apple.com") return "See the app on the App Store";
+  return `Visit ${host.replace(/^www\./, "")}`;
+}
+
+function ProofLink({ href }: { href: string }) {
+  const label = proofLinkLabel(href);
+  if (!href.startsWith("http")) {
+    return (
+      <Link href={href} className={proofLinkClass}>
+        {label}
+      </Link>
+    );
+  }
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={proofLinkClass}>
+      {label} <span aria-hidden="true" className="ml-1">↗</span>
+      <span className="sr-only">(opens in a new tab)</span>
+    </a>
   );
 }
 
@@ -227,7 +255,7 @@ function ProjectSection({
         initial={false}
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}
-        className="px-2 sm:px-3"
+        className="px-2 md:px-3"
       >
         <h2 className="text-sm font-medium text-muted-foreground">
           {title}
@@ -269,7 +297,7 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
 
   const content = (
     <div className={embedded ? "" : "min-h-screen text-foreground font-sans"}>
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 overflow-x-hidden">
+      <div className="max-w-2xl mx-auto px-2 md:px-5 py-8 overflow-x-hidden">
         {!embedded && (
           <div className="mb-8">
             <h1 className="text-xl font-medium text-foreground">Work</h1>

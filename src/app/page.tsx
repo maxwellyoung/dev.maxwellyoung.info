@@ -82,7 +82,7 @@ export default function Home() {
             <CurrentlyInto />
           </div>
 
-          <div className="flex flex-col gap-4 border-t border-border/50 pt-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-4 border-t border-border/50 px-4 pt-5 sm:flex-row sm:items-center sm:justify-between md:px-8">
             <p className="text-sm text-muted-foreground">
               <TrackedActionLink
                 href="https://www.ninetynine.digital?utm_source=dev.maxwellyoung.info&utm_medium=referral&utm_campaign=ecosystem_footer"

@@ -54,6 +54,7 @@ export function CurrentlyInto() {
   const [instant, setInstant] = useState(false);
   const [selectedNowIndex, setSelectedNowIndex] = useState(0);
   const detailsId = useId();
+  const toggleRef = useRef<HTMLButtonElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const effectiveSelectedIndex = Math.min(selectedNowIndex, Math.max(0, now.length - 1));
   const selectedItem = now[effectiveSelectedIndex];
@@ -78,23 +79,26 @@ export function CurrentlyInto() {
 
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key !== "Escape" || !cardRef.current?.contains(document.activeElement)) return;
+      const focusWasInDetails = document.getElementById(detailsId)?.contains(document.activeElement);
       setInstant(true);
       setExpanded(false);
+      if (focusWasInDetails) toggleRef.current?.focus();
     };
 
     document.addEventListener("keydown", closeOnEscape);
     return () => document.removeEventListener("keydown", closeOnEscape);
-  }, [expanded]);
+  }, [expanded, detailsId]);
 
   if (!now.length) return null;
 
   return (
     <div
       ref={cardRef}
-      className="relative overflow-hidden p-4"
+      className="relative overflow-hidden p-4 md:px-8"
     >
 
       <button
+        ref={toggleRef}
         type="button"
         aria-expanded={expanded}
         aria-controls={expanded ? detailsId : undefined}

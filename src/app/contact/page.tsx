@@ -36,7 +36,8 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main id="main-content" className="min-h-screen p-8 max-w-2xl mx-auto">
+    <main id="main-content" className="min-h-screen bg-background text-foreground">
+      <div className="max-w-2xl mx-auto px-6 py-16">
       <Link
         href="/"
         className="mb-8 inline-flex min-h-11 items-center rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
@@ -44,7 +45,7 @@ export default function ContactPage() {
         ← Back
       </Link>
 
-      <h1 className="text-2xl font-medium mb-6">Contact</h1>
+      <h1 className="text-3xl font-medium mb-6">Contact</h1>
 
       <div className="space-y-8 text-muted-foreground">
         <p className="leading-relaxed">
@@ -115,6 +116,7 @@ export default function ContactPage() {
       </div>
 
       <SiteFooter />
+      </div>
     </main>
   );
 }
