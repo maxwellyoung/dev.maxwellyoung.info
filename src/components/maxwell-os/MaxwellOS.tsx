@@ -2,7 +2,7 @@
 // The Maxwell OS shell: menu bar, desktop, windows, persistence.
 // Rendered client-only (see MaxwellOSLoader) so the saved session can be read
 // synchronously during the first render instead of after a hydration flash.
-import { useCallback, useEffect, useReducer, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
+import { useCallback, useEffect, useReducer, useRef, useState, useSyncExternalStore, type PointerEvent as ReactPointerEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Maximize2, Minimize2, X } from "lucide-react";
@@ -53,6 +53,10 @@ function useAucklandClock() {
 export default function MaxwellOS() {
   // First visit on a wide screen opens the Read me; phones start on the home screen.
   const [os, dispatch] = useReducer(windowReducer, undefined, () => loadSession() ?? (innerWidth > 900 ? windowReducer(initialOSState, { type: "open", app: "readme", title: "Read me", size: meta("readme").size, viewport: viewport() }) : initialOSState));
+  // On phones a window is a full-screen sheet: keep the home screen behind it out of the tab order.
+  // (React 18 drops an empty inert attribute, so pass a string.)
+  const isPhone = useSyncExternalStore(subscribePhone, () => matchMedia(PHONE).matches, () => false);
+  const behindSheet = isPhone && os.windows.length > 0 ? ({ inert: "true" } as Record<string, string>) : {};
   // Windows opened from the keyboard appear instantly; pointer opens get a short entrance.
   const [instant, setInstant] = useState<Set<string>>(() => new Set(os.windows.map((w) => w.id)));
   const clock = useAucklandClock();
@@ -87,7 +91,7 @@ export default function MaxwellOS() {
       <header className={styles.menuBar}>
         <strong className={styles.wordmark}>Maxwell OS</strong>
         {rotation && (
-          <button type="button" className={styles.nowPlaying} onClick={(e) => open("shelf", undefined, { keyboard: e.detail === 0 })} title="In rotation, from Canon">
+          <button type="button" className={styles.nowPlaying} onClick={(e) => open("shelf", undefined, { keyboard: e.detail === 0 })} title="In rotation, from Canon, my catalogue of films, games, books and music">
             <span aria-hidden className={styles.eq}><i /><i /><i /></span>
             <span className={styles.nowText}>{rotation.creator ? `${rotation.creator} — ` : ""}{rotation.title}</span>
           </button>
@@ -96,7 +100,7 @@ export default function MaxwellOS() {
         <Link href="/" className={styles.exit}>Exit</Link>
       </header>
 
-      <nav className={styles.icons} aria-label="Desktop">
+      <nav className={styles.icons} aria-label="Desktop" {...behindSheet}>
         {APPS.map((a) => (
           <button key={a.id} type="button" data-launch={a.id} className={styles.icon} aria-current={os.windows.some((w) => w.id === a.id) ? "true" : undefined} onClick={(e) => open(a.id, undefined, { keyboard: e.detail === 0 })}>
             <AppIcon id={a.id} />
@@ -106,7 +110,7 @@ export default function MaxwellOS() {
       </nav>
 
       {rotation && (
-        <button type="button" className={styles.widget} onClick={(e) => open("shelf", undefined, { keyboard: e.detail === 0 })}>
+        <button type="button" className={styles.widget} onClick={(e) => open("shelf", undefined, { keyboard: e.detail === 0 })} {...behindSheet}>
           {rotation.art && <span className={styles.widgetArt}><Image src={`${rotation.art.src}?v=${encodeURIComponent(canonFeed.generatedAt)}`} alt="" fill sizes="64px" /></span>}
           <span className={styles.widgetText}><small>In rotation</small><b>{rotation.title}</b>{rotation.creator && <span>{rotation.creator}</span>}</span>
         </button>
@@ -138,6 +142,13 @@ function AppIcon({ id }: { id: AppId }) {
   );
 }
 
+const PHONE = "(max-width: 640px)";
+function subscribePhone(onChange: () => void) {
+  const query = matchMedia(PHONE);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+}
+
 type Drag = { mode: "move" | "resize"; startX: number; startY: number; x: number; y: number; width: number; height: number };
 
 function WindowFrame({ w, active, instant, dispatch, close, children }: { w: OSWindow; active: boolean; instant: boolean; dispatch: React.Dispatch<Parameters<typeof windowReducer>[1]>; close: (id: string) => void; children: React.ReactNode }) {
@@ -166,6 +177,7 @@ function WindowFrame({ w, active, instant, dispatch, close, children }: { w: OSW
       className={`${styles.window} ${w.maximized ? styles.max : ""} ${active ? styles.active : ""} ${instant ? "" : styles.enter}`}
       style={frame}
       onPointerDownCapture={() => !active && dispatch({ type: "focus", id: w.id })}
+      onFocusCapture={() => !active && dispatch({ type: "focus", id: w.id })}
       aria-labelledby={`os-title-${w.id}`}
     >
       <header className={styles.titleBar} onPointerDown={(e) => begin("move", e)} onPointerMove={track} onPointerUp={end} onPointerCancel={end} onDoubleClick={(e) => !(e.target as HTMLElement).closest("button") && dispatch({ type: "maximize", id: w.id })}>

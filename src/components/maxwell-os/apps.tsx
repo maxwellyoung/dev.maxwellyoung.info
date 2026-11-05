@@ -30,7 +30,7 @@ export function ReadMe({ api }: { api: OSApi }) {
   const rows = [
     { id: "work" as const, name: "Work", text: "Silk, research software, Liner, T3 Craft, and the rest." },
     { id: "apps" as const, name: "Apps", text: `The ${independentApps.length} iPhone apps I've designed, built and shipped myself.` },
-    { id: "shelf" as const, name: "Shelf", text: "What I'm watching, playing and listening to, from Canon." },
+    { id: "shelf" as const, name: "Shelf", text: "What I'm watching, playing and listening to, from Canon, the catalogue I keep of it all." },
     { id: "terminal" as const, name: "Terminal", text: "For people who would rather type." },
   ];
   return (
@@ -90,6 +90,9 @@ function Catalog({ projects, slug, kind }: { projects: Project[]; slug?: string;
     if (slug && projects.some((p) => p.slug === slug)) { setSelected(slug); setShowDetail(true); }
   }
   const detail = useRef<HTMLDivElement>(null);
+  const list = useRef<HTMLUListElement>(null);
+  const back = useRef<HTMLButtonElement>(null);
+  const isListHidden = () => list.current !== null && getComputedStyle(list.current).display === "none";
   useEffect(() => { detail.current?.scrollTo({ top: 0 }); }, [selected]);
   const p = projects.find((x) => x.slug === selected) ?? projects[0];
   const keys = (e: KeyboardEvent<HTMLUListElement>) => {
@@ -102,10 +105,10 @@ function Catalog({ projects, slug, kind }: { projects: Project[]; slug?: string;
   };
   return (
     <div className={`${styles.catalog} ${showDetail ? styles.catalogDetail : ""}`}>
-      <ul className={styles.catalogList} onKeyDown={keys} aria-label={kind === "work" ? "Projects" : "Apps"}>
+      <ul ref={list} className={styles.catalogList} onKeyDown={keys} aria-label={kind === "work" ? "Projects" : "Apps"}>
         {projects.map((x) => (
           <li key={x.slug}>
-            <button type="button" data-slug={x.slug} aria-current={x.slug === p.slug ? "true" : undefined} tabIndex={x.slug === p.slug ? 0 : -1} onClick={() => { setSelected(x.slug); setShowDetail(true); }}>
+            <button type="button" data-slug={x.slug} aria-current={x.slug === p.slug ? "true" : undefined} tabIndex={x.slug === p.slug ? 0 : -1} onClick={() => { setSelected(x.slug); setShowDetail(true); requestAnimationFrame(() => { if (isListHidden()) back.current?.focus(); }); }}>
               {kind === "apps" && <span className={styles.appIcon}><Image src={appIconSrc(x.slug) ?? x.thumb ?? ""} alt="" fill sizes="40px" /></span>}
               <span className={styles.rowText}><b>{x.name}</b><small>{kind === "apps" ? x.launchStage : projectMeta(x)}</small></span>
             </button>
@@ -113,7 +116,7 @@ function Catalog({ projects, slug, kind }: { projects: Project[]; slug?: string;
         ))}
       </ul>
       <div ref={detail} className={styles.catalogBody}>
-        <button type="button" className={styles.back} onClick={() => setShowDetail(false)}><ChevronLeft size={16} aria-hidden />{kind === "work" ? "Work" : "Apps"}</button>
+        <button ref={back} type="button" className={styles.back} onClick={() => { setShowDetail(false); requestAnimationFrame(() => list.current?.querySelector<HTMLElement>('[aria-current="true"]')?.focus()); }}><ChevronLeft size={16} aria-hidden />{kind === "work" ? "Work" : "Apps"}</button>
         {kind === "work" ? <WorkDetail p={p} /> : <AppDetail p={p} />}
       </div>
     </div>
@@ -140,6 +143,7 @@ function WorkDetail({ p }: { p: Project }) {
           <Image key={src} src={src} alt={p.cover?.alt ?? p.name} fill sizes="(max-width: 640px) 100vw, 600px" style={{ objectFit: contain ? "contain" : "cover", objectPosition: p.cover?.objectPosition }} />
         </figure>
       )}
+      {p.mediaCaption && <p className={styles.caption}>{p.mediaCaption}</p>}
       <h2>{p.name}</h2>
       <p className={styles.meta}>{projectMeta(p)}</p>
       <p>{p.longDescription ?? p.description}</p>
