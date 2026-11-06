@@ -11,6 +11,8 @@ export interface CaseStudy {
   credits?: { text: string; links: { label: string; href: string }[] };
   tools: string[];
   liveUrl?: string;
+  /** Label for liveUrl when it isn't a website, e.g. an App Store listing. */
+  liveLabel?: string;
   githubUrl?: string;
   overview: string;
   challenge: string;
@@ -25,6 +27,8 @@ export interface CaseStudy {
     title: string;
     description: string;
     image?: string;
+    /** Width / height, for a step image that isn't 16:9, so it isn't letterboxed. */
+    imageRatio?: number;
   }[];
   outcome: string;
   proofPoints?: { label: string; value: string }[];
@@ -78,7 +82,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       { problem: "An agent answer needs evidence that can be checked.", decision: "A read-only MCP server and CLI expose original text, source identities, hashes and coverage limits. Notes written during a meeting retain a link to the moment they refer to.", tradeoff: "Retrieval coverage and answer quality remain separate claims. Experimental search work is evaluated separately from the released app." },
     ],
     approach: [
-      { title: "Catch the thought", description: "Quick Capture saves without a folder or title decision. Explicit project tags provide a home when one is already known.", image: "/projectImages/margin-capture.png" },
+      { title: "Catch the thought", description: "Quick Capture saves without a folder or title decision. Explicit project tags provide a home when one is already known.", image: "/projectImages/margin-capture.png", imageRatio: 1088 / 216 },
       { title: "Keep the original", description: "Notes and recordings remain accessible during processing and transfer. Trash and restore are explicit, and a valid Mac receipt confirms receipt rather than assuming it from cloud availability." },
       { title: "Read beside the moment", description: "The meeting reader keeps the transcript, speaker labels and timestamped notes together. Speaker separation is optional and experimental; names are chosen by the person.", image: "/projectImages/margin-meeting.png" },
       { title: "Hand over evidence", description: "The agent interface returns source-linked context through read-only operations. The separate demo library keeps public examples away from personal notes and recordings." },
@@ -152,13 +156,13 @@ export const caseStudies: Record<string, CaseStudy> = {
         problem: "Music apps default to streaming-service aesthetics — gradients, glass, glow.",
         decision: "Authored a design system from gig poster modernism instead: Factory Records palette, Swiss type discipline, grain, true black.",
         tradeoff: "A strong aesthetic position will alienate some users.",
-        impact: "The app feels like the objects it's about — posters, tickets, the printed ephemera of going out.",
+        impact: "Palette, type and grain come from gig posters and tickets rather than streaming apps.",
       },
       {
         problem: "Spring animation invites spectacle.",
         decision: "Built a small motion grammar — a handful of springs used consistently, nothing animating from scale(0), nothing over 300ms.",
         tradeoff: "Restraint reads as less impressive in a screen recording.",
-        impact: "Motion clarifies state instead of performing for the user.",
+        impact: "Every transition draws on the same few springs, so the same kind of change always moves the same way.",
       },
     ],
     approach: [
@@ -250,7 +254,6 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
       {
         title: "Keep stories on the tree",
-        image: "/projectImages/whakapapa-1.webp",
         description:
           "React Flow and dagre power the tree view, but the product is broader than a chart. Stories, documents, and media stay attached to the people they relate to.",
       },
@@ -364,6 +367,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Solo Designer & Developer",
     tools: ["React Native", "Expo", "TypeScript"],
     liveUrl: "https://apps.apple.com/nz/app/vape-quit-coach/id6754863295",
+    liveLabel: "App Store",
     overview: "Vape Quit Coach is an iOS app I designed and built to help people quit vaping, built around tracking, coaching and support for the moments that matter most: cravings and setbacks.",
     challenge: "A lot of quitting apps lean on brittle streaks and punishing framing, which feels worst exactly when someone slips. I wanted something calmer that's still easy to use in a hard moment.",
     constraints: [

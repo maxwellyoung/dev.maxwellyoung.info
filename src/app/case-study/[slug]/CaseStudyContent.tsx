@@ -109,10 +109,10 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                         target: "live_site",
                       })
                     }
-                    className="inline-flex min-h-8 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    Live site
+                    {study.liveLabel ?? "Live site"}
                   </a>
                 )}
                 {study.githubUrl && (
@@ -126,7 +126,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                         target: "source_code",
                       })
                     }
-                    className="inline-flex min-h-8 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                   >
                     <Github className="w-4 h-4" />
                     Source
@@ -164,7 +164,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                 ) : null}
                 <div className="border-t border-[hsl(var(--border))] bg-[hsl(var(--card))]/40 p-3 sm:border-t-0">
                   <p className="mb-1 text-xs uppercase tracking-wider text-muted-foreground">
-                    Primary proof
+                    Key fact
                   </p>
                   {study.proofPoints?.[0] ? (
                     <p className="text-sm text-foreground">
@@ -303,7 +303,9 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           </h2>
           <div className="space-y-12">
             {study.approach.map((step, i) => (
-              <div key={i} className="grid md:grid-cols-2 gap-6">
+              // A step with a normal image splits into two columns. Text alone keeps the full measure,
+              // and a very wide image (a toolbar, a strip) sits full width under its text.
+              <div key={i} className={step.image ? `grid gap-6 ${(step.imageRatio ?? 0) > 2 ? "" : "md:grid-cols-2"}` : ""}>
                 <div>
                   <h3 className="text-lg font-medium mb-2">
                     {i + 1}. {step.title}
@@ -313,13 +315,16 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                   </p>
                 </div>
                 {step.image && (
-                  <div className="relative aspect-video rounded-lg overflow-hidden border border-[hsl(var(--border))] bg-[hsl(var(--muted))]">
+                  <div
+                    className={`relative rounded-lg overflow-hidden border border-[hsl(var(--border))] bg-[hsl(var(--muted))] ${step.imageRatio ? "" : "aspect-video"}`}
+                    style={step.imageRatio ? { aspectRatio: step.imageRatio } : undefined}
+                  >
                     <Image
                       src={step.image}
                       alt={step.title}
                       fill
                       className="object-contain"
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      sizes={(step.imageRatio ?? 0) > 2 ? "(max-width: 768px) 100vw, 720px" : "(max-width: 768px) 100vw, 50vw"}
                     />
                   </div>
                 )}
@@ -346,12 +351,13 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                 Proof points
               </h3>
               <div className={`grid gap-3 sm:gap-4 ${study.proofPoints.length % 2 === 0 ? "sm:grid-cols-2" : "sm:grid-cols-3"}`}>
-                {study.proofPoints.map((point) => (
+                {study.proofPoints.map((point, _, points) => (
                   <div
                     key={point.label}
                     className="p-4 rounded-lg border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 text-center"
                   >
-                    <p className={point.value.length <= 8 ? "text-2xl font-medium text-accent" : "text-base font-medium text-foreground"}>
+                    {/* One treatment per set: large figures only when every value is short. */}
+                    <p className={points.every((p) => p.value.length <= 8) ? "text-2xl font-medium text-accent" : "text-base font-medium text-foreground"}>
                       {point.value}
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">
