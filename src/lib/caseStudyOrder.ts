@@ -17,6 +17,8 @@ export function nextCaseStudy(slug: string): CaseStudy | undefined {
   return orderedCaseStudies[(index + 1) % orderedCaseStudies.length];
 }
 
+/** Other studies to suggest, skipping this one and the "next" one already linked above them. */
 export function relatedCaseStudies(slug: string, count = 4): CaseStudy[] {
-  return orderedCaseStudies.filter((study) => study.slug !== slug).slice(0, count);
+  const next = nextCaseStudy(slug)?.slug;
+  return orderedCaseStudies.filter((study) => study.slug !== slug && study.slug !== next).slice(0, count);
 }
