@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-06",
-  "sourceSyncedAt": "2026-11-06T08:58:23.628Z",
+  "sourceSyncedAt": "2026-11-06T09:30:03.362Z",
   "totalWorks": 5846,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-06T08:58:31.189Z",
-      "importAttemptAt": "2026-11-06T08:58:31.189Z",
+      "syncedAt": "2026-11-06T09:30:11.230Z",
+      "importAttemptAt": "2026-11-06T09:30:11.230Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-06T08:58:24.023Z",
-      "importAttemptAt": "2026-11-06T08:58:24.023Z",
+      "syncedAt": "2026-11-06T09:30:03.362Z",
+      "importAttemptAt": "2026-11-06T09:30:03.362Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "The Ames Brothers",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-06T08:58:23.601Z",
-      "syncedAt": "2026-11-06T08:58:23.628Z",
-      "importAttemptAt": "2026-11-06T08:58:23.628Z",
+      "activityAt": "2026-11-06T09:30:04.423Z",
+      "syncedAt": "2026-11-06T09:30:04.434Z",
+      "importAttemptAt": "2026-11-06T09:30:04.434Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=China%20Doll%20The%20Ames%20Brothers%201959",
       "art": {
