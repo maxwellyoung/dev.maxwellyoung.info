@@ -30,7 +30,7 @@ export function ReadMe({ api }: { api: OSApi }) {
   const rows = [
     { id: "work" as const, name: "Work", text: "Silk, research software, Liner, T3 Craft, and the rest." },
     { id: "apps" as const, name: "Apps", text: `The ${independentApps.length} iPhone apps I've designed, built and shipped myself.` },
-    { id: "shelf" as const, name: "Shelf", text: "What I'm watching, playing and listening to, from Canon, the catalogue I keep of it all." },
+    { id: "shelf" as const, name: "Shelf", text: "What I'm watching, playing and listening to, from Canon, the catalog I keep of it all." },
     { id: "terminal" as const, name: "Terminal", text: "For people who would rather type." },
   ];
   return (

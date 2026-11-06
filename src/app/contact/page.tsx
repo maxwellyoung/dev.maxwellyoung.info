@@ -59,7 +59,7 @@ export default function ContactPage() {
             external
             eventName="contact_primary_cta_clicked"
             eventProps={{ target: "email" }}
-            className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-foreground transition-colors"
+            className="inline-flex min-h-11 items-center rounded-sm underline underline-offset-2 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             maxwell@ninetynine.digital
           </TrackedActionLink>
@@ -73,7 +73,7 @@ export default function ContactPage() {
                 href="https://github.com/maxwellyoung"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-foreground transition-colors"
+                className="inline-flex min-h-11 items-center rounded-sm underline underline-offset-2 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
               >
                 GitHub
               </a>
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 href="https://www.linkedin.com/in/maxwell-young-a55032125/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-foreground transition-colors"
+                className="inline-flex min-h-11 items-center rounded-sm underline underline-offset-2 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
               >
                 LinkedIn
               </a>
@@ -100,14 +100,14 @@ export default function ContactPage() {
           More context on{" "}
           <Link
             href="/about"
-            className="underline underline-offset-2 hover:text-foreground transition-colors"
+            className="rounded-sm underline underline-offset-2 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             about
           </Link>
           {" "}or{" "}
           <Link
             href="/#projects"
-            className="underline underline-offset-2 hover:text-foreground transition-colors"
+            className="rounded-sm underline underline-offset-2 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             work
           </Link>

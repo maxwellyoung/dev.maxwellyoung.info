@@ -76,6 +76,11 @@ export default function MaxwellOS() {
 
   useEffect(() => { try { localStorage.setItem(STORAGE, JSON.stringify(os)); } catch {} }, [os]);
   useEffect(() => {
+    const fit = () => dispatch({ type: "fit", viewport: viewport() });
+    addEventListener("resize", fit);
+    return () => removeEventListener("resize", fit);
+  }, []);
+  useEffect(() => {
     const key = (event: KeyboardEvent) => {
       if (event.key === "Tab" && event.ctrlKey) { event.preventDefault(); dispatch({ type: "cycle", direction: event.shiftKey ? -1 : 1 }); return; }
       if (event.key !== "Escape" || event.defaultPrevented) return;
@@ -91,7 +96,7 @@ export default function MaxwellOS() {
       <header className={styles.menuBar}>
         <strong className={styles.wordmark}>Maxwell OS</strong>
         {rotation && (
-          <button type="button" className={styles.nowPlaying} onClick={(e) => open("shelf", undefined, { keyboard: e.detail === 0 })} title="In rotation, from Canon, my catalogue of films, games, books and music">
+          <button type="button" className={styles.nowPlaying} onClick={(e) => open("shelf", undefined, { keyboard: e.detail === 0 })} title="In rotation, from Canon, my catalog of films, games, books and music">
             <span aria-hidden className={styles.eq}><i /><i /><i /></span>
             <span className={styles.nowText}>{rotation.creator ? `${rotation.creator} — ` : ""}{rotation.title}</span>
           </button>

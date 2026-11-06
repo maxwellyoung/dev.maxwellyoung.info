@@ -16,7 +16,7 @@ export default function BasketcaseSupportPage() {
     <BasketcaseLegalLayout
       eyebrow="Support"
       title="Help with receipts, accounts, and privacy."
-      intro="Use this page for App Store support, account questions, data requests, or receipt scanning issues."
+      intro="Basketcase is in development. Use this page for early-access support, account questions, data requests, or receipt scanning issues."
     >
       <LegalSection title="Common support topics">
         <LegalList

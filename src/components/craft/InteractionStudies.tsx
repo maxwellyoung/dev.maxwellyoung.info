@@ -11,8 +11,8 @@ export function InteractionStudies() {
       <div>
         <h2 className="text-xl font-medium mb-2">Interaction Studies</h2>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-prose">
-          Feedback, state transitions, and motion behavior. Patterns meant for
-          product work, not demos.
+          Small working demos of feedback and state changes. Sharing, downloads
+          and playback are simulated; the motion is the part being shown.
         </p>
       </div>
 
@@ -56,7 +56,7 @@ function LikeButtonStudy() {
   return (
     <Study
       title="Like Button"
-      note="Scale feedback with a color transition and a ring pulse. Spring physics reward engagement."
+      note="A bouncy spring scales the heart, the color changes, and a ring pulses once. Tap again to undo."
     >
       <motion.button
         type="button"
@@ -127,7 +127,7 @@ function DownloadProgressStudy() {
   return (
     <Study
       title="Download Progress"
-      note="Button morphs to show progress with a fluid fill. State changes stay connected so the system feels legible."
+      note="The button becomes its own progress bar, so the result appears where you pressed."
     >
       <motion.button
         type="button"
@@ -188,7 +188,7 @@ function ShareMenuStudy() {
   return (
     <Study
       title="Share Menu"
-      note="Staggered spring reveals build rhythm without shouting — each item earns its own moment."
+      note="Items arrive 40ms apart on a spring. Escape or a click outside closes the menu."
     >
       <div
         ref={wrapperRef}
@@ -217,10 +217,12 @@ function ShareMenuStudy() {
               initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.95 }}
+              // Framer owns this element's transform, so the centring offset lives here, not in a translate class.
+              style={{ x: "-50%" }}
               transition={shouldReduceMotion
                 ? { duration: 0.1 }
                 : { duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
-              className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 origin-bottom bg-card border border-border rounded-lg p-2 min-w-[140px]"
+              className="absolute bottom-full mb-2 left-1/2 origin-bottom bg-card border border-border rounded-lg p-2 min-w-[140px] shadow-md"
             >
               {menuItems.map((item) => {
                 const Icon = item.icon;
@@ -282,7 +284,7 @@ function PlaybackControlStudy() {
   return (
     <Study
       title="Playback Control"
-      note="Play morphs to pause with layered transitions. Progress advances smoothly to hold the sense of continuity."
+      note="Play and pause cross-fade in place. The bar fills linearly, because time does."
     >
       <div className="flex items-center space-x-4 w-full max-w-md">
         <motion.button
@@ -312,7 +314,7 @@ function PlaybackControlStudy() {
         </motion.button>
 
         <div className="flex-1 space-y-2">
-          <div className="relative bg-muted/30 rounded-full h-1 overflow-hidden">
+          <div className="relative bg-muted-foreground/60 rounded-full h-1 overflow-hidden">
             <div
               style={{ transform: `scaleX(${currentTime / trackDuration})` }}
               className="absolute inset-0 origin-left rounded-full bg-accent transition-transform duration-100 ease-linear motion-reduce:transition-none"

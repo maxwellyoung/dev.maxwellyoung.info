@@ -47,7 +47,7 @@ const appIntroductions: Record<string, {
     image: "/projectImages/good-news-bad-news-4.webp",
     width: 1320,
     height: 2868,
-    caption: "A reading archive, with saved packs arranged by date.",
+    caption: "The reading archive: each saved pack is filed under its day.",
   },
   doomscroll: {
     action: "Open a code prompt. Review it at your own pace.",
@@ -67,7 +67,7 @@ export default function AppsPage() {
           <p className="mb-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">Independent products · iPhone</p>
           <h1 className="text-4xl font-medium tracking-tight sm:text-5xl">Small apps.<br />Considered decisions.</h1>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">Five apps I designed, built, and published. Each starts with an everyday moment and a specific way to make it easier.</p>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">Icons and selected earlier interfaces show each app’s identity. The App Store has current release details; features described as in development await release.</p>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">Current screenshots and release notes are on each App Store page.</p>
         </header>
         <div className="space-y-12 sm:space-y-16">
           {independentApps.map((app, index) => {

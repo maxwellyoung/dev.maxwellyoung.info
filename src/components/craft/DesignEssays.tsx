@@ -10,7 +10,7 @@ export function DesignEssays() {
           <li key={essay.slug}>
             <Link
               href={`/craft/essay/${essay.slug}`}
-              className="block py-4 group"
+              className="block py-4 group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               <h3 className="text-base font-medium text-foreground group-hover:text-accent transition-colors">
                 {essay.title}
@@ -21,6 +21,7 @@ export function DesignEssays() {
               <div className="flex items-center gap-3 text-xs text-muted-foreground mt-2">
                 <span>
                   {new Date(essay.date).toLocaleDateString("en-US", {
+                    timeZone: "UTC",
                     month: "short",
                     year: "numeric",
                   })}

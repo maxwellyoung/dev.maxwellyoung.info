@@ -118,3 +118,11 @@ test("terminal allowlists commands and handles utilities", () => {
   assert.match(runCommand("now", { cwd: [] }).output, /Canon/);
   assert.equal(runCommand("exit", { cwd: [] }).exit, true);
 });
+
+test("fit keeps a window opened on a tall phone inside a short, wide screen", () => {
+  let s = windowReducer(initialOSState, { ...open("work"), viewport: { width: 390, height: 844 } });
+  s = windowReducer(s, { type: "fit", viewport: { width: 844, height: 390 } });
+  const w = s.windows[0];
+  assert.ok(w.y + w.height <= 390 - 8, `bottom ${w.y + w.height}`);
+  assert.ok(w.x + w.width <= 844 - 8, `right ${w.x + w.width}`);
+});

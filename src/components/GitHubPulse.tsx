@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { Github } from "lucide-react";
 
 interface Pulse {
-  events: { type: string; repo: string; date: string; refType?: string }[];
+  events: { type: string; repo: string; fullName: string; date: string; refType?: string; action?: string }[];
 }
 
 const VERB: Record<string, string> = {
@@ -23,9 +23,17 @@ const CREATE_VERB: Record<string, string> = {
   tag: "tagged",
 };
 
+// A PullRequestEvent is also sent when a PR closes or merges; say which.
+const PR_VERB: Record<string, string> = {
+  merged: "merged a PR on",
+  closed: "closed a PR on",
+  reopened: "reopened a PR on",
+};
+
 function verbFor(e: Pulse["events"][number]): string {
   if (e.type === "Create" && e.refType && CREATE_VERB[e.refType]) return CREATE_VERB[e.refType];
-  return VERB[e.type] || e.type.toLowerCase();
+  if (e.type === "PullRequest" && e.action && PR_VERB[e.action]) return PR_VERB[e.action];
+  return VERB[e.type];
 }
 
 async function fetchPulse(username: string): Promise<Pulse> {
@@ -34,20 +42,25 @@ async function fetchPulse(username: string): Promise<Pulse> {
   const events = (await res.json()) as {
     type: string;
     repo?: { name?: string };
-    payload?: { ref_type?: string };
+    payload?: { ref_type?: string; action?: string };
     created_at: string;
   }[];
   const seen = new Set<string>();
   const distinct: Pulse["events"] = [];
-  for (const e of events) {
-    const repo = e.repo?.name?.split("/")[1] || "";
+  // The API doesn't promise order; newest first. Event types without a plain verb (deletes, comments) are skipped.
+  const newestFirst = [...events].sort((a, b) => b.created_at.localeCompare(a.created_at));
+  for (const e of newestFirst) {
+    const fullName = e.repo?.name || "";
+    const repo = fullName.split("/")[1] || "";
     const key = `${e.type}:${repo}`;
-    if (!repo || seen.has(key)) continue;
+    if (!repo || !VERB[e.type.replace("Event", "")] || seen.has(key)) continue;
     seen.add(key);
     distinct.push({
       type: e.type.replace("Event", ""),
       repo,
+      fullName,
       refType: e.payload?.ref_type,
+      action: e.payload?.action,
       date: new Date(e.created_at).toLocaleDateString("en-NZ", { day: "numeric", month: "short" }),
     });
     if (distinct.length >= 2) break;
@@ -70,14 +83,14 @@ export function GitHubPulse({ username = "maxwellyoung" }: { username?: string }
         Meanwhile, on GitHub
       </p>
       <ul className="mt-1.5 space-y-1">
-        {(data?.events ?? [{ type: "", repo: "", date: "" }, { type: "", repo: "", date: "" }]).map(
+        {(data?.events ?? [{ type: "", repo: "", fullName: "", date: "" }, { type: "", repo: "", fullName: "", date: "" }]).map(
           (e, i) =>
             e.repo ? (
               <li key={`${e.type}-${e.repo}`} className="flex min-w-0 items-baseline gap-2 text-xs text-muted-foreground">
                 <span className="truncate">
                   {verbFor(e)}{" "}
                   <a
-                    href={`https://github.com/${username}/${e.repo}`}
+                    href={`https://github.com/${e.fullName}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-medium text-foreground underline decoration-muted-foreground/30 underline-offset-2 transition-colors hover:decoration-[hsl(var(--accent))]/60"

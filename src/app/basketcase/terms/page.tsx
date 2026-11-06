@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   BasketcaseLegalLayout,
   LegalList,
@@ -60,7 +61,8 @@ export default function BasketcaseTermsPage() {
         <p>
           You retain ownership of your personal information and receipt content.
           You allow Basketcase to process that content to provide app features.
-          Account and data deletion are handled according to the Privacy Policy.
+          Account and data deletion are handled according to the{" "}
+          <Link href="/basketcase/privacy" className="text-foreground underline underline-offset-2">Privacy Policy</Link>.
         </p>
       </LegalSection>
 

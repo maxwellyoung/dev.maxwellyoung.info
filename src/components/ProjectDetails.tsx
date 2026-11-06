@@ -66,9 +66,10 @@ export function ProjectDetails({
               <p className="mb-1 text-[0.65rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 {getProjectContextLabel(project)}
               </p>
-              <h2 className="text-lg md:text-xl font-medium leading-tight text-foreground">
+              {/* h4: the row's h3 already names the project; this card sits inside it. */}
+              <h4 className="text-lg md:text-xl font-medium leading-tight text-foreground">
                 {project.name}
-              </h2>
+              </h4>
             </div>
             {getProjectStatusLabel(project) && (
               <span
