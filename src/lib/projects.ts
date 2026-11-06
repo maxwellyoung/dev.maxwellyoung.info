@@ -197,6 +197,7 @@ const projects: Project[] = [
     },
     link: "https://www.silk.cx",
     screenshots: ["/projectImages/silk-mobile-profile.png", "/projectImages/silk-mobile-webs.png"],
+    mediaCaption: "Screenshots from Silk's public Google Play listing.",
     thumb: "/projectImages/silk-mobile-profile.png",
     cover: {
       variant: "device",
@@ -208,7 +209,7 @@ const projects: Project[] = [
     },
     proof: { label: "Mobile delivery", text: "Architecture, media-heavy interactions, performance and accessibility across iOS and Android.", href: "https://play.google.com/store/apps/details?id=cx.silk.mobile" },
     impact: [
-      "Also ship backend work in Silk's TypeScript API: rate limiting, authentication, and feed performance",
+      "Ship backend features in Silk's TypeScript API: rate limiting, authentication, and feed performance",
       "Own architecture, performance, and accessibility across iOS and Android",
       "Validate mobile changes with regression coverage and real-device checks",
     ],
@@ -280,9 +281,8 @@ const projects: Project[] = [
     },
     proof: { label: "Reliable saving", text: "Liner shows whether your song details and canvas have saved, with an export backup if local saving fails.", href: "/case-study/liner" },
     impact: [
-      "Solo-designed and built web workspace for songs and releases",
-      "Custom canvas with frames, notes, and audio playback",
-      "Local save states and an export path when saving fails",
+      "Custom HTML canvas engine with frames, notes, and Web Audio playback",
+      "Local browser saves, optional sync through Convex, and an export path when saving fails",
     ],
   },
   {
@@ -299,7 +299,7 @@ const projects: Project[] = [
     description:
       "iPhone support for quitting vaping: track progress, reflect on triggers, and reach an AI coach.",
     longDescription:
-      "Vape Quit Coach is a solo-built iPhone app with quit tracking, journaling, breathing exercises, and online AI coaching. I designed and shipped the product in React Native and Expo. Its guidance supports reflection and coping; it does not measure biological recovery or replace professional care. Coaching uses external AI services rather than staying entirely on-device.",
+      "Vape Quit Coach is an iPhone app for quitting vaping, with quit tracking, journaling, breathing exercises, and AI coaching. I designed and shipped it alone in React Native and Expo. Coaching runs on an online AI service, and the app is a tool for coping, not medical care.",
     tags: ["React Native", "Expo", "Behavior Design", "Mobile App"],
     stack: ["React Native", "Expo", "TypeScript"],
     startDate: "2024-01-01",
@@ -443,7 +443,7 @@ const projects: Project[] = [
     description:
       "Native iOS queue for keeping one item in focus while the rest waits in the background.",
     longDescription:
-      "Holdspace is a native SwiftUI app for a lightweight personal queue. One item stays in focus while saved items wait; gesture actions move them through the queue. Queue records stay on-device. Website link previews and links you choose to open can contact external sites.",
+      "Holdspace is a native SwiftUI app for a lightweight personal queue. One item stays in focus while saved items wait, and gestures move them through the queue. The queue is stored on-device with SwiftData.",
     tags: ["Swift", "SwiftUI", "iOS", "SwiftData", "Native"],
     stack: ["Swift", "SwiftUI", "SwiftData", "WidgetKit", "Live Activities"],
     startDate: "2025-01-01",
@@ -575,7 +575,7 @@ const projects: Project[] = [
     description:
       "A finite daily news pack that pairs positive and difficult stories, then asks how the reading felt.",
     longDescription:
-      "Good News Bad News is a React Native and Expo app with a finite daily pack, publisher links, a post-read balance check, and a local reading archive. A Cloudflare Worker selects and summarizes RSS material with Workers AI. Positive and difficult stories provide emotional contrast; the selection is not a promise of comprehensive coverage, political balance, or verified reporting.",
+      "Good News Bad News is a React Native and Expo app that gives you one finite news pack a day: a few positive and difficult stories, links to the publishers, a short balance check after reading, and a local archive. A Cloudflare Worker picks and summarizes each pack from RSS feeds with Workers AI. It is listed as GNBN on the App Store.",
     tags: [
       "React Native",
       "Expo",
@@ -633,7 +633,7 @@ const projects: Project[] = [
     description:
       "An iPhone concert diary for recording the nights, notes, and memories you want to keep.",
     longDescription:
-      "Afterlight is a concert diary on the iPhone App Store, built in React Native and Expo. It keeps a record of each concert alongside your own notes about the night. A way to find past concerts from your tickets, calendar and photos, plus better backups, is in development for a later release.",
+      "Afterlight is a concert diary on the iPhone App Store, built in React Native and Expo. It keeps a record of each concert with your own notes about the night, and the released app can scan tickets and import concerts from photos. Finding past concerts from your calendar, and better backups, are in development for a later release.",
     tags: [
       "React Native",
       "Expo",
@@ -679,7 +679,7 @@ const projects: Project[] = [
     description:
       "A swipeable code-review feed with GitHub imports, prompts, and progress tracking.",
     longDescription:
-      "doomscroll presents code as a swipeable review feed with progress tracking. GitHub imports bring repository material into the app. Cards and prompts are generated with on-device rules, not a remote AI model. The interface supports deliberate review; it does not promise mastery or measure learning effectiveness.",
+      "doomscroll turns code into a swipeable review feed with progress tracking. GitHub imports bring your own repositories in, and cards and prompts are generated with on-device rules rather than a remote AI model.",
     tags: ["React Native", "Expo", "Code Review", "Developer Tools"],
     stack: ["React Native", "Expo", "TypeScript"],
     startDate: "2026-02-01",

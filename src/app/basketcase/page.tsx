@@ -104,7 +104,7 @@ export default function BasketcasePage() {
             <p className="mt-6 max-w-lg text-3xl font-semibold leading-[1.04] tracking-tight sm:text-5xl">
               Receipts into price memory.
             </p>
-            <p className="mt-6 max-w-md text-base leading-7 text-[#071321]/68">
+            <p className="mt-6 max-w-md text-base leading-7 text-[#071321]/[0.68]">
               A mobile grocery product for scanning receipts, remembering item
               prices, and comparing the next shop with calm, source-labelled
               context.
@@ -122,21 +122,21 @@ export default function BasketcasePage() {
                 href="https://www.ninetynine.digital"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-[#071321]/18 px-4 text-sm font-medium text-[#071321] transition-colors duration-200 hover:border-[#1177d5]/50 hover:text-[#1177d5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1177d5] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f1e6]"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-[#071321]/[0.18] px-4 text-sm font-medium text-[#071321] transition-colors duration-200 hover:border-[#1177d5]/50 hover:text-[#0b5fae] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1177d5] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f1e6]"
               >
-                ninetynine digital
+                ninetynine.digital
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
 
-            <dl className="mt-10 grid gap-0 overflow-hidden rounded-md border border-[#071321]/12 text-sm sm:grid-cols-3">
-              <div className="border-b border-[#071321]/12 p-3 sm:border-b-0 sm:border-r">
+            <dl className="mt-10 grid gap-0 overflow-hidden rounded-md border border-[#071321]/[0.12] text-sm sm:grid-cols-3">
+              <div className="border-b border-[#071321]/[0.12] p-3 sm:border-b-0 sm:border-r">
                 <dt className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/65">
                   Stage
                 </dt>
                 <dd className="mt-1 text-[#071321]">In development</dd>
               </div>
-              <div className="border-b border-[#071321]/12 p-3 sm:border-b-0 sm:border-r">
+              <div className="border-b border-[#071321]/[0.12] p-3 sm:border-b-0 sm:border-r">
                 <dt className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/65">
                   Role
                 </dt>
@@ -151,7 +151,7 @@ export default function BasketcasePage() {
             </dl>
           </div>
 
-          <figure className="relative overflow-hidden rounded-md border border-[#071321]/12 bg-[#071321] shadow-[0_24px_80px_rgba(7,19,33,0.18)]">
+          <figure className="relative overflow-hidden rounded-md border border-[#071321]/[0.12] bg-[#071321] shadow-[0_24px_80px_rgba(7,19,33,0.18)]">
             <div className="relative aspect-[16/10] w-full">
               <Image
                 src="/projectImages/basketcase-cover.webp"
@@ -169,7 +169,7 @@ export default function BasketcasePage() {
           {productLoop.map(({ title, body, icon: Icon }) => (
             <div
               key={title}
-              className="rounded-md border border-[#071321]/12 bg-white/38 p-5 shadow-[0_1px_0_rgba(7,19,33,0.04)]"
+              className="rounded-md border border-[#071321]/[0.12] bg-white/[0.38] p-5 shadow-[0_1px_0_rgba(7,19,33,0.04)]"
             >
               <Icon className="h-5 w-5 text-[#dc3f2f]" />
               <h2 className="mt-5 text-lg font-medium">{title}</h2>
@@ -186,7 +186,7 @@ export default function BasketcasePage() {
             </h2>
           </div>
 
-          <div className="space-y-0 overflow-hidden rounded-md border border-[#071321]/12 bg-[#fffaf0]/70">
+          <div className="space-y-0 overflow-hidden rounded-md border border-[#071321]/[0.12] bg-[#fffaf0]/70">
             {buildProof.map((item) => (
               <div
                 key={item.label}
@@ -195,14 +195,14 @@ export default function BasketcasePage() {
                 <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/65">
                   {item.label}
                 </p>
-                <p className="text-sm leading-6 text-[#071321]/72">{item.value}</p>
+                <p className="text-sm leading-6 text-[#071321]/[0.72]">{item.value}</p>
               </div>
             ))}
             <div className="grid gap-2 border-t border-[#071321]/10 p-5 sm:grid-cols-[10rem_1fr]">
               <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/65">
                 Privacy stance
               </p>
-              <p className="flex gap-2 text-sm leading-6 text-[#071321]/72">
+              <p className="flex gap-2 text-sm leading-6 text-[#071321]/[0.72]">
                 <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#1177d5]" />
                 Receipt and household spend data is treated as personal
                 information, with legal and support pages published from day one.
@@ -212,7 +212,7 @@ export default function BasketcasePage() {
         </section>
 
         <footer className="flex flex-col gap-4 border-t border-[#071321]/10 py-8 text-sm text-[#071321]/60 sm:flex-row sm:items-center sm:justify-between">
-          <p>Built through ninetynine digital.</p>
+          <p>Built through ninetynine.digital.</p>
           <div className="flex flex-wrap gap-x-4 gap-y-2">
             <Link className="inline-flex min-h-11 items-center transition-colors hover:text-[#071321]" href="/basketcase/privacy">
               Privacy

@@ -325,7 +325,7 @@ export function CurrentlyInto() {
               </div>
 
               <p className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-                {importState} · {importDate} · {selectedPosition}
+                {importState} · {importDate}
               </p>
             </div>
           </section>

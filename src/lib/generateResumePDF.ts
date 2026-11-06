@@ -62,7 +62,7 @@ function createPdfContext(): PdfContext {
     colors: {
       black: [25, 25, 25],
       gray: [90, 90, 90],
-      lightGray: [130, 130, 130],
+      lightGray: [110, 110, 110], // 5.1:1 on white, the lightest grey that passes AA at small sizes
     },
   };
 }
@@ -304,7 +304,7 @@ function writeEducation(context: PdfContext) {
 
     setFont(context, 9, "normal", context.colors.gray);
     context.pdf.text(
-      sanitizeForPDF(`${education.institution}  |  ${education.date}`),
+      sanitizeForPDF(`${education.institution}  ·  ${education.date}`),
       context.marginLeft,
       context.y
     );
@@ -385,7 +385,7 @@ function writeSkills(context: PdfContext) {
 
 function writeFooter(context: PdfContext) {
   context.pdf.setFontSize(7);
-  context.pdf.setTextColor(180, 180, 180);
+  context.pdf.setTextColor(...context.colors.gray);
   writeLinkedLine(context, [
     { text: resumeData.contact.github, url: `https://${resumeData.contact.github}` },
     { text: resumeData.contact.linkedin, url: `https://${resumeData.contact.linkedin}` },

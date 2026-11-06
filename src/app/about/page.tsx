@@ -97,7 +97,7 @@ export default function AboutPage() {
             <AnimatedLink href="/#projects">selected work</AnimatedLink> and the{" "}
             <AnimatedLink href="/resume">resume</AnimatedLink>; experimental
             motion and interface studies live in the{" "}
-            <AnimatedLink href="/craft">lab</AnimatedLink>.
+            <AnimatedLink href="/craft">Craft</AnimatedLink> section.
           </p>
         </section>
 

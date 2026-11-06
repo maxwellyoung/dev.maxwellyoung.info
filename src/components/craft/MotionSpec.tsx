@@ -17,8 +17,7 @@ export function MotionSpec() {
       <div>
         <h2 className="text-xl font-medium mb-2">Motion Spec</h2>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-prose">
-          The motion grammar used across production surfaces. Design constraints,
-          not flourishes.
+          The motion tokens this site runs on. Constraints, not flourishes.
         </p>
       </div>
 

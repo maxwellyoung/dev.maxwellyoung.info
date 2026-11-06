@@ -20,7 +20,8 @@ export type OSAction =
   | { type: "resize"; id: string; width: number; height: number }
   | { type: "maximize" | "close"; id: string }
   | { type: "cycle"; direction?: 1 | -1 }
-  | { type: "hydrate"; state: OSState; viewport?: { width: number; height: number } };
+  | { type: "hydrate"; state: OSState; viewport?: { width: number; height: number } }
+  | { type: "fit"; viewport: { width: number; height: number } };
 export const initialOSState: OSState = { windows: [], nextZ: 2 };
 export const MIN_WINDOW = { width: 340, height: 240 };
 /** Height of the menu bar; windows never tuck underneath it. */
@@ -58,20 +59,13 @@ export function windowReducer(state: OSState, action: OSAction): OSState {
       return windowReducer(state, { type: "focus", id: next.id });
     }
     case "hydrate": {
-      const vw = action.viewport?.width ?? Infinity;
-      const vh = action.viewport?.height ?? Infinity;
       // Sessions saved by older versions can name apps that no longer exist.
-      const windows = action.state.windows.filter((w) => isAppId(w.app)).map((w) => ({
-        ...w,
-        id: w.app,
-        maximized: Boolean(w.maximized),
-        x: Math.max(0, Math.min(w.x, vw - 120)),
-        y: Math.max(MENU_BAR, Math.min(w.y, vh - 120)),
-        width: Math.max(MIN_WINDOW.width, w.width),
-        height: Math.max(MIN_WINDOW.height, w.height),
-      }));
+      const windows = action.state.windows.filter((w) => isAppId(w.app)).map((w) => fitWindow({ ...w, id: w.app, maximized: Boolean(w.maximized) }, action.viewport));
       return { windows, nextZ: Math.max(action.state.nextZ || 0, ...windows.map((w) => w.z + 1), 2) };
     }
+    case "fit":
+      // The screen changed size (rotation, a resized browser): keep every window on it.
+      return { ...state, windows: state.windows.map((w) => fitWindow(w, action.viewport)) };
     default:
       return {
         windows: state.windows.map((w) => {
@@ -85,6 +79,20 @@ export function windowReducer(state: OSState, action: OSAction): OSState {
         nextZ: action.type === "focus" ? state.nextZ + 1 : state.nextZ,
       };
   }
+}
+/** Keep a window's title bar reachable and its body inside the viewport, never below the minimum size. */
+function fitWindow(w: OSWindow, viewport?: { width: number; height: number }): OSWindow {
+  const vw = viewport?.width ?? Infinity;
+  const vh = viewport?.height ?? Infinity;
+  const x = Math.max(0, Math.min(w.x, vw - 120));
+  const y = Math.max(MENU_BAR, Math.min(w.y, vh - 120));
+  return {
+    ...w,
+    x,
+    y,
+    width: Math.max(MIN_WINDOW.width, Math.min(w.width, vw - x - 8)),
+    height: Math.max(MIN_WINDOW.height, Math.min(w.height, vh - y - 8)),
+  };
 }
 export const topWindow = (state: OSState) => [...state.windows].sort((a, b) => b.z - a.z)[0] ?? null;
 

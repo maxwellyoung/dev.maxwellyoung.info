@@ -16,7 +16,7 @@ const essaySources: EssaySource[] = [
     title: "The Invisible Details of Interaction Design",
     slug: "the-invisible-details-of-interaction-design",
     excerpt:
-      "Why great interfaces borrow from thousands of years of physical intuition, and how spring physics can make digital feel tangible.",
+      "Why spring settings are a design decision, and where this site's project list uses them.",
     date: "2026-01-29",
     category: "Motion Design",
     featured: true,
@@ -46,11 +46,19 @@ The first feels digital. The second feels alive. Why? Because springs have perso
 A tight spring feels nervous, energetic. A loose spring feels confident, relaxed.
 
 \`\`\`typescript
-// Nervous button - high stiffness, low damping
-const nervousSpring = { stiffness: 400, damping: 10, mass: 0.5 }
+// Nervous: high stiffness, low damping
+const nervousSpring = {
+  stiffness: 400,
+  damping: 10,
+  mass: 0.5,
+}
 
-// Confident button - moderate stiffness, higher damping
-const confidentSpring = { stiffness: 200, damping: 25, mass: 1 }
+// Confident: moderate stiffness, higher damping
+const confidentSpring = {
+  stiffness: 200,
+  damping: 25,
+  mass: 1,
+}
 \`\`\`
 
 This isn't just technical configuration—it's emotional configuration. The spring values
@@ -71,73 +79,64 @@ tune it in code, with the thing in my hand, rather than describing it and handin
     title: "Motion Grammar for Humane Interfaces",
     slug: "motion-grammar-for-humane-interfaces",
     excerpt:
-      "Building a consistent language of movement that guides users naturally through digital spaces without overwhelming them.",
+      "The small set of durations and springs this site's motion draws from, and why one shared set matters more than any single value.",
     date: "2026-01-28",
     category: "Design Systems",
     featured: false,
-    content: `Every interface speaks in motion. The question is whether it's speaking clearly.
+    content: `Motion is part of what an interface says. If every component picks its own timing,
+the interface talks over itself; if nothing moves, changes of state arrive without warning.
+A motion grammar is a small set of durations and springs that everything draws from.
 
-Random animations feel chaotic. Missing animations feel cold. But a consistent motion
-grammar—like Emil Kowalski's work at Linear—creates interfaces that guide users naturally
-through digital spaces.
+## Rhythm
 
-## Establishing Rhythm
+I sort motion into three tiers. Immediate feedback, like a press or a toggle, takes
+100–180ms. A change of state, like a row opening, takes 220–320ms. A large move, like a
+sheet or a page, takes 350–500ms.
 
-Good motion grammar starts with rhythm. Fast transitions for immediate feedback (100–180ms).
-Medium transitions for state changes (220–320ms). Slow transitions for major shifts (350–500ms).
+## What It Looks Like Here
 
-But rhythm alone isn't enough. You need personality. The specific spring configurations
-that make your interface feel like yours.
-
-On this site that grammar lives in one file: duration tokens of 100, 150, 250 and 400ms for
+On this site the grammar lives in one file: duration tokens of 100, 150, 250 and 400ms for
 everyday work, 600ms kept for rare large moves, and six named springs. A button press uses
-snappy; content arriving as you scroll uses gentle. When a new component needs motion,
-it picks a token instead of inventing a number, which is most of what keeps the site
-sounding like one voice.
+snappy; content arriving as you scroll uses gentle. Most components start from a token. The
+exceptions are tuned by hand on purpose: the studies on the Craft page exaggerate their
+springs so the behavior is easy to see, and the project rows use the timed curve described
+in the first essay.
 
-## Three Principles
+## Three Rules
 
-1. **Purposeful**: Every animation should have a job. Feedback, guidance, or delight—but never decoration.
-2. **Connected**: Animations should feel related, like instruments in an orchestra.
-3. **Respectful**: Honor users' attention and accessibility preferences.
-
-The goal isn't to impress. It's to disappear into the experience, making complex interactions feel simple.`,
+1. **Every animation has a job**: feedback, orientation or continuity. If it has none, it goes.
+2. **Related changes move alike**: the same kind of change gets the same token.
+3. **Reduced motion is respected**: with it on, transitions collapse to an instant change.`,
   },
   {
     title: "The Typography System Behind Strawhouse",
     slug: "the-typography-system-behind-strawhouse",
     excerpt:
-      "How editorial typography principles can transform a gallery website from corporate to intimate, making art feel considered rather than commercialized.",
+      "Type choices for an unlaunched gallery site: a serif for exhibitions, a plain sans for descriptions, and what that layout costs.",
     date: "2026-01-27",
     category: "Typography",
     featured: false,
     content: `Strawhouse is a gallery site I designed that hasn't launched, so there's no public link
 yet. This note is about its type system, not a finished product.
 
-Most gallery websites feel like catalogs. Clinical. Corporate. They present art as product
-rather than experience.
-
-For Strawhouse Gallery, I wanted something different. An editorial approach that makes
-browsing feel like reading a carefully curated art magazine. Where typography becomes
-part of the curation.
+Many gallery sites borrow the layout of a shop: a grid of thumbnails, prices and filters.
+I wanted Strawhouse to read more like an exhibition catalog, where the text around a work
+is set with the same care as the hang.
 
 ## The Hierarchy
 
-Large, light serif headings (Sentient at 400 weight) give exhibitions breathing room.
-Artist names set in title case, never all-caps—because caps feel like shouting, and
-art deserves quiet attention.
+Exhibition titles are set large in Sentient, a serif, at its regular 400 weight, so they
+have presence without the weight of a bold. Artist names are in title case, never all
+caps, so a name reads as a name rather than a label.
 
-Body text in General Sans, generous line spacing, never justified—because justified
-text feels forced, and gallery descriptions should feel conversational, intimate.
+Body text is General Sans with generous line spacing and a ragged right edge. Justified
+text opens uneven gaps between words, and in short gallery descriptions those gaps show.
 
-## Editorial Rhythm
+## The Tradeoff
 
-The layout follows magazine principles: asymmetric but balanced, with generous white
-space that lets each piece breathe. Typography that steps back, never competing with
-the art itself.
-
-This isn't about showing off type skills. It's about using typography to create the
-right emotional context for experiencing art.`,
+An editorial layout takes more vertical space than a grid, so fewer works fit on screen at
+once. For a small gallery showing a few artists at a time, I chose reading over browsing
+density. A larger catalog would need a denser index beside it.`,
   },
 ];
 

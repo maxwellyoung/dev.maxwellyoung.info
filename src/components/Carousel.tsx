@@ -170,22 +170,26 @@ export default function Carousel({ images, onClose }: CarouselProps) {
         </AnimatePresence>
       </motion.div>
 
-      <div className="absolute bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 z-20 flex -translate-x-1/2 space-x-2">
+      <div className="absolute bottom-[max(0.25rem,env(safe-area-inset-bottom))] left-1/2 z-20 flex -translate-x-1/2">
         {images.map((_, i) => (
           <button
             key={i}
             onClick={() => setIndex(i)}
             aria-label={`Go to image ${i + 1}`}
-            className={`h-2 w-2 rounded-full transition-all duration-200 hover:scale-125 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
+            aria-current={i === index ? "true" : undefined}
+            // A 44px hit area around the 8px dot, so it can be tapped.
+            className="group flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <span aria-hidden="true" className={`h-2 w-2 rounded-full transition-all duration-200 group-hover:scale-125 ${
               i === index
                 ? isDark
                   ? "bg-white"
                   : "bg-black"
                 : isDark
-                ? "bg-white/30 hover:bg-white/50"
-                : "bg-black/30 hover:bg-black/50"
-            }`}
-          />
+                ? "bg-white/30 group-hover:bg-white/50"
+                : "bg-black/30 group-hover:bg-black/50"
+            }`} />
+          </button>
         ))}
       </div>
 

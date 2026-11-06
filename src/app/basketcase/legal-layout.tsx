@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BasketcaseLegalNav } from "./legal-nav";
 
 interface BasketcaseLegalLayoutProps {
   eyebrow: string;
@@ -23,17 +24,7 @@ export function BasketcaseLegalLayout({
           >
             Basketcase
           </Link>
-          <nav className="flex items-center gap-4 text-sm text-muted-foreground">
-            <Link className="inline-flex min-h-11 items-center transition-colors hover:text-foreground" href="/basketcase/privacy">
-              Privacy
-            </Link>
-            <Link className="inline-flex min-h-11 items-center transition-colors hover:text-foreground" href="/basketcase/terms">
-              Terms
-            </Link>
-            <Link className="inline-flex min-h-11 items-center transition-colors hover:text-foreground" href="/basketcase/support">
-              Support
-            </Link>
-          </nav>
+          <BasketcaseLegalNav />
         </div>
 
         <header className="mt-12 border-b border-border pb-8">
@@ -53,7 +44,7 @@ export function BasketcaseLegalLayout({
         </div>
 
         <footer className="mt-16 flex flex-col gap-2 border-t border-border/50 pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>Basketcase is built by Maxwell Young through ninetynine digital.</p>
+          <p>Basketcase is built by Maxwell Young through ninetynine.digital.</p>
           <Link className="inline-flex min-h-11 items-center transition-colors hover:text-foreground" href="/#projects">
             Back to work
           </Link>

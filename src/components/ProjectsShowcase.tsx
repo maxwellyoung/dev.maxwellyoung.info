@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -56,8 +56,7 @@ function ProjectRow({
     p.launchStage,
     p.stack?.[0] ?? p.tags?.[0],
   ]
-    .filter((value): value is string => Boolean(value))
-    .join(" · ");
+    .filter((value): value is string => Boolean(value));
 
   return (
     <motion.li
@@ -93,12 +92,18 @@ function ProjectRow({
                   </h3>
                 </div>
               </ProjectHoverPreview>
-              <p className="mt-1 break-words sm:line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-1 break-words text-sm leading-relaxed text-muted-foreground">
                 {p.description}
               </p>
-              {meta && (
-                <p className="mt-2 text-xs text-muted-foreground sm:truncate">
-                  {meta}
+              {meta.length > 0 && (
+                <p className="mt-2 text-xs text-muted-foreground">
+                  {/* Each segment stays whole, so a phone wraps between "Production work" and "React Native", not inside them. */}
+                  {meta.map((segment, i) => (
+                    <React.Fragment key={segment}>
+                      {i > 0 && " · "}
+                      <span className="whitespace-nowrap">{segment}</span>
+                    </React.Fragment>
+                  ))}
                 </p>
               )}
             </div>
@@ -132,6 +137,8 @@ function ProjectRow({
                   </p>
                 </div>
               </ProjectHoverPreview>
+              {/* Phones have no room beside the name, so the description gets its own line. */}
+              <p className="mt-0.5 text-xs leading-snug text-muted-foreground sm:hidden">{p.description}</p>
             </div>
 
             <span className="hidden flex-shrink-0 text-xs text-muted-foreground sm:inline">
@@ -177,10 +184,10 @@ function ProjectRow({
                 });
               }
             }}
-            className="px-1 pb-5 overflow-hidden"
+            className="px-2 md:px-3 pb-5 overflow-hidden"
           >
             {p.proof ? (
-              <div className="mb-4 ml-1 border-l border-border/60 py-1 pl-3 sm:ml-2">
+              <div className="mb-4 border-l border-border/60 py-1 pl-3">
                 <p className="text-xs font-medium text-foreground">{p.proof.label}</p>
                 <p className="mt-1 max-w-lg text-xs leading-relaxed text-muted-foreground">{p.proof.text}</p>
                 {p.proof.href ? (
@@ -293,7 +300,12 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
     ? rankedProjects.find((p) => p.name === expandedProject) || null
     : null;
 
-  const handleCarouselOpen = () => setIsCarouselOpen(true);
+  // The gallery opens from a plain button, not a DialogTrigger, so remember it to hand focus back on close.
+  const galleryOpener = useRef<HTMLElement | null>(null);
+  const handleCarouselOpen = () => {
+    galleryOpener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    setIsCarouselOpen(true);
+  };
 
   const content = (
     <div className={embedded ? "" : "min-h-screen text-foreground font-sans"}>
@@ -343,6 +355,11 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
         <DialogContent
           hideCloseButton
           className="max-w-none w-screen h-screen p-0"
+          onCloseAutoFocus={(event) => {
+            if (!galleryOpener.current?.isConnected) return;
+            event.preventDefault();
+            galleryOpener.current.focus();
+          }}
         >
           <VisuallyHidden.Root>
             <DialogTitle>

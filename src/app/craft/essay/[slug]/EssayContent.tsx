@@ -48,6 +48,8 @@ export function EssayContent({ essay }: EssayContentProps) {
                 <Calendar className="w-4 h-4" />
                 <span>
                   {new Date(essay.date).toLocaleDateString("en-US", {
+                    // Essay dates are calendar days; formatting in the viewer's zone shifts them a day west of UTC and mismatches the server render.
+                    timeZone: "UTC",
                     month: "long",
                     day: "numeric",
                     year: "numeric",
@@ -150,7 +152,7 @@ export function EssayContent({ essay }: EssayContentProps) {
           <footer className="mt-8 pt-8 border-t border-border/50">
             <Link
               href="/craft#essays"
-              className="inline-flex min-h-11 items-center space-x-2 text-accent hover:text-accent/80 transition-colors group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+              className="inline-flex min-h-11 items-center space-x-2 text-accent underline-offset-4 hover:underline transition-colors group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span>Back to all essays</span>
