@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-06",
-  "sourceSyncedAt": "2026-11-06T11:36:25.943Z",
+  "sourceSyncedAt": "2026-11-06T12:08:01.776Z",
   "totalWorks": 5846,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-06T11:36:32.985Z",
-      "importAttemptAt": "2026-11-06T11:36:32.985Z",
+      "syncedAt": "2026-11-06T12:08:22.061Z",
+      "importAttemptAt": "2026-11-06T12:08:22.061Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-06T11:36:25.943Z",
-      "importAttemptAt": "2026-11-06T11:36:25.943Z",
+      "syncedAt": "2026-11-06T12:08:01.776Z",
+      "importAttemptAt": "2026-11-06T12:08:01.776Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -87,18 +87,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:the-ames-brothers--china-doll",
+      "id": "applemusic:big-thief--capacity",
       "verb": "in rotation",
       "medium": "music",
-      "title": "China Doll",
-      "creator": "The Ames Brothers",
+      "title": "Capacity",
+      "creator": "Big Thief",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-06T11:36:26.083Z",
-      "syncedAt": "2026-11-06T11:36:26.123Z",
-      "importAttemptAt": "2026-11-06T11:36:26.123Z",
+      "activityAt": "2026-11-06T12:08:01.814Z",
+      "syncedAt": "2026-11-06T12:08:01.831Z",
+      "importAttemptAt": "2026-11-06T12:08:01.831Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=China%20Doll%20The%20Ames%20Brothers%201959",
+      "href": "https://music.apple.com/nz/search?term=Capacity%20Big%20Thief%202017",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
