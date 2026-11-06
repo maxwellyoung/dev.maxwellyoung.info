@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-06",
-  "sourceSyncedAt": "2026-11-06T19:36:47.653Z",
+  "sourceSyncedAt": "2026-11-06T20:08:43.665Z",
   "totalWorks": 5847,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-06T19:36:59.041Z",
-      "importAttemptAt": "2026-11-06T19:36:59.041Z",
+      "syncedAt": "2026-11-06T20:08:52.860Z",
+      "importAttemptAt": "2026-11-06T20:08:52.860Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-06T19:36:48.396Z",
-      "importAttemptAt": "2026-11-06T19:36:48.396Z",
+      "syncedAt": "2026-11-06T20:08:44.254Z",
+      "importAttemptAt": "2026-11-06T20:08:44.254Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Big Thief",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-06T19:36:47.626Z",
-      "syncedAt": "2026-11-06T19:36:47.653Z",
-      "importAttemptAt": "2026-11-06T19:36:47.653Z",
+      "activityAt": "2026-11-06T20:08:43.536Z",
+      "syncedAt": "2026-11-06T20:08:43.665Z",
+      "importAttemptAt": "2026-11-06T20:08:43.665Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Capacity%20Big%20Thief%202017",
       "art": {
