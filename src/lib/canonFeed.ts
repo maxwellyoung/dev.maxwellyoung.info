@@ -58,7 +58,7 @@ export const canonFeed: CanonFeed = {
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
       "syncedAt": null,
-      "importAttemptAt": "2026-11-07T12:36:13.780Z",
+      "importAttemptAt": "2026-11-07T13:07:22.293Z",
       "syncStatus": "error",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-07T12:35:54.365Z",
-      "importAttemptAt": "2026-11-07T12:35:54.365Z",
+      "syncedAt": "2026-11-07T13:07:03.352Z",
+      "importAttemptAt": "2026-11-07T13:07:03.352Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Young Thug",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-07T12:35:54.829Z",
-      "syncedAt": "2026-11-07T12:35:54.856Z",
-      "importAttemptAt": "2026-11-07T12:35:54.856Z",
+      "activityAt": "2026-11-07T13:07:03.176Z",
+      "syncedAt": "2026-11-07T13:07:03.232Z",
+      "importAttemptAt": "2026-11-07T13:07:03.232Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Barter%206%20Young%20Thug%202015",
       "art": {
