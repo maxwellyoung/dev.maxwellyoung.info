@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "Basketcase",
   description:
-    "Basketcase is a mobile grocery prototype that turns scanned receipts into source-labelled item history, price memory, and calmer pre-shop comparison.",
+    "Basketcase, in development, is a mobile grocery app that turns scanned receipts into source-labelled item history, price memory, and calmer pre-shop comparison.",
   openGraph: {
     title: "Basketcase",
     description:
@@ -198,7 +198,7 @@ export default function BasketcasePage() {
                 <p className="text-sm leading-6 text-[#071321]/[0.72]">{item.value}</p>
               </div>
             ))}
-            <div className="grid gap-2 border-t border-[#071321]/10 p-5 sm:grid-cols-[10rem_1fr]">
+            <div className="grid gap-2 p-5 sm:grid-cols-[10rem_1fr]">
               <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#071321]/65">
                 Privacy stance
               </p>

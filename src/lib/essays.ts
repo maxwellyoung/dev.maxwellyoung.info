@@ -13,56 +13,45 @@ type EssaySource = Omit<Essay, "readTime">;
 
 const essaySources: EssaySource[] = [
   {
-    title: "The Invisible Details of Interaction Design",
+    title: "Spring Settings Are Design Decisions",
     slug: "the-invisible-details-of-interaction-design",
     excerpt:
       "Why spring settings are a design decision, and where this site's project list uses them.",
     date: "2026-01-29",
     category: "Motion Design",
     featured: true,
-    content: `There's a moment in every great interface where you stop thinking about the interface itself.
-The button doesn't feel like a button—it feels like pressing something real. The animation
-doesn't feel like code—it feels like physics.
+    content: `A spring has three numbers: stiffness, damping and mass. They decide whether a panel
+snaps into place, drifts, or overshoots and wobbles back. Nobody sees the numbers, but
+everyone feels the result, so choosing them is a design decision, not an implementation
+detail to settle at the end.
 
-This is what Rauno Freiberg calls "invisible details of interaction design." The spring
-tension that makes a button feel satisfying to press. The momentum that makes scrolling
-feel connected to your finger. The way a modal appears not with a fade, but with the
-gentle elasticity of something being placed in the world.
+## What the Numbers Do
 
-## Borrowed Metaphors
-
-Great interaction design rewards learning by reusing metaphors. A swipe teaches you that
-the interface is layered like a deck of cards. Pinching maps to the precision of picking
-up tiny objects. These aren't decorative choices—they're borrowed from thousands of years
-of physical intuition.
-
-The design engineer's job is to implement that intuition in code. Not to simulate physics
-perfectly, but to capture the feeling of physics. The essence, not the equations.
-
-## Spring Physics as Emotional Language
-
-Consider two buttons: one that transitions with CSS ease-out, another with spring physics.
-The first feels digital. The second feels alive. Why? Because springs have personality.
-A tight spring feels nervous, energetic. A loose spring feels confident, relaxed.
+Stiffness is how hard the spring pulls toward its target. Damping is how quickly that
+motion dies away. Mass is how heavy the moving thing feels. High stiffness with low
+damping arrives fast and overshoots. Moderate stiffness with more damping arrives a little
+later and stops cleanly.
 
 \`\`\`typescript
-// Nervous: high stiffness, low damping
-const nervousSpring = {
+// Arrives fast, overshoots, wobbles before it settles
+const overshooting = {
   stiffness: 400,
   damping: 10,
   mass: 0.5,
 }
 
-// Confident: moderate stiffness, higher damping
-const confidentSpring = {
+// Arrives a little later and stops without overshoot
+const settled = {
   stiffness: 200,
   damping: 25,
   mass: 1,
 }
 \`\`\`
 
-This isn't just technical configuration—it's emotional configuration. The spring values
-become part of your design language, as important as your color palette or typography scale.
+Neither is better in general. Overshoot suits something you threw, like a card flicked off
+screen. It is wrong for a control that should simply answer, because the wobble reads as
+hesitation. So the values belong with the palette and the type scale: a small set, chosen
+once, reused everywhere.
 
 ## Where This Shows Up Here
 
@@ -106,7 +95,7 @@ in the first essay.
 
 1. **Every animation has a job**: feedback, orientation or continuity. If it has none, it goes.
 2. **Related changes move alike**: the same kind of change gets the same token.
-3. **Reduced motion is respected**: with it on, transitions collapse to an instant change.`,
+3. **Reduced motion is respected**: with it on, movement and stagger are removed and only opacity still fades.`,
   },
   {
     title: "The Typography System Behind Strawhouse",

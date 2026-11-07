@@ -132,13 +132,10 @@ function ProjectRow({
                     {p.name}
                   </h3>
                   <span className="text-xs text-muted-foreground sm:hidden">{p.launchStage}</span>
-                  <p className="hidden min-w-0 truncate text-xs text-muted-foreground sm:block">
-                    {p.description}
-                  </p>
                 </div>
               </ProjectHoverPreview>
-              {/* Phones have no room beside the name, so the description gets its own line. */}
-              <p className="mt-0.5 text-xs leading-snug text-muted-foreground sm:hidden">{p.description}</p>
+              {/* The description gets its own line at every width, so it is never cut off mid-word. */}
+              <p className="mt-0.5 text-xs leading-snug text-muted-foreground">{p.description}</p>
             </div>
 
             <span className="hidden flex-shrink-0 text-xs text-muted-foreground sm:inline">

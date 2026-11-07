@@ -186,6 +186,7 @@
 .widgetText small { font-size: 12px; color: var(--os-muted); }
 .widgetText b { font-weight: 500; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .widgetText span { font-size: 13px; color: var(--os-muted); }
+.phoneIntro { display: none; }
 .colophon {
   position: absolute;
   right: 16px;
@@ -446,6 +447,8 @@
   /* The home screen: a phone OS for the phone. */
   .icons { left: 0; right: 0; width: auto; padding: 0 12px; grid-template-columns: repeat(4, 1fr); gap: 12px 0; }
   .icon { min-height: 44px; font-size: 12px; }
+  .phoneIntro { display: block; grid-column: 1 / -1; margin: 12px 4px 0; font-size: 14px; line-height: 1.45; color: var(--os-muted); }
+  .readmeLinks a, .links a { min-height: 44px; }
   .art { width: 60px; height: 60px; border-radius: 14px; }
   .artPage { width: 48px; }
   /* Windows become full-screen sheets. */

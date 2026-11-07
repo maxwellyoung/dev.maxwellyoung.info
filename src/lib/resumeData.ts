@@ -57,7 +57,7 @@ export const resumeData: ResumeData = {
         "Silk is a platform for blogging, private archives, and moodboards.",
       responsibilities: [
         "Built the initial mobile foundation, interface systems, and media-heavy flows. Own performance, accessibility, and release reliability across iOS and Android, validated with regression coverage and real-device checks.",
-        "Also ship in Silk's TypeScript API: distributed rate limiting, account authentication, and feed and chat performance.",
+        "Ship backend work in Silk's TypeScript API: distributed rate limiting, account authentication, and feed and chat performance.",
       ],
     },
     {

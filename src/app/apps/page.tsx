@@ -88,7 +88,7 @@ export default function AppsPage() {
                 <div className="min-w-0 sm:col-start-1 sm:row-start-2">
                   <div className="flex flex-wrap gap-x-5 gap-y-2">
                     <a href={app.link} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 text-sm font-medium underline underline-offset-4 decoration-border hover:decoration-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">View on the App Store <ArrowUpRight size={15} aria-hidden="true" /></a>
-                    {app.caseStudySlug && <Link href={`/case-study/${app.caseStudySlug}`} className="inline-flex min-h-11 items-center text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">Design decisions</Link>}
+                    {app.caseStudySlug && <Link href={`/case-study/${app.caseStudySlug}`} className="inline-flex min-h-11 items-center text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">Case study</Link>}
                   </div>
                   <details className="mt-3 border-t border-border pt-2">
                     <summary className="min-h-11 cursor-pointer py-3 text-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">About {app.name}</summary>

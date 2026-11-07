@@ -8,7 +8,7 @@ interface PageProps {
 }
 
 const metadataTitles: Record<string, string> = {
-  "the-invisible-details-of-interaction-design": "Invisible Interaction Details",
+  "the-invisible-details-of-interaction-design": "Spring Settings",
   "motion-grammar-for-humane-interfaces": "Humane Motion Grammar",
   "the-typography-system-behind-strawhouse": "Strawhouse Typography",
 };

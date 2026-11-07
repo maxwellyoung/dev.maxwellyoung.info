@@ -186,8 +186,8 @@ export default function Carousel({ images, onClose }: CarouselProps) {
                   ? "bg-white"
                   : "bg-black"
                 : isDark
-                ? "bg-white/30 group-hover:bg-white/50"
-                : "bg-black/30 group-hover:bg-black/50"
+                ? "bg-white/60 group-hover:bg-white/80"
+                : "bg-black/50 group-hover:bg-black/70"
             }`} />
           </button>
         ))}

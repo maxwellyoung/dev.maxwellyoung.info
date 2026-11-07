@@ -197,7 +197,7 @@ const projects: Project[] = [
     },
     link: "https://www.silk.cx",
     screenshots: ["/projectImages/silk-mobile-profile.png", "/projectImages/silk-mobile-webs.png"],
-    mediaCaption: "Screenshots from Silk's public Google Play listing.",
+    mediaCaption: "From Silk's public Google Play listing.",
     thumb: "/projectImages/silk-mobile-profile.png",
     cover: {
       variant: "device",
@@ -462,9 +462,9 @@ const projects: Project[] = [
     },
     link: "https://apps.apple.com/nz/app/holdspace/id6758010909",
     impact: [
-      "On-device queue records; website previews can make network requests",
       "One current item, with a waiting queue instead of an endless task list",
       "Native SwiftUI with physics-based motion and haptics",
+      "Queue records stay on the device",
     ],
   },
   {
@@ -481,7 +481,7 @@ const projects: Project[] = [
     description:
       "Family-history workspace that turns documents, photos, and voice notes into reviewed family records.",
     longDescription:
-      "Whakapapa is a family history app built around source material. You can scan letters and documents, upload photos, record stories, and review extracted people, dates, relationships, and places before adding them to a shared tree. The interface uses an authored design language — Narrative Atlas: parchment surfaces, serif display type, and a story mode that treats lineage as a field of remembered lives rather than a database. The stack combines OCR, LLM-assisted extraction, React Flow for the tree view, and support for GEDCOM import and multi-workspace collaboration.",
+      "Whakapapa is a family history app built around source material. You can scan letters and documents, upload photos, record stories, and review extracted people, dates, relationships, and places before adding them to a shared tree. A story mode lets you read a family line as people and places rather than rows in a database. The stack combines OCR, LLM-assisted extraction, React Flow for the tree view, and support for GEDCOM import and multi-workspace collaboration.",
     tags: ["Next.js", "Supabase", "Claude AI", "OCR", "React Flow", "Genealogy"],
     stack: [
       "Next.js 16",
@@ -679,7 +679,7 @@ const projects: Project[] = [
     description:
       "A swipeable code-review feed with GitHub imports, prompts, and progress tracking.",
     longDescription:
-      "doomscroll turns code into a swipeable review feed with progress tracking. GitHub imports bring your own repositories in, and cards and prompts are generated with on-device rules rather than a remote AI model.",
+      "doomscroll turns code into a swipeable review feed with progress tracking. GitHub imports bring in any public repository, or one folder of it, and cards and prompts are generated with on-device rules rather than a remote AI model.",
     tags: ["React Native", "Expo", "Code Review", "Developer Tools"],
     stack: ["React Native", "Expo", "TypeScript"],
     startDate: "2026-02-01",
@@ -755,7 +755,7 @@ const projects: Project[] = [
     description:
       "A released Minecraft mod for managing coding agents across machines, answering approvals, and reviewing checkpoint diffs in game.",
     longDescription:
-      "T3 Craft connects Minecraft Java to T3 Code the same way T3's mobile app does. An in-game panel lists threads from every paired machine and renders the conversation as Markdown, with approvals on Y/N and agent questions answered with the number keys. Updates stream over T3's RPC WebSocket and fall back to polling, so a turn can run while you mine and one toast tells you when it's done. Threads can also appear as villagers whose name tags show what they're waiting on; right-click one to open it. A loopback MCP server lets local agents see and build in the world, gated behind an explicit opt-in, and installed on a server the mod runs a shared village every player can see. Theo showed Max's demo in his video “Anthropic Actually Fixed Opus”. Open source with tagged releases.",
+      "T3 Craft connects Minecraft Java to T3 Code the same way T3's mobile app does. An in-game panel lists threads from every paired machine and renders the conversation as Markdown, with approvals on Y/N and agent questions answered with the number keys. Updates stream over T3's RPC WebSocket and fall back to polling, so a turn can run while you mine and one toast tells you when it's done. Threads can also appear as villagers whose name tags show what they're waiting on; right-click one to open it. A loopback MCP server lets local agents see and build in the world, gated behind an explicit opt-in, and installed on a server the mod runs a shared village every player can see. Theo showed my demo in his video “Anthropic Actually Fixed Opus”. Open source with tagged releases.",
     tags: ["Java", "Minecraft", "Fabric", "MCP", "AI agents"],
     stack: ["Java 25", "Fabric", "WebSocket RPC", "MCP", "Gradle"],
     links: {

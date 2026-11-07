@@ -315,8 +315,13 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                   </p>
                 </div>
                 {step.image && (
-                  <div
-                    className={`relative rounded-lg overflow-hidden border border-[hsl(var(--border))] bg-[hsl(var(--muted))] ${step.imageRatio ? "" : "aspect-video"}`}
+                  // Desktop screenshots shrink a lot in this column, so each opens at full size.
+                  <a
+                    href={step.image}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${step.title}: open full-size image`}
+                    className={`relative block cursor-zoom-in rounded-lg overflow-hidden border border-[hsl(var(--border))] bg-[hsl(var(--muted))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${step.imageRatio ? "" : "aspect-video"}`}
                     style={step.imageRatio ? { aspectRatio: step.imageRatio } : undefined}
                   >
                     <Image
@@ -326,7 +331,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
                       className="object-contain"
                       sizes={(step.imageRatio ?? 0) > 2 ? "(max-width: 768px) 100vw, 720px" : "(max-width: 768px) 100vw, 50vw"}
                     />
-                  </div>
+                  </a>
                 )}
               </div>
             ))}
@@ -348,7 +353,7 @@ export function CaseStudyContent({ slug, study }: CaseStudyContentProps) {
           {study.proofPoints && (
             <>
               <h3 className="mb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                Proof points
+                At a glance
               </h3>
               <div className={`grid gap-3 sm:gap-4 ${study.proofPoints.length % 2 === 0 ? "sm:grid-cols-2" : "sm:grid-cols-3"}`}>
                 {study.proofPoints.map((point, _, points) => (

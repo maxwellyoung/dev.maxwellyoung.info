@@ -16,7 +16,7 @@ export default function BasketcasePrivacyPage() {
     <BasketcaseLegalLayout
       eyebrow="Privacy Policy"
       title="Privacy Policy"
-      intro="Basketcase treats receipt and household spending data as personal information. This policy explains what we collect, how we use it, and how to contact us."
+      intro="Basketcase is in development and not yet released. This policy describes how the released app will handle your information. Basketcase treats receipt and household spending data as personal information. This policy explains what we collect, how we use it, and how to contact us."
     >
       <LegalSection title="Information we collect">
         <LegalList
@@ -46,7 +46,7 @@ export default function BasketcasePrivacyPage() {
             "We do not sell personal information.",
             "We do not share individual receipt data with advertisers.",
             "We do not claim supermarket affiliation or endorsement.",
-            "We do not request location permission in the v1 iPhone launch.",
+            "The first iPhone release will not request location permission.",
           ]}
         />
       </LegalSection>

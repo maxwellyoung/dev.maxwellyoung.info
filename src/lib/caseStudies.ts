@@ -87,7 +87,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       { title: "Read beside the moment", description: "The meeting reader keeps the transcript, speaker labels and timestamped notes together. Speaker separation is optional and experimental; names are chosen by the person.", image: "/projectImages/margin-meeting.png" },
       { title: "Hand over evidence", description: "The agent interface returns source-linked context through read-only operations. The separate demo library keeps public examples away from personal notes and recordings." },
     ],
-    outcome: "The signed, notarized Mac app has a public download. The updated standalone candidate has passed capture/export, generated-speech transcription and read-only agent checks on a second physical Mac using a fresh library and bundled tools. The iPhone companion remains in beta preparation. Physical-phone notes have been matched to their Mac copies and preserved through an in-place update. Fresh-user installation, physical voice and interruption behaviour, phone receipt refresh and unassisted usability remain explicit acceptance work.",
+    outcome: "Margin is a signed, notarized Mac app with a public download. A clean install on a second Mac passed capture, transcription and the agent tools. The iPhone companion, whose notes already reach the Mac, is in beta preparation; first-run setup for new users and real-voice testing are the work still ahead.",
     proofPoints: [{ label: "Delivery", value: "Public Mac download · iPhone beta pending" }, { label: "Processing", value: "Bundled local tools and speech models" }, { label: "Agent access", value: "Read-only MCP server and CLI" }, { label: "Screenshot data", value: "Separate fictional library" }],
     avoidedPatterns: ["Setup decisions before the first save", "Treating cloud upload as Mac receipt", "Replacing original evidence with generated prose", "Silent agent writes"],
     nextIterations: ["Complete physical voice, transfer and interruption acceptance on current builds", "Observe two people completing first-use tasks without coaching"],
@@ -137,7 +137,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Solo Designer & Developer",
     tools: ["React Native", "Expo", "TypeScript", "AsyncStorage"],
     liveUrl: "https://afterlight.ninetynine.digital",
-    overview: "Afterlight is my concert diary, available on the iPhone App Store. This case study is about the Recovery Desk I'm building on top of it, not the published build, which doesn't include these native integrations yet. It reads ticket files, shares, calendars, photos, Gmail receipts, Setlist.fm attendance and listening history on the device and turns them into clues to review. A clue never becomes a night you were at until you confirm it.",
+    overview: "Afterlight is my concert diary on the iPhone App Store. The released version (1.2.1) already scans tickets and imports past shows from photos, Spotify hints and Setlist.fm. This case study covers the Recovery Desk I'm building on top of that: calendar scans, Gmail receipts and share targets added to the same review queue. Every source turns into a clue to review, and a clue never becomes a night you were at until you confirm it.",
     challenge: "Concert memories end up scattered across camera rolls, ticket receipts, calendar events, Wallet passes, files, setlists and half-remembered nights, and those sources deserve very different trust: a Spotify play is a hint, while a ticket plus a dated photo at the venue is strong evidence. So the real problem wasn't importing data. It was reconciling messy evidence without letting software invent that someone was there.",
     constraints: [
       "The canonical diary and recovery queue must work on-device; optional connected services cannot become the source of truth.",
@@ -188,10 +188,10 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
     ],
     outcome:
-      "The concert diary is published on the iPhone App Store. The newer recovery system has local implementations across web and native entry points and regression coverage around evidence parsing and confirmation. Advanced native integrations and improved portable backups remain in development; their inclusion in the published app has not been established.",
+      "Ticket scanning and photo, Spotify and Setlist.fm import ship in the App Store release. Calendar scans, Gmail receipts and share targets run in development builds with regression tests around evidence parsing and confirmation, and aren't released yet.",
     proofPoints: [
       { label: "Published", value: "iPhone App Store" },
-      { label: "Recovery work", value: "In development" },
+      { label: "Calendar & Gmail", value: "In development" },
       { label: "Diary writes", value: "User-confirmed only" },
       { label: "Canonical data", value: "On-device" },
     ],

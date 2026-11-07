@@ -48,7 +48,7 @@ export default function Home() {
                 eventProps={{ placement: "bio", source: "devfolio" }}
                 className="relative inline-block text-muted-foreground transition-colors duration-150 underline decoration-muted-foreground/30 underline-offset-2 hover:text-foreground hover:decoration-accent/60"
               >
-                ninetynine digital
+                ninetynine.digital
               </TrackedActionLink>
               .
             </motion.p>
@@ -95,7 +95,8 @@ export default function Home() {
               </TrackedActionLink>
               {" "}&mdash; independent studio
             </p>
-            <div className="flex items-center gap-2">
+            {/* -mx-2 cancels the links' own padding so their text sits on the page's text edge. */}
+            <div className="-mx-2 flex items-center gap-2">
               <BossKeyTrigger />
               <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center rounded-sm px-2 text-sm text-muted-foreground hover:bg-muted/30 hover:text-foreground">
                 Contact

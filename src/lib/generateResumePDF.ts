@@ -279,7 +279,8 @@ function writeSelectedWork(context: PdfContext) {
       context.pageWidth - context.marginRight - dateWidth,
       context.y
     );
-    context.y += 14;
+    // Tighter above the summary than below it, so each summary reads with its own title.
+    context.y += 12;
 
     setFont(context, 9, "normal", context.colors.gray);
     writeWrappedText(
@@ -289,7 +290,7 @@ function writeSelectedWork(context: PdfContext) {
       context.contentWidth,
       10
     );
-    context.y += 5;
+    context.y += 8;
   }
 }
 
@@ -300,7 +301,7 @@ function writeEducation(context: PdfContext) {
     checkPageBreak(context, 40);
     setFont(context, 10, "bold");
     context.pdf.text(sanitizeForPDF(education.degree), context.marginLeft, context.y);
-    context.y += 10;
+    context.y += 12;
 
     setFont(context, 9, "normal", context.colors.gray);
     context.pdf.text(
