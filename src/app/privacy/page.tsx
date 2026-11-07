@@ -21,7 +21,7 @@ export default function PrivacyPage() {
 
       <h1 className="text-3xl font-medium mb-6">Privacy Policy</h1>
 
-      <div className="prose prose-sm prose-invert max-w-none space-y-4 text-muted-foreground">
+      <div className="space-y-4 text-muted-foreground">
         <p>
           This portfolio uses privacy-limited analytics from{" "}
           <a

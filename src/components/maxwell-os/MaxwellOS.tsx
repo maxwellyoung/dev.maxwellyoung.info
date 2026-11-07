@@ -82,7 +82,8 @@ export default function MaxwellOS() {
   }, []);
   useEffect(() => {
     const key = (event: KeyboardEvent) => {
-      if (event.key === "Tab" && event.ctrlKey) { event.preventDefault(); dispatch({ type: "cycle", direction: event.shiftKey ? -1 : 1 }); return; }
+      // Browsers keep Ctrl+Tab for their own tabs, so Ctrl+` is the advertised switch; Ctrl+Tab stays for where it does arrive.
+      if (event.ctrlKey && (event.code === "Backquote" || event.key === "Tab")) { event.preventDefault(); dispatch({ type: "cycle", direction: event.shiftKey ? -1 : 1 }); return; }
       if (event.key !== "Escape" || event.defaultPrevented) return;
       const current = topWindow(os);
       if (current) close(current.id);
@@ -112,6 +113,8 @@ export default function MaxwellOS() {
             <span>{a.title}</span>
           </button>
         ))}
+        {/* Phones start here rather than on the Read me, so the home screen has to say what this is. */}
+        <p className={styles.phoneIntro}>Maxwell Young&apos;s portfolio, set out like a phone. Read me is the place to start.</p>
       </nav>
 
       {rotation && (
@@ -121,10 +124,10 @@ export default function MaxwellOS() {
         </button>
       )}
 
-      <p className={styles.colophon}>Ctrl Tab switches windows · Esc closes · drag a title bar to move</p>
+      <p className={styles.colophon}>Ctrl ` switches windows · Esc closes · drag a title bar to move</p>
 
       {os.windows.map((w) => (
-        <WindowFrame key={w.id} w={w} active={top?.id === w.id} instant={instant.has(w.id)} dispatch={dispatch} close={close}>
+        <WindowFrame key={w.id} w={w} active={top?.id === w.id} covered={isPhone && top?.id !== w.id} instant={instant.has(w.id)} dispatch={dispatch} close={close}>
           <App w={w} api={api} />
         </WindowFrame>
       ))}
@@ -156,7 +159,7 @@ function subscribePhone(onChange: () => void) {
 
 type Drag = { mode: "move" | "resize"; startX: number; startY: number; x: number; y: number; width: number; height: number };
 
-function WindowFrame({ w, active, instant, dispatch, close, children }: { w: OSWindow; active: boolean; instant: boolean; dispatch: React.Dispatch<Parameters<typeof windowReducer>[1]>; close: (id: string) => void; children: React.ReactNode }) {
+function WindowFrame({ w, active, covered, instant, dispatch, close, children }: { w: OSWindow; active: boolean; covered: boolean; instant: boolean; dispatch: React.Dispatch<Parameters<typeof windowReducer>[1]>; close: (id: string) => void; children: React.ReactNode }) {
   const drag = useRef<Drag | null>(null);
   const ref = useRef<HTMLElement>(null);
   // Move focus into a window when it comes to the front, unless the pointer is already inside it.
@@ -184,6 +187,8 @@ function WindowFrame({ w, active, instant, dispatch, close, children }: { w: OSW
       onPointerDownCapture={() => !active && dispatch({ type: "focus", id: w.id })}
       onFocusCapture={() => !active && dispatch({ type: "focus", id: w.id })}
       aria-labelledby={`os-title-${w.id}`}
+      // Phone sheets stack fully on top of each other; a covered one must not take focus and jump to the front.
+      {...(covered ? ({ inert: "true" } as Record<string, string>) : {})}
     >
       <header className={styles.titleBar} onPointerDown={(e) => begin("move", e)} onPointerMove={track} onPointerUp={end} onPointerCancel={end} onDoubleClick={(e) => !(e.target as HTMLElement).closest("button") && dispatch({ type: "maximize", id: w.id })}>
         <h2 id={`os-title-${w.id}`}>{w.title}</h2>

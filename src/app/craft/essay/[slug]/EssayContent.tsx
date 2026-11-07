@@ -17,7 +17,7 @@ export function EssayContent({ essay }: EssayContentProps) {
         <div className="animate-in fade-in slide-in-from-bottom-5 duration-500 ease-brand">
           <Link
             href="/craft"
-            className="inline-flex min-h-11 items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors mb-8 group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            className="inline-flex min-h-11 items-center space-x-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Back to Craft</span>
@@ -39,7 +39,7 @@ export function EssayContent({ essay }: EssayContentProps) {
               {essay.title}
             </h1>
 
-            <p className="text-xl text-muted-foreground leading-relaxed mb-6">
+            <p className="max-w-[65ch] text-lg text-muted-foreground leading-relaxed mb-6">
               {essay.excerpt}
             </p>
 
@@ -63,7 +63,8 @@ export function EssayContent({ essay }: EssayContentProps) {
             </div>
           </header>
 
-          <div className="prose prose-lg dark:prose-invert max-w-none">
+          {/* About 65 characters a line; the site has no typography plugin, so the measure is set here. */}
+          <div className="max-w-[65ch] text-[1.0625rem] leading-[1.7]">
             {splitEssayBlocks(essay.content).map((paragraph, index) => {
               // Handle markdown headers
               if (paragraph.startsWith("## ")) {
@@ -87,7 +88,7 @@ export function EssayContent({ essay }: EssayContentProps) {
                     key={index}
                     className="bg-muted/30 border border-border/50 rounded-lg p-4 overflow-x-auto my-6"
                   >
-                    <code className="text-sm font-mono">{code}</code>
+                    <code className="text-[0.8125rem] font-mono">{code}</code>
                   </pre>
                 );
               }
@@ -115,7 +116,7 @@ export function EssayContent({ essay }: EssayContentProps) {
               // Regular paragraphs
               if (paragraph.trim()) {
                 return (
-                  <p key={index} className="text-muted-foreground leading-relaxed mb-6">
+                  <p key={index} className="text-muted-foreground mb-6">
                     {paragraph}
                   </p>
                 );
@@ -152,7 +153,7 @@ export function EssayContent({ essay }: EssayContentProps) {
           <footer className="mt-8 pt-8 border-t border-border/50">
             <Link
               href="/craft#essays"
-              className="inline-flex min-h-11 items-center space-x-2 text-accent underline-offset-4 hover:underline transition-colors group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+              className="inline-flex min-h-11 items-center space-x-2 text-sm text-accent underline-offset-4 hover:underline transition-colors group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span>Back to all essays</span>

@@ -109,6 +109,8 @@ function DownloadProgressStudy() {
   const shouldReduceMotion = useReducedMotion() ?? false;
 
   const startDownload = () => {
+    // aria-disabled, not disabled: a disabled button drops keyboard focus to the page body.
+    if (isDownloading) return;
     setIsDownloading(true);
     setProgress(0);
 
@@ -132,7 +134,7 @@ function DownloadProgressStudy() {
       <motion.button
         type="button"
         onClick={startDownload}
-        disabled={isDownloading}
+        aria-disabled={isDownloading}
         className="relative min-h-11 min-w-[160px] overflow-hidden rounded-lg border border-accent/20 bg-accent/10 px-6 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         whileTap={shouldReduceMotion ? undefined : tap.press}
         aria-label={
@@ -159,6 +161,9 @@ function DownloadProgressStudy() {
           </span>
         </div>
       </motion.button>
+      <span className="sr-only" aria-live="polite">
+        {isDownloading ? "Downloading" : progress === 100 ? "Download complete" : ""}
+      </span>
     </Study>
   );
 }
@@ -317,7 +322,7 @@ function PlaybackControlStudy() {
           <div className="relative bg-muted-foreground/60 rounded-full h-1 overflow-hidden">
             <div
               style={{ transform: `scaleX(${currentTime / trackDuration})` }}
-              className="absolute inset-0 origin-left rounded-full bg-accent transition-transform duration-100 ease-linear motion-reduce:transition-none"
+              className="absolute inset-0 origin-left rounded-full bg-foreground transition-transform duration-100 ease-linear motion-reduce:transition-none"
             />
           </div>
           <div className="flex justify-between text-xs text-muted-foreground">

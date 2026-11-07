@@ -15,6 +15,14 @@ interface ProjectDetailsProps {
   onCarouselOpen: () => void;
 }
 
+// The primary link can be a store page, a release download or a live site; the label says which.
+function linkLabel(link: string, launchStage?: string) {
+  if (link.includes("apps.apple.com")) return "View on the App Store";
+  if (/github\.com\/.+\/releases/.test(link)) return "Download release";
+  if (launchStage === "In development") return "View preview";
+  return "View Live";
+}
+
 export function ProjectDetails({
   project,
   onCarouselOpen,
@@ -169,7 +177,7 @@ export function ProjectDetails({
                   href={project.link}
                   className="group inline-flex min-h-10 items-center justify-center rounded-sm border border-[hsl(var(--border))] px-3 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
                 >
-                  {project.link.includes("apps.apple.com") ? "View on the App Store" : "View Live"}
+                  {linkLabel(project.link, project.launchStage)}
                   <ArrowUpRight className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               ) : (
@@ -179,7 +187,7 @@ export function ProjectDetails({
                   rel="noopener noreferrer"
                   className="group inline-flex min-h-10 items-center justify-center rounded-sm border border-[hsl(var(--border))] px-3 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent/30 hover:bg-accent/5 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:justify-start"
                 >
-                  {project.link.includes("apps.apple.com") ? "View on the App Store" : "View Live"}
+                  {linkLabel(project.link, project.launchStage)}
                   <ArrowUpRight className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               ))}

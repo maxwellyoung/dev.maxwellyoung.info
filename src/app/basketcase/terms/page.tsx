@@ -17,7 +17,7 @@ export default function BasketcaseTermsPage() {
     <BasketcaseLegalLayout
       eyebrow="Terms of Service"
       title="Terms of Service"
-      intro="By using Basketcase, you agree to these terms. Basketcase is governed by New Zealand law."
+      intro="Basketcase is in development and not yet released. These terms will apply to the released app. By using Basketcase, you agree to these terms. Basketcase is governed by New Zealand law."
     >
       <LegalSection title="Service">
         <p>
@@ -26,11 +26,11 @@ export default function BasketcaseTermsPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Free v1">
+      <LegalSection title="Free first release">
         <LegalList
           items={[
-            "No subscription is required for launch features.",
-            "No trial starts in v1.",
+            "No subscription is required for the first release.",
+            "No trial starts in the first release.",
             "No in-app purchase is required for receipt scanning or spending insights.",
           ]}
         />

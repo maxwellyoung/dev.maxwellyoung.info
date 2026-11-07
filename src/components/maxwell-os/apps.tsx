@@ -28,7 +28,7 @@ export function ReadMe({ api }: { api: OSApi }) {
   const r = resumeData;
   const go = (id: "work" | "apps" | "shelf" | "terminal") => (e: React.MouseEvent) => api.open(id, undefined, { keyboard: e.detail === 0 });
   const rows = [
-    { id: "work" as const, name: "Work", text: "Silk, research software, Liner, T3 Craft, and the rest." },
+    { id: "work" as const, name: "Work", text: "Silk, research software, Liner, Ch'lita, and the rest." },
     { id: "apps" as const, name: "Apps", text: `The ${independentApps.length} iPhone apps I've designed, built and shipped myself.` },
     { id: "shelf" as const, name: "Shelf", text: "What I'm watching, playing and listening to, from Canon, the catalog I keep of it all." },
     { id: "terminal" as const, name: "Terminal", text: "For people who would rather type." },
@@ -36,8 +36,8 @@ export function ReadMe({ api }: { api: OSApi }) {
   return (
     <article className={styles.readme}>
       <h1>Hi, I&apos;m Maxwell.</h1>
-      <p>This is my portfolio laid out like the computer I work on. Nothing here is filler: the projects, apps and shelf are read from the same data as the main site.</p>
-      <p>I&apos;m a product engineer in Auckland. I lead React Native at Silk, design and build research applications at the University of Auckland, and ship my own iPhone apps through ninetynine digital. I make music too, so some of what I build is for that: Liner for songs and releases, Playback for performance takes.</p>
+      <p>This is my portfolio laid out like the computer I work on. The projects, apps and shelf are read from the same data as the main site.</p>
+      <p>I&apos;m a product engineer in Auckland. I lead React Native at Silk, design and build research applications at the University of Auckland, and ship my own iPhone apps through ninetynine.digital. I make music too, so some of what I build is for that: Liner for songs and releases, Playback for performance takes.</p>
       <ul className={styles.launchList}>
         {rows.map((row) => (
           <li key={row.id}>
