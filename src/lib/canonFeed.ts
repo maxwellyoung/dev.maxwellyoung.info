@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-07",
-  "sourceSyncedAt": "2026-11-07T15:12:45.670Z",
+  "sourceSyncedAt": "2026-11-07T15:44:23.490Z",
   "totalWorks": 5847,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-07T15:12:54.242Z",
-      "importAttemptAt": "2026-11-07T15:12:54.242Z",
+      "syncedAt": "2026-11-07T15:44:32.229Z",
+      "importAttemptAt": "2026-11-07T15:44:32.229Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-07T15:12:46.006Z",
-      "importAttemptAt": "2026-11-07T15:12:46.006Z",
+      "syncedAt": "2026-11-07T15:44:23.914Z",
+      "importAttemptAt": "2026-11-07T15:44:23.914Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Young Thug",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-07T15:12:45.649Z",
-      "syncedAt": "2026-11-07T15:12:45.670Z",
-      "importAttemptAt": "2026-11-07T15:12:45.670Z",
+      "activityAt": "2026-11-07T15:44:23.467Z",
+      "syncedAt": "2026-11-07T15:44:23.490Z",
+      "importAttemptAt": "2026-11-07T15:44:23.490Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Barter%206%20Young%20Thug%202015",
       "art": {
