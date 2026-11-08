@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-08",
-  "sourceSyncedAt": "2026-11-08T11:46:46.038Z",
+  "sourceSyncedAt": "2026-11-08T12:18:45.612Z",
   "totalWorks": 5850,
   "regionCount": 22,
   "regions": [
-    "Modern R&B & Pop",
-    "Eclectic Hip-Hop Sounds",
-    "Contemporary Social Commentary",
-    "Dramatic Indie Rock"
+    "Contemporary Hip-Hop & R&B",
+    "Diverse Hip-Hop & Pop",
+    "Indie Rock & Pop",
+    "Alternative Rock Vibes"
   ],
   "now": [
     {
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-08T11:46:53.482Z",
-      "importAttemptAt": "2026-11-08T11:46:53.482Z",
+      "syncedAt": "2026-11-08T12:18:51.519Z",
+      "importAttemptAt": "2026-11-08T12:18:51.519Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-08T11:46:46.164Z",
-      "importAttemptAt": "2026-11-08T11:46:46.164Z",
+      "syncedAt": "2026-11-08T12:18:45.612Z",
+      "importAttemptAt": "2026-11-08T12:18:45.612Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Janet Jackson",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-08T11:46:45.985Z",
-      "syncedAt": "2026-11-08T11:46:46.038Z",
-      "importAttemptAt": "2026-11-08T11:46:46.038Z",
+      "activityAt": "2026-11-08T12:18:45.902Z",
+      "syncedAt": "2026-11-08T12:18:45.927Z",
+      "importAttemptAt": "2026-11-08T12:18:45.927Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=The%20Velvet%20Rope%20Janet%20Jackson%201997",
       "art": {
