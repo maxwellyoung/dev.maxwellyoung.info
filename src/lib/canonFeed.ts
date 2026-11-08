@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-08",
-  "sourceSyncedAt": "2026-11-08T21:48:18.610Z",
+  "sourceSyncedAt": "2026-11-08T22:19:53.337Z",
   "totalWorks": 5851,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-08T21:48:25.419Z",
-      "importAttemptAt": "2026-11-08T21:48:25.419Z",
+      "syncedAt": "2026-11-08T22:20:02.044Z",
+      "importAttemptAt": "2026-11-08T22:20:02.044Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-08T21:48:19.162Z",
-      "importAttemptAt": "2026-11-08T21:48:19.162Z",
+      "syncedAt": "2026-11-08T22:19:53.464Z",
+      "importAttemptAt": "2026-11-08T22:19:53.464Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Janet Jackson",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-08T21:48:18.576Z",
-      "syncedAt": "2026-11-08T21:48:18.610Z",
-      "importAttemptAt": "2026-11-08T21:48:18.610Z",
+      "activityAt": "2026-11-08T22:19:53.314Z",
+      "syncedAt": "2026-11-08T22:19:53.337Z",
+      "importAttemptAt": "2026-11-08T22:19:53.337Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=The%20Velvet%20Rope%20Janet%20Jackson%201997",
       "art": {
