@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-09",
-  "sourceSyncedAt": "2026-11-09T22:06:11.133Z",
+  "sourceSyncedAt": "2026-11-09T22:37:25.734Z",
   "totalWorks": 5859,
   "regionCount": 22,
   "regions": [
@@ -53,11 +53,11 @@ export const canonFeed: CanonFeed = {
       "medium": "movie",
       "title": "The Foot Fist Way",
       "creator": "Jody Hill",
-      "note": "Recent watching activity — 14% through.",
+      "note": "Recent watching activity — 18% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-09T16:35:39.924Z",
-      "syncedAt": "2026-11-09T22:06:13.749Z",
-      "importAttemptAt": "2026-11-09T22:06:13.749Z",
+      "syncedAt": "2026-11-09T22:37:28.002Z",
+      "importAttemptAt": "2026-11-09T22:37:28.002Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/13484",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-09T22:06:11.631Z",
-      "importAttemptAt": "2026-11-09T22:06:11.631Z",
+      "syncedAt": "2026-11-09T22:37:25.792Z",
+      "importAttemptAt": "2026-11-09T22:37:25.792Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Future",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-09T22:06:11.080Z",
-      "syncedAt": "2026-11-09T22:06:11.133Z",
-      "importAttemptAt": "2026-11-09T22:06:11.133Z",
+      "activityAt": "2026-11-09T22:37:25.700Z",
+      "syncedAt": "2026-11-09T22:37:25.734Z",
+      "importAttemptAt": "2026-11-09T22:37:25.734Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ya%20Hit%20(feat.%20Drake%2C%20Travis%20Scott%20%26%20Loe%20Shimmy)%20-%20Single%20Future%202026",
       "art": {
