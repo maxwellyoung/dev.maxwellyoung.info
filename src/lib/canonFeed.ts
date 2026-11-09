@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-09",
-  "sourceSyncedAt": "2026-11-09T17:54:57.598Z",
+  "sourceSyncedAt": "2026-11-09T18:26:22.754Z",
   "totalWorks": 5855,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 14% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-09T16:35:39.924Z",
-      "syncedAt": "2026-11-09T17:54:59.977Z",
-      "importAttemptAt": "2026-11-09T17:54:59.977Z",
+      "syncedAt": "2026-11-09T18:26:25.999Z",
+      "importAttemptAt": "2026-11-09T18:26:25.999Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/13484",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-09T17:54:58.096Z",
-      "importAttemptAt": "2026-11-09T17:54:58.096Z",
+      "syncedAt": "2026-11-09T18:26:22.754Z",
+      "importAttemptAt": "2026-11-09T18:26:22.754Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Love",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-09T17:54:57.582Z",
-      "syncedAt": "2026-11-09T17:54:57.598Z",
-      "importAttemptAt": "2026-11-09T17:54:57.598Z",
+      "activityAt": "2026-11-09T18:26:22.797Z",
+      "syncedAt": "2026-11-09T18:26:23.105Z",
+      "importAttemptAt": "2026-11-09T18:26:23.105Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Forever%20Changes%3A%20Expanded%20and%20Remastered%20Love%201967",
       "art": {
