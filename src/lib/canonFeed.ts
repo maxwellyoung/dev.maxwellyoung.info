@@ -37,13 +37,13 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-09",
-  "sourceSyncedAt": "2026-11-09T09:25:47.403Z",
+  "sourceSyncedAt": "2026-11-09T09:57:45.433Z",
   "totalWorks": 5852,
   "regionCount": 22,
   "regions": [
     "Contemporary Hip-Hop",
-    "Soulful Pop & R&B",
-    "Romantic Fantasy",
+    "Diverse Music Genres",
+    "Genre-Blending Hip-Hop",
     "Indie Adventure"
   ],
   "now": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-09T09:25:54.099Z",
-      "importAttemptAt": "2026-11-09T09:25:54.099Z",
+      "syncedAt": "2026-11-09T09:57:51.189Z",
+      "importAttemptAt": "2026-11-09T09:57:51.189Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-09T09:25:47.403Z",
-      "importAttemptAt": "2026-11-09T09:25:47.403Z",
+      "syncedAt": "2026-11-09T09:57:45.940Z",
+      "importAttemptAt": "2026-11-09T09:57:45.940Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Janet Jackson",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-09T09:25:48.137Z",
-      "syncedAt": "2026-11-09T09:25:48.178Z",
-      "importAttemptAt": "2026-11-09T09:25:48.178Z",
+      "activityAt": "2026-11-09T09:57:45.419Z",
+      "syncedAt": "2026-11-09T09:57:45.433Z",
+      "importAttemptAt": "2026-11-09T09:57:45.433Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=The%20Velvet%20Rope%20Janet%20Jackson%201997",
       "art": {
