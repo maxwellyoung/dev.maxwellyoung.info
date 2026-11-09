@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-09",
-  "sourceSyncedAt": "2026-11-09T17:23:19.127Z",
+  "sourceSyncedAt": "2026-11-09T17:54:57.598Z",
   "totalWorks": 5855,
   "regionCount": 22,
   "regions": [
-    "Modern Hip-Hop Vibes",
-    "Contemporary Hip-Hop Scene",
-    "Indie Rock & Soul",
-    "Eclectic Jazz & Rock"
+    "Contemporary Hip-Hop & R&B",
+    "Diverse Rock & Soul",
+    "Eclectic Pop & Alternative",
+    "Classic Rock & Pop"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 14% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-09T16:35:39.924Z",
-      "syncedAt": "2026-11-09T17:23:20.665Z",
-      "importAttemptAt": "2026-11-09T17:23:20.665Z",
+      "syncedAt": "2026-11-09T17:54:59.977Z",
+      "importAttemptAt": "2026-11-09T17:54:59.977Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/13484",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-09T17:23:19.127Z",
-      "importAttemptAt": "2026-11-09T17:23:19.127Z",
+      "syncedAt": "2026-11-09T17:54:58.096Z",
+      "importAttemptAt": "2026-11-09T17:54:58.096Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Love",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-09T17:23:19.254Z",
-      "syncedAt": "2026-11-09T17:23:19.325Z",
-      "importAttemptAt": "2026-11-09T17:23:19.325Z",
+      "activityAt": "2026-11-09T17:54:57.582Z",
+      "syncedAt": "2026-11-09T17:54:57.598Z",
+      "importAttemptAt": "2026-11-09T17:54:57.598Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Forever%20Changes%3A%20Expanded%20and%20Remastered%20Love%201967",
       "art": {
