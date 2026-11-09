@@ -37,13 +37,13 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-09",
-  "sourceSyncedAt": "2026-11-09T21:03:13.412Z",
+  "sourceSyncedAt": "2026-11-09T21:34:47.837Z",
   "totalWorks": 5859,
   "regionCount": 22,
   "regions": [
-    "Contemporary Hip-Hop & R&B",
-    "Classic Rock & Pop Hits",
-    "Quirky Dramedy & Romance",
+    "Eclectic Pop & Hip-Hop",
+    "Contemporary Hip-Hop Fusion",
+    "Eclectic Indie Sounds",
     "Indie Adventure"
   ],
   "now": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 14% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-09T16:35:39.924Z",
-      "syncedAt": "2026-11-09T21:03:15.712Z",
-      "importAttemptAt": "2026-11-09T21:03:15.712Z",
+      "syncedAt": "2026-11-09T21:34:50.207Z",
+      "importAttemptAt": "2026-11-09T21:34:50.207Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/13484",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-09T21:03:13.412Z",
-      "importAttemptAt": "2026-11-09T21:03:13.412Z",
+      "syncedAt": "2026-11-09T21:34:47.837Z",
+      "importAttemptAt": "2026-11-09T21:34:47.837Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Future",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-09T21:03:13.736Z",
-      "syncedAt": "2026-11-09T21:03:13.771Z",
-      "importAttemptAt": "2026-11-09T21:03:13.771Z",
+      "activityAt": "2026-11-09T21:34:48.236Z",
+      "syncedAt": "2026-11-09T21:34:48.251Z",
+      "importAttemptAt": "2026-11-09T21:34:48.251Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ya%20Hit%20(feat.%20Drake%2C%20Travis%20Scott%20%26%20Loe%20Shimmy)%20-%20Single%20Future%202026",
       "art": {
