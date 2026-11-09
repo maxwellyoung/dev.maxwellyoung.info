@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-09",
-  "sourceSyncedAt": "2026-11-09T15:48:05.195Z",
+  "sourceSyncedAt": "2026-11-09T16:19:44.116Z",
   "totalWorks": 5854,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-10-26T00:00:00.000Z",
-      "syncedAt": "2026-11-09T15:48:11.999Z",
-      "importAttemptAt": "2026-11-09T15:48:11.999Z",
+      "syncedAt": "2026-11-09T16:19:52.643Z",
+      "importAttemptAt": "2026-11-09T16:19:52.643Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/791523",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-09T15:48:05.195Z",
-      "importAttemptAt": "2026-11-09T15:48:05.195Z",
+      "syncedAt": "2026-11-09T16:19:44.395Z",
+      "importAttemptAt": "2026-11-09T16:19:44.395Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Brian Eno",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-09T15:48:05.195Z",
-      "syncedAt": "2026-11-09T15:48:05.250Z",
-      "importAttemptAt": "2026-11-09T15:48:05.250Z",
+      "activityAt": "2026-11-09T16:19:44.100Z",
+      "syncedAt": "2026-11-09T16:19:44.116Z",
+      "importAttemptAt": "2026-11-09T16:19:44.116Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ambient%202%3A%20The%20Plateaux%20of%20Mirror%20Brian%20Eno%201980",
       "art": {
