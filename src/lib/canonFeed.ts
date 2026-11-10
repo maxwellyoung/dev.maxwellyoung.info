@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-10",
-  "sourceSyncedAt": "2026-11-10T22:55:08.975Z",
+  "sourceSyncedAt": "2026-11-10T23:32:49.964Z",
   "totalWorks": 5861,
   "regionCount": 22,
   "regions": [
-    "Modern Alternative Sounds",
-    "90s & 2000s Pop Rock",
-    "Genre-Blending Hip-Hop",
-    "Dramatic Rock & Alternative"
+    "Genre-Blending Modern",
+    "Diverse Contemporary Sounds",
+    "Alternative Rock & Pop Hits",
+    "Explorative Indie"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 67% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-10T20:57:38.894Z",
-      "syncedAt": "2026-11-10T22:55:51.723Z",
-      "importAttemptAt": "2026-11-10T22:55:51.723Z",
+      "syncedAt": "2026-11-10T23:32:59.001Z",
+      "importAttemptAt": "2026-11-10T23:32:59.001Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/11245",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-10T22:55:08.975Z",
-      "importAttemptAt": "2026-11-10T22:55:08.975Z",
+      "syncedAt": "2026-11-10T23:32:49.964Z",
+      "importAttemptAt": "2026-11-10T23:32:49.964Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jack Harlow",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-10T22:55:09.187Z",
-      "syncedAt": "2026-11-10T22:55:09.579Z",
-      "importAttemptAt": "2026-11-10T22:55:09.579Z",
+      "activityAt": "2026-11-10T23:32:50.298Z",
+      "syncedAt": "2026-11-10T23:32:50.326Z",
+      "importAttemptAt": "2026-11-10T23:32:50.326Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Sweet%20Action%20II%20Jack%20Harlow%202026",
       "art": {
