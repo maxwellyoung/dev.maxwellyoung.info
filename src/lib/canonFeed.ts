@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-10",
-  "sourceSyncedAt": "2026-11-10T17:20:04.615Z",
+  "sourceSyncedAt": "2026-11-10T17:51:54.794Z",
   "totalWorks": 5860,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-10T03:50:35.820Z",
-      "syncedAt": "2026-11-10T17:20:06.713Z",
-      "importAttemptAt": "2026-11-10T17:20:06.713Z",
+      "syncedAt": "2026-11-10T17:51:58.046Z",
+      "importAttemptAt": "2026-11-10T17:51:58.046Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/228878",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-10T17:20:04.615Z",
-      "importAttemptAt": "2026-11-10T17:20:04.615Z",
+      "syncedAt": "2026-11-10T17:51:54.794Z",
+      "importAttemptAt": "2026-11-10T17:51:54.794Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Future",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-10T17:20:05.696Z",
-      "syncedAt": "2026-11-10T17:20:05.735Z",
-      "importAttemptAt": "2026-11-10T17:20:05.735Z",
+      "activityAt": "2026-11-10T17:51:55.016Z",
+      "syncedAt": "2026-11-10T17:51:55.030Z",
+      "importAttemptAt": "2026-11-10T17:51:55.030Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ya%20Hit%20(feat.%20Drake%2C%20Travis%20Scott%20%26%20Loe%20Shimmy)%20-%20Single%20Future%202026",
       "art": {
