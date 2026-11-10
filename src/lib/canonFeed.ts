@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-10",
-  "sourceSyncedAt": "2026-11-10T00:11:25.158Z",
+  "sourceSyncedAt": "2026-11-10T00:43:06.423Z",
   "totalWorks": 5859,
   "regionCount": 22,
   "regions": [
@@ -48,22 +48,21 @@ export const canonFeed: CanonFeed = {
   ],
   "now": [
     {
-      "id": "jellyfin:ee3aa9658dc128fcb5409bdc1a4eb06f",
-      "verb": "watched",
-      "medium": "movie",
-      "title": "The Foot Fist Way",
-      "creator": "Jody Hill",
-      "year": 2006,
-      "note": "A dated finish recorded in Canon.",
-      "evidenceSource": "letterboxd",
-      "activityAt": "2026-11-10T00:00:00.000Z",
-      "syncedAt": "2026-11-10T00:11:31.632Z",
-      "importAttemptAt": "2026-11-10T00:11:31.632Z",
+      "id": "jellyfin:dcaf06e7c2f11622431f77d8b3fa7e89",
+      "verb": "watching",
+      "medium": "show",
+      "title": "Common Side Effects",
+      "creator": "Adult Swim",
+      "note": "Recent watching activity.",
+      "evidenceSource": "jellyfin",
+      "activityAt": "2026-11-10T00:15:44.040Z",
+      "syncedAt": "2026-11-10T00:43:07.297Z",
+      "importAttemptAt": "2026-11-10T00:43:07.297Z",
       "syncStatus": "ok",
-      "href": "https://www.themoviedb.org/movie/13484",
+      "href": "https://www.themoviedb.org/tv/228878",
       "art": {
         "src": "/canon/watched.jpg",
-        "w": 240,
+        "w": 245,
         "h": 360
       }
     },
@@ -76,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-10T00:11:25.158Z",
-      "importAttemptAt": "2026-11-10T00:11:25.158Z",
+      "syncedAt": "2026-11-10T00:43:06.423Z",
+      "importAttemptAt": "2026-11-10T00:43:06.423Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -94,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Future",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-10T00:11:25.622Z",
-      "syncedAt": "2026-11-10T00:11:25.663Z",
-      "importAttemptAt": "2026-11-10T00:11:25.663Z",
+      "activityAt": "2026-11-10T00:43:06.424Z",
+      "syncedAt": "2026-11-10T00:43:06.445Z",
+      "importAttemptAt": "2026-11-10T00:43:06.445Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ya%20Hit%20(feat.%20Drake%2C%20Travis%20Scott%20%26%20Loe%20Shimmy)%20-%20Single%20Future%202026",
       "art": {
