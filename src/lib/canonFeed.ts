@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-10",
-  "sourceSyncedAt": "2026-11-10T20:42:00.005Z",
+  "sourceSyncedAt": "2026-11-10T21:14:06.717Z",
   "totalWorks": 5860,
   "regionCount": 22,
   "regions": [
@@ -48,18 +48,18 @@ export const canonFeed: CanonFeed = {
   ],
   "now": [
     {
-      "id": "jellyfin:dcaf06e7c2f11622431f77d8b3fa7e89",
+      "id": "jellyfin:290cf38f0ee558083c0de876935bb080",
       "verb": "watching",
       "medium": "show",
-      "title": "Common Side Effects",
-      "creator": "Adult Swim",
-      "note": "Recent watching activity.",
+      "title": "Angels in America",
+      "creator": "HBO",
+      "note": "Recent watching activity — 67% through.",
       "evidenceSource": "jellyfin",
-      "activityAt": "2026-11-10T19:49:57.508Z",
-      "syncedAt": "2026-11-10T20:42:02.868Z",
-      "importAttemptAt": "2026-11-10T20:42:02.868Z",
+      "activityAt": "2026-11-10T20:57:38.894Z",
+      "syncedAt": "2026-11-10T21:14:15.862Z",
+      "importAttemptAt": "2026-11-10T21:14:15.862Z",
       "syncStatus": "ok",
-      "href": "https://www.themoviedb.org/tv/228878",
+      "href": "https://www.themoviedb.org/tv/11245",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 245,
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-10T20:42:00.005Z",
-      "importAttemptAt": "2026-11-10T20:42:00.005Z",
+      "syncedAt": "2026-11-10T21:14:07.388Z",
+      "importAttemptAt": "2026-11-10T21:14:07.388Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Future",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-10T20:42:00.287Z",
-      "syncedAt": "2026-11-10T20:42:00.325Z",
-      "importAttemptAt": "2026-11-10T20:42:00.325Z",
+      "activityAt": "2026-11-10T21:14:06.628Z",
+      "syncedAt": "2026-11-10T21:14:06.717Z",
+      "importAttemptAt": "2026-11-10T21:14:06.717Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ya%20Hit%20(feat.%20Drake%2C%20Travis%20Scott%20%26%20Loe%20Shimmy)%20-%20Single%20Future%202026",
       "art": {
