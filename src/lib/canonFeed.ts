@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-10",
-  "sourceSyncedAt": "2026-11-10T03:55:29.784Z",
+  "sourceSyncedAt": "2026-11-10T04:29:15.006Z",
   "totalWorks": 5860,
   "regionCount": 22,
   "regions": [
-    "Eclectic Pop & Hip-Hop",
-    "Contemporary Hip-Hop Fusion",
-    "Eclectic Indie Sounds",
-    "Indie Adventure"
+    "Modern Alternative Sounds",
+    "90s & 2000s Pop Rock",
+    "Genre-Blending Hip-Hop",
+    "Dramatic Rock & Alternative"
   ],
   "now": [
     {
@@ -55,9 +55,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Adult Swim",
       "note": "Recent watching activity.",
       "evidenceSource": "jellyfin",
-      "activityAt": "2026-11-10T02:55:05.461Z",
-      "syncedAt": "2026-11-10T03:55:40.862Z",
-      "importAttemptAt": "2026-11-10T03:55:40.862Z",
+      "activityAt": "2026-11-10T03:50:35.820Z",
+      "syncedAt": "2026-11-10T04:29:25.138Z",
+      "importAttemptAt": "2026-11-10T04:29:25.138Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/228878",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-05T11:18:47.000Z",
-      "syncedAt": "2026-11-10T03:55:29.784Z",
-      "importAttemptAt": "2026-11-10T03:55:29.784Z",
+      "syncedAt": "2026-11-10T04:29:15.006Z",
+      "importAttemptAt": "2026-11-10T04:29:15.006Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Future",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-10T03:55:29.786Z",
-      "syncedAt": "2026-11-10T03:55:30.237Z",
-      "importAttemptAt": "2026-11-10T03:55:30.237Z",
+      "activityAt": "2026-11-10T04:29:15.012Z",
+      "syncedAt": "2026-11-10T04:29:15.101Z",
+      "importAttemptAt": "2026-11-10T04:29:15.101Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Ya%20Hit%20(feat.%20Drake%2C%20Travis%20Scott%20%26%20Loe%20Shimmy)%20-%20Single%20Future%202026",
       "art": {
