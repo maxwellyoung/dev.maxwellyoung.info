@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-11",
-  "sourceSyncedAt": "2026-11-11T04:31:58.428Z",
+  "sourceSyncedAt": "2026-11-11T05:07:14.861Z",
   "totalWorks": 5863,
   "regionCount": 22,
   "regions": [
@@ -48,21 +48,22 @@ export const canonFeed: CanonFeed = {
   ],
   "now": [
     {
-      "id": "jellyfin:4b84c12cfd7831872f37071a6e12c0f1",
-      "verb": "watching",
-      "medium": "show",
-      "title": "The West Wing",
-      "creator": "NBC",
-      "note": "Recent watching activity — 5% through.",
-      "evidenceSource": "jellyfin",
-      "activityAt": "2026-11-11T00:38:58.112Z",
-      "syncedAt": "2026-11-11T04:33:06.441Z",
-      "importAttemptAt": "2026-11-11T04:33:06.441Z",
+      "id": "jellyfin:ee3aa9658dc128fcb5409bdc1a4eb06f",
+      "verb": "watched",
+      "medium": "movie",
+      "title": "The Foot Fist Way",
+      "creator": "Jody Hill",
+      "year": 2006,
+      "note": "A dated finish recorded in Canon.",
+      "evidenceSource": "letterboxd",
+      "activityAt": "2026-11-10T00:00:00.000Z",
+      "syncedAt": "2026-11-11T05:07:24.603Z",
+      "importAttemptAt": "2026-11-11T05:07:24.603Z",
       "syncStatus": "ok",
-      "href": "https://www.themoviedb.org/tv/688",
+      "href": "https://www.themoviedb.org/movie/13484",
       "art": {
         "src": "/canon/watched.jpg",
-        "w": 245,
+        "w": 240,
         "h": 360
       }
     },
@@ -75,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-10T23:58:30.000Z",
-      "syncedAt": "2026-11-11T04:31:58.428Z",
-      "importAttemptAt": "2026-11-11T04:31:58.428Z",
+      "syncedAt": "2026-11-11T05:07:14.861Z",
+      "importAttemptAt": "2026-11-11T05:07:14.861Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Damny Hrdwrk & Elliot Vincent",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-11T04:32:03.743Z",
-      "syncedAt": "2026-11-11T04:32:04.578Z",
-      "importAttemptAt": "2026-11-11T04:32:04.578Z",
+      "activityAt": "2026-11-11T05:07:14.929Z",
+      "syncedAt": "2026-11-11T05:07:15.119Z",
+      "importAttemptAt": "2026-11-11T05:07:15.119Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Psyched%3A%20Heavy%20Hitters!%20Damny%20Hrdwrk%20%26%20Elliot%20Vincent%202025",
       "art": {
