@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useRef, useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion, type AnimationDefinition } from "framer-motion";
 import Carousel from "@/components/Carousel";
 import {
   Project,
@@ -166,7 +166,7 @@ function ProjectRow({
                 : workCollapseTransition,
             }}
             transition={shouldReduceMotion ? { duration: 0 } : workRevealTransition}
-            onAnimationComplete={(definition) => {
+            onAnimationComplete={(definition: AnimationDefinition) => {
               // Once open, nudge into view only if the panel isn't fully
               // visible — scrollIntoView with "nearest" is a no-op otherwise.
               if (

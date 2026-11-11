@@ -17,11 +17,11 @@ export function EducationItem({
         <span className="text-sm font-medium text-foreground">
           {degree}
         </span>
-        <span className="shrink-0 whitespace-nowrap text-xs font-normal text-muted-foreground font-inter">
+        <span className="shrink-0 whitespace-nowrap text-xs font-normal text-muted-foreground font-general-sans">
           {date}
         </span>
       </div>
-      <span className="mt-1 block text-sm font-normal text-muted-foreground font-inter">
+      <span className="mt-1 block text-sm font-normal text-muted-foreground font-general-sans">
         {institutionHref ? (
           <a
             href={institutionHref}

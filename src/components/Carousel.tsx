@@ -3,6 +3,7 @@
 import { ChevronLeft, ChevronRight, X, Loader2 } from "lucide-react";
 import {
   AnimatePresence,
+  type PanInfo,
   motion,
   useMotionValue,
   useReducedMotion,
@@ -134,7 +135,7 @@ export default function Carousel({ images, onClose }: CarouselProps) {
         drag={shouldReduceMotion ? false : "x"}
         dragConstraints={{ left: 0, right: 0 }}
         style={{ x }}
-        onDragEnd={(_, info) => onDragEnd(info)}
+        onDragEnd={(_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => onDragEnd(info)}
         className="relative z-10 flex h-full w-full items-center justify-center px-3 py-[max(1rem,env(safe-area-inset-top))] sm:px-12 sm:py-8"
       >
         <AnimatePresence>

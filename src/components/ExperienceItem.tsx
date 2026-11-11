@@ -23,11 +23,11 @@ export function ExperienceItem({
         <span className="text-sm font-medium text-foreground">
           {title}
         </span>
-        <span className="text-xs font-normal text-muted-foreground font-inter">
+        <span className="text-xs font-normal text-muted-foreground font-general-sans">
           {date}
         </span>
       </div>
-      <span className="mt-1 block text-sm font-normal text-muted-foreground font-inter">
+      <span className="mt-1 block text-sm font-normal text-muted-foreground font-general-sans">
         {companyHref ? (
           <a
             href={companyHref}
@@ -42,16 +42,16 @@ export function ExperienceItem({
         )}
       </span>
       {summary && (
-        <p className="mt-1 text-sm font-normal leading-relaxed text-muted-foreground font-inter">
+        <p className="mt-1 text-sm font-normal leading-relaxed text-muted-foreground font-general-sans">
           {summary}
         </p>
       )}
       {metric && (
-        <span className="mt-2 inline-block rounded-sm border border-border/60 bg-muted/30 px-2 py-1 text-xs font-normal text-foreground/80 font-inter">
+        <span className="mt-2 inline-block rounded-sm border border-border/60 bg-muted/30 px-2 py-1 text-xs font-normal text-foreground/80 font-general-sans">
           {metric}
         </span>
       )}
-      <ul className="mt-3 list-disc pl-5 text-sm font-normal leading-relaxed text-muted-foreground font-inter">
+      <ul className="mt-3 list-disc pl-5 text-sm font-normal leading-relaxed text-muted-foreground font-general-sans">
         {responsibilities.map((item, index) => (
           <li key={index}>{item}</li>
         ))}
