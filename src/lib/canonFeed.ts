@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-11",
-  "sourceSyncedAt": "2026-11-11T03:16:19.516Z",
+  "sourceSyncedAt": "2026-11-11T03:56:31.367Z",
   "totalWorks": 5863,
   "regionCount": 22,
   "regions": [
-    "Alternative Hip-Hop & Pop",
-    "Hip-Hop & Alternative Vibes",
-    "Documentary & Hip-Hop Fusion",
-    "Alternative Rock & Hip-Hop"
+    "Modern Hip-Hop Scene",
+    "Dark Comedy Thrillers",
+    "Melodic Indie Rock",
+    "Eclectic Pop & Rock"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 5% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-11T00:38:58.112Z",
-      "syncedAt": "2026-11-11T03:17:24.299Z",
-      "importAttemptAt": "2026-11-11T03:17:24.299Z",
+      "syncedAt": "2026-11-11T03:56:50.342Z",
+      "importAttemptAt": "2026-11-11T03:56:50.342Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-10T23:58:30.000Z",
-      "syncedAt": "2026-11-11T03:16:19.516Z",
-      "importAttemptAt": "2026-11-11T03:16:19.516Z",
+      "syncedAt": "2026-11-11T03:56:31.367Z",
+      "importAttemptAt": "2026-11-11T03:56:31.367Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Damny Hrdwrk & Elliot Vincent",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-11T03:16:19.695Z",
-      "syncedAt": "2026-11-11T03:16:19.995Z",
-      "importAttemptAt": "2026-11-11T03:16:19.995Z",
+      "activityAt": "2026-11-11T03:56:31.389Z",
+      "syncedAt": "2026-11-11T03:56:31.515Z",
+      "importAttemptAt": "2026-11-11T03:56:31.515Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Psyched%3A%20Heavy%20Hitters!%20Damny%20Hrdwrk%20%26%20Elliot%20Vincent%202025",
       "art": {
