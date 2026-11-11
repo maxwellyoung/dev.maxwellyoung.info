@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-11",
-  "sourceSyncedAt": "2026-11-11T19:24:22.912Z",
+  "sourceSyncedAt": "2026-11-11T19:55:55.493Z",
   "totalWorks": 5863,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 5% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-11T00:38:58.112Z",
-      "syncedAt": "2026-11-11T19:24:24.249Z",
-      "importAttemptAt": "2026-11-11T19:24:24.249Z",
+      "syncedAt": "2026-11-11T19:55:56.954Z",
+      "importAttemptAt": "2026-11-11T19:55:56.954Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-10T23:58:30.000Z",
-      "syncedAt": "2026-11-11T19:24:22.912Z",
-      "importAttemptAt": "2026-11-11T19:24:22.912Z",
+      "syncedAt": "2026-11-11T19:55:56.132Z",
+      "importAttemptAt": "2026-11-11T19:55:56.132Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Damny Hrdwrk & Elliot Vincent",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-11T19:24:22.982Z",
-      "syncedAt": "2026-11-11T19:24:23.027Z",
-      "importAttemptAt": "2026-11-11T19:24:23.027Z",
+      "activityAt": "2026-11-11T19:55:55.458Z",
+      "syncedAt": "2026-11-11T19:55:55.493Z",
+      "importAttemptAt": "2026-11-11T19:55:55.493Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Psyched%3A%20Heavy%20Hitters!%20Damny%20Hrdwrk%20%26%20Elliot%20Vincent%202025",
       "art": {
