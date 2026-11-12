@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-12",
-  "sourceSyncedAt": "2026-11-12T15:25:56.603Z",
+  "sourceSyncedAt": "2026-11-12T15:57:31.374Z",
   "totalWorks": 5864,
   "regionCount": 22,
   "regions": [
@@ -53,36 +53,17 @@ export const canonFeed: CanonFeed = {
       "medium": "show",
       "title": "The West Wing",
       "creator": "NBC",
-      "note": "Recent watching activity — 23% through.",
+      "note": "Recent watching activity — 27% through.",
       "evidenceSource": "jellyfin",
-      "activityAt": "2026-11-12T13:57:17.882Z",
-      "syncedAt": "2026-11-12T15:25:57.838Z",
-      "importAttemptAt": "2026-11-12T15:25:57.838Z",
+      "activityAt": "2026-11-12T14:36:55.229Z",
+      "syncedAt": "2026-11-12T15:57:32.535Z",
+      "importAttemptAt": "2026-11-12T15:57:32.535Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 245,
         "h": 360
-      }
-    },
-    {
-      "id": "steam:2988580",
-      "verb": "playing",
-      "medium": "game",
-      "title": "Yakuza 0 Director's Cut",
-      "creator": "RGG Studio",
-      "note": "Recent game activity.",
-      "evidenceSource": "steam",
-      "activityAt": "2026-11-10T23:58:30.000Z",
-      "syncedAt": "2026-11-12T15:25:56.603Z",
-      "importAttemptAt": "2026-11-12T15:25:56.603Z",
-      "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/2988580/",
-      "art": {
-        "src": "/canon/playing.jpg",
-        "w": 116,
-        "h": 116
       }
     },
     {
@@ -93,9 +74,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jack Harlow",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-12T15:25:56.647Z",
-      "syncedAt": "2026-11-12T15:25:56.669Z",
-      "importAttemptAt": "2026-11-12T15:25:56.669Z",
+      "activityAt": "2026-11-12T15:57:31.307Z",
+      "syncedAt": "2026-11-12T15:57:31.374Z",
+      "importAttemptAt": "2026-11-12T15:57:31.374Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Sweet%20Action%20II%20Jack%20Harlow%202026",
       "art": {
