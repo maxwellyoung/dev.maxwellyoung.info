@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-12",
-  "sourceSyncedAt": "2026-11-12T14:22:38.313Z",
+  "sourceSyncedAt": "2026-11-12T15:25:56.603Z",
   "totalWorks": 5864,
   "regionCount": 22,
   "regions": [
@@ -53,11 +53,11 @@ export const canonFeed: CanonFeed = {
       "medium": "show",
       "title": "The West Wing",
       "creator": "NBC",
-      "note": "Recent watching activity — 18% through.",
+      "note": "Recent watching activity — 23% through.",
       "evidenceSource": "jellyfin",
-      "activityAt": "2026-11-12T12:47:16.774Z",
-      "syncedAt": "2026-11-12T14:22:39.490Z",
-      "importAttemptAt": "2026-11-12T14:22:39.490Z",
+      "activityAt": "2026-11-12T13:57:17.882Z",
+      "syncedAt": "2026-11-12T15:25:57.838Z",
+      "importAttemptAt": "2026-11-12T15:25:57.838Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-10T23:58:30.000Z",
-      "syncedAt": "2026-11-12T14:22:38.313Z",
-      "importAttemptAt": "2026-11-12T14:22:38.313Z",
+      "syncedAt": "2026-11-12T15:25:56.603Z",
+      "importAttemptAt": "2026-11-12T15:25:56.603Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jack Harlow",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-12T14:22:38.487Z",
-      "syncedAt": "2026-11-12T14:22:38.525Z",
-      "importAttemptAt": "2026-11-12T14:22:38.525Z",
+      "activityAt": "2026-11-12T15:25:56.647Z",
+      "syncedAt": "2026-11-12T15:25:56.669Z",
+      "importAttemptAt": "2026-11-12T15:25:56.669Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Sweet%20Action%20II%20Jack%20Harlow%202026",
       "art": {
