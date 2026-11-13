@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-13",
-  "sourceSyncedAt": "2026-11-13T01:18:12.869Z",
+  "sourceSyncedAt": "2026-11-13T01:50:12.928Z",
   "totalWorks": 5873,
   "regionCount": 22,
   "regions": [
-    "Eclectic Alternative Sounds",
-    "Classic Rock & Pop Hits",
-    "Modern Hip-Hop & Pop",
-    "Dramatic Hip-Hop Narratives"
+    "Contemporary Hip-Hop & R&B",
+    "Modern Melodrama & Vibes",
+    "Indie Rock & Drama Soundtracks",
+    "90s Alternative & Rock"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 27% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-12T14:36:55.229Z",
-      "syncedAt": "2026-11-13T01:18:13.484Z",
-      "importAttemptAt": "2026-11-13T01:18:13.484Z",
+      "syncedAt": "2026-11-13T01:50:14.092Z",
+      "importAttemptAt": "2026-11-13T01:50:14.092Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-10T23:58:30.000Z",
-      "syncedAt": "2026-11-13T01:18:12.869Z",
-      "importAttemptAt": "2026-11-13T01:18:12.869Z",
+      "syncedAt": "2026-11-13T01:50:13.199Z",
+      "importAttemptAt": "2026-11-13T01:50:13.199Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -86,18 +86,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:ecco2k--echo",
+      "id": "applemusic:2hollis--pirouette",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Echo",
-      "creator": "Ecco2k",
+      "title": "Pirouette",
+      "creator": "2hollis",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-13T01:18:13.304Z",
-      "syncedAt": "2026-11-13T01:18:13.352Z",
-      "importAttemptAt": "2026-11-13T01:18:13.352Z",
+      "activityAt": "2026-11-13T01:50:12.893Z",
+      "syncedAt": "2026-11-13T01:50:12.928Z",
+      "importAttemptAt": "2026-11-13T01:50:12.928Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Echo%20Ecco2k%202026",
+      "href": "https://music.apple.com/nz/search?term=Pirouette%202hollis%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
