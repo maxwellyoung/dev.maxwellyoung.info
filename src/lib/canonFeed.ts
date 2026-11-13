@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-13",
-  "sourceSyncedAt": "2026-11-13T02:21:44.608Z",
+  "sourceSyncedAt": "2026-11-13T02:53:29.799Z",
   "totalWorks": 5873,
   "regionCount": 22,
   "regions": [
@@ -56,33 +56,14 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 27% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-12T14:36:55.229Z",
-      "syncedAt": "2026-11-13T02:21:46.393Z",
-      "importAttemptAt": "2026-11-13T02:21:46.393Z",
+      "syncedAt": "2026-11-13T02:53:31.005Z",
+      "importAttemptAt": "2026-11-13T02:53:31.005Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 245,
         "h": 360
-      }
-    },
-    {
-      "id": "steam:2988580",
-      "verb": "playing",
-      "medium": "game",
-      "title": "Yakuza 0 Director's Cut",
-      "creator": "RGG Studio",
-      "note": "Recent game activity.",
-      "evidenceSource": "steam",
-      "activityAt": "2026-11-10T23:58:30.000Z",
-      "syncedAt": "2026-11-13T02:21:44.608Z",
-      "importAttemptAt": "2026-11-13T02:21:44.608Z",
-      "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/2988580/",
-      "art": {
-        "src": "/canon/playing.jpg",
-        "w": 116,
-        "h": 116
       }
     },
     {
@@ -93,9 +74,9 @@ export const canonFeed: CanonFeed = {
       "creator": "2hollis",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-13T02:21:44.966Z",
-      "syncedAt": "2026-11-13T02:21:45.012Z",
-      "importAttemptAt": "2026-11-13T02:21:45.012Z",
+      "activityAt": "2026-11-13T02:53:29.767Z",
+      "syncedAt": "2026-11-13T02:53:29.799Z",
+      "importAttemptAt": "2026-11-13T02:53:29.799Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Pirouette%202hollis%202026",
       "art": {
