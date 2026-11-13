@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-13",
-  "sourceSyncedAt": "2026-11-13T07:35:19.130Z",
+  "sourceSyncedAt": "2026-11-13T08:06:53.248Z",
   "totalWorks": 5874,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 27% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-12T14:36:55.229Z",
-      "syncedAt": "2026-11-13T07:35:20.116Z",
-      "importAttemptAt": "2026-11-13T07:35:20.116Z",
+      "syncedAt": "2026-11-13T08:06:54.407Z",
+      "importAttemptAt": "2026-11-13T08:06:54.407Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-10T23:58:30.000Z",
-      "syncedAt": "2026-11-13T07:35:19.130Z",
-      "importAttemptAt": "2026-11-13T07:35:19.130Z",
+      "syncedAt": "2026-11-13T08:06:53.248Z",
+      "importAttemptAt": "2026-11-13T08:06:53.248Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jack Harlow",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-13T07:35:19.384Z",
-      "syncedAt": "2026-11-13T07:35:19.423Z",
-      "importAttemptAt": "2026-11-13T07:35:19.423Z",
+      "activityAt": "2026-11-13T08:07:00.989Z",
+      "syncedAt": "2026-11-13T08:07:01.016Z",
+      "importAttemptAt": "2026-11-13T08:07:01.016Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Sweet%20Action%20II%20Jack%20Harlow%202026",
       "art": {
