@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-13",
-  "sourceSyncedAt": "2026-11-13T05:29:32.078Z",
+  "sourceSyncedAt": "2026-11-13T06:32:03.699Z",
   "totalWorks": 5874,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 27% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-12T14:36:55.229Z",
-      "syncedAt": "2026-11-13T05:29:35.110Z",
-      "importAttemptAt": "2026-11-13T05:29:35.110Z",
+      "syncedAt": "2026-11-13T06:32:04.955Z",
+      "importAttemptAt": "2026-11-13T06:32:04.955Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-10T23:58:30.000Z",
-      "syncedAt": "2026-11-13T05:29:32.078Z",
-      "importAttemptAt": "2026-11-13T05:29:32.078Z",
+      "syncedAt": "2026-11-13T06:32:03.699Z",
+      "importAttemptAt": "2026-11-13T06:32:03.699Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -86,18 +86,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:2hollis--pirouette",
+      "id": "applemusic:jack-harlow--sweet-action-ii",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Pirouette",
-      "creator": "2hollis",
+      "title": "Sweet Action II",
+      "creator": "Jack Harlow",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-13T05:29:32.264Z",
-      "syncedAt": "2026-11-13T05:29:32.295Z",
-      "importAttemptAt": "2026-11-13T05:29:32.295Z",
+      "activityAt": "2026-11-13T06:32:04.103Z",
+      "syncedAt": "2026-11-13T06:32:04.150Z",
+      "importAttemptAt": "2026-11-13T06:32:04.150Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Pirouette%202hollis%202026",
+      "href": "https://music.apple.com/nz/search?term=Sweet%20Action%20II%20Jack%20Harlow%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
