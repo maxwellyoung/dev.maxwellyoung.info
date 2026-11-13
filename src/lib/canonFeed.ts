@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-13",
-  "sourceSyncedAt": "2026-11-13T13:48:36.556Z",
+  "sourceSyncedAt": "2026-11-13T16:23:40.716Z",
   "totalWorks": 5875,
   "regionCount": 22,
   "regions": [
@@ -56,14 +56,33 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 29% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-13T08:12:32.314Z",
-      "syncedAt": "2026-11-13T13:48:37.604Z",
-      "importAttemptAt": "2026-11-13T13:48:37.604Z",
+      "syncedAt": "2026-11-13T16:23:42.034Z",
+      "importAttemptAt": "2026-11-13T16:23:42.034Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 245,
         "h": 360
+      }
+    },
+    {
+      "id": "steam:2988580",
+      "verb": "playing",
+      "medium": "game",
+      "title": "Yakuza 0 Director's Cut",
+      "creator": "RGG Studio",
+      "note": "Recent game activity.",
+      "evidenceSource": "steam",
+      "activityAt": "2026-11-10T23:58:30.000Z",
+      "syncedAt": "2026-11-13T16:23:40.716Z",
+      "importAttemptAt": "2026-11-13T16:23:40.716Z",
+      "syncStatus": "ok",
+      "href": "https://store.steampowered.com/app/2988580/",
+      "art": {
+        "src": "/canon/playing.jpg",
+        "w": 116,
+        "h": 116
       }
     },
     {
@@ -74,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jack Harlow",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-13T13:48:36.516Z",
-      "syncedAt": "2026-11-13T13:48:36.556Z",
-      "importAttemptAt": "2026-11-13T13:48:36.556Z",
+      "activityAt": "2026-11-13T16:23:41.656Z",
+      "syncedAt": "2026-11-13T16:23:41.699Z",
+      "importAttemptAt": "2026-11-13T16:23:41.699Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Sweet%20Action%20II%20Jack%20Harlow%202026",
       "art": {
