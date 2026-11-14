@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-14",
-  "sourceSyncedAt": "2026-11-14T16:48:34.540Z",
+  "sourceSyncedAt": "2026-11-14T17:19:40.726Z",
   "totalWorks": 5880,
   "regionCount": 22,
   "regions": [
-    "Contemporary R&B & Alt-Pop",
-    "Rock Classics & Soundtracks",
-    "Surrealist Dramas & Fantasies",
-    "Indie Pop & Hip-Hop"
+    "Classic Rock & Pop",
+    "Contemporary Hip-Hop",
+    "Eclectic Pop & Hip-Hop",
+    "Indie Rock & Drama"
   ],
   "now": [
     {
@@ -56,14 +56,33 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 29% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-14T12:06:53.964Z",
-      "syncedAt": "2026-11-14T16:48:35.713Z",
-      "importAttemptAt": "2026-11-14T16:48:35.713Z",
+      "syncedAt": "2026-11-14T17:19:41.935Z",
+      "importAttemptAt": "2026-11-14T17:19:41.935Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 245,
         "h": 360
+      }
+    },
+    {
+      "id": "steam:2988580",
+      "verb": "playing",
+      "medium": "game",
+      "title": "Yakuza 0 Director's Cut",
+      "creator": "RGG Studio",
+      "note": "Recent game activity.",
+      "evidenceSource": "steam",
+      "activityAt": "2026-11-10T23:58:30.000Z",
+      "syncedAt": "2026-11-14T17:19:40.726Z",
+      "importAttemptAt": "2026-11-14T17:19:40.726Z",
+      "syncStatus": "ok",
+      "href": "https://store.steampowered.com/app/2988580/",
+      "art": {
+        "src": "/canon/playing.jpg",
+        "w": 116,
+        "h": 116
       }
     },
     {
@@ -74,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "U2",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-14T16:48:34.516Z",
-      "syncedAt": "2026-11-14T16:48:34.540Z",
-      "importAttemptAt": "2026-11-14T16:48:34.540Z",
+      "activityAt": "2026-11-14T17:19:40.848Z",
+      "syncedAt": "2026-11-14T17:19:40.874Z",
+      "importAttemptAt": "2026-11-14T17:19:40.874Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Carnaval%20De%20Luz%20U2%202026",
       "art": {
