@@ -36,8 +36,8 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-11-13",
-  "sourceSyncedAt": "2026-11-13T22:40:49.569Z",
+  "generatedAt": "2026-11-14",
+  "sourceSyncedAt": "2026-11-14T00:13:44.944Z",
   "totalWorks": 5877,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 29% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-13T08:12:32.314Z",
-      "syncedAt": "2026-11-13T22:40:50.585Z",
-      "importAttemptAt": "2026-11-13T22:40:50.585Z",
+      "syncedAt": "2026-11-14T00:13:45.751Z",
+      "importAttemptAt": "2026-11-14T00:13:45.751Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-10T23:58:30.000Z",
-      "syncedAt": "2026-11-13T22:40:49.746Z",
-      "importAttemptAt": "2026-11-13T22:40:49.746Z",
+      "syncedAt": "2026-11-14T00:13:45.106Z",
+      "importAttemptAt": "2026-11-14T00:13:45.106Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Animal Collective",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-13T22:40:49.541Z",
-      "syncedAt": "2026-11-13T22:40:49.569Z",
-      "importAttemptAt": "2026-11-13T22:40:49.569Z",
+      "activityAt": "2026-11-14T00:13:44.918Z",
+      "syncedAt": "2026-11-14T00:13:44.944Z",
+      "importAttemptAt": "2026-11-14T00:13:44.944Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Merriweather%20Post%20Pavilion%20Animal%20Collective%202009",
       "art": {
