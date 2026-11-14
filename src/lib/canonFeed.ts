@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-14",
-  "sourceSyncedAt": "2026-11-14T02:49:55.212Z",
+  "sourceSyncedAt": "2026-11-14T03:21:37.797Z",
   "totalWorks": 5879,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 29% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-13T08:12:32.314Z",
-      "syncedAt": "2026-11-14T02:49:56.609Z",
-      "importAttemptAt": "2026-11-14T02:49:56.609Z",
+      "syncedAt": "2026-11-14T03:21:39.787Z",
+      "importAttemptAt": "2026-11-14T03:21:39.787Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-10T23:58:30.000Z",
-      "syncedAt": "2026-11-14T02:49:55.212Z",
-      "importAttemptAt": "2026-11-14T02:49:55.212Z",
+      "syncedAt": "2026-11-14T03:21:38.458Z",
+      "importAttemptAt": "2026-11-14T03:21:38.458Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2988580/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "U2",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-14T02:49:55.333Z",
-      "syncedAt": "2026-11-14T02:49:55.383Z",
-      "importAttemptAt": "2026-11-14T02:49:55.383Z",
+      "activityAt": "2026-11-14T03:21:37.773Z",
+      "syncedAt": "2026-11-14T03:21:37.797Z",
+      "importAttemptAt": "2026-11-14T03:21:37.797Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Carnaval%20De%20Luz%20U2%202026",
       "art": {
