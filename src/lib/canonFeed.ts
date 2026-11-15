@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-15",
-  "sourceSyncedAt": "2026-11-15T13:22:40.469Z",
+  "sourceSyncedAt": "2026-11-15T18:01:43.010Z",
   "totalWorks": 5881,
   "regionCount": 22,
   "regions": [
@@ -55,9 +55,9 @@ export const canonFeed: CanonFeed = {
       "creator": "NBC",
       "note": "Recent watching activity — 29% through.",
       "evidenceSource": "jellyfin",
-      "activityAt": "2026-11-15T11:53:13.752Z",
-      "syncedAt": "2026-11-15T13:22:41.591Z",
-      "importAttemptAt": "2026-11-15T13:22:41.591Z",
+      "activityAt": "2026-11-15T13:03:53.512Z",
+      "syncedAt": "2026-11-15T18:01:44.057Z",
+      "importAttemptAt": "2026-11-15T18:01:44.057Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -67,18 +67,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:730",
+      "id": "steam:6860",
       "verb": "playing",
       "medium": "game",
-      "title": "Counter-Strike 2",
-      "creator": "Valve",
+      "title": "Hitman: Blood Money",
+      "creator": "Io-Interactive A/S",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-15T05:34:58.000Z",
-      "syncedAt": "2026-11-15T13:22:40.469Z",
-      "importAttemptAt": "2026-11-15T13:22:40.469Z",
+      "activityAt": "2026-11-15T14:19:41.000Z",
+      "syncedAt": "2026-11-15T18:01:43.324Z",
+      "importAttemptAt": "2026-11-15T18:01:43.324Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/730/",
+      "href": "https://store.steampowered.com/app/6860/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "U2",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-15T13:22:40.469Z",
-      "syncedAt": "2026-11-15T13:22:40.493Z",
-      "importAttemptAt": "2026-11-15T13:22:40.493Z",
+      "activityAt": "2026-11-15T18:01:42.965Z",
+      "syncedAt": "2026-11-15T18:01:43.010Z",
+      "importAttemptAt": "2026-11-15T18:01:43.010Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Carnaval%20De%20Luz%20U2%202026",
       "art": {
