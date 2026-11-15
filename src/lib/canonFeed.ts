@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-15",
-  "sourceSyncedAt": "2026-11-15T01:32:34.688Z",
+  "sourceSyncedAt": "2026-11-15T04:36:35.787Z",
   "totalWorks": 5880,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 29% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-14T12:06:53.964Z",
-      "syncedAt": "2026-11-15T01:32:35.721Z",
-      "importAttemptAt": "2026-11-15T01:32:35.721Z",
+      "syncedAt": "2026-11-15T04:36:37.388Z",
+      "importAttemptAt": "2026-11-15T04:36:37.388Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -74,9 +74,9 @@ export const canonFeed: CanonFeed = {
       "creator": "U2",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-15T01:32:34.649Z",
-      "syncedAt": "2026-11-15T01:32:34.688Z",
-      "importAttemptAt": "2026-11-15T01:32:34.688Z",
+      "activityAt": "2026-11-15T04:36:35.762Z",
+      "syncedAt": "2026-11-15T04:36:35.787Z",
+      "importAttemptAt": "2026-11-15T04:36:35.787Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Carnaval%20De%20Luz%20U2%202026",
       "art": {
