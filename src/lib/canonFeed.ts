@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-15",
-  "sourceSyncedAt": "2026-11-15T11:17:48.452Z",
+  "sourceSyncedAt": "2026-11-15T13:22:40.469Z",
   "totalWorks": 5881,
   "regionCount": 22,
   "regions": [
@@ -55,9 +55,9 @@ export const canonFeed: CanonFeed = {
       "creator": "NBC",
       "note": "Recent watching activity — 29% through.",
       "evidenceSource": "jellyfin",
-      "activityAt": "2026-11-14T12:06:53.964Z",
-      "syncedAt": "2026-11-15T11:17:49.405Z",
-      "importAttemptAt": "2026-11-15T11:17:49.405Z",
+      "activityAt": "2026-11-15T11:53:13.752Z",
+      "syncedAt": "2026-11-15T13:22:41.591Z",
+      "importAttemptAt": "2026-11-15T13:22:41.591Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-15T05:34:58.000Z",
-      "syncedAt": "2026-11-15T11:17:48.539Z",
-      "importAttemptAt": "2026-11-15T11:17:48.539Z",
+      "syncedAt": "2026-11-15T13:22:40.469Z",
+      "importAttemptAt": "2026-11-15T13:22:40.469Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "U2",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-15T11:17:48.426Z",
-      "syncedAt": "2026-11-15T11:17:48.452Z",
-      "importAttemptAt": "2026-11-15T11:17:48.452Z",
+      "activityAt": "2026-11-15T13:22:40.469Z",
+      "syncedAt": "2026-11-15T13:22:40.493Z",
+      "importAttemptAt": "2026-11-15T13:22:40.493Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Carnaval%20De%20Luz%20U2%202026",
       "art": {
