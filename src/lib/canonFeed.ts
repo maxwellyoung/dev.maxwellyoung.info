@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-15",
-  "sourceSyncedAt": "2026-11-15T04:36:35.787Z",
+  "sourceSyncedAt": "2026-11-15T06:08:37.780Z",
   "totalWorks": 5880,
   "regionCount": 22,
   "regions": [
@@ -56,13 +56,32 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 29% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-14T12:06:53.964Z",
-      "syncedAt": "2026-11-15T04:36:37.388Z",
-      "importAttemptAt": "2026-11-15T04:36:37.388Z",
+      "syncedAt": "2026-11-15T06:08:40.706Z",
+      "importAttemptAt": "2026-11-15T06:08:40.706Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 245,
+        "h": 360
+      }
+    },
+    {
+      "id": "steam:730",
+      "verb": "playing",
+      "medium": "game",
+      "title": "Counter-Strike 2",
+      "creator": "Valve",
+      "note": "Recent game activity.",
+      "evidenceSource": "steam",
+      "activityAt": "2026-11-15T05:34:58.000Z",
+      "syncedAt": "2026-11-15T06:08:37.780Z",
+      "importAttemptAt": "2026-11-15T06:08:37.780Z",
+      "syncStatus": "ok",
+      "href": "https://store.steampowered.com/app/730/",
+      "art": {
+        "src": "/canon/playing.jpg",
+        "w": 240,
         "h": 360
       }
     },
@@ -74,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "U2",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-15T04:36:35.762Z",
-      "syncedAt": "2026-11-15T04:36:35.787Z",
-      "importAttemptAt": "2026-11-15T04:36:35.787Z",
+      "activityAt": "2026-11-15T06:08:37.782Z",
+      "syncedAt": "2026-11-15T06:08:37.818Z",
+      "importAttemptAt": "2026-11-15T06:08:37.818Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Carnaval%20De%20Luz%20U2%202026",
       "art": {
