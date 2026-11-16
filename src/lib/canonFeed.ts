@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-16",
-  "sourceSyncedAt": "2026-11-16T14:14:30.781Z",
+  "sourceSyncedAt": "2026-11-16T14:46:25.485Z",
   "totalWorks": 5884,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 32% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-16T12:50:24.697Z",
-      "syncedAt": "2026-11-16T14:14:32.271Z",
-      "importAttemptAt": "2026-11-16T14:14:32.271Z",
+      "syncedAt": "2026-11-16T14:46:27.558Z",
+      "importAttemptAt": "2026-11-16T14:46:27.558Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -67,18 +67,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:271590",
+      "id": "steam:239350",
       "verb": "playing",
       "medium": "game",
-      "title": "Grand Theft Auto V Legacy",
-      "creator": "Rockstar North",
+      "title": "Spelunky",
+      "creator": "Mossmouth",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-16T13:53:13.000Z",
-      "syncedAt": "2026-11-16T14:14:30.781Z",
-      "importAttemptAt": "2026-11-16T14:14:30.781Z",
+      "activityAt": "2026-11-16T14:24:00.000Z",
+      "syncedAt": "2026-11-16T14:46:26.773Z",
+      "importAttemptAt": "2026-11-16T14:46:26.773Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/271590/",
+      "href": "https://store.steampowered.com/app/239350/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Naomi Scott",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-16T14:14:30.781Z",
-      "syncedAt": "2026-11-16T14:14:30.827Z",
-      "importAttemptAt": "2026-11-16T14:14:30.827Z",
+      "activityAt": "2026-11-16T14:46:25.454Z",
+      "syncedAt": "2026-11-16T14:46:25.485Z",
+      "importAttemptAt": "2026-11-16T14:46:25.485Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=F.I.G%20Naomi%20Scott%202026",
       "art": {
