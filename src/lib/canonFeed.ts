@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-16",
-  "sourceSyncedAt": "2026-11-16T20:34:34.106Z",
+  "sourceSyncedAt": "2026-11-16T21:06:06.252Z",
   "totalWorks": 5884,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 32% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-16T12:50:24.697Z",
-      "syncedAt": "2026-11-16T20:34:35.288Z",
-      "importAttemptAt": "2026-11-16T20:34:35.288Z",
+      "syncedAt": "2026-11-16T21:06:07.451Z",
+      "importAttemptAt": "2026-11-16T21:06:07.451Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -74,9 +74,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Kenny Sun and Friends",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-16T20:12:25.000Z",
-      "syncedAt": "2026-11-16T20:34:34.106Z",
-      "importAttemptAt": "2026-11-16T20:34:34.106Z",
+      "activityAt": "2026-11-16T20:20:30.000Z",
+      "syncedAt": "2026-11-16T21:06:06.252Z",
+      "importAttemptAt": "2026-11-16T21:06:06.252Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2062430/",
       "art": {
@@ -86,18 +86,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:naomi-scott--f-i-g",
+      "id": "applemusic:daine--in-endless-awe-agony",
       "verb": "in rotation",
       "medium": "music",
-      "title": "F.I.G",
-      "creator": "Naomi Scott",
+      "title": "In Endless Awe & Agony",
+      "creator": "daine",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-16T20:34:34.460Z",
-      "syncedAt": "2026-11-16T20:34:34.503Z",
-      "importAttemptAt": "2026-11-16T20:34:34.503Z",
+      "activityAt": "2026-11-16T21:06:06.823Z",
+      "syncedAt": "2026-11-16T21:06:06.868Z",
+      "importAttemptAt": "2026-11-16T21:06:06.868Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=F.I.G%20Naomi%20Scott%202026",
+      "href": "https://music.apple.com/nz/search?term=In%20Endless%20Awe%20%26%20Agony%20daine%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
