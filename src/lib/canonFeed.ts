@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-16",
-  "sourceSyncedAt": "2026-11-16T13:11:14.657Z",
+  "sourceSyncedAt": "2026-11-16T13:42:54.029Z",
   "totalWorks": 5884,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 30% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-16T11:58:14.269Z",
-      "syncedAt": "2026-11-16T13:11:15.973Z",
-      "importAttemptAt": "2026-11-16T13:11:15.973Z",
+      "syncedAt": "2026-11-16T13:42:54.961Z",
+      "importAttemptAt": "2026-11-16T13:42:54.961Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -74,9 +74,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Rockstar North",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-16T13:06:12.000Z",
-      "syncedAt": "2026-11-16T13:11:14.657Z",
-      "importAttemptAt": "2026-11-16T13:11:14.657Z",
+      "activityAt": "2026-11-16T13:25:44.000Z",
+      "syncedAt": "2026-11-16T13:42:54.091Z",
+      "importAttemptAt": "2026-11-16T13:42:54.091Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/271590/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Naomi Scott",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-16T13:11:15.417Z",
-      "syncedAt": "2026-11-16T13:11:15.460Z",
-      "importAttemptAt": "2026-11-16T13:11:15.460Z",
+      "activityAt": "2026-11-16T13:42:53.987Z",
+      "syncedAt": "2026-11-16T13:42:54.029Z",
+      "importAttemptAt": "2026-11-16T13:42:54.029Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=F.I.G%20Naomi%20Scott%202026",
       "art": {
