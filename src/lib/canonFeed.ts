@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-16",
-  "sourceSyncedAt": "2026-11-16T15:49:50.196Z",
+  "sourceSyncedAt": "2026-11-16T16:21:29.844Z",
   "totalWorks": 5884,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 32% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-16T12:50:24.697Z",
-      "syncedAt": "2026-11-16T15:49:51.927Z",
-      "importAttemptAt": "2026-11-16T15:49:51.927Z",
+      "syncedAt": "2026-11-16T16:21:30.855Z",
+      "importAttemptAt": "2026-11-16T16:21:30.855Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-16T14:47:36.000Z",
-      "syncedAt": "2026-11-16T15:49:50.196Z",
-      "importAttemptAt": "2026-11-16T15:49:50.196Z",
+      "syncedAt": "2026-11-16T16:21:29.844Z",
+      "importAttemptAt": "2026-11-16T16:21:29.844Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/698780/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Naomi Scott",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-16T15:49:50.785Z",
-      "syncedAt": "2026-11-16T15:49:50.808Z",
-      "importAttemptAt": "2026-11-16T15:49:50.808Z",
+      "activityAt": "2026-11-16T16:21:30.075Z",
+      "syncedAt": "2026-11-16T16:21:30.114Z",
+      "importAttemptAt": "2026-11-16T16:21:30.114Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=F.I.G%20Naomi%20Scott%202026",
       "art": {
