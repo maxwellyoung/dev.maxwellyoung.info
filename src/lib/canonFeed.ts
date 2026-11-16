@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-16",
-  "sourceSyncedAt": "2026-11-16T22:41:37.312Z",
+  "sourceSyncedAt": "2026-11-16T23:13:41.975Z",
   "totalWorks": 5893,
   "regionCount": 22,
   "regions": [
-    "Modern Romantic Dramas",
-    "Contemporary Alternative Beats",
-    "Emotional Indie Rock",
-    "Genre-Blending Pop & Rap"
+    "Diverse Modern",
+    "Modern Hip-Hop & R&B",
+    "Whimsical Family Comedies",
+    "Classic Crime & Drama"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 32% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-16T12:50:24.697Z",
-      "syncedAt": "2026-11-16T22:41:38.816Z",
-      "importAttemptAt": "2026-11-16T22:41:38.816Z",
+      "syncedAt": "2026-11-16T23:13:44.020Z",
+      "importAttemptAt": "2026-11-16T23:13:44.020Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -74,9 +74,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Team Salvato",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-16T22:27:46.000Z",
-      "syncedAt": "2026-11-16T22:41:37.312Z",
-      "importAttemptAt": "2026-11-16T22:41:37.312Z",
+      "activityAt": "2026-11-16T22:57:16.000Z",
+      "syncedAt": "2026-11-16T23:13:42.070Z",
+      "importAttemptAt": "2026-11-16T23:13:42.070Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/698780/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "daine",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-16T22:41:37.599Z",
-      "syncedAt": "2026-11-16T22:41:37.623Z",
-      "importAttemptAt": "2026-11-16T22:41:37.623Z",
+      "activityAt": "2026-11-16T23:13:41.736Z",
+      "syncedAt": "2026-11-16T23:13:41.975Z",
+      "importAttemptAt": "2026-11-16T23:13:41.975Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=In%20Endless%20Awe%20%26%20Agony%20daine%202026",
       "art": {
