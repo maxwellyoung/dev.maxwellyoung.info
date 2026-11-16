@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-16",
-  "sourceSyncedAt": "2026-11-16T01:47:31.986Z",
+  "sourceSyncedAt": "2026-11-16T02:48:51.025Z",
   "totalWorks": 5884,
   "regionCount": 22,
   "regions": [
@@ -56,13 +56,32 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 29% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-15T13:03:53.512Z",
-      "syncedAt": "2026-11-16T01:47:32.373Z",
-      "importAttemptAt": "2026-11-16T01:47:32.373Z",
+      "syncedAt": "2026-11-16T02:48:51.872Z",
+      "importAttemptAt": "2026-11-16T02:48:51.872Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
         "src": "/canon/watched.jpg",
         "w": 245,
+        "h": 360
+      }
+    },
+    {
+      "id": "steam:271590",
+      "verb": "playing",
+      "medium": "game",
+      "title": "Grand Theft Auto V Legacy",
+      "creator": "Rockstar North",
+      "note": "Recent game activity.",
+      "evidenceSource": "steam",
+      "activityAt": "2026-11-16T01:59:43.000Z",
+      "syncedAt": "2026-11-16T02:48:51.103Z",
+      "importAttemptAt": "2026-11-16T02:48:51.103Z",
+      "syncStatus": "ok",
+      "href": "https://store.steampowered.com/app/271590/",
+      "art": {
+        "src": "/canon/playing.jpg",
+        "w": 240,
         "h": 360
       }
     },
@@ -74,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Naomi Scott",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-16T01:47:31.960Z",
-      "syncedAt": "2026-11-16T01:47:31.986Z",
-      "importAttemptAt": "2026-11-16T01:47:31.986Z",
+      "activityAt": "2026-11-16T02:48:50.997Z",
+      "syncedAt": "2026-11-16T02:48:51.025Z",
+      "importAttemptAt": "2026-11-16T02:48:51.025Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=F.I.G%20Naomi%20Scott%202026",
       "art": {
