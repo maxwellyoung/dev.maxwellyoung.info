@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-16",
-  "sourceSyncedAt": "2026-11-16T23:13:41.975Z",
+  "sourceSyncedAt": "2026-11-16T23:45:13.904Z",
   "totalWorks": 5893,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 32% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-16T12:50:24.697Z",
-      "syncedAt": "2026-11-16T23:13:44.020Z",
-      "importAttemptAt": "2026-11-16T23:13:44.020Z",
+      "syncedAt": "2026-11-16T23:45:15.388Z",
+      "importAttemptAt": "2026-11-16T23:45:15.388Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -67,18 +67,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:698780",
+      "id": "steam:271590",
       "verb": "playing",
       "medium": "game",
-      "title": "Doki Doki Literature Club",
-      "creator": "Team Salvato",
+      "title": "Grand Theft Auto V Legacy",
+      "creator": "Rockstar North",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-16T22:57:16.000Z",
-      "syncedAt": "2026-11-16T23:13:42.070Z",
-      "importAttemptAt": "2026-11-16T23:13:42.070Z",
+      "activityAt": "2026-11-16T23:15:28.000Z",
+      "syncedAt": "2026-11-16T23:45:13.904Z",
+      "importAttemptAt": "2026-11-16T23:45:13.904Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/698780/",
+      "href": "https://store.steampowered.com/app/271590/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "daine",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-16T23:13:41.736Z",
-      "syncedAt": "2026-11-16T23:13:41.975Z",
-      "importAttemptAt": "2026-11-16T23:13:41.975Z",
+      "activityAt": "2026-11-16T23:45:14.297Z",
+      "syncedAt": "2026-11-16T23:45:14.324Z",
+      "importAttemptAt": "2026-11-16T23:45:14.324Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=In%20Endless%20Awe%20%26%20Agony%20daine%202026",
       "art": {
