@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PreloadDisplayFont } from "@/components/PreloadDisplayFont";
 import { BasketcaseLegalNav } from "./legal-nav";
 
 interface BasketcaseLegalLayoutProps {
@@ -16,6 +17,7 @@ export function BasketcaseLegalLayout({
 }: BasketcaseLegalLayoutProps) {
   return (
     <main id="main-content" className="min-h-screen bg-background text-foreground">
+      <PreloadDisplayFont />
       <div className="mx-auto w-full max-w-3xl px-6 py-14">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <Link

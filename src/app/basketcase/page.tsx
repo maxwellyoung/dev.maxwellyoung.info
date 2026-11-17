@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { PreloadDisplayFont } from "@/components/PreloadDisplayFont";
 import {
   ArrowUpRight,
   Database,
@@ -72,6 +73,7 @@ const buildProof = [
 export default function BasketcasePage() {
   return (
     <main id="main-content" className="min-h-screen bg-[#f7f1e6] text-[#071321]">
+      <PreloadDisplayFont />
       <div className="mx-auto w-full max-w-6xl px-5 py-6 sm:px-8">
         <header className="flex flex-wrap items-center justify-between gap-4 border-b border-[#071321]/10 pb-5 text-sm">
           <Link

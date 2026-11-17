@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getEssay, getAllEssaySlugs } from "@/lib/essays";
 import { EssayContent } from "./EssayContent";
+import { PreloadDisplayFont } from "@/components/PreloadDisplayFont";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -57,5 +58,10 @@ export default async function EssayPage({ params }: PageProps) {
     notFound();
   }
 
-  return <EssayContent essay={essay} />;
+  return (
+    <>
+      <PreloadDisplayFont />
+      <EssayContent essay={essay} />
+    </>
+  );
 }
