@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-17",
-  "sourceSyncedAt": "2026-11-17T01:20:19.479Z",
+  "sourceSyncedAt": "2026-11-17T02:21:31.526Z",
   "totalWorks": 5893,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 32% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-16T12:50:24.697Z",
-      "syncedAt": "2026-11-17T01:20:20.307Z",
-      "importAttemptAt": "2026-11-17T01:20:20.307Z",
+      "syncedAt": "2026-11-17T02:21:32.359Z",
+      "importAttemptAt": "2026-11-17T02:21:32.359Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -74,9 +74,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Rockstar North",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-17T00:05:20.000Z",
-      "syncedAt": "2026-11-17T01:20:19.479Z",
-      "importAttemptAt": "2026-11-17T01:20:19.479Z",
+      "activityAt": "2026-11-17T02:01:29.000Z",
+      "syncedAt": "2026-11-17T02:21:31.526Z",
+      "importAttemptAt": "2026-11-17T02:21:31.526Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/271590/",
       "art": {
@@ -93,9 +93,9 @@ export const canonFeed: CanonFeed = {
       "creator": "daine",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-17T01:20:19.517Z",
-      "syncedAt": "2026-11-17T01:20:19.553Z",
-      "importAttemptAt": "2026-11-17T01:20:19.553Z",
+      "activityAt": "2026-11-17T02:21:32.540Z",
+      "syncedAt": "2026-11-17T02:21:32.557Z",
+      "importAttemptAt": "2026-11-17T02:21:32.557Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=In%20Endless%20Awe%20%26%20Agony%20daine%202026",
       "art": {
