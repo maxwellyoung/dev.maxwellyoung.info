@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-17",
-  "sourceSyncedAt": "2026-11-17T19:43:33.791Z",
+  "sourceSyncedAt": "2026-11-17T20:14:46.497Z",
   "totalWorks": 5960,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 36% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-17T12:00:04.407Z",
-      "syncedAt": "2026-11-17T19:43:35.751Z",
-      "importAttemptAt": "2026-11-17T19:43:35.751Z",
+      "syncedAt": "2026-11-17T20:14:48.345Z",
+      "importAttemptAt": "2026-11-17T20:14:48.345Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-17T03:30:22.000Z",
-      "syncedAt": "2026-11-17T19:43:34.504Z",
-      "importAttemptAt": "2026-11-17T19:43:34.504Z",
+      "syncedAt": "2026-11-17T20:14:47.347Z",
+      "importAttemptAt": "2026-11-17T20:14:47.347Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/271590/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 12% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-17T07:04:02.895Z",
-      "syncedAt": "2026-11-17T19:43:33.791Z",
-      "importAttemptAt": "2026-11-17T19:43:33.791Z",
+      "syncedAt": "2026-11-17T20:14:46.497Z",
+      "importAttemptAt": "2026-11-17T20:14:46.497Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=C%20Programming%20Language%20Brian%20W.%20Kernighan"
     },
@@ -107,9 +107,9 @@ export const canonFeed: CanonFeed = {
       "creator": "daine",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-17T19:43:35.932Z",
-      "syncedAt": "2026-11-17T19:43:35.958Z",
-      "importAttemptAt": "2026-11-17T19:43:35.958Z",
+      "activityAt": "2026-11-17T20:14:47.350Z",
+      "syncedAt": "2026-11-17T20:14:47.355Z",
+      "importAttemptAt": "2026-11-17T20:14:47.355Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=In%20Endless%20Awe%20%26%20Agony%20daine%202026",
       "art": {
