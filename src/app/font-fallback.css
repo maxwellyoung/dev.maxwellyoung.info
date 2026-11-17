@@ -1,0 +1,14 @@
+/* Browser-calibrated Arial metrics keep the homepage navigation on the same
+   rows before General Sans arrives. The generated average-width fallback
+   was too wide for this text at the phone breakpoint (CLS 0.061). */
+@font-face {
+  font-family: 'generalSans Stable Fallback';
+  src: local('Arial');
+  ascent-override: 99.51%;
+  descent-override: 23.65%;
+  line-gap-override: 9.85%;
+  size-adjust: 101.5%;
+}
+:root {
+  --font-general-sans: 'generalSans', 'generalSans Stable Fallback';
+}
