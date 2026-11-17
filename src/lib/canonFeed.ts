@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-17",
-  "sourceSyncedAt": "2026-11-17T17:06:25.489Z",
+  "sourceSyncedAt": "2026-11-17T17:37:43.260Z",
   "totalWorks": 5893,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 36% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-17T12:00:04.407Z",
-      "syncedAt": "2026-11-17T17:06:26.525Z",
-      "importAttemptAt": "2026-11-17T17:06:26.525Z",
+      "syncedAt": "2026-11-17T17:37:44.500Z",
+      "importAttemptAt": "2026-11-17T17:37:44.500Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-17T03:30:22.000Z",
-      "syncedAt": "2026-11-17T17:06:25.489Z",
-      "importAttemptAt": "2026-11-17T17:06:25.489Z",
+      "syncedAt": "2026-11-17T17:37:43.260Z",
+      "importAttemptAt": "2026-11-17T17:37:43.260Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/271590/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
       "activityAt": "2026-11-17T16:34:51.527Z",
-      "syncedAt": "2026-11-17T17:06:25.514Z",
-      "importAttemptAt": "2026-11-17T17:06:25.514Z",
+      "syncedAt": "2026-11-17T17:37:43.570Z",
+      "importAttemptAt": "2026-11-17T17:37:43.570Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=In%20Endless%20Awe%20%26%20Agony%20daine%202026",
       "art": {
