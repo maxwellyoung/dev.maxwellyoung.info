@@ -1,6 +1,10 @@
+"use client";
+
 import { ProjectsShowcase } from "@/components/ProjectsShowcase";
+import { motion } from "framer-motion";
 import { AnimatedLink } from "@/components/ui/animated-link";
 import { CurrentlyInto } from "@/components/CurrentlyInto";
+import { container, item } from "@/lib/motion";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 import { CompanyLogoStudy } from "@/components/CompanyLogoStudy";
 import { OpenSourceProof } from "@/components/OpenSourceProof";
@@ -10,21 +14,25 @@ export default function Home() {
   return (
     <div className="min-h-screen text-foreground p-4 md:p-8 overflow-x-hidden">
       <main id="main-content" className="w-full max-w-2xl mx-auto overflow-x-hidden">
-        <section
+        <motion.section
           className="flex min-h-[54vh] flex-col items-start justify-center space-y-6 p-4 md:min-h-[58vh] md:space-y-8 md:p-8"
+          variants={container.hero}
+          initial={false}
+          animate="visible"
         >
-          <header className="w-full" variants={item.fadeUp}>
+          <motion.header className="w-full" variants={item.fadeUp}>
             <h1 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl">
               Maxwell Young
             </h1>
             <p className="mt-1 max-w-xl text-lg font-light leading-snug tracking-tight text-muted-foreground md:text-xl">
               Product engineer focused on mobile experiences.
             </p>
-          </header>
+          </motion.header>
 
           <div className="leading-relaxed space-y-6">
-            <p
+            <motion.p
               className="max-w-xl text-foreground"
+              variants={item.fadeUp}
             >
               I build and maintain production apps, with a focus on interaction
               design, performance, and reliability. At{" "}
@@ -43,11 +51,12 @@ export default function Home() {
                 ninetynine.digital
               </TrackedActionLink>
               .
-            </p>
+            </motion.p>
 
 
-            <nav
+            <motion.nav
               className="flex flex-wrap items-center gap-x-5 gap-y-0 text-sm text-muted-foreground"
+              variants={item.fadeUp}
               aria-label="Primary navigation"
             >
               <AnimatedLink href="#projects" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Work</AnimatedLink>
@@ -56,9 +65,9 @@ export default function Home() {
               <AnimatedLink href="https://github.com/maxwellyoung" external className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">GitHub</AnimatedLink>
               <AnimatedLink href="/os" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Maxwell OS</AnimatedLink>
               <AnimatedLink href="/contact" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground">Contact</AnimatedLink>
-            </nav>
+            </motion.nav>
           </div>
-        </section>
+        </motion.section>
 
         <CompanyLogoStudy className="mb-14 px-4 md:px-8" />
 
