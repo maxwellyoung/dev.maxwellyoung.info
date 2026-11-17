@@ -13,7 +13,7 @@ export default function Home() {
         <section
           className="flex min-h-[54vh] flex-col items-start justify-center space-y-6 p-4 md:min-h-[58vh] md:space-y-8 md:p-8"
         >
-          <header className="w-full">
+          <header className="w-full" variants={item.fadeUp}>
             <h1 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl">
               Maxwell Young
             </h1>
