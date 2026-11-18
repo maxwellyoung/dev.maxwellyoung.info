@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-18",
-  "sourceSyncedAt": "2026-11-18T17:13:54.628Z",
+  "sourceSyncedAt": "2026-11-18T17:45:30.056Z",
   "totalWorks": 5963,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 41% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-18T12:35:21.175Z",
-      "syncedAt": "2026-11-18T17:13:56.517Z",
-      "importAttemptAt": "2026-11-18T17:13:56.517Z",
+      "syncedAt": "2026-11-18T17:45:31.894Z",
+      "importAttemptAt": "2026-11-18T17:45:31.894Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-17T03:30:22.000Z",
-      "syncedAt": "2026-11-18T17:13:55.685Z",
-      "importAttemptAt": "2026-11-18T17:13:55.685Z",
+      "syncedAt": "2026-11-18T17:45:31.073Z",
+      "importAttemptAt": "2026-11-18T17:45:31.073Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/271590/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 12% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-17T07:04:02.895Z",
-      "syncedAt": "2026-11-18T17:13:54.628Z",
-      "importAttemptAt": "2026-11-18T17:13:54.628Z",
+      "syncedAt": "2026-11-18T17:45:30.056Z",
+      "importAttemptAt": "2026-11-18T17:45:30.056Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=C%20Programming%20Language%20Brian%20W.%20Kernighan"
     },
@@ -107,9 +107,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Charli xcx",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-18T17:13:55.685Z",
-      "syncedAt": "2026-11-18T17:13:55.705Z",
-      "importAttemptAt": "2026-11-18T17:13:55.705Z",
+      "activityAt": "2026-11-18T17:45:31.177Z",
+      "syncedAt": "2026-11-18T17:45:31.202Z",
+      "importAttemptAt": "2026-11-18T17:45:31.202Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Music%2C%20Fashion%2C%20Film%20Charli%20xcx%202017",
       "art": {
