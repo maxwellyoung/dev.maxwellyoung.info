@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-18",
-  "sourceSyncedAt": "2026-11-18T07:44:48.947Z",
+  "sourceSyncedAt": "2026-11-18T08:16:25.238Z",
   "totalWorks": 5962,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 36% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-17T12:00:04.407Z",
-      "syncedAt": "2026-11-18T07:44:50.899Z",
-      "importAttemptAt": "2026-11-18T07:44:50.899Z",
+      "syncedAt": "2026-11-18T08:16:27.080Z",
+      "importAttemptAt": "2026-11-18T08:16:27.080Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-17T03:30:22.000Z",
-      "syncedAt": "2026-11-18T07:44:49.535Z",
-      "importAttemptAt": "2026-11-18T07:44:49.535Z",
+      "syncedAt": "2026-11-18T08:16:26.360Z",
+      "importAttemptAt": "2026-11-18T08:16:26.360Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/271590/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 12% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-17T07:04:02.895Z",
-      "syncedAt": "2026-11-18T07:44:48.947Z",
-      "importAttemptAt": "2026-11-18T07:44:48.947Z",
+      "syncedAt": "2026-11-18T08:16:25.238Z",
+      "importAttemptAt": "2026-11-18T08:16:25.238Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=C%20Programming%20Language%20Brian%20W.%20Kernighan"
     },
@@ -107,9 +107,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Tay-K",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-18T07:44:50.444Z",
-      "syncedAt": "2026-11-18T07:44:50.464Z",
-      "importAttemptAt": "2026-11-18T07:44:50.464Z",
+      "activityAt": "2026-11-18T08:16:26.262Z",
+      "syncedAt": "2026-11-18T08:16:26.287Z",
+      "importAttemptAt": "2026-11-18T08:16:26.287Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=%23MonstersUnderMyBed%20Tay-K%202026",
       "art": {
