@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-18",
-  "sourceSyncedAt": "2026-11-18T20:23:27.211Z",
+  "sourceSyncedAt": "2026-11-18T20:54:56.134Z",
   "totalWorks": 5966,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 41% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-18T12:35:21.175Z",
-      "syncedAt": "2026-11-18T20:23:29.105Z",
-      "importAttemptAt": "2026-11-18T20:23:29.105Z",
+      "syncedAt": "2026-11-18T20:54:58.797Z",
+      "importAttemptAt": "2026-11-18T20:54:58.797Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-17T03:30:22.000Z",
-      "syncedAt": "2026-11-18T20:23:28.224Z",
-      "importAttemptAt": "2026-11-18T20:23:28.224Z",
+      "syncedAt": "2026-11-18T20:54:56.915Z",
+      "importAttemptAt": "2026-11-18T20:54:56.915Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/271590/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 25% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-18T02:56:22.624Z",
-      "syncedAt": "2026-11-18T20:23:27.211Z",
-      "importAttemptAt": "2026-11-18T20:23:27.211Z",
+      "syncedAt": "2026-11-18T20:54:56.134Z",
+      "importAttemptAt": "2026-11-18T20:54:56.134Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=PHP%3A%20The%20%E2%80%9CRight%E2%80%9D%20Way%20Phil%20Sturgeon%20and%20Josh%20Lockhart"
     },
@@ -107,9 +107,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Charli xcx",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-18T20:23:28.733Z",
-      "syncedAt": "2026-11-18T20:23:28.754Z",
-      "importAttemptAt": "2026-11-18T20:23:28.754Z",
+      "activityAt": "2026-11-18T20:54:56.688Z",
+      "syncedAt": "2026-11-18T20:54:56.707Z",
+      "importAttemptAt": "2026-11-18T20:54:56.707Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Music%2C%20Fashion%2C%20Film%20Charli%20xcx%202017",
       "art": {
