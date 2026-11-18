@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-18",
-  "sourceSyncedAt": "2026-11-18T13:00:27.003Z",
+  "sourceSyncedAt": "2026-11-18T13:32:22.994Z",
   "totalWorks": 5963,
   "regionCount": 22,
   "regions": [
-    "Contemporary Hip-Hop",
-    "Alternative Rock Essentials",
-    "Indie Rock & Soul",
-    "Contemporary Dramas & Thrillers"
+    "Indie Pop & Hip-Hop",
+    "Contemporary Hip-Hop & R&B",
+    "Soulful Rock & Pop",
+    "Literary Non-Fiction & Memoirs"
   ],
   "now": [
     {
@@ -53,11 +53,11 @@ export const canonFeed: CanonFeed = {
       "medium": "show",
       "title": "The West Wing",
       "creator": "NBC",
-      "note": "Recent watching activity — 39% through.",
+      "note": "Recent watching activity — 41% through.",
       "evidenceSource": "jellyfin",
-      "activityAt": "2026-11-18T09:53:00.665Z",
-      "syncedAt": "2026-11-18T13:00:28.854Z",
-      "importAttemptAt": "2026-11-18T13:00:28.854Z",
+      "activityAt": "2026-11-18T12:35:21.175Z",
+      "syncedAt": "2026-11-18T13:32:24.882Z",
+      "importAttemptAt": "2026-11-18T13:32:24.882Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-17T03:30:22.000Z",
-      "syncedAt": "2026-11-18T13:00:28.075Z",
-      "importAttemptAt": "2026-11-18T13:00:28.075Z",
+      "syncedAt": "2026-11-18T13:32:24.027Z",
+      "importAttemptAt": "2026-11-18T13:32:24.027Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/271590/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 12% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-17T07:04:02.895Z",
-      "syncedAt": "2026-11-18T13:00:27.003Z",
-      "importAttemptAt": "2026-11-18T13:00:27.003Z",
+      "syncedAt": "2026-11-18T13:32:22.994Z",
+      "importAttemptAt": "2026-11-18T13:32:22.994Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=C%20Programming%20Language%20Brian%20W.%20Kernighan"
     },
@@ -107,9 +107,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Charli xcx",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-18T13:00:27.469Z",
-      "syncedAt": "2026-11-18T13:00:27.491Z",
-      "importAttemptAt": "2026-11-18T13:00:27.491Z",
+      "activityAt": "2026-11-18T13:32:23.762Z",
+      "syncedAt": "2026-11-18T13:32:23.787Z",
+      "importAttemptAt": "2026-11-18T13:32:23.787Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Music%2C%20Fashion%2C%20Film%20Charli%20xcx%202017",
       "art": {
