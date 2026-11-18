@@ -986,10 +986,22 @@ export const flagshipProjects = rankedProjects.filter((project) => project.featu
 const appSlugs = new Set(["vape-quit-coach", "afterlight", "holdspace", "good-news-bad-news", "doomscroll"]);
 
 export const independentApps = rankedProjects.filter((project) => appSlugs.has(project.slug));
-export const selectedWorkProjects = flagshipProjects.filter((project) => !appSlugs.has(project.slug));
-export const supportingProjects = rankedProjects.filter(
-  (project) => !project.featured && !appSlugs.has(project.slug),
+// The homepage is a short selection. The work and app catalogs use the full lists.
+export const selectedWorkProjects = [
+  "silk",
+  "medicines-safety",
+  "liner",
+  "chlita",
+  "margin",
+  "skillscan",
+]
+  .map((slug) => rankedProjects.find((project) => project.slug === slug))
+  .filter((project) => project !== undefined);
+
+export const homepageApps = independentApps.filter(
+  (project) => project.slug === "afterlight" || project.slug === "holdspace",
 );
+export const supportingProjects = rankedProjects.filter((project) => project.slug === "default-index");
 
 export function getProjectContextLabel(
   project: Pick<Project, "category" | "client" | "collection">

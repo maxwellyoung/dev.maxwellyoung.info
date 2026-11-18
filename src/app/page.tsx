@@ -7,7 +7,6 @@ import { CurrentlyInto } from "@/components/CurrentlyInto";
 import { container, item } from "@/lib/motion";
 import { TrackedActionLink } from "@/components/TrackedActionLink";
 import { CompanyLogoStudy } from "@/components/CompanyLogoStudy";
-import { OpenSourceProof } from "@/components/OpenSourceProof";
 import { BossKeyTrigger } from "@/components/boss-key/BossKeyTrigger";
 
 export default function Home() {
@@ -74,8 +73,6 @@ export default function Home() {
         <section id="projects">
           <ProjectsShowcase embedded />
         </section>
-
-        <OpenSourceProof />
 
         <footer className="mt-16 border-t border-[hsl(var(--border))] pt-8">
           <div className="mb-8">
