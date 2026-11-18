@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-18",
-  "sourceSyncedAt": "2026-11-18T04:35:13.840Z",
+  "sourceSyncedAt": "2026-11-18T05:07:01.761Z",
   "totalWorks": 5962,
   "regionCount": 22,
   "regions": [
-    "Modern Alternative Sound",
-    "Diverse Modern",
-    "Documentary & Hip-Hop",
-    "Contemporary Romantic Dramas"
+    "Diverse Rock & Pop",
+    "Eclectic Indie Pop",
+    "Modern Hip-Hop & R&B",
+    "Classic Rock & Drama"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 36% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-17T12:00:04.407Z",
-      "syncedAt": "2026-11-18T04:35:15.986Z",
-      "importAttemptAt": "2026-11-18T04:35:15.986Z",
+      "syncedAt": "2026-11-18T05:07:03.827Z",
+      "importAttemptAt": "2026-11-18T05:07:03.827Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-17T03:30:22.000Z",
-      "syncedAt": "2026-11-18T04:35:14.902Z",
-      "importAttemptAt": "2026-11-18T04:35:14.902Z",
+      "syncedAt": "2026-11-18T05:07:02.488Z",
+      "importAttemptAt": "2026-11-18T05:07:02.488Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/271590/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 12% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-17T07:04:02.895Z",
-      "syncedAt": "2026-11-18T04:35:13.840Z",
-      "importAttemptAt": "2026-11-18T04:35:13.840Z",
+      "syncedAt": "2026-11-18T05:07:01.761Z",
+      "importAttemptAt": "2026-11-18T05:07:01.761Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=C%20Programming%20Language%20Brian%20W.%20Kernighan"
     },
@@ -107,9 +107,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Tay-K",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-18T04:35:15.012Z",
-      "syncedAt": "2026-11-18T04:35:15.069Z",
-      "importAttemptAt": "2026-11-18T04:35:15.069Z",
+      "activityAt": "2026-11-18T05:07:02.265Z",
+      "syncedAt": "2026-11-18T05:07:02.292Z",
+      "importAttemptAt": "2026-11-18T05:07:02.292Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=%23MonstersUnderMyBed%20Tay-K%202026",
       "art": {
