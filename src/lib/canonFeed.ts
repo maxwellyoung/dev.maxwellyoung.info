@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-18",
-  "sourceSyncedAt": "2026-11-18T11:25:40.602Z",
+  "sourceSyncedAt": "2026-11-18T11:57:24.365Z",
   "totalWorks": 5963,
   "regionCount": 22,
   "regions": [
-    "Diverse Rock & Pop",
-    "Eclectic Indie Pop",
-    "Modern Hip-Hop & R&B",
-    "Classic Rock & Drama"
+    "Contemporary Hip-Hop",
+    "Alternative Rock Essentials",
+    "Indie Rock & Soul",
+    "Contemporary Dramas & Thrillers"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 36% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-17T12:00:04.407Z",
-      "syncedAt": "2026-11-18T11:25:42.498Z",
-      "importAttemptAt": "2026-11-18T11:25:42.498Z",
+      "syncedAt": "2026-11-18T11:57:26.283Z",
+      "importAttemptAt": "2026-11-18T11:57:26.283Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-17T03:30:22.000Z",
-      "syncedAt": "2026-11-18T11:25:41.684Z",
-      "importAttemptAt": "2026-11-18T11:25:41.684Z",
+      "syncedAt": "2026-11-18T11:57:25.454Z",
+      "importAttemptAt": "2026-11-18T11:57:25.454Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/271590/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 12% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-17T07:04:02.895Z",
-      "syncedAt": "2026-11-18T11:25:40.602Z",
-      "importAttemptAt": "2026-11-18T11:25:40.602Z",
+      "syncedAt": "2026-11-18T11:57:24.365Z",
+      "importAttemptAt": "2026-11-18T11:57:24.365Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=C%20Programming%20Language%20Brian%20W.%20Kernighan"
     },
@@ -107,9 +107,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Charli xcx",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-18T11:25:41.089Z",
-      "syncedAt": "2026-11-18T11:25:41.110Z",
-      "importAttemptAt": "2026-11-18T11:25:41.110Z",
+      "activityAt": "2026-11-18T11:57:25.161Z",
+      "syncedAt": "2026-11-18T11:57:25.183Z",
+      "importAttemptAt": "2026-11-18T11:57:25.183Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Music%2C%20Fashion%2C%20Film%20Charli%20xcx%202017",
       "art": {
