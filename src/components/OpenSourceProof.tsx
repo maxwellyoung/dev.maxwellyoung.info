@@ -12,7 +12,7 @@ export function OpenSourceProof() {
     <section
       id="open-source"
       aria-labelledby="open-source-heading"
-      className="mx-auto mb-14 mt-2 max-w-2xl space-y-3 px-2 md:px-5"
+      className="space-y-3"
     >
       <motion.div
         variants={item.fadeUp}

@@ -8,11 +8,12 @@ import { AnimatePresence, motion, useReducedMotion, type AnimationDefinition } f
 import Carousel from "@/components/Carousel";
 import {
   Project,
-  independentApps,
+  homepageApps,
   selectedWorkProjects,
   rankedProjects,
   supportingProjects,
 } from "@/lib/projects";
+import { OpenSourceProof } from "@/components/OpenSourceProof";
 import { ProjectDetails } from "@/components/ProjectDetails";
 import { ChevronDown } from "lucide-react";
 import { container, item, spring } from "@/lib/motion";
@@ -324,15 +325,24 @@ export function ProjectsShowcase({ embedded = false }: ProjectsShowcaseProps) {
             emphasis="flagship"
           />
 
-          <ProjectSection
-            title="Independent apps"
-            projects={independentApps}
-            expandedProject={expandedProject}
-            onToggleExpand={setExpandedProject}
-            onCarouselOpen={handleCarouselOpen}
-            shouldReduceMotion={shouldReduceMotion}
-            emphasis="flagship"
-          />
+          <OpenSourceProof />
+
+          <div className="space-y-3">
+            <ProjectSection
+              title="Independent apps"
+              projects={homepageApps}
+              expandedProject={expandedProject}
+              onToggleExpand={setExpandedProject}
+              onCarouselOpen={handleCarouselOpen}
+              shouldReduceMotion={shouldReduceMotion}
+              emphasis="flagship"
+            />
+            <div className="px-2 md:px-3">
+              <Link href="/apps" className={proofLinkClass}>
+                View all independent apps
+              </Link>
+            </div>
+          </div>
 
           {supportingProjects.length > 0 && (
             <ProjectSection
