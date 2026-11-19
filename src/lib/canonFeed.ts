@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-19",
-  "sourceSyncedAt": "2026-11-19T11:09:59.666Z",
+  "sourceSyncedAt": "2026-11-19T11:41:29.443Z",
   "totalWorks": 5969,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-11-19T00:00:00.000Z",
-      "syncedAt": "2026-11-19T11:10:06.898Z",
-      "importAttemptAt": "2026-11-19T11:10:06.898Z",
+      "syncedAt": "2026-11-19T11:41:37.723Z",
+      "importAttemptAt": "2026-11-19T11:41:37.723Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1375441",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-19T11:07:53.000Z",
-      "syncedAt": "2026-11-19T11:10:00.934Z",
-      "importAttemptAt": "2026-11-19T11:10:00.934Z",
+      "activityAt": "2026-11-19T11:37:54.000Z",
+      "syncedAt": "2026-11-19T11:41:30.602Z",
+      "importAttemptAt": "2026-11-19T11:41:30.602Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -95,8 +95,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 25% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-18T02:56:22.624Z",
-      "syncedAt": "2026-11-19T11:09:59.666Z",
-      "importAttemptAt": "2026-11-19T11:09:59.666Z",
+      "syncedAt": "2026-11-19T11:41:29.443Z",
+      "importAttemptAt": "2026-11-19T11:41:29.443Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=PHP%3A%20The%20%E2%80%9CRight%E2%80%9D%20Way%20Phil%20Sturgeon%20and%20Josh%20Lockhart"
     },
@@ -108,9 +108,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Kings of Leon",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-19T11:10:00.153Z",
-      "syncedAt": "2026-11-19T11:10:00.168Z",
-      "importAttemptAt": "2026-11-19T11:10:00.168Z",
+      "activityAt": "2026-11-19T11:41:29.871Z",
+      "syncedAt": "2026-11-19T11:41:29.920Z",
+      "importAttemptAt": "2026-11-19T11:41:29.920Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Only%20By%20the%20Night%20Kings%20of%20Leon%202008",
       "art": {
