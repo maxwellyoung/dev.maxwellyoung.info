@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-19",
-  "sourceSyncedAt": "2026-11-19T13:16:19.222Z",
+  "sourceSyncedAt": "2026-11-19T13:47:54.689Z",
   "totalWorks": 5969,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-11-19T00:00:00.000Z",
-      "syncedAt": "2026-11-19T13:16:26.873Z",
-      "importAttemptAt": "2026-11-19T13:16:26.873Z",
+      "syncedAt": "2026-11-19T13:48:00.818Z",
+      "importAttemptAt": "2026-11-19T13:48:00.818Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1375441",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-19T12:52:14.000Z",
-      "syncedAt": "2026-11-19T13:16:20.214Z",
-      "importAttemptAt": "2026-11-19T13:16:20.214Z",
+      "syncedAt": "2026-11-19T13:47:55.461Z",
+      "importAttemptAt": "2026-11-19T13:47:55.461Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,9 +94,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jon Fosse, Damion Searls - translator",
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
-      "activityAt": "2026-11-19T13:16:08.872Z",
-      "syncedAt": "2026-11-19T13:16:19.222Z",
-      "importAttemptAt": "2026-11-19T13:16:19.222Z",
+      "activityAt": "2026-11-19T13:24:54.149Z",
+      "syncedAt": "2026-11-19T13:47:54.689Z",
+      "importAttemptAt": "2026-11-19T13:47:54.689Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -106,18 +106,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:kings-of-leon--only-by-the-night",
+      "id": "applemusic:drake--habibti-fomo",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Only By the Night",
-      "creator": "Kings of Leon",
+      "title": "HABIBTI (FOMO)",
+      "creator": "Drake",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-19T13:16:19.879Z",
-      "syncedAt": "2026-11-19T13:16:19.902Z",
-      "importAttemptAt": "2026-11-19T13:16:19.902Z",
+      "activityAt": "2026-11-19T13:47:55.057Z",
+      "syncedAt": "2026-11-19T13:47:55.094Z",
+      "importAttemptAt": "2026-11-19T13:47:55.094Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Only%20By%20the%20Night%20Kings%20of%20Leon%202008",
+      "href": "https://music.apple.com/nz/search?term=HABIBTI%20(FOMO)%20Drake%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
