@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-19",
-  "sourceSyncedAt": "2026-11-19T01:40:47.248Z",
+  "sourceSyncedAt": "2026-11-19T02:12:34.575Z",
   "totalWorks": 5969,
   "regionCount": 22,
   "regions": [
-    "Contemporary Music Fusion",
-    "Classic Rock & Pop",
-    "Biographical Documentaries",
-    "Indie Adventure"
+    "Contemporary Alternative",
+    "Pop & Rock Essentials",
+    "Modern Hip-Hop & Pop",
+    "Biographical & Documentary Works"
   ],
   "now": [
     {
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-11-19T00:00:00.000Z",
-      "syncedAt": "2026-11-19T01:40:55.523Z",
-      "importAttemptAt": "2026-11-19T01:40:55.523Z",
+      "syncedAt": "2026-11-19T02:12:42.284Z",
+      "importAttemptAt": "2026-11-19T02:12:42.284Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1375441",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-17T03:30:22.000Z",
-      "syncedAt": "2026-11-19T01:40:48.293Z",
-      "importAttemptAt": "2026-11-19T01:40:48.293Z",
+      "syncedAt": "2026-11-19T02:12:35.641Z",
+      "importAttemptAt": "2026-11-19T02:12:35.641Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/271590/",
       "art": {
@@ -95,8 +95,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 25% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-18T02:56:22.624Z",
-      "syncedAt": "2026-11-19T01:40:47.248Z",
-      "importAttemptAt": "2026-11-19T01:40:47.248Z",
+      "syncedAt": "2026-11-19T02:12:34.575Z",
+      "importAttemptAt": "2026-11-19T02:12:34.575Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=PHP%3A%20The%20%E2%80%9CRight%E2%80%9D%20Way%20Phil%20Sturgeon%20and%20Josh%20Lockhart"
     },
@@ -108,9 +108,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Kings of Leon",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-19T01:40:48.250Z",
-      "syncedAt": "2026-11-19T01:40:48.266Z",
-      "importAttemptAt": "2026-11-19T01:40:48.266Z",
+      "activityAt": "2026-11-19T02:12:34.999Z",
+      "syncedAt": "2026-11-19T02:12:35.019Z",
+      "importAttemptAt": "2026-11-19T02:12:35.019Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Only%20By%20the%20Night%20Kings%20of%20Leon%202008",
       "art": {
