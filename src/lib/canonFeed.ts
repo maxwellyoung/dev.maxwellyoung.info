@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-19",
-  "sourceSyncedAt": "2026-11-19T12:44:44.060Z",
+  "sourceSyncedAt": "2026-11-19T13:16:19.222Z",
   "totalWorks": 5969,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-11-19T00:00:00.000Z",
-      "syncedAt": "2026-11-19T12:44:52.460Z",
-      "importAttemptAt": "2026-11-19T12:44:52.460Z",
+      "syncedAt": "2026-11-19T13:16:26.873Z",
+      "importAttemptAt": "2026-11-19T13:16:26.873Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1375441",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-19T12:19:11.000Z",
-      "syncedAt": "2026-11-19T12:44:45.188Z",
-      "importAttemptAt": "2026-11-19T12:44:45.188Z",
+      "activityAt": "2026-11-19T12:52:14.000Z",
+      "syncedAt": "2026-11-19T13:16:20.214Z",
+      "importAttemptAt": "2026-11-19T13:16:20.214Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -87,18 +87,23 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applebooks:5228F10F419A94A5CFFD76FD5B82017C",
+      "id": "abs:eade6e9a-a3c9-4fd8-9d98-08421ee98532",
       "verb": "reading",
-      "medium": "book",
-      "title": "PHP: The “Right” Way",
-      "creator": "Phil Sturgeon and Josh Lockhart",
-      "note": "Recent reading activity — 25% through.",
-      "evidenceSource": "applebooks",
-      "activityAt": "2026-11-18T02:56:22.624Z",
-      "syncedAt": "2026-11-19T12:44:44.060Z",
-      "importAttemptAt": "2026-11-19T12:44:44.060Z",
+      "medium": "audiobook",
+      "title": "I Is Another: Septology, Book III-V",
+      "creator": "Jon Fosse, Damion Searls - translator",
+      "note": "Recent reading activity — 34% through.",
+      "evidenceSource": "abs",
+      "activityAt": "2026-11-19T13:16:08.872Z",
+      "syncedAt": "2026-11-19T13:16:19.222Z",
+      "importAttemptAt": "2026-11-19T13:16:19.222Z",
       "syncStatus": "ok",
-      "href": "https://openlibrary.org/search?q=PHP%3A%20The%20%E2%80%9CRight%E2%80%9D%20Way%20Phil%20Sturgeon%20and%20Josh%20Lockhart"
+      "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
+      "art": {
+        "src": "/canon/reading.jpg",
+        "w": 360,
+        "h": 360
+      }
     },
     {
       "id": "applemusic:kings-of-leon--only-by-the-night",
@@ -108,9 +113,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Kings of Leon",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-19T12:44:44.552Z",
-      "syncedAt": "2026-11-19T12:44:44.577Z",
-      "importAttemptAt": "2026-11-19T12:44:44.577Z",
+      "activityAt": "2026-11-19T13:16:19.879Z",
+      "syncedAt": "2026-11-19T13:16:19.902Z",
+      "importAttemptAt": "2026-11-19T13:16:19.902Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Only%20By%20the%20Night%20Kings%20of%20Leon%202008",
       "art": {
