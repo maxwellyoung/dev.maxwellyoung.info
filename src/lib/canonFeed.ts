@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-19",
-  "sourceSyncedAt": "2026-11-19T14:50:20.776Z",
+  "sourceSyncedAt": "2026-11-19T15:22:05.313Z",
   "totalWorks": 5969,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-11-19T00:00:00.000Z",
-      "syncedAt": "2026-11-19T14:50:27.689Z",
-      "importAttemptAt": "2026-11-19T14:50:27.689Z",
+      "syncedAt": "2026-11-19T15:22:13.596Z",
+      "importAttemptAt": "2026-11-19T15:22:13.596Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1375441",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-19T12:52:14.000Z",
-      "syncedAt": "2026-11-19T14:50:21.419Z",
-      "importAttemptAt": "2026-11-19T14:50:21.419Z",
+      "syncedAt": "2026-11-19T15:22:06.196Z",
+      "importAttemptAt": "2026-11-19T15:22:06.196Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -95,8 +95,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-19T14:50:20.776Z",
-      "importAttemptAt": "2026-11-19T14:50:20.776Z",
+      "syncedAt": "2026-11-19T15:22:05.313Z",
+      "importAttemptAt": "2026-11-19T15:22:05.313Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -113,9 +113,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Drake",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-19T14:50:21.695Z",
-      "syncedAt": "2026-11-19T14:50:21.717Z",
-      "importAttemptAt": "2026-11-19T14:50:21.717Z",
+      "activityAt": "2026-11-19T15:22:06.573Z",
+      "syncedAt": "2026-11-19T15:22:06.585Z",
+      "importAttemptAt": "2026-11-19T15:22:06.585Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Honestly%2C%20Nevermind%20Drake%202022",
       "art": {
