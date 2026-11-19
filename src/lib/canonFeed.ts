@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-19",
-  "sourceSyncedAt": "2026-11-19T17:29:06.865Z",
+  "sourceSyncedAt": "2026-11-19T18:00:55.494Z",
   "totalWorks": 5973,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-11-19T00:00:00.000Z",
-      "syncedAt": "2026-11-19T17:29:14.920Z",
-      "importAttemptAt": "2026-11-19T17:29:14.920Z",
+      "syncedAt": "2026-11-19T18:01:02.984Z",
+      "importAttemptAt": "2026-11-19T18:01:02.984Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1375441",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-19T12:52:14.000Z",
-      "syncedAt": "2026-11-19T17:29:07.968Z",
-      "importAttemptAt": "2026-11-19T17:29:07.968Z",
+      "syncedAt": "2026-11-19T18:00:56.456Z",
+      "importAttemptAt": "2026-11-19T18:00:56.456Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -95,8 +95,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-19T17:29:06.865Z",
-      "importAttemptAt": "2026-11-19T17:29:06.865Z",
+      "syncedAt": "2026-11-19T18:00:55.494Z",
+      "importAttemptAt": "2026-11-19T18:00:55.494Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -113,9 +113,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Beyoncé",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-19T17:29:07.537Z",
-      "syncedAt": "2026-11-19T17:29:07.557Z",
-      "importAttemptAt": "2026-11-19T17:29:07.557Z",
+      "activityAt": "2026-11-19T18:00:56.725Z",
+      "syncedAt": "2026-11-19T18:00:56.749Z",
+      "importAttemptAt": "2026-11-19T18:00:56.749Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=4%20(Expanded%20Edition)%20Beyonc%C3%A9%202011",
       "art": {
