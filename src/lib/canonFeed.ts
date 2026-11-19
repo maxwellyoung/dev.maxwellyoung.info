@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-19",
-  "sourceSyncedAt": "2026-11-19T13:47:54.689Z",
+  "sourceSyncedAt": "2026-11-19T14:19:22.722Z",
   "totalWorks": 5969,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-11-19T00:00:00.000Z",
-      "syncedAt": "2026-11-19T13:48:00.818Z",
-      "importAttemptAt": "2026-11-19T13:48:00.818Z",
+      "syncedAt": "2026-11-19T14:19:30.975Z",
+      "importAttemptAt": "2026-11-19T14:19:30.975Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1375441",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-19T12:52:14.000Z",
-      "syncedAt": "2026-11-19T13:47:55.461Z",
-      "importAttemptAt": "2026-11-19T13:47:55.461Z",
+      "syncedAt": "2026-11-19T14:19:23.388Z",
+      "importAttemptAt": "2026-11-19T14:19:23.388Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -95,8 +95,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-19T13:47:54.689Z",
-      "importAttemptAt": "2026-11-19T13:47:54.689Z",
+      "syncedAt": "2026-11-19T14:19:22.722Z",
+      "importAttemptAt": "2026-11-19T14:19:22.722Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -106,18 +106,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:drake--habibti-fomo",
+      "id": "applemusic:drake--honestly-nevermind",
       "verb": "in rotation",
       "medium": "music",
-      "title": "HABIBTI (FOMO)",
+      "title": "Honestly, Nevermind",
       "creator": "Drake",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-19T13:47:55.057Z",
-      "syncedAt": "2026-11-19T13:47:55.094Z",
-      "importAttemptAt": "2026-11-19T13:47:55.094Z",
+      "activityAt": "2026-11-19T14:19:23.532Z",
+      "syncedAt": "2026-11-19T14:19:23.574Z",
+      "importAttemptAt": "2026-11-19T14:19:23.574Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=HABIBTI%20(FOMO)%20Drake%202026",
+      "href": "https://music.apple.com/nz/search?term=Honestly%2C%20Nevermind%20Drake%202022",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
