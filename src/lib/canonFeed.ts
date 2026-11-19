@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-19",
-  "sourceSyncedAt": "2026-11-19T05:21:46.706Z",
+  "sourceSyncedAt": "2026-11-19T05:53:37.793Z",
   "totalWorks": 5969,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-11-19T00:00:00.000Z",
-      "syncedAt": "2026-11-19T05:21:58.753Z",
-      "importAttemptAt": "2026-11-19T05:21:58.753Z",
+      "syncedAt": "2026-11-19T05:53:44.879Z",
+      "importAttemptAt": "2026-11-19T05:53:44.879Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1375441",
       "art": {
@@ -68,18 +68,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:271590",
+      "id": "steam:730",
       "verb": "playing",
       "medium": "game",
-      "title": "Grand Theft Auto V Legacy",
-      "creator": "Rockstar North",
+      "title": "Counter-Strike 2",
+      "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-17T03:30:22.000Z",
-      "syncedAt": "2026-11-19T05:21:49.371Z",
-      "importAttemptAt": "2026-11-19T05:21:49.371Z",
+      "activityAt": "2026-11-19T05:40:13.000Z",
+      "syncedAt": "2026-11-19T05:53:38.855Z",
+      "importAttemptAt": "2026-11-19T05:53:38.855Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/271590/",
+      "href": "https://store.steampowered.com/app/730/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -95,8 +95,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 25% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-18T02:56:22.624Z",
-      "syncedAt": "2026-11-19T05:21:46.706Z",
-      "importAttemptAt": "2026-11-19T05:21:46.706Z",
+      "syncedAt": "2026-11-19T05:53:37.793Z",
+      "importAttemptAt": "2026-11-19T05:53:37.793Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=PHP%3A%20The%20%E2%80%9CRight%E2%80%9D%20Way%20Phil%20Sturgeon%20and%20Josh%20Lockhart"
     },
@@ -108,9 +108,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Kings of Leon",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-19T05:21:47.356Z",
-      "syncedAt": "2026-11-19T05:21:47.382Z",
-      "importAttemptAt": "2026-11-19T05:21:47.382Z",
+      "activityAt": "2026-11-19T05:53:38.530Z",
+      "syncedAt": "2026-11-19T05:53:38.568Z",
+      "importAttemptAt": "2026-11-19T05:53:38.568Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Only%20By%20the%20Night%20Kings%20of%20Leon%202008",
       "art": {
