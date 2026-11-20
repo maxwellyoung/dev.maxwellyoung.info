@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-20",
-  "sourceSyncedAt": "2026-11-20T07:44:25.036Z",
+  "sourceSyncedAt": "2026-11-20T08:16:04.262Z",
   "totalWorks": 5974,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-11-19T00:00:00.000Z",
-      "syncedAt": "2026-11-20T07:44:32.085Z",
-      "importAttemptAt": "2026-11-20T07:44:32.085Z",
+      "syncedAt": "2026-11-20T08:16:11.508Z",
+      "importAttemptAt": "2026-11-20T08:16:11.508Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1375441",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-20T06:34:50.000Z",
-      "syncedAt": "2026-11-20T07:44:25.832Z",
-      "importAttemptAt": "2026-11-20T07:44:25.832Z",
+      "syncedAt": "2026-11-20T08:16:05.307Z",
+      "importAttemptAt": "2026-11-20T08:16:05.307Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -95,8 +95,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-20T07:44:25.036Z",
-      "importAttemptAt": "2026-11-20T07:44:25.036Z",
+      "syncedAt": "2026-11-20T08:16:04.262Z",
+      "importAttemptAt": "2026-11-20T08:16:04.262Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -113,9 +113,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Harold Budd & Brian Eno",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-20T07:44:25.380Z",
-      "syncedAt": "2026-11-20T07:44:25.428Z",
-      "importAttemptAt": "2026-11-20T07:44:25.428Z",
+      "activityAt": "2026-11-20T08:16:04.928Z",
+      "syncedAt": "2026-11-20T08:16:04.951Z",
+      "importAttemptAt": "2026-11-20T08:16:04.951Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=The%20Pearl%20Harold%20Budd%20%26%20Brian%20Eno%201984",
       "art": {
