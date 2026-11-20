@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-20",
-  "sourceSyncedAt": "2026-11-20T22:00:01.521Z",
+  "sourceSyncedAt": "2026-11-20T22:31:43.419Z",
   "totalWorks": 5980,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-20T22:00:03.354Z",
-      "importAttemptAt": "2026-11-20T22:00:03.354Z",
+      "syncedAt": "2026-11-20T22:31:45.354Z",
+      "importAttemptAt": "2026-11-20T22:31:45.354Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-20T06:34:50.000Z",
-      "syncedAt": "2026-11-20T22:00:02.479Z",
-      "importAttemptAt": "2026-11-20T22:00:02.479Z",
+      "syncedAt": "2026-11-20T22:31:44.531Z",
+      "importAttemptAt": "2026-11-20T22:31:44.531Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-20T22:00:01.521Z",
-      "importAttemptAt": "2026-11-20T22:00:01.521Z",
+      "syncedAt": "2026-11-20T22:31:43.419Z",
+      "importAttemptAt": "2026-11-20T22:31:43.419Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "kuru",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-20T22:00:01.824Z",
-      "syncedAt": "2026-11-20T22:00:01.863Z",
-      "importAttemptAt": "2026-11-20T22:00:01.863Z",
+      "activityAt": "2026-11-20T22:31:43.754Z",
+      "syncedAt": "2026-11-20T22:31:43.772Z",
+      "importAttemptAt": "2026-11-20T22:31:43.772Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Backstage%20hologram%20kuru%202026",
       "art": {
