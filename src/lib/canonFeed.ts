@@ -36,15 +36,15 @@ export interface CanonFeed {
 }
 
 export const canonFeed: CanonFeed = {
-  "generatedAt": "2026-11-19",
-  "sourceSyncedAt": "2026-11-19T23:49:12.675Z",
+  "generatedAt": "2026-11-20",
+  "sourceSyncedAt": "2026-11-20T00:21:00.208Z",
   "totalWorks": 5974,
   "regionCount": 22,
   "regions": [
-    "Contemporary R&B & Pop",
-    "Classic Drama & Romance",
-    "Dramatic Romance & Fantasy",
-    "Crime & Dark Comedy Thrillers"
+    "Contemporary Alternative Vibes",
+    "Eclectic Pop & Rock",
+    "Classic Rock & Soul",
+    "Diverse Musical Fusion"
   ],
   "now": [
     {
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-11-19T00:00:00.000Z",
-      "syncedAt": "2026-11-19T23:49:20.748Z",
-      "importAttemptAt": "2026-11-19T23:49:20.748Z",
+      "syncedAt": "2026-11-20T00:21:09.631Z",
+      "importAttemptAt": "2026-11-20T00:21:09.631Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1375441",
       "art": {
@@ -76,8 +76,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-19T12:52:14.000Z",
-      "syncedAt": "2026-11-19T23:49:13.675Z",
-      "importAttemptAt": "2026-11-19T23:49:13.675Z",
+      "syncedAt": "2026-11-20T00:21:01.213Z",
+      "importAttemptAt": "2026-11-20T00:21:01.213Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -95,8 +95,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-19T23:49:12.675Z",
-      "importAttemptAt": "2026-11-19T23:49:12.675Z",
+      "syncedAt": "2026-11-20T00:21:00.208Z",
+      "importAttemptAt": "2026-11-20T00:21:00.208Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -113,9 +113,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Beyoncé",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-19T23:49:13.774Z",
-      "syncedAt": "2026-11-19T23:49:13.799Z",
-      "importAttemptAt": "2026-11-19T23:49:13.799Z",
+      "activityAt": "2026-11-20T00:21:00.672Z",
+      "syncedAt": "2026-11-20T00:21:00.696Z",
+      "importAttemptAt": "2026-11-20T00:21:00.696Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=MORNING%20DEW%20(DONK)%20-%20Single%20Beyonc%C3%A9%202026",
       "art": {
