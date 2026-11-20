@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-20",
-  "sourceSyncedAt": "2026-11-20T02:59:31.554Z",
+  "sourceSyncedAt": "2026-11-20T03:31:14.364Z",
   "totalWorks": 5974,
   "regionCount": 22,
   "regions": [
@@ -57,8 +57,8 @@ export const canonFeed: CanonFeed = {
       "note": "A dated finish recorded in Canon.",
       "evidenceSource": "letterboxd",
       "activityAt": "2026-11-19T00:00:00.000Z",
-      "syncedAt": "2026-11-20T02:59:42.977Z",
-      "importAttemptAt": "2026-11-20T02:59:42.977Z",
+      "syncedAt": "2026-11-20T03:31:23.489Z",
+      "importAttemptAt": "2026-11-20T03:31:23.489Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/movie/1375441",
       "art": {
@@ -75,9 +75,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Valve",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-20T02:47:30.000Z",
-      "syncedAt": "2026-11-20T02:59:32.890Z",
-      "importAttemptAt": "2026-11-20T02:59:32.890Z",
+      "activityAt": "2026-11-20T03:20:45.000Z",
+      "syncedAt": "2026-11-20T03:31:15.177Z",
+      "importAttemptAt": "2026-11-20T03:31:15.177Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -95,8 +95,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-20T02:59:31.554Z",
-      "importAttemptAt": "2026-11-20T02:59:31.554Z",
+      "syncedAt": "2026-11-20T03:31:14.364Z",
+      "importAttemptAt": "2026-11-20T03:31:14.364Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -113,9 +113,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Beyoncé",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-20T02:59:32.310Z",
-      "syncedAt": "2026-11-20T02:59:32.332Z",
-      "importAttemptAt": "2026-11-20T02:59:32.332Z",
+      "activityAt": "2026-11-20T03:31:14.721Z",
+      "syncedAt": "2026-11-20T03:31:14.741Z",
+      "importAttemptAt": "2026-11-20T03:31:14.741Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=MORNING%20DEW%20(DONK)%20-%20Single%20Beyonc%C3%A9%202026",
       "art": {
