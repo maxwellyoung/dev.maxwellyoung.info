@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-20",
-  "sourceSyncedAt": "2026-11-20T14:36:24.218Z",
+  "sourceSyncedAt": "2026-11-20T15:08:21.406Z",
   "totalWorks": 5980,
   "regionCount": 22,
   "regions": [
-    "Contemporary Alternative Vibes",
-    "Eclectic Pop & Rock",
-    "Classic Rock & Soul",
-    "Diverse Musical Fusion"
+    "Contemporary Hip-Hop & R&B",
+    "Alternative Rock & Soul",
+    "Alternative Rock & Pop",
+    "Indie Adventure"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-20T14:36:26.060Z",
-      "importAttemptAt": "2026-11-20T14:36:26.060Z",
+      "syncedAt": "2026-11-20T15:08:23.181Z",
+      "importAttemptAt": "2026-11-20T15:08:23.181Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-20T06:34:50.000Z",
-      "syncedAt": "2026-11-20T14:36:24.850Z",
-      "importAttemptAt": "2026-11-20T14:36:24.850Z",
+      "syncedAt": "2026-11-20T15:08:21.847Z",
+      "importAttemptAt": "2026-11-20T15:08:21.847Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-20T14:36:24.218Z",
-      "importAttemptAt": "2026-11-20T14:36:24.218Z",
+      "syncedAt": "2026-11-20T15:08:21.406Z",
+      "importAttemptAt": "2026-11-20T15:08:21.406Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "kuru",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-20T14:36:24.579Z",
-      "syncedAt": "2026-11-20T14:36:24.601Z",
-      "importAttemptAt": "2026-11-20T14:36:24.601Z",
+      "activityAt": "2026-11-20T15:08:21.876Z",
+      "syncedAt": "2026-11-20T15:08:21.891Z",
+      "importAttemptAt": "2026-11-20T15:08:21.891Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Backstage%20hologram%20kuru%202026",
       "art": {
