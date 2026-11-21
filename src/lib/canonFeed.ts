@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-21",
-  "sourceSyncedAt": "2026-11-21T17:21:05.894Z",
+  "sourceSyncedAt": "2026-11-21T17:53:03.229Z",
   "totalWorks": 5982,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-21T17:21:07.823Z",
-      "importAttemptAt": "2026-11-21T17:21:07.823Z",
+      "syncedAt": "2026-11-21T17:53:05.170Z",
+      "importAttemptAt": "2026-11-21T17:53:05.170Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-21T11:38:18.000Z",
-      "syncedAt": "2026-11-21T17:21:06.747Z",
-      "importAttemptAt": "2026-11-21T17:21:06.747Z",
+      "syncedAt": "2026-11-21T17:53:03.790Z",
+      "importAttemptAt": "2026-11-21T17:53:03.790Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-21T17:21:05.894Z",
-      "importAttemptAt": "2026-11-21T17:21:05.894Z",
+      "syncedAt": "2026-11-21T17:53:03.229Z",
+      "importAttemptAt": "2026-11-21T17:53:03.229Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -105,18 +105,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:sk8star--designer-junkie",
+      "id": "applemusic:harold-budd--budd-box",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Designer Junkie",
-      "creator": "Sk8star",
+      "title": "Budd Box",
+      "creator": "Harold Budd",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-21T17:21:06.633Z",
-      "syncedAt": "2026-11-21T17:21:06.647Z",
-      "importAttemptAt": "2026-11-21T17:21:06.647Z",
+      "activityAt": "2026-11-21T17:53:03.563Z",
+      "syncedAt": "2026-11-21T17:53:03.598Z",
+      "importAttemptAt": "2026-11-21T17:53:03.598Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Designer%20Junkie%20Sk8star%202026",
+      "href": "https://music.apple.com/nz/search?term=Budd%20Box%20Harold%20Budd%201981",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
