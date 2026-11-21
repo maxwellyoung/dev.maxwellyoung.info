@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-21",
-  "sourceSyncedAt": "2026-11-21T08:35:30.772Z",
+  "sourceSyncedAt": "2026-11-21T09:07:21.023Z",
   "totalWorks": 5982,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-21T08:35:32.686Z",
-      "importAttemptAt": "2026-11-21T08:35:32.686Z",
+      "syncedAt": "2026-11-21T09:07:22.897Z",
+      "importAttemptAt": "2026-11-21T09:07:22.897Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-20T06:34:50.000Z",
-      "syncedAt": "2026-11-21T08:35:31.863Z",
-      "importAttemptAt": "2026-11-21T08:35:31.863Z",
+      "syncedAt": "2026-11-21T09:07:21.641Z",
+      "importAttemptAt": "2026-11-21T09:07:21.641Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-21T08:35:30.772Z",
-      "importAttemptAt": "2026-11-21T08:35:30.772Z",
+      "syncedAt": "2026-11-21T09:07:21.023Z",
+      "importAttemptAt": "2026-11-21T09:07:21.023Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Warren Wolfe",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-21T08:35:31.067Z",
-      "syncedAt": "2026-11-21T08:35:31.103Z",
-      "importAttemptAt": "2026-11-21T08:35:31.103Z",
+      "activityAt": "2026-11-21T09:07:22.059Z",
+      "syncedAt": "2026-11-21T09:07:22.083Z",
+      "importAttemptAt": "2026-11-21T09:07:22.083Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Refrains%20Warren%20Wolfe%202026",
       "art": {
