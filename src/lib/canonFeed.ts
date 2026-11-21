@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-21",
-  "sourceSyncedAt": "2026-11-21T05:56:01.148Z",
+  "sourceSyncedAt": "2026-11-21T06:27:47.736Z",
   "totalWorks": 5981,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-21T05:56:03.187Z",
-      "importAttemptAt": "2026-11-21T05:56:03.187Z",
+      "syncedAt": "2026-11-21T06:27:49.915Z",
+      "importAttemptAt": "2026-11-21T06:27:49.915Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-20T06:34:50.000Z",
-      "syncedAt": "2026-11-21T05:56:02.330Z",
-      "importAttemptAt": "2026-11-21T05:56:02.330Z",
+      "syncedAt": "2026-11-21T06:27:48.805Z",
+      "importAttemptAt": "2026-11-21T06:27:48.805Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-21T05:56:01.148Z",
-      "importAttemptAt": "2026-11-21T05:56:01.148Z",
+      "syncedAt": "2026-11-21T06:27:47.736Z",
+      "importAttemptAt": "2026-11-21T06:27:47.736Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Drake",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-21T05:56:01.583Z",
-      "syncedAt": "2026-11-21T05:56:01.603Z",
-      "importAttemptAt": "2026-11-21T05:56:01.603Z",
+      "activityAt": "2026-11-21T06:27:48.599Z",
+      "syncedAt": "2026-11-21T06:27:48.637Z",
+      "importAttemptAt": "2026-11-21T06:27:48.637Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=HABIBTI%20(FOMO)%20Drake%202026",
       "art": {
