@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-21",
-  "sourceSyncedAt": "2026-11-21T16:17:34.330Z",
+  "sourceSyncedAt": "2026-11-21T16:49:19.103Z",
   "totalWorks": 5982,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-21T16:17:36.280Z",
-      "importAttemptAt": "2026-11-21T16:17:36.280Z",
+      "syncedAt": "2026-11-21T16:49:20.970Z",
+      "importAttemptAt": "2026-11-21T16:49:20.970Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-21T11:38:18.000Z",
-      "syncedAt": "2026-11-21T16:17:34.918Z",
-      "importAttemptAt": "2026-11-21T16:17:34.918Z",
+      "syncedAt": "2026-11-21T16:49:19.995Z",
+      "importAttemptAt": "2026-11-21T16:49:19.995Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-21T16:17:34.330Z",
-      "importAttemptAt": "2026-11-21T16:17:34.330Z",
+      "syncedAt": "2026-11-21T16:49:19.103Z",
+      "importAttemptAt": "2026-11-21T16:49:19.103Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Sk8star",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-21T16:17:34.612Z",
-      "syncedAt": "2026-11-21T16:17:34.633Z",
-      "importAttemptAt": "2026-11-21T16:17:34.633Z",
+      "activityAt": "2026-11-21T16:49:19.891Z",
+      "syncedAt": "2026-11-21T16:49:19.931Z",
+      "importAttemptAt": "2026-11-21T16:49:19.931Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Designer%20Junkie%20Sk8star%202026",
       "art": {
