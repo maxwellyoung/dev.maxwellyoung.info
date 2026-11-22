@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-22",
-  "sourceSyncedAt": "2026-11-22T11:30:55.325Z",
+  "sourceSyncedAt": "2026-11-22T12:02:39.652Z",
   "totalWorks": 5997,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-22T11:30:56.903Z",
-      "importAttemptAt": "2026-11-22T11:30:56.903Z",
+      "syncedAt": "2026-11-22T12:02:41.427Z",
+      "importAttemptAt": "2026-11-22T12:02:41.427Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-21T11:38:18.000Z",
-      "syncedAt": "2026-11-22T11:30:56.106Z",
-      "importAttemptAt": "2026-11-22T11:30:56.106Z",
+      "syncedAt": "2026-11-22T12:02:40.371Z",
+      "importAttemptAt": "2026-11-22T12:02:40.371Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/730/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-22T11:30:55.325Z",
-      "importAttemptAt": "2026-11-22T11:30:55.325Z",
+      "syncedAt": "2026-11-22T12:02:39.652Z",
+      "importAttemptAt": "2026-11-22T12:02:39.652Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Harold Budd",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-22T11:30:55.894Z",
-      "syncedAt": "2026-11-22T11:30:55.933Z",
-      "importAttemptAt": "2026-11-22T11:30:55.933Z",
+      "activityAt": "2026-11-22T12:02:39.905Z",
+      "syncedAt": "2026-11-22T12:02:39.943Z",
+      "importAttemptAt": "2026-11-22T12:02:39.943Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Budd%20Box%20Harold%20Budd%201981",
       "art": {
