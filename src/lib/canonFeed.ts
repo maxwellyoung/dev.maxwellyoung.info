@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-23",
-  "sourceSyncedAt": "2026-11-23T06:00:26.304Z",
+  "sourceSyncedAt": "2026-11-23T06:31:57.717Z",
   "totalWorks": 5999,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-23T06:00:28.105Z",
-      "importAttemptAt": "2026-11-23T06:00:28.105Z",
+      "syncedAt": "2026-11-23T06:31:59.474Z",
+      "importAttemptAt": "2026-11-23T06:31:59.474Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -67,18 +67,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:2828500",
+      "id": "steam:434170",
       "verb": "playing",
       "medium": "game",
-      "title": "The Jackbox Megapicker",
+      "title": "The Jackbox Party Pack 3",
       "creator": "Jackbox Games, Inc.",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-23T05:53:20.000Z",
-      "syncedAt": "2026-11-23T06:00:27.399Z",
-      "importAttemptAt": "2026-11-23T06:00:27.399Z",
+      "activityAt": "2026-11-23T06:31:00.000Z",
+      "syncedAt": "2026-11-23T06:31:58.362Z",
+      "importAttemptAt": "2026-11-23T06:31:58.362Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/2828500/",
+      "href": "https://store.steampowered.com/app/434170/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-23T06:00:26.304Z",
-      "importAttemptAt": "2026-11-23T06:00:26.304Z",
+      "syncedAt": "2026-11-23T06:31:57.717Z",
+      "importAttemptAt": "2026-11-23T06:31:57.717Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Carl Doy",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-23T06:00:27.145Z",
-      "syncedAt": "2026-11-23T06:00:27.180Z",
-      "importAttemptAt": "2026-11-23T06:00:27.180Z",
+      "activityAt": "2026-11-23T06:31:58.084Z",
+      "syncedAt": "2026-11-23T06:31:58.099Z",
+      "importAttemptAt": "2026-11-23T06:31:58.099Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Carl%20Doy%20(The%20Solo%20Album)%20Carl%20Doy%202011",
       "art": {
