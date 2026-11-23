@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-23",
-  "sourceSyncedAt": "2026-11-23T04:56:50.934Z",
+  "sourceSyncedAt": "2026-11-23T05:28:52.071Z",
   "totalWorks": 5999,
   "regionCount": 22,
   "regions": [
-    "Modern Alternative",
-    "Contemporary R&B & Hip-Hop",
-    "Eclectic Hip-Hop & Rock",
-    "Classic Rock & Pop"
+    "Contemporary Alternative & R&B",
+    "Classic Rock & Soul",
+    "Diverse Hip-Hop & Pop",
+    "Dark Comedies & Dramas"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-23T04:56:52.715Z",
-      "importAttemptAt": "2026-11-23T04:56:52.715Z",
+      "syncedAt": "2026-11-23T05:28:54.195Z",
+      "importAttemptAt": "2026-11-23T05:28:54.195Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -67,17 +67,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "steam:434170",
+      "id": "steam:2828500",
       "verb": "playing",
       "medium": "game",
-      "title": "The Jackbox Party Pack 3",
+      "title": "The Jackbox Megapicker",
+      "creator": "Jackbox Games, Inc.",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-23T04:55:28.000Z",
-      "syncedAt": "2026-11-23T04:56:51.593Z",
-      "importAttemptAt": "2026-11-23T04:56:51.593Z",
+      "activityAt": "2026-11-23T05:23:20.000Z",
+      "syncedAt": "2026-11-23T05:28:52.652Z",
+      "importAttemptAt": "2026-11-23T05:28:52.652Z",
       "syncStatus": "ok",
-      "href": "https://store.steampowered.com/app/434170/",
+      "href": "https://store.steampowered.com/app/2828500/",
       "art": {
         "src": "/canon/playing.jpg",
         "w": 240,
@@ -93,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-23T04:56:50.934Z",
-      "importAttemptAt": "2026-11-23T04:56:50.934Z",
+      "syncedAt": "2026-11-23T05:28:52.071Z",
+      "importAttemptAt": "2026-11-23T05:28:52.071Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -111,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Carl Doy",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-23T04:56:51.237Z",
-      "syncedAt": "2026-11-23T04:56:51.259Z",
-      "importAttemptAt": "2026-11-23T04:56:51.259Z",
+      "activityAt": "2026-11-23T05:28:52.422Z",
+      "syncedAt": "2026-11-23T05:28:52.445Z",
+      "importAttemptAt": "2026-11-23T05:28:52.445Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Carl%20Doy%20(The%20Solo%20Album)%20Carl%20Doy%202011",
       "art": {
