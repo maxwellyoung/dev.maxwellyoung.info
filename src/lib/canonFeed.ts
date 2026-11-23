@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-23",
-  "sourceSyncedAt": "2026-11-23T19:12:39.714Z",
+  "sourceSyncedAt": "2026-11-23T19:44:17.944Z",
   "totalWorks": 5999,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-23T19:12:41.621Z",
-      "importAttemptAt": "2026-11-23T19:12:41.621Z",
+      "syncedAt": "2026-11-23T19:44:19.735Z",
+      "importAttemptAt": "2026-11-23T19:44:19.735Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -74,9 +74,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Jackbox Games, Inc.",
       "note": "Recent game activity.",
       "evidenceSource": "steam",
-      "activityAt": "2026-11-23T18:41:20.000Z",
-      "syncedAt": "2026-11-23T19:12:40.776Z",
-      "importAttemptAt": "2026-11-23T19:12:40.776Z",
+      "activityAt": "2026-11-23T19:16:05.000Z",
+      "syncedAt": "2026-11-23T19:44:19.408Z",
+      "importAttemptAt": "2026-11-23T19:44:19.408Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2828500/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-23T19:12:39.714Z",
-      "importAttemptAt": "2026-11-23T19:12:39.714Z",
+      "syncedAt": "2026-11-23T19:44:17.944Z",
+      "importAttemptAt": "2026-11-23T19:44:17.944Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Carl Doy",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-23T19:12:40.612Z",
-      "syncedAt": "2026-11-23T19:12:40.647Z",
-      "importAttemptAt": "2026-11-23T19:12:40.647Z",
+      "activityAt": "2026-11-23T19:44:18.799Z",
+      "syncedAt": "2026-11-23T19:44:18.835Z",
+      "importAttemptAt": "2026-11-23T19:44:18.835Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Carl%20Doy%20(The%20Solo%20Album)%20Carl%20Doy%202011",
       "art": {
