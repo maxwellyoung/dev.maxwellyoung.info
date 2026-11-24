@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-24",
-  "sourceSyncedAt": "2026-11-24T09:32:51.953Z",
+  "sourceSyncedAt": "2026-11-24T10:04:27.038Z",
   "totalWorks": 6002,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-24T09:32:53.709Z",
-      "importAttemptAt": "2026-11-24T09:32:53.709Z",
+      "syncedAt": "2026-11-24T10:04:29.030Z",
+      "importAttemptAt": "2026-11-24T10:04:29.030Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-23T23:23:56.000Z",
-      "syncedAt": "2026-11-24T09:32:53.153Z",
-      "importAttemptAt": "2026-11-24T09:32:53.153Z",
+      "syncedAt": "2026-11-24T10:04:27.890Z",
+      "importAttemptAt": "2026-11-24T10:04:27.890Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2828500/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-24T09:32:51.953Z",
-      "importAttemptAt": "2026-11-24T09:32:51.953Z",
+      "syncedAt": "2026-11-24T10:04:27.065Z",
+      "importAttemptAt": "2026-11-24T10:04:27.065Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "D'Angelo & Slingbaum",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-24T09:32:52.386Z",
-      "syncedAt": "2026-11-24T09:32:52.409Z",
-      "importAttemptAt": "2026-11-24T09:32:52.409Z",
+      "activityAt": "2026-11-24T10:04:27.023Z",
+      "syncedAt": "2026-11-24T10:04:27.038Z",
+      "importAttemptAt": "2026-11-24T10:04:27.038Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Kamikazi%20-%20Single%20D'Angelo%20%26%20Slingbaum%202026",
       "art": {
