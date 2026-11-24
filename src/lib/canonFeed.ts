@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-24",
-  "sourceSyncedAt": "2026-11-24T04:11:19.389Z",
+  "sourceSyncedAt": "2026-11-24T04:43:12.360Z",
   "totalWorks": 6000,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-24T04:11:24.526Z",
-      "importAttemptAt": "2026-11-24T04:11:24.526Z",
+      "syncedAt": "2026-11-24T04:43:14.509Z",
+      "importAttemptAt": "2026-11-24T04:43:14.509Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-23T23:23:56.000Z",
-      "syncedAt": "2026-11-24T04:11:19.587Z",
-      "importAttemptAt": "2026-11-24T04:11:19.587Z",
+      "syncedAt": "2026-11-24T04:43:13.366Z",
+      "importAttemptAt": "2026-11-24T04:43:13.366Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2828500/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-24T04:11:19.524Z",
-      "importAttemptAt": "2026-11-24T04:11:19.524Z",
+      "syncedAt": "2026-11-24T04:43:12.360Z",
+      "importAttemptAt": "2026-11-24T04:43:12.360Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Drake",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-24T04:11:19.317Z",
-      "syncedAt": "2026-11-24T04:11:19.389Z",
-      "importAttemptAt": "2026-11-24T04:11:19.389Z",
+      "activityAt": "2026-11-24T04:43:12.890Z",
+      "syncedAt": "2026-11-24T04:43:12.912Z",
+      "importAttemptAt": "2026-11-24T04:43:12.912Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=MAID%20OF%20HONOUR%20Drake%202025",
       "art": {
