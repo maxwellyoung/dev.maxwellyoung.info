@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-24",
-  "sourceSyncedAt": "2026-11-24T00:29:39.509Z",
+  "sourceSyncedAt": "2026-11-24T01:01:17.444Z",
   "totalWorks": 6000,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-24T00:29:41.687Z",
-      "importAttemptAt": "2026-11-24T00:29:41.687Z",
+      "syncedAt": "2026-11-24T01:01:19.304Z",
+      "importAttemptAt": "2026-11-24T01:01:19.304Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-23T23:23:56.000Z",
-      "syncedAt": "2026-11-24T00:29:40.206Z",
-      "importAttemptAt": "2026-11-24T00:29:40.206Z",
+      "syncedAt": "2026-11-24T01:01:18.280Z",
+      "importAttemptAt": "2026-11-24T01:01:18.280Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2828500/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 34% through.",
       "evidenceSource": "abs",
       "activityAt": "2026-11-19T13:24:54.149Z",
-      "syncedAt": "2026-11-24T00:29:39.509Z",
-      "importAttemptAt": "2026-11-24T00:29:39.509Z",
+      "syncedAt": "2026-11-24T01:01:17.444Z",
+      "importAttemptAt": "2026-11-24T01:01:17.444Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=I%20Is%20Another%3A%20Septology%2C%20Book%20III-V%20Jon%20Fosse%2C%20Damion%20Searls%20-%20translator%202023",
       "art": {
@@ -105,18 +105,18 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applemusic:lambchop--punching-the-clown",
+      "id": "applemusic:lambchop--demoed",
       "verb": "in rotation",
       "medium": "music",
-      "title": "Punching the Clown",
+      "title": "Demoed",
       "creator": "Lambchop",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-24T00:29:40.239Z",
-      "syncedAt": "2026-11-24T00:29:40.263Z",
-      "importAttemptAt": "2026-11-24T00:29:40.263Z",
+      "activityAt": "2026-11-24T01:01:18.201Z",
+      "syncedAt": "2026-11-24T01:01:18.240Z",
+      "importAttemptAt": "2026-11-24T01:01:18.240Z",
       "syncStatus": "ok",
-      "href": "https://music.apple.com/nz/search?term=Punching%20the%20Clown%20Lambchop%202026",
+      "href": "https://music.apple.com/nz/search?term=Demoed%20Lambchop%202026",
       "art": {
         "src": "/canon/rotation.jpg",
         "w": 360,
