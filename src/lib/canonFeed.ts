@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-27",
-  "sourceSyncedAt": "2026-11-27T19:42:44.230Z",
+  "sourceSyncedAt": "2026-11-27T20:14:22.160Z",
   "totalWorks": 6014,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-27T19:42:46.095Z",
-      "importAttemptAt": "2026-11-27T19:42:46.095Z",
+      "syncedAt": "2026-11-27T20:14:24.005Z",
+      "importAttemptAt": "2026-11-27T20:14:24.005Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-23T23:23:56.000Z",
-      "syncedAt": "2026-11-27T19:42:45.280Z",
-      "importAttemptAt": "2026-11-27T19:42:45.280Z",
+      "syncedAt": "2026-11-27T20:14:23.203Z",
+      "importAttemptAt": "2026-11-27T20:14:23.203Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2828500/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 3% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-21T22:53:54.277Z",
-      "syncedAt": "2026-11-27T19:42:44.230Z",
-      "importAttemptAt": "2026-11-27T19:42:44.230Z",
+      "syncedAt": "2026-11-27T20:14:22.160Z",
+      "importAttemptAt": "2026-11-27T20:14:22.160Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=Nazi%20Literature%20in%20the%20Americas%20Roberto%20Bola%C3%B1o%202024",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Kanye West",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-27T19:42:44.751Z",
-      "syncedAt": "2026-11-27T19:42:44.787Z",
-      "importAttemptAt": "2026-11-27T19:42:44.787Z",
+      "activityAt": "2026-11-27T20:14:22.822Z",
+      "syncedAt": "2026-11-27T20:14:22.842Z",
+      "importAttemptAt": "2026-11-27T20:14:22.842Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=OUT%20OF%20MY%20MIND%20-%20Single%20Kanye%20West%202026",
       "art": {
