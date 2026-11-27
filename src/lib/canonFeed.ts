@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-27",
-  "sourceSyncedAt": "2026-11-27T01:13:23.901Z",
+  "sourceSyncedAt": "2026-11-27T01:45:05.200Z",
   "totalWorks": 6008,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-27T01:13:29.369Z",
-      "importAttemptAt": "2026-11-27T01:13:29.369Z",
+      "syncedAt": "2026-11-27T01:45:09.618Z",
+      "importAttemptAt": "2026-11-27T01:45:09.618Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-23T23:23:56.000Z",
-      "syncedAt": "2026-11-27T01:13:25.027Z",
-      "importAttemptAt": "2026-11-27T01:13:25.027Z",
+      "syncedAt": "2026-11-27T01:45:06.584Z",
+      "importAttemptAt": "2026-11-27T01:45:06.584Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2828500/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 3% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-21T22:53:54.277Z",
-      "syncedAt": "2026-11-27T01:13:23.901Z",
-      "importAttemptAt": "2026-11-27T01:13:23.901Z",
+      "syncedAt": "2026-11-27T01:45:05.200Z",
+      "importAttemptAt": "2026-11-27T01:45:05.200Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=Nazi%20Literature%20in%20the%20Americas%20Roberto%20Bola%C3%B1o%202024",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "D'Angelo & Slingbaum",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-27T01:13:24.271Z",
-      "syncedAt": "2026-11-27T01:13:24.312Z",
-      "importAttemptAt": "2026-11-27T01:13:24.312Z",
+      "activityAt": "2026-11-27T01:45:06.056Z",
+      "syncedAt": "2026-11-27T01:45:06.110Z",
+      "importAttemptAt": "2026-11-27T01:45:06.110Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Kamikazi%20-%20Single%20D'Angelo%20%26%20Slingbaum%202026",
       "art": {
