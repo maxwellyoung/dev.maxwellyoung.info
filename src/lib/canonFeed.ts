@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-27",
-  "sourceSyncedAt": "2026-11-27T07:02:23.623Z",
+  "sourceSyncedAt": "2026-11-27T07:33:55.373Z",
   "totalWorks": 6010,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-27T07:02:25.500Z",
-      "importAttemptAt": "2026-11-27T07:02:25.500Z",
+      "syncedAt": "2026-11-27T07:33:57.317Z",
+      "importAttemptAt": "2026-11-27T07:33:57.317Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-23T23:23:56.000Z",
-      "syncedAt": "2026-11-27T07:02:24.801Z",
-      "importAttemptAt": "2026-11-27T07:02:24.801Z",
+      "syncedAt": "2026-11-27T07:33:56.255Z",
+      "importAttemptAt": "2026-11-27T07:33:56.255Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2828500/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 3% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-21T22:53:54.277Z",
-      "syncedAt": "2026-11-27T07:02:23.623Z",
-      "importAttemptAt": "2026-11-27T07:02:23.623Z",
+      "syncedAt": "2026-11-27T07:33:55.373Z",
+      "importAttemptAt": "2026-11-27T07:33:55.373Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=Nazi%20Literature%20in%20the%20Americas%20Roberto%20Bola%C3%B1o%202024",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Charles Mingus",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-27T07:02:24.061Z",
-      "syncedAt": "2026-11-27T07:02:24.085Z",
-      "importAttemptAt": "2026-11-27T07:02:24.085Z",
+      "activityAt": "2026-11-27T07:33:55.803Z",
+      "syncedAt": "2026-11-27T07:33:55.828Z",
+      "importAttemptAt": "2026-11-27T07:33:55.828Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Mingus%20Ah%20Um%20(Legacy%20Edition)%20Charles%20Mingus%201959",
       "art": {
