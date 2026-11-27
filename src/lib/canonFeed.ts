@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-27",
-  "sourceSyncedAt": "2026-11-27T05:26:57.367Z",
+  "sourceSyncedAt": "2026-11-27T05:58:49.941Z",
   "totalWorks": 6009,
   "regionCount": 22,
   "regions": [
+    "Experimental Hip-Hop & R&B",
+    "Classic Rock & Pop Albums",
     "Eclectic Hip-Hop & Pop",
-    "Diverse Rock & Pop",
-    "Quirky Dramedy & Romance",
-    "Contemporary Hip-Hop & Pop"
+    "Artful Dramas & Romances"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-27T05:26:59.289Z",
-      "importAttemptAt": "2026-11-27T05:26:59.289Z",
+      "syncedAt": "2026-11-27T05:58:51.812Z",
+      "importAttemptAt": "2026-11-27T05:58:51.812Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-23T23:23:56.000Z",
-      "syncedAt": "2026-11-27T05:26:58.445Z",
-      "importAttemptAt": "2026-11-27T05:26:58.445Z",
+      "syncedAt": "2026-11-27T05:58:50.875Z",
+      "importAttemptAt": "2026-11-27T05:58:50.875Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2828500/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 3% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-21T22:53:54.277Z",
-      "syncedAt": "2026-11-27T05:26:57.367Z",
-      "importAttemptAt": "2026-11-27T05:26:57.367Z",
+      "syncedAt": "2026-11-27T05:58:49.941Z",
+      "importAttemptAt": "2026-11-27T05:58:49.941Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=Nazi%20Literature%20in%20the%20Americas%20Roberto%20Bola%C3%B1o%202024",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Anejia & Nima Astria",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-27T05:26:58.678Z",
-      "syncedAt": "2026-11-27T05:26:58.702Z",
-      "importAttemptAt": "2026-11-27T05:26:58.702Z",
+      "activityAt": "2026-11-27T05:58:50.391Z",
+      "syncedAt": "2026-11-27T05:58:50.412Z",
+      "importAttemptAt": "2026-11-27T05:58:50.412Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=NerdCentral!%20-%20Single%20Anejia%20%26%20Nima%20Astria%202026",
       "art": {
