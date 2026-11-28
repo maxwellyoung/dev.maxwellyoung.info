@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-28",
-  "sourceSyncedAt": "2026-11-28T04:41:49.307Z",
+  "sourceSyncedAt": "2026-11-28T05:13:28.588Z",
   "totalWorks": 6016,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-28T04:41:51.455Z",
-      "importAttemptAt": "2026-11-28T04:41:51.455Z",
+      "syncedAt": "2026-11-28T05:13:31.230Z",
+      "importAttemptAt": "2026-11-28T05:13:31.230Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-23T23:23:56.000Z",
-      "syncedAt": "2026-11-28T04:41:50.345Z",
-      "importAttemptAt": "2026-11-28T04:41:50.345Z",
+      "syncedAt": "2026-11-28T05:13:29.628Z",
+      "importAttemptAt": "2026-11-28T05:13:29.628Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2828500/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 3% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-21T22:53:54.277Z",
-      "syncedAt": "2026-11-28T04:41:49.307Z",
-      "importAttemptAt": "2026-11-28T04:41:49.307Z",
+      "syncedAt": "2026-11-28T05:13:28.588Z",
+      "importAttemptAt": "2026-11-28T05:13:28.588Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=Nazi%20Literature%20in%20the%20Americas%20Roberto%20Bola%C3%B1o%202024",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Various Artists",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-28T04:41:50.349Z",
-      "syncedAt": "2026-11-28T04:41:50.358Z",
-      "importAttemptAt": "2026-11-28T04:41:50.358Z",
+      "activityAt": "2026-11-28T05:13:29.125Z",
+      "syncedAt": "2026-11-28T05:13:29.149Z",
+      "importAttemptAt": "2026-11-28T05:13:29.149Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=Grand%20Theft%20Auto%20VI%3A%20The%20Album%20Various%20Artists%202026",
       "art": {
