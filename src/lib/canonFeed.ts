@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-28",
-  "sourceSyncedAt": "2026-11-28T00:58:24.868Z",
+  "sourceSyncedAt": "2026-11-28T01:30:11.672Z",
   "totalWorks": 6014,
   "regionCount": 22,
   "regions": [
-    "Contemporary Hip-Hop & R&B",
-    "Diverse Hip-Hop & Pop",
-    "Dramatic Rock & Hip-Hop",
-    "Classic Rock & Jazz"
+    "Contemporary Hip-Hop Scene",
+    "Classic Rock Essentials",
+    "Modern Alternative Vibes",
+    "Thought-Provoking Documentaries"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-28T00:58:26.798Z",
-      "importAttemptAt": "2026-11-28T00:58:26.798Z",
+      "syncedAt": "2026-11-28T01:30:13.669Z",
+      "importAttemptAt": "2026-11-28T01:30:13.669Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-23T23:23:56.000Z",
-      "syncedAt": "2026-11-28T00:58:25.999Z",
-      "importAttemptAt": "2026-11-28T00:58:25.999Z",
+      "syncedAt": "2026-11-28T01:30:13.059Z",
+      "importAttemptAt": "2026-11-28T01:30:13.059Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2828500/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 3% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-21T22:53:54.277Z",
-      "syncedAt": "2026-11-28T00:58:24.868Z",
-      "importAttemptAt": "2026-11-28T00:58:24.868Z",
+      "syncedAt": "2026-11-28T01:30:11.672Z",
+      "importAttemptAt": "2026-11-28T01:30:11.672Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=Nazi%20Literature%20in%20the%20Americas%20Roberto%20Bola%C3%B1o%202024",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "Kanye West",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-28T00:58:25.414Z",
-      "syncedAt": "2026-11-28T00:58:25.439Z",
-      "importAttemptAt": "2026-11-28T00:58:25.439Z",
+      "activityAt": "2026-11-28T01:30:12.104Z",
+      "syncedAt": "2026-11-28T01:30:12.133Z",
+      "importAttemptAt": "2026-11-28T01:30:12.133Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=OUT%20OF%20MY%20MIND%20-%20Single%20Kanye%20West%202026",
       "art": {
