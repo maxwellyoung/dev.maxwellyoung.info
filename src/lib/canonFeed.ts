@@ -37,7 +37,7 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-28",
-  "sourceSyncedAt": "2026-11-28T18:57:43.590Z",
+  "sourceSyncedAt": "2026-11-28T19:29:30.062Z",
   "totalWorks": 6020,
   "regionCount": 22,
   "regions": [
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-28T18:57:45.499Z",
-      "importAttemptAt": "2026-11-28T18:57:45.499Z",
+      "syncedAt": "2026-11-28T19:29:31.961Z",
+      "importAttemptAt": "2026-11-28T19:29:31.961Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-23T23:23:56.000Z",
-      "syncedAt": "2026-11-28T18:57:44.739Z",
-      "importAttemptAt": "2026-11-28T18:57:44.739Z",
+      "syncedAt": "2026-11-28T19:29:31.234Z",
+      "importAttemptAt": "2026-11-28T19:29:31.234Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2828500/",
       "art": {
@@ -86,21 +86,21 @@ export const canonFeed: CanonFeed = {
       }
     },
     {
-      "id": "applebooks:785CDA0774BF0D93B276BBB40A60EA80",
+      "id": "applebooks:A34514D746DD2654D51B1FDEE419E199",
       "verb": "reading",
       "medium": "book",
-      "title": "Nazi Literature in the Americas",
-      "creator": "Roberto Bolaño",
-      "note": "Recent reading activity — 3% through.",
+      "title": "The Creative Gene",
+      "creator": "Hideo Kojima",
+      "note": "Recent reading activity — 19% through.",
       "evidenceSource": "applebooks",
-      "activityAt": "2026-11-21T22:53:54.277Z",
-      "syncedAt": "2026-11-28T18:57:43.590Z",
-      "importAttemptAt": "2026-11-28T18:57:43.590Z",
+      "activityAt": "2026-11-28T06:06:21.829Z",
+      "syncedAt": "2026-11-28T19:29:30.062Z",
+      "importAttemptAt": "2026-11-28T19:29:30.062Z",
       "syncStatus": "ok",
-      "href": "https://openlibrary.org/search?q=Nazi%20Literature%20in%20the%20Americas%20Roberto%20Bola%C3%B1o%202024",
+      "href": "https://openlibrary.org/search?q=The%20Creative%20Gene%20Hideo%20Kojima%202021",
       "art": {
         "src": "/canon/reading.jpg",
-        "w": 235,
+        "w": 240,
         "h": 360
       }
     },
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "USHER",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-28T18:57:43.948Z",
-      "syncedAt": "2026-11-28T18:57:43.970Z",
-      "importAttemptAt": "2026-11-28T18:57:43.970Z",
+      "activityAt": "2026-11-28T19:29:30.523Z",
+      "syncedAt": "2026-11-28T19:29:30.543Z",
+      "importAttemptAt": "2026-11-28T19:29:30.543Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=8701%20USHER%202001",
       "art": {
