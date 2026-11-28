@@ -37,14 +37,14 @@ export interface CanonFeed {
 
 export const canonFeed: CanonFeed = {
   "generatedAt": "2026-11-28",
-  "sourceSyncedAt": "2026-11-28T16:18:51.677Z",
+  "sourceSyncedAt": "2026-11-28T16:50:57.216Z",
   "totalWorks": 6020,
   "regionCount": 22,
   "regions": [
-    "Contemporary Pop & Hip-Hop",
-    "Indie Adventure",
-    "Quirky Dramedy & Romance",
-    "Eclectic Pop & Rock"
+    "Contemporary Hip-Hop & Pop",
+    "Eclectic Pop & Soul",
+    "Eclectic Hip-Hop & Alternative",
+    "Emotional Pop & Rap"
   ],
   "now": [
     {
@@ -56,8 +56,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent watching activity — 43% through.",
       "evidenceSource": "jellyfin",
       "activityAt": "2026-11-20T08:08:58.478Z",
-      "syncedAt": "2026-11-28T16:18:53.535Z",
-      "importAttemptAt": "2026-11-28T16:18:53.535Z",
+      "syncedAt": "2026-11-28T16:50:59.152Z",
+      "importAttemptAt": "2026-11-28T16:50:59.152Z",
       "syncStatus": "ok",
       "href": "https://www.themoviedb.org/tv/688",
       "art": {
@@ -75,8 +75,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent game activity.",
       "evidenceSource": "steam",
       "activityAt": "2026-11-23T23:23:56.000Z",
-      "syncedAt": "2026-11-28T16:18:52.801Z",
-      "importAttemptAt": "2026-11-28T16:18:52.801Z",
+      "syncedAt": "2026-11-28T16:50:58.294Z",
+      "importAttemptAt": "2026-11-28T16:50:58.294Z",
       "syncStatus": "ok",
       "href": "https://store.steampowered.com/app/2828500/",
       "art": {
@@ -94,8 +94,8 @@ export const canonFeed: CanonFeed = {
       "note": "Recent reading activity — 3% through.",
       "evidenceSource": "applebooks",
       "activityAt": "2026-11-21T22:53:54.277Z",
-      "syncedAt": "2026-11-28T16:18:51.677Z",
-      "importAttemptAt": "2026-11-28T16:18:51.677Z",
+      "syncedAt": "2026-11-28T16:50:57.216Z",
+      "importAttemptAt": "2026-11-28T16:50:57.216Z",
       "syncStatus": "ok",
       "href": "https://openlibrary.org/search?q=Nazi%20Literature%20in%20the%20Americas%20Roberto%20Bola%C3%B1o%202024",
       "art": {
@@ -112,9 +112,9 @@ export const canonFeed: CanonFeed = {
       "creator": "USHER",
       "note": "Recent listening activity.",
       "evidenceSource": "applemusic",
-      "activityAt": "2026-11-28T16:18:52.127Z",
-      "syncedAt": "2026-11-28T16:18:52.141Z",
-      "importAttemptAt": "2026-11-28T16:18:52.141Z",
+      "activityAt": "2026-11-28T16:50:57.742Z",
+      "syncedAt": "2026-11-28T16:50:57.754Z",
+      "importAttemptAt": "2026-11-28T16:50:57.754Z",
       "syncStatus": "ok",
       "href": "https://music.apple.com/nz/search?term=8701%20USHER%202001",
       "art": {
